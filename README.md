@@ -2,7 +2,23 @@
 
 *The Pólya–Szegő Conjecture for Pentagons*
 
-本仓库由 GitHub 账户 **ChengZhuoCZ** 归档，包含两个独立的 QMD 源项目。首次整理日期：2026-10-13（北京时间）。
+## 作者
+
+**程卓**  
+School of Mathematics and Statistics, HNP-LAMA, Central South University, Changsha, Hunan 410083, P. R. China  
+*Email address*: [zhuo@outlook.cz](mailto:zhuo@outlook.cz)
+
+**杨航**  
+School of Mathematics, Hunan University, Changsha, P.R. China  
+*Email address*: [hangyang0925@gmail.com](mailto:hangyang0925@gmail.com)
+
+## 首次归档时间
+
+**2026 年 10 月 13 日 18:26:51（北京时间，UTC+08:00）**，即 **2026-10-13 10:26:51 UTC**。
+
+上述时间为 GitHub 服务器记录的[首次归档 Release](https://github.com/ChengZhuoCZ/pentagon-polya-szego-conjecture/releases/tag/archive-2026-10-13) 发布时间（`published_at`），对应标签 `archive-2026-10-13`。首次归档提交为 [`39e646aafd6945d122dfd582d7255e794399002d`](https://github.com/ChengZhuoCZ/pentagon-polya-szego-conjecture/commit/39e646aafd6945d122dfd582d7255e794399002d)。此时间记录的是版本归档时间，不将其等同于源文件标注的完成日期或首次公开时间。
+
+本仓库由 GitHub 账户 **ChengZhuoCZ** 归档，包含两个独立的 QMD 源项目。
 
 ## 研究问题
 
