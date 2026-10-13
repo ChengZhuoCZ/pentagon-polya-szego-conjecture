@@ -1,0 +1,65 @@
+{
+  "purpose": "Independent RFC 3161 timestamp of original archives and the preserved Git history. Source and GitHub dates are recorded claims; the signed TSA generation time is a new, separate attestation.",
+  "repository": "https://github.com/ChengZhuoCZ/pentagon-polya-szego-conjecture",
+  "initial_commit": "39e646aafd6945d122dfd582d7255e794399002d",
+  "snapshot_commit": "8d5ad0e8791234ea9a80feb2d26ffe4feed299fc",
+  "authors": [
+    {
+      "name": "程卓",
+      "affiliation": "School of Mathematics and Statistics, HNP-LAMA, Central South University, Changsha, Hunan 410083, P. R. China",
+      "email": "zhuo@outlook.cz"
+    },
+    {
+      "name": "杨航",
+      "affiliation": "School of Mathematics, Hunan University, Changsha, P.R. China",
+      "email": "hangyang0925@gmail.com"
+    }
+  ],
+  "files": [
+    {
+      "path": "archives/Nonconvex-Pentagon-Analytic-English-R4-20261012.zip",
+      "sha256": "5b016d48f765e64df51369bc93efb643d5aa6a8d247256c7c69512a8445f78aa",
+      "bytes": 907233
+    },
+    {
+      "path": "archives/凸五边形-强极值Hilbert积分分布解析替换-QMD项目-20261012.zip",
+      "sha256": "6ec42494cd2489651e860f662d67ba5c41c6ac3e529d4d798c74b99bd3eb7fc0",
+      "bytes": 1047160
+    },
+    {
+      "path": "README.md",
+      "sha256": "1cafb4d81057b73de407227a362214e6dd0333f604e8da74b46bb7ef7b44e902",
+      "bytes": 11884
+    },
+    {
+      "path": "PROVENANCE.json",
+      "sha256": "150281043a056bc61b5fab4c7bd0413817a904d9bb97a90d84f52dd785b2ef31",
+      "bytes": 872
+    },
+    {
+      "path": "SHA256SUMS",
+      "sha256": "9ba2354842db97ef82ddc5b6fba837c9ecd1c131ec83393b942b20db12ddea06",
+      "bytes": 44381
+    },
+    {
+      "path": "evidence/timestamp-20261013/github-initial-release.json",
+      "sha256": "2cfaa8675c9acc941ffcc2c76785f3adde9ae73723d05f9c16208f7d455c6eeb",
+      "bytes": 9131
+    },
+    {
+      "path": "evidence/timestamp-20261013/github-repository.json",
+      "sha256": "62764b35ac6f0b17e5106049fbba91837aa8ffa4fa98d17ea2b01105c2d156ab",
+      "bytes": 6688
+    },
+    {
+      "path": "evidence/timestamp-20261013/history.bundle",
+      "sha256": "7e680486b7fc2b1e10eaf71bd1d058400c218b6e2cf4c926a08f9058eda84c9b",
+      "bytes": 3649270
+    },
+    {
+      "path": "evidence/timestamp-20261013/initial-SHA256SUMS",
+      "sha256": "538e3c5616ac52b414a1a48e75dda58d27587fef3839370097d5a3692907a9f4",
+      "bytes": 44381
+    }
+  ]
+}

@@ -24,6 +24,10 @@ School of Mathematics, Hunan University, Changsha, P.R. China
 
 This is the GitHub server-recorded publication time (`published_at`) of the [initial archive release](https://github.com/ChengZhuoCZ/pentagon-polya-szego-conjecture/releases/tag/archive-2026-10-13), tagged `archive-2026-10-13`. The initial archive commit is [`39e646aafd6945d122dfd582d7255e794399002d`](https://github.com/ChengZhuoCZ/pentagon-polya-szego-conjecture/commit/39e646aafd6945d122dfd582d7255e794399002d). It records the archiving of this version, rather than independently establishing the completion date stated in the source files or the date of first public disclosure.
 
+**独立时间戳加固：2026 年 10 月 13 日 19:00:06（北京时间）/ 11:00:06 UTC。** 已取得 FreeTSA RFC 3161 签名凭证并通过验证，关联原始压缩包、作者信息及完整 Git 历史快照。仅向服务提交摘要；本次独立时间戳与上述首次 GitHub 归档时间分别记录。[凭证与复核方法](evidence/timestamp-20261013/README.md)。
+
+**Independent timestamp: 13 October 2026, 11:00:06 UTC / 19:00:06 China Standard Time.** A FreeTSA RFC 3161 signed receipt has been obtained and verified, binding the original archives, author information, and a complete Git history snapshot. Only a digest request was submitted to the service. This new attestation is distinct from the initial GitHub archive timestamp above. [Evidence and verification instructions](evidence/timestamp-20261013/README.md).
+
 本仓库由 GitHub 账户 **ChengZhuoCZ** 归档，包含两个独立的 QMD 源项目。  
 Archived by GitHub account **ChengZhuoCZ**, this repository contains two independent QMD source projects.
 
