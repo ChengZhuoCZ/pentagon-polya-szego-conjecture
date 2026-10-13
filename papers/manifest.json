@@ -1,0 +1,22 @@
+{
+  "added_date": "2026-10-13",
+  "date_note": "Filename dates record addition to this repository, not original completion or independent timestamping. PDF bytes are unchanged. These PDFs were added after the initial archive and RFC 3161 attestation; that attestation does not cover these new files.",
+  "papers": [
+    {
+      "file": "Convexity-and-Attainment-in-the-Five-Sided-Dirichlet-Problem-20261013.pdf",
+      "title": "Convexity and attainment in the five-sided Dirichlet problem",
+      "source_filename": "Pentagon-Spectral-Convexity-Synthesis.pdf",
+      "source_project": "nonconvex-pentagon-synthesis-20261012",
+      "sha256": "f1978877bdb16f1c58dcbc0175af0b67e5acb3c69f110b5c8988c32e076981bf",
+      "bytes": 506288
+    },
+    {
+      "file": "Pressure-Comparison-for-the-First-Dirichlet-Eigenvalue-of-Convex-Pentagons-20261013.pdf",
+      "title": "A pressure comparison for the first Dirichlet eigenvalue of convex pentagons",
+      "source_filename": "paper.pdf",
+      "source_project": "convex-pentagon-english-20261012",
+      "sha256": "d422e4a1f3bbfe90a9428f20e8ba13f7ae75c84a7d7fe60f436794e9235fbf11",
+      "bytes": 487121
+    }
+  ]
+}

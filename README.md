@@ -80,6 +80,13 @@ $$
 
 非凸部分负责说明非凸形状不能成为全局最优形状，凸部分负责建立正五边形的谱比较。要把两个结论衔接为整个简单五边形类中的极小性结论，还须核对极小者的存在性、退化到较少有效边时的处理，以及两个项目竞争类的兼容性；仅有“非凸形状存在更优竞争者”并不自动完成这些环节。
 
+### 论文 PDF
+
+以下为另行提供的两份论文稿，保留原始 PDF 内容，仅规范文件名。文件名日期 `20261013` 表示加入本仓库的日期，不代表首次完成时间。这两份 PDF 在首次归档和独立时间戳之后新增，不属于原时间戳覆盖的文件；其版本来源与 SHA-256 见 [`papers/manifest.json`](papers/manifest.json)。
+
+- [Convexity and attainment in the five-sided Dirichlet problem](papers/Convexity-and-Attainment-in-the-Five-Sided-Dirichlet-Problem-20261013.pdf)：非凸排除、凸性与极小值达到的综合稿。
+- [A pressure comparison for the first Dirichlet eigenvalue of convex pentagons](papers/Pressure-Comparison-for-the-First-Dirichlet-Eigenvalue-of-Convex-Pentagons-20261013.pdf)：凸五边形第一 Dirichlet 特征值的压力比较稿。
+
 ### 文件导航
 
 | 目录 | 内容 | QMD 文件数 |
@@ -157,6 +164,13 @@ This establishes the minimality of the regular pentagon within the convex pentag
 #### The full problem
 
 The nonconvex project seeks to exclude nonconvex shapes as global minimizers, while the convex project seeks to establish the spectral comparison with the regular pentagon. Combining these statements into a global minimality result for all simple pentagons also requires checking the existence of minimizers, possible degeneration to fewer effective sides, and compatibility of the admissible classes. The existence of a better competitor for each nonconvex polygon does not by itself settle these issues.
+
+### Manuscript PDFs
+
+These two separately supplied manuscripts retain their original PDF bytes under descriptive filenames. The suffix `20261013` records the date they were added to this repository, not their original completion date. They were added after the initial archive and independent timestamp, which do not cover these new PDFs. Source versions and SHA-256 hashes are recorded in [`papers/manifest.json`](papers/manifest.json).
+
+- [Convexity and attainment in the five-sided Dirichlet problem](papers/Convexity-and-Attainment-in-the-Five-Sided-Dirichlet-Problem-20261013.pdf): a synthesis manuscript on nonconvex exclusion, convexity, and attainment.
+- [A pressure comparison for the first Dirichlet eigenvalue of convex pentagons](papers/Pressure-Comparison-for-the-First-Dirichlet-Eigenvalue-of-Convex-Pentagons-20261013.pdf): a pressure-comparison manuscript for the first Dirichlet eigenvalue of convex pentagons.
 
 ### Repository guide
 
