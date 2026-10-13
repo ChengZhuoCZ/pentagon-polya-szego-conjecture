@@ -1,0 +1,489 @@
+---
+title: "共同相位：秩一信用把双 Gram 条件化为一次角点预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - lem-pscc-scalar-factors-1011f
+        - prp-pscc-phase-identity-1011f
+    - from: ps-pressure-amplitude-phase-order-1011.qmd
+      use:
+        - prp-ppao-entire-amplitude-order-1011
+    - from: ps-pressure-entropy-credit-one-fifth-strip-1011.qmd
+      use:
+        - lem-ppecf-fivepoint-moment-envelopes-1011
+        - prp-ppecf-two-amplitude-entropy-credit-1011
+        - cor-ppecf-one-tenth-strong-credit-1011
+    - from: ps-pressure-adaptive-entropy-square-1011.qmd
+      use:
+        - prp-ppae-central-same-moment-credit-1011
+    - from: ps-pressure-exact-two-phase-quadratic-1011.qmd
+      use:
+        - prp-ppeqp-central-instance-1011
+    - from: ps-pressure-gram-outer-amplitude-payment-1011.qmd
+      use:
+        - lem-ppgo-second-phase-sign-and-slope-1011
+        - prp-ppgo-outer-regions-paid-by-corner-1011
+    - from: ps-pressure-opposite-corner-entire-amplitude-1011.qmd
+      use:
+        - def-ppocf-univariate-coefficients-1011
+        - lem-ppocf-high-ratio-coefficient-budgets-1011
+        - prp-ppocf-entire-opposite-corner-positive-1011
+    - from: ps-pressure-opposite-corner-refined-mean-1011.qmd
+      use:
+        - def-ppocr-retained-quadratic-corner-1011
+        - prp-ppocr-corner-lower-reduction-1011
+    - from: ps-pressure-two-gram-phase-budget-1011.qmd
+      use:
+        - prp-pptg-exact-gram-criterion-1011
+---
+
+::: {#lem-pprg-rank-one-corner-payment-1011 .lemma name="共同秩一项支付两矩阵的交叉相位" date="2026-10-11" export="lem-pprg-rank-one-corner-payment-1011"}
+设 $A,B,C,\varepsilon$ 为实数，$q,w\ge0$，并记
+$$
+\delta_A=A-B,\qquad \mathcal P=C-\varepsilon-\delta_A.
+$$
+若
+$$
+\delta_A\ge0,\qquad \mathcal P\ge0,
+\qquad B^2\le2q(\mathcal P+2w),
+\tag{1}
+$$
+则所有实相位 $x,y$ 都满足
+$$
+\boxed{
+C+A\cos x+B\cos y
++q[1+\cos(x+y)]+w[1+\cos(x-y)]\ge\varepsilon.
+}
+\tag{2}
+$$
+当 $q>0$ 时，(1) 的后两条等价于
+$$
+\mathcal P\ge\max\left\{0,\frac{B^2}{2q}-2w\right\}.
+\tag{3}
+$$
+特别地，较强但更简单的 $\mathcal P\ge B^2/(2q)$ 也足够。
+:::
+
+::: {.proof of="lem-pprg-rank-one-corner-payment-1011" status="verified"}
+当 $q>0$ 时，还有直接给出结论的平方身份。
+令 $h=(x+y)/2$、$k=(x-y)/2$，并用 $\mathcal R$ 表示 (2) 左侧，则
+$$
+\begin{aligned}
+\mathcal R-\varepsilon={}&
+\delta_A(1+\cos x)+\mathcal P\sin^2 k\\
+&+2q\left(\cos h+\frac{B}{2q}\cos k\right)^2
++\left(\mathcal P+2w-\frac{B^2}{2q}\right)\cos^2 k.
+\end{aligned}
+\tag{3a}
+$$
+确实 $A=\delta_A+B$、$C-\varepsilon=\mathcal P+\delta_A$，
+而 $\cos x+\cos y=2\cos h\cos k$，
+$1+\cos(x+y)=2\cos^2h$、$1+\cos(x-y)=2\cos^2k$。
+展开右侧后两个 $B^2/(2q)$ 项抵消，即得此身份。
+(1) 使右侧每项非负，所以它已经是全相位的直接解析见证。
+
+为把这一见证同时接入现有双 Gram 接口，
+采用 @prp-pptg-exact-gram-criterion-1011，令
+$c=C-\varepsilon=\mathcal P+\delta_A$，并选择分配参数
+$z=-\mathcal P$。
+由于 $A+B=\delta_A+2B$，两个准确矩阵分别分解为
+$$
+\begin{aligned}
+M_-(-\mathcal P)
+&=\delta_A
+\begin{pmatrix}1&-1\\-1&1\end{pmatrix}
++\begin{pmatrix}0&0\\0&2\mathcal P\end{pmatrix},\\
+M_+(-\mathcal P)
+&=\delta_A
+\begin{pmatrix}1&1\\1&1\end{pmatrix}
++\begin{pmatrix}4q&2B\\2B&2\mathcal P+4w\end{pmatrix}.
+\end{aligned}
+\tag{4}
+$$
+两个含 $\delta_A$ 的矩阵都是非负系数乘以秩一半正定矩阵。
+第一行的剩余矩阵由 $\mathcal P\ge0$ 半正定。
+第二行的剩余矩阵对角元非负，且行列式为
+$$
+4q(2\mathcal P+4w)-4B^2
+=4\{2q(\mathcal P+2w)-B^2\}\ge0.
+$$
+因此它也半正定。这包括 $q=0$ 的情形：此时 (1) 强制 $B=0$，
+剩余矩阵直接为非负对角矩阵。
+两个 Gram 矩阵均半正定，故同一引用中的准确相位身份给 (2)。
+
+若 $q>0$，除以 $2q$ 即得 (3)。
+因为 $w\ge0$，$\mathcal P\ge B^2/(2q)$ 蕴含 (3)。
+不能只从 $\delta_A,q,w\ge0$ 舍去行列式中的全部交叉项；
+这里正性来自 (4) 的完整矩阵分解。
+:::
+
+::: {#prp-pprg-central-linear-corner-interface-1011 .proposition name="中央真实源的一次相反角点预算" date="2026-10-11" export="prp-pprg-central-linear-corner-interface-1011"}
+采用 @prp-pscc-phase-identity-1011f 的真实 $A,B,C$，
+@prp-ppeqp-central-instance-1011 的
+$$
+q=at^2\sigma Q_F,\qquad w=at^2\sigma^3W_F,
+$$
+以及 @lem-ppgo-second-phase-sign-and-slope-1011 的
+$B=at\sigma^2J_B$。
+令 $\varepsilon=1/2500$，允许给常数相位项增加任意非负数 $\xi$，
+并设 $p_*$ 满足
+$$
+C+\xi-A+B-\varepsilon\ge p_*\ge0.
+\tag{5}
+$$
+在 $t\sigma>0$ 时，若
+$$
+\boxed{
+2Q_Fp_*+a\sigma^3\{4t^2Q_FW_F-J_B^2\}\ge0,
+}
+\tag{6}
+$$
+则所有共同相位都满足
+$$
+C+\xi+A\cos x+B\cos y
++q[1+\cos(x+y)]+w[1+\cos(x-y)]\ge\varepsilon.
+\tag{7}
+$$
+在 $t\sigma=0$ 时，(5) 本身已经推出 (7)，无需使用任何振幅除法。
+本命题只断言准确的相位比较；将 $\xi$ 识别为真实谱预算的额外信用时，
+仍必须提供同一真实源的对应不等式。
+:::
+
+::: {.proof of="prp-pprg-central-linear-corner-interface-1011" status="verified"}
+@prp-ppeqp-central-instance-1011 固定这里的真实 $q,w$ 与相位表达；
+@def-pscc-scalar-coordinates-1011f 和
+@def-pscc-scalar-target-1011f 给 $a>0$、$Q_F,W_F>0$。
+@prp-ppao-entire-amplitude-order-1011 给
+$\delta_A=A-B\ge0$。
+令 $\mathcal P_\xi=C+\xi-\varepsilon-\delta_A$。
+
+若 $t\sigma>0$，由
+@lem-ppgo-second-phase-sign-and-slope-1011 的准确 $B$ 身份，有
+$$
+\begin{aligned}
+2q(p_*+2w)-B^2
+&=at^2\sigma
+\left[2Q_Fp_*+a\sigma^3
+\{4t^2Q_FW_F-J_B^2\}\right]\ge0.
+\end{aligned}
+$$
+又 $\mathcal P_\xi\ge p_*\ge0$，故
+$2q(\mathcal P_\xi+2w)-B^2\ge0$。
+把 $C+\xi$ 作为 @lem-pprg-rank-one-corner-payment-1011 的常数项，
+其全部假设成立，得到 (7)。
+
+若 $t\sigma=0$，
+@prp-pscc-phase-identity-1011f 的准确式给 $A=B=0$，
+同时 $q=w=0$。因此左侧恒为 $C+\xi$；
+(5) 直接给 $C+\xi\ge\varepsilon$。
+本证明未把非零振幅中约去的正因子带到零振幅边界。
+:::
+
+::: {#lem-pprg-decreasing-global-penalty-1011 .lemma name="真实第二相位罚项的单调全域峰值包络" date="2026-10-11" export="lem-pprg-decreasing-global-penalty-1011"}
+令 $T=27/50$、$X=t/T$，并采用上述真实中央参数，特别是
+$r=(\sqrt5-1)/2$、$h=.705-.6t$。定义
+$$
+\begin{gathered}
+J_0=j_0-j_1X-j_2X^2,\qquad k=k_0-k_1X-k_2X^2,\\
+j_0=-.3092+6.1592r,\quad
+j_1=.44424+1.50576r,\quad j_2=.96+.24r,\\
+k_0=3.15+2.1r,\quad k_1=.45+.3r,\quad k_2=1.77+.78r,\\
+\kappa(t)=.14095-.0536t^2,\qquad
+Q_0(t)=21h\kappa(t)+\frac{448}{375}r,\qquad
+a_+(t)=.59(1+rt^2).
+\end{gathered}
+\tag{8}
+$$
+在整个 $0\le t\le T,\ 0\le\sigma\le1$ 上，
+$$
+J_B\le J_0-k\sigma,\qquad Q_F>Q_0>\frac{87}{50},\qquad
+0<a\le a_+,\qquad J_0,k>0.
+\tag{9}
+$$
+函数
+$$
+\mathscr R(t)=\frac{54}{3125}
+\frac{a_+(t)J_0(t)^5}{k(t)^3Q_0(t)}
+\tag{10}
+$$
+严格递减，并满足
+$$
+\mathscr R(0)<\frac3{125},\qquad
+\mathscr R(1/10)<\frac{19}{1000}.
+\tag{11}
+$$
+若 $B>0$，则 $t\sigma>0$、$q>0$，而且
+$$
+\boxed{\frac{B^2}{2q}<\mathscr R(t).}
+\tag{12}
+$$
+这里所有有限小数均表示准确有理数。
+:::
+
+::: {.proof of="lem-pprg-decreasing-global-penalty-1011" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f 和
+@lem-ppgo-second-phase-sign-and-slope-1011，
+$.618<r<.61804$、$1\le m<6/5$，且
+$$
+J_B=-er^2(3m-.6m^2)+(2+2r)\mu_2+(9/2+3r)\mu_3,
+\qquad e=\frac{14}{15}(1+h).
+$$
+因为 $3m-.6m^2\ge12/5$，将此下界代入负项，
+再代入原乘子
+$$
+\mu_2=.6X^2(1-\sigma),\quad
+\mu_3=(1-\sigma)(.78-.26X-.48X^2)
++\sigma(.08-.16X+.18X^2),
+$$
+并用 $r^2=1-r$，直接整理即得 $J_B\le J_0-k\sigma$。
+$J_0$ 和 $k$ 都严格递减于 $X$，其末端分别为
+$$
+J_0(1)=-1.71344+4.41344r>1,
+\qquad k(1)=.93+1.02r>1.56.
+$$
+故二者全域为正。
+
+为证明 $Q_F$ 下界，记
+$\mathcal K=q_{\min}+P_{\min}M_{\min}$，
+其中三个多项式由 @def-pscc-scalar-series-1011f 给出。
+直接乘法给出短身份
+$$
+\mathcal K-\kappa=b_0+b_2t^2+b_4t^4+b_6t^6+b_8t^8,
+\tag{13}
+$$
+其五个准确系数为
+$$
+\begin{aligned}
+b_0&=\frac{17318287}{31250000000000},&
+b_2&=\frac{187846231187}{2500000000000000},\\
+b_4&=\frac{21034465618951}{2500000000000000},&
+b_6&=-\frac{3119609306381}{5000000000000000},&
+b_8&=\frac{18140116671}{1000000000000000}.
+\end{aligned}
+$$
+除 $b_6$ 外都为正；又 $b_4>.0084$、$b_6>-.000624$、$t^2<.3$，
+所以 $b_4+b_6t^2>0$。故 $\mathcal K>\kappa$。
+@def-pscc-scalar-target-1011f 的准确式为
+$$
+Q_F=7h\mathcal K(m^4+2m^3)+\frac{14}{15}r(2-.72m^2).
+$$
+固定 $t,r$ 时，利用 $h\ge.381$、$\kappa\ge.12532024>.1253$，
+$$
+\partial_mQ_F
+\ge7(.381)(.1253)\cdot10-1.344(5/8)(6/5)>0.
+$$
+因此取 $m=1$ 并保留 $\mathcal K>\kappa$，得到 $Q_F>Q_0$。
+此外
+$$
+Q_0>21(.381)(.1253)+\frac{448}{375}(.618)
+=1.7408293>\frac{87}{50}.
+$$
+真实 $m=1+rt^2(1-\sigma^2)\le1+rt^2$ 还给 $a\le a_+$。
+
+下面证明 (10) 的单调性，全程对 $X$ 求导。
+置
+$$
+\mathcal D=5(j_1+2j_2X)k-3(k_1+2k_2X)J_0.
+$$
+由 (8) 直接相乘，写成
+$\mathcal D-(6/5)J_0k=\sum_{i=0}^4c_iX^i$。
+为使系数比较可逐项核对，列出全部五项：
+$$
+\begin{aligned}
+c_0&=\frac{104031}{31250}+\frac{193437}{62500}r>5,\\
+c_1&=\frac{1246833}{78125}-\frac{715842}{78125}r>10,\\
+c_2&=\frac{8740881}{1250000}+\frac{694341}{78125}r>12,\\
+c_3&=-\frac{32822991}{3125000}-\frac{2554317}{390625}r>-15,\\
+c_4&=-\frac{7074}{3125}-\frac{3699}{3125}r>-\frac{31}{10}.
+\end{aligned}
+\tag{14}
+$$
+每个末端比较只需按 $r$ 的系数符号代入 $.618$ 或 $.61804$。
+由于 $0\le X\le1$，
+$$
+\mathcal D-\frac65J_0k
+>5+10X+12X^2-15X^3-3.1X^4
+\ge5+10X-6.1X^2>0;
+$$
+最后一式由凹二次式在 $X=0,1$ 的值 $5,8.9$ 均为正得到。
+
+现 $\kappa=.14095-.01562976X^2$、$h=.705-.324X$，故
+$$
+0<-Q_0'(X)
+\le21\{.324(.14095)+.03125952(.705)\}<1.422.
+$$
+同时 $a_+'(X)/a_+(X)\le2rT^2<.361$。
+于是
+$$
+\frac{d}{dX}\log\mathscr R
+=\frac{a_+'}{a_+}-\frac{\mathcal D}{J_0k}-\frac{Q_0'}{Q_0}
+<.361-1.2+\frac{1.422}{1.74}<0.
+\tag{15}
+$$
+
+端点仅需粗有理界。在 $t=0$，有
+$a_+=.59,J_0<3.5,k>4.4,Q_0>2.8$，所以
+$$
+\mathscr R(0)<\frac{54}{3125}
+\frac{.59(3.5)^5}{(4.4)^3(2.8)}
+=\frac{3824793}{170368000}<\frac3{125}.
+$$
+在 $t=1/10$、$X=5/27$，(8) 和 $r$ 的两个有理界直接给
+$a_+<.594,J_0<3.21,k>4.25,Q_0>2.64$，从而
+$$
+\mathscr R(1/10)<\frac{54}{3125}
+\frac{.594(3.21)^5}{(4.25)^3(2.64)}
+=\frac{828192771461043}{47978515625000000}<\frac{19}{1000}.
+$$
+末个严格差为 $83399025413957/47978515625000000$。
+
+由 @prp-ppeqp-central-instance-1011 的准确相位定义，$q=at^2\sigma Q_F$。
+最后若 $B>0$，由 $B=at\sigma^2J_B$ 可知 $t\sigma>0$、$J_B>0$。
+又 $a>0$、已证 $Q_F>87/50>0$，所以 $q>0$。
+故 $x=k\sigma/J_0\in(0,1)$。
+这个单变量量的峰值由以下平方身份准确支付：
+$$
+\frac{108}{3125}-x^3(1-x)^2
+=\left(x-\frac35\right)^2
+\left\{x^2(1-x)+\frac{x}{5}(1-x)+\frac{3x}{25}+\frac{12}{125}\right\}
+\ge0.
+\tag{16}
+$$
+结合 (9)，
+$$
+\frac{B^2}{2q}
+=\frac{a\sigma^3J_B^2}{2Q_F}
+<\frac{a_+J_0^5}{2Q_0k^3}x^3(1-x)^2
+\le\mathscr R(t).
+$$
+这证明 (12)。各单侧界均对同一个真实源有效；
+证明不要求这些较粗的界能在同一参数处同时取等。
+:::
+
+::: {#prp-pprg-high-ratio-full-phase-payment-1011 .proposition name="整个高振幅比区域的共同相位比较" date="2026-10-11" export="prp-pprg-high-ratio-full-phase-payment-1011"}
+令 $0\le t\le27/50$、$1/3\le\sigma\le1$，并采用
+@prp-ppeqp-central-instance-1011 的真实共同相位残差 $\widetilde R$。
+定义
+$$
+\chi(t)=
+\begin{cases}
+1/200,&0<t\le1/10,\\
+0,&t=0\text{ 或 }t>1/10.
+\end{cases}
+\tag{17}
+$$
+则对所有共同相位 $x,y$，
+$$
+\boxed{\widetilde R(t,\sigma,x,y)+\chi(t)\ge\frac1{2500}.}
+\tag{18}
+$$
+当 $B>0$ 时 (18) 严格成立。
+在 $0<t\le1/10$，进一步取同一五点源
+$c_0=te^{i\theta}$、$d_0=t\sigma e^{i\phi}$、$n_j=e^{(2j+1)\pi i/5}$，
+设 $j_j=m+2\Re(c_0n_j)+2r\Re(d_0n_j^2)>41m/100$、
+$\omega_j=1+(6/5)\Re(c_0n_j)$。
+使用 @prp-ppae-central-same-moment-credit-1011 的同一真实矩与
+$\Gamma=21/[50(m+2)]$、$\mathcal C_{\rm ent}$，准确归一化信用为
+$$
+\Xi=\frac{5aF_C\Gamma}{t^2}\mathcal C_{\rm ent}.
+$$
+此处真实改进相位预算指该同一源的
+$\mathfrak B_{\rm ent}=\widetilde R(t,\sigma,2\theta-\phi,\theta+2\phi)+\Xi$。
+则 $\Xi>\chi(t)$，且 $\mathfrak B_{\rm ent}>1/2500$。
+:::
+
+::: {.proof of="prp-pprg-high-ratio-full-phase-payment-1011"}
+固定 @prp-ppeqp-central-instance-1011 的系数；
+其中 $C,A,B$ 取 @prp-pscc-phase-identity-1011f 的准确式，
+$a,F_C,Q_F,W_F$ 采用 @def-pscc-scalar-target-1011f 的同一组定义。
+@prp-ppao-entire-amplitude-order-1011 给 $A-B\ge0$。
+令 $\varepsilon=1/2500$、$\mathcal P=C-A+B-\varepsilon$。
+@prp-ppocf-entire-opposite-corner-positive-1011 给全域 $\mathcal P>0$。
+
+若 $t\sigma=0$，则 $A=B=q=w=0$，原相位残差恒为
+$C=\varepsilon+\mathcal P>\varepsilon$，结论成立。
+若 $B\le0$，@prp-ppgo-outer-regions-paid-by-corner-1011 由
+$\mathcal P\ge0$ 给
+$(C-\varepsilon+4q)(C-\varepsilon+4w)-(A+B)^2\ge0$。
+在 @prp-pptg-exact-gram-criterion-1011 中取 $z=0$：
+记 $c=C-\varepsilon=\mathcal P+(A-B)>|A-B|$，
+第一矩阵对角元为 $c$、行列式为 $c^2-(A-B)^2>0$；
+第二矩阵对角元为 $c+4q,c+4w>0$、行列式为刚得的非负量。
+两矩阵均半正定，故准确相位表示给原残差至少为 $\varepsilon$。
+增加 $\chi\ge0$ 不改变结论。
+
+剩下 $B>0$。由 @lem-ppgo-second-phase-sign-and-slope-1011，
+必有 $0<t$ 和 $1/3\le\sigma<4/5$。
+@def-pscc-scalar-coordinates-1011f 给 $r>0$、$t\ge0$、$0\le\sigma\le1$。
+因此 @def-ppocr-retained-quadratic-corner-1011 中的真实面积增量
+$z_{\rm c}=rt^2(1-\sigma^2)$ 非负。
+@prp-ppocr-corner-lower-reduction-1011 的准确下界是
+$\mathcal P>\mathcal Q+(549/65000)z_{\rm c}^3\ge\mathcal Q$。
+这里 $z_{\rm c}$ 是该定义中的 $z$，Gram 分配参数仍独立取前文的 $0$。
+并采用
+@def-ppocf-univariate-coefficients-1011 的高比率坐标
+$y=(3\sigma-1)/2\in[0,7/10)$。
+@lem-ppocf-high-ratio-coefficient-budgets-1011 给
+$$
+\beta_j>1/50\quad(0\le j\le6),\qquad
+\beta_7>.00961664.
+$$
+对该七次正基展开求和，得到
+$$
+\mathcal P>\mathcal Q
+>.02(1-y^7)+.00961664y^7
+=.02-.01038336y^7>.019.
+\tag{19}
+$$
+最后一步只用 $y^7<(7/10)^7<.083$ 和 $.01038336<.0104$。
+
+若 $t>1/10$，@lem-pprg-decreasing-global-penalty-1011 给
+$$
+\frac{B^2}{2q}<\mathscr R(t)<.019<\mathcal P.
+$$
+若 $0<t\le1/10$，同一引理给
+$$
+\frac{B^2}{2q}<\mathscr R(0)<.024<\mathcal P+\frac1{200}.
+$$
+因此两种情况均有 $\mathcal P+\chi>B^2/(2q)$。
+在 @lem-pprg-rank-one-corner-payment-1011 中使用常数项 $C+\chi$，
+便得到 (18)。为逐点确认严格号，令
+$h=(x+y)/2$、$k=(x-y)/2$、$\mathcal P_\chi=\mathcal P+\chi$，直接展开有
+$$
+\begin{aligned}
+\widetilde R+\chi-\varepsilon={}&
+(A-B)(1+\cos x)+\mathcal P_\chi\sin^2k\\
+&+2q\left(\cos h+\frac{B}{2q}\cos k\right)^2
++\left(\mathcal P_\chi+2w-\frac{B^2}{2q}\right)\cos^2k.
+\end{aligned}
+$$
+这由 $\cos x+\cos y=2\cos h\cos k$、
+$1+\cos(x+y)=2\cos^2h$、$1+\cos(x-y)=2\cos^2k$ 及 $A=(A-B)+B$ 得到。
+本分支 $q>0$、$w\ge0$、$A-B\ge0$，且
+$\mathcal P_\chi>B^2/(2q)>0$。
+两个分别乘以 $\sin^2k$、$\cos^2k$ 的系数都严格为正，
+其平方和为 $1$，其余两项非负，所以 (18) 严格成立。
+
+最后验证命题中明确列出的同源前提。由
+@def-pscc-scalar-coordinates-1011f，$s=t\sigma\in[0,t]$、$m=1+r(t^2-s^2)$；
+$|c_0|=t$、$|d_0|=s$、节点和 $j_j$ 正性均为所列假设。
+又 $\omega_j\ge1-6t/5>0$，其同一真实矩满足
+$\Delta_j=j_j-m\omega_j=\delta x_j+2rz_j$、
+$S_j=(j_j+m\omega_j)/2-m=px_j+rz_j$，
+其中 $x_j=\Re(c_0n_j)$、$z_j=\Re(d_0n_j^2)$。
+@prp-ppae-central-same-moment-credit-1011 因而适用；
+其二次矩 $V_2=t^2(\delta^2/2+2r^2\sigma^2)>0$，其中
+@lem-pscc-scalar-factors-1011f 明确给 $\delta>0$。
+同时 $t\le1/10<1/3$，所以
+@lem-ppecf-fivepoint-moment-envelopes-1011 的条带前提与真实矩定义也完全吻合。
+这些是 @prp-ppecf-two-amplitude-entropy-credit-1011 的全部同源前提，
+且其 $\Xi$ 恰为命题中 $5aF_C\Gamma\mathcal C_{\rm ent}/t^2$。
+于是 @cor-ppecf-one-tenth-strong-credit-1011 给 $\Xi>1/200=\chi$。
+在该同一源的共同相位下，已证 (18) 给
+$\mathfrak B_{\rm ent}\ge\varepsilon+\Xi-\chi>\varepsilon$。
+:::

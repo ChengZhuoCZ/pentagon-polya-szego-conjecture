@@ -1,0 +1,275 @@
+---
+title: "真实正五边形压力：角压缩、Sobolev 积分权与同源耦合"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../analytic-replacements-1012/interval-variational.qmd
+      use:
+        - lem-arc-interval-variational-1012
+    - from: pressure-foundations.qmd
+      use:
+        - prp-psgs-regular-dual-pressure-1011h
+        - thm-psgs-pressure-polarity-1011h
+    - from: tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+---
+
+::: {#def-psgs-regular-pressure-kernel-1011h .definition name="正五边形的校准压力核条件" date="2026-10-11" export="def-psgs-regular-pressure-kernel-1011h" status="verified"}
+令 $R=\operatorname{conv}\{e^{2\pi ij/5}:0\le j<5\}$、$\alpha=\pi/5$。
+设 $p:\bar R\to[0,\infty)$ 连续、内部严格正，且 $1/p\in L^1(R)$。
+令
+$$
+k(y)=\max_{z\in\bar R}[y\cdot z+p(z)].
+$$
+本条件要求 $k\in C^\infty(\mathbb R^2)$，$D^2k\succ0$，$k$ 在 $R$ 的二面体群 $D_5$ 下不变，
+$T=\nabla k$ 是 $\mathbb R^2\to\operatorname{int}R$ 的微分同胚，且
+$$
+\sigma(y)=k(y)-y\cdot\nabla k(y)=p(T(y))>0,
+\qquad \det D^2k(y)=\frac{4\sigma(y)^2}{(1+|y|^2)^2}.
+$$
+记 $d\mu=(1+|y|^2)^{-2}dy$，$I=\int_R(2p)^{-1}$。
+这些是压力构造需提供的具体性质，定义本身不声称它们存在。
+:::
+
+::: {#prp-psgs-pressure-kernel-exists-1011h .proposition name="校准参考压力提供实际核条件" date="2026-10-11" export="prp-psgs-pressure-kernel-exists-1011h"}
+@prp-psgs-regular-dual-pressure-1011h 的 $p=s_R$ 和 $k=k_{s_R}$ 满足 @def-psgs-regular-pressure-kernel-1011h 的全部条件。
+:::
+
+::: {.proof of="prp-psgs-pressure-kernel-exists-1011h"}
+@prp-psgs-regular-dual-pressure-1011h 的 $p=s_R$ 是
+@thm-psgs-pressure-polarity-1011h 在 $R$ 上的同一个极小压力。
+该压力定理提供 $p$ 的闭域连续性、内部正性及 $1/p\in W^{1,1}(R)\subset L^1(R)$，
+并明确给出 $(-\nabla p)^{-1}:\mathbb R^2\to\operatorname{int}R$ 的光滑微分同胚性质。
+参考对偶压力命题提供 $k$ 的光滑严格凸性、$D_5$ 对称性、全梯度像和对偶 MA 方程，
+以及 $\nabla k=(-\nabla p)^{-1}$ 与 $\sigma=p\circ\nabla k$。
+对固定 $y$，置 $z_*=\nabla k(y)$，则 $\nabla p(z_*)=-y$。
+压力定理的凹性给每个 $z\in\operatorname{int}R$
+$p(z)\le p(z_*)-y\cdot(z-z_*)$；闭域连续性把该式延拓到 $\bar R$。
+故 $y\cdot z+p(z)\le y\cdot z_*+p(z_*)$，在 $z=z_*$ 取等。
+由 $k(y)-y\cdot z_*=\sigma(y)=p(z_*)$，得到定义所需的准确最大值公式。
+此外，凸性给 $D^2k\succeq0$，而对偶方程与 $\sigma>0$ 给
+$\det D^2k=4\sigma^2/(1+|y|^2)^2>0$。
+对称半正定二维矩阵的两个特征值均非负、乘积严格正，故 $D^2k\succ0$。
+因而 @def-psgs-regular-pressure-kernel-1011h 中每一条件均由同一个真实参考压力提供，无另设抽象核。
+:::
+
+::: {#lem-psgs-pressure-angular-order-1011h .lemma name="真实核在整个无界反射楔上的严格角压缩" date="2026-10-11" export="lem-psgs-pressure-angular-order-1011h"}
+采用 @def-psgs-regular-pressure-kernel-1011h。
+以一条边的外法向为角原点，写 $y=\rho n_i e^{i\beta}$。
+对 $\rho>0$、$0<\beta<\alpha$，
+$$
+k_\rho>0,\qquad
+0<\frac{k_\beta}{\rho}\le\tan(\alpha-\beta)k_\rho.
+$$
+准确地，令 $z_j=e^{2\pi i j/5}$，定义开扇区
+$\Gamma_j=\{\rho e^{i\theta}:\rho>0,\ 2\pi j/5<\theta<2\pi(j+1)/5\}$，
+角度按模 $2\pi$ 理解，并令 $R_j=\Gamma_j\cap\operatorname{int}R$。
+这里“参考圆心扇区”指上述开扇区，径向边界另按连续延拓处理。
+则 $T(\Gamma_j)=R_j$，且 $T$ 保持每条正向边界射线；
+其在每个半扇区中的角度向相邻顶点轴压缩。
+:::
+
+::: {.proof of="lem-psgs-pressure-angular-order-1011h" status="verified"}
+先以顶点 $(1,0)$ 的轴为角原点，$\vartheta$ 按逆时针增加，令 $0<\vartheta<\alpha$。
+记 $v=k_\vartheta$、$A=(D^2k)^{-1}$。
+对 @def-psgs-regular-pressure-kernel-1011h 的行列式方程取角导数，得
+$$
+\mathcal Lv=0,\qquad
+\mathcal Lf=\operatorname{tr}(A D^2f)+\frac2\sigma y\cdot\nabla f-\frac2\sigma f.
+$$
+因为 $\operatorname{tr}(AD^2k)=2$ 且 $k-y\cdot\nabla k=\sigma$，还满足 $\mathcal Lk=0$。
+两条反射墙上 $v=0$。
+严格凸性及反射不变性给
+$$
+(\nabla k(y)-S\nabla k(y))\cdot(y-Sy)>0
+$$
+只要 $y\ne Sy$。
+分别对两条墙的反射 $S$ 使用此式，得 $T(y)$ 位于同一开反射楔。
+$T(0)=0$，严格凸性又给 $(T(y)-T(0))\cdot y>0$，故 $k_\rho>0$。
+
+必须同时控制无穷远边界。令 $M=\max_{\bar R}p$。
+Legendre 定义给 $h_R(y)\le k(y)\le h_R(y)+M$。
+取任意序列 $\rho_j\to\infty$、$\vartheta_j\to\vartheta_*\in[0,\alpha]$；
+$z_j=T(\rho_j n(\vartheta_j))$ 有子序列趋于 $z_*\in\bar R$。
+从 $k=\rho_j n(\vartheta_j)\cdot z_j+p(z_j)\ge\rho_jh_R(n(\vartheta_j))$，得到
+$n(\vartheta_*)\cdot z_*=h_R(n(\vartheta_*))$。
+若 $\vartheta_*<\alpha$，唯一支持点为 $(1,0)$，其切向投影为 $-\sin\vartheta_*\le0$。
+若 $\vartheta_* =\alpha$，$z_*$ 在支持边及闭反射楔的交中，其切向投影也非正。
+又 $k/\rho\to h_R(n)$ 一致，且 $h_R(n)\ge\cos\alpha>0$，所以
+$$
+\limsup_{\rho\to\infty}\ \sup_{0\le\vartheta\le\alpha}\frac{v(\rho,\vartheta)}{k(\rho,\vartheta)}\le0.
+$$
+这里使用任意序列及紧子序列，因此是整个角窗的一致结论。
+
+对任意 $\varepsilon>0$，在足够大的截断楔上，$v-\varepsilon k$ 在外圆弧和两墙均非正，在原点为 $-\varepsilon k(0)<0$。
+$\mathcal L$ 在每个有界截断域局部一致椭圆，零阶项严格负；最大值原理给 $v\le\varepsilon k$。
+令截断半径充分大，再令 $\varepsilon\downarrow0$，得到 $v\le0$。
+对固定 $0<\vartheta<\alpha$，上面的支持点极限给 $v/\rho\to-\sin\vartheta<0$，所以 $v$ 非恒零。
+强最大值原理给 $v<0$。
+
+$T(y)$ 的角度 $\vartheta_T$ 属于 $(0,\alpha)$，且 $v<0$ 给 $\vartheta_T<\vartheta$。
+因此
+$$
+0<\frac{-k_\vartheta}{\rho k_\rho}=\tan(\vartheta-\vartheta_T)\le\tan\vartheta.
+$$
+这里先作关于角度 $\alpha$ 的边法向轴的反射，将方向 $\vartheta$ 送到 $2\alpha-\vartheta$。
+在反射后的点，逆时针边法向坐标正是 $\beta=(2\alpha-\vartheta)-\alpha=\alpha-\vartheta$。
+$D_5$ 不变性保证径向导数不变，角导数变号，故该点的
+$k_\beta=-k_\vartheta>0$，上式成为
+$0<k_\beta/(\rho k_\rho)\le\tan(\alpha-\beta)$。
+五次旋转给所有边法向上的同一结论；再次反射给另一半扇区的相应有向角结论。
+因此角压缩的方向及严格号均传递到每个半扇区。
+每个 $\Gamma_j$ 是以其中的边法向轴分开的两个基本反射楔及该轴的并。
+在所有这些开楔中，前述严格反射比较把 $T(y)$ 保持在同一开楔。
+在任一反射轴上，$D_5$ 等变性使 $T(y)$ 位于同一直线，
+而 $T(y)\cdot y>0$ 使它位于同一正向射线。
+故 $T(\Gamma_j)\subset R_j$，并保持所有径向边界。
+反过来，任一 $z\in R_j$ 都有唯一原像，因为 $T:\mathbb R^2\to\operatorname{int}R$
+是微分同胚；原像不能位于其它开扇区或边界射线，也不能是 $0$，
+因为这些部分的像已分别保持在相应部分且 $T(0)=0$。
+所以原像在 $\Gamma_j$，得到 $T(\Gamma_j)=R_j$。
+同理在边界射线上得到相应开径向线段的满射，原点按 $T(0)=0$ 延拓。
+:::
+
+::: {#lem-psgs-actual-pressure-weights-1011h .lemma name="压力实际积分权的 Sobolev 控制" date="2026-10-11" export="lem-psgs-actual-pressure-weights-1011h"}
+采用 @def-psgs-regular-pressure-kernel-1011h，令
+$$
+W(\beta)=\int_0^\infty f(\rho)k_\rho(\rho,\beta)d\rho,\qquad
+V(\beta)=\int_0^\infty\frac{f(\rho)}\rho k_\beta(\rho,\beta)d\rho,
+\quad f=\frac{\rho^2}{(1+\rho^2)^2}.
+$$
+则 $W\in W^{1,\infty}(0,\alpha)$、$V\in L^\infty(0,\alpha)$，并满足 @def-psgs-tensor-weights-1011h 的全部条件。
+更准确地，几乎处处
+$$
+W'=-\int_0^\infty f'(\rho)k_\beta(\rho,\beta)d\rho,\qquad |W'|\le2V.
+$$
+:::
+
+::: {.proof of="lem-psgs-actual-pressure-weights-1011h"}
+由 @def-psgs-regular-pressure-kernel-1011h，$|\nabla k|\le1$。
+@lem-psgs-pressure-angular-order-1011h 给 $k_\rho>0$ 与 $0\le k_\beta/\rho\le\tan(\alpha-\beta)k_\rho$。
+$\int_0^\infty f=\pi/4<\infty$，所以 $W>0$、$W,V$ 有界，角压缩在径向积分后保持。
+
+取角窗内的光滑紧支测试函数，在 $\epsilon<\rho<M$ 上先作角积分分部，再将 $k_{\rho\beta}=\partial_\rho k_\beta$ 在径向积分分部。
+由 $D_5$ 旋转不变性，在原点微分 $k(Oy)=k(y)$ 得
+$O^{\mathsf T}\nabla k(0)=\nabla k(0)$，其中 $O$ 旋转 $2\pi/5$。
+该非平凡平面旋转唯一的固定向量是零，故 $\nabla k(0)=0$。
+原点光滑性于是给 $k_\beta=O(\rho^2)$；无穷远 $|\nabla k|\le1$ 给 $k_\beta=O(\rho)$。
+因 $f=O(\rho^2)$ 于零点、$f=O(\rho^{-2})$ 于无穷远，边界项 $fk_\beta$ 在两端均趋零。
+此外
+$$
+\left|\frac{\rho f'}f\right|=
+\left|2-\frac{4\rho^2}{1+\rho^2}\right|\le2,
+$$
+而 $\int(f/\rho)k_\beta=V$ 有界，故受控收敛允许取 $\epsilon\downarrow0,M\uparrow\infty$。
+得到题列分布导数公式和 $|W'|\le2V$。
+因此 $W$ 有有界弱导数，属于 $W^{1,\infty}$。
+@lem-arc-interval-variational-1012 将这个弱导数积分为 $W$ 的 Lipschitz 代表。
+对 $k_\rho$ 用 $|k_\rho|\le1$ 的受控收敛，还得原积分在闭角窗连续，
+故它就是该代表，端点也是通常的连续端点值；随后的积分分部使用绝对连续函数的公式。
+所需积分分部没有假设 $k_{\rho\beta}$ 本身具有符号或可积绝对值。
+这逐项给出了 @def-psgs-tensor-weights-1011h 所要求的实际积分权条件。
+:::
+
+::: {#lem-psgs-same-source-coupling-1011h .lemma name="同源扇形耦合的实际张量与准确熵" date="2026-10-11" export="lem-psgs-same-source-coupling-1011h"}
+采用 @def-psgs-regular-pressure-kernel-1011h。设 $P_{c,d}=\operatorname{conv}\{\zeta^j+c\zeta^{2j}+d\zeta^{-2j}:0\le j<5\}$ 按该顶点顺序严格凸，其中 $\zeta=e^{2\pi i/5}$。
+本引理的规范扇形映射 $F:R\to P_{c,d}$ 明确定义为：在每个
+$\Delta_i=\operatorname{conv}\{0,\zeta^i,\zeta^{i+1}\}$ 上仿射，且
+$F(0)=0$、$F(\zeta^i)=\zeta^i+c\zeta^{2i}+d\zeta^{-2i}$。
+这些条件固定唯一的分片线性同胚，扇区 Jacobian 记为 $j_i>0$。
+取固定 $\kappa\ge0$、$\kappa|c|<1$，令 $\omega_i,\delta_i$ 如 @def-psgs-exact-tensor-1011h。
+角映射
+$$
+g(\arg n_i+\beta)=\arg n_i+\beta+\delta_i(\beta)
+$$
+给圆周递增双 Lipschitz 同胚；其逆的保半径延拓记为 $\Psi$。
+令 $X_*=F\circ T\circ\Psi$，则 $X_*\#\mu$ 的密度 $\rho_P$ 满足
+$$
+\int_P\sqrt{\rho_P}=I\operatorname{av}_i\sqrt{j_i\omega_i}.
+$$
+真实标量相关 $\int y\cdot X_*(y)d\mu$ 与真实复自旋 $\int yX_*(y)d\mu$ 恰为 @def-psgs-exact-tensor-1011h 的 $C,K$，使用 @lem-psgs-actual-pressure-weights-1011h 的实际 $W,V$。
+:::
+
+::: {.proof of="lem-psgs-same-source-coupling-1011h"}
+参数及可容许积分权的定义采用 @def-psgs-tensor-weights-1011h，特别保留 $a_0=\alpha\cot\alpha$ 与 $r=(\sqrt5-1)/2$。
+先确认给定严格凸顶点顺序的定向。记
+$p_i=\zeta^i+c\zeta^{2i}+d\zeta^{-2i}$、$\eta=|c|^2-|d|^2$，
+并置 $S_k=\sum_{i=0}^4\det(p_i,p_{i+k})$，下标模 $5$。
+由 $\det(z,w)=\Im(\bar z w)$ 及五根正交性，交叉频率的和为零，准确得到
+$$
+S_1=5[\sin(2\pi/5)+\eta\sin(4\pi/5)],\qquad
+S_2=5[\sin(4\pi/5)-\eta\sin(2\pi/5)].
+$$
+有向多边形面积为 $S_1/2$。另一方面，逐个展开三角形的有向面积，循环求和给
+$$
+\begin{aligned}
+\sum_{i=0}^4\frac12\det(p_{i+2}-p_i,p_{i+4}-p_i)
+&=\frac{S_1+2S_2}{2}\\
+&=\frac52\{\sin(2\pi/5)+2\sin(4\pi/5)
++\eta[\sin(4\pi/5)-2\sin(2\pi/5)]\}.
+\end{aligned}
+$$
+若该严格凸顺序为顺时针，则 $S_1/2<0$，且每个按循环顺序选取的
+$(p_i,p_{i+2},p_{i+4})$ 三角形都有严格负的有向面积。
+因 $\sin(2\pi/5),\sin(4\pi/5)>0$，第一式迫使 $\eta<0$。
+由 $1+\zeta+\cdots+\zeta^4=0$，正数 $2\cos(2\pi/5)$ 满足 $x^2+x-1=0$，
+所以 $\sin(4\pi/5)=r\sin(2\pi/5)$，其中 $0<r<1$。
+于是第二式的花括号等于
+$\sin(2\pi/5)[1+2r+(r-2)\eta]>0$，与五个三角形面积之和严格负矛盾。
+因此给定顺序必为逆时针。
+
+目标顶点之和为零；对任一支持直线，其内侧距离的平均严格为正，故 $0$ 在目标严格凸多边形内部。
+因此源、目标的圆心扇三角形分别划分各自多边形，上述三点对应给每片唯一线性映射；
+目标逆时针定向及 $0$ 在内部给 $\det(p_i,p_{i+1})>0$，
+源扇区的 $\det(\zeta^i,\zeta^{i+1})=\sin(2\pi/5)>0$，
+所以每片 Jacobian $j_i=\det(p_i,p_{i+1})/\sin(2\pi/5)>0$。
+相邻片在径向边上相同，逐片同胚把两套扇三角形一一对应，故拼成所述同胚。
+相邻节点 $n_{i+1}=e^{2i\alpha}n_i$，接缝两侧位移差的系数为
+$$
+\kappa[\alpha(1+\cos2\alpha)-a_0\sin2\alpha],\quad
+\kappa[a_0(1-\cos2\alpha)-\alpha\sin2\alpha],
+$$
+都因 $a_0=\alpha\cot\alpha$ 为零。
+$g'=\omega_i\ge1-\kappa t>0$，故给所述圆周同胚与平面双 Lipschitz 延拓，$\Psi_\#\mu=\omega_i\mu$。
+
+@def-psgs-regular-pressure-kernel-1011h 的行列式方程及 $T$ 微分同胚给准确换元
+$$
+T_\#\mu=\frac{dz}{4p(z)^2}.
+$$
+@lem-psgs-pressure-angular-order-1011h 保证 $T$ 把每个源扇区留在对应参考扇区。
+因此在 $F(z)$ 处的推前密度为 $\rho_P(F(z))=\omega_i/(4p(z)^2j_i)$。
+换元给
+$$
+\int_P\sqrt{\rho_P}=\sum_i\sqrt{\omega_i j_i}\int_{R_i}\frac{dz}{2p(z)}.
+$$
+$p(T(y))=k-y\cdot\nabla k$ 和 $T$ 满射说明 $p$ 同样 $D_5$ 不变，所以五个积分均为 $I/5$。
+这证明准确熵公式，且目标总面积仍是 $(\operatorname{av}j_i)|R|$。
+
+逐扇区插值的明确复公式是
+$$
+F(z)=(1+cn_i+rdn_i^2)z+(-rcn_i^3+dn_i^{-1})\bar z.
+$$
+它在零点取零。写两个参考端点为 $z=n_ie^{\pm i\alpha}$，
+利用 $n_i^5=-1$ 及 $e^{\pm i\alpha}-re^{\mp i\alpha}=e^{\pm2i\alpha}$，
+纯 $c$ 项给 $c n_i^2e^{\pm2i\alpha}=cz^2$，纯 $d$ 项给 $dn_i^{-2}e^{\mp2i\alpha}=dz^{-2}$。
+这里三角身份来自 $2\cos\alpha=1+r$、$r(1+r)=1$，分别比较实虚部即可。
+所以它在三个非共线参考点分别取规定值，正是题设唯一线性插值。
+写 $T(\rho n_ie^{i\beta})=n_ie^{i\beta}(k_\rho+i k_\beta/\rho)$。
+代入上式得到
+$$
+F(T(y))=n_ie^{i\beta}[P_i^-k_\rho+iP_i^+k_\beta/\rho].
+$$
+在源换元后，原源点为 $\Psi^{-1}(y)=\rho n_ie^{i\beta+i\delta_i}$，密度为 $\omega_i\mu$。
+分别计算实点积与不取共轭的复乘积，恰得 @def-psgs-exact-tensor-1011h 的 $A,B,X,Y$；
+特别地，自旋指数为 $e^{+i\delta_i}$，切向前因子为 $+i$。
+极坐标面积元与相关中的 $\rho$ 合为 $f(\rho)d\rho d\beta$。
+再以压力关于边轴反射使 $k_\rho$ 为偶、$k_\beta$ 为奇，只保留相应核的奇偶部；五扇区与两半窗给系数 $10$。
+Fubini 定理适用，因为 $|F(T(y))|$ 有界且 $\int|y|d\mu<\infty$。
+分离后的径向及切向项也分别绝对可积：$T(y)=\nabla k(y)\in R$ 给
+$|k_\rho|\le1$、$|k_\beta|/\rho\le1$，角系数在紧角窗有界，
+而 $\int_0^\infty f(\rho)d\rho<\infty$。
+采用 @lem-psgs-actual-pressure-weights-1011h 定义和控制的实际径向权，
+所以真实相关等于其 $C,K$，不是它们的角平均。
+:::

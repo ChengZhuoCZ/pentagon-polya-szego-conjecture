@@ -1,0 +1,233 @@
+---
+title: "压力与混合面积泛函：同法向辅助极小体与真实压力方程"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: analytic-replacements-1012/interval-variational.qmd
+      use:
+        - lem-arc-interval-variational-1012
+    - from: analytic-replacements-1012/dirichlet-spectral-foundations.qmd
+      use:
+        - lem-arc-dirichlet-spectrum-1012
+    - from: analytic-replacements-1012/corner-barrier.qmd
+      use:
+        - lem-arc-corner-barrier-1012
+    - from: true-pressure-review-1011/analysis-supplements.qmd
+      use:
+        - prp-tpr-smooth-support-deformation-tpr1011
+        - prp-tpr-support-hadamard-tpr1011
+---
+
+::: {#def-pressure-rebuild-1011-functional .definition name="混合面积压力泛函及真实逐边压力" date="2026-10-11" export="def-pressure-rebuild-1011-functional"}
+记 $\mathcal K^2$ 为平面内具有非空内点的紧凸体类，
+$\lambda(K)=\lambda_1(\operatorname{int}K)$ 为通常 Lebesgue 测度下的
+第一 Dirichlet 特征值。混合面积采用归一化
+$$
+V(P,K)=\frac{|P+K|-|P|-|K|}{2},
+\qquad P,K\in\mathcal K^2,
+$$
+其中 $P+K=\{p+k:p\in P,\ k\in K\}$ 为 Minkowski 和。
+定义
+$$
+\mathscr P(P)=\inf_{K\in\mathcal K^2}V(P,K)\sqrt{\lambda(K)}.
+\tag{1}
+$$
+若 $P$ 是严格凸 $m$ 边形，记其不同的单位外法向、边长分别为
+$n_1,\ldots,n_m$ 与 $\ell_1(P),\ldots,\ell_m(P)$。
+这里严格凸多边形指所有边具有正长度且全部内角严格小于 $\pi$。
+记 $h_K(n)=\max_{x\in K}x\cdot n$，并定义同法向外包多边形
+$$
+K^+_P=\bigcap_{i=1}^m\{x:x\cdot n_i\le h_K(n_i)\}.
+\tag{2}
+$$
+对于具有这些法向的严格凸多边形 $K$，取归一化正基态
+$u_K$ 满足 $\int_Ku_K^2=1$，并定义其逐边压力
+$$
+m_i(K)=\int_{e_i(K)}(\partial_nu_K)^2\,ds,
+\tag{3}
+$$
+其中 $e_i(K)$ 是外法向为 $n_i$ 的边。
+:::
+
+::: {.proof of="def-pressure-rebuild-1011-functional"}
+紧凸体有界，其内部非空且连通。@lem-arc-dirichlet-spectrum-1012 的变分与紧算子构造给
+$0<\lambda(K)<\infty$，并给出由正性和 $L^2$ 归一化唯一确定的第一基态。
+Minkowski 和仍是紧凸体，故混合面积式中的面积均有限。
+平面 Brunn--Minkowski 不等式给
+$|P+K|\ge(\sqrt{|P|}+\sqrt{|K|})^2$，从而
+$V(P,K)\ge\sqrt{|P||K|}>0$。取 $K=P$ 时 $V(P,P)=|P|$，
+所以定义的下确界位于 $[0,|P|\sqrt{\lambda(P)}]$，是有限实数。
+
+每个支撑最大值因紧致性取得，因而 $K_P^+$ 包含 $K$。
+对任意单位向量 $e$，至少有一个 $n_i\cdot e>0$，否则从 $P$ 的一个内点
+沿 $e$ 的射线始终满足其全部支撑不等式，与 $P$ 有界矛盾。
+于是 $c=\min_{|e|=1}\max_i n_i\cdot e>0$。
+对 $x\in K_P^+$，有 $c|x|\le\max_i h_K(n_i)$，故该交集有界；
+包含 $K$ 又保证它有非空内点。
+
+最后，当 $K$ 是声明中各边正长且角度小于 $\pi$ 的凸多边形时，
+其正基态满足 @lem-arc-corner-barrier-1012 的全部假设。
+该引理从弱方程直接推出 $u_K\in H^2(K)\cap H_0^1(K)$、开边光滑性和
+$\nabla u_K$ 的闭域连续性，且每个顶点的梯度为零。
+因此每条开边的经典法向导数连续延至其端点且为零，在整条有限长边上有界。
+于是 (3) 的逐边压力均为有限非负实数；这里不再依赖多边形 Poisson 正则性定理，
+也不必为证明这些积分有限而另用梯度的 $L^2$ 迹定理。
+
+:::
+
+::: {#prp-pressure-rebuild-1011-attainment .proposition name="压力泛函的正有限性、同法向取得与真实压力方程" date="2026-10-11" export="prp-pressure-rebuild-1011-attainment"}
+采用 @def-pressure-rebuild-1011-functional。
+对任意 $P\in\mathcal K^2$，泛函 $\mathscr P$ 平移不变，且
+$$
+0<\mathscr P(P)\le |P|\sqrt{\lambda(P)}<\infty,
+\qquad \mathscr P(sP)=s\mathscr P(P)\quad(s>0).
+\tag{4}
+$$
+其下确界能够取得。
+
+若 $P$ 是严格凸 $m$ 边形，则对每个 $K\in\mathcal K^2$，
+$K^+_P$ 为具有非空内点的有界、至多 $m$ 边的凸多边形，且
+$$
+K\subset K^+_P,\quad h_{K^+_P}(n_i)=h_K(n_i),\quad
+V(P,K^+_P)=V(P,K),\quad\lambda(K^+_P)\le\lambda(K).
+\tag{5}
+$$
+因此下确界可限制在这些同法向多边形中。
+在此限制下的每个辅助极小体都具有全部 $m$ 条真边；特别地，
+$m=5$ 时它仍为严格凸五边形。
+任意这样的辅助极小体 $K$ 的真实压力满足
+$$
+\boxed{m_i(K)=\frac{\lambda(K)}{V(P,K)}\ell_i(P)
+\quad(1\le i\le m).}
+\tag{6}
+$$
+:::
+
+::: {.proof of="prp-pressure-rebuild-1011-attainment"}
+使用 @def-pressure-rebuild-1011-functional 的归一化。
+平面混合面积的基本恒等式为
+$$
+|P+tK|=|P|+2tV(P,K)+t^2|K|,
+\qquad
+2V(P,K)=\sum_i\ell_i(P)h_K(n_i)
+\tag{7}
+$$
+（第二式在 $P$ 为多边形时成立）。
+混合面积关于两变量对称、对 Minkowski 加法线性、平移不变且单调。
+这些是经典平面混合面积公式，归一化及相关几何背景可见
+[Gardner 的 Brunn–Minkowski 综述，§7、式 (22)](https://faculty.gardner.wwu.edu/gorizia12.pdf)。
+
+**尺度、上下界。** 谱尺度律 $\lambda(sK)=s^{-2}\lambda(K)$ 给
+$$
+V(P,sK)\sqrt{\lambda(sK)}=V(P,K)\sqrt{\lambda(K)}.
+$$
+由此得到对 $P$ 的一次齐次性和平移不变性。
+取 $K=P$ 即得 (4) 的上界。
+平移 $P$，选择 $r>0$ 使 $rB\subset P$。
+由混合面积单调性和圆的混合面积公式，
+$$
+V(P,K)\ge\frac r2\operatorname{Per}(K)
+\ge r\operatorname{diam}(K).
+\tag{8}
+$$
+任一方向的条带宽度不超过 $\operatorname{diam}(K)$，
+对 $C_c^\infty(\operatorname{int}K)$ 作零延拓，沿该条带的横向直线应用
+@lem-arc-interval-variational-1012 的零端点不等式，再用 Fubini 和 $H_0^1$ 定义中的密度，得到
+$\lambda(K)\ge\pi^2/w^2$，其中 $w$ 为该方向的条带宽度。
+于是 $\sqrt{\lambda(K)}\ge\pi/\operatorname{diam}(K)$。
+所以 $\mathscr P(P)\ge\pi r>0$。
+
+**同法向规约。** $P$ 有界，故其外法向正生成整个平面，
+从而 @def-pressure-rebuild-1011-functional 中的半平面交 $K^+_P$ 有界。
+它包含 $K$，因而有内点。每个 $h_K(n_i)$ 均在 $K$ 中取得，
+该取得点仍在 $K^+_P$ 中，因此
+$h_{K^+_P}(n_i)=h_K(n_i)$。
+式 (7) 与 Dirichlet 域单调性给出 (5)。
+
+**取得下确界。** 利用辅助尺度不变性，将极小序列 $K_j$ 归一化为
+$V(P,K_j)=1$。式 (8) 给 $\operatorname{diam}(K_j)\le1/r$。
+分别平移 $K_j$ 使其包含原点；Blaschke 选择定理给出一个
+Hausdorff 收敛子序列，仍记为 $K_j\to K$。
+序列 $\lambda(K_j)$ 一致有上界 $C$，因为归一化后的目标是
+$\sqrt{\lambda(K_j)}$。
+对任意方向 $e$，条带下界给
+$$
+\lambda(K_j)\ge\frac{\pi^2}{w_e(K_j)^2},
+\qquad w_e(K_j)\ge\frac\pi{\sqrt C}.
+$$
+宽度随 Hausdorff 收敛连续，所以 $K$ 既不是线段也不是点，必有内点。
+混合面积连续给 $V(P,K)=1$。
+
+这里特征值连续性也可由域包含直接证明。
+同时平移极限与序列，使 $r_0B\subset K$。
+若 Hausdorff 距离为 $\varepsilon<r_0$，支撑函数比较给
+$$
+(1-\varepsilon/r_0)K\subset K_j
+\subset(1+\varepsilon/r_0)K.
+$$
+域单调性与谱尺度律夹出 $\lambda(K_j)\to\lambda(K)$。
+所以 $K$ 取得下确界；若 $P$ 为多边形，(5) 可将其替换为
+同法向的辅助极小体。
+
+**排除缺边。** 设固定法向辅助极小体 $K$ 缺少第 $j$ 条真边。
+支撑线 $x\cdot n_j=h_K(n_j)$ 此时只接触某个顶点 $v$。
+因 $n_j$ 与各真边法向不同，它严格位于 $v$ 的法锥内部。
+该凸角内角记为 $\alpha\in(0,\pi)$。
+向内移动此支撑线，置
+$$
+K_\varepsilon=K\cap
+\{x:x\cdot n_j\le h_K(n_j)-\varepsilon\}.
+$$
+对于充分小的 $\varepsilon>0$，被切掉的三角角片包含于
+$B(v,C_0\varepsilon)$，且 $K_\varepsilon$ 仍有内点。
+其所有支撑值均不增加，而第 $j$ 个支撑值准确减少 $\varepsilon$。
+由 (7)，
+$$
+V(P,K_\varepsilon)
+\le V(P,K)-\frac{\ell_j(P)}2\varepsilon.
+\tag{9}
+$$
+
+以下控制切角的真实谱代价。该顶点的内角 $\alpha<\pi$，
+取任意 $1<\nu<\pi/\alpha$。被删角片已包含于 $B(v,C_0\varepsilon)$，
+所以 @lem-arc-corner-barrier-1012 的幂次屏障和截断 Rayleigh 恒等式直接给
+$$0\le\lambda(K_\varepsilon)-\lambda(K)
+=O(\varepsilon^{2\nu})=o(\varepsilon).\tag{11}$$
+不用 Bessel 函数，也不要求边界二阶导数有界。
+
+将 (9) 与 (11) 合用，目标
+$V(P,K_\varepsilon)\sqrt{\lambda(K_\varepsilon)}$
+严格下降，矛盾。于是所有 $m$ 条边均为真边。
+其他冗余支撑值在切角时可能同时下降，这只会加强 (9)。
+
+**真实压力方程。** 已证每条边为真边，故各支撑数可以独立作
+充分小的双向扰动 $h_i(t)=h_i+t z_i$，并保持严格凸和组合类型。
+具体地，令 $h_i=h_K(n_i)$，并置
+$$
+Q(h)=\operatorname{int}\bigcap_i\{x:x\cdot n_i\le h_i\}
+=\operatorname{int}K,\qquad a_i=z_i.
+$$
+各 $n_i$ 按边界顺序排列、两两不同，全部指定边正长，且各内角小于 $\pi$。
+这准确满足 @prp-tpr-smooth-support-deformation-tpr1011 的假设。
+该命题给光滑紧支撑场 $X$ 和双向小参数的平面微分同胚
+$\Phi_t=\mathrm{Id}+tX$，满足
+$\Phi_t(Q(h))=Q(h+tz)$ 及 $X\cdot n_i=z_i$ 于第 $i$ 条边。
+对这个 $Q(h)$、速度 $a=z$ 和定义中 $L^2$ 归一化的正第一基态
+使用 @prp-tpr-support-hadamard-tpr1011，其 $E_i$ 就是
+@def-pressure-rebuild-1011-functional 的 $m_i(K)$。由此得到完整公式
+$$
+\lambda'(0)=-\sum_i z_i m_i(K).
+\tag{12}
+$$
+由 (7)，$V'(0)=\frac12\sum_i\ell_i(P)z_i$。
+对 @def-pressure-rebuild-1011-functional 的目标作任意支撑扰动，
+最优性给
+$$
+0=\sum_i\left[
+\frac{\ell_i(P)\sqrt\lambda}{2}
+-\frac{V(P,K)m_i(K)}{2\sqrt\lambda}\right]z_i.
+$$
+因 $z_i$ 任意，即得 (6)。式 (6) 只控制逐边积分，
+没有断言真实压力密度在每条边上为常数。
+:::
+

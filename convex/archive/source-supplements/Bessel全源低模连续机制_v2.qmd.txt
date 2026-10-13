@@ -1,0 +1,186 @@
+---
+title: "完整源权的 Bessel 低模连续积分机制：恒等式、导数尾与正确零阶预算"
+date: "2026-10-11"
+---
+
+## 范围
+
+本稿给出独立于504槽包络候选的**新结构性降维候选**。已展开的内容是完整源核的精确低模表达及统一全尾；尚未证明低模本身的有号整体不等式，因此不声称由本稿单独完成 $f\ge0$ 或 $E\ge0$。别名尾小不能替代主模正性。
+
+全部定义绑定 `../concave_kernel/bound_input.txt`。$\alpha=\pi/5$、$a=\alpha\cot\alpha>0$、$r=(\sqrt5-1)/2$，$n_j=e^{(2j+1)i\alpha}$，$c=te^{i\theta}$、$q=\kappa t\le Q=81/125$。$\kappa$ 取原 U/C 源。以下保留完整 $\omega=1+\kappa\Re(cn)$ 和 $\chi=e^{i\kappa a\Im(cn)}$。
+
+## 1. 全权源块与整数阶函数定义
+
+对整数 $m$、$\sigma=\pm1$、$b\in[-\alpha,\alpha]$，定义
+
+$$K_m^\sigma(b)=\operatorname{av}n_j^m(1+\kappa\Re(cn_j))
+\exp\{i\sigma\kappa a\Im(cn_j)+i\kappa b\Re(cn_j)\}.\tag{B1}$$
+
+故 $\sigma=+1$ 对应 $\chi$、$\sigma=-1$ 对应 $\chi^{-1}$。这不是去掉源权后的核。
+
+无需援引特殊函数外部定理，直接定义
+
+$$J_n(z)=\sum_{l=0}^{\infty}\frac{(-1)^l(z/2)^{n+2l}}{l!(n+l)!},\quad n\ge0;
+\qquad J_{-n}(z)=(-1)^nJ_n(z).\tag{B2}$$
+
+令 $R_b=\sqrt{a^2+b^2}$，选择连续辐角提升
+
+$$\delta_+(b)=\arctan(b/a),\qquad\delta_-(b)=\pi-\arctan(b/a).$$
+
+它们满足 $e^{i\delta_\sigma}=(\sigma a+ib)/R_b$。对于 $\sigma=-1,b<0$，所取辐角超过 $\pi$，这是有意使用连续提升；整数 $k$ 的指数不依赖加减 $2\pi$。**实际 $a>0$，所以 $R_b\ge a>0$，不存在 $R_b=0$ 端点**；不能把假想 $a=b=0$ 当本域必须处理的退化点。$q=0$ 则按 (B2) 连续处理。
+
+## 2. 完整的五折展开
+
+两指数乘积直接给
+
+$$e^{iq[\sigma a\sin\vartheta+b\cos\vartheta]}
+=\sum_{k\in\mathbb Z}J_k(qR_b)e^{ik\delta_\sigma(b)}e^{ik\vartheta}.$$
+
+证明只须展开
+
+$$\exp\{(q/2)(\sigma a+ib)e^{i\vartheta}\}
+\exp\{-(q/2)(\sigma a-ib)e^{-i\vartheta}\}$$
+
+并收集相同整数 Fourier 次数，负次恰为 (B2)。级数与其 $b$ 导数在本紧域绝对一致收敛，所以可以平均、微分、积分。
+
+乘上 $1+q\cos\vartheta$，定义**全权** Fourier 系数
+
+$$\begin{aligned}
+W_k^\sigma(b)
+&=e^{ik\delta_\sigma}J_k(qR_b)
++\frac q2[e^{i(k-1)\delta_\sigma}J_{k-1}(qR_b)+e^{i(k+1)\delta_\sigma}J_{k+1}(qR_b)]\\
+&=e^{ik\delta_\sigma}
+\left[\left(1+\frac{k\sigma a}{R_b^2}\right)J_k(qR_b)
+-i\frac{qb}{R_b}J_k'(qR_b)\right].
+\end{aligned}\tag{B3}$$
+
+第二式由 (B2) 逐项推导的 $J_{k-1}+J_{k+1}=2kJ_k/z$、$J_{k-1}-J_{k+1}=2J'_k$ 得到，对全部负整数 $k$ 同样有效；$q=0$ 用第一式或连续延拓，避免除以 $z$。
+
+真实根筛选 $\operatorname{av}n^{5l}=(-1)^l$ 于是给准确恒等式
+
+$$\boxed{K_m^\sigma(b)=\sum_{l\in\mathbb Z}(-1)^l
+ e^{i(5l-m)\theta}W_{5l-m}^\sigma(b).}\tag{B4}$$
+
+这里固定 $c$ 后仍保留全部 $5\theta$ 别名；不将其错误抹成各向同性。
+
+另有可直接由 (B1) 推导的重要导数恒等式
+
+$$\frac{d}{db}W_k^\sigma=\frac{iq}{2}(W_{k-1}^\sigma+W_{k+1}^\sigma).\tag{B5}$$
+
+它保全同一 $\omega$；并非只对无权指数微分。
+
+## 3. 六阶起的全模尾，同时控制 b 导数
+
+取 $L=107/100>\sqrt{a^2+\alpha^2}$，故 $z=qR_b\le qL<.694$。从 (B2) 的交错、递减正项可得，对 $n\ge0$，
+
+$$0\le J_n(z)\le(z/2)^n/n!.$$
+
+定义 $\mathcal E_n(y)=\sum_{k\ge n}y^k/k!$，$y=qL/2$，
+
+$$Q_n(y,q)=\mathcal E_n(y)+\tfrac q2[\mathcal E_{n-1}(y)+\mathcal E_{n+1}(y)].$$
+
+对于 $n\ge6$，由 (B3) 第一式，正负整数共同满足同一阶乘主界。因此舍去所有 $|k|\ge6$ 的全尾（即使不利用模5筛选）至多
+
+$$\delta_0(q):=2Q_6(y,q).$$
+
+由 (B5)，其 $b$ 导数全尾至多
+
+$$\delta_1(q):=q[Q_5(y,q)+Q_7(y,q)].$$
+
+两个比值 $\delta_0(q)/q^6,\delta_1(q)/q^6$ 都是非负系数幂级数，故在 $0\le q\le Q$ 上非减。在 $Q$ 用阶乘正尾的有理几何界得到
+
+$$\delta_0(q)\le q^6/2000,\qquad\delta_1(q)\le q^6/400.\tag{B6}$$
+
+当 $q>0$ 时两式均严格；$q=0$ 时两侧均为零。
+
+具体上界分别是 $.000457044q^6$ 和 $.002235233q^6$。每个 $m,\sigma$ 的真实筛选尾只是上述全整数尾的子集，故 (B6) 同时适用。
+
+记 $K_m^{\sigma,\#}$ 为 (B4) 中只留 $|5l-m|\le5$ 的项。则
+
+$$|K_m^\sigma-K_m^{\sigma,\#}|\le\delta_0(q),\qquad
+|(K_m^\sigma)'-(K_m^{\sigma,\#})'|\le\delta_1(q).$$
+
+**导数必须是保留项的准确导数。** 不可把截段后的 $K_{m\pm1}^\#$ 直接代入未截段的移位恒等式并丢掉边界模；若借 (B5) 求保留 $W_{\pm5}$ 的导数，邻居 $W_{\pm6}$ 也须准确保留在这个导数求值内。所需特殊函数仍只有有限低阶 $J_0,\ldots,J_7$；整个别名尾已有 (B6) 支付。
+
+## 4. 从源块到原 f,h 的准确连续积分
+
+定义
+
+$$L_m^\sigma(b)=\tfrac12[K_m^\sigma(b)+K_m^\sigma(-b)],\qquad
+M_m^\sigma(b)=[K_m^\sigma(b)-K_m^\sigma(-b)]/(2i),$$
+
+$$C_m^\sigma(b)=\cos(2b)L_m^\sigma-\sin(2b)M_m^\sigma,\quad
+S_m^\sigma(b)=\sin(2b)L_m^\sigma+\cos(2b)M_m^\sigma.$$
+
+它们分别是完整源权下的 $\cos\rho b,\sin\rho b,\cos((\rho+2)b),\sin((\rho+2)b)$ 平均。对序列 $Z_m$，令
+
+$$\mathcal F_j[Z]=Z_j+cZ_{j+1}+rdZ_{j+2},\qquad
+\mathcal J_j[Z]=rcZ_{j+1}+dZ_{j+2}.$$
+
+则完整原核及其余弦导数块准确为
+
+$$\begin{aligned}
+A(b)&=\Re\{\mathcal F_0[L^-]-\mathcal J_0[C^-]\},\\
+D(b)&=\Re\{\mathcal F_0[(M^-)']+\mathcal J_0[(S^-)']\},\\
+X(b)&=\mathcal F_2[C^+]-\mathcal J_2[L^+],\\
+H(b)&=-\mathcal F_2[(S^+)']-\mathcal J_2[(M^+)'].
+\end{aligned}\tag{B7}$$
+
+这里 $D=B'$、$H=Y'$；$M(0)=S(0)=0$。记 $I_\beta g=\beta^{-1}\int_0^\beta g(b)db$，零点按连续延拓。原函数由一个准确连续积分式给出：
+
+$$\boxed{f_\epsilon/\beta=I_\beta(D+2\epsilon A)-2\epsilon I_\alpha A,\qquad
+h_\epsilon/\beta=I_\beta(H+2\epsilon X)-2\epsilon I_\alpha X.}\tag{B8}$$
+
+这保留原 $G_A,G_Z$ 的完整均值减法。两个 $\epsilon$ 没有互换。$a_m=I_\alpha A,z_m=I_\alpha X$。
+
+## 5. 归一 f,h 的完整误差预算
+
+在 (B7)-(B8) 全部用 $K^\#$ 替换 $K$，定义准确低模 $f^\#,h^\#$。令
+
+$$F_*=1+t+rs,\qquad J_*=rt+s,\qquad s=|d|.$$
+
+移位正弦的导数有额外2：$S_m'=2C_m+\operatorname{av}[n^m\omega\chi^\sigma\rho\cos((\rho+2)b)]$，所以完整误差依次为
+
+$$|\Delta A|,|\Delta X|\le(F_*+J_*)\delta_0,$$
+
+$$|\Delta D|\le(F_*+J_*)\delta_1+2J_*\delta_0,\qquad
+|\Delta H|\le(F_*+J_*)\delta_1+2F_*\delta_0.$$
+
+(B8) 中两个积分各有系数2，故
+
+$$\begin{aligned}
+|f-f^\#|/\beta&\le(F_*+J_*)\delta_1+(4F_*+6J_*)\delta_0,\\
+|h-h^\#|/\beta&\le(F_*+J_*)\delta_1+(6F_*+4J_*)\delta_0.
+\end{aligned}\tag{B9}$$
+
+C 的 $s\le t$ 和 U 的 $s\le r$ 上均可用对应外圆帽，且 $F_*\ge J_*$，所以两式共同被
+
+$$q^6(11F_*+9J_*)/2000$$
+
+主控。代入 $t\le T$ 得整个闭角域和全部复方向上的统一归一误差
+
+$$\begin{array}{c|cc}
+&|f-f^\#|&|h-h^\#|\\\hline
+C&\le\beta t^2/250&\le\beta t/400\\
+U&\le\beta t^2/750&\le\beta t/1000.
+\end{array}\tag{B10}$$
+
+这并不是只有某个零阶 $E_p$ 别名尾小：完整导数、全部均值积分、原 $\beta$ 奇零点和正确 $t$ 阶都已保留。$\beta=0$ 时原量和低模量都由 (B8) 为0；$t=0$ 时 $q^6$ 余项为0，原实际点另按定义为0。U 放大的圆盘在 $t=0$ 可有非零 $d$，但 $f,h$ 仍由根筛选为0，不意味着这些点是原真实几何域。
+
+## 6. 尚未解决的真正有号部分
+
+(B4)、(B8)、(B10) 把完整问题换成有限低 Fourier 模的**连续积分**，保留每个低模的全部径向阶数，并给小的明确误差。每个径向因子还可写成
+
+$$J_n(qR_b)e^{in\delta_\sigma}
+=(q/2)^n(\sigma a+ib)^n
+\sum_{l\ge0}\frac{[-q^2(a^2+b^2)/4]^l}{l!(n+l)!},\qquad n\ge0,$$
+
+其中 $q^2(a^2+b^2)/4<.121$；每个径向级数都有直接交错上、下界。这是尝试用成对低模积分正性取代504槽的入口。
+
+**本稿尚未证明**这些保留低模满足能支付 (B10) 的八个包络不等式，也没有从“尾小”推出 $E$ 非负。低模中的所有 $e^{5i\theta}$、$de^{-2i\theta}$ 相位耦合仍须解析处理，不能再以各向同性、错误源权消去或未经证实的振幅猜测绕过。
+
+已完整计算通过的504槽连续包络候选是另一稿；此 Bessel 研究不能借用那个有限系数结论而声称已消除有限证书。下一步若失败，缺口就准确是保留低模连续积分的有号整体下界，而不是原两支核结论失效。
+
+## 7. 有理尾常数复核
+
+`certify_bessel_tail_rational.py` 只核 (B6)、(B10) 的正级数常数，依赖同一明确有理区间层。指数正尾取到40项加几何尾；双跑文件为 `bessel_tail_run1.json`、`bessel_tail_run2.json`。它没有数值调用 Bessel 函数，没有逐参数盒，更没有把常数证书冒称低模正性证明。

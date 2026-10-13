@@ -1,0 +1,231 @@
+---
+title: "单位源短解析接合：有限质量比较、精细均值与同源熵"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: analytic-replacements-1012/actual-spin.qmd
+      use:
+        - thm-arc-actual-spin-1012
+    - from: ps-pressure-unit-global-factor-budget-1011.qmd
+      use:
+        - prp-ppug-short-physical-endpoint-1011
+    - from: analytic-replacements-1012/finite-mass-kernels.qmd
+      use:
+        - thm-arc-finite-mass-lorentz-1012
+    - from: ps-pressure-unit-sinc-means-1011.qmd
+      use:
+        - cor-ppusm-coarse-full-means-1011
+        - prp-ppusm-shared-phase-sharp-means-1011
+    - from: true-pressure-terminal-migration-1011/entropy-and-moments.qmd
+      use:
+        - lem-tpm-five-root-entropy-moments-tpm1011
+        - lem-tpm-unit-node-ratio-entropy-tpm1011
+        - lem-tpm-two-source-signed-entropy-coupled-tpm1011
+    - from: true-pressure-terminal-migration-1011/unit-scalar-factors.qmd
+      use:
+        - def-tpm-unit-scalar-tpm1011
+---
+
+::: {#prp-ppus-unit-lorentz-closure-1011 .proposition name="单位源有限质量比较与真实斜率的无循环接合" date="2026-10-11" export="prp-ppus-unit-lorentz-closure-1011"}
+采用 @def-psgs-exact-tensor-1011h 的单位源及
+@def-psgs-tensor-weights-1011h 的同源可容许权重。
+设 $0<t=|c|\le27/50$、$0\le s=|d|\le619/1000$、$s\le2t$，并令
+$$
+r=(\sqrt5-1)/2,\quad m=1+r(t^2-s^2),\quad a_g=3m/5,
+\quad U=\Re(c^2\bar d)>\frac{a_g}{2r}(2t^2+r^2s^2-a_g^2).
+$$
+记 $d_0=1+.26t^2,h_1=.324t^2+.879ts$。则
+$$
+C\ge C_0\bar A\ge C_0d_0>|K|,\qquad |K|/C<h_1/d_0<1/2,
+$$
+$$
+\frac{\sqrt{C^2-|K|^2}}{C_0}
+\ge\sqrt{\bar A^2-|\bar Z|^2}
+\ge\bar A-\frac12|\bar Z|^2.
+$$
+:::
+
+::: {.proof of="prp-ppus-unit-lorentz-closure-1011"}
+采用 @def-psgs-exact-tensor-1011h 的同一单位源及 @def-psgs-tensor-weights-1011h 的可容许权。
+当前 $s\le619/1000<5/8$、$t\le27/50$，全部在
+@thm-arc-finite-mass-lorentz-1012 的 U 矩形内，所以直接有
+$$C\ge C_0\bar A>0,\quad C>|K|,\quad
+\frac{\sqrt{C^2-|K|^2}}{C_0}\ge\sqrt{\bar A^2-|\bar Z|^2}.$$
+此比较甚至无需本命题额外的 $s\le2t$ 与相位条件；保持这些前提使下游接口不变。
+@cor-ppusm-coarse-full-means-1011 给 $\bar A\ge d_0$，而独立的
+@thm-arc-actual-spin-1012 给
+$$|K|/C_0<.322t^2+.850ts<h_1.$$
+正系数端点比较 $h_1\le19414647/50000000<1/2$，故
+$C_0d_0>|K|$ 及 $|K|/C<h_1/d_0<1/2$。
+
+同一粗均值给 $|\bar Z|\le t(.144t+.570s)<1$，且
+$$|\bar Z|^2/4\le t^2[.144(27/50)+.570(619/1000)]^2/4<.26t^2\le\bar A-1.$$
+所以 $\bar A-|\bar Z|^2/2>0$。准确平方差
+$$\bar A^2-|\bar Z|^2-(\bar A-|\bar Z|^2/2)^2
+=|\bar Z|^2(\bar A-1-|\bar Z|^2/4)\ge0$$
+给最后的根式比较。整个推导未调用旧铅笔圆盘符号或以实际斜率作为前提。
+:::
+::: {#thm-ppus-unit-short-pressure-budget-1011 .theorem name="单位源完整平衡带的短解析真实压力预算" date="2026-10-11" export="thm-ppus-unit-short-pressure-budget-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=1$。
+以下 $C,K,\bar A,\bar Z$ 均为该固定单位源的完整张量及均值，
+源权为 $\omega_i=1+\Re(cn_i)$；
+积分权 $W,V$ 采用 @def-psgs-tensor-weights-1011h 的全部可容许条件：
+$W>0$、$V\ge0$ 几乎处处，$C_0=10\int_0^\alpha W>0$。
+设 $0<t\le27/50,t\le s\le2t,s<r$，$n_i=e^{(2i+1)\pi i/5}$，并假设
+$$
+x_i=\Re(cn_i),\quad z_i=\Re(dn_i^2),\quad m=1+r(t^2-s^2),
+\qquad j_i=m+2x_i+2rz_i>41m/100.
+$$
+定义真实量
+$$
+D=\frac{\sqrt{C^2-|K|^2}}{C_0}-\sqrt m,\qquad
+L=\sqrt m-\operatorname{av}\sqrt{j_i(1+x_i)}.
+$$
+取 @def-tpm-unit-scalar-tpm1011 的
+$a=59m/100,F_C=m^3h\ell,h=141/200-t/2,\ell=(7+8m)/15$，则 $C>|K|$，并且
+$$
+\boxed{7D-5L>\frac{s^2}{250aF_C}>0,}
+$$
+$$
+(1-q)D-qL>\frac{s^2}{3000aF_C}>0\qquad(0\le q<5/12).
+$$
+:::
+
+::: {.proof of="thm-ppus-unit-short-pressure-budget-1011"}
+本证明中的“单位源”明确指 @def-psgs-exact-tensor-1011h 取固定参数
+$\kappa=1$；故其 $t=|c|,s=|d|$、节点 $n_i$、完整张量 $C,K$ 与均值
+$\bar A,\bar Z$ 都采用同一个源，而源权准确为 $\omega_i=1+x_i$。
+积分权采用 @def-psgs-tensor-weights-1011h 的同一 $W,V,C_0>0$。
+$r$ 是 $x^2+x-1$ 的正根；该多项式在正轴严格递增，
+而在 $619/1000$ 的值为 $2161/10^6>0$，故 $0<r<619/1000$。
+由 $s/2\le t\le s$、$s<r$ 及 $r^3=2r-1$，
+$$
+1\ge m=1+r(t^2-s^2)>1-3r^3/4
+=7/4-3r/2>1643/2000>4/5.
+$$
+令 $f_i=j_i-2m/5=a_g+2x_i+2rz_i>m/100>0$，其中 $a_g=3m/5$。
+五根平均说明 $1,n,n^2$ 关于正权 $f_i$ 的 Gram 矩阵为
+$$
+\begin{pmatrix}
+a_g&\bar c&r\bar d\\
+c&a_g&\bar c\\
+rd&c&a_g
+\end{pmatrix}.
+$$
+它严格正定：一个非零二次多项式不能在五个不同节点同时为零。
+其行列式严格为正，给
+$$
+a_g^3-2a_gt^2-a_gr^2s^2+2r\Re(c^2\bar d)>0.
+$$
+这恰为 @prp-ppus-unit-lorentz-closure-1011 的相位前提，因而该命题适用。
+
+以 @def-tpm-unit-scalar-tpm1011 的完整函数 $A_c,G,z_p,z_m$，
+@prp-ppusm-shared-phase-sharp-means-1011 给
+$$
+\bar A\ge1+t^2A_c+GU,\qquad
+|\bar Z|\le t^2z_p+tsz_m,\qquad U=\Re(c^2\bar d).
+$$
+这里仅舍去非负共同相位改善，完整振幅尾仍在四个函数中。
+由前一命题及 $\sqrt m\le(1+m)/2$ 得
+$$
+D\ge D_0+GU,\qquad
+D_0=t^2A_c+\frac r2(s^2-t^2)-\frac{t^2}{2}(tz_p+sz_m)^2.
+$$
+因为 $s\ge t>0$，可取 $\rho=t/s\in[1/2,1]$、
+$X=s/(619/1000)\in(0,1)$、$Y=2\rho-1\in[0,1]$，
+满足 @def-tpm-unit-scalar-tpm1011 的全部标量坐标条件。
+该定义的 $Z=\rho z_p+z_m$ 给 $tz_p+sz_m=sZ$，所以
+$$
+D_0=s^2\left[\rho^2A_c+\frac r2(1-\rho^2)
+-\frac12s^2\rho^2Z^2\right]=s^2\widehat D.
+$$
+
+现在核对熵的完整适用域。@lem-tpm-five-root-entropy-moments-tpm1011
+采用的正是这些五个 $n_i^5=-1$ 的节点、$t=|c|,s=|d|$ 与五点等权平均。
+本题给 $0<t\le27/50$、$t\le s\le2t$、$s<r$、
+$j_i=m+2x_i+2rz_i>41m/100$，上段又给 $m>4/5$；
+这逐项满足 @lem-tpm-unit-node-ratio-entropy-tpm1011 的所有前提。
+特别地 $\omega_i=1+x_i\ge1-t\ge23/50>0$，该引理给
+$$
+\frac7{20}<\frac{j_i}{m\omega_i}<\frac{20}7,\qquad L\ge0,
+\qquad H_i>mh>0,\quad h=141/200-t/2\ge87/200.
+$$
+这里 $L$ 与本题的完整节点熵相同，而不是换用另一个熵量。
+按 @lem-tpm-unit-node-ratio-entropy-tpm1011 置
+$\delta=2-m,p=1+m/2$，并准确展开
+$$
+\Delta_i=j_i-m\omega_i=(2-m)x_i+2rz_i=\delta x_i+2rz_i,
+$$
+$$
+S_i=H_i-m=\frac{j_i+m\omega_i}{2}-m
+=(1+m/2)x_i+rz_i=px_i+rz_i.
+$$
+因此 $\delta\ge1>0,p>0,\delta+2p=4$，与
+@lem-tpm-five-root-entropy-moments-tpm1011 的矩参数完全一致。
+该矩引理的准确二阶矩与完整四阶上界在此是
+$$
+V_2=\frac{\delta^2t^2}{2}+2r^2s^2
+=s^2\left(\frac{\delta^2\rho^2}{2}+2r^2\right)=s^2\widehat V_2,
+$$
+$$
+\begin{aligned}
+F_+&=\frac38\delta^2p^2t^4+\delta rp\,t^3s
++\frac{r^2}{4}(\delta^2+8\delta p+4p^2)t^2s^2
++2r^3ts^3+\frac32r^4s^4\\
+&=s^4\left[\frac38\delta^2p^2\rho^4+\delta rp\rho^3
++\frac{r^2}{4}(\delta^2+8\delta p+4p^2)\rho^2
++2r^3\rho+\frac32r^4\right]=s^2\widehat F_+.
+\end{aligned}
+$$
+最后一式的 $\widehat V_2,\widehat F_+$ 正是
+@def-tpm-unit-scalar-tpm1011 的完整多项式，包含所有列出的矩项。
+同一矩引理还给
+$$
+\alpha_3=\frac{r\delta(\delta+4p)}4=\alpha_c,
+\qquad \beta_3=r^2(\delta+p)=\beta_c,
+\qquad V_3=\alpha_cU-\beta_cV,
+\quad V=\Re(cd^2),
+$$
+其中 $\alpha_c,\beta_c$ 采用 @def-tpm-unit-scalar-tpm1011 的同一 $\delta,p$。
+
+于是可以应用 @lem-tpm-two-source-signed-entropy-coupled-tpm1011 的单位组：
+其 $\kappa=1,h_0=h,\ell=(7+8m)/15,F_C=m^3h\ell$、
+$k_E=2/15,k_3=2/3,B=3/2$ 都与本题一致。
+这里 $a=59m/100>0,\ell>0,F_C>0$；不存在异源系数替换。
+因为
+$$
+1+\frac{(1-h)(1-2B)}{B^2}=1-\frac89(1-h),\qquad
+\frac1{B^2}=\frac49,
+$$
+该熵引理的二四阶量准确为
+$$
+\begin{aligned}
+E_F&=\frac2{15}\left\{\left[1-\frac89(1-h)\right]m^2V_2
++\frac49F_+\right\}\\
+&=s^2\frac2{15}\left\{\left[1-\frac89(1-h)\right]m^2\widehat V_2
++\frac49\widehat F_+\right\}=s^2\widehat E,
+\end{aligned}
+$$
+其中 $\widehat E$ 采用 @def-tpm-unit-scalar-tpm1011。
+其三阶乘数也准确为
+$e_F=(2/3)(2B+h-2)m/B^2=8m(1+h)/27$。
+故 @lem-tpm-two-source-signed-entropy-coupled-tpm1011 给同一 $L$ 的不等式
+$$
+-5F_CL\ge-5E_F+e_F(\alpha_cU-\beta_cV),\qquad
+e_F=8m(1+h)/27.
+$$
+用 $F_C>0$ 将 $D\ge D_0+GU$ 乘以 $7F_C$ 后相加，
+再按 @def-tpm-unit-scalar-tpm1011 的
+$A_F=7GF_C+e_F\alpha_c,B_F=e_F\beta_c$ 合并，得到
+$$
+F_C(7D-5L)\ge7D_0F_C-5E_F+A_FU-B_FV.
+$$
+取 $u=U/(t^2s),v=V/(ts^2)$，复数模比较给 $|u|,|v|\le1$。
+本题的物理节点条件、上述 $L\ge0$、$D_0=s^2\widehat D$、
+$E_F=s^2\widehat E$ 及完整同源接口逐项满足
+@prp-ppug-short-physical-endpoint-1011 的前提，故它给两条严格预算。
+:::

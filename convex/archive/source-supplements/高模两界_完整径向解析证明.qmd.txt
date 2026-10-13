@@ -1,0 +1,328 @@
+---
+title: "共同径向四、五模的两条全权解析界"
+date: "2026-10-11"
+---
+
+## 结论与适用范围
+
+令
+\[
+\alpha=\pi/5,\qquad a=\alpha\cot\alpha,\qquad r=(\sqrt5-1)/2,
+\qquad 0\le q\le81/125,\quad0\le\beta\le\alpha,\quad\epsilon\in\{-1,1\}.
+\]
+使用完整源权 $1+q\cos\vartheta$ 的 Fourier 系数，定义如下的 $u_k,v_k$。则在整个闭域上，
+\[
+\boxed{|u_{-4}+rv_{-4}|\le q^4/32,\qquad |u_5+u_{-5}|\le q^5/200.}
+\]
+证明保留全部径向阶数。仅展开四模的前两层；其后的无限径向尾用一个阶乘几何界支付。不使用参数分盒、作者现有程序、504 槽证书或数值特殊函数。
+
+## 1. 完整定义、源权与连续端点
+
+记 $z=a+ib$、$R=\sqrt{a^2+b^2}$、$\delta=\arctan(b/a)$。定义
+\[
+J_n(s)=\sum_{l\ge0}\frac{(-1)^l(s/2)^{n+2l}}{l!(n+l)!}\quad(n\ge0),\qquad
+J_{-n}=(-1)^nJ_n,\qquad \Psi_k=e^{ik\delta}J_k(qR).
+\]
+这里 $J_n$ 是 Bessel 级数；下文组合 $\mathscr J=u_{-4}+rv_{-4}$ 与它不同。
+完整源权系数为
+\[
+W_k=\Psi_k+\frac q2(\Psi_{k-1}+\Psi_{k+1})=(1-i\partial_b)\Psi_k.
+\tag{1}
+\]
+第二式由完整指数的 $b$ 导数乘上 $iq\cos\vartheta$ 直接得到；尤其没有丢掉源权的相邻模。
+令
+\[
+\ell_k=\Re W_k,\quad m_k=\Im W_k,\quad
+c_k=\Re(e^{2ib}W_k),\quad s_k=\Im(e^{2ib}W_k),\qquad
+I_\gamma g=\int_0^1g(\gamma v)\,dv.
+\]
+则
+\[
+u_k=\frac{m_k(\beta)}\beta+2\epsilon(I_\beta-I_\alpha)\ell_k,
+\qquad
+v_k=\frac{s_k(\beta)}\beta-2\epsilon(I_\beta-I_\alpha)c_k.
+\tag{2}
+\]
+奇函数除以 $\beta$ 的商在 $\beta=0$ 取导数值。所有级数及本证明所用前三阶 $b$ 导数在紧域绝对一致收敛，故逐项求导、积分及求和合法。
+
+以下只需这些粗有理常数：
+\[
+\frac{108}{125}<a<\frac{433}{500},\quad
+\frac{309}{500}<r<\frac{619}{1000}<\frac58,\quad
+\alpha^2<\frac25,\quad R<\frac{11}{10},\quad q^2<\frac{17}{40}.
+\tag{3}
+\]
+它们的来源没有拟合：$157/50<\pi<22/7$，$559/250<\sqrt5<1119/500$，及
+\[
+a^2=\frac{\pi^2}{25}\left(1+\frac2{\sqrt5}\right).
+\]
+把上述上下界代入即得 (3)；例如 $a^2<(433/500)^2<3/4$，所以 $R^2<23/20<121/100$。根号的两个界只需平方；$\pi$ 界也可由文末配套独立有理核算中的 Machin 公式及交错 arctan 余项复核。
+
+## 2. 五模：完整均值积分恰好消去
+
+令 $\phi(b)=\Im\Psi_5(b)$。因 $\Psi_{-5}=-\overline{\Psi_5}$，(1) 给
+\[
+W_5+W_{-5}=2\phi'(b)+2i\phi(b).
+\]
+因此完整式 (2) 准确化为
+\[
+K:=u_5+u_{-5}
+=(2+4\epsilon)\frac{\phi(\beta)}\beta-4\epsilon\frac{\phi(\alpha)}\alpha.
+\tag{4}
+\]
+这里使用 $\phi(0)=0$ 和 $I_\gamma\phi'=\phi(\gamma)/\gamma$，不是省去均值项。
+由 $a=\alpha\cot\alpha$，有 $\delta(\alpha)=\alpha$，故
+\[
+\phi(\alpha)=J_5(qR_\alpha)\sin(5\alpha)=0.
+\]
+对 $x=b^2$，完整径向级数给
+\[
+\frac{\phi(b)}b
+=\left(\frac q2\right)^5(5a^4-10a^2x+x^2)
+\sum_{l\ge0}\frac{(-q^2R^2/4)^l}{l!(5+l)!}.
+\tag{5}
+\]
+因 $0\le\delta(b)\le\alpha$，$\Im z^5\ge0$，所以 (5) 中多项式在闭域非负；而 $x\le2/5<10a^2$ 给它不超过 $5a^4$。径向和的相邻项比不超过 $(q^2R^2/4)/6<1$，所以交错级数整体在 $[0,1/120]$。由 $|2+4\epsilon|\le6$，
+\[
+|K|\le\frac{a^4}{128}q^5
+<\frac{(7/8)^4}{128}q^5
+=\frac{2401}{524288}q^5<\frac{q^5}{200}
+\qquad(q>0).
+\tag{6}
+\]
+最后比较只需 $480200<524288$。在 $q=0$ 两边为零；在 $\beta=0$ (4)--(5) 取连续值。
+
+## 3. 四模的统一线性泛函
+
+对满足 $F(-b)=\overline{F(b)}$ 的函数，定义
+\[
+\mathcal L_\epsilon F=
+\frac{\Im[(1+re^{2i\beta})F(\beta)]}{\beta}
++2\epsilon(I_\beta-I_\alpha)\Re[(1-re^{2ib})F(b)].
+\tag{7}
+\]
+于是完整组合 $\mathscr J=u_{-4}+rv_{-4}=\mathcal L_\epsilon W_{-4}$。
+若 $x=b^2$、$F=A(x)+ibB(x)$，写
+\[
+C(x)=\cos(2\sqrt x),\qquad S(x)=\operatorname{sinc}(2\sqrt x),
+\]
+则其边界项与均值项的被积函数分别为
+\[
+M=(1+rC)B+2rSA,\qquad G=(1-rC)A+2rxSB.
+\tag{8}
+\]
+对任何 $C^1$ 函数 $G(x)$，共同区间上的准确积分比较给
+\[
+|(I_\beta-I_\alpha)G(b^2)|
+\le\frac{\alpha^2-\beta^2}{3}\sup_{0\le x\le\alpha^2}|G'(x)|.
+\tag{9}
+\]
+这是将 $I_\gamma$ 写成 $\int_0^1G(\gamma^2v^2)dv$ 后用微积分基本定理，并非两个均值各自取绝对值。
+
+## 4. 四模首层：一个三次包络和一个导数界
+
+由 (1)，$W_{-4}$ 的 $q^4$ 项为 $q^4F_0$，其中
+\[
+F_0(b)=\frac{\bar z^3(\bar z-4)}{384}
+=\frac{A(x)+ibB(x)}{384},
+\]
+\[
+A=A_0+A_1x+x^2,\quad B=B_0+B_1x,
+\]
+\[
+A_0=a^4-4a^3,\quad A_1=12a-6a^2,\quad
+B_0=12a^2-4a^3,\quad B_1=4a-4.
+\tag{10}
+\]
+注意 $A_0,B_1<0$，$A_1,B_0>0$。在 $0\le x\le2/5$，交错 Taylor 界为
+\[
+1-2x\le C\le1-2x+\tfrac23x^2,
+\quad
+1-\tfrac23x\le S\le1-\tfrac23x+\tfrac2{15}x^2.
+\tag{11}
+\]
+把 (11) 按 (10) 每个系数的符号代入 $M$，得到
+\[
+M\le c_0+c_1x+c_2x^2+c_3x^3,
+\]
+其中仅有四个系数：
+\[
+\begin{aligned}
+c_0&=B_0+r(B_0+2A_0),\\
+c_1&=B_1+r(-2B_0+B_1-\tfrac43A_0+2A_1),\\
+c_2&=r(\tfrac23B_0-2B_1-\tfrac43A_1+2),\\
+c_3&=\tfrac4{15}rA_1.
+\end{aligned}
+\]
+由 (3) 的有理端点直接算得
+\[
+c_0\le\frac{63}{8},\quad c_1\le\frac9{40},\quad
+c_2\le-\frac14,\quad c_3\le1.
+\tag{12}
+\]
+具体核算方法：$A_0$ 在此 $a$ 区间递减，$A_1,B_0,B_1$ 递增。分别代入上下端即可；配套有理脚本完整重现四次比较，不含任何参数采样。于是用 $x^3\le(2/5)x^2$，
+\[
+M\le\frac{63}{8}+\frac9{40}x+\frac3{20}x^2
+\le\frac{7989}{1000}<8.
+\]
+另一方面 $B\ge6$、$A\ge-21/10$，且 $C,S\in[0,1]$，所以
+\[
+M\ge6-2r\frac{21}{10}>0.
+\]
+故边界项的绝对值不超过 $8/384=1/48$。
+
+对 $G$，准确求导并合并得
+\[
+G'=A'+r(CD+SE),\quad
+D=B-A',\quad E=2A+B+2xB'.
+\tag{13}
+\]
+由 (3) 与 (10)，在整个 $x\in[0,2/5]$ 有
+\[
+|A'|\le\frac{67}{10},\quad |D|\le\frac{27}{50},\quad
+0\le E\le\frac{27}{4}.
+\tag{14}
+\]
+这里 $D=(B_0-A_1)+(B_1-2)x$ 是递减一次式，$E=(2A_0+B_0)+(2A_1+3B_1)x+2x^2$ 的三个系数均非负，所以只需两个端点。由 $|C|,|S|\le1$，
+\[
+|G'|\le\frac{67}{10}+\frac{619}{1000}
+\left(\frac{27}{50}+\frac{27}{4}\right)
+<\frac{45}{4}.
+\tag{15}
+\]
+结合 (9)、$\alpha^2<2/5$ 和归一因子 $384$，完整首层满足
+\[
+|\mathcal L_\epsilon F_0|
+\le\frac1{48}+\frac{2\alpha^2}{3\cdot384}\frac{45}{4}
+\le\frac1{48}+\frac1{128}=\frac{11}{384}.
+\tag{16}
+\]
+两个 $\epsilon$ 被同时覆盖。
+
+## 5. 四模第二层的短范数界
+
+$q^6$ 项为 $q^6F_1$，其中
+\[
+F_1=\frac{\bar z^4(-R^2+4a+6ib)}{7680}
+=\frac{U(x)+ibV(x)}{7680},
+\]
+\[
+\begin{aligned}
+U&=a^5(4-a)+5a^4x-(20a-5a^2)x^2-x^3,\\
+V&=-a^4(10-4a)-20a^2x+(6-4a)x^2.
+\end{aligned}
+\tag{17}
+\]
+仅用 $4/5<a<7/8$、$0\le x\le2/5$ 即有
+\[
+|U|\le4,\quad|V|\le11,\quad|U'|\le12,\quad|V'|\le16.
+\tag{18}
+\]
+为明确常数来源：$0<a^5(4-a)<2$、$5a^4<3$、$0<20a-5a^2<14$，故 $-14(2/5)^2-(2/5)^3<U<2+3(2/5)$，并有 $-2\cdot14(2/5)-3(2/5)^2<U'<3$。又 $0<a^4(10-4a)<4$、$20a^2<16$、$0<6-4a<14/5$，故 $-4-16(2/5)<V<(14/5)(2/5)^2$；$V'<0$ 且 $|V'|<16$，因为 $20a^2>64/5>2(14/5)(2/5)$。
+
+由 (8)，边界项分子不超过
+\[
+(1+r)|V|+2r|U|\le\frac{13}{8}\,11+\frac54\,4=\frac{183}{8}.
+\]
+$G$ 导数的一般式为
+\[
+G'=(1-rC)U'+2rSU+r(S+C)V+2rxSV'.
+\]
+使用 $0\le C,S\le1$、$0\le1-rC\le1$，其绝对值不超过
+\[
+12+\frac54\,4+\frac54\,11+\frac12\,16=\frac{155}{4}.
+\]
+故由 (9)，
+\[
+|\mathcal L_\epsilon F_1|
+\le\frac{183/8+(4/15)(155/4)}{7680}
+=\frac{797}{184320}<\frac1{200}.
+\tag{19}
+\]
+
+## 6. 四模全部后续径向尾
+
+写
+\[
+\Psi_{-4}=
+\sum_{l\ge0}q^{d_l}P_l(b),\qquad
+d_l=4+2l,\quad
+P_l=\frac{(-1)^l\bar z^{4+l}z^l}{2^{d_l}l!(l+4)!}.
+\]
+因 (1)，准确地
+\[
+W_{-4}=q^4F_0+q^6F_1+
+\sum_{l\ge2}q^{d_l}(P_l-iP_l').
+\tag{20}
+\]
+令 $L=11/10$，对 $j=0,1,2,3$ 定义
+\[
+T_{l,j}=\frac{(d_l)_j L^{d_l-j}}{2^{d_l}l!(l+4)!},
+\]
+其中 $(d)_j=d(d-1)\cdots(d-j+1)$，$(d)_0=1$。Leibniz 法则给 $|P_l^{(j)}|\le T_{l,j}$。
+
+对于任意满足所需奇偶性的 $F$，(7) 与微积分基本定理给
+\[
+|\mathcal L_\epsilon F|
+\le(1+r)\|F'\|+2r\|F\|
++\frac{\alpha^2}{3}
+\big[(1+r)\|F''\|+4r\|F'\|+4r\|F\|\big].
+\tag{21}
+\]
+均值部分所用事实是：偶函数 $g$ 满足 $g'(0)=0$，故
+$|(I_\beta-I_\alpha)g|\le(\alpha^2-\beta^2)\|g''\|/6$。
+于是令
+\[
+T_l=\frac{19}{12}T_{l,0}+\frac{85}{24}T_{l,1}
++\frac{87}{40}T_{l,2}+\frac{13}{60}T_{l,3},
+\tag{22}
+\]
+可得 $|\mathcal L_\epsilon(P_l-iP_l')|\le T_l$。
+这里四个系数仅来自 (21) 的 $r\le5/8$、$\alpha^2\le2/5$；没有截去任何导数项。
+
+设 $\rho=17/40$。对 $l\ge2$、$0\le j\le3$，
+\[
+\frac{\rho^{l+1}T_{l+1,j}}{\rho^lT_{l,j}}
+=\frac{\rho L^2}{4(l+1)(l+5)}
+\frac{(d_l+2)_j}{(d_l)_j}
+\le\frac{(17/40)(121/100)}{4\cdot3\cdot7}\frac{15}{7}
+<\frac1{64}.
+\tag{23}
+\]
+最大下降阶乘比在 $d_l=8,j=3$ 取得，等于 $15/7$；分母随后递增。因此 (23) 同时控制正组合 $\rho^lT_l$。
+唯一首项常数为
+\[
+\rho^2T_2=
+\frac{\rho^2L^5}{368640}
+\left(\frac{19}{12}L^3+\frac{85}{3}L^2+\frac{609}{5}L+\frac{364}{5}\right)
+<\frac{193}{10^6}.
+\tag{24}
+\]
+这是单次有理数比较。于是全部后续径向尾满足
+\[
+\sum_{l\ge2}q^{2l}T_l
+\le\frac{64}{63}\frac{193}{10^6}
+<\frac1{5000}.
+\tag{25}
+\]
+
+## 7. 汇总与闭域端点
+
+由 (16)、(19)、(20)、(25)，
+\[
+|\mathscr J|
+\le q^4\left(\frac{11}{384}+\frac{q^2}{200}+\frac1{5000}\right)
+\le q^4\frac{4641803}{150000000}
+<\frac{q^4}{32}\qquad(q>0).
+\tag{26}
+\]
+最后差额为
+\[
+\frac1{32}-\left(\frac{11}{384}+\frac{(81/125)^2}{200}+\frac1{5000}\right)
+=\frac{45697}{150000000}>0.
+\]
+$\beta=0$ 全程使用同一连续延拓；$q=0$ 时 $W_{-4}=W_5=W_{-5}=0$，两条结论都以非严格号成立。本稿两条高模界不需要假设其他四个标量候选成立，也不宣称它们单独完成原核正性。
+
+## 独立有理核算文件
+
+同目录 `verify_high_modes_rational.py` 仅核本文明确的少量有理常数、四个首层包络系数和两个一次/二次式端点；另用 Machin 公式核 $157/50<\pi<22/7$。它不采样 $q,\beta$，不调用 Bessel 数值函数，不运行既有作者程序，也不替代上述连续证明。其输出保存在 `high_modes_rational_certificate.json`。

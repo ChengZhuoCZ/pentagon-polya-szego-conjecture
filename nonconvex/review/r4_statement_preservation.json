@@ -1,0 +1,34 @@
+{
+  "baseline": "Frozen third English analytic edition, R3-20261012",
+  "previous_declarations": 58,
+  "current_declarations": 58,
+  "all_previous_statement_bodies_preserved": true,
+  "all_previous_declaration_metadata_preserved": true,
+  "changed_statement_bodies": [],
+  "changed_declaration_metadata": [],
+  "new_declarations": [],
+  "removed_declarations": [],
+  "changed_proof_blocks": [
+    "lem-m34-identity",
+    "lem-no-crossing-sturm",
+    "lem-other-branch",
+    "lem-pole-free",
+    "lem-psi-payment",
+    "lem-q-branch-monotone"
+  ],
+  "only_selected_proof_blocks_changed": true,
+  "unchanged_parameter_definition_files": {
+    "analytic.qmd": true,
+    "algebra-definitions.qmd": true
+  },
+  "protected_files_byte_identical": {
+    "goals.qmd": true,
+    "AGENTS.md": true,
+    ".qmd-prover/config.yml": true,
+    ".qmd-prover/statement-locks.json": true
+  },
+  "goals_sha256": "14d7b31de04ca7979e4362c08bd276324fd8dc0364b6ff7ab07ec2a2d6ba184f",
+  "qmd_prover_available": false,
+  "quarto_available": false,
+  "scope": "Exact statement, metadata, source-block, and protected-byte comparison; not a mathematical verifier verdict."
+}

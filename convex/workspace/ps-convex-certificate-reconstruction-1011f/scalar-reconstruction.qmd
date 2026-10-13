@@ -1,0 +1,143 @@
+---
+title: "c 占优有限标量目标的完整重建与条件预算"
+lang: zh-CN
+---
+
+::: {#def-pscc-scalar-coordinates-1011f .definition name="c 占优标量坐标和完整正因子" date="2026-10-11" export="def-pscc-scalar-coordinates-1011f" status="verified"}
+取 $r=(\sqrt5-1)/2$，故 $r^2+r=1$。设
+$$
+0\le t\le27/50,\quad0\le\sigma\le1,\quad-1\le u,v\le1,
+$$
+并定义
+$$
+m=1+rt^2(1-\sigma^2),\quad a=59m/100,\quad
+h_0=141/200-3t/5,\quad\delta=2-6m/5,\quad p=1+3m/5,
+$$
+$$
+B_0=3/2,\quad\gamma=9/10,\quad C_p=51543/917504,\quad C_m=22815/458752.
+$$
+令 $X=50t/27$、$Y=\sigma$，以及 $P=(u+1)/2$、$V=(v+1)/2$。这四个盒坐标都属于 $[0,1]$。
+:::
+
+::: {#lem-pscc-scalar-factors-1011f .lemma name="标量定义的恢复与正因子" date="2026-10-11" export="lem-pscc-scalar-factors-1011f"}
+@def-pscc-scalar-coordinates-1011f 中 $1\le m<6/5$，$a>0$，$h_0\ge381/1000$，$\delta>0$，$p>0$。
+若五节点数据满足 $\operatorname{avg}j=m$、$\operatorname{avg}x=\operatorname{avg}z=0$ 以及
+$$
+f_i=j_i-41m/100=a+2x_i+2rz_i,
+\quad j_i>41m/100,\quad\omega_i\ge1-6t/5,
+$$
+则 $a=59m/100$，且 $H_i=(j_i+m\omega_i)/2>mh_0$。
+:::
+
+::: {.proof of="lem-pscc-scalar-factors-1011f" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f，$0<r<2/3$，故
+$m\le1+(2/3)(27/50)^2<6/5$。
+因为 $r>0,t^2\ge0,1-\sigma^2\ge0$，还有 $m\ge1$。
+因此 $a=59m/100\ge59/100>0$，
+$\delta=2-6m/5>2-36/25=14/25>0$，
+且 $p=1+3m/5\ge8/5>0$。对 $h_0$，
+$h_0\ge141/200-(3/5)(27/50)=381/1000$。
+对假定的节点身份求平均给 $a=\operatorname{avg}f=59m/100$，而逐节点相加给
+$H_i>m[(41/100)+(1-6t/5)]/2=mh_0$。
+:::
+
+::: {#def-pscc-scalar-series-1011f .definition name="二十三均值输入对应的完整标量包络" date="2026-10-11" export="def-pscc-scalar-series-1011f" status="verified"}
+在 @def-pscc-scalar-coordinates-1011f 的坐标中，定义
+$$
+\begin{aligned}
+\mathrm{base}&=.36194590-.07902548t^2-.00168330t^3+.00452310t^4+.00011338t^5,\\
+e_A&=.00000002+.03366040t-.00262939t^3,\\
+G&=.08725812-.00769038t^2+.00024621t^4,\\
+A_{c,0}&=\mathrm{base}-t\sigma e_A-\gamma^7C_pt^6-\gamma^7C_m\sigma t^6,\\
+q_{\min}&=.03366039-.00262940t^2,\\
+z_p&=.15811441+.08164883t-.05064676t^2-.00701394t^3
++.00332636t^4+.00021835t^5+\gamma^7C_pt^6,\\
+z_m&=.67856037-.10453551t^2+.00168330t^3+.00545347t^4
+-.00005238t^5+\gamma^7C_mt^6,\\
+P_{\min}&=.15811440-.05064677t^2+.00332635t^4,\\
+M_{\min}&=.67856036-.10453552t^2+.00545346t^4.
+\end{aligned}
+$$
+这些式子在本章是精确定义；把它们当作真实参考 PDE 均值的包络，须另行提供对应源强度 $\kappa=6/5$ 的二十三区间与完整尾界。
+:::
+
+::: {#def-pscc-scalar-target-1011f .definition name="约尽所有除法后的有限目标" date="2026-10-11" export="def-pscc-scalar-target-1011f" status="verified"}
+采用 @def-pscc-scalar-coordinates-1011f、@def-pscc-scalar-series-1011f，定义
+$$
+\begin{aligned}
+V_2^\circ&=\delta^2/2+2r^2\sigma^2,\\
+F_{\rm hi}^\circ&=t^2[3\delta^2p^2/8+\delta rp\sigma
++(r^2/4)(\delta^2+8\delta p+4p^2)\sigma^2+2r^3\sigma^3+3r^4\sigma^4/2],\\
+F_C&=m^3h_0(m+2),\qquad e_C=(21/10)(2B_0+h_0-2)m/B_0^2,\\
+E^\circ&=(21/50)\{[1+(1-h_0)(1-2B_0)/B_0^2]V_2^\circ m^2+F_{\rm hi}^\circ/B_0^2\},\\
+d^\circ&=A_{c,0}+r(\sigma^2-1)/2-(t^2/2)(z_p+\sigma z_m)^2,\\
+\alpha&=r\delta(\delta+4p)/4,\qquad\beta=r^2(\delta+p),\\
+A_F&=7GF_C+e_C\alpha,\qquad B_F=e_C\beta,\\
+Q_F&=7F_C(q_{\min}+P_{\min}M_{\min})+(21/(10B_0^2))\delta rp,\\
+W_F&=(21/(10B_0^2))2r^3,\\
+U_{\rm geo}^\circ&=t(1+r)[(r+2)t-a(1+r)]
+-(3/5)(1+r)[t(5/2+r/4)-a(1+r)]^2.
+\end{aligned}
+$$
+这里 $E^\circ=E_F/t^2$、$d^\circ=D_0/t^2$、$U_{\rm geo}^\circ=U_{\rm geo}/t$ 仅为与交接原记号的对应，定义本身没有除以 $t$。
+令
+$$
+\begin{aligned}
+F={}&a[7d^\circ F_C-5E^\circ+A_Ft\sigma u-B_Ft\sigma^2v
++(t^2\sigma/2)(Q_F+\sigma^2W_F)(u+v)^2],\\
+g_\ell={}&at[(r/2+\ell)\sigma u-(r\ell+\ell^2/2)\sigma^2v]
+-t^2(1+r\ell\sigma^2)^2+(a^2/2)(1+\ell^2\sigma^2),\quad\ell=2,3,\\
+g_A={}&a[t^2\sigma u-U_{\rm geo}^\circ].
+\end{aligned}
+$$
+再定义
+$$
+\begin{aligned}
+\mu_2&=(3/5)X^2(1-Y),\\
+\mu_3&=(1-Y)(.78-.26X-.48X^2)+Y(.08-.16X+.18X^2),\\
+\mu_A&=(1-Y)(.26X-.06X^2)+Y(.82-.90X+3.12X^2),\\
+R_*&=F-\mu_2g_2-\mu_3g_3-\mu_Ag_A.
+\end{aligned}
+$$
+这定义在包括 $t=0$ 的闭盒上完整。
+:::
+
+::: {#lem-pscc-multiplier-nonnegative-1011f .lemma name="三个低次乘子的全盒非负性" date="2026-10-11" export="lem-pscc-multiplier-nonnegative-1011f"}
+@def-pscc-scalar-target-1011f 中的三个乘子在整个盒上非负。
+:::
+
+::: {.proof of="lem-pscc-multiplier-nonnegative-1011f" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f，$0\le X,Y\le1$。@def-pscc-scalar-target-1011f 中的四个二次式分别有分解
+$$
+\begin{aligned}
+.78-.26X-.48X^2&=.78(1-X)^2+1.30X(1-X)+.04X^2,\\
+.08-.16X+.18X^2&=.08(1-X)^2+.10X^2,\\
+.26X-.06X^2&=.26X(1-X)+.20X^2,\\
+.82-.90X+3.12X^2&=.82(1-X)^2+.74X(1-X)+3.04X^2.
+\end{aligned}
+$$
+每项非负，故与 $1-Y,Y$ 的非负组合也非负。$\mu_2$ 的非负性直接成立。
+:::
+
+::: {#prp-pscc-phase-identity-1011f .proposition name="有限残差的精确二次相位身份" date="2026-10-11" export="prp-pscc-phase-identity-1011f"}
+@def-pscc-scalar-target-1011f 的 $R_*$ 恰为
+$$
+R_*=C+A u+B v+H(u+v)^2,
+$$
+其中
+$$
+\begin{aligned}
+C={}&a(7d^\circ F_C-5E^\circ)
++\mu_2[t^2(1+2r\sigma^2)^2-a^2(1+4\sigma^2)/2]\\
+&+\mu_3[t^2(1+3r\sigma^2)^2-a^2(1+9\sigma^2)/2]
++a\mu_AU_{\rm geo}^\circ,\\
+A={}&at\sigma[A_F-(r/2+2)\mu_2-(r/2+3)\mu_3-t\mu_A],\\
+B={}&at\sigma^2[-B_F+(2r+2)\mu_2+(3r+9/2)\mu_3],\\
+H={}&(at^2\sigma/2)(Q_F+\sigma^2W_F).
+\end{aligned}
+$$
+:::
+
+::: {.proof of="prp-pscc-phase-identity-1011f" status="verified"}
+按 @def-pscc-scalar-target-1011f 的定义展开 $F-\mu_2g_2-\mu_3g_3-\mu_Ag_A$。分别收集常数项、$u$ 项和 $v$ 项，得到显示的 $C,A,B$；三个几何多项式都不含二次相位项，故 $H(u+v)^2$ 保持不变。所有公式均为多项式，故此展开也适用于 $t=0$。
+:::

@@ -1,0 +1,26 @@
+{
+  "reason": "Sources or transitive proof dependencies changed; prior engine tags are not carried forward",
+  "affected_facts": [
+    "cor-ppsm-coarse-full-means-1011",
+    "cor-ppusm-coarse-full-means-1011",
+    "def-ppusm-sharp-envelopes-1011",
+    "prp-ppcs-central-lorentz-closure-1011",
+    "prp-ppus-unit-lorentz-closure-1011",
+    "prp-ppusm-shared-phase-sharp-means-1011",
+    "thm-main-convex-pentagon-dirichlet",
+    "thm-ppcs-central-short-pressure-budget-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-ppus-unit-short-pressure-budget-1011",
+    "thm-tpm-convex-global-comparison-tpm1011",
+    "thm-tpm-no-exit-all-affine-tpm1011"
+  ],
+  "withdrawn_tags": [
+    "prp-ppusm-shared-phase-sharp-means-1011",
+    "thm-main-convex-pentagon-dirichlet",
+    "thm-ppcs-central-short-pressure-budget-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-ppus-unit-short-pressure-budget-1011",
+    "thm-tpm-convex-global-comparison-tpm1011",
+    "thm-tpm-no-exit-all-affine-tpm1011"
+  ]
+}

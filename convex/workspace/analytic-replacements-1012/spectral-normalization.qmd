@@ -1,0 +1,50 @@
+---
+title: "面积与双振幅关联下的谱余量归一化"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+---
+
+::: {#lem-arc-spectral-normalization-1012 .lemma name="中央源完整分母的统一双振幅界" date="2026-10-12" export="lem-arc-spectral-normalization-1012"}
+采用 @lem-arc-geometric-constants-1012 的 $r=(\sqrt5-1)/2$。
+设 $0\le s\le t\le T=27/50$，定义
+$$m=1+r(t^2-s^2),\quad a_g=59m/100,\quad h_0=141/200-3t/5,\quad
+F_C=m^3h_0(m+2).$$
+则 $m\ge1,a_g,F_C>0$，且
+$$a_g F_C\sqrt m\,(t^2+s^2)\le\frac{24957}{10000}t^2.$$
+在 $t>0$ 时此界严格。面积 m 与两个振幅保持原来的关联。
+:::
+
+::: {.proof of="lem-arc-spectral-normalization-1012"}
+常数界使用 @lem-arc-geometric-constants-1012；特别 $r<\rho:=619/1000<31/50$、$T^2<3/10$。
+$t=0$ 时 $s=0$，声明显然成立。下设 $t>0$，令
+$$w=1-s^2/t^2\in[0,1],\qquad m=1+rt^2w,\qquad h_0>0.$$
+$f(w)=(1+rt^2w)^5$ 为凸函数，故其图像不高于端点弦，
+$$m^5\le1+w[(1+rt^2)^5-1].$$
+正系数展开和 $t^2\le T^2<3/10$ 给
+$$\frac{(1+rt^2)^5-1}{t^2}
+\le\sum_{j=1}^5\binom5j(31/50)^j(3/10)^{j-1}
+<3.1+1.16+.215+.020+.001=4.496<9/2.$$
+每项上界都是所显示有理数的直接比较，未对振幅取样。
+因为 $w(2-w)\le1$，
+$$(1+s^2/t^2)m^5\le(2-w)(1+(9/2)t^2w)\le2+(9/2)t^2.$$
+又 $\sqrt m\le m$、$m+2\le3+\rho t^2$，所以
+$$\frac{a_gF_C\sqrt m(t^2+s^2)}{t^2}
+\le\frac{59}{100}(2+\tfrac92t^2)(3+\rho t^2)(\tfrac{141}{200}-\tfrac35t).$$
+下面在整个 $[0,T]$ 证明右边的三因子乘积不超过 $423/100$。
+置
+$$G(t)=\frac{423}{100}-(2+\tfrac92t^2)(3+\rho t^2)(\tfrac{141}{200}-\tfrac35t).$$
+$G(0)=0$；$t>0$ 时准确展开为
+$$\frac{G(t)}t=\frac{18}{5}-\frac{1039029}{100000}t+
+\frac{22107}{2500}t^2-\frac{785511}{400000}t^3+\frac{16713}{10000}t^4.$$
+向安全方向取界并完成平方，
+$$\begin{aligned}
+G(t)/t&\ge\frac{18}{5}-\frac{52}{5}t+\frac{44}{5}t^2-2T^3\\
+&=\frac{44}{5}(t-13/22)^2+\frac{145987}{687500}>0.
+\end{aligned}$$
+因此乘积严格小于 $423/100$，乘 $59/100$ 即为 $24957/10000$。
+:::
+

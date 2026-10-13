@@ -1,0 +1,27 @@
+{
+  "affected_facts": [
+    "def-ppusm-sharp-envelopes-1011",
+    "lem-arc-bessel-tail-1012",
+    "lem-arc-full-kernel-payment-1012",
+    "lem-arc-j-radial-1012",
+    "lem-arc-low-mode-pairing-1012",
+    "lem-arc-pq-radial-1012",
+    "lem-ppsm-ten-packets-1011",
+    "lem-ppusm-ten-packets-1011",
+    "prp-ppcs-central-lorentz-closure-1011",
+    "prp-ppsm-shared-phase-sharp-means-1011",
+    "prp-ppus-unit-lorentz-closure-1011",
+    "prp-ppusm-shared-phase-sharp-means-1011",
+    "thm-arc-actual-spin-1012",
+    "thm-arc-finite-mass-lorentz-1012",
+    "thm-main-convex-pentagon-dirichlet",
+    "thm-ppcs-central-short-pressure-budget-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-ppus-unit-short-pressure-budget-1011",
+    "thm-tpm-convex-global-comparison-tpm1011",
+    "thm-tpm-no-exit-all-affine-tpm1011"
+  ],
+  "withdrawn_tags": [
+    "prp-ppsm-shared-phase-sharp-means-1011"
+  ]
+}

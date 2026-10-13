@@ -1,0 +1,77 @@
+\begin{thebibliography}{10}
+
+\bibitem{nc:BB}
+Beniamin Bogosel and Dorin Bucur.
+\newblock On the polygonal faber--krahn inequality.
+\newblock {\em Journal de l'École polytechnique — Mathématiques},
+  11:19--105, 2024.
+\newblock Section 1, pages 20--21; Section 7, page 86.
+
+\bibitem{nc:brock}
+Friedemann Brock.
+\newblock Continuous steiner-symmetrization.
+\newblock {\em Mathematische Nachrichten}, 172:25--48, 1995.
+
+\bibitem{nc:brock2000}
+Friedemann Brock.
+\newblock Continuous rearrangement and symmetry of solutions of elliptic
+  problems.
+\newblock {\em Proceedings of the Indian Academy of Sciences: Mathematical
+  Sciences}, 110:157--204, 2000.
+\newblock Theorem 3.2 and Corollary 3.2.
+
+\bibitem{nc:Capriani}
+Giuseppe~Maria Capriani.
+\newblock The steiner rearrangement in any codimension.
+\newblock {\em Calculus of Variations and Partial Differential Equations},
+  49:517--548, 2014.
+\newblock Theorem 2.3 and conditions (2.12)--(2.14).
+
+\bibitem{nc:CF}
+Andrea Cianchi and Nicola Fusco.
+\newblock Steiner symmetric extremals in pólya--szegö-type inequalities.
+\newblock {\em Advances in Mathematics}, 203:673--728, 2006.
+\newblock Theorem 2.2.
+
+\bibitem{FS}
+Pedro Freitas and Bartłomiej Siudeja.
+\newblock Bounds for the first dirichlet eigenvalue of triangles and
+  quadrilaterals.
+\newblock {\em ESAIM: Control, Optimisation and Calculus of Variations},
+  16:648--676, 2010.
+
+\bibitem{nc:grisvard}
+Pierre Grisvard.
+\newblock {\em Elliptic Problems in Nonsmooth Domains}.
+\newblock Pitman, 1985.
+
+\bibitem{nc:henrot2006}
+Antoine Henrot.
+\newblock {\em Extremum Problems for Eigenvalues of Elliptic Operators}.
+\newblock Birkhäuser, 2006.
+\newblock Chapter 3, especially Section 3.3.
+
+\bibitem{nc:henrot}
+Antoine Henrot and Michel Pierre.
+\newblock {\em Variation et optimisation de formes}.
+\newblock Springer, 2005.
+
+\bibitem{nc:kato}
+Tosio Kato.
+\newblock {\em Perturbation Theory for Linear Operators}.
+\newblock Springer, corrected second edition, 1980.
+\newblock Chapter VII, Section 4; Chapter VI, Section 2.
+
+\bibitem{PS}
+George Pólya and Gábor Szegő.
+\newblock {\em Isoperimetric Inequalities in Mathematical Physics}, volume~27
+  of {\em Annals of Mathematics Studies}.
+\newblock Princeton University Press, 1951.
+
+\bibitem{nc:sverak}
+Vladimír Šverák.
+\newblock On optimal shape design.
+\newblock {\em Journal de Mathématiques Pures et Appliquées}, 72:537--551,
+  1993.
+
+\end{thebibliography}

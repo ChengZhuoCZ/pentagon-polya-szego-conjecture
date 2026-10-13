@@ -1,0 +1,207 @@
+---
+title: "压力路线的独立几何重建：全局 Fourier 规范与四边形出口"
+lang: zh-CN
+---
+
+::: {#def-pressure-rebuild-1011-data .definition name="单位五点参考与实 Fourier 系数" date="2026-10-11" export="def-pressure-rebuild-1011-data" status="verified"}
+设 $p_0,\ldots,p_4\in\mathbb R^2$ 按逆时针顺序组成严格凸五边形 $P$。
+下标按模五解释，复数与实平面按实部、虚部识别。定义
+$$
+\theta=\frac{2\pi}{5},\quad \omega=e^{i\theta},\quad z_j=\omega^j,
+\quad s=\sin\theta,\quad
+\gamma=\frac{\sqrt5-1}{2},\quad \varphi=\frac{1+\sqrt5}{2},
+\quad A_0=\frac{5s}{2}.
+$$
+记 $r_j=(\Re z_j,\Im z_j)^{\mathsf T}$、
+$r_j^{(2)}=(\Re z_j^2,\Im z_j^2)^{\mathsf T}$，并定义
+$$
+\bar p=\frac15\sum_jp_j,\qquad
+L=\frac25\sum_j(p_j-\bar p)r_j^{\mathsf T},\qquad
+B=\frac25\sum_j(p_j-\bar p)(r_j^{(2)})^{\mathsf T}.
+$$
+$A_0$ 是顶点为 $z_j$ 的参考正五边形的面积。$L$ 是实际顶点的第一实
+Fourier 系数矩阵，不是可另行优化后仍保持同一物理域的自由度。
+:::
+
+::: {#prp-pressure-rebuild-1011-global-fourier .proposition name="第一 Fourier 矩阵的全局正行列式及唯一规范" date="2026-10-11" export="prp-pressure-rebuild-1011-global-fourier"}
+采用 @def-pressure-rebuild-1011-data，令 $A=|P|$。则
+$$
+p_j=\bar p+Lr_j+Br_j^{(2)},\qquad
+\boxed{\frac A2<A_0\det L<\varphi A.}
+\tag{1}
+$$
+特别，$L$ 可逆且 $\det L>0$。置 $C=L^{-1}B$，则存在唯一复数 $c,d$，
+使实线性映射 $C$ 写为 $C(w)=cw+d\bar w$，从而
+$$
+\boxed{p_j=\bar p+L(q_j),\qquad q_j=z_j+cz_j^2+dz_j^{-2}.}
+\tag{2}
+$$
+若 $C=(C_{ab})_{a,b=1}^2$，则
+$$
+c=\frac{C_{11}+C_{22}}2+i\frac{C_{21}-C_{12}}2,
+\qquad
+d=\frac{C_{11}-C_{22}}2+i\frac{C_{21}+C_{12}}2.
+\tag{3}
+$$
+这里的唯一性针对固定标签和固定参考单位根。
+:::
+
+::: {.proof of="prp-pressure-rebuild-1011-global-fourier" status="verified"}
+采用 @def-pressure-rebuild-1011-data 的参考向量。
+等比数列求和给 $\sum_{j=0}^4\omega^{kj}=0$，只要整数 $k$ 不被五整除。
+取实部和虚部，得到
+$$
+\sum_jr_jr_j^{\mathsf T}
+=\sum_jr_j^{(2)}(r_j^{(2)})^{\mathsf T}=\frac52I,
+\qquad
+\sum_jr_j(r_j^{(2)})^{\mathsf T}=0.
+$$
+四个非恒定实模态是零均值实五元组的正交基，逐坐标展开即得第一式及
+$L,B$ 的唯一性。
+
+置
+$$
+S_1=\sum_j\det(p_j,p_{j+1})=2A,
+\qquad S_2=\sum_j\det(p_j,p_{j+2}).
+$$
+二者在同时平移全部顶点后不变。具体地，对 $k=1,2$ 及任意平移向量 $v$，
+$$
+\begin{aligned}
+\sum_j\det(p_j+v,p_{j+k}+v)-\sum_j\det(p_j,p_{j+k})
+&=\det\!\left(\sum_jp_j,v\right)+\det\!\left(v,\sum_jp_{j+k}\right)=0,
+\end{aligned}
+$$
+因为循环移位 $j\mapsto j+k$ 置换五个指标，且行列式反对称。
+严格凸性使下列每个三顶点三角形均有
+严格正的有向面积，因此
+$$
+\begin{aligned}
+0&<\sum_j\det(p_{j+1}-p_j,p_{j+2}-p_j)=2S_1-S_2,\\
+0&<\sum_j\det(p_{j+2}-p_j,p_{j+4}-p_j)=S_1+2S_2.
+\end{aligned}
+$$
+所以 $-S_1/2<S_2<2S_1$。对定义中的二维矩阵用 Cauchy--Binet 公式，
+将十个下标对按模五间距分组，得到
+$$
+\det L=\frac4{25}\bigl(sS_1+\sin(2\theta)S_2\bigr).
+$$
+由
+$s^2=(5+\sqrt5)/8$、$s\sin(2\theta)=\sqrt5/4$，可将此式写成
+$$
+A_0\det L=\frac{5+\sqrt5}{20}S_1+\frac{\sqrt5}{10}S_2.
+$$
+代入 $S_2$ 的严格上下界，得到下界 $S_1/4=A/2$ 和上界
+$(1+\sqrt5)S_1/4=\varphi A$，证明 (1)。
+
+现在 $C=L^{-1}B$ 有定义。对任意实矩阵 $C$，直接比较
+$C(x,y)^{\mathsf T}$ 与 $c(x+iy)+d(x-iy)$ 的实、虚部，便得到唯一的
+(3)。将它代入第一式，并用 $\overline{z_j^2}=z_j^{-2}$，得到 (2)。
+:::
+
+::: {#def-pressure-rebuild-1011-canonical-fans .definition name="规范五边形与参考圆心扇" date="2026-10-11" export="def-pressure-rebuild-1011-canonical-fans" status="verified"}
+参考常数 $\gamma,s$、节点 $z_j$ 及模五指标均采用 @def-pressure-rebuild-1011-data。
+采用 @prp-pressure-rebuild-1011-global-fourier 的 $c,d,L,q_j$，记
+$$
+Q=\operatorname{conv}\{q_0,\ldots,q_4\},\qquad
+\Delta=1+\gamma(|c|^2-|d|^2),\qquad
+a_j=\det(q_j,q_{j+1}).
+$$
+将复数仍视为列向量，定义
+$$
+T_j=\operatorname{conv}(0,z_j,z_{j+1}),\qquad
+\mathsf B_j=[q_j\ q_{j+1}][z_j\ z_{j+1}]^{-1},
+\qquad
+\mathsf J=\begin{pmatrix}0&-1\\1&0\end{pmatrix}.
+$$
+参考矩阵的行列式为 $s>0$，故 $\mathsf B_j$ 有定义。
+:::
+
+::: {.proof of="def-pressure-rebuild-1011-canonical-fans"}
+@def-pressure-rebuild-1011-data 给 $z_j=e^{2\pi i j/5}$、$s=\sin(2\pi/5)$，
+下标按模五。因此
+$\det[z_j\ z_{j+1}]=\Im(\bar z_jz_{j+1})=\sin(2\pi/5)=s>0$，
+其中 $0<2\pi/5<\pi$。所有参考矩阵都可逆。
+$c,d,L,q_j$ 由 @prp-pressure-rebuild-1011-global-fourier 唯一给出，
+故列出的凸包、面积参数与有限矩阵定义均确定。
+:::
+
+::: {#prp-pressure-rebuild-1011-area-fan-formulas .proposition name="面积、五扇矩阵与全局形状参数盒" date="2026-10-11" export="prp-pressure-rebuild-1011-area-fan-formulas"}
+采用 @def-pressure-rebuild-1011-canonical-fans。则 $Q$ 严格凸，顶点均值为零，
+并有
+$$
+|Q|=A_0\Delta,\qquad |P|=\det L\,A_0\Delta,
+\qquad \gamma<\Delta<2.
+\tag{4}
+$$
+置 $U=\omega^2-\omega^{-1}$、$V=\omega^{-2}-\omega^{-1}$，则
+$$
+\boxed{a_j=s\Delta+\Im(Uc\omega^j+Vd\omega^{2j})>0,}
+\qquad \sum_ja_j=5s\Delta.
+\tag{5}
+$$
+特别有保守的全局界
+$$
+\boxed{|c|<\Delta<2,\qquad |d|<\varphi\Delta<2\varphi<\frac{13}4.}
+\tag{6}
+$$
+五扇矩阵及其行列式为
+$$
+\mathsf B_j=
+\frac{q_{j+1}(\mathsf Jz_j)^{\mathsf T}
+-q_j(\mathsf Jz_{j+1})^{\mathsf T}}s,
+\qquad
+\det\mathsf B_j=\frac{a_j}s>0.
+\tag{7}
+$$
+物理扇上的映射矩阵是 $L\mathsf B_j$，其面积 Jacobian 和能量矩阵分别为
+$$
+\jmath_j=\det L\,\frac{a_j}s,
+\qquad
+G_j=\jmath_j\,\mathsf B_j^{-1}L^{-1}L^{-\mathsf T}\mathsf B_j^{-\mathsf T}.
+\tag{8}
+$$
+具体地，若 $F$ 在每片 $T_j$ 上为 $X\mapsto\bar p+L\mathsf B_jX$，
+而 $u\in H_0^1(P)$、$f=u\circ F$，则
+$$
+\int_Pu^2=\sum_j\jmath_j\int_{T_j}f^2,
+\qquad
+\int_P|\nabla u|^2=\sum_j\int_{T_j}\nabla f^{\mathsf T}G_j\nabla f.
+\tag{9}
+$$
+:::
+
+::: {.proof of="prp-pressure-rebuild-1011-area-fan-formulas" status="verified"}
+几何及常数数据取 @def-pressure-rebuild-1011-data：$P$ 是按正向严格凸边界排序的五个 $p_j$ 的凸包，参考节点及 $\theta,s,\gamma,\varphi,A_0$ 也使用该定义。
+由 @prp-pressure-rebuild-1011-global-fourier，$Q=L^{-1}(P-\bar p)$，
+故严格凸且方向不变。离散单位根求和使 $\sum_jq_j=0$。严格凸多边形的
+顶点平均在内部：相对于任一支持直线，五个顶点的内侧距离均非负，且至少
+一个严格正，其平均距离因而严格正。因此 $0$ 在 $Q$ 内部，且各 $a_j>0$。
+
+对 @def-pressure-rebuild-1011-canonical-fans 的 $q_j$，展开
+$a_j=\Im(\overline{q_j}q_{j+1})$。来自 $c,d$ 的二次交叉项互为共轭，
+虚部相消；二次对角项为
+$\sin(2\theta)(|c|^2-|d|^2)$，而一次项为
+$\Im(Uc\omega^j+Vd\omega^{2j})$。利用
+$\sin(2\theta)=s\gamma$，得到 (5) 的等式。再对 $j$ 求和，非恒定
+单位根项消失，所以鞋带公式给 $|Q|=A_0\Delta$。面积变换给 $|P|$ 的式子，
+而 @prp-pressure-rebuild-1011-global-fourier 的 (1) 给
+$1/2<1/\Delta<\varphi$，即 (4)。
+
+两个系数的模长为 $|U|=2s$、$|V|=2s\gamma$。对 (5) 取离散 Fourier
+系数，得到
+$$
+\sum_ja_j\omega^{-j}=\frac{5Uc}{2i},\qquad
+\sum_ja_j\omega^{-2j}=\frac{5Vd}{2i}.
+$$
+所有 $a_j$ 严格正，而五个单位根方向不相同，因此三角不等式严格，右侧模长
+分别小于 $\sum_ja_j=5s\Delta$。除以系数的模长得到
+$|c|<\Delta$、$|d|<\Delta/\gamma=\varphi\Delta$。
+结合 $\Delta<2$ 及 $\sqrt5<9/4$，证明 (6)。
+
+对二列参考矩阵直接求逆，得到 (7)，并得到其行列式。两组圆心扇分别划分
+参考正五边形和 $Q$，而相邻片在共享径向边上的映射相同。故 $F$ 是有限分片
+仿射的双 Lipschitz 映射，且每片行列式严格正。逐片链式法则给
+$\nabla u=(L\mathsf B_j)^{-\mathsf T}\nabla f$，换元即得 (8)--(9)。
+先对分片光滑函数计算，再由双 Lipschitz 换元和 $H^1$ 密度推广，证明所述
+Sobolev 形式。这里没有优化或消去实际矩阵 $L$。
+:::

@@ -1,0 +1,55 @@
+{
+  "baseline": "凸五边形-熵几何谱桥解析替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/corner-barrier.qmd",
+    "workspace/analytic-replacements-1012/phase-short-payments.qmd"
+  ],
+  "retired_qmd": [],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+    "workspace/ps-pressure-low-ratio-rank-one-payment-1011.qmd",
+    "workspace/ps-pressure-spectral-bridge-audit-1011.qmd",
+    "workspace/true-pressure-review-1011/analysis-supplements.qmd"
+  ],
+  "old_active_qmd_bytes": 457562,
+  "new_active_qmd_bytes": 448028,
+  "old_fact_count": 135,
+  "new_fact_count": 138,
+  "changed_old_nodes": [
+    "lem-ppol-linear-second-phase-cost-1011",
+    "lem-ppol-two-interval-discriminants-1011",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-pressure-rebuild-1011-attainment",
+    "prp-pressure-rebuild-1011-regular-calibration",
+    "prp-psgs-pressure-image-1011h",
+    "prp-tpr-support-hadamard-tpr1011",
+    "thm-psgs-pressure-polarity-1011h",
+    "thm-psgs-weak-transport-dual-1011h"
+  ],
+  "new_nodes": [
+    "lem-arc-corner-barrier-1012",
+    "lem-arc-pressure-gap-1012",
+    "lem-arc-phase-short-payments-1012"
+  ],
+  "moved_node": {
+    "id": "prp-pressure-rebuild-1011-regular-calibration",
+    "from": "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+    "to": "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd"
+  },
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true,
+  "archived_original_count": 4,
+  "exact_check_count": 103,
+  "phase_table_entries_replaced": {
+    "discriminants": 50,
+    "linear_cost": 9
+  },
+  "long_discriminant_lower_bound": {
+    "old": "0.00012",
+    "new": "9/5000"
+  },
+  "scope": "Local analytic replacements and stronger constants; not a global PDE proof audit."
+}

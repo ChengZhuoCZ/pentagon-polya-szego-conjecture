@@ -1,0 +1,363 @@
+---
+title: "相反角点：保留双振幅的均值包络与无损二阶截断"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - prp-pscc-phase-identity-1011f
+    - from: ps-pressure-opposite-corner-m-tail-1011.qmd
+      use:
+        - lem-ppocm-exact-fifth-degree-tail-1011
+---
+
+::: {#lem-ppocr-refined-joint-mean-1011 .lemma name="保留两振幅相关性的低次均值包络" date="2026-10-11" export="lem-ppocr-refined-joint-mean-1011"}
+采用 @def-pscc-scalar-series-1011f 和
+@def-pscc-scalar-target-1011f，令
+$T=27/50$、$0\le t\le T$、$0\le\sigma\le1$、
+$D=d^\circ-Gt\sigma$。
+定义
+$$
+\begin{aligned}
+D_*={}&.05292-.099t^2\\
+&-\{.08726002t+(.141+.0555t-.046t^2)t^2\}\sigma\\
+&+\{.309-.23023t^2+.0677t^4-.005t^6\}\sigma^2 .
+\end{aligned}
+\tag{1}
+$$
+则整个矩形上 $D>D_*$。
+此外，$D_*$ 严格大于旧二维下界
+$$
+D_{\rm old}=.0529-.1t^2-(.08726002t+.165t^2)\sigma
++(.309-.231t^2)\sigma^2,
+\tag{2}
+$$
+并满足
+$$
+D_* > .0529-.133t^2>0.
+\tag{3}
+$$
+同时 $D_{\rm old}\ge .0529-.133t^2$，这里允许 $t=0$ 时取等。
+:::
+
+::: {.proof of="lem-ppocr-refined-joint-mean-1011" status="verified"}
+以下推导沿用 @def-pscc-scalar-target-1011f 所给对象、记号与适用条件。
+所有计算直接使用 @def-pscc-scalar-series-1011f 的有限表达。
+由 @def-pscc-scalar-coordinates-1011f 的 $r^2+r-1=0$，
+得到 $.618<r<.61804$；
+$\tau_p=\gamma^7C_p<.027$、$\tau_m=\gamma^7C_m<.024$，
+分别由 $C_p<9/160$、$C_m<1/20$、$\gamma^7<12/25$ 得到。
+
+先记录严格正的两个运输多项式：
+$$
+\begin{aligned}
+0<z_p&\le .158115+.081649t-.0473t^2,\\
+0<z_m&\le .678561-.0999t^2 .
+\end{aligned}
+\tag{4}
+$$
+正下界分别由
+$.15811441-.05064676T^2-.00701394T^3>0$ 和
+$.67856037-.10453551T^2-.00005238T^5>0$ 得到。
+对第一上界，舍去负三次项、把正四次及以上项除以 $t^2$ 后取端点，
+剩余二次系数不超过
+$$
+-.05064+.003327T^2+.000219T^3+.027T^4
+=-.047339537064<-.0473.
+$$
+对第二上界，同样舍去负五次项，
+剩余二次系数不超过
+$$
+-.10453551+.00168330T+.00545347T^2+.024T^4<-.0999.
+$$
+这证明 (4)。两个上界本身在整个区间为正，故可以相乘。
+
+在 $\sigma=0$，仍可用 $z_p<.19$（由 (4) 的递增二次式端点得到）。
+保留原 $\mathrm{base}$ 的正四次项，舍去正五次项，
+$$
+d^\circ(t,0)>
+.0529259-t^2\{
+.07902548+.00168330t+.01805+.027t^4-.00452310t^2\}.
+$$
+$\, .027t^4-.00452310t^2$ 关于 $t^2$ 为凸函数，
+因此其最大值取于 $t=0$ 或 $t=T$；
+较大端点值为 $.00097688916$。所以花括号不超过
+$$
+.07902548+.000908982+.01805+.00097688916
+=.09896135116<.099.
+$$
+所以
+$$
+d^\circ(t,0)>.05292-.099t^2.
+\tag{5}
+$$
+
+现在保留线性及二次的 $\sigma$ 相关项。
+原式的准确差为
+$$
+d^\circ(t,\sigma)-d^\circ(t,0)
+=-\sigma\{te_A+\tau_mt^6+t^2z_pz_m\}
++\sigma^2\{r/2-t^2z_m^2/2\}.
+\tag{6}
+$$
+$e_A=.00000002+.03366040t-.00262939t^3$。
+应用 (4)，去掉单独的 $.00000002t$ 后，
+(6) 花括号除以 $t^2$ 的上界为
+$$
+\begin{aligned}
+&.140951072515+.055403827089t-.0505210138t^2\\
+&\hspace{18mm}-.0081567351t^3+.02872527t^4\\
+&\qquad < .141+.0555t-.046t^2.
+\end{aligned}
+\tag{7}
+$$
+为验证最后一步，差为
+$$
+.000048927485+.000096172911t
++t^2(.0045210138+.0081567351t-.02872527t^2).
+$$
+最后的二次多项式凹，在 $0,T$ 两端均为正：
+其 $T$ 端点为 $.000549362022>0$。
+因此 (7) 成立。
+
+同样，由第二个 (4) 上界，
+$$
+\frac{z_m^2}{2}
+\le\frac{(.678561-.0999t^2)^2}{2}
+<.23023-.0677t^2+.005t^4,
+$$
+因为三个准确系数分别为
+$.2302225153605$、$-.0677882439$、$.004990005$。
+再用 $r/2>.309$，
+得到 (1) 的二次 $\sigma$ 系数。
+最后，$G<.08726$ 由
+$-.00769038+.00024621T^2<0$ 直接得到。
+把这些同源界代入 (5)--(6)，即得 $D>D_*$。
+
+两个下界的准确差为
+$$
+\begin{aligned}
+D_*-D_{\rm old}={}&.00002+.001t^2
++(.024-.0555t+.046t^2)t^2\sigma\\
+&+(.00077t^2+.0677t^4-.005t^6)\sigma^2.
+\end{aligned}
+$$
+线性项的括号在 $[0,T]$ 递减且端点为 $.0074436>0$；
+二次项的系数为 $t^2[.00077+t^2(.0677-.005t^2)]$，
+其中 $.0677-.005t^2\ge.0677-.005T^2=.066242>0$，故二次项非负。
+常数项 $.00002>0$ 于是给 $D_*>D_{\rm old}$。
+最后对 (2) 关于 $\sigma$ 配平方。
+线性项除以 $t$ 不超过 $.08726002+.165T<.177$，
+二次项不小于 $.309-.231T^2>.24164$。故
+$$
+D_{\rm old}\ge .0529-
+\left(.1+\frac{.177^2}{4(.24164)}\right)t^2
+\ge.0529-.133t^2.
+$$
+最后一个非严格比较由 $.177^2<.033\cdot4(.24164)$ 与 $t^2\ge0$ 得到。
+结合已证 $D_*>D_{\rm old}$ 仍得到 (3) 中的严格号，包括 $t=0$。
+在端点 $.0529-.133T^2=.0141172>0$，证明其正性。
+:::
+
+::: {#lem-ppocr-third-fifth-joint-tail-1011 .lemma name="三次至五次均值尾项的联合严格信用" date="2026-10-11" export="lem-ppocr-third-fifth-joint-tail-1011"}
+采用 @lem-ppocm-exact-fifth-degree-tail-1011 的准确系数，
+允许其中的 $D$ 为任何满足 $D\ge D_{\rm old}$ 的函数。
+这里 $D_{\rm old}$ 是 @lem-ppocr-refined-joint-mean-1011 的 (2)。
+则整个振幅矩形上
+$$
+c_3>\frac{439}{2600},\qquad c_4>-\frac7{10},
+\qquad c_5>-\frac{51}{100}.
+\tag{8}
+$$
+因此，对真实 $z=rt^2(1-\sigma^2)$，
+$$
+\boxed{
+c_3z^3+c_4z^4+c_5z^5
+\ge \frac{549}{65000}z^3\ge0 .
+}
+\tag{9}
+$$
+:::
+
+::: {.proof of="lem-ppocr-third-fifth-joint-tail-1011" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f，
+$r=(\sqrt5-1)/2>0$ 且 $r^2+r=1$。
+多项式 $p(x)=x^2+x-1$ 在 $x\ge0$ 严格递增，
+并且 $p(.618)=-.000076<0$、$p(.61804)=.0000134416>0$，
+故 $.618<r<.61804$；以下有理端点代入使用的正是此隔离区间。
+使用 @lem-ppocm-exact-fifth-degree-tail-1011 的记号
+$g,\theta,\varphi,e,H$，及 $h=.705-.6t$、$X=t/T$。
+由 @def-pscc-scalar-target-1011f 且 @def-pscc-scalar-coordinates-1011f 中 $Y=\sigma$，
+准确有
+$$
+\mu_A=.26X-.06X^2+(.82-1.16X+3.18X^2)\sigma.
+$$
+因此对 $c_3$ 代入二维下界 (2) 及此同一个乘子身份，得
+$$
+c_3\ge R_0(t)+R_1(t)\sigma+R_2(t)\sigma^2,
+$$
+其中
+$$
+\begin{aligned}
+R_0={}&126gh(.0529-.1t^2)+.4\theta(1+8h)
+-.864\varphi t^2-g^3H(.26X-.06X^2),\\
+R_1={}&-126gh(.08726002t+.165t^2)
++.72\varphi rt^2+2.64getr\\
+&-g^3H(.82-1.16X+3.18X^2),\\
+R_2={}&126gh(.309-.231t^2)-2\theta(1+8h)r^2
++.72\varphi r^2t^2+.6ger^2t .
+\end{aligned}
+\tag{10}
+$$
+这三个三次多项式在 $[0,T]$ 都严格递减。
+为给出可逐项复核的短证明，写 $R_j=a_j+b_jt+\gamma_jt^2+\delta_jt^3$。
+展开 (10)、使用 $r^2=1-r$，其非恒定系数为：
+
+| $j$ | $b_j$ | $\gamma_j$ | $\delta_j$ |
+|---|---|---|---|
+|$0$|$-2669927r/22500000-42028001/15000000$|$205379r/4050000-9518647/1687500$|$11151/2500$|
+|$1$|$1353637r/450000-5668709005291/1500000000000$|$-64059899r/20250000-2965601791673/337500000000$|$367983/50000$|
+|$2$|$-471233r/250000-1487213/125000$|$-1239r/6250-119084007/10000000$|$2575881/250000$|
+
+分别可取严格上界
+$$
+(b_j,\gamma_j,\delta_j)<
+(-2.8,-5,4.5),\quad(-1.8,-8,7.4),\quad(-11,-11,10.4).
+$$
+由于每个 $\delta_j>0$，有
+$R_j'\le b_j+t(2\gamma_j+3\delta_jT)<0$。
+因此只需检查 $t=T$。按 $r$ 系数的符号代入
+$.618\le r\le.61804$，得到
+$$
+\begin{aligned}
+R_0(T)&\ge .64+\frac{1426664033}{117187500000}>.64,\\
+R_1(T)&\ge -3.5+\frac{7701102487621}{125000000000000}>-3.5,\\
+R_2(T)&\ge 6.5+\frac{21240002299}{375000000000}>6.5.
+\end{aligned}
+$$
+于是
+$$
+c_3>.64-3.5\sigma+6.5\sigma^2
+=6.5(\sigma-7/26)^2+\frac{439}{2600}.
+\tag{11}
+$$
+
+对 $c_4,c_5$，只需要
+@lem-ppocr-refined-joint-mean-1011 已证明的
+$D_{\rm old}\ge.0529-.133t^2$。
+代入准确系数，且只舍去 $c_4$ 中正的混合项，得到
+$$
+\begin{aligned}
+c_4\ge&f_4(t):=-.018744005-.1246434t-3.24599415t^2+2.307018t^3,\\
+c_5\ge&f_5(t):=-.504130515+.3446898t-.49429905t^2+.329574t^3.
+\end{aligned}
+\tag{12}
+$$
+$f_4'<0$，因为
+$$
+f_4'\le-.1246434+t(-6.4919883+6.921054T)<0.
+$$
+直接代入端点给 $f_4(T)>-.67>-.7$。
+而
+$$
+f_5'=.3446898-.9885981t+.988722t^2
+>.344-.99t+.98t^2
+\ge .344-\frac{.99^2}{4(.98)}>0.
+$$
+故 $f_5(t)\ge f_5(0)>-.51$。
+这证明 (8)。
+
+原坐标 @def-pscc-scalar-coordinates-1011f 给 $0\le z<1/5$。
+所以
+$$
+c_3+c_4z+c_5z^2>
+\frac{439}{2600}-\frac7{50}-\frac{51}{2500}
+=\frac{549}{65000}>0.
+$$
+乘以 $z^3$ 即得 (9)，在 $z=0$ 时非严格号保留等号。
+:::
+
+::: {#def-ppocr-retained-quadratic-corner-1011 .definition name="保留真实二阶信用的相反角点下界" date="2026-10-11" export="def-ppocr-retained-quadratic-corner-1011" status="verified"}
+采用 @def-pscc-scalar-coordinates-1011f 的 $r=(\sqrt5-1)/2$、$t,\sigma$，
+以及 @def-pscc-scalar-target-1011f 的同一 $\mu_2,\mu_3,\mu_A$。
+在 @lem-ppocm-exact-fifth-degree-tail-1011 明确给出的独立参数多项式
+$\mathcal E_D(M;t,\sigma)$ 中令
+$D=D_*$，其中 $D_*$ 为 @lem-ppocr-refined-joint-mean-1011 的准确多项式。
+所得为 $\mathcal E_*(M;t,\sigma)$，并定义
+$$
+\underline c_j(t,\sigma)=[z^j]\mathcal E_*(1+z;t,\sigma).
+$$
+在真实 $z=rt^2(1-\sigma^2)$ 下，置
+$$
+\boxed{\mathcal Q(t,\sigma)=
+\underline c_0+\underline c_1z+\underline c_2z^2.}
+\tag{13}
+$$
+所有系数均由一条原始有限表达构造，没有分别选择相位或均值。
+:::
+
+::: {#prp-ppocr-corner-lower-reduction-1011 .proposition name="相反角点向完整二维七次下界的规约" date="2026-10-11" export="prp-ppocr-corner-lower-reduction-1011"}
+采用 @prp-pscc-phase-identity-1011f 的真实 $C,A,B$，令
+$\mathcal P=C-A+B-1/2500$。
+在整个 $0\le t\le27/50,\ 0\le\sigma\le1$ 上，
+$$
+\boxed{
+\mathcal P>
+\mathcal Q(t,\sigma)+\frac{549}{65000}z^3.
+}
+\tag{14}
+$$
+其中 $\mathcal Q$ 是 @def-ppocr-retained-quadratic-corner-1011；
+它关于 $\sigma$ 的次数至多为 $7$。
+:::
+
+::: {.proof of="prp-ppocr-corner-lower-reduction-1011" status="verified"}
+参数域及真实面积因子采用 @def-pscc-scalar-coordinates-1011f：
+$r=(\sqrt5-1)/2>0$、$0\le t\le27/50$、$0\le\sigma\le1$，
+并且 $z=rt^2(1-\sigma^2)\ge0$、$m=1+z\ge1$。
+均值多项式采用 @def-pscc-scalar-series-1011f，
+同源因子与三个乘子采用 @def-pscc-scalar-target-1011f。
+因此 $h=.705-.6t\ge.381>0$，而
+@lem-ppocm-exact-fifth-degree-tail-1011 的 $g=.59>0$。
+由 @prp-pscc-phase-identity-1011f，
+$\mathcal P$ 正是 @lem-ppocm-exact-fifth-degree-tail-1011
+的 $\mathcal E(m;t,\sigma)$。
+该表达中 $D$ 的系数为
+$7gh(m^5+2m^4)>0$。
+故 @lem-ppocr-refined-joint-mean-1011 给
+$$
+\mathcal P>\mathcal E_*(m;t,\sigma).
+$$
+同一引理说明 $D_*>D_{\rm old}$，于是
+@lem-ppocr-third-fifth-joint-tail-1011 适用于全部
+$\underline c_j$，给
+$$
+\mathcal E_*(m;t,\sigma)
+\ge\underline c_0+\underline c_1z+\underline c_2z^2
++\frac{549}{65000}z^3.
+$$
+结合 @def-ppocr-retained-quadratic-corner-1011，得到 (14)。
+最后核对次数。由 @def-pscc-scalar-target-1011f 中 $Y=\sigma$ 的公式，
+固定 $t$ 后 $\mu_2,\mu_3,\mu_A$ 全都关于 $\sigma$ 仿射，
+所以它们的 $\sigma$ 次数至多为一；
+@lem-ppocr-refined-joint-mean-1011 的准确 $D_*$ 次数至多为二。
+在 @lem-ppocm-exact-fifth-degree-tail-1011 显示的独立参数式
+$\mathcal E_D(M;t,\sigma)$ 中，$F_M$ 关于 $\sigma$ 的次数至多为四。
+因此常数系数 $\underline c_0$ 的最大次数来自
+$\mu_\ell t^2(1+\ell r\sigma^2)^2$，至多为五。
+该项不依赖 $M$，所以不贡献 $\underline c_1$；
+其余项的 $\sigma$ 次数至多为四，故 $\deg_\sigma\underline c_1\le4$。
+对 $\underline c_2$，该引理给出的准确 $c_2$ 公式中
+$D$ 的次数为二，其余不含乘子的项次数至多为二，
+而 $\mu_\ell(1+\ell^2\sigma^2)$ 次数至多为三，
+$\mu_AZ_g$ 次数至多为一，所以 $\deg_\sigma\underline c_2\le3$。
+于是
+$$
+\deg_\sigma\mathcal Q\le
+\max\{5,4+2,3+4\}=7,
+$$
+因为真实 $z=rt^2(1-\sigma^2)$ 的 $\sigma$ 次数至多为二。
+:::

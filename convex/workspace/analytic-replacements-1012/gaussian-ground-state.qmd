@@ -1,0 +1,194 @@
+---
+title: "从有限高斯积分到凸多边形第一基态的对数凹性"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: integral-foundations.qmd
+      use:
+        - lem-arc-integral-limits-1012
+        - lem-arc-euclidean-fubini-1012
+    - from: distribution-foundations.qmd
+      use:
+        - lem-arc-l2-sobolev-completeness-1012
+    - from: hilbert-foundations.qmd
+      use:
+        - lem-arc-hilbert-sequences-1012
+        - lem-arc-coercive-quadratic-1012
+    - from: gaussian-energy.qmd
+      use:
+        - lem-arc-gaussian-energy-1012
+    - from: dirichlet-spectral-foundations.qmd
+      use:
+        - lem-arc-positive-compact-spectrum-1012
+        - lem-arc-dirichlet-spectrum-1012
+    - from: sobolev-convex-foundations.qmd
+      use:
+        - lem-arc-convex-zero-extension-1012
+---
+
+这里展开经典的高斯积分与热流路线，将本项目需要的凸多边形结论写成项目内推导。
+相关历史来源是 [Brascamp--Lieb (1976), Journal of Functional Analysis 22, 366–389](https://doi.org/10.1016/0022-1236(76)90004-5)。
+下列证明分别展开积分不等式、零边界热乘积极限和基态投影；该文的对数凹性定理不再作为前提引用。
+
+::: {#lem-arc-gaussian-marginal-1012 .lemma name="凸截断高斯积分的对数凹性" date="2026-10-12"}
+设 $C\subset\mathbb R^m$ 为有界非空开凸集，$B(x,z)$ 为
+$\mathbb R^d\times\mathbb R^m$ 上的凸二次多项式。则
+$$F(x)=\int_C e^{-B(x,z)}\,dz>0$$
+满足对数凹性：对 $0<\theta<1$，
+$$F((1-\theta)x+\theta y)\ge F(x)^{1-\theta}F(y)^\theta.$$
+:::
+
+::: {.proof of="lem-arc-gaussian-marginal-1012"}
+先给出所需的积分不等式，避免将边缘积分的对数凹性作为外部输入。
+一维时，设非负可积 $f,g,h$ 的正支集是有界开区间，函数在支集内部连续且严格为正，
+并满足
+$$h((1-\theta)a+\theta b)\ge f(a)^{1-\theta}g(b)^\theta.$$
+零积分的情形平凡；其余情形先将 $f,g$ 各自归一化为积分一，
+同时将 $h$ 除以 $(\int f)^{1-\theta}(\int g)^\theta$。
+由累积分布定义递增映射 $T$，使
+$$\int_{-\infty}^{T(a)}g(b)\,db=\int_{-\infty}^a f(b)\,db,
+\qquad g(T(a))T'(a)=f(a).$$
+在支集内部 $T$ 为 $C^1$ 且 $T'>0$。令 $z(a)=(1-\theta)a+\theta T(a)$，
+它严格递增；在紧子区间换元，再用 @lem-arc-integral-limits-1012 单调穷竭整个支集，得到
+$$\begin{aligned}
+\int h&\ge\int h(z(a))\{1-\theta+\theta T'(a)\}\,da\\
+&\ge\int f(a)\frac{1-\theta+\theta T'(a)}{T'(a)^\theta}\,da
+\ge\int f=1.
+\end{aligned}$$
+最后一步是正数的加权算术—几何均值不等式。
+还原归一化，得到 $\int h\ge(\int f)^{1-\theta}(\int g)^\theta$。
+
+这一结论按维数归纳：先固定第一坐标 $a,b$，对其余坐标使用归纳假设，
+再对得到的一维边缘积分使用刚证不等式，并用 @lem-arc-euclidean-fubini-1012 的非负换序公式。
+本引理所需的函数都是有界凸支集内的正连续函数，且在闭支集上有界；
+截面和投影仍为凸集。一维非空截面是区间，边缘积分在投影内部连续且为正。
+连续性由支集有界、凸截面的边界具有零测度及 @lem-arc-integral-limits-1012 的控制收敛得到；
+空截面给零，不影响归纳。因而上述换元和逐维积分对这里的函数及中间边缘积分全部合法。
+
+现在固定 $x,y$，将 $f,g,h$ 依次取为
+$$\mathbf1_C(z)e^{-B(x,z)},\quad
+\mathbf1_C(z)e^{-B(y,z)},\quad
+\mathbf1_C(z)e^{-B((1-\theta)x+\theta y,z)}.$$
+$C$ 的凸性和 $B$ 的凸性正好给出归纳所需的逐点假设，故得到声明。
+这是本项目所需的 Prékopa--Leindler 论证的直接证明，不以该定理作未展开前提。
+:::
+
+::: {#lem-arc-gaussian-dirichlet-limit-1012 .lemma name="截断高斯乘积的 Dirichlet 热算子极限" date="2026-10-12"}
+设 $Q\subset\mathbb R^d$ 为非空有界开凸集，$E$ 为从 $L^2(Q)$ 到
+$L^2(\mathbb R^d)$ 的零延拓，$E^*$ 为限制。令
+$$G_h(x)=(4\pi h)^{-d/2}e^{-|x|^2/(4h)},\qquad
+K_h=E^*(G_h*\,\cdot\,)E.$$
+若 $A=-\Delta_Q$ 为由闭二次型 $\int_Q|\nabla v|^2$、型域 $H_0^1(Q)$
+定义的非负 Dirichlet 算子，则对每个 $t>0$、$f\in L^2(Q)$，
+$$K_{t/n}^{\,n}f\longrightarrow e^{-tA}f\quad\text{于 }L^2(Q).$$
+:::
+
+::: {.proof of="lem-arc-gaussian-dirichlet-limit-1012"}
+@lem-arc-gaussian-energy-1012 给 $K_h$ 是非负自伴压缩。
+令 $A_h=(I-K_h)/h$，则
+$$a_h(v)=\langle v,A_hv\rangle
+=\frac{\|Ev\|_2^2-\langle Ev,G_h*Ev\rangle}{h}.$$
+同一引理的卷积能量恒等式证明 $a_h$ 随 $h\downarrow0$ 单调增加，
+上确界有限恰当 $Ev\in H^1(\mathbb R^d)$，其值为 $\|\nabla Ev\|_2^2$。
+由 @lem-arc-convex-zero-extension-1012，凸域上这恰好等价于 $v\in H_0^1(Q)$，且能量保持。
+因此
+$$a(v):=\sup_{h>0}a_h(v)=\int_Q|\nabla v|^2\quad(v\in H_0^1(Q)),$$
+在其余 $L^2(Q)$ 函数上为无穷大。
+Dirichlet 算子及其预解由 @lem-arc-dirichlet-spectrum-1012 的弱变分构造给出。
+
+以下直接证明预解算子的强收敛。给定实 $f\in L^2(Q)$，
+$u_h=(I+A_h)^{-1}f$ 是
+$$J_h(v)=a_h(v)+\|v\|_2^2-2\langle f,v\rangle$$
+的唯一极小点：@lem-arc-l2-sobolev-completeness-1012 给 $L^2$ 的完备性，
+@lem-arc-coercive-quadratic-1012 适用于有界对称型 $\langle v,w\rangle+\langle v,A_hw\rangle$，
+其强制常数为一，故 Cauchy 极小序列直接给存在与唯一性。
+其变分方程给 $a_h(u_h)+\|u_h\|_2^2=\langle f,u_h\rangle$。
+故 $u_h$ 和 $a_h(u_h)$ 一致有界。任取 $h_j\downarrow0$ 或趋零子列，用 @lem-arc-hilbert-sequences-1012 抽取
+$u_{h_j}\rightharpoonup u$。固定 $\delta>0$，当 $h_j\le\delta$ 时
+$a_\delta\le a_{h_j}$。这里非负二次型的弱下半连续性可由
+$$a_\delta(v)=\sup_w\{2\langle v,A_\delta w\rangle-a_\delta(w)\}$$
+直接得到，因为右侧是弱连续仿射函数的上确界。因此
+$$a_\delta(u)\le\liminf_j a_{h_j}(u_{h_j}).$$
+再取 $\delta\downarrow0$，得到 $a(u)\le\liminf_j a_{h_j}(u_{h_j})$。
+对于每个 $v\in H_0^1(Q)$，$J_h(u_h)\le J_h(v)$ 且 $J_h(v)\to J(v)$。
+连同 @lem-arc-hilbert-sequences-1012 的范数弱下半连续性，得 $J(u)\le J(v)$，所以
+$u=(I+A)^{-1}f$。再用上面的能量等式，
+$$\limsup_j\|u_{h_j}\|_2^2
+\le\langle f,u\rangle-a(u)=\|u\|_2^2,$$
+由 @lem-arc-hilbert-sequences-1012 的弱收敛加范数收敛准则，得到强收敛。极限唯一，故整个 $h\to0$ 的族强收敛。
+
+令 $R_h=(I+A_h)^{-1}$、$R=(I+A)^{-1}$。它们都是自伴压缩，且 $R_h\to R$ 强收敛。
+在 $[0,1]$ 上定义连续函数
+$$\Phi_t(s)=e^{-t(s^{-1}-1)}\ (s>0),\qquad\Phi_t(0)=0.$$
+这里所需的对角运算可完全在正紧算子上完成。
+$R$ 在 @lem-arc-dirichlet-spectrum-1012 的基 $u_j$ 上对角化。
+对固定 $h>0$，$K_h$ 的连续核 $G_h(x-y)$ 在有界的 $\overline Q\times\overline Q$ 上一致连续；
+用有限网格的矩形分块常数核一致逼近，得到有限秩算子，并且算子范数误差
+不超过 $|Q|$ 乘核的一致误差。所以 $K_h$ 紧，
+@lem-arc-positive-compact-spectrum-1012 给其正交对角化，包含可能存在的核。
+$R_h$ 在相同分解上的系数为 $[1+(1-\kappa)/h]^{-1}$，$0\le\kappa\le1$。
+因此在这两个已经构造的正交分解中逐坐标估计，任意连续标量函数的算子误差都受其一致误差控制；
+这里没有把通常不紧的 $R_h$ 当作紧算子。
+
+也可直接给出这里的一致多项式逼近。对 $\Phi=\Phi_t$，令
+$$B_m\Phi(s)=\sum_{k=0}^m\Phi(k/m){m\choose k}s^k(1-s)^{m-k}.$$
+二项式权重的均值为 $s$、方差为 $s(1-s)/m$。
+将和式按 $|k/m-s|\le\delta$ 与其补集分开，得
+$$\|B_m\Phi-\Phi\|_\infty
+\le\omega_\Phi(\delta)+\frac{\|\Phi\|_\infty}{2m\delta^2},$$
+其中 $\omega_\Phi$ 是一致连续模。先取小 $\delta$，再取大 $m$，右侧趋零。
+对固定多项式，$R_h\to R$ 强收敛及一致范数界给逐项强收敛；
+再用上述一致误差，得到
+$$e^{-tA_h}=\Phi_t(R_h)\longrightarrow\Phi_t(R)=e^{-tA}\quad\text{强收敛}.$$
+这些等式在前述正交坐标中逐项成立，无需一般自伴算子的谱测度演算。
+
+最后，对整数 $n\ge1$、$0\le s\le1$ 有统一标量界
+$$0\le e^{-ns}-(1-s)^n\le 2/n.$$
+当 $s\le1/2$，用 $0\le-\log(1-s)-s\le s^2$，
+差值至多 $ns^2e^{-ns}\le4/(e^2n)<2/n$；
+当 $s\ge1/2$，用 $e^{-ns}\le e^{-n/2}\le2/(en)<2/n$。
+在 $K_h$ 的上述正交分解中，$hA_h=I-K_h$ 的每个系数都在 $[0,1]$ 内，取 $h=t/n$ 后有
+$$\|K_h^n-e^{-tA_h}\|_{2\to2}\le2/n.$$
+与刚证的强收敛合并即得结论；复值函数可分别处理实部与虚部。故此处没有把 Trotter 乘积定理、概率表示或热流保凹性作为额外黑箱。
+:::
+
+::: {#lem-arc-ground-state-log-concavity-1012 .lemma name="凸多边形第一基态的项目内对数凹性证明" date="2026-10-12" export="lem-arc-ground-state-log-concavity-1012"}
+设 $Q$ 为有界凸多边形的内部，$u\in H_0^1(Q)$ 为正第一 Dirichlet 基态。
+则对 $x,y\in Q$、$0\le\theta\le1$，
+$$u((1-\theta)x+\theta y)\ge u(x)^{1-\theta}u(y)^\theta.$$
+特别地，内部光滑函数 $w=-\log u$ 满足 $D^2w\succeq0$。
+:::
+
+::: {.proof of="lem-arc-ground-state-log-concavity-1012"}
+必要时先合并共线边，这不改变域或基态，使全部真内角小于 $\pi$。
+采用 @lem-arc-gaussian-dirichlet-limit-1012 的 $K_h,A$。
+对 $h=t/n$、$x_0=x$，有限乘积有准确积分表达
+$$K_h^n\mathbf1(x)=
+\int_{Q^n}\prod_{j=1}^n G_h(x_j-x_{j-1})\,dx_1\cdots dx_n.$$
+$Q^n$ 为有界凸集，而
+$\sum_{j=1}^n|x_j-x_{j-1}|^2/(4h)$ 是全部变量的凸二次式。
+由 @lem-arc-gaussian-marginal-1012，右端关于 $x$ 对数凹。
+前一引理给它在 $L^2(Q)$ 中收敛到 $e^{-tA}\mathbf1$。
+
+说明这里的 $L^2$ 极限足以传递所需不等式。固定 $0<\theta<1$；
+若非负 $f_j\to f$ 于 $L^2(Q)$，@lem-arc-integral-limits-1012 允许抽取子列使其几乎处处收敛。
+由 @lem-arc-euclidean-fubini-1012 和线性变换 $(x,y)\mapsto(x,(1-\theta)x+\theta y)$ 的非零行列式，
+对于几乎所有 $(x,y)\in Q^2$，三个点的收敛同时成立。
+因此对数凹不等式传给极限，先以几乎处处的意义成立。
+同一论证也说明：对每个固定 $\theta$，这种几乎处处不等式在非负 $L^2$ 极限下封闭。
+
+取 $\|u\|_2=1$。@lem-arc-dirichlet-spectrum-1012 的存在、正性、单性及长时间投影估计给
+$$e^{\lambda_1t}e^{-tA}\mathbf1
+\longrightarrow \left(\int_Q u\right)u\quad\text{于 }L^2(Q),\qquad t\to\infty,$$
+系数 $\int_Q u$ 严格为正；其余特征空间按至少 $e^{-(\lambda_2-\lambda_1)t}$ 衰减。
+再次应用刚证的极限封闭性，得 $u$ 的对数凹不等式对几乎所有点对成立。
+对每个固定的有理 $\theta\in(0,1)$，
+@lem-arc-dirichlet-spectrum-1012 所给的内部光滑性将不等式从稠密的满测度点对延至全部点对。
+再对 $\theta$ 用连续性，得到声明的全部参数。
+该谱引理同时给内部光滑性；正函数取对数后，凹性等价于 $D^2(-\log u)\succeq0$。
+
+本证明所需的离散谱、基态单性、热乘积、凸域零延拓和卷积能量极限均已在项目内展开；
+Hilbert 弱子列、二次极小构造以及积分极限和换序也已改用项目内推导；
+保留测度构造、实数完备性与经典光滑换元，不调用 Fourier/Plancherel，
+也不调用 Brascamp--Lieb 基态对数凹性，也不把 Prékopa--Leindler 或 Dirichlet 热流保凹性另作前提。
+:::

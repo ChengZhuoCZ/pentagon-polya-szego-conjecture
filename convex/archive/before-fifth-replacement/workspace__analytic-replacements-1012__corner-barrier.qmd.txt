@@ -1,0 +1,53 @@
+---
+title: "凸角的统一初等屏障与截角谱代价"
+lang: zh-CN
+---
+
+::: {#lem-arc-corner-barrier-1012 .lemma name="固定凸多边形角点的幂次屏障与导数控制" date="2026-10-12" export="lem-arc-corner-barrier-1012"}
+设 $Q$ 为有界凸多边形的内部，所有内角小于 $\pi$，
+$u\in H_0^1(Q)$ 是正 Dirichlet 特征函数，$-\Delta u=\lambda u$、$\lambda>0$。
+则 $u\in H^2(Q)$，$u,\nabla u$ 连续延至闭域，在顶点同时为零。
+具体地，对内角为 $\omega$ 的固定顶点 $v$，任取 $1<\nu<\pi/\omega$，
+存在 $R,C_j>0$，使整个角窗内
+$$|D^ju(x)|\le C_j|x-v|^{\nu-j},\qquad j=0,1,2,\quad0<|x-v|<R.$$
+特别地 $uD^2u\to0$。常数只针对固定域、固定角与固定 $\nu$。
+若从 $Q$ 切去包含于 $B(v,C\varepsilon)$ 的顶角片，得到有内点的多边形 $Q_\varepsilon$，则
+$$0\le\lambda_1(Q_\varepsilon)-\lambda_1(Q)=O(\varepsilon^{2\nu})=o(\varepsilon).$$
+此处 $u$ 的正性使它为第一基态；切角结论对充分小的 $\varepsilon>0$ 成立。
+:::
+
+::: {.proof of="lem-arc-corner-barrier-1012"}
+与正第一基态互相测试弱方程得 $\lambda=\lambda_1(Q)$。
+凸多边形的 Dirichlet Poisson 正则性给 $u\in H^2(Q)\cap H_0^1(Q)$，
+故在二维连续延至闭域，边界为零；内部正则性与直边奇反射给内部和开边光滑性。
+在顶点的极坐标 $0<\theta<\omega$ 中令
+$$f(\theta)=\cos(\nu(\theta-\omega/2))>0,\quad
+b=\frac{\lambda}{4(\nu+1)},\quad
+\Psi(\rho,\theta)=\rho^\nu f(\theta)(1-b\rho^2).$$
+直接计算
+$$\Delta(\rho^\nu f)=0,\quad
+\Delta(\rho^{\nu+2}f)=4(\nu+1)\rho^\nu f,\quad
+(-\Delta-\lambda)\Psi=\lambda b\rho^{\nu+2}f\ge0.$$
+缩小 $R$，使角窗恰为楔形、$1-bR^2>0$，并使截断楔形的第一特征值大于 $\lambda$；
+后者由 Dirichlet Poincaré 不等式和 $R^{-2}$ 尺度律得到。
+外圆弧上 $u\le C\Psi$，两直边上 $u=0\le C\Psi$，弱比较原理给 $u=O(\rho^\nu)$。
+
+为使导数估计覆盖整个角窗，对闭单位角弧取有限圆盘覆盖。
+内弧圆盘留在楔形内，两个端点附近的圆盘只接触自身直边，避开原点及另一条射线；
+全部放大圆盘均可取在 $1/2<|x|<2$ 内。
+将此固定有限覆盖乘以 $\rho$，单边圆盘先作零 Dirichlet 奇反射。
+反射保持距顶点的距离，故放大圆盘上函数绝对值仍为 $O(\rho^\nu)$。
+缩放方程为 $-\Delta U=\lambda\rho^2U$，参数有界。
+内部一、二阶导数估计及有限覆盖给上述全部 $C_j$，于是
+$\nabla u=O(\rho^{\nu-1})\to0$、$uD^2u=O(\rho^{2\nu-2})\to0$。
+
+最后将 $u$ 归一化为 $\int_Q u^2=1$。
+取径向 Lipschitz 截断 $\chi_\varepsilon$，在 $B(v,C\varepsilon)$ 内为零，
+在 $B(v,2C\varepsilon)$ 外为一，且 $|\nabla\chi_\varepsilon|=O(\varepsilon^{-1})$。
+被删片在零区内，故 $\chi_\varepsilon u\in H_0^1(Q_\varepsilon)$。
+以 $\chi_\varepsilon^2u$ 测试原方程，准确得到
+$$\int|\nabla(\chi_\varepsilon u)|^2
+=\lambda\int\chi_\varepsilon^2u^2+\int u^2|\nabla\chi_\varepsilon|^2.$$
+角点估计给最后一项 $O(\varepsilon^{2\nu})$，质量损失 $O(\varepsilon^{2\nu+2})$。
+Rayleigh 商与域单调性遂给所述双向谱界。整个论证只用幂次屏障，不用 Bessel 角点解。
+:::

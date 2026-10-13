@@ -1,0 +1,104 @@
+---
+title: "真实压力审查接入：相关节点比值与锐化自适应熵"
+lang: zh-CN
+---
+
+::: {#lem-tpr-related-node-ratio-tpr1011 .lemma name="中央同源相关节点比值的锐区间" date="2026-10-11" export="lem-tpr-related-node-ratio-tpr1011"}
+令 $r=(\sqrt5-1)/2$、$T=27/50$，取 $c,d\in\mathbb C$、$t=|c|$、$s=|d|$，满足
+$0\le s\le t\le T$。取五个等间距单位复数 $n_i$，记
+$$
+x_i=\operatorname{Re}(cn_i),\quad z_i=\operatorname{Re}(dn_i^2),\quad
+m=1+r(t^2-s^2),\quad j_i=m+2x_i+2rz_i,\quad \omega_i=1+\frac65x_i.
+$$
+若 $j_i>41m/100$ 对每个 $i$ 成立，则
+$$
+1\le m<\frac65,\quad \omega_i>0,\qquad
+\boxed{\frac9{23}<\frac{j_i}{m\omega_i}<2.}
+$$
+:::
+
+::: {.proof of="lem-tpr-related-node-ratio-tpr1011" status="verified"}
+代入 $x^2+x-1$ 给 $0<r<619/1000<5/8$。
+由于 $s\le t$，有 $m\ge1$；同时
+$m\le1+(5/8)T^2=1+729/4000<6/5$。
+又 $\omega_i\ge1-(6/5)T=44/125>0$。
+
+置 $b=1-3m/5+(6/5)rs>7/25>0$。
+利用同一个节点的 $z_i\ge-s$，得到
+$$
+x_i=\frac{j_i-m-2rz_i}{2}\le\frac{j_i-m+2rs}{2},\qquad
+\omega_i\le b+\frac35j_i.
+$$
+函数 $q\mapsto q/[m(b+3q/5)]$ 在 $q>0$ 上的导数是
+$b/[m(b+3q/5)^2]>0$，其中 $m,b>0$，所以它严格递增，故
+$$
+\frac{j_i}{m\omega_i}
+\ge\frac{j_i}{m(b+3j_i/5)}
+>\frac{41/100}{1-(177/500)m+(6/5)rs}
+\ge\frac{41/100}{323/500+(6/5)rT}>\frac9{23}.
+$$
+所有分母为正：第一个比较分母来自 $b+3j_i/5>0$，
+在代入 $j_i=41m/100$ 后也为正。
+最后一步由
+$$
+23\frac{41}{100}-9\left(\frac{323}{500}+\frac65\frac{619}{1000}\frac{27}{50}\right)
+=\frac{749}{125000}>0
+$$
+给出。
+
+另一方面，$12m/5-2\ge2/5>0$，所以
+$$
+2m\omega_i-j_i
+=m+(12m/5-2)x_i-2rz_i
+\ge m(1-12t/5)+2t-2rs.
+$$
+当 $t>0$ 时令 $\sigma=s/t\in[0,1]$，右侧准确等于
+$$
+1-(2/5+2r)t
++rt(1-\sigma)\left[2+t(1+\sigma)(1-12t/5)\right].
+$$
+第一项严格大于
+$1-(2/5+2\cdot619/1000)T=2887/25000>0$。
+方括号在 $1-12t/5\ge0$ 时至少为 $2$；否则至少为
+$2-2T(12T/5-1)=5251/3125>0$。
+其余因子非负，故 $2m\omega_i>j_i$。当 $t=0$ 时 $s=0$，所有比值恰为 $1$。
+:::
+
+::: {#lem-tpr-sharp-full-entropy-tpr1011 .lemma name="中央真实熵的锐化完整 Hellinger 上界" date="2026-10-11" export="lem-tpr-sharp-full-entropy-tpr1011"}
+采用 @lem-tpr-related-node-ratio-tpr1011 的数据，令 $\operatorname{av}$ 为五个节点的平均，并置
+$$
+\Delta_i=j_i-m\omega_i,\qquad H_i=\frac{j_i+m\omega_i}{2},\qquad
+L=\sqrt m-\operatorname{av}\sqrt{j_i\omega_i}.
+$$
+则 $L\ge0$，且
+$$
+\boxed{L\le\frac{250}{1899\sqrt m}\operatorname{av}\frac{\Delta_i^2}{H_i}.}
+$$
+:::
+
+::: {.proof of="lem-tpr-sharp-full-entropy-tpr1011" status="verified"}
+五点正交性给 $\operatorname{av}x_i=\operatorname{av}z_i=0$，因而
+$\operatorname{av}j_i=m$、$\operatorname{av}\omega_i=1$。
+Cauchy--Schwarz 得 $L\ge0$；准确平方差恒等式给
+$$
+L=\frac1{2\sqrt m}\operatorname{av}
+\frac{\Delta_i^2}{(\sqrt{j_i}+\sqrt{m\omega_i})^2}.
+$$
+由 @lem-tpr-related-node-ratio-tpr1011，记 $R_i=j_i/(m\omega_i)$，则
+$$
+\frac{|\Delta_i|}{2H_i}=\frac{|R_i-1|}{R_i+1}<\frac7{16}.
+$$
+在 $R_i\le1$ 一侧用 $R_i>9/23$；另一侧用 $R_i<2$ 得 $1/3<7/16$。
+因此
+$$
+\sqrt{1-\frac{\Delta_i^2}{4H_i^2}}>\frac{899}{1000},\qquad
+\frac{207}{256}-\left(\frac{899}{1000}\right)^2=\frac{1571}{4000000}>0.
+$$
+完整分母满足
+$$
+(\sqrt{j_i}+\sqrt{m\omega_i})^2
+=2H_i\left(1+\sqrt{1-\frac{\Delta_i^2}{4H_i^2}}\right)
+>\frac{1899}{500}H_i.
+$$
+代回恒等式即得结论。这没有熵级数截断或被省略的质量分母。
+:::

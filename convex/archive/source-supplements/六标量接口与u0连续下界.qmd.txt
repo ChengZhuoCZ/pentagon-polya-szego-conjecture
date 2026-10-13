@@ -1,0 +1,89 @@
+---
+title: "六个共同径向标量的候选接口及 u₀ 的连续下界"
+date: "2026-10-11"
+---
+
+## 状态
+
+本稿是新研究接口。第3节给 $u_0$ 下界的完整连续推导，其余五条尚未证明；不由探索计算宣布两支的新纯解析证明。主定义和别名误差引用已审 `Bessel全源低模连续机制_v2.qmd`；两相位恒等式引用 `Bessel低模两相位配对约化.qmd`。
+
+## 1. 同一个 q 的准确补偿
+
+记 $q=\kappa t$，并令
+
+$$J=J_5=u_1+rv_1,\quad J_0=u_{-4}+rv_{-4},\quad K=u_5+u_{-5},$$
+$$P=ru_2+v_2,\quad Q=ru_{-3}+v_{-3}.$$
+
+两相位稿里的系数还满足准确恒等式
+
+$$A_0=u_0+tJ,\quad A_5=K+tJ_0,\quad
+H_0=v_{-2}+tQ,\quad H_5=v_3+tP.$$
+
+不必先断言单独系数符号，只要 $J\ge0$，三角不等式直接给
+
+$$f^\#/\beta\ge u_0-|K|+t(J-|J_0|)-s(|P|+|Q|),$$
+$$|h^\#|/\beta\le |v_{-2}|+|v_3|+t(|P|+|Q|)+s(J+|J_0|).$$
+
+所有函数只依赖共同的 $(q,\beta,\epsilon)$；$t,s$ 只在外部以以上配对出现。
+
+## 2. 待证六标量接口
+
+令 $H_\epsilon(\beta)$ 是 $J/q$ 的准确 $q=0$ 极限。写 $S=\operatorname{sinc}(2\beta)$、$S_a=\operatorname{sinc}(2\alpha)$、$C=\cos2\beta$、$C_a=\cos2\alpha$，则
+
+$$H_\epsilon=\frac12\left[1+r\{2(1+a)S+C-\epsilon[(2a+1)(S-S_a)+(C-C_a)]\}\right].$$
+
+当前尝试在 $0\le q\le81/125$、$0\le\beta\le\alpha$ 证明：
+
+1. $|P|+|Q|\le(4/5)qJ$
+2. $|v_{-2}|+|v_3|\le q^2/2$
+3. $|J_0|\le q^4/32$
+4. $|K|\le q^5/200$
+5. $|J/q-H_\epsilon|\le q^2/7$，$q=0$ 按连续延拓
+6. $u_0\ge q^2[1/2+\epsilon(\alpha^2-\beta^2)/6]-q^4/12$
+
+目前只有第6条在下节完整推导。其余均只是明确候选目标，不能引用为已经证明。它们使用非严格号，$q=0$ 的系数全部为0。
+
+若这些估计最终成立，$H_\epsilon>1.46$ 和第5条将给 $J\ge0$。再代入第1节即可得到共同参数补偿的显式初等下界。仍须完整证明其后的支付不等式，不能以探索最小值代替证明。
+
+## 3. u₀ 的完整连续下界
+
+完整源权的零模为
+
+$$W_0(b)=J_0(qR_b)+i\frac{qb}{R_b}J_1(qR_b),\qquad R_b^2=a^2+b^2.$$
+
+这里左侧 $W_0$ 是 Fourier 模；右侧 $J_0,J_1$ 是 Bessel 函数，与第1节组合标量 $J_0=u_{-4}+rv_{-4}$ 不同。于是准确地
+
+$$u_0=\frac{qJ_1(qR_\beta)}{R_\beta}
++2\epsilon[I_\beta J_0(qR)-I_\alpha J_0(qR)].$$
+
+令 $y=R^2$，$v=q^2y/4<1/8$。由定义交错级数，
+
+$$\frac{qJ_1(q\sqrt y)}{\sqrt y}\ge\frac{q^2}2-\frac{q^4y}{16}.$$
+
+再设
+
+$$T(y)=J_0(q\sqrt y)-1+q^2y/4.$$
+
+其导数级数从正项 $q^4y/32$ 开始，后项绝对值递减，故
+
+$$0\le T'(y)\le q^4y/32.$$
+
+对 $0\le\beta\le\alpha$，把 $I_\beta$ 写成 $\int_0^1g(\beta v)dv$，逐点积分上述导数，得到
+
+$$0\le I_\alpha T(a^2+b^2)-I_\beta T(a^2+b^2)
+\le\frac{q^4}{64}\left[\frac{2a^2}3(\alpha^2-\beta^2)+\frac{\alpha^4-\beta^4}5\right].$$
+
+因此对于两个 $\epsilon$，均有
+
+$$u_0\ge q^2\left[\frac12+\frac\epsilon6(\alpha^2-\beta^2)\right]
+-q^4\left[\frac{a^2+\beta^2}{16}+\frac{a^2(\alpha^2-\beta^2)}{48}+\frac{\alpha^4-\beta^4}{160}\right].$$
+
+方括号不超过 $(a^2+\alpha^2)/16$，因为两者之差为
+
+$$(\alpha^2-\beta^2)\left[\frac1{16}-\frac{a^2}{48}-\frac{\alpha^2+\beta^2}{160}\right]\ge0.$$
+
+这里只需粗的已知有理界 $a<1$、$\alpha^2<2/5$，使最后括号严格为正。最后用已审 $\sqrt{a^2+\alpha^2}<107/100$，
+
+$$\frac{a^2+\alpha^2}{16}<\frac{11449}{160000}<\frac1{12},$$
+
+即得第6条。整个推导保留全部径向阶数，没有参数网格或系数表；$q=0$ 的等号由连续性成立。

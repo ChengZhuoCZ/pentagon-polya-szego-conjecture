@@ -1,0 +1,30 @@
+[
+  {
+    "file": "monotonicity.qmd",
+    "same_declaration_ids": true,
+    "same_proof_associations": true,
+    "same_imports": true,
+    "no_chinese": true
+  },
+  {
+    "file": "terminal.qmd",
+    "same_declaration_ids": true,
+    "same_proof_associations": true,
+    "same_imports": true,
+    "no_chinese": true
+  },
+  {
+    "file": "constants.qmd",
+    "same_declaration_ids": true,
+    "same_proof_associations": true,
+    "same_imports": true,
+    "no_chinese": true
+  },
+  {
+    "file": "algebra-definitions.qmd",
+    "same_declaration_ids": true,
+    "same_proof_associations": true,
+    "same_imports": true,
+    "no_chinese": true
+  }
+]

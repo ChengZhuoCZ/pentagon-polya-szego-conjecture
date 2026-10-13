@@ -1,0 +1,81 @@
+{
+  "baseline": "凸五边形-基础谱Fourier与Sobolev解析替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/distribution-foundations.qmd",
+    "workspace/analytic-replacements-1012/hilbert-foundations.qmd",
+    "workspace/analytic-replacements-1012/integral-foundations.qmd",
+    "workspace/analytic-replacements-1012/local-elliptic-barriers.qmd"
+  ],
+  "retired_qmd": [],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+    "workspace/analytic-replacements-1012/corner-barrier.qmd",
+    "workspace/analytic-replacements-1012/dirichlet-spectral-foundations.qmd",
+    "workspace/analytic-replacements-1012/gaussian-energy.qmd",
+    "workspace/analytic-replacements-1012/gaussian-ground-state.qmd",
+    "workspace/analytic-replacements-1012/interval-variational.qmd",
+    "workspace/analytic-replacements-1012/sobolev-convex-foundations.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+    "workspace/true-pressure-review-1011/analysis-supplements.qmd"
+  ],
+  "substantive_modified_old_math_files": 10,
+  "old_active_qmd_bytes": 474605,
+  "new_active_qmd_bytes": 499575,
+  "old_fact_count": 150,
+  "new_fact_count": 157,
+  "changed_old_nodes": [
+    "lem-arc-convex-zero-extension-1012",
+    "lem-arc-corner-barrier-1012",
+    "lem-arc-dirichlet-compactness-1012",
+    "lem-arc-dirichlet-spectrum-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-gaussian-energy-1012",
+    "lem-arc-gaussian-marginal-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-interval-variational-1012",
+    "lem-arc-levelset-spectral-budget-1012",
+    "lem-arc-positive-compact-spectrum-1012",
+    "lem-arc-pressure-gap-1012",
+    "lem-psgs-actual-pressure-weights-1011h",
+    "lem-psgs-pressure-angular-order-1011h",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-psgs-pressure-image-1011h",
+    "prp-tpr-support-hadamard-tpr1011"
+  ],
+  "new_nodes": [
+    "lem-arc-coercive-quadratic-1012",
+    "lem-arc-euclidean-fubini-1012",
+    "lem-arc-hilbert-sequences-1012",
+    "lem-arc-integral-limits-1012",
+    "lem-arc-l2-sobolev-completeness-1012",
+    "lem-arc-local-elliptic-barrier-1012",
+    "lem-arc-test-convolution-1012"
+  ],
+  "new_lemma_count": 7,
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true,
+  "archived_original_math_count": 10,
+  "exact_check_count": 36,
+  "round7_replayed_exact_count": 44,
+  "round6_replayed_exact_count": 41,
+  "changed_non_qmd_config": [
+    "_quarto.yml"
+  ],
+  "quarto_chapters_complete": true,
+  "replaced_local_inputs": [
+    "Strong minimum principle in the strict log-Hessian proof",
+    "Hopf boundary derivative at open polygon edges",
+    "Bounded comparison and strict sign for pressure angular compression",
+    "Hilbert projections, Riesz representation, Parseval, bounded weak subsequences and norm limit criteria",
+    "Coercive symmetric quadratic minimizers in Dirichlet and heat resolvents",
+    "L2/H1/H01 completeness, separability and weak-derivative closure",
+    "Monotone convergence, Fatou, dominated convergence and Euclidean Tonelli/Fubini",
+    "L1/L2 translation, convolution, weak differentiation and zero-test uniqueness"
+  ],
+  "scope_clarification": "Corner-barrier statement explicitly includes already-proved interior smoothness and smooth odd extension near open edges. Heat product remains restricted to bounded open convex sets.",
+  "prior_numeric_budgets_unchanged": true,
+  "q_bound": "5*sqrt(2)/17 < 5/12",
+  "scope": "Project-internal analytic derivations and author review. Real-number and Lebesgue-measure construction, regularity and classical calculus foundations retained. No independent full-proof verification."
+}

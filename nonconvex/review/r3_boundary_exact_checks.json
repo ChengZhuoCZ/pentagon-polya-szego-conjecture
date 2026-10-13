@@ -1,0 +1,129 @@
+{
+  "scope": "Supplementary formal identities and exact rational comparisons; no parameter sampling.",
+  "official_qmd_prover_run": false,
+  "proof_relies_on_execution": false,
+  "check_count": 30,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "W_1 first derivative",
+      "passed": true
+    },
+    {
+      "name": "W_1 second derivative",
+      "passed": true
+    },
+    {
+      "name": "W_2-c first derivative",
+      "passed": true
+    },
+    {
+      "name": "W_2-c second derivative",
+      "passed": true
+    },
+    {
+      "name": "concave head decomposition",
+      "passed": true
+    },
+    {
+      "name": "convex reciprocal tail decomposition",
+      "passed": true
+    },
+    {
+      "name": "compact-coordinate head numerator",
+      "passed": true
+    },
+    {
+      "name": "container endpoint formula",
+      "passed": true
+    },
+    {
+      "name": "endpoint head increases with c",
+      "passed": true
+    },
+    {
+      "name": "endpoint tail increases with c",
+      "passed": true
+    },
+    {
+      "name": "weaker upper bound on c",
+      "passed": true
+    },
+    {
+      "name": "positive first denominator threshold",
+      "passed": true
+    },
+    {
+      "name": "positive second denominator threshold",
+      "passed": true
+    },
+    {
+      "name": "container endpoint zero margin",
+      "passed": true
+    },
+    {
+      "name": "container endpoint two-thirds head bound",
+      "passed": true
+    },
+    {
+      "name": "container endpoint two-thirds tail bound",
+      "passed": true
+    },
+    {
+      "name": "container full interval margin",
+      "passed": true
+    },
+    {
+      "name": "full gain minus J_star",
+      "passed": true
+    },
+    {
+      "name": "gain endpoint at p=1/2",
+      "passed": true
+    },
+    {
+      "name": "gain derivative upper numerator",
+      "passed": true
+    },
+    {
+      "name": "reciprocal function second derivative",
+      "passed": true
+    },
+    {
+      "name": "tangent value",
+      "passed": true
+    },
+    {
+      "name": "tangent slope",
+      "passed": true
+    },
+    {
+      "name": "tangent payment identity",
+      "passed": true
+    },
+    {
+      "name": "positive tangent margin on p interval",
+      "passed": true
+    },
+    {
+      "name": "T2 logarithmic derivative identity",
+      "passed": true
+    },
+    {
+      "name": "T2 ratio endpoint",
+      "passed": true
+    },
+    {
+      "name": "T2 ratio endpoint bound",
+      "passed": true
+    },
+    {
+      "name": "T2 energy scaling",
+      "passed": true
+    },
+    {
+      "name": "T2 final radicand ratio",
+      "passed": true
+    }
+  ]
+}

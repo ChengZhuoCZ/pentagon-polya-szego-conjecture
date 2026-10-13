@@ -1,0 +1,217 @@
+---
+title: "同源 J 的完整径向误差"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: bessel-core.qmd
+      use:
+        - def-arc-bessel-data-1012
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+---
+
+::: {#lem-arc-j-radial-1012 .lemma name="同源 J 的完整径向误差" date="2026-10-12" export="lem-arc-j-radial-1012"}
+采用 @def-arc-bessel-data-1012 的组合标量和 @lem-arc-geometric-constants-1012 的角常数，在 $0\le q\le81/125,0\le\beta\le\alpha,\epsilon=\pm1$ 上，
+$$|J/q-H_\epsilon(\beta)|\le q^2/7,\quad J\ge0,$$
+其中
+$$H_\epsilon=\tfrac12\{1+r[2(1+a)\operatorname{sinc}(2\beta)+\cos2\beta-\epsilon((2a+1)(\operatorname{sinc}(2\beta)-\operatorname{sinc}(2\alpha))+\cos2\beta-\cos2\alpha)]\},$$
+且 $27/20<H_\epsilon\le2381/1000$。更精确地，$H^-_\epsilon\le H_\epsilon\le H^+_\epsilon$，其中
+$$\begin{array}{c|cc}
+\epsilon&H^-_\epsilon&H^+_\epsilon\\\hline
+-1&2.380-2.570\beta^2&2.381-2.290\beta^2\\
++1&1.542-.207\beta^2&1.543-.189\beta^2
+\end{array}$$
+$q=0$ 时第一式取连续值。
+:::
+
+::: {.proof of="lem-arc-j-radial-1012"}
+采用 @def-arc-bessel-data-1012 的统一定义及 @lem-arc-geometric-constants-1012 的常数有理区间。
+
+## 1. 共同径向展开与实多项式算子
+
+令 $z=a+ib$、$x=b^2$。@def-arc-bessel-data-1012 的完整源权径向展开给
+
+$$W_1=\frac q2(z+1)+\frac{q^3}{16}z[-(a^2+b^2)-a+3ib]
++\frac{q^5}{384}z(a^2+b^2)[a^2+b^2+a-5ib]+\mathcal R.$$
+
+对于实多项式 $A(x),B(x)$，若某一层 $W=A(b^2)+ibB(b^2)$，则该层的 $u_1+rv_1$ 准确等于
+
+$$\mathcal L_\epsilon[A,B](\beta)
+=U(\beta^2)+2\epsilon[I_\beta G(b^2)-I_\alpha G(b^2)],$$
+
+其中 $S(x)=\operatorname{sinc}(2\sqrt x)$、$C(x)=\cos(2\sqrt x)$，
+
+$$U=(1+rC)B+2rSA,\qquad G=(1-rC)A+2rxSB.$$
+
+因此
+
+$$J=qH_\epsilon+q^3 C_1+q^5 C_2+R_J,$$
+
+其中
+
+$$C_1=\tfrac1{16}\mathcal L_\epsilon[A,B],\quad
+A=-a^2(a+1)-(a+3)x,\quad B=2a-a^2-x,$$
+
+$$C_2=\tfrac1{384}\mathcal L_\epsilon[\widetilde A,\widetilde B],$$
+$$\widetilde A=[a^3+a^2+(a+5)x](a^2+x),\qquad
+\widetilde B=(a^2+x-4a)(a^2+x).$$
+
+## 2. C₁ 连续递减，全域落在 [−.13,.05]
+
+写 $A=A_0+A_1x$、$B=B_0-x$。设 $U_n,G_n$ 为上一节准确 $U,G$ 的 $x^n$ 系数，则
+
+$$16C_1'(x)=\sum_{n\ge1}n\left(U_n+\frac{2\epsilon G_n}{2n+1}\right)x^{n-1}.$$
+
+对 $n\ge2$，括号准确为
+
+$$\frac{r(-4)^n}{(2n+1)!}M_\epsilon(n),$$
+
+其中
+
+$$M_+(n)=3n^2+(2a+9/2)n+2a-a^2,$$
+$$M_-(n)=4n^3+(4a+9)n^2+(-4a^2+8a+1/2)n-4a^3-5a^2+2a.$$
+
+对 $0<a<1,n\ge2$，这两个多项式均为正，且 $M_\epsilon(n+1)\le8M_\epsilon(n)$。正号式由正系数直接得；负号式可在 $n=j+2$ 展开 $8M_-(n)-M_-(n+1)$，得到
+
+$$28j^3+(28a+219)j^2+(-28a^2+160a+1027/2)j
+-28a^3-87a^2+210a+723/2,$$
+
+所有系数正。$M_-$ 自身在 $n=j+1$ 的系数亦全正，常数项为 $-4a^3-9a^2+14a+27/2>0$。
+
+于是当 $0\le x\le2/5$，从 $n=2$ 起导数系列是绝对项递减的交错级数：相邻绝对项比至多
+
+$$\frac{4x(n+1)\,8}{n(2n+3)(2n+2)}\le\frac{16}{35}<1.$$
+
+用粗包围 $.86480<a<.86481$、$.61803<r<.61804$，首项直接有理代入给
+
+$$16C_-'(x)\le-5.13+14.20x-5.38x^2+.82x^3<0.$$
+
+右侧在 $[0,.4]$ 递增，而其 $.4$ 值为 $-.25832<0$。同理
+
+$$16C_+'(x)\le-7.78+4.20x<0.$$
+
+故只须核两个真实端点。其值都不需要新的超越函数，因为设 $X=\alpha^2$，
+
+$$S_a=(2+r)/(4a),\quad C_a=r/2,$$
+
+$$\begin{aligned}
+I_c={}&[-a^3-a^2/2-a/2+3/4-(a+3/2)X]S_a\\
+&+[-a^2/2+a/2-3/4-X/2]C_a,\\
+I_G={}&A_0+A_1X/3-rI_c,\qquad G_0=(1-r)A_0,\\
+U_0={}&(1+r)B_0+2rA_0,\\
+U_a={}&(1+rC_a)(B_0-X)+2rS_a(A_0+A_1X).
+\end{aligned}$$
+
+准确端点为 $C_1(\alpha)=U_a/16$、$C_{1,\epsilon}(0)=[U_0+2\epsilon(G_0-I_G)]/16$。用上述 $a,r$ 包围及 $.3947<X<.3948$，三个有理区间均落在 $[-.13,.05]$。从而
+
+$$|C_1|\le13/100.$$
+
+## 3. C₂：两个低次包络和一次均值导数界
+
+仍取 $0\le x\le.4$。$\widetilde A>0$、$\widetilde B<0$，而
+
+$$1-2x\le C\le1-2x+2x^2/3,\qquad
+1-2x/3\le S\le1-2x/3+2x^2/15.$$
+
+因此 $\widetilde U$ 分别夹在下列两个四次多项式间：
+
+$$U_L=[1+r(1-2x+2x^2/3)]\widetilde B+2r(1-2x/3)\widetilde A,$$
+$$U_U=[1+r(1-2x)]\widetilde B+2r(1-2x/3+2x^2/15)\widetilde A.$$
+
+两多项式从常数项到四次项，逐项均落在以下共同粗区间：
+
+$$[-2.1,-1.9],\quad[5.4,5.9],\quad[5.4,7.0],\quad[-7.2,-4.9],\quad[.3,1.1].$$
+
+故 $U_L\ge-2.1-7.2(.4)^3>-3$，$U_U\le-1.9+5.9(.4)+7(.4)^2+1.1(.4)^4<3$，从而 $|\widetilde U|\le3$。
+
+此外粗的实多项式估计给
+
+$$0<\widetilde A<4.32,\quad0<\widetilde A'<10.5,\quad
+-2.7<\widetilde B<0,\quad-2<\widetilde B'<0.$$
+
+利用 $C\ge.2$、$r>.618$、$0\le S\le1$、$S+xS'=(S+C)/2\in[0,1]$，
+
+$$\widetilde G'=(1-rC)\widetilde A'+2rS\widetilde A
++2r[(S+xS')\widetilde B+xS\widetilde B'].$$
+
+前两项非负且至多 $.88(10.5)+2(.619)(4.32)<16$；后两项非正且绝对值至多 $2(.619)[2.7+.4(2)]<16$。所以 $|\widetilde G'|\le16$。
+
+将 $I_\beta$ 写成 $\int_0^1g(\beta v)dv$，便得
+
+$$|I_\beta\widetilde G-I_\alpha\widetilde G|\le16(\alpha^2-\beta^2)/3.$$
+
+于是
+
+$$|C_2|\le\frac{3+32(.4)/3}{384}=\frac{109}{5760}<\frac1{50}.$$
+
+## 4. q⁷ 起完整径向尾，一次正阶乘比
+
+$W_1$ 的余项是：$\Psi_1$ 的径向 $l\ge3$，以及 $(q/2)\Psi_0$ 的 $l\ge3$ 和 $(q/2)\Psi_2$ 的 $l\ge2$。对 $j=0,1,2$，其 $b$ 导数正范数首项为
+
+$$q^7d_j,\quad d_j=\frac{(7)_jL^{7-j}}{18432}
++(6)_jL^{6-j}\left(\frac1{4608}+\frac1{6144}\right),\quad L=107/100.$$
+
+这里 $(n)_j$ 为下降阶乘。因为 $q^2R^2/4<1/8$，每一尾从其首项起的相邻正项比至多 $1/60$：最小阶乘分母乘积为15，二阶导数附加比小于2。因此全部余项的三个导数范数满足
+
+$$D_j\le\frac{60}{59}q^7d_j.$$
+
+实部是偶函数，故源权积分算子的误差满足
+
+$$|R_u|\le D_1+\alpha^2D_2/3,$$
+$$|R_v|\le D_1+2D_0+\alpha^2(D_2+4D_1+4D_0)/3.$$
+
+于是 $|R_J|\le|R_u|+r|R_v|$。代入 $r<619/1000$、$\alpha^2<2/5$、$q\le81/125$，一个正有理数比较给
+
+$$\frac{|R_J|}{q^3}\le
+\frac{812228471973318768067489437}{368750000000000000000000000000}
+<\frac1{400}.$$
+
+全部径向尾已经纳入，无有限展开截断后漏尾。
+
+## 5. 汇总
+
+由于 $q^2<(42/100)$，
+
+$$|J/q-H_\epsilon|\le q^2\left[\frac{13}{100}+\frac{42}{100}\frac1{50}+\frac1{400}\right]
+=\frac{1409}{10000}q^2<\frac17q^2.$$
+
+$q=0$ 连续延拓给非严格目标式。$\beta=0$ 在全部偶函数积分及奇商中取连续值，证明一致有效。
+
+
+
+### H 的独立界与 J 的非负性
+
+
+可取以下四个有理二次式：
+
+$$\begin{array}{c|cc}
+\epsilon&H^-&H^+\\\hline
+-1&2.380-2.570\beta^2&2.381-2.290\beta^2\\
++1&1.542-.207\beta^2&1.543-.189\beta^2
+\end{array}$$
+
+证明只用交错级数
+
+$$1-2\beta^2/3\le\operatorname{sinc}(2\beta)\le1-2\beta^2/3+2\beta^4/15,$$
+$$1-2\beta^2\le\cos2\beta\le1-2\beta^2+2\beta^4/3.$$
+
+准确地
+
+$$H_+(\beta)=H_+(0)+\frac r2[\operatorname{sinc}(2\beta)-1],$$
+$$H_-(\beta)=H_-(0)+\frac r2[(4a+3)(\operatorname{sinc}(2\beta)-1)+2(\cos2\beta-1)].$$
+
+所需常数可用@lem-arc-geometric-constants-1012 给出的粗包围 $61803/10^5<r<61804/10^5$、$86480/10^5<a<86481/10^5$、$3947/10^4<\alpha^2<3948/10^4$ 手核。常数项完全无需新的超越函数计算，因为
+
+$$\cos2\alpha=r/2,\qquad \operatorname{sinc}(2\alpha)=(2+r)/(4a).$$
+
+代入准确 $H_\epsilon(0)$ 可得 $2.380<H_-(0)<2.381$、$1.542<H_+(0)<1.543$；负号二次降幅 $r[(4a+3)/3+2]<2.570$，加上四次余项并用 $\beta^2<.4$ 后，净降幅大于2.290。正号相应降幅在 $.189,.207$ 之间。
+
+
+由二次下界及 $\beta^2<2/5$ 得
+$H_->2.380-2.570(2/5)=1.352>27/20$，
+$H_+>1.542-.207(2/5)>27/20$。
+两个上界均不超过 $2381/1000$。故 $q>0$ 时
+$J\ge q(27/20-q^2/7)>0$；$q=0$ 时 $J=0$。
+:::
+

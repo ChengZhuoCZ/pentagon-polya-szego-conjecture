@@ -1,0 +1,30 @@
+[
+  {
+    "file": "algebra-definitions.qmd",
+    "no_chinese_remaining": true,
+    "formula_multiset_identical": true,
+    "formula_order_identical": true,
+    "formula_count": 20
+  },
+  {
+    "file": "constants.qmd",
+    "no_chinese_remaining": true,
+    "formula_multiset_identical": true,
+    "formula_order_identical": true,
+    "formula_count": 27
+  },
+  {
+    "file": "terminal.qmd",
+    "no_chinese_remaining": true,
+    "formula_multiset_identical": true,
+    "formula_order_identical": false,
+    "formula_count": 237
+  },
+  {
+    "file": "monotonicity.qmd",
+    "no_chinese_remaining": true,
+    "formula_multiset_identical": true,
+    "formula_order_identical": false,
+    "formula_count": 436
+  }
+]

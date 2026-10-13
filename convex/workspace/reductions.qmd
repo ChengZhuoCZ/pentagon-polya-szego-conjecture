@@ -1,0 +1,105 @@
+---
+title: "Explicit bounds and variational reductions"
+lang: zh-CN
+---
+
+::: {#def-spectral-functional .definition name="Scale-invariant spectral functional" date="2026-09-20" export="def-spectral-functional" status="verified"}
+For a bounded open planar domain $\Omega$, write
+$$
+\lambda_1(\Omega)=\inf_{0\ne u\in H^1_0(\Omega)}
+\frac{\int_\Omega|\nabla u|^2}{\int_\Omega u^2},
+\qquad F(\Omega)=|\Omega|\lambda_1(\Omega).
+$$
+A polygon is identified with the interior of its convex hull, and its sides
+mean effective sides: collinear consecutive edges are merged.
+:::
+
+::: {#lem-dirichlet-scaling .lemma name="Scaling and domain monotonicity" date="2026-09-20" export="lem-dirichlet-scaling"}
+For $s>0$, $\lambda_1(s\Omega)=s^{-2}\lambda_1(\Omega)$ and
+$F(s\Omega)=F(\Omega)$. If $\Omega\subset\Omega'$, then
+$\lambda_1(\Omega)\geq\lambda_1(\Omega')$.
+:::
+
+::: {.proof of="lem-dirichlet-scaling" status="verified"}
+Use the Rayleigh definition in @def-spectral-functional.
+For $u\in C_c^\infty(\Omega)$, put $v(x)=u(x/s)$ on $s\Omega$.
+This is a bijection onto $C_c^\infty(s\Omega)$, with inverse $u(y)=v(sy)$.
+The chain rule and $x=sy$ give
+$$
+\nabla v(x)=s^{-1}\nabla u(x/s),\qquad
+\int_{s\Omega}|\nabla v|^2=\int_\Omega|\nabla u|^2,
+\qquad \int_{s\Omega}v^2=s^2\int_\Omega u^2.
+$$
+Since $H^1_0$ is the closure of $C_c^\infty$ in the $H^1$ norm,
+these norm identities extend the map and its inverse continuously to the two
+$H^1_0$ spaces. Approximation also gives the displayed weak-gradient identity.
+The bijection therefore identifies the two Rayleigh infima up to $s^{-2}$.
+The same change of variables gives $|s\Omega|=s^2|\Omega|$;
+combining the two scaling laws proves $F(s\Omega)=F(\Omega)$.
+
+If $\Omega\subset\Omega'$, the zero extension of a member of
+$C_c^\infty(\Omega)$ belongs to $C_c^\infty(\Omega')$ and preserves both
+displayed integrals. Approximate an arbitrary $u\in H^1_0(\Omega)$ by such
+functions. Their zero extensions are Cauchy in $H^1(\Omega')$, and their
+$L^2$ limit is exactly the zero extension of $u$. Thus the extension belongs
+to $H^1_0(\Omega')$ and preserves the two integrals. The admissible Rayleigh
+quotients on $\Omega$ form a subset of those on $\Omega'$, proving monotonicity.
+:::
+
+::: {#lem-pentagon-polynomial-upper-bound .lemma name="An explicit regular-pentagon upper bound below nineteen" date="2026-09-20" export="lem-pentagon-polynomial-upper-bound"}
+Every regular pentagon $R$ satisfies
+$$
+F(R)< B:=
+\frac{66}{7}(5-\sqrt5)\sqrt{5-2\sqrt5}<19<2\pi^2.
+$$
+:::
+
+::: {.proof of="lem-pentagon-polynomial-upper-bound" status="verified"}
+By @lem-dirichlet-scaling take the inradius to be one and the outward
+normal of one edge to be $(1,0)$. Set
+$t=\tan(\pi/5)=\sqrt{5-2\sqrt5}$, so $|R|=5t$.
+The polynomial
+$$
+p(x,y)=16-20(x^2+y^2)+5(x^2+y^2)^2
+-x^5+10x^3y^2-5xy^4
+$$
+equals $16\prod_{j=0}^4(1-x\cos(2\pi j/5)-y\sin(2\pi j/5))$.
+Thus it vanishes on every side, is positive in the interior,
+and belongs to $H^1_0(R)$.
+
+The five rotated copies of
+$T=\{(x,y):0<x<1,\ -tx<y<tx\}$ partition $R$ up to null sets.
+In polar coordinates $p=16-20r^2+5r^4-r^5\cos(5\theta)$.
+Both $p^2$ and $|\nabla p|^2$ are invariant under these rotations.
+For nonnegative integers $m,n$, direct integration gives
+$$
+\int_Tx^my^n=
+\begin{cases}
+0,& n\text{ odd},\\
+\displaystyle\frac{2t^{n+1}}{(n+1)(m+n+2)},& n\text{ even}.
+\end{cases}
+$$
+Expanding the two polynomials and using $t^2=5-2\sqrt5$ yields
+$$
+\int_Tp^2=\frac{20000t}{297},\qquad
+\int_T|\nabla p|^2=\frac{8000(5-\sqrt5)t}{63}.
+$$
+The Rayleigh principle in @def-spectral-functional gives
+$$
+F(R)\leq 5t\,
+\frac{8000(5-\sqrt5)/63}{20000/297}=B.
+$$
+Equality is impossible. If the Rayleigh quotient of $p$ were the
+first eigenvalue, its minimizing property would give
+$-\Delta p=\lambda_1(R)p$ weakly in $R$. Since both sides are
+polynomials, this would be a polynomial identity. But $p$ has a
+nonzero degree-five term, $\Delta p$ has degree at most three,
+and $\lambda_1(R)>0$. Hence the first displayed inequality is strict.
+
+Finally $\sqrt5>559/250$, since $559^2<5\cdot250^2$, and
+$$
+B^2=\frac{4356}{49}(250-110\sqrt5)
+<\frac{439956}{1225}<361.
+$$
+As $\pi>31/10$, also $19<2\pi^2$.
+:::

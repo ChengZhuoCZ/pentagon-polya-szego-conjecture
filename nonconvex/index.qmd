@@ -1,0 +1,15 @@
+---
+title: "Nonconvex exclusion for simple pentagons of fixed area"
+---
+
+This project develops an analytic proof that every nonconvex simple polygon with at most five active sides has a strictly better competitor of the same area for the first Dirichlet eigenvalue. The central statement is @thm-main-nonconvex-pentagon; its complete proof is in `workspace/main-proof.qmd`. The preceding chapters establish the geometric reduction, spectral comparison for the actual sections, the common-interface response principle, parameter monotonicity, terminal positivity, and exclusion of large-height candidates.
+
+This fourth English analytic edition gives one convex lower bound for the full short-tail-dominant branch. It proves the two noncrossing spectral bounds by gluing positive comparison functions across the physical interface and applying a quadratic-form identity with a positive derivative jump. A positive rescaling of the first terminal head gap has negative third derivative, giving a calculus proof of the unchanged reciprocal majorant. A completed square proves positivity of the tail denominator uniformly, and direct reciprocal estimates shorten the head-range argument. The full derivations appear in the mathematical chapters; `ANALYTIC_CHANGES.md` records their exact scope.
+
+The Volterra construction of regular inverse-square solutions, direct tail barrier, two-endpoint cotangent comparison, common-tail curvature estimate, variational Hadamard argument, and second terminal-curve proof remain part of the proof. The retained crossing result holds uniformly for every real order between two and three. Historical review records are preserved separately.
+
+The theorem excludes nonconvex global minimizers. The appendix proves the existence connection and gives a conditional bridge to a separate convex-pentagon extremal theorem; that convex theorem is explicitly a hypothesis of the final corollary. The central nonconvex-exclusion result does not depend on it.
+
+The canonical goal and its statement lock retain their original identity. An English presentation of that exact goal is supplied by the rendering layer. The proof chapters, rendered manuscript, and supporting documentation are in English.
+
+The hypotheses for classical external inputs are recorded in `external-inputs.md`, with the bibliography in `references.bib`: [@PS; @FS; @nc:brock; @nc:brock2000; @nc:CF; @nc:Capriani; @nc:grisvard; @nc:henrot; @nc:BB; @nc:kato; @nc:henrot2006].

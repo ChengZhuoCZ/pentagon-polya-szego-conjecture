@@ -1,0 +1,320 @@
+---
+title: "二维振幅内部：两个线性相位系数的全矩形次序"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - lem-pscc-scalar-factors-1011f
+        - prp-pscc-phase-identity-1011f
+---
+
+::: {#lem-ppao-quadratic-shape-credit-1011 .lemma name="保留面积因子一阶贡献的准确二次下界" date="2026-10-11" export="lem-ppao-quadratic-shape-credit-1011"}
+采用 @prp-pscc-phase-identity-1011f，置
+$$
+T=\frac{27}{50},\quad X=\frac tT,\quad h=.705-.324X,\quad
+e=\frac{14}{15}(1+h),\quad k=7Gh,\quad
+z=m-1=rt^2(1-\sigma^2).
+$$
+记
+$$
+a_2=2+r/2,\quad b_2=2+2r,\quad
+a_3=3+r/2,\quad b_3=9/2+3r,
+$$
+以及
+$$
+\begin{aligned}
+u_2&=.6X^2,&
+u_{30}&=.78-.26X-.48X^2,&
+u_{31}&=.08-.16X+.18X^2,\\
+u_{A0}&=.26X-.06X^2,&
+u_{A1}&=.82-.90X+3.12X^2.
+\end{aligned}
+$$
+于是 $\mu_2=(1-\sigma)u_2$，
+$\mu_3=(1-\sigma)u_{30}+\sigma u_{31}$，
+$\mu_A=(1-\sigma)u_{A0}+\sigma u_{A1}$。
+定义
+$$
+\begin{aligned}
+Z&=rt^2(10k-.48er),\\
+L_0&=3k+1.44er-a_2u_2-a_3u_{30}-tu_{A0}+Z,\\
+L_1&=2.4er^2+(a_2-b_2)u_2+a_3(u_{30}-u_{31})
+-b_3u_{30}-t(u_{A1}-u_{A0}),\\
+L_2&=b_2u_2+b_3(u_{30}-u_{31})-Z.
+\end{aligned}
+\tag{1}
+$$
+则在整个 $0\le t\le T,\ 0\le\sigma\le1$ 上，
+$$
+A-B=at\sigma J,\qquad
+J\ge L_0+L_1\sigma+L_2\sigma^2.
+\tag{2}
+$$
+:::
+
+::: {.proof of="lem-ppao-quadratic-shape-credit-1011" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f，$Y=\sigma$、$B_0=3/2$、
+$h_0=h=.705-.324X$、$\delta=2-6m/5$、$p=1+3m/5$，且
+$r=(\sqrt5-1)/2\in(0,5/8)$（因为 $\sqrt5<9/4$）。于是
+$$
+e_C=em,\qquad \delta(\delta+4p)/4=3-1.2m-.36m^2,\qquad
+\delta+p=3-.6m.
+$$
+以下三个乘子正是原定义在 $Y=\sigma$ 时的表达。
+由 @prp-pscc-phase-identity-1011f 的 $A,B$ 公式和 @def-pscc-scalar-target-1011f 的原定义，有 $A-B=at\sigma J$，其中
+$$
+J=A_F+\sigma B_F-(a_2+b_2\sigma)\mu_2
+-(a_3+b_3\sigma)\mu_3-t\mu_A.
+$$
+准确的 $m$ 多项式为
+$$
+A_F=k(m^4+2m^3)+er(3m-1.2m^2-.36m^3),\qquad
+B_F=3er^2(m-.2m^2).
+$$
+代入 $m=1+z$ 并收集，得到
+$$
+\begin{aligned}
+A_F+\sigma B_F={}&3k+1.44er+2.4er^2\sigma\\
+&+z(10k-.48er+1.8er^2\sigma)\\
+&+z^2(12k-2.28er-.6er^2\sigma)
++z^3(6k-.36er)+kz^4.
+\end{aligned}
+\tag{3}
+$$
+由 @lem-pscc-scalar-factors-1011f 的 $m,h$ 范围，所用常数只需
+$$
+0<r<5/8,\quad e<8/5,\quad
+G>.085,\quad h\ge.381,\quad k>9/40.
+$$
+其中 @def-pscc-scalar-series-1011f 的 $G>.085$ 来自
+$.08725812-.00769038T^2=.085015605192$；
+其余直接代入端点。
+于是 $er<1$、$er^2<5/8$，从而
+$$
+12k-2.28er-.6er^2\sigma>
+2.7-2.28-.375=.045>0,
+\qquad
+6k-.36er>1.35-.36>0.
+$$
+在 (3) 中仅丢去这些非负项及非负的 $1.8er^2\sigma z$，
+并使用
+$z(10k-.48er)=Z(1-\sigma^2)$，
+就得到
+$$
+A_F+\sigma B_F\ge
+3k+1.44er+2.4er^2\sigma+Z(1-\sigma^2).
+$$
+减去 $J$ 中原来的三个几何乘子并准确收集 $\sigma$ 的次数，
+恰为 (1)、(2)。
+:::
+
+::: {#prp-ppao-entire-amplitude-order-1011 .proposition name="两线性相位系数在全振幅矩形上的严格次序" date="2026-10-11" export="prp-ppao-entire-amplitude-order-1011"}
+采用 @lem-ppao-quadratic-shape-credit-1011。
+在整个振幅矩形上，
+$$
+A-B\ge\frac{21}{2200}at\sigma\ge0.
+\tag{4}
+$$
+特别地，$t\sigma>0$ 时 $A>B$；两条零振幅边界上 $A=B=0$。
+:::
+
+::: {.proof of="prp-ppao-entire-amplitude-order-1011" status="verified"}
+坐标域由 @def-pscc-scalar-coordinates-1011f 固定为
+$0\le t\le T=27/50$、$0\le\sigma\le1$；因此 $0\le X=t/T\le1$。
+同一定义给 $r=(\sqrt5-1)/2>0$、$r^2+r=1$、
+$m=1+rt^2(1-\sigma^2)\ge1$、$a=59m/100\ge59/100>0$。
+均值多项式采用 @def-pscc-scalar-series-1011f，
+三个乘子及 $A_F,B_F$ 采用 @def-pscc-scalar-target-1011f；
+$A,B$ 则是 @prp-pscc-phase-identity-1011f 的相位系数。
+由 @lem-ppao-quadratic-shape-credit-1011，已有
+$A-B=at\sigma J$ 及 $J\ge L_0+L_1\sigma+L_2\sigma^2$。
+先证明三个一维包络：
+$$
+L_0\ge .12+.7X^2-.3X^3,\qquad
+L_1\ge-1.2-.2X,\qquad
+L_2\ge4.4-3.2X.
+\tag{5}
+$$
+所有比较均在完整区间 $0\le X\le1$ 上进行。
+
+取两个有理端点
+$$
+R=.618,\qquad S=.61804.
+$$
+代入 $x^2+x-1$ 分别给 $-19/250000$、
+$8401/625000000$，故 $R<r<S$。
+$x^2+x-1$ 在正轴严格递增，而上述定义给 $r$ 是它的正根，
+故端点符号确实隔离这个 $r$。
+由 $t=TX$ 和 @def-pscc-scalar-series-1011f 的准确式
+$G=.08725812-.00769038t^2+.00024621t^4$，
+$$
+.08725-.00225X^2<G<.08726,
+$$
+因为
+$.00769038T^2=.002242514808<.00225$，
+且
+$-.00769038t^2+.00024621t^4\le0$。
+因此令
+$$
+\begin{aligned}
+k_{\rm l}&=7(.08725-.00225X^2)h
+=.43057875-.197883X-.01110375X^2+.005103X^3,\\
+k_{\rm u}&=7(.08726)h=.4306281-.19790568X,
+\end{aligned}
+\tag{6}
+$$
+就有 $k_{\rm l}<k<k_{\rm u}$。
+这两个下标仅表示有理包络，并没有改变真实 $k$ 的定义。
+
+证明 $L_0$ 的下界时，把 (1) 准确重组为
+$$
+L_0=(3+10rt^2)k+er(1.44-.48rt^2)
+-a_2u_2-a_3u_{30}-tu_{A0}.
+$$
+函数 $r(1.44-.48rt^2)$ 随 $r$ 严格增加，
+其导数 $1.44-.96rt^2>0$。
+又 $u_2\ge0$、$u_{30}=.78(1-X)^2+1.30X(1-X)+.04X^2>0$。
+因此
+$$
+\begin{aligned}
+L_0\ge\underline L_0:={}&(3+10RT^2X^2)k_{\rm l}
++eR(1.44-.48RT^2X^2)\\
+&-(2+S/2)u_2-(3+S/2)u_{30}-TXu_{A0}.
+\end{aligned}
+$$
+置 $f=.12+.7X^2-.3X^3$。直接乘开上述六个低次因子，得到
+$$
+\underline L_0-f=\sum_{j=0}^5d_jX^j,
+$$
+其中全部准确系数是
+$$
+\begin{aligned}
+(d_0,d_1,d_2,d_3,d_4,d_5)=(&.00686001,\,-.002415608,\,
+.020079022138544,\\
+&.0072718589578368,\,-.02000993463,\,.009196055064).
+\end{aligned}
+\tag{7}
+$$
+这些有限小数都是有理数，故此式可按普通乘法逐项核对。
+不必为它们寻找参数分区：$d_1,d_4<0$，
+$d_0+d_1=.004444402>0$，
+$d_2+d_4=.000069087508544>0$，而 $d_3,d_5>0$。
+准确身份
+$$
+\begin{aligned}
+\underline L_0-f={}&(d_0+d_1)-d_1(1-X)
++(d_2+d_4)X^2\\
+&-d_4X^2(1-X^2)+d_3X^3+d_5X^5>0
+\end{aligned}
+$$
+给 (5) 的第一条。
+
+对 $L_1$ 使用 $r^2=1-r$，其准确三次形式为
+$$
+L_1+1.2+.2X=
+(3.6092-5.8092r)+(-.09856+1.45576r)X
++(.8064+.21r)X^2-1.7172X^3.
+$$
+端点 $R<r<S$ 使前三个系数分别大于 $.018,.8,.936$，
+而
+$$
+\begin{aligned}
+.018+.8X+.936X^2-1.7172X^3
+={}&.018(1-X^3)+.8X(1-X^2)\\
+&+.936X^2(1-X)+.0368X^3>0.
+\end{aligned}
+$$
+这证明 (5) 的第二条。
+
+最后，$h\ge.381$，而以上 $G$ 下界给 $G>.085$，
+所以 $k=7Gh>7(.085)(.381)=.226695>9/40$。
+又 $e=(14/15)(1+h)\le2387/1500<8/5$ 且 $r<5/8$，故 $0<er<1$。
+于是 $10k-.48er>9/4-12/25=177/100>0$，因此
+$$
+Z\le ST^2X^2(10k_{\rm u}-.48eR)=Z_0X^2-Z_1X^3,
+$$
+其中准确有理常数为
+$$
+\begin{aligned}
+Z_0&=ST^2\{10(.4306281)-.48(2387/1500)R\},\\
+Z_1&=ST^2\{10(.19790568)-.48(.3024)R\}.
+\end{aligned}
+\tag{8}
+$$
+由此 $L_2-(4.4-3.2X)$ 不小于三次多项式
+$$
+(2.1r-1.25)+(2.75-.3r)X
++(-1.77-.78r-Z_0)X^2+Z_1X^3.
+\tag{9}
+$$
+为验证它的正性，把它写成
+$\sum_{j=0}^3\binom3j b_jX^j(1-X)^{3-j}$。
+直接收集幂次给
+$$
+\begin{aligned}
+b_0&=2.1r-1.25,&
+b_1&=2r-\frac13,\\
+b_2&=1.64r-\frac1{150}-\frac{Z_0}{3},&
+b_3&=1.02r-.27-(Z_0-Z_1).
+\end{aligned}
+\tag{10}
+$$
+这里只需两个粗有理界：
+$$
+Z_0<(.1803)(3.835)=.6914505<.692,\qquad
+Z_0-Z_1<(.1803)(1.945)=.3506835<.351.
+$$
+确实 $ST^2=.180220464<.1803$；
+(8) 中第一花括号是 $3.83422788<3.835$，
+两花括号之差是 $1.944875016<1.945$。
+所以
+$$
+b_0>.0478,\quad b_1>\frac{677}{750}>.902,\quad
+b_2>\frac{.618\cdot4.92-.02-.692}{3}>.776,\quad
+b_3>.00936>0.
+$$
+所有基函数非负，故 (9) 为正，证明 (5) 的第三条。
+
+现令
+$$
+f=.12+.7X^2-.3X^3,\quad b=1.2+.2X,\quad
+g=4.4-3.2X.
+$$
+则 $6/5\le g\le22/5$，而准确恒等式是
+$$
+\begin{aligned}
+\Delta:=4fg-b^2
+&=.672-2.016X+12.28X^2-14.24X^3+3.84X^4\\
+&=.672(1-X)^4+.672X(1-X)^3
++10.264X^2(1-X)^2\\
+&\qquad+6.96X^3(1-X)+.536X^4.
+\end{aligned}
+\tag{11}
+$$
+五个正项除以相应的 $\binom4j$ 后，最小系数为
+$.672/4=.168=21/125$，故 $\Delta\ge21/125$。
+完成一次平方便得到
+$$
+f-b\sigma+g\sigma^2
+=g\left(\sigma-\frac{b}{2g}\right)^2+\frac{\Delta}{4g}
+\ge\frac{21/125}{88/5}=\frac{21}{2200}.
+$$
+结合 (2) 和 $a>0,t,\sigma\ge0$ 得 (4)。
+当 $t\sigma>0$ 时，$at\sigma>0$，故 $A-B>0$。
+在两条零振幅边界上，直接使用 @prp-pscc-phase-identity-1011f 的个别公式
+$$
+A=at\sigma[A_F-(r/2+2)\mu_2-(r/2+3)\mu_3-t\mu_A],
+$$
+$$
+B=at\sigma^2[-B_F+(2r+2)\mu_2+(3r+9/2)\mu_3]
+$$
+可见 $t=0$ 或 $\sigma=0$ 时分别有 $A=B=0$。
+
+这里完成的是两个线性相位系数的全矩形次序。
+它可以减少后续角点比较的冗余，但不代替角点本身的严格余量，
+也不代替完整二次相位判据的其余条件。
+:::

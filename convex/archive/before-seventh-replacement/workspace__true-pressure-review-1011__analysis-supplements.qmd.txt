@@ -1,0 +1,187 @@
+---
+title: "真实压力桥：闭域映射与固定法向变分的解析补证"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../analytic-replacements-1012/corner-barrier.qmd
+      use:
+        - lem-arc-corner-barrier-1012
+    - from: ../true-pressure-terminal-migration-1011/mixed-area-normalization.qmd
+      use:
+        - def-tpm-mixed-area-normalization-tpm1011
+---
+
+::: {#lem-tpr-closed-segment-injectivity-tpr1011 .lemma name="连续导数延拓下的闭域线段公式与严格单射" date="2026-10-11" export="lem-tpr-closed-segment-injectivity-tpr1011"}
+设 $Q$ 为上述凸多边形的内部，$T\in C^1(Q;\mathbb R^2)$，且 $DT$ 连续延拓至 $\overline Q$。则 $T$ 唯一连续延拓至 $\overline Q$，该延拓为 Lipschitz 映射，并对任意 $a,b\in\overline Q$ 满足
+$$
+T(b)-T(a)=\int_0^1DT(a+t(b-a))(b-a)\,dt.
+$$
+若此外 $DT$ 在内部对称正定，且每条开边 $e$ 上有
+$$
+DT(x)=a_e(x)\tau_e\otimes\tau_e,
+\qquad a_e(x)>0\quad(x\in e),
+$$
+其中 $\tau_e$ 是该边的单位切向，则对任意不同 $a,b\in\overline Q$，
+$$
+(T(b)-T(a))\cdot(b-a)>0.
+$$
+特别地，闭域延拓单射，并为 $\overline Q$ 到其像的同胚。
+:::
+
+::: {.proof of="lem-tpr-closed-segment-injectivity-tpr1011" status="verified"}
+导数的连续延拓在紧集 $\overline Q$ 上有界。置 $M=\max_{\overline Q}\|DT\|$。任意两个内点间的线段位于 $Q$，内域微积分基本公式给 $|T(b)-T(a)|\le M|b-a|$。因此 $T$ 在内域为 Lipschitz 映射；任意逼近同一边界点的内点序列，其像为 Cauchy 序列且极限相同。这给出唯一的闭域连续延拓，并保留同一 Lipschitz 常数。
+
+固定 $x_0\in Q$ 和 $r_0>0$，使 $B(x_0,r_0)\subset Q$。对任意 $a,b\in\overline Q$，置 $d=b-a$，并取
+$$
+a_\varepsilon=(1-\varepsilon)a+\varepsilon x_0,
+\qquad b_\varepsilon=(1-\varepsilon)b+\varepsilon x_0,
+\qquad 0<\varepsilon<1.
+$$
+凸性说明，收缩线段 $(1-\varepsilon)[a,b]+\varepsilon x_0$ 的每一点均有半径 $\varepsilon r_0$ 的开球包含于 $Q$。故可在整条收缩线段上使用内域公式：
+$$
+T(b_\varepsilon)-T(a_\varepsilon)
+=(1-\varepsilon)\int_0^1
+DT\bigl((1-\varepsilon)(a+td)+\varepsilon x_0\bigr)d\,dt.
+$$
+这里的因子 $1-\varepsilon$ 来自线段参数的导数，不可省略。$DT$ 的延拓在紧集上连续且一致连续；令 $\varepsilon\downarrow0$，由上述 Lipschitz 延拓及一致收敛取得陈述的闭域线段公式。边界处的 $DT$ 仅指内域导数的连续延拓，不要求 $T$ 已在域外定义或可微。
+
+在增加的正定性假设下，边界处的 $DT$ 为内域正定矩阵的连续极限，故半正定。若 $[a,b]$ 经过内域，则存在非空开参数区间使 $a+td\in Q$，在该区间 $d^TDT(a+td)d>0$，其余参数处非负。闭域公式因而给严格正的点积。
+
+若整条非退化线段位于边界，则其内部位于同一条开边。确实，在线段相对内部任选一点及该点的一条支撑线，凸性和支撑等式迫使整条线段位于此支撑线的面；内角严格小于 $\pi$ 的多边形，其非退化边界面就是一条边。于是 $d\parallel\tau_e$，在线段相对内部有 $d^TDTd=a_e|d|^2>0$，积分仍严格正。
+
+严格点积立即给单射。闭域紧致，像在 Hausdorff 空间 $\mathbb R^2$ 中，因此该连续单射是到其像的同胚。
+:::
+
+::: {#prp-tpr-smooth-support-deformation-tpr1011 .proposition name="固定法向支撑扰动的精确光滑环境实现" date="2026-10-11" export="prp-tpr-smooth-support-deformation-tpr1011"}
+设 $Q(h)=\bigcap_{i=1}^N\{x:x\cdot n_i<h_i\}$ 是上述凸多边形的内部，其中 $n_i$ 是按逆时针顺序排列的不同单位外法向，每条指定边均有正长度。给定任意 $a=(a_1,\ldots,a_N)\in\mathbb R^N$，存在 $X\in C_c^\infty(\mathbb R^2;\mathbb R^2)$ 和 $t_0>0$，使
+$$
+\Phi_t(x)=x+tX(x)\quad(|t|<t_0)
+$$
+为整个平面的光滑微分同胚，并且
+$$
+\Phi_t(Q(h))=Q(h+ta),\qquad
+X\cdot n_i=a_i\quad\hbox{于第 }i\hbox{ 条闭边}.
+$$
+特别地，该变分精确保持指定法向和全部 $N$ 条真边。
+:::
+
+::: {.proof of="prp-tpr-smooth-support-deformation-tpr1011" status="verified"}
+记 $v_i$ 为第 $i-1$ 和第 $i$ 条支撑线的交点，指标循环。相邻法向不平行，故存在唯一常向量 $w_i$ 满足
+$$
+n_{i-1}\cdot w_i=a_{i-1},\qquad n_i\cdot w_i=a_i.
+$$
+顶点随支撑扰动准确变为 $v_i(t)=v_i+tw_i$。边长及其余支撑不等式的严格余量依赖支撑数连续，且原边长和全部非相邻顶点余量为正。故当 $|t|$ 足够小时，$Q(h+ta)$ 保持同一组合类型、相同法向和全部正长边。
+
+在每个顶点的小圆盘中取常场 $w_i$，这些圆盘互不相交且不触及非相邻边。在第 $i$ 条边上，取一个光滑向量函数，连接 $w_i$ 与 $w_{i+1}$，并在两端邻域分别恒等于它们。两端向量的法向分量均为 $a_i$，所以可令法向分量全程为 $a_i$，只插值切向分量。将此函数沿法向常值延拓到边中段的薄管邻域；薄管不触及其他边，并在接近顶点圆盘的重叠区与该顶点常场相同。
+
+取这些圆盘和薄管的有限光滑单位分解，支撑于上述邻域并在边界的一个邻域内总和为一。各重叠场在边界上的值相同，因此加权场在边界上仍取指定值；在足够小的顶点邻域仍恒为 $w_i$。再乘一个在闭域边界邻域恒为一的紧支撑光滑截断，得到 $X\in C_c^\infty$，同时保留所有边上的 $X\cdot n_i=a_i$。
+
+令 $|t|\|DX\|_\infty<1$。对任意 $x,y$，
+$$
+|\Phi_t(x)-\Phi_t(y)|\ge
+(1-|t|\|DX\|_\infty)|x-y|,
+$$
+故 $\Phi_t$ 全局单射，导数处处可逆。由于 $X$ 紧支撑，$\Phi_t$ 在足够远处等于恒等映射，是适当映射；其像闭且由局部逆定理为开集，平面连通性给满射。因而它是全局光滑微分同胚。
+
+原第 $i$ 条边上每一点满足
+$$
+n_i\cdot\Phi_t(x)=h_i+ta_i.
+$$
+边上的切向导数在小 $t$ 时保持原方向。两个端点分别映到 $v_i(t),v_{i+1}(t)$，故整条边恰映为两点之间的新边，而非仅一阶匹配。完整边界像因此就是 $Q(h+ta)$ 的简单多边形边界。由平面 Jordan 曲线定理，环境同胚将有界内部映为该新边界的有界内部，即得准确域等式。
+:::
+
+::: {#prp-tpr-support-hadamard-tpr1011 .proposition name="凸角无余项的支撑变分与混合面积 Euler 系数" date="2026-10-11" export="prp-tpr-support-hadamard-tpr1011"}
+采用 @prp-tpr-smooth-support-deformation-tpr1011 的 $Q(h)$ 和 $a$。取正第一 Dirichlet 基态 $u$，使
+$$
+-\Delta u=\lambda u\quad\hbox{于 }Q(h),\qquad
+u\in H_0^1(Q(h)),\qquad \int_{Q(h)}u^2=1.
+$$
+则 $t\mapsto\lambda_1(Q(h+ta))$ 在零点可微，并满足
+$$
+\left.\frac{d}{dt}\right|_{t=0}\lambda_1(Q(h+ta))
+=-\sum_{i=1}^N a_iE_i,\qquad
+E_i=\int_{e_i(Q(h))}(\partial_nu)^2\,ds.
+$$
+每个 $E_i$ 有限，公式没有额外顶点项。
+
+进一步，设 $P$ 是具有相同指定法向及正边长 $\ell_i(P)$ 的凸多边形，混合面积采用 @def-tpm-mixed-area-normalization-tpm1011 的归一化。若 $Q(h)$ 对 $V(P,Q(h))\sqrt{\lambda_1(Q(h))}$ 的所有充分小支撑扰动为局部极小，则
+$$
+E_i=\frac{\lambda_1(Q(h))}{V(P,Q(h))}\,\ell_i(P)
+\qquad(1\le i\le N).
+$$
+:::
+
+::: {.proof of="prp-tpr-support-hadamard-tpr1011"}
+对同一个正第一基态和每个凸角，使用
+@lem-arc-corner-barrier-1012：$u\in H^2\cap H_0^1$，内部及开边光滑，
+并且对任意固定 $1<\nu<\pi/\omega$ 有 $|D^ju|=O(r^{\nu-j})$（$j=0,1,2$）。
+这些估计覆盖整个角窗，保证后面角弧积分消失；不要求 $D^2u$ 延至顶点有界。
+
+由 @prp-tpr-smooth-support-deformation-tpr1011，选准确实现该支撑扰动的光滑紧支撑场 $X$。将能量和质量拉回固定空间 $H_0^1(Q)$：
+$$
+q_t(v,v)=\int_Q
+|D\Phi_t^{-T}\nabla v|^2\det D\Phi_t,
+\qquad
+m_t(v,v)=\int_Qv^2\det D\Phi_t.
+$$
+这些形式在小 $t$ 下统一椭圆，系数对 $t$ 光滑，且在 $H_0^1(Q)$ 的有界集上一致具有二阶 Taylor 余项。下面直接以 Rayleigh 原理证明可微性，不需要预先构造特征函数的形状导数。由 $q_t=(1+O(t))q_0$、$m_t=(1+O(t))m_0$ 的双向形式估计，第一 Rayleigh 下确界 $\lambda_t$ 收敛至 $\lambda$。取其非负基态 $v_t$，归一化为 $m_t(v_t,v_t)=1$；它们在 $H_0^1(Q)$ 中有界。紧嵌入给子列在 $L^2$ 强收敛、在 $H_0^1$ 弱收敛，且 $m_0(v_t,v_t)\to1$、$q_0(v_t,v_t)\to\lambda$。Rayleigh 原理说明任一极限必为非负、归一化的第一基态，简单性给它就是 $u$；能量范数收敛再给 $v_t\to u$ 在 $H_0^1$ 强收敛，故整个族均如此。
+
+置 $D(v)=\dot q_0(v,v)-\lambda\dot m_0(v,v)$。用固定试态 $u$，Rayleigh 原理给
+$$
+\lambda_t-\lambda\le tD(u)+O(t^2).
+$$
+另一方面，$q_0(v_t,v_t)-\lambda m_0(v_t,v_t)\ge0$，Taylor 展开及 $m_t(v_t,v_t)=1$ 给
+$$
+\lambda_t-\lambda
+\ge tD(v_t)+O(t^2)=tD(u)+o(|t|).
+$$
+上、下界对正、负小 $t$ 均成立，故导数存在并等于 $D(u)$。直接求 Jacobian 与逆矩阵的一阶项，得到
+$$
+\lambda'(0)=\dot q_0(u,u)-\lambda\dot m_0(u,u)
+=\int_Q\left[(\operatorname{div}X)(|\nabla u|^2-\lambda u^2)
+-2\nabla u\cdot DX\nabla u\right].
+$$
+定义应力向量场
+$$
+\mathcal F=(|\nabla u|^2-\lambda u^2)X
+-2(X\cdot\nabla u)\nabla u.
+$$
+在内部用 $\Delta u=-\lambda u$ 直接求导，得到
+$$
+\operatorname{div}\mathcal F
+=(\operatorname{div}X)(|\nabla u|^2-\lambda u^2)
+-2\nabla u\cdot DX\nabla u.
+$$
+在开边上 $\nabla u=(\partial_nu)n$，因而 $\mathcal F\cdot n=-(\partial_nu)^2X\cdot n$。
+
+先在删去各顶点半径 $\varepsilon$ 圆盘的区域使用经典散度定理。对于内角指数 $\nu>1$ 的角点，$X$ 有界及上述估计给
+$$
+\int_{\text{角弧}}|\mathcal F|\,ds
+\le C\varepsilon^{2\nu-1}+C\varepsilon^{2\nu+1}
+\longrightarrow0.
+$$
+开边端部的 $|\partial_nu|^2=O(r^{2\nu-2})$ 可积，故全部 $E_i$ 有限；体积分因 $u,\nabla u\in L^2$ 和 $DX$ 有界也绝对可积。令 $\varepsilon\downarrow0$，角弧项消失，截断开边积分收敛至完整边积分。再用 $X\cdot n_i=a_i$ 得到陈述的逐边 Hadamard 公式。
+
+该公式亦与 Berkolaiko--Canzani--Cox--Kuchment--Marzuola 的 [Theorem 4.5，公开稿 pp.19--20](https://marzuola.web.unc.edu/wp-content/uploads/sites/16865/2024/11/HessianDtN_nonsmooth_v15.pdf)一致：它要求 Lipschitz 边界及 $H^2\cap H_0^1$ 特征函数，明确包含二维分段 $C^2$ 且凸角的边界。本证明另外给出了本支撑扰动所需的准确环境实现及角弧消失。
+
+最后采用 @def-tpm-mixed-area-normalization-tpm1011 的混合面积。对固定 $P$，标准平面混合面积的支撑公式是
+$$
+V(P,Q(h))=\frac12\sum_i\ell_i(P)h_i,
+\qquad \partial_{h_i}V(P,Q(h))=\frac{\ell_i(P)}2.
+$$
+混合面积的正性可从支撑公式直接看出。取 $x_0\in Q(h)$ 和 $r>0$ 使
+$B(x_0,r)\subset Q(h)$。平移 $Q(h)$ 后，各支撑数变为
+$h_i-x_0\cdot n_i\ge r$；支撑公式的值不变，因为多边形闭合关系给
+$\sum_i\ell_i(P)n_i=0$。所以
+$$
+V(P,Q(h))=\frac12\sum_i\ell_i(P)(h_i-x_0\cdot n_i)
+\ge\frac r2\sum_i\ell_i(P)>0.
+$$
+特征值也为正。将局部极小目标平方，等价地极小化 $\lambda V^2$。
+所有小支撑速度均合法，因此各偏导为零。刚证明的谱导数给
+$$
+0=\partial_{h_i}(\lambda V^2)
+=-V^2E_i+\lambda V\ell_i(P),
+$$
+除以 $V^2>0$ 即得准确系数。这里的 $1/2$ 是固定第一变量的混合面积导数，不能替换成面积对自身支撑数的导数。
+:::

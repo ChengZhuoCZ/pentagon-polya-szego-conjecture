@@ -1,0 +1,848 @@
+---
+title: "Analytic comparison on the terminal curves"
+qmd-prover:
+  imports:
+    - from: algebra-definitions.qmd
+      use: [def-terminal-rationals]
+    - from: analytic.qmd
+      use: [def-analytic]
+    - from: constants.qmd
+      use: [lem-pi-rational]
+    - from: monotonicity.qmd
+      use: [lem-boundary, lem-derivatives, lem-q-branch-monotone, lem-zero-monotone]
+    - from: robin.qmd
+      use: [lem-pole-free]
+---
+
+::: {#lem-common-tail-line .lemma name="T.2 A common affine lower bound for the tail response" date="2026-10-11" export="lem-common-tail-line"}
+Let $3/8\le h\le4$ and $L=1+h$, and put
+$$
+s=\frac{1381h+1712}{500(h+2)},\qquad B=2s+5,\qquad
+v=\frac{2(h+7)}{67},\qquad
+T_0=\frac{987}{100}\frac{3h^2}{L(h+2)}.
+$$
+Define
+$$
+\mathcal C(\tau)=2s+3-\frac{13\tau}{10B},\qquad
+\mathcal D(\tau)=2s+1-\frac{\tau}{\mathcal C(\tau)},\qquad
+\mathcal L_h(\tau)=\frac1h\left(s-\frac{\tau}{\mathcal D(\tau)}\right).
+$$
+Then $s>1$ and $0<T_0/B^2<30/169$; moreover $\mathcal C,\mathcal D>0$ for $0\le\tau\le T_0$, with $\mathcal D(\tau)>1/v+1/2000$, and
+$$
+\mathcal L_h(\tau)>\frac{s}{h}-\frac{v\tau}{h}
+\qquad(0<\tau\le T_0).
+$$
+:::
+
+::: {.proof of="lem-common-tail-line"}
+Write $R=L/(h+2)$. We have $s=331/500+(21/10)R>1$ and
+$B>(51h+82)/[5(h+2)]$. Define
+$$
+f(h)=\frac{h^2(h+2)}{(1+h)(51h+82)^2}.
+$$
+Its logarithmic derivative is
+$$
+\frac{f'(h)}{f(h)}
+=\frac2h+\frac1{h+2}-\frac1{h+1}-\frac{102}{51h+82}
+=\frac{113h^2+410h+328}{h(h+1)(h+2)(51h+82)}>0.
+$$
+Therefore $f(h)\le f(4)=24/102245<1/4225$, and
+$$
+\frac{T_0}{B^2}<\frac{2961}{4}f(h)
+<\frac{3(987/100)}{169}
+=\frac{2961}{16900}<\frac{30}{169}.
+$$
+For $0\le\tau\le T_0$, successive substitution gives
+$$
+\mathcal C(\tau)>\frac{20s+24}{13}>0,\qquad
+\mathcal D(\tau)>\frac{400s^2+284s-438}{13(20s+24)}>0.
+$$
+The last numerator is increasing for $s\ge1$ and equals $246$ at $s=1$.
+
+We prove the stronger uniform estimate
+$$
+\mathcal D(T_0)>\frac1v+\frac1{2000}.
+$$
+Use the compact height coordinate
+$$
+x=\frac h{h+2}\in[\xi_0,\xi_1],\qquad
+\xi_0=\frac3{19},\quad \xi_1=\frac23,
+$$
+and put
+$$
+\begin{gathered}
+\kappa=\frac{2961}{50},\qquad \gamma=\frac{13\kappa}{10},\qquad
+b(x)=\frac{803}{125}+\frac{21x}{10},\qquad
+c(x)=\frac{1053}{125}+\frac{21x}{10},\\
+W(x)=(1+x)b(x)-\frac{\gamma x^2}{c(x)},\qquad
+\widehat D(x)=\frac{553}{125}+\frac{21x}{10}-\frac{\kappa x^2}{W(x)}.
+\end{gathered}
+$$
+The change of variable gives
+$$
+T_0=\frac{\kappa x^2}{1+x},\qquad
+W(x)=(1+x)\mathcal C(T_0)>0,\qquad
+\widehat D(x)=\mathcal D(T_0).
+$$
+Thus the denominators were already proved positive before the change of variable.
+
+The essential estimate is a uniform curvature bound for the original continued fraction.
+Let $c_*=1228/125$. Since $x\le2/3$, we have $c(x)\le c_*$, and the elementary rational comparisons
+$$
+\frac\gamma{c_*}=\frac{38493}{4912}>\frac{39}{5},\qquad
+\frac{\gamma c(0)}{c_*^2}=\frac{40533129}{6031936}>\frac{33}{5},\qquad
+\frac{c(0)}{c_*}=\frac{1053}{1228}>\frac45
+$$
+yield, by direct differentiation,
+$$
+\begin{aligned}
+W-xW'&=\frac{803}{125}
++x^2\left(\frac{\gamma c(0)}{c(x)^2}-\frac{21}{10}\right)
+>\frac{32}{5}+\frac92x^2=:U(x),\\
+W''&=\frac{21}{5}-\frac{2\gamma c(0)^2}{c(x)^3}<0,\\
+0<W(x)&<\frac{13}{2}+\frac{43}{5}x-\frac{57}{10}x^2=:V(x).
+\end{aligned}
+$$
+For the second inequality, the displayed bounds give
+$\gamma c(0)^2/c(x)^3>(33/5)(4/5)>21/10$.
+For the third, bound the constant and linear coefficients of $(1+x)b(x)$
+by $13/2$ and $43/5$, and use $\gamma/c(x)>39/5$ for the quadratic coefficient.
+
+We next compare the positive quadratic $U$ with $V$ without a high-degree expansion.
+The function $f(x)=U(x)^{2/3}$ is strictly convex, since
+$$
+f''(x)=\frac{6(32/5+3x^2/2)}{U(x)^{4/3}}>0.
+$$
+Its tangent at $x_*=4/(3\sqrt5)$, where $U(x_*)=8$, gives
+$$
+\frac52 U(x)^{2/3}\ge\frac{22}{3}+2\sqrt5\,x.
+$$
+Moreover $\sqrt5>11/5$ and
+$$
+\frac{22}{3}+\frac{22x}{5}-V(x)
+=\frac{57}{10}\left(x-\frac7{19}\right)^2+\frac{17}{285}>0.
+$$
+Consequently $V(x)<(5/2)U(x)^{2/3}$. The exact second derivative identity now gives
+$$
+\begin{aligned}
+\left(\frac{\kappa x^2}{W(x)}\right)''
+&=\kappa\left\{\frac{2(W-xW')^2}{W^3}-\frac{x^2W''}{W^2}\right\}\\
+&>\frac{2\kappa U(x)^2}{V(x)^3}
+>\frac{16\kappa}{125}
+=\frac{23688}{3125}>\frac{15}{2}.
+\end{aligned}
+$$
+Hence $\widehat D''<-15/2$ on the whole compact height interval.
+
+It remains to compare this curvature with the affine-bound threshold
+$$
+g(x)=\frac1v=\frac{67(1-x)}{2(7-5x)}.
+$$
+For any function $f$, let $\ell_f$ denote its affine interpolant at $\xi_0,\xi_1$,
+and write $\omega(x)=(x-\xi_0)(\xi_1-x)$. Strong concavity gives
+$$
+\widehat D(x)\ge\ell_{\widehat D}(x)+\frac{15}{4}\omega(x).
+$$
+The fractional-linear function $g$ has the exact chord remainder
+$$
+g(x)-\ell_g(x)
+=\frac{335\omega(x)}{(7-5\xi_0)(7-5\xi_1)(7-5x)},
+$$
+whose coefficient is bounded by
+$$
+\frac{57285}{14278}<\frac{201}{50}.
+$$
+Direct substitution into the continued fraction gives
+$$
+\begin{aligned}
+\widehat D(\xi_0)-\frac{4561}{1000}
+&=\frac{23710670971}{60245409817000}>0,\\
+\widehat D(\xi_1)-\frac{307}{100}
+&=\frac{3931}{146701500}>0.
+\end{aligned}
+$$
+As $g(\xi_0)=268/59$ and $g(\xi_1)=67/22$, both endpoint gaps exceed $37/2000$:
+$$
+\frac{4561}{1000}-\frac{268}{59}=\frac{1099}{59000}>\frac{37}{2000},\qquad
+\frac{307}{100}-\frac{67}{22}=\frac{27}{1100}>\frac{37}{2000}.
+$$
+Finally,
+$$
+0\le\omega(x)\le\frac{(\xi_1-\xi_0)^2}{4}
+=\frac{841}{12996}<\frac1{15}.
+$$
+Subtracting the chord formulas therefore proves
+$$
+\widehat D(x)-g(x)
+>\frac{37}{2000}-\frac{27}{100}\omega(x)
+>\frac1{2000}.
+$$
+
+To finish, differentiate with respect to the energy variable:
+$$
+\mathcal D'(\tau)=-\frac{2s+3}{\mathcal C(\tau)^2}<0.
+$$
+Thus $\mathcal D(\tau)\ge\mathcal D(T_0)>1/v+1/2000$ for
+$0\le\tau\le T_0$. Substitution into $\mathcal L_h$ proves the strict affine lower bound.
+At $\tau=0$, the affine comparison is an equality.
+:::
+
+::: {#lem-terminal-comparison .lemma name="T.2 A pole-free comparison preserving the shared energy" date="2026-10-12" export="lem-terminal-comparison"}
+On $\mathcal D_*\cap\{q\le p\}$ from @def-analytic, let
+$$
+e=\frac{3a}{(h+2)S_0},\quad
+k=e-\frac{a^2}{2(h+2)^2}=\frac K\Pi,\quad
+A_- =\frac{493a^2}{100(h+2)^2},\quad
+\overline T=\frac{987}{100}h^2e.
+$$
+Use $H_1,H_2$ from @def-terminal-rationals and
+$\mathcal L_h$ from @lem-common-tail-line. All functions below are well defined, and
+$$
+\begin{aligned}
+\mathcal G(h,a,b)&>H_2(k)+\mathcal B(A_-,w)+\mathcal L_h(\overline T),\\
+\mathcal G(h,a,b)&>H_1(k)+\mathcal B(A,w)+\mathcal L_h(\overline T).
+\end{aligned}
+$$
+:::
+
+::: {.proof of="lem-terminal-comparison"}
+Use the notation of @def-analytic. By @lem-pole-free, $0<K<\Pi$ and
+$0<A<1$, and the initial radicals and denominators are positive. By @lem-pi-rational,
+$\Pi_-=493/50<\Pi<987/100=\Pi_+$.
+Since $S_0\ge1+ha$ and $a\le1$,
+$$
+0<e\le\frac3{L(h+2)}=:e_0,
+\qquad 0<T=\Pi h^2e<\overline T\le T_0=\Pi_+h^2e_0.
+$$
+The parameter $k$ belongs to $(0,1)$, so the denominators of $H_1,H_2$ are strictly positive.
+Writing out the head response and using $\Pi<\Pi_+$ gives
+$$
+\mathsf H(\Pi k)
+=1-\frac{2k}{1-k}-\frac{2k}{4-k}
+-\frac{(\Pi/3-5/2)k}{1-k/9}>H_2(k)>H_1(k).
+$$
+The second strict comparison follows from
+$$
+H_2(k)-H_1(k)=\frac{79k}{100}
+\left(\frac1{1-k/4}-\frac1{1-k/9}\right)>0.
+$$
+Also $0<A_-<A<1$ and $d=1-w>0$, whence
+$$
+\partial_A\mathcal B(A,w)=\frac d{2w}+
+\frac{(1-A)d^2}{10w}>0.
+$$
+Therefore $\mathcal B(A,w)>\mathcal B(A_-,w)>0$.
+
+We next compare the tails corresponding to the same $e$. Since $q\le p$, we have $m=p>0$,
+and hence $R=L/(h+2)$. Take $s=s(h)>1$ from @lem-common-tail-line. Completing the square yields
+the identity
+$$
+\frac{\Pi_-R^2}{2}-s(s-1)
+=\frac{13}{25}\left(R-\frac{1701}{2600}\right)^2
++\frac{15427}{13000000}>0
+$$
+which, together with $\sigma(\sigma-1)=\Pi R^2/2$, gives $\sigma>s$.
+
+Let $B=2s+5$. By @lem-common-tail-line, $T_0/B^2<30/169$.
+For $0\le t\le30/169$,
+$$
+(1-4t)-(1-13t/5)^2=t(6/5-169t/25)\ge0,
+$$
+and the proposed lower bound for the square root is positive. Therefore
+$$
+\sqrt{B^2-4\overline T}\ge B-\frac{13\overline T}{5B}>0.
+$$
+The original algebraic response at $(s,\overline T)$ consequently satisfies
+$C\ge\mathcal C(\overline T)>0$, $D\ge\mathcal D(\overline T)>0$, 
+and hence
+$$
+\frac{\mathsf T(s,\overline T)}h\ge\mathcal L_h(\overline T).
+$$
+Starting at $(s,\overline T)$, increase the order to $\sigma$ and then decrease the energy to $T$.
+The radical, $C$, and $D$ are nondecreasing along this path, so positivity is preserved throughout.
+The general tail monotonicity in @lem-derivatives gives
+$$
+\frac{\mathsf T(\sigma,T)}h>
+\frac{\mathsf T(s,\overline T)}h\ge\mathcal L_h(\overline T).
+$$
+Adding the head and gain comparisons proves both inequalities.
+:::
+
+::: {#lem-psi-payment .lemma name="T.3 Reciprocal comparisons and curvature on the first terminal curve" date="2026-10-12" export="lem-psi-payment"}
+Let $3/8\le h\le4$. Use
+$L,s,v,w,d,e,k,A_-,H_2$ and $J,G_*,\mathcal L_h,Z_\Psi$ from @def-terminal-rationals,
+and $\mathcal B$ from @def-analytic. All denominators used are nonzero; moreover
+$0<k<1/L$, $Z_\Psi>27/16000$, and
+$$
+H_2(k)+\mathcal B(A_-,w)+\mathcal L_h((987/100)h^2e)
+>\frac{Z_\Psi}{h}>\frac{27}{16000h}>0.
+$$
+:::
+
+::: {.proof of="lem-psi-payment"}
+This lemma concerns only the rational functions in @def-terminal-rationals.
+Write $A=A_-$, $e_0=3/[L(h+2)]$, and $\Pi_+=987/100$.
+Common-denominator calculations give $d=1-w$ and
+$$
+\frac e{e_0}=1-\frac8{h(60h+127)}\in(0,1).
+$$
+Indeed, $h(60h+127)-8$ is strictly increasing and equals $769/16>0$ at $h=3/8$.
+Thus $0<\Pi_+h^2e<T_0$, and @lem-common-tail-line applies.
+
+The head energy is
+$$
+k=\frac{300h^3+1295h^2+1349h-96}
+{2hL(h+2)^2(60h+127)}>0.
+$$
+Its numerator is strictly increasing and equals $77799/128>0$ at $h=3/8$.
+Furthermore,
+$$
+\frac1L-k=\frac{P_4(h)}{2hL(h+2)^2(60h+127)},\qquad
+P_4(h)=120h^4+434h^3+201h^2-333h+96.
+$$
+Since
+$$
+P_4''(h)=1440h^2+2604h+402>0,\quad
+P_4'(3/8)=\frac{837}{32}>0,\quad
+P_4(3/8)=\frac{12621}{512}>0,
+$$
+we obtain $0<k<1/L\le8/11<3/4$. Every head denominator is strictly positive.
+For $0\le t\le3/4$,
+$$
+\frac14-\frac1{8(1-t/4)}-\frac{79}{900(1-t/9)}
+=\frac{25t^2-196t+134}{100(t-9)(t-4)}>0.
+$$
+The denominator is positive; the numerator is decreasing on this interval and equals $17/16$ at $t=3/4$.
+Consequently,
+$$
+H_2(k)>1-\frac{2k}{1-k}-\frac{129k}{100}-\frac{k^2}{4}
+\ge1-\frac{2k}{1-k}-\left(\frac{129}{100}+\frac1{4L}\right)k=J.
+$$
+
+For the gain, put $W=60h^3+143h^2+16h+8>0$. We have
+$$
+\frac dw-\frac{26h-5}{30h^2}
+=\frac{P_3(h)}{30h^2W},\qquad P_3(h)=152h^3+59h^2-128h+40,
+$$
+and the tangent-line identity
+$$
+P_3(h)-\left(45h-\frac{51}{4}\right)
+=\frac{(2h-1)^2(152h+211)}4\ge0
+$$
+together with $45h-51/4\ge33/8$ gives $P_3>0$. Moreover,
+$$
+d-\frac{11}{15L}=\frac{4(2h^2+5h-2)}{15hL(4h+9)}>0,
+$$
+because $2h^2+5h-2$ is strictly increasing and equals $5/32$ at $h=3/8$.
+Thus $d>0$, $w>0$, and $A\le7888/9025<7/8$.
+Using the full gain from @def-analytic, we obtain
+$$
+\begin{aligned}
+\mathcal B(A,w)
+&=\frac{Ad}{2w}\left(1+\frac{(2-A)d}{10}\right)\\
+&>\frac{A(26h-5)}{60h^2}
+\left(1+\frac{33}{400L}\right)=G_*.
+\end{aligned}
+$$
+Both gain terms are retained together in this estimate.
+
+**A common reciprocal form.** Keep the same $e$ in the head and tail. Put
+$$
+N=300h^3+1295h^2+1349h-96,\qquad
+D=2hL(h+2)^2(60h+127).
+$$
+Thus $k=N/D$, and $D-N>0$ has already been established. Define
+$$
+S(h)=\frac{2hk}{1-k}=\frac{2hN}{D-N},\qquad R_0(h)=Z_\Psi(h)+S(h).
+$$
+Elementary partial fractions of the original response give
+$$
+\begin{aligned}
+R_0(h)={}&\frac{389h}{3350}-\frac{25913}{33500}
+-\frac{b_0}{h}+\frac{b_1}{(h+1)^2}-\frac{b_2}{h+1}\\
+&+\frac{b_3}{(h+2)^2}+\frac{b_4}{h+2}-\frac{b_5}{h+127/60},
+\end{aligned}
+\tag{T.3.1}
+$$
+where all six constants are positive:
+$$
+\begin{gathered}
+b_0=\frac{213469}{1920000},\quad b_1=\frac{225}{268},\quad
+b_2=\frac{11452440743}{3591200000},\\
+b_3=\frac{1773689}{1600000},\quad
+b_4=\frac{74489644841}{4502400000},\quad
+b_5=\frac{23869857}{3927875}.
+\end{gathered}
+$$
+We bound $S$ with one reciprocal majorant and control the resulting difference by convexity.
+
+**One majorant on the full interval.** Use the single majorant
+
+$$
+M(h)=\frac9{2(h+2)}+\frac6{5(h+2)^2}-\frac1{9h},\qquad G(h)=R_0(h)-M(h).
+$$
+
+Since $h>0$ and $D-N>0$, the weighted gap
+
+$$
+\mathcal W(h)=\frac{15(h+2)^2(D-N)}{2h}\,[M(h)-S(h)]
+$$
+
+has the same sign as $M-S$. Combining the three reciprocal terms of $M$ gives the unexpanded formula
+
+$$
+\mathcal W(h)=\frac{(395h^2+878h-40)(D-N)}{12h^2}
+-15(h+2)^2N.
+$$
+
+Three differentiations yield
+
+$$
+\mathcal W'''(h)=\frac{7680}{h^5}-\frac{48804}{h^4}
++58071-12820h-33000h^2.
+$$
+
+For $h\ge3/8$, we have $7680/h\le20480$ and $58071-12820h<59000$. Thus
+
+$$
+h^4\mathcal W'''(h)<-28324+h^4(59000-33000h^2).
+$$
+
+The scalar function $g(y)=y^2(59000-33000y)$ for $y\ge0$ has derivative $g'(y)=y(118000-99000y)$. It increases up to $y=118/99$ and decreases afterwards, so
+
+$$
+g(y)\le\frac{4\cdot59000^3}{27\cdot33000^2}
+=\frac{821516000}{29403}<28000.
+$$
+
+Applying this with $y=h^2$ gives
+
+$$
+\mathcal W'''(h)<-\frac{324}{h^4}<0.
+$$
+
+Consequently $\mathcal W''$ is strictly decreasing and $\mathcal W'$ is strictly concave. On the lower interval $3/8\le h\le2$,
+
+$$
+\mathcal W''(h)\ge\mathcal W''(2)=\frac{140594}{3}>45000.
+$$
+
+At $h=1/2$, the value and slope are
+
+$$
+\mathcal W(1/2)=\frac{5979}{32},\qquad
+\mathcal W'(1/2)=-\frac{11609}{4}.
+$$
+
+The function $\mathcal W(h)-22500(h-1/2)^2$ is strictly convex. Its tangent at $1/2$, with $z=h-1/2$, gives
+
+$$
+\begin{aligned}
+\mathcal W(h)
+&\ge\frac{5979}{32}-\frac{11609}{4}z+22500z^2\\
+&\ge\frac{5979}{32}-\frac{(11609/4)^2}{90000}
+=\frac{134286119}{1440000}>90.
+\end{aligned}
+$$
+
+For the upper interval $2\le h\le4$, use
+
+$$
+\mathcal W'(2)=\frac{537851}{4}>0,\qquad
+\mathcal W(2)=113604,\qquad \mathcal W(4)=227460.
+$$
+
+The positive set of the concave function $\mathcal W'$ is an interval containing $2$. Once $\mathcal W'$ becomes nonpositive, it cannot become positive again: otherwise concavity between $2$ and a later point with positive derivative would force positivity at the intervening point. Thus $\mathcal W$ first increases and may then decrease, and its minimum on $[2,4]$ occurs at an endpoint. Both endpoint values are positive, so $\mathcal W>0$ also on this upper interval.
+
+Finally,
+
+$$
+M-S=\frac{2h}{15(h+2)^2(D-N)}\mathcal W(h)>0.
+$$
+
+Hence $S<M$ and $Z_\Psi>G$ throughout $[3/8,4]$.
+
+**A uniform curvature bound.**
+
+Put
+
+$$
+x=\frac1{h+2}\in\left[\frac16,\frac8{19}\right],\qquad
+\epsilon=b_0-\frac19=\frac{407}{5760000}>0,\qquad C=b_3-\frac65<0.
+$$
+
+Differentiating the retained partial fractions gives
+
+$$
+\frac{(h+2)^3G''(h)}2=Q(x),
+$$
+
+$$
+Q(x)=b_4-\frac92+3Cx-f(x)
+-\frac{b_5}{(1+7x/60)^3}-\frac{\epsilon}{(1-2x)^3},
+\qquad
+f(x)=\frac{b_2(1-x)-3b_1x}{(1-x)^4}.
+$$
+
+All denominators are positive on this interval. We will prove
+
+$$
+Q(x)>-\frac12\quad\left(\frac16\le x\le\frac8{19}\right),
+\qquad
+Q(x)>0\quad\left(\frac16\le x\le\frac27\right).
+$$
+
+First consider $1/6\le x\le2/5$. We have
+
+$$
+f'(x)=\frac{3\{(b_2-b_1)-(b_2+3b_1)x\}}{(1-x)^5},
+\qquad
+f''(x)=\frac{12\{(b_2-2b_1)-(b_2+3b_1)x\}}{(1-x)^6}.
+$$
+
+The numerator controlling $f''$ is decreasing and affine. Thus $f'$ either is monotone or first increases and then decreases; its minimum on a compact interval occurs at an endpoint. The bounds $b_2>3$ and $b_1<1$ give
+
+$$
+f'(1/6)>\frac{3}{(5/6)^5}>3.
+$$
+
+At the other endpoint, use $b_2>637/200$ and $b_1<21/25$:
+
+$$
+f'(2/5)=\frac{625}{81}(3b_2-11b_1)
+>\frac{625}{81}\left(3\frac{637}{200}-11\frac{21}{25}\right)
+=\frac{175}{72}>\frac{12}{5}.
+$$
+
+Consequently $f'>12/5$ on the whole interval. Since $C<0$, $\epsilon>0$, and $b_5<61/10$, differentiation of $Q$ yields
+
+$$
+Q'(x)<-\frac{12}{5}+\frac7{20}b_5
+<-\frac{12}{5}+\frac{427}{200}=-\frac{53}{200}<0.
+$$
+
+For $2/5\le x\le8/19$, bound the coupled head term by its elementary scalar maximum. For positive $a,b$,
+
+$$
+\frac{d}{dx}\frac{a-(a+3b)x}{(1-x)^4}
+=\frac{3\{a-b-(a+3b)x\}}{(1-x)^5},\qquad x<1.
+$$
+
+It increases up to $x=(a-b)/(a+3b)$ and decreases afterwards, so its global maximum for $x<1$ is $(a+3b)^4/(256b^3)$. Use
+
+$$
+b_2<\frac{319}{100},\qquad b_1>\frac{67}{80}.
+$$
+
+Since $0<x<1$, these inequalities increase the numerator defining $f$. They give
+
+$$
+f(x)<\frac{2281^4}{12800000\,67^3}<\frac{176}{25}.
+$$
+
+The other three bounds are
+
+$$
+\begin{aligned}
+b_4-\frac92+3Cx
+&\ge b_4-\frac92+\frac{24C}{19}
+=\frac{1020466792283}{85545600000}>\frac{119}{10},\\
+\frac{b_5}{(1+7x/60)^3}
+&\le b_5\left(\frac{150}{157}\right)^3
+=\frac{644486139000}{121603647739}<\frac{16}{3},\\
+\frac{\epsilon}{(1-2x)^3}
+&\le\epsilon\left(\frac{19}{3}\right)^3
+=\frac{2791613}{155520000}<\frac1{50}.
+\end{aligned}
+$$
+
+Thus
+
+$$
+Q(x)>\frac{119}{10}-\frac{176}{25}-\frac{16}{3}-\frac1{50}
+=-\frac{37}{75}>-\frac12.
+$$
+
+In particular this holds at $x=2/5$. Since $Q$ is decreasing on $[1/6,2/5]$, the same lower bound extends to the full interval $[1/6,8/19]$.
+
+To obtain positive curvature in the upper height range, it remains to bound $Q(2/7)$. The affine contribution and the small-pole bound above hold on all of $[1/6,8/19]$. In addition,
+
+$$
+\begin{aligned}
+f(2/7)&=\frac{343}{625}(5b_2-6b_1)
+<\frac{343}{625}\left(5\frac{319}{100}-6\frac{67}{80}\right)
+=\frac{149891}{25000}<6,\\
+\frac{b_5}{(1+7(2/7)/60)^3}
+&=b_5\left(\frac{30}{31}\right)^3
+<\frac{61}{10}\left(\frac{30}{31}\right)^3<\frac{28}{5}.
+\end{aligned}
+$$
+
+Therefore
+
+$$
+Q(2/7)>\frac{119}{10}-6-\frac{28}{5}-\frac1{50}
+=\frac7{25}>\frac14.
+$$
+
+Monotonicity gives $Q>0$ on $[1/6,2/7]$, as required.
+
+**One convex correction and one tangent.**
+
+Define
+
+$$
+F(h)=G(h)+\frac1{2(h+2)}.
+$$
+
+The uniform bound just proved gives
+
+$$
+F''(h)=\frac{2}{(h+2)^3}\left(Q(x)+\frac12\right)>0
+\quad\left(\frac38\le h\le4\right).
+$$
+
+Convexity and the tangent at $h=1$ imply
+
+$$
+G(h)\ge G(1)+G'(1)(h-1)-\frac{(h-1)^2}{18(h+2)}.
+$$
+
+The scalar data are
+
+$$
+G(1)=\frac{208251137}{16401600000}>\frac1{80},
+\qquad
+-\frac1{400}<G'(1)=-\frac{42620371163}{18402595200000}<0.
+$$
+
+For $3/8\le h\le3/2$, the negative contribution from the linear term is at most $1/800$: it is nonnegative for $h\le1$, while $0\le h-1\le1/2$ otherwise. Also $|h-1|\le5/8$ and $h+2\ge19/8$, so
+
+$$
+\frac{(h-1)^2}{18(h+2)}\le\frac{(5/8)^2}{18(19/8)}=\frac{25}{2736}.
+$$
+
+It follows that
+
+$$
+G(h)>\frac1{80}-\frac1{800}-\frac{25}{2736}
+=\frac{289}{136800}>\frac{27}{16000}.
+$$
+
+For $h\ge3/2$, we have $x\le2/7$ and therefore $G''(h)>0$. Moreover,
+
+$$
+G'(3/2)=\frac{5115313959269}{1118040013125000}>0.
+$$
+
+Hence $G$ is strictly increasing on $[3/2,4]$, and the same strict lower bound extends to that entire interval. Together with $Z_\Psi>G$, this proves the original strict margin on the full original range.
+
+**The original response.**
+Combining @lem-common-tail-line with the head and gain estimates above yields
+$$
+H_2(k)+\mathcal B(A,w)+\mathcal L_h(\Pi_+h^2e)
+>J+G_*+\frac{s-v\Pi_+h^2e}{h}=\frac{Z_\Psi}{h}>\frac{27}{16000h}>0.
+$$
+:::
+
+::: {#lem-phi-payment .lemma name="T.4 Convexity and one tangent on the second terminal curve" date="2026-10-12" export="lem-phi-payment"}
+Let $\sqrt3-1<h\le4$ and $L=1+h$, and put
+$$
+e=\frac{3(13h-2)}{13hL(h+2)},\quad
+z=\frac{13h-2}{15h(h+2)},\quad k=e-z^2/2,\quad r=15e/16.
+$$
+Use $H_1$ from @def-terminal-rationals and
+$s,v,\mathcal L_h$ from @lem-common-tail-line. Set
+$$
+J_\Phi(r)=1-\frac{2r}{1-r}-\frac{3r}{2},\qquad
+Z_\Phi=s+hJ_\Phi(r)-v\frac{987}{100}h^2e.
+$$
+All denominators are strictly positive, and
+$$
+H_1(k)+\mathcal L_h((987/100)h^2e)>\frac{Z_\Phi}{h}>\frac{3}{500h}>0.
+$$
+:::
+
+::: {.proof of="lem-phi-payment"}
+Put $\Pi_+=987/100$ and $e_0=3/[L(h+2)]$.
+Since $h>\sqrt3-1>2/3$,
+$$
+0<\frac{z^2}{2e}=\frac{13(13h-2)L}{1350h(h+2)}<\frac{169}{1350}<1,
+$$
+we have $e,k>0$. Also $e_0-e=6/[13hL(h+2)]>0$, so
+$0<\Pi_+h^2e<T_0$; @lem-common-tail-line guarantees positivity of all tail denominators.
+The inequality $3>(19/11)^2$ gives $h>8/11$. In the identity
+$$
+\frac{z^2}{2e}-\frac1{16}
+=\frac{677h^2-206h-208}{10800h(h+2)}
+$$
+the numerator equals $32/121$ at $h=8/11$, and its derivative for $h\ge8/11$ is
+at least $8566/11>0$. Hence $k<r=15e/16$. Furthermore,
+$$
+\frac{27}{52}-e
+=\frac{3(h+4)(3h-2)(3h-1)}{52hL(h+2)}>0.
+$$
+Thus $0<k<r<405/832<1/2$, and every head denominator is positive.
+The function $H_1$ is strictly decreasing on this interval, and
+$$
+\frac{129}{100(1-r/4)}<\frac{258}{175}<\frac32,
+$$
+so $H_1(k)>J_\Phi(r)$.
+
+Retaining the same $e$, set
+$$
+Q=208h^3+624h^2-169h+90=208hL(h+2)(1-r)>0.
+$$
+The only non-elementary-looking reciprocal in $Z_\Phi$ admits a simple majorant:
+$$
+\begin{aligned}
+\frac{45}{8(h+3)}-\frac{2hr}{1-r}
+&=\frac{45(32h^2-73h+90)}{8(h+3)Q}>0,\\
+32h^2-73h+90
+&=32\left(h-\frac{73}{64}\right)^2+\frac{6191}{128}>0.
+\end{aligned}
+$$
+The identity follows by subtracting $16h(h+3)(13h-2)$ from $Q$.
+Substitution into $Z_\Phi$ and elementary partial fractions give
+$$
+\begin{aligned}
+Z_\Phi(h)>G(h):={}&\frac{389h}{3350}-\frac{277649}{435500}
+-\frac{174393}{139360(h+1)}\\
+&+\frac{54705}{6968(h+2)}-\frac{45}{8(h+3)}.
+\end{aligned}
+\tag{T.4.7}
+$$
+We prove positivity of $G$ by curvature on the whole interval $[8/11,4]$.
+Put
+$$
+c_1=\frac{174393}{139360}<\frac{21}{16},\qquad
+c_2=\frac{54705}{6968}>\frac{15}{2},\qquad c_3=\frac{45}{8}.
+$$
+For $x=1/(h+2)\in[1/6,11/30]$, direct differentiation yields
+$$
+\frac{(h+2)^3G''(h)}2
+=c_2-f(x),\qquad
+f(x)=\frac{c_1}{(1-x)^3}+\frac{c_3}{(1+x)^3}.
+$$
+Both summands of $f$ are strictly convex, so its maximum on this interval
+occurs at an endpoint. The elementary inequalities
+$$
+\left(\frac65\right)^3<2,\quad
+\left(\frac67\right)^3<\frac23,\quad
+\left(\frac{30}{19}\right)^3<4,\quad
+\left(\frac{30}{41}\right)^3<\frac25
+$$
+give
+$$
+f(1/6)<\frac{51}{8}<\frac{15}{2},\qquad
+f(11/30)<4\frac{21}{16}+\frac25\frac{45}{8}=\frac{15}{2}.
+$$
+Consequently $G''>0$ throughout $[8/11,4]$.
+
+One tangent now suffices. At $h_*=9/4$, substitution gives
+$$
+G(h_*)=\frac{9786437}{673718500}>\frac7{500},\qquad
+0<G'(h_*)=\frac{209699639}{52112125975}<\frac1{200}.
+$$
+Since $G$ is convex and $G'(h_*)>0$, every $h\in[8/11,4]$ satisfies
+$$
+\begin{aligned}
+G(h)&\ge G(h_*)+G'(h_*)(h-h_*)\\
+&\ge G(h_*)-\frac{67}{44}G'(h_*)
+>\frac7{500}-\frac{67}{8800}
+=\frac{281}{44000}>\frac3{500}.
+\end{aligned}
+$$
+Thus $Z_\Phi>3/500$. Finally, @lem-common-tail-line gives
+$$
+H_1(k)+\mathcal L_h(\Pi_+h^2e)
+>J_\Phi(r)+\frac{s-v\Pi_+h^2e}{h}=\frac{Z_\Phi}{h}>\frac3{500h}>0.
+$$
+:::
+
+::: {#lem-terminal .lemma name="Strict positivity on the two terminal curves" date="2026-10-11" export="lem-terminal"}
+For the $\Psi$ parameters in @def-analytic that belong to $\mathcal D_*$ and satisfy $q_c(h,1)\le h/(1+h)$,
+we have $\Psi(h)>0$. For $\Phi$ on $\sqrt3-1<h\le4$,
+we have $\Phi(h)>0$. Consequently $\mathcal G>0$ throughout $\mathcal D$ from that definition.
+:::
+
+::: {.proof of="lem-terminal"}
+Use the notation of @def-analytic and the constant bounds in @lem-pi-rational, and put $\Pi_+=987/100$.
+
+First consider $\Psi$. Here $a=1$ and $p=h/L$, and the container equality $S_0d=c$ is equivalent to
+$$
+1-c=q_c\left(h+\frac{p}{1-q_c}\right).
+$$
+The right-hand side is strictly increasing for $0<q_c<1$. Since
+$$
+\frac2{15}<1-c<\frac17,\qquad
+\frac15\left(h+\frac54p\right)\ge\frac{63}{440}>\frac17
+\quad(h\ge3/8),
+$$
+we obtain $q_c<1/5$, and then
+$$
+q_c>\frac{2/15}{h+5p/4}
+=\frac{8L}{15h(4h+9)}=:q_0(h)>0.
+$$
+At the geometrically admissible heights in the statement, $q_0<q_c\le p$.
+When $q$ decreases from $q_c$ to $q_0$, $w$ does not increase and $a(1-q)$ increases.
+The entire segment therefore remains in $\mathcal D_*\cap\{q\le p\}$.
+By @lem-q-branch-monotone,
+$$
+\Psi(h)>\mathcal G\left(h,1,\frac Lh q_0(h)\right).
+$$
+Direct calculation at this endpoint gives
+$$
+\begin{aligned}
+w&=\frac{60h^3+143h^2+16h+8}{15hL(4h+9)},\qquad
+S_0=\frac{hL(60h+127)}{60h^2+127h-8},\\
+e&=\frac{3(60h^2+127h-8)}{hL(h+2)(60h+127)},\qquad
+k=e-\frac1{2(h+2)^2},\qquad A_- =\frac{493}{100(h+2)^2}.
+\end{aligned}
+$$
+These are precisely the $\Psi$ quantities of @def-terminal-rationals.
+Thus @lem-terminal-comparison and @lem-psi-payment give
+$$
+\Psi(h)>H_2(k)+\mathcal B(A_-,w)+\mathcal L_h(\Pi_+h^2e)>0.
+$$
+The rational lemma holds on $[3/8,4]$; the geometric path above is used only within
+$\mathcal D_*$ as required in the statement. Points introduced by rational continuation are not treated as actual pentagons.
+
+Next consider $\Phi$. If $\sqrt3-1<h\le4$, then $L>\sqrt3$.
+Set $a_\triangle=(cL-1)/h$. We have $0<a_\triangle<1$, and
+$$
+a_\triangle>\frac1{C_h}\quad\Longleftrightarrow\quad
+c(L^2+1)-2L=c(L-\sqrt3)(L-1/\sqrt3)>0.
+$$
+Thus $(h,a_\triangle,0)\in\mathcal D_*$, and $\Phi$ is defined on the entire stated interval.
+Define
+$$
+a_1(h)=\frac{13h-2}{15h},\qquad
+a_1-a_\triangle=\left(\frac{13}{15}-c\right)\frac Lh>0.
+$$
+We have $a_\triangle<a_1<1$. Increasing $a$ to $a_1$ while keeping $q=0$
+preserves $a>1/C_h$ and $p=ha/L<1$, so the whole segment lies in $\mathcal D_*$.
+By @lem-zero-monotone,
+$$
+\Phi(h)>\mathcal G(h,a_1(h),0).
+$$
+At this endpoint,
+$$
+S_0=\frac{13L}{15},\qquad
+e=\frac{3(13h-2)}{13hL(h+2)},\qquad
+\rho_+=\frac{13h-2}{15h(h+2)},\qquad k=e-\rho_+^2/2.
+$$
+These are exactly the parameters of @lem-phi-payment. The second inequality of @lem-terminal-comparison
+therefore gives
+$$
+\Phi(h)>H_1(k)+\mathcal L_h(\Pi_+h^2e)+\mathcal B(A,w)
+>\frac{Z_\Phi}{h}+\mathcal B(A,w)>0.
+$$
+Both original gain terms remain as an additional positive remainder.
+
+Finally, take any parameter in $\mathcal D$. By @lem-boundary, three branches cover this domain:
+if $q>p$, then $\mathcal G>1/150$; if $q\le p$ and $S_0d<c$, then
+$\mathcal G>\Psi(h)>0$; and if $q\le p$ and $S_0/L<c$, then
+$\mathcal G>\Phi(h)>0$. Since $S_0\min(d,L^{-1})<c$, these branches cover
+all of $\mathcal D$. Hence $\mathcal G>0$.
+:::

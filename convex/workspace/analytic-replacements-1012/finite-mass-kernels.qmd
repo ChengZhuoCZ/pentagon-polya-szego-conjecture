@@ -1,0 +1,161 @@
+---
+title: "完整双核的六标量接合与有限质量 Lorentz 比较"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: bessel-core.qmd
+      use:
+        - def-arc-bessel-data-1012
+        - lem-arc-bessel-tail-1012
+        - lem-arc-low-mode-pairing-1012
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+    - from: u0-radial.qmd
+      use:
+        - lem-arc-u0-radial-1012
+    - from: j-radial.qmd
+      use:
+        - lem-arc-j-radial-1012
+    - from: pq-radial.qmd
+      use:
+        - lem-arc-pq-radial-1012
+    - from: v-radial.qmd
+      use:
+        - lem-arc-v-radial-1012
+    - from: high-modes.qmd
+      use:
+        - lem-arc-high-modes-1012
+    - from: complete-means.qmd
+      use:
+        - thm-arc-complete-means-1012
+    - from: ../ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+---
+
+::: {#lem-arc-full-kernel-payment-1012 .lemma name="两源完整双核的连续正支付" date="2026-10-12" export="lem-arc-full-kernel-payment-1012"}
+采用 @def-arc-bessel-data-1012 的完整 $f_\epsilon,h_\epsilon,a_m,z_m$。对任意复相位，考虑
+$$\mathrm U:\ \kappa=1,\ 0\le t\le27/50,\ 0\le s\le5/8;
+\qquad\mathrm C:\ \kappa=6/5,\ 0\le s\le t\le27/50.$$
+在 $0\le\beta\le\alpha,\epsilon=\pm1$ 上，
+$$f_\epsilon\ge\beta t^2,\qquad
+E_\epsilon:=a_m f_\epsilon-\Re(\overline{z_m}h_\epsilon)-\frac3{16}|h_\epsilon|^2
+\ge\frac{\beta t^2}{100}.$$
+$t=0$ 时两核为零。此结论直接针对完整核，而非七次截断或有限相位采样。
+:::
+
+::: {.proof of="lem-arc-full-kernel-payment-1012"}
+采用 @def-arc-bessel-data-1012 的核及组合标量定义。
+取 $t\beta>0$，其余端点最后连续处理。$q=\kappa t$。
+@lem-arc-low-mode-pairing-1012 给准确相位配对。使用
+@lem-arc-u0-radial-1012、@lem-arc-j-radial-1012、@lem-arc-pq-radial-1012、
+@lem-arc-v-radial-1012、@lem-arc-high-modes-1012，且保留 $J\ge0$，得到
+$$\frac{f^\#_\epsilon}{\beta}\ge
+q^2[\tfrac12+\epsilon(\alpha^2-\beta^2)/6]-q^4/12
++tJ-tq^4/32-q^5/200-\tfrac45s qJ,$$
+$$\frac{|h^\#_\epsilon|}{\beta}\le q^2/2+\tfrac45tqJ+s(q^4/32+J).$$
+记 $H^-_\epsilon,H^+_\epsilon$ 为 J 引理中的二次下、上界。两域均有
+$1-\frac45\kappa s>0$ 及 $H^-_\epsilon-q^2/7>0$，因此合法代入 J 的下、上界。
+
+还必须支付全部别名。
+@lem-arc-bessel-tail-1012 中 $F_*=1+t+rs,J_*=rt+s$ 满足 $F_*\ge J_*$。
+故两个误差除以 $\beta$ 都不超过
+$$\frac{q^6}{2000}(11F_*+9J_*).$$
+设 $T=27/50$，$S_U=5/8,S_C=T$，并定义
+$$b_\kappa=\frac{\kappa^6}{2000}[11+(11+9r)T+(11r+9)S_\kappa].$$
+由 $r<.619$ 作正系数端点比较，
+$$\begin{array}{c|cc}
+&b_\kappa T^4<\delta_f&b_\kappa T^5<\delta_h\\\hline
+\mathrm U&1/750&1/1000\\
+\mathrm C&1/250&1/400
+\end{array}$$
+其中 $\delta_f,\delta_h$ 就取表中数。因此完整核满足
+$$\frac{f_\epsilon}{\beta t^2}\ge
+\kappa^2[\tfrac12+\epsilon(\alpha^2-\beta^2)/6-q^2/12]
+-\kappa^5t^3/200-\kappa^4t^3/32
++\kappa(1-\tfrac45\kappa s)(H^-_\epsilon-q^2/7)-\delta_f,$$
+$$\frac{|h_\epsilon|}{\beta t}\le
+\kappa^2t/2+\kappa(\tfrac45\kappa t^2+s)(H^+_\epsilon+q^2/7)
++s\kappa^4t^3/32+\delta_h.$$
+第一式关于 $t,s$ 非增，第二式非减；前者的乘积两因子均正且非增。
+置 $t=T,s=S_\kappa$，用 @lem-arc-geometric-constants-1012 的 $.3947<\alpha^2<.3948$，
+在常数项向外取整到千分位，二次项也向安全方向取整，得到
+$$\begin{array}{c|c|cc}
+&\epsilon&F(\beta)\le f_\epsilon/(\beta t^2)&M(\beta)\ge |h_\epsilon|/(\beta t)\\\hline
+\mathrm U&-1&1.572-1.119\beta^2&2.354-1.965\beta^2\\
+\mathrm U&+1&1.284-.271\beta^2&1.635-.162\beta^2\\
+\mathrm C&-1&1.899-1.246\beta^2&2.799-2.253\beta^2\\
+\mathrm C&+1&1.604-.360\beta^2&1.975-.185\beta^2
+\end{array}$$
+四行在 $0\le\beta\le.63$ 均有 $F>1,M>0$。
+
+@thm-arc-complete-means-1012 给 $a_m\ge1$，以及
+$$|z_m|/t\le .144T+.570(5/8)<.435=:m_U,\qquad
+|z_m|/t\le .891T<.482=:m_C.$$
+因为 $f_\epsilon>0$，故
+$$\frac{E_\epsilon}{\beta t^2}\ge F-m_\kappa M-\frac3{16}\beta M^2.$$
+$F-m_\kappa M$ 关于 $\beta^2$ 为仿射函数，其下界是两端最小值。
+对负号两行，若 $M=A-B\beta^2$，在 $M\ge0$ 的区间内
+$$\max\beta(A-B\beta^2)^2=\frac{16A^{5/2}}{25\sqrt{5B}}.$$
+微分得驻点 $\beta^2=A/(5B)$；零端点和 $M=0$ 端点值均零。
+因而 U、C 的 $(3/16)\beta M^2$ 分别小于 $.330,.470$；平方后的有理比较为
+$$\frac{256A^5}{3125B}<\left(\frac{16p}{3}\right)^2,
+\quad (A,B,p)=(2.354,1.965,.330),(2.799,2.253,.470).$$
+对正号两行，$A-5B(.63)^2>0$，由导数 $(A-B\beta^2)(A-5B\beta^2)$ 可知在 $[0,.63]$ 递增，取右端即可。
+四行剩余下界按上表次序为
+$$\frac{45255639}{400000000},\quad
+\frac{8070312699874131}{40000000000000000},\quad
+\frac{81782837}{5000000000},\quad
+\frac{751486244617899}{6400000000000000},$$
+均大于 $1/100$。这些仅为公开二次式的有理比较。
+$\beta=0$ 时奇性和原函数定义给 $f=h=0$；$t=0$ 时直接五根平均给 $A=1,B=X=Y=0$（U 支容许 $d\ne0$），仍有 $f=h=0$。
+:::
+
+::: {#thm-arc-finite-mass-lorentz-1012 .theorem name="完整张量的有限质量 Lorentz 比较" date="2026-10-12" export="thm-arc-finite-mass-lorentz-1012"}
+在 @lem-arc-full-kernel-payment-1012 的两域内，使用
+@def-psgs-exact-tensor-1011h 的完整张量及
+@def-psgs-tensor-weights-1011h 的同源可容许 $W,V$。则
+$$C\ge C_0\bar A>0,\qquad C>|K|,\qquad
+\frac{\sqrt{C^2-|K|^2}}{C_0}\ge\sqrt{\bar A^2-|\bar Z|^2}.$$
+无需相位信用或预先给定实际 $K/C$；U 域覆盖到 $s=5/8$。
+:::
+
+::: {.proof of="thm-arc-finite-mass-lorentz-1012"}
+张量采用 @def-psgs-exact-tensor-1011h，积分权采用 @def-psgs-tensor-weights-1011h。
+以下 $a_m=\bar A,z_m=\bar Z$。@thm-arc-complete-means-1012 给
+$D=a_m^2-|z_m|^2>0$。令 $I=\int_0^\alpha W>0$、$M_0=3/8$，定义非负测度
+$$d\mu_\epsilon=\frac{V/2-\epsilon W'/4}{I}\,d\beta.$$
+由 $G_A,G_Z$ 两端为零，Sobolev 积分分部准确给
+$$\left(\frac C{C_0},\frac K{C_0}\right)
+=(a_m,z_m)+\sum_{\epsilon=\pm1}\int(f_\epsilon,h_\epsilon)\,d\mu_\epsilon.$$
+其总质量 $\sigma=\int V/I$ 不超过 $M_0$。具体证明如下：
+置 $u(\beta)=\tan(\alpha-\beta)$、$W_-(\beta)=\sec^2(\alpha-\beta)$。
+因 $W'\ge-2V\ge-2uW$ 且 $W'_-/W_-=-2u$，$g=W/W_-$ 非减。
+$u$ 非增，所以关于概率测度 $d\nu=W_-d\beta/\int W_-$ 有
+$$\int ug\,d\nu-\int u\,d\nu\int g\,d\nu
+=\frac12\iint[u(x)-u(y)][g(x)-g(y)]\,d\nu(x)d\nu(y)\le0.$$
+因此
+$$\sigma\le\frac{\int uW}{\int W}\le\frac{\int uW_-}{\int W_-}
+=\frac{\tan\alpha}{2}<\frac38.$$
+最后由 $\tan^2\alpha=5-2\sqrt5<9/16$，例如 $\sqrt5>559/250$ 可平方核对。
+这些积分均有限，$\int g\,d\nu>0$，故除法合法。
+
+令 $Q_\epsilon=(a_m+M_0f_\epsilon,z_m+M_0h_\epsilon)$。
+@lem-arc-full-kernel-payment-1012 给 $f_\epsilon\ge0$ 及
+$$Q_{\epsilon,0}^2-|Q_{\epsilon,1}|^2-D
+=2M_0E_\epsilon+M_0^2f_\epsilon^2\ge0,$$
+这里 $M_0/2=3/16$ 正是 E 中的系数。
+于是 $Q_\epsilon$ 和 $(a_m,z_m)$ 均属于凸集
+$$\mathcal H_D=\{(x,z):x\ge\sqrt{D+|z|^2}\}.$$
+凸性由向量 $(\sqrt D,\Re z,\Im z)$ 的 Euclid 三角不等式直接得到；加权积分可由相同积分三角不等式得到。
+完整张量正是这些点的概率平均：
+$$\left(\frac C{C_0},\frac K{C_0}\right)
+=\left(1-\frac\sigma{M_0}\right)(a_m,z_m)
++\frac1{M_0}\sum_\epsilon\int Q_\epsilon\,d\mu_\epsilon.$$
+故它仍在 $\mathcal H_D$，给所需平方根比较及 $C>|K|$。
+再用第一条积分式和 $f\ge0$ 得 $C/C_0\ge a_m$。
+这只替代主线需要的完整张量比较；不声称旧 $D_\lambda,H_\lambda$ 逐点符号或整个铅笔圆盘命题由此成立。
+:::
+

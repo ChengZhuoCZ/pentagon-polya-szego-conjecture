@@ -1,0 +1,203 @@
+---
+title: "单位源精细均值：八角矩、完整余项与共同相位信用"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: true-pressure-terminal-migration-1011/unit-scalar-factors.qmd
+      use:
+        - def-tpm-unit-scalar-tpm1011
+    - from: analytic-replacements-1012/moment-packets.qmd
+      use:
+        - thm-arc-moment-packets-1012
+    - from: analytic-replacements-1012/complete-means.qmd
+      use:
+        - thm-arc-complete-means-1012
+---
+
+::: {#lem-ppusm-ten-packets-1011 .lemma name="单位源十组字符包络及完整尾" date="2026-10-11" export="lem-ppusm-ten-packets-1011"}
+设 $c=te^{i\theta},d=se^{i\phi}$，$0\le t\le27/50,0\le s\le5/8$，
+$\zeta=t^2$。零振幅处相位任取。完整均值为
+$$
+\bar A=1+t^2\mathsf A_e(\zeta)+t^5\mathsf A_o(\zeta)\cos5\theta
++st^2\mathsf G(\zeta)\cos(\phi-2\theta)
++st^3\mathsf Q(\zeta)\cos(3\theta+\phi)+R_A,
+\tag{4}
+$$
+$$
+\begin{aligned}
+\bar Z={}&-t^2\mathsf P(\zeta)e^{-2i\theta}
++t^3\mathsf J(\zeta)e^{3i\theta}+\jmath_-t^7e^{-7i\theta}\\
+&+ts\mathsf M(\zeta)e^{i(\theta+\phi)}
++st^4\mathsf F(\zeta)e^{i(-4\theta+\phi)}
++\jmath_+st^6e^{i(6\theta+\phi)}+R_Z.
+\end{aligned}
+\tag{5}
+$$
+各组系数按 $\zeta$ 升幂排列，准确向量逐分量属于 $10^{-8}(v+(0,1)^n)$：
+
+|组|整数向量 $v$|
+|---|---|
+|$\mathsf A_e$|$(34559582,-4819280,188004)$|
+|$\mathsf A_o$|$(-81178,3797)$|
+|$\mathsf G$|$(6059592,-370871,8245)$|
+|$\mathsf Q$|$(1947939,-105670)$|
+|$\mathsf P$|$(10980167,-2767113,129010)$|
+|$\mathsf J$|$(5734979,-343687,7422)$|
+|$\jmath_-$|$(45)$|
+|$\mathsf M$|$(56546697,-6049509,219162)$|
+|$\mathsf F$|$(-81178,2775)$|
+|$\jmath_+$|$(1021)$|
+
+置 $\gamma=3/4,C_p=51543/917504,C_m=22815/458752$，则
+$$
+|R_A|,|R_Z|\le\tau=\gamma^7(C_pt^8+C_mst^7).
+\tag{6}
+$$
+:::
+
+::: {.proof of="lem-ppusm-ten-packets-1011"}
+采用 @def-psgs-exact-tensor-1011h 的同一完整源和 @def-psgs-tensor-weights-1011h 的角常数。在 @thm-arc-moment-packets-1012 中取 $\kappa=1$，其八角矩生成公式给本声明逐个字符及全部二十三个系数开区间。
+该定理在整个 $t\le27/50,s\le5/8$ 矩形成立，故覆盖本声明的域；
+其原含权积分 Taylor 余项给 $|R_A|,|R_Z|\le4\tau/5\le\tau$。
+零振幅轴也由同一定理覆盖。此处保留原系数包及共同相位，供下游精细均值直接使用。
+:::
+::: {#def-ppusm-sharp-envelopes-1011 .definition name="独立振幅上的单位源精细包络" date="2026-10-11" export="def-ppusm-sharp-envelopes-1011"}
+下列多项式对所有 $t,s\ge0$ 定义；与 @lem-ppusm-ten-packets-1011 的完整均值作比较时，仅使用 $0\le t\le27/50,0\le s\le5/8$ 的矩形。置
+$$
+b=.34559582-.04819280t^2-.00081178t^3+.00188004t^4+.00003797t^5,
+$$
+$$
+e=.00000002+.01947940t-.00105669t^3,\quad
+G=.06059592-.00370871t^2+.00008245t^4,
+$$
+$$
+A_c=b-se-\gamma^7C_pt^6-\gamma^7C_mst^5,
+$$
+$$
+z_p=.10980168+.05734980t-.02767112t^2-.00343686t^3
++.00129011t^4+.00007469t^5+\gamma^7C_pt^6,
+$$
+$$
+z_m=.56546698-.06049508t^2+.00081178t^3+.00219163t^4
+-.00001753t^5+\gamma^7C_mt^6.
+$$
+在 @def-tpm-unit-scalar-tpm1011 的坐标域按上述同一多项式求值，
+与其同名代数表达式相同。均值不等式只在两域交集使用；此定义不把 $t\le27/50$ 的解析比较扩展到整个坐标方形。另置
+$$
+q_{\min}=.01947939-.00105670t^2,\quad
+q_{\max}=.01947940-.00105669t^2,
+$$
+$$
+P_{\min}=.10980167-.02767113t^2+.00129010t^4,\quad
+M_{\min}=.56546697-.06049509t^2+.00219162t^4.
+$$
+:::
+
+::: {#prp-ppusm-shared-phase-sharp-means-1011 .proposition name="单位源精细均值与共同相位改善" date="2026-10-11" export="prp-ppusm-shared-phase-sharp-means-1011"}
+采用 @def-ppusm-sharp-envelopes-1011，令 $U=\Re(c^2\bar d),Q=\Re(c^3d)$。
+在整个 $0\le t\le27/50,0\le s\le5/8$ 上，
+$$
+\boxed{\bar A\ge1+t^2A_c+GU+q_{\min}(Q+t^3s),}
+\tag{8}
+$$
+$$
+\boxed{|\bar Z|^2\le(t^2z_p+tsz_m)^2-2P_{\min}M_{\min}(Q+t^3s).}
+\tag{9}
+$$
+其中 $q_{\min},P_{\min},M_{\min}>0$ 且 $Q+t^3s\ge0$。
+因此特别有与单位源终端一致的较弱包络
+$$
+\bar A\ge1+t^2A_c+GU,\qquad |\bar Z|\le t^2z_p+tsz_m.
+\tag{10}
+$$
+:::
+
+::: {.proof of="prp-ppusm-shared-phase-sharp-means-1011"}
+包络和三个正下界按 @def-ppusm-sharp-envelopes-1011 定义。
+由 @lem-ppusm-ten-packets-1011，
+各组系数按声明的开区间取界；$0\le t^2<.3$ 给
+$$
+\begin{aligned}
+\mathsf A_o&<-.00081177+.00003798(.3)=-.000800376<0,\\
+\mathsf F&<-.00081177+.00002776(.3)=-.000803442<0,\\
+\mathsf J&>.05734979-.00343687(.3)=.056318729>0,\\
+\mathsf P&\ge P_{\min}\ge .10980167-.02767113(.3)=.101500331>0,\\
+\mathsf M&\ge M_{\min}\ge .56546697-.06049509(.3)=.547318443>0,\\
+\mathsf Q&\ge q_{\min}\ge .01947939-.00105670(.3)=.01916238>0.
+\end{aligned}
+$$
+$\jmath_-,\jmath_+>0$ 也由它们的开区间直接成立。
+$Q+t^3s=t^3s[1+\cos(3\theta+\phi)]\ge0$。
+并且
+$$
+|\mathsf G(t^2)-G|<10^{-8}(1+t^2+t^4)<2\cdot10^{-8},
+\quad q_{\min}\le\mathsf Q(t^2)\le q_{\max}.
+$$
+因 $Q+t^3s\ge0$，
+$$
+\mathsf Q(t^2)Q\ge q_{\min}(Q+t^3s)-q_{\max}t^3s.
+$$
+$|U|\le st^2$ 支付 $\mathsf G-G$。纯五、七次先合并为同一负括号，故
+$$
+t^5\mathsf A_o(t^2)\cos5\theta
+\ge-.00081178t^5+.00003797t^7.
+$$
+纯偶次下界为 $.34559582t^2-.04819280t^4+.00188004t^6$。
+加入 $R_A\ge-\tau$ 后，所有不利项恰为 $t^2A_c$，得到 (8)。
+
+自旋主项取
+$$
+a_1=-t^2Pe^{-2i\theta},\quad b_1=tsMe^{i(\theta+\phi)},
+\quad P=\mathsf P(t^2)\ge P_{\min}>0,\quad M=\mathsf M(t^2)\ge M_{\min}>0.
+$$
+其准确平方为
+$$
+|a_1+b_1|^2=(t^2P+tsM)^2-2PM(Q+t^3s).
+\tag{11}
+$$
+其余字符及全尾的模上界 $E$ 可取
+$$
+E=t^3(.05734980-.00343686t^2+.00007469t^4)
++st^4(.00081178-.00001753t^2)+\tau.
+$$
+第一个括号大于 $.05734980-.00343686(.3)>0$，
+第二个大于 $.00081178-.00001753(.3)>0$，故 $E\ge0$。
+纯七次系数使用 $.00007423+.00000046=.00007469$；
+混合七次先对负的 $\mathsf F$ 取模，再加另一个字符，
+使用 $-.00002775+.00001022=-.00001753$。
+因此 $t^2P+tsM+E\le t^2z_p+tsz_m$，没有抛掉同字符的有利负项。
+
+令 $L=t^2P+tsM$、$x=|a_1+b_1|\le L$，则
+$$
+(x+E)^2\le(L+E)^2-(L^2-x^2).
+$$
+代入 (11)，再用 $Q+t^3s\ge0$ 与 $P,M$ 的正下界，得 (9)。
+由 @def-ppusm-sharp-envelopes-1011，舍去两式的正项后
+$$
+z_p\ge .10980168-.02767112(.3)-.00343686(.16)>.10,
+$$
+$$
+z_m\ge .56546698-.06049508(.3)-.00001753(.046)>.54.
+$$
+这里 $t^3\le.54^3<.16,t^5\le.54^5<.046$。
+所以 $t^2z_p+tsz_m\ge0$；(9) 舍去非负信用后可合法开方，得到 (10)。
+零振幅处所有相位项消失，完整式连续成立。
+:::
+
+::: {#cor-ppusm-coarse-full-means-1011 .corollary name="单位源全矩形粗均值与正性" date="2026-10-11" export="cor-ppusm-coarse-full-means-1011"}
+采用 @def-psgs-exact-tensor-1011h 的 $\kappa=1$ 完整源。在 $0\le t\le27/50,0\le s\le5/8$ 上，
+$$
+\bar A\ge1+.26t^2,\qquad |\bar Z|\le.144t^2+.570ts.
+\tag{12}
+$$
+$t>0$ 时两式严格；$t=0$ 时 $\bar A=1,\bar Z=0$。
+特别有 $\bar A>|\bar Z|$。
+:::
+
+::: {.proof of="cor-ppusm-coarse-full-means-1011"}
+完整核及均值与 @thm-arc-complete-means-1012 相同，取本支源参数即可。该定理同时给出严格性、零轴值与正性。
+:::

@@ -1,0 +1,116 @@
+---
+title: "新终端全域接合：六比五源、单位源与均匀源"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd
+      use:
+        - def-psgs-pressure-action-1011h
+    - from: ../fourier-pressure-geometry-reconstruction-1011.qmd
+      use:
+        - prp-pressure-rebuild-1011-area-fan-formulas
+        - prp-pressure-rebuild-1011-global-fourier
+        - def-pressure-rebuild-1011-data
+        - def-pressure-rebuild-1011-canonical-fans
+    - from: ../reductions.qmd
+      use:
+        - def-spectral-functional
+        - lem-dirichlet-scaling
+    - from: ../pressure-transport-reproduction-audit-1011.qmd
+      use:
+        - prp-pressure-route-quadrilateral-exit-1011
+    - from: ../ps-convex-geometric-tensor-switch-1011g/geometry-41-proof.qmd
+      use:
+        - def-geom41-deletion-1011g
+    - from: ../ps-convex-geometric-tensor-switch-1011g/geometry-domain.qmd
+      use:
+        - def-psgs-normalized-geometry-1011h
+    - from: ../ps-pressure-spectral-bridge-audit-1011.qmd
+      use:
+        - thm-ppsb-no-exit-coercivity-1011
+    - from: ../regular-sharper-upper-bound.qmd
+      use:
+        - lem-regular-pentagon-sharper-polynomial-bound
+---
+
+::: {#thm-tpm-no-exit-all-affine-tpm1011 .theorem name="无严格出口域的所有仿射像与严格取等" date="2026-10-11" export="thm-tpm-no-exit-all-affine-tpm1011"}
+设 $P_{c,d}$ 严格凸且无严格出口，$b\in\mathbb R^2$，$L$ 为非奇异实线性映射。
+则
+$$
+F(b+LP_{c,d})\ge F(R),
+$$
+等号当且仅当 $c=d=0$ 且 $L$ 为相似变换。
+:::
+
+::: {.proof of="thm-tpm-no-exit-all-affine-tpm1011"}
+采用 @def-psgs-pressure-action-1011h 的 $F(P)=|P|\lambda_1(P)$。
+规范域采用 @def-psgs-normalized-geometry-1011h：
+$P_{c,d}=\operatorname{conv}\{\zeta^i+c\zeta^{2i}+d\zeta^{-2i}:0\le i\le4\}$，
+$R=\operatorname{conv}\{\zeta^i:0\le i\le4\}$，所以 $P_{0,0}=R$。
+该定义的无严格出口，准确指不存在 @def-geom41-deletion-1011g 中
+新增面积比严格小于 $1/25$ 的真实删边外包四边形，
+与下述强制性定理的无严格四边形出口前提相同。
+@thm-ppsb-no-exit-coercivity-1011 已将三个真实源的完整预算、
+目标面积和外仿射因子接为
+$$
+F(b+LP_{c,d})\ge F(R)
+\left(1+\frac{|c|^2+|d|^2}{200000}\right)^2.
+$$
+若 $(c,d)\ne(0,0)$，右侧严格大于 $F(R)$。
+若 $c=d=0$，同一定理的最后一个等号分类明确排除全部非相似 $L$，
+并明确相似变换取等。
+没有将一般目标的压力上桥误写为等号，也不需要该上桥的一般等号分类。
+:::
+
+::: {#thm-tpm-convex-global-comparison-tpm1011 .theorem name="凸五边形的全局谱比较及唯一取等" date="2026-10-11" export="thm-tpm-convex-global-comparison-tpm1011"}
+对每个正面积有界开凸五边形 $P$，
+$$
+|P|\lambda_1(P)\ge |R|\lambda_1(R),
+$$
+等号当且仅当 $P$ 是欧氏正五边形。允许所列五个顶点中有冗余共线顶点；这样的有效边数至多四的情形严格。
+:::
+
+::: {.proof of="thm-tpm-convex-global-comparison-tpm1011"}
+采用 @def-psgs-pressure-action-1011h 的 $F(P)=|P|\lambda_1(P)$。
+@def-spectral-functional 的 $\lambda_1$ 也是同一 $H_0^1$ 上
+$\int|\nabla u|^2/\int u^2$ 的 Rayleigh 下确界，且多边形取凸包内部，
+故本段所有谱比较、尺度律和正五边形上界的 $F$ 完全相同。
+先设五条边均有效且各内角小于 $\pi$。
+按逆时针标记顶点，采用 @def-pressure-rebuild-1011-data，
+它的 $z_j=e^{2\pi i j/5}=\zeta^j$、$\gamma=(\sqrt5-1)/2=r$ 与本章相同。
+@def-pressure-rebuild-1011-canonical-fans 的
+$q_j=z_j+cz_j^2+dz_j^{-2}$、$Q=\operatorname{conv}\{q_j\}$
+因此恰是 @def-psgs-normalized-geometry-1011h 的 $P_{c,d}$；
+它的 $\mathsf B_j$ 就是同一参考扇区到 $q_j,q_{j+1}$ 的仿射矩阵。
+@prp-pressure-rebuild-1011-global-fourier 给唯一的全局规范
+$P=b+LP_{c,d}$，$\det L>0$；@prp-pressure-rebuild-1011-area-fan-formulas 保证规范目标仍严格凸，且其五扇 Jacobian 与本章一致。
+若规范目标有 @def-geom41-deletion-1011g 中新增面积比 $<1/25$ 的真实删边外包四边形 $Q$，仿射像 $b+LQ$ 仍包含 $P$，其面积比同样 $<26/25$。
+@prp-pressure-route-quadrilateral-exit-1011 与 @lem-regular-pentagon-sharper-polynomial-bound 给严格谱比较，实际面积因子在出口定理中保留。
+若没有这样的四边形，按 @def-psgs-normalized-geometry-1011h 它正是无严格出口分支，由 @thm-tpm-no-exit-all-affine-tpm1011 得比较及等号分类。
+这两个分支穷尽所有严格凸目标；仅达到 $1/25$ 的边界出口留在无严格出口分支，由其闭边界几何不等式覆盖。
+
+若列出的顶点有共线冗余，有效内域是凸三角形或凸四边形。
+四边形 Pólya--Szegő 定理给 $F(P)\ge2\pi^2>F(R)$。
+对三角形，取一条边 $AB$ 的中点 $M$ 及该边外单位法向 $n$，令
+$Q_\epsilon=\operatorname{int}\operatorname{conv}(A,M+\epsilon n,B,C)$，其中 $C$ 是第三个顶点。
+对充分小的 $\epsilon>0$，这是包含原三角形的非退化凸四边形。
+为具体核对非退化性，先把三角形取逆时针 $A,B,C$。
+令 $e=B-A$、$w=C-A$、$h=\det(e,w)>0$，$|e|=l$；外法向满足
+$\det(e,n)=-l$。四边形顶点序 $A,M+\epsilon n,B,C$ 的四个转向行列式为
+$\epsilon l$、$h/2-\epsilon\det(n,w-e)$、$h$、
+$h/2-\epsilon\det(w,n)$。
+取 $\epsilon>0$ 使
+$\epsilon\max(|\det(n,w-e)|,|\det(w,n)|)<h/2$，四者均正。
+前两条边的内部在 $AB$ 的外侧，后两条在内侧，故边界简单；
+正转向使它严格凸，凸包因而有四个真正顶点，且包含 $A,B,C$ 的三角形。
+它的新增部分正是以 $AB$ 为底、高 $\epsilon$ 的三角形，所以
+$|Q_\epsilon|=|P|+\epsilon|AB|/2\downarrow|P|$。
+域单调性给
+$|P|\lambda_1(P)\ge(|P|/|Q_\epsilon|)2\pi^2$，令 $\epsilon\downarrow0$ 得 $F(P)\ge2\pi^2>F(R)$。
+这里仅用了四边形比较与域单调性，没有借严格凸目标的点态严格性在极限中保留严格余量。
+非退化正面积凸五点域的有效边数至少三，故已穷尽所有情形。
+最后核对等号的反向。任一欧氏正五边形都是 $b+\rho OR$（$\rho>0$、$O$ 正交）。
+平移及正交换元保持 Rayleigh 商，@lem-dirichlet-scaling 给缩放因子 $\rho^{-2}$，
+而面积因子为 $\rho^2$，故它的 $F$ 准确等于 $F(R)$。
+因此所有正五边形确实取等，不需要先断言参考正五边形无严格出口。
+:::

@@ -1,0 +1,323 @@
+---
+title: "压力与混合面积泛函：同法向辅助极小体与正五边形校准"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: true-pressure-review-1011/analysis-supplements.qmd
+      use:
+        - prp-tpr-smooth-support-deformation-tpr1011
+        - prp-tpr-support-hadamard-tpr1011
+---
+
+::: {#def-pressure-rebuild-1011-functional .definition name="混合面积压力泛函及真实逐边压力" date="2026-10-11" export="def-pressure-rebuild-1011-functional" status="verified"}
+记 $\mathcal K^2$ 为平面内具有非空内点的紧凸体类，
+$\lambda(K)=\lambda_1(\operatorname{int}K)$ 为通常 Lebesgue 测度下的
+第一 Dirichlet 特征值。混合面积采用归一化
+$$
+V(P,K)=\frac{|P+K|-|P|-|K|}{2},
+\qquad P,K\in\mathcal K^2,
+$$
+其中 $P+K=\{p+k:p\in P,\ k\in K\}$ 为 Minkowski 和。
+定义
+$$
+\mathscr P(P)=\inf_{K\in\mathcal K^2}V(P,K)\sqrt{\lambda(K)}.
+\tag{1}
+$$
+若 $P$ 是严格凸 $m$ 边形，记其不同的单位外法向、边长分别为
+$n_1,\ldots,n_m$ 与 $\ell_1(P),\ldots,\ell_m(P)$。
+这里严格凸多边形指所有边具有正长度且全部内角严格小于 $\pi$。
+记 $h_K(n)=\max_{x\in K}x\cdot n$，并定义同法向外包多边形
+$$
+K^+_P=\bigcap_{i=1}^m\{x:x\cdot n_i\le h_K(n_i)\}.
+\tag{2}
+$$
+对于具有这些法向的严格凸多边形 $K$，取归一化正基态
+$u_K$ 满足 $\int_Ku_K^2=1$，并定义其逐边压力
+$$
+m_i(K)=\int_{e_i(K)}(\partial_nu_K)^2\,ds,
+\tag{3}
+$$
+其中 $e_i(K)$ 是外法向为 $n_i$ 的边。
+:::
+
+::: {.proof of="def-pressure-rebuild-1011-functional"}
+紧凸体有界，其内部非空且连通。标准 Dirichlet 谱理论给
+$0<\lambda(K)<\infty$，并给出由正性和 $L^2$ 归一化唯一确定的第一基态。
+Minkowski 和仍是紧凸体，故混合面积式中的面积均有限。
+平面 Brunn--Minkowski 不等式给
+$|P+K|\ge(\sqrt{|P|}+\sqrt{|K|})^2$，从而
+$V(P,K)\ge\sqrt{|P||K|}>0$。取 $K=P$ 时 $V(P,P)=|P|$，
+所以定义的下确界位于 $[0,|P|\sqrt{\lambda(P)}]$，是有限实数。
+
+每个支撑最大值因紧致性取得，因而 $K_P^+$ 包含 $K$。
+对任意单位向量 $e$，至少有一个 $n_i\cdot e>0$，否则从 $P$ 的一个内点
+沿 $e$ 的射线始终满足其全部支撑不等式，与 $P$ 有界矛盾。
+于是 $c=\min_{|e|=1}\max_i n_i\cdot e>0$。
+对 $x\in K_P^+$，有 $c|x|\le\max_i h_K(n_i)$，故该交集有界；
+包含 $K$ 又保证它有非空内点。
+
+最后，当 $K$ 是声明中各边正长且角度小于 $\pi$ 的凸多边形时，
+弱方程 $-\Delta u_K=\lambda(K)u_K\in L^2(K)$ 和零 Dirichlet 边界条件
+满足凸多边形 Dirichlet Poisson 问题的 $H^2$ 正则性定理的全部假设，
+所以 $u_K\in H^2(K)\cap H_0^1(K)$。因此 $\nabla u_K\in H^1(K;\mathbb R^2)$。
+有界 Lipschitz 域的迹定理给其边界迹属于 $L^2(\partial K;\mathbb R^2)$；
+在每条开边上与固定单位法向作点积，得到 $\partial_nu_K\in L^2(e_i(K))$。
+故 (3) 的逐边压力均为有限非负实数。顶点为边界测度零集，不影响这些积分。
+:::
+
+::: {#prp-pressure-rebuild-1011-attainment .proposition name="压力泛函的正有限性、同法向取得与真实压力方程" date="2026-10-11" export="prp-pressure-rebuild-1011-attainment"}
+采用 @def-pressure-rebuild-1011-functional。
+对任意 $P\in\mathcal K^2$，泛函 $\mathscr P$ 平移不变，且
+$$
+0<\mathscr P(P)\le |P|\sqrt{\lambda(P)}<\infty,
+\qquad \mathscr P(sP)=s\mathscr P(P)\quad(s>0).
+\tag{4}
+$$
+其下确界能够取得。
+
+若 $P$ 是严格凸 $m$ 边形，则对每个 $K\in\mathcal K^2$，
+$K^+_P$ 为具有非空内点的有界、至多 $m$ 边的凸多边形，且
+$$
+K\subset K^+_P,\quad h_{K^+_P}(n_i)=h_K(n_i),\quad
+V(P,K^+_P)=V(P,K),\quad\lambda(K^+_P)\le\lambda(K).
+\tag{5}
+$$
+因此下确界可限制在这些同法向多边形中。
+在此限制下的每个辅助极小体都具有全部 $m$ 条真边；特别地，
+$m=5$ 时它仍为严格凸五边形。
+任意这样的辅助极小体 $K$ 的真实压力满足
+$$
+\boxed{m_i(K)=\frac{\lambda(K)}{V(P,K)}\ell_i(P)
+\quad(1\le i\le m).}
+\tag{6}
+$$
+:::
+
+::: {.proof of="prp-pressure-rebuild-1011-attainment" status="verified"}
+使用 @def-pressure-rebuild-1011-functional 的归一化。
+平面混合面积的基本恒等式为
+$$
+|P+tK|=|P|+2tV(P,K)+t^2|K|,
+\qquad
+2V(P,K)=\sum_i\ell_i(P)h_K(n_i)
+\tag{7}
+$$
+（第二式在 $P$ 为多边形时成立）。
+混合面积关于两变量对称、对 Minkowski 加法线性、平移不变且单调。
+这些是经典平面混合面积公式，归一化及相关几何背景可见
+[Gardner 的 Brunn–Minkowski 综述，§7、式 (22)](https://faculty.gardner.wwu.edu/gorizia12.pdf)。
+
+**尺度、上下界。** 谱尺度律 $\lambda(sK)=s^{-2}\lambda(K)$ 给
+$$
+V(P,sK)\sqrt{\lambda(sK)}=V(P,K)\sqrt{\lambda(K)}.
+$$
+由此得到对 $P$ 的一次齐次性和平移不变性。
+取 $K=P$ 即得 (4) 的上界。
+平移 $P$，选择 $r>0$ 使 $rB\subset P$。
+由混合面积单调性和圆的混合面积公式，
+$$
+V(P,K)\ge\frac r2\operatorname{Per}(K)
+\ge r\operatorname{diam}(K).
+\tag{8}
+$$
+任一方向的条带宽度不超过 $\operatorname{diam}(K)$，
+故一维 Dirichlet Poincaré 不等式给
+$\sqrt{\lambda(K)}\ge\pi/\operatorname{diam}(K)$。
+所以 $\mathscr P(P)\ge\pi r>0$。
+
+**同法向规约。** $P$ 有界，故其外法向正生成整个平面，
+从而 @def-pressure-rebuild-1011-functional 中的半平面交 $K^+_P$ 有界。
+它包含 $K$，因而有内点。每个 $h_K(n_i)$ 均在 $K$ 中取得，
+该取得点仍在 $K^+_P$ 中，因此
+$h_{K^+_P}(n_i)=h_K(n_i)$。
+式 (7) 与 Dirichlet 域单调性给出 (5)。
+
+**取得下确界。** 利用辅助尺度不变性，将极小序列 $K_j$ 归一化为
+$V(P,K_j)=1$。式 (8) 给 $\operatorname{diam}(K_j)\le1/r$。
+分别平移 $K_j$ 使其包含原点；Blaschke 选择定理给出一个
+Hausdorff 收敛子序列，仍记为 $K_j\to K$。
+序列 $\lambda(K_j)$ 一致有上界 $C$，因为归一化后的目标是
+$\sqrt{\lambda(K_j)}$。
+对任意方向 $e$，条带下界给
+$$
+\lambda(K_j)\ge\frac{\pi^2}{w_e(K_j)^2},
+\qquad w_e(K_j)\ge\frac\pi{\sqrt C}.
+$$
+宽度随 Hausdorff 收敛连续，所以 $K$ 既不是线段也不是点，必有内点。
+混合面积连续给 $V(P,K)=1$。
+
+这里特征值连续性也可由域包含直接证明。
+同时平移极限与序列，使 $r_0B\subset K$。
+若 Hausdorff 距离为 $\varepsilon<r_0$，支撑函数比较给
+$$
+(1-\varepsilon/r_0)K\subset K_j
+\subset(1+\varepsilon/r_0)K.
+$$
+域单调性与谱尺度律夹出 $\lambda(K_j)\to\lambda(K)$。
+所以 $K$ 取得下确界；若 $P$ 为多边形，(5) 可将其替换为
+同法向的辅助极小体。
+
+**排除缺边。** 设固定法向辅助极小体 $K$ 缺少第 $j$ 条真边。
+支撑线 $x\cdot n_j=h_K(n_j)$ 此时只接触某个顶点 $v$。
+因 $n_j$ 与各真边法向不同，它严格位于 $v$ 的法锥内部。
+该凸角内角记为 $\alpha\in(0,\pi)$。
+向内移动此支撑线，置
+$$
+K_\varepsilon=K\cap
+\{x:x\cdot n_j\le h_K(n_j)-\varepsilon\}.
+$$
+对于充分小的 $\varepsilon>0$，被切掉的三角角片包含于
+$B(v,C_0\varepsilon)$，且 $K_\varepsilon$ 仍有内点。
+其所有支撑值均不增加，而第 $j$ 个支撑值准确减少 $\varepsilon$。
+由 (7)，
+$$
+V(P,K_\varepsilon)
+\le V(P,K)-\frac{\ell_j(P)}2\varepsilon.
+\tag{9}
+$$
+
+以下控制切角的真实谱代价。记 $\lambda=\lambda(K)$，
+$u=u_K$，$\gamma=\pi/\alpha>1$，选定 $1<\beta<\gamma$。
+在以 $v$ 为原点的充分小扇区 $0<r<R$、$0<\theta<\alpha$ 中，
+$K$ 与该楔形一致。缩小 $R$，使 $J_\beta(\sqrt\lambda r)>0$，
+且截断扇区的第一 Dirichlet 特征值大于 $\lambda$。
+函数
+$$
+W(r,\theta)=J_\beta(\sqrt\lambda r)
+\cos\bigl(\beta(\theta-\alpha/2)\bigr)
+$$
+在闭角窗内为正，满足 $(-\Delta-\lambda)W=0$。
+两直边上 $u=0\le CW$，外圆弧上可选 $C$ 使 $u\le CW$。
+小域最大原理给
+$$
+0\le u\le CW\le C_1r^\beta.
+\tag{10}
+$$
+取 Lipschitz 截断 $\chi_\varepsilon$，在
+$B(v,C_0\varepsilon)$ 内为零、在 $B(v,2C_0\varepsilon)$ 外为一，
+并满足 $|\nabla\chi_\varepsilon|\le C_2/\varepsilon$。
+$\chi_\varepsilon u\in H_0^1(K_\varepsilon)$。
+以 $\chi_\varepsilon^2u$ 测试原特征方程，得到精确恒等式
+$$
+\int|\nabla(\chi_\varepsilon u)|^2
+=\lambda\int\chi_\varepsilon^2u^2
+ +\int u^2|\nabla\chi_\varepsilon|^2.
+$$
+式 (10) 给最后一项 $O(\varepsilon^{2\beta})$，
+质量损失则为 $O(\varepsilon^{2\beta+2})$。
+Rayleigh 原理及域单调性遂给
+$$
+0\le\lambda(K_\varepsilon)-\lambda(K)
+\le C_3\varepsilon^{2\beta}=o(\varepsilon).
+\tag{11}
+$$
+将 (9) 与 (11) 合用，目标
+$V(P,K_\varepsilon)\sqrt{\lambda(K_\varepsilon)}$
+严格下降，矛盾。于是所有 $m$ 条边均为真边。
+其他冗余支撑值在切角时可能同时下降，这只会加强 (9)。
+
+**真实压力方程。** 已证每条边为真边，故各支撑数可以独立作
+充分小的双向扰动 $h_i(t)=h_i+t z_i$，并保持严格凸和组合类型。
+具体地，令 $h_i=h_K(n_i)$，并置
+$$
+Q(h)=\operatorname{int}\bigcap_i\{x:x\cdot n_i\le h_i\}
+=\operatorname{int}K,\qquad a_i=z_i.
+$$
+各 $n_i$ 按边界顺序排列、两两不同，全部指定边正长，且各内角小于 $\pi$。
+这准确满足 @prp-tpr-smooth-support-deformation-tpr1011 的假设。
+该命题给光滑紧支撑场 $X$ 和双向小参数的平面微分同胚
+$\Phi_t=\mathrm{Id}+tX$，满足
+$\Phi_t(Q(h))=Q(h+tz)$ 及 $X\cdot n_i=z_i$ 于第 $i$ 条边。
+对这个 $Q(h)$、速度 $a=z$ 和定义中 $L^2$ 归一化的正第一基态
+使用 @prp-tpr-support-hadamard-tpr1011，其 $E_i$ 就是
+@def-pressure-rebuild-1011-functional 的 $m_i(K)$。由此得到完整公式
+$$
+\lambda'(0)=-\sum_i z_i m_i(K).
+\tag{12}
+$$
+由 (7)，$V'(0)=\frac12\sum_i\ell_i(P)z_i$。
+对 @def-pressure-rebuild-1011-functional 的目标作任意支撑扰动，
+最优性给
+$$
+0=\sum_i\left[
+\frac{\ell_i(P)\sqrt\lambda}{2}
+-\frac{V(P,K)m_i(K)}{2\sqrt\lambda}\right]z_i.
+$$
+因 $z_i$ 任意，即得 (6)。式 (6) 只控制逐边积分，
+没有断言真实压力密度在每条边上为常数。
+:::
+
+::: {#prp-pressure-rebuild-1011-regular-calibration .proposition name="正五边形的混合面积压力准确校准" date="2026-10-11" export="prp-pressure-rebuild-1011-regular-calibration"}
+采用 @def-pressure-rebuild-1011-functional。若 $R$ 为正五边形，则
+$$
+\boxed{\mathscr P(R)=|R|\sqrt{\lambda(R)}.}
+\tag{13}
+$$
+更准确地，对每个 $K\in\mathcal K^2$ 都有
+$$
+V(R,K)\sqrt{\lambda(K)}\ge |R|\sqrt{\lambda(R)}.
+\tag{14}
+$$
+:::
+
+::: {.proof of="prp-pressure-rebuild-1011-regular-calibration" status="verified"}
+由 @prp-pressure-rebuild-1011-attainment，任意 $K$ 可以替换为
+同法向外包多边形 $K^+_R$，其混合面积不变、特征值不增加。
+将 $R$ 中心置于原点，令 $T$ 为绕原点旋转 $2\pi/5$，取
+$$
+\overline K=\frac15\left(K^+_R+TK^+_R+T^2K^+_R+T^3K^+_R+T^4K^+_R\right).
+$$
+平面多边形 Minkowski 和的边法向属于因子边法向的并集。
+故 $\overline K$ 的边法向仍在 $R$ 的五法向集合内，
+同时它具有五重旋转对称且有内点，因此为正五边形。五重对称及非空内点使其中心在内部。
+设 $R$ 的内切圆半径、边长分别为 $r_R,\ell_R$，记
+$$
+\overline h=\frac15\sum_{i=1}^5h_K(n_i).
+$$
+支撑函数的 Minkowski 线性与五重平均给
+$h_{\overline K}(n_i)=\overline h$，因而
+$\overline K=(\overline h/r_R)R$，其中 $\overline h>0$。
+
+外部谱输入为经典 Brascamp–Lieb 不等式：对有内点的凸体 $K,L$，
+$$
+\lambda((1-t)K+tL)^{-1/2}
+\ge(1-t)\lambda(K)^{-1/2}+t\lambda(L)^{-1/2},
+\qquad 0\le t\le1.
+\tag{15}
+$$
+准确陈述见
+[Colesanti–Francini–Livshyts–Salani，§1.1 Theorem 1.1](https://arxiv.org/html/2407.21354v2#S1.SS1)。
+该处回顾的是通常 Lebesgue Dirichlet 谱；其假设包含这里的所有
+有内点凸多边形。本证明不使用该文后面的 Ornstein–Uhlenbeck 谱。
+迭代 (15) 并用旋转不变性，得到
+$$
+\lambda(\overline K)\le\lambda(K^+_R)\le\lambda(K).
+$$
+采用 @def-pressure-rebuild-1011-functional 的归一化，使用经典平面多边形
+混合面积支撑公式：当 $A$ 为凸多边形、$C$ 为有内点紧凸体时，
+$$
+V(A,C)=\frac12\sum_{e\subset\partial A}|e|\,h_C(n_e).
+$$
+这里取 $A=R,C=K$；$R$ 的每条边均长 $\ell_R$，所以
+$$
+V(R,K)=\frac{5\ell_R\overline h}{2}
+=\frac{|R|}{r_R}\overline h,
+\qquad |R|=\frac{5\ell_Rr_R}{2}.
+$$
+谱尺度律在此可直接由 Rayleigh 商说明：对 $a>0$ 和
+$v(x)=u(x/a)$，二维换元给
+$\int_{aR}|\nabla v|^2=\int_R|\nabla u|^2$、
+$\int_{aR}v^2=a^2\int_Ru^2$。这个对应是两个 $H_0^1$ 空间的双射，
+故 $\lambda(aR)=a^{-2}\lambda(R)$。取
+$a=\overline h/r_R>0$，得到
+$\sqrt{\lambda(\overline K)}=(r_R/\overline h)\sqrt{\lambda(R)}$。
+于是
+$$
+V(R,K)\sqrt{\lambda(K)}
+\ge\frac{|R|\overline h}{r_R}
+\frac{r_R}{\overline h}\sqrt{\lambda(R)}
+=|R|\sqrt{\lambda(R)}.
+$$
+再取 $K=R$ 即得 (13)。这里不需要使用谱 Brunn–Minkowski
+不等式的等号分类。
+:::

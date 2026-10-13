@@ -1,0 +1,71 @@
+---
+title: "同源真实张量：可容许权与完整核定义"
+lang: zh-CN
+---
+
+::: {#def-psgs-tensor-weights-1011h .definition name="可容许的真实压力积分权" date="2026-10-11" export="def-psgs-tensor-weights-1011h" status="verified"}
+令 $\alpha=\pi/5$，$a_0=\alpha\cot\alpha$，$r=(\sqrt5-1)/2$。
+设 $W\in W^{1,1}(0,\alpha)$、$V\in L^1(0,\alpha)$，并且几乎处处
+$$
+W>0,\qquad 0\le V\le\tan(\alpha-\beta)W,\qquad |W'|\le2V.
+$$
+记 $C_0=10\int_0^\alpha W>0$。
+对定义在 $(0,\infty)\times[0,\alpha]$ 邻域的实 $C^1$ 函数
+$k(\rho,\beta)$，导数均取经典偏导数。
+只有在下列两个径向积分对几乎每个 $\beta$ 绝对收敛时，才定义其候选权为
+$$
+W(\beta)=\int_0^\infty f(\rho)k_\rho\,d\rho,
+\quad V(\beta)=\int_0^\infty\frac{f(\rho)}\rho k_\beta\,d\rho,
+\quad f(\rho)=\frac{\rho^2}{(1+\rho^2)^2}.
+$$
+本章在使用这些候选权时明确要求上述可积性、角压缩及导数条件成立。
+当 $k$ 取为真实压力的极坐标表达时，同样须另行证明这些条件；
+此定义本身不声称任意 $C^1$ 输入都产生可容许权。
+:::
+
+::: {#def-psgs-exact-tensor-1011h .definition name="固定源的完整标量、自旋与铅笔" date="2026-10-11" export="def-psgs-exact-tensor-1011h" status="verified"}
+采用 @def-psgs-tensor-weights-1011h。对 $c,d\in\mathbb C$，记 $t=|c|,s=|d|$，$n_i=e^{(2i+1)\pi i/5}$，$x_i=\Re(cn_i)$。
+这里节点指标为 $i=0,1,2,3,4$，公式中指数的虚数单位与节点指标按通常语境区分；
+所有 $\operatorname{av}_i F_i$ 都表示等权平均 $\frac15\sum_{i=0}^4F_i$。
+对固定实数 $\kappa$，置
+$$
+\omega_i=1+\kappa x_i,\quad
+\delta_i(\beta)=\kappa[\beta x_i+a_0\Im(cn_i)],\quad q_\beta=e^{-2i\beta},
+$$
+$$
+P_i^\pm=1+cn_i(1\pm rq_\beta)+dn_i^2(r\pm q_\beta).
+$$
+未对称化的核定义为
+$$
+\begin{aligned}
+A&=\Re\operatorname{av}_i(\omega_iP_i^-e^{-i\delta_i}),&
+B&=-\Im\operatorname{av}_i(\omega_iP_i^+e^{-i\delta_i}),\\
+X&=e^{2i\beta}\operatorname{av}_i(n_i^2\omega_iP_i^-e^{i\delta_i}),&
+Y&=i e^{2i\beta}\operatorname{av}_i(n_i^2\omega_iP_i^+e^{i\delta_i}).
+\end{aligned}
+$$
+随后将 $A,X$ 替换为关于 $\beta$ 的偶部，将 $B,Y$ 替换为奇部。
+定义
+$$
+C=10\int_0^\alpha(AW+BV),\quad K=10\int_0^\alpha(XW+YV),\quad
+\bar A=\frac1\alpha\int_0^\alpha A,\quad \bar Z=\frac1\alpha\int_0^\alpha X.
+$$
+对复参数 $\lambda$，令
+$$
+A_\lambda=A-\Re(\bar\lambda X),\quad B_\lambda=B-\Re(\bar\lambda Y),
+\quad D_\lambda=A_\lambda'/\beta,\quad
+H_\lambda=B_\lambda'+2A_\lambda-2\bar A_\lambda.
+$$
+$D_\lambda$ 在 $\beta=0$ 按连续延拓解释，$\bar A_\lambda=\bar A-\Re(\bar\lambda\bar Z)$。
+:::
+
+::: {.proof of="def-psgs-exact-tensor-1011h"}
+有限等权平均中的指数、三角函数及多项式都光滑，故所定义的四个核光滑。
+取偶部后 $A_\lambda$ 是实值光滑偶函数，所以 $A_\lambda'(0)=0$，并有
+$$
+\lim_{\beta\to0}\frac{A_\lambda'(\beta)}{\beta}=A_\lambda''(0).
+$$
+这给 $D_\lambda$ 唯一的有限连续延拓。
+@def-psgs-tensor-weights-1011h 给有限正的 $\alpha$、$W,V\in L^1$；
+四个核在紧区间上有界，因此所有列出的积分绝对收敛。
+:::

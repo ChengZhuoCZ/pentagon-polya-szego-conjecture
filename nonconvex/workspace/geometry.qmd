@@ -1,0 +1,487 @@
+---
+title: "Geometric reductions"
+qmd-prover:
+  imports:
+    - from: foundations.qmd
+      use: [def-domain, lem-hadamard-corners, lem-variations]
+---
+
+::: {#lem-reflex-fan .lemma name="G.5.1 Triangulation from the unique reflex vertex" date="2026-10-11" export="lem-reflex-fan"}
+Use @def-domain. If $ABCDE$ is a simple pentagon whose unique reflex vertex is $C$, then it admits the decomposition $P=\triangle ABC\cup\triangle ACE\cup\triangle CDE$ with disjoint interiors.
+:::
+
+::: {.proof of="lem-reflex-fan"}
+Use the definitions of reflex vertex and ear in @def-domain. The external geometric inputs are nondegenerate triangulation of a simple polygon and diagonal flips in a convex quadrilateral.
+
+Suppose $C$ is the unique reflex vertex and the boundary order is $A B C D E$. We claim
+
+$$
+
+P=\triangle ABC\cup\triangle ACE\cup\triangle CDE
+\quad\text{(disjoint interiors)}.
+\tag{G.5.1}
+
+$$
+
+**The triangulation argument.** A simple pentagon admits a nondegenerate triangulation. Its two noncrossing interior diagonals must have a common endpoint. The reflex vertex $C$ cannot be an ear vertex belonging to only one triangle.
+
+Here are the structural details. Two pentagon diagonals without a common endpoint have alternating endpoints on the boundary. An interior diagonal is a crosscut of the Jordan domain and separates it into two sides. Alternating endpoints lie on opposite sides, so the other interior connecting arc must cross this diagonal. Therefore two noncrossing triangulation diagonals have a common endpoint, and the triangulation is a fan from that vertex to its two nonadjacent vertices. If $C$ belonged to a single triangle, the angle of that triangle at $C$ would fill the entire local interior angle of the polygon. A nondegenerate triangle has angle less than $\pi$, contradicting reflexivity. In a fan centered at $B$ or $D$, the vertex $C$ belongs to exactly one triangle. Both centers are therefore excluded, leaving only $A,C,E$.
+
+The only possible fan centers are $A,C,E$. If the fan is centered at $C$, the claim already holds. If it is centered at $A$, the diagonals are $AC,AD$. In the quadrilateral $ACDE$, the angles at $A,D,E$ do not exceed the corresponding strictly convex polygon angles, and the angle at $C$ is the angle of triangle $ACD$. Thus this quadrilateral is strictly convex. Flipping $AD$ to $CE$ gives (G.5.1). The case of a fan centered at $E$ is symmetric. In particular, the argument does not assume that the convex hull is a quadrilateral.
+:::
+
+::: {#lem-steiner .lemma name="Strict cancellation of a reflex and a convex angle at one height" date="2026-10-11" export="lem-steiner"}
+Suppose a simple pentagon in @def-domain has the form $P=\{(x,y):y_-<y<y_+,a(y)<x<b(y)\}$ in some Euclidean coordinates, where $a,b$ are continuous and piecewise affine, the interior width is strictly positive, and there are no horizontal boundary segments at interior heights. At one interior height, suppose there are exactly two nonadjacent vertices, one on each boundary chain, one strictly reflex and the other strictly convex; no other vertex has this height. Then $P$ has a strict competitor, which may be chosen with exactly five active sides.
+:::
+
+::: {.proof of="lem-steiner"}
+Use @def-domain and set
+$$
+\begin{gathered}
+m(y)=\frac{a(y)+b(y)}2,\qquad r(y)=\frac{b(y)-a(y)}2,\\
+P_q=\{(x,y):y_-<y<y_+,\ qm(y)-r(y)<x<qm(y)+r(y)\}.
+\end{gathered}
+\tag{G.3.3}
+$$
+For $0\le q\le1$, every section keeps the same width, so area is preserved.
+
+**Cancellation parameter and side count.** Let $y_0$ be the specified height and let $J_a,J_b$ be the slope jumps of the endpoint functions. The counterclockwise boundary travels down the left chain and up the right chain, so the signs of the turning determinants are $J_a$ and $-J_b$, respectively. One convex and one reflex angle imply $J_aJ_b>0$, and in particular $J_a+J_b\ne0$. After deformation the jumps are exactly
+$$
+J_{a_q}=\frac{J_a-J_b+q(J_a+J_b)}2,
+\qquad
+J_{b_q}=\frac{-J_a+J_b+q(J_a+J_b)}2.
+\tag{G.3.4}
+$$
+Consequently,
+$$
+q_*=\frac{|J_a-J_b|}{|J_a+J_b|}\in[0,1)
+\tag{G.3.5}
+$$
+cancels at least one jump. The top and bottom extrema account for at least two original vertices, while $y_0$ accounts for two more. Thus there is at most one further interior height at which a slope changes. Each interior height contributes at most two vertices to $P_q$. A general parameter $q$ therefore gives at most six sides, and at $q_*$ at least one side disappears, leaving at most five. If the top or bottom is a horizontal side, it uses one additional original vertex and correspondingly reduces the number of possible interior breakpoints; the same count holds. Positive interior width and continuity of the endpoints ensure that $P_q$ remains a simple connected polygon.
+
+**Spectral monotonicity.** Brock [@nc:brock2000, Theorem 3.2 and Corollary 3.2] proves that continuous Steiner rearrangement preserves the zero trace and does not increase Dirichlet energy for a nonnegative $H_0^1$ function on an arbitrary open domain. Equimeasurability preserves its $L^2$ norm. The interval formula multiplies each section center by $e^{-t}$. Therefore, if $0<q_2\le q_1\le1$, choosing $t=\log(q_1/q_2)$ rearranges $P_{q_1}$ exactly into $P_{q_2}$. Applying the theorem and the Rayleigh principle to the positive ground state of $P_{q_1}$ gives
+$$
+\lambda_1(P_{q_2})\le\lambda_1(P_{q_1}).
+$$
+The case $q_2=0$ is complete Steiner rearrangement and follows from the complete-rearrangement endpoint of the same theorem. The function being rearranged is the ground state itself. Every domain here is a bounded open polygon, and its ground state has a zero extension in $H^1(\mathbb R^2)$, so all function-space hypotheses hold.
+
+**Strictness of complete rearrangement.** Apply Capriani [@nc:Capriani, Theorem 2.3], exchanging the coordinate names so that the rearrangement direction is our $x$, and taking $n=2,k=1$ and $f(\xi)=|\xi|^2$. Condition (2.13) holds because the domain is bounded and its vertical projection is a connected interval. For (2.14), the polygon has finite perimeter. Over the interior of the projection, an open side with $\nu_x=0$ would be horizontal, and such sides are excluded by hypothesis. The finitely many vertices have zero one-dimensional measure. Any horizontal top or bottom side lies at an endpoint of the projection, outside the interior cylinder appearing in the theorem.
+
+It remains to check the transverse critical-set condition (2.12). The positive ground state $U$ is real analytic in the connected domain $P_1$: the function $e^{\sqrt\lambda z}U(x,y)$ is weakly harmonic in three dimensions, so interior regularity and the Poisson formula give convergent local power series. The derivative $\partial_xU$ cannot vanish identically. Otherwise $U$ would be constant on almost every horizontal section, whereas the one-dimensional slices of its $H_0^1$ zero extension vanish at both endpoints. This would force $U=0$, contradicting normalization. The zero set of a nonzero real-analytic function has measure zero: at each zero, select a nonzero derivative of the lowest order and remove one differentiation. The point lies on a regular zero level set of the resulting derivative. The implicit function theorem and a countable coordinate cover place the full zero set in a countable union of smooth curves. Hence $\{\partial_xU=0\}$ already has zero planar measure and satisfies the subset condition required in (2.12).
+
+If $\lambda_1(P_0)=\lambda_1(P_1)$, the inequalities
+$$
+\lambda_1(P_0)
+\le\frac{\int|\nabla U^\star|^2}{\int|U^\star|^2}
+\le\frac{\int|\nabla U|^2}{\int|U|^2}
+=\lambda_1(P_1)
+$$
+force equality of the rearranged Dirichlet energies. The equality theorem then says that $U$ and $U^\star$ differ by a single fixed horizontal translation. Positivity of the ground states gives the same relation between their positivity sets. Continuity of the section endpoints upgrades the almost everywhere relation to every height, so $m$ must be constant. But
+$$
+m'(y_0+)-m'(y_0-)=\frac{J_a+J_b}{2}\ne0,
+$$
+and therefore $\lambda_1(P_0)<\lambda_1(P_1)$.
+
+**Strictness at finite parameters.** For every finite real $q$, the map
+$$
+F_q(x,y)=(x+(q-1)m(y),y)\tag{G.3.6}
+$$
+is an area-preserving bi-Lipschitz map from $P_1$ to $P_q$. Its derivative is $\left(\begin{smallmatrix}1&(q-1)m'(y)\\0&1\end{smallmatrix}\right)$. The pulled-back energy coefficient $DF_q^{-1}DF_q^{-T}$ is quadratic in $q$ and is uniformly bounded and positive definite on every compact parameter interval. The common closed form domain is $H_0^1(P_1)$, and the mass form is fixed. Rellich compactness gives compact resolvent; connectedness gives an isolated simple first eigenvalue. Kato [@nc:kato, Chapter VII, Section 4] therefore makes $q\mapsto\lambda_1(P_q)$ real analytic. If $0<q_*<1$ and the endpoint were isospectral with $q=1$, monotonicity would force constancy on $[q_*,1]$. The identity theorem would then force constancy on $[0,1]$, contradicting the strict inequality at complete rearrangement. For $q_*=0$, that strict inequality applies directly. Thus $P_{q_*}$ is the required strict competitor.
+
+If it has fewer than five active sides, apply @lem-five-edge-approximation and choose the approximation sufficiently close to preserve the strict spectral gap. This gives a competitor with exactly five sides.
+:::
+
+::: {#lem-double .lemma name="All configurations with two reflex vertices" date="2026-10-11" export="lem-double"}
+Every simple polygon in @def-domain with five active sides and two strictly reflex vertices has a strict competitor.
+:::
+
+::: {.proof of="lem-double"}
+Use all the definitions and notation of @def-domain.
+
+Every direction used in @lem-steiner is a direction in the original Euclidean plane. The affine coordinates below are used only to compute determinant signs. The sum of the pentagon's interior angles is $3\pi$, so there are at most two strictly reflex vertices. If there are exactly two, neither is an extreme point of the convex hull; the remaining three vertices form its triangular convex hull. Along the three boundary chains between successive hull vertices, the reflex vertices either lie on two different chains or on one common chain.
+
+The oblique or affine coordinates below are used only to determine directions, collinearity, and the ordering of heights. The Steiner operation is always performed in the original Euclidean metric; a general affine transformation is not treated as preserving the Dirichlet spectrum.
+
+**G.4.1 Separated configuration**
+
+Let the convex hull vertices be
+
+$$
+
+A=(0,0),\quad C=(1,0),\quad E=(0,1),
+
+$$
+
+and the two interior reflex vertices be $B=(b,c_0),D=(d_0,e)$. Then
+
+$$
+
+b,c_0,d_0,e>0,\quad b+c_0<1,\quad d_0+e<1.
+
+$$
+
+The boundary order is $A B C D E$. Strict convexity at $C$ gives
+
+$$
+
+e(1-b)>c_0(1-d_0).
+\tag{G.4.1}
+
+$$
+
+For the direction $BE$, use $\det(E-B,X-B)$ as transverse height. Then
+
+$$
+
+H(A)=b>0,\quad H(C)=b+c_0-1<0,\quad H(B)=H(E)=0,
+
+$$
+
+$$
+
+H(D)=b(1-e)-d_0(1-c_0).
+
+$$
+
+If
+
+$$
+
+b(1-e)-d_0(1-c_0)<0,
+\tag{G.4.2}
+
+$$
+
+both boundary chains are monotone in height and each section is a single interval. The equal-height pair $B,E$ consists of a reflex and a convex vertex, so the cancellation argument G.3 applies.
+
+For the direction $AD$, the analogous sufficient condition is
+
+$$
+
+d_0c_0-eb<0
+\tag{G.4.3}
+
+$$
+
+It gives single-interval sections and the required convex-reflex pair $A,D$.
+
+If both (G.4.2) and (G.4.3) fail, then
+
+$$
+
+e\le\frac{c_0d_0}{b},\qquad
+ e\le1-\frac{d_0(1-c_0)}b.
+
+$$
+
+The first inequality together with (G.4.1) gives $d_0>b$. The second together with (G.4.1) gives
+
+$$
+
+0<1-\frac{d_0(1-c_0)}b-\frac{c_0(1-d_0)}{1-b}
+=\frac{(1-b-c_0)(b-d_0)}{b(1-b)},
+
+$$
+
+so $d_0<b$, a contradiction. At least one direction is available, strictly excluding the separated configuration.
+
+**G.4.2 Configuration on one chain**
+
+Let the hull vertices be $A=(0,0),D=(1,0),E=(0,1)$ and the reflex vertices be
+$B=(b,c_0),C=(d_0,e)$, again in boundary order $A B C D E$. Reflexivity means
+
+$$
+
+be<c_0d_0,
+\qquad e(1-b)>c_0(1-d_0).
+\tag{G.4.4}
+
+$$
+
+These inequalities give $d_0>b$. Along the direction $BE$,
+
+$$
+
+H(A)=b>0,\quad H(D)=b+c_0-1<0,
+
+$$
+
+$$
+
+H(C)=b(1-e)-d_0(1-c_0)
+<\frac{(1-b-c_0)(b-d_0)}{1-b}<0.
+\tag{G.4.5}
+
+$$
+
+The sections are therefore single intervals, with equal-height reflex-convex pair $B,E$. The cancellation argument applies again.
+
+**Conclusion G.4.** Every simple pentagon with two reflex vertices has a same-area strict competitor with at most five sides.
+
+For completeness, check the convex hull and section hypotheses. A strictly reflex vertex cannot lie on the boundary of the convex hull. A supporting line through such a vertex would put the whole polygon in a closed half-plane, but its local interior sector has angle greater than $\pi$ and cannot lie in a half-plane. Thus both reflex vertices lie strictly inside the triangular hull, justifying $b,c_0,d_0,e>0$ and the two strict inequalities for the sums of coordinates.
+
+In the separated configuration, along $BE$,
+
+$$
+
+H(D)-H(C)=(1-c_0)(1-d_0)-be>0,
+
+$$
+
+since $1-c_0>b$ and $1-d_0>e$. Under (G.4.2), the full ordering is
+
+$$
+
+H(C)<H(D)<H(B)=H(E)=0<H(A).
+
+$$
+
+The boundary chains from the lowest vertex $C$ to the highest vertex $A$ are $CBA$ and $CDEA$. Every edge of each chain strictly increases in height, and $B,E$ lie on different chains.
+
+For the separated configuration along $AD$, take $H(X)=\det(D,X)$. Then $H(C)=-e$, $H(B)=d_0c_0-eb$, $H(A)=H(D)=0$, and $H(E)=d_0$. Also $H(B)-H(C)=d_0c_0+e(1-b)>0$. Under (G.4.3), the full ordering is
+
+$$
+
+H(C)<H(B)<H(A)=H(D)<H(E),
+
+$$
+
+with strictly increasing chains $CBAE$ and $CDE$. The vertices $A,D$ lie on opposite chains.
+
+For the configuration on one chain, along $BE$,
+
+$$
+
+H(C)-H(D)=(1-c_0)(1-d_0)-be>0.
+
+$$
+
+Together with (G.4.5), this gives $H(D)<H(C)<H(B)=H(E)=0<H(A)$, with strictly increasing chains $DCBA$ and $DEA$.
+
+In each case, the two strictly increasing polygonal chains are continuous piecewise affine graphs of height. Simplicity makes them disjoint except at their common top and bottom endpoints. Hence their interior width is strictly positive and every interior section is a single interval. Adjacent vertices have distinct heights, so no interior horizontal boundary segment occurs. The specified equal-height vertices lie on opposite chains, and every other vertex has a different height. All section hypotheses of @lem-steiner are therefore satisfied.
+:::
+
+::: {#lem-single .lemma name="Signed reduction for a unique reflex vertex" date="2026-10-11" export="lem-single"}
+Let $ABCDE$ be a simple pentagon as in @def-domain whose unique reflex vertex is $C$. It admits the triangulation $ABC,ACE,CDE$ with disjoint interiors. If it has no strict competitor, then, after translating $C$ to $C=0$, it has the representation
+
+$$
+
+P=(u,-su-\beta v,0,-\gamma u-tv,v),\quad u,v\text{ linearly independent},\quad s,t\ge0,\quad\beta,\gamma>0,\quad\beta\gamma>st.
+
+$$
+
+Moreover, $|P|=|\det(u,v)|(1+\beta+\gamma)/2$.
+:::
+
+::: {.proof of="lem-single"}
+Use the definitions and notation in @def-domain, including ears and active sides, and the strict cancellation result @lem-steiner.
+
+By @lem-reflex-fan, the triangles $ABC,ACE,CDE$ form a triangulation with disjoint interiors. Introduce oblique coordinates only on this fixed triangulation.
+
+**G.5.2 Oblique coefficients need not all be positive**
+
+Let $C=0,A=u,E=v$, where $u,v$ are linearly independent. By (G.5.1), there exist
+
+$$
+
+\beta,\gamma>0,\qquad\alpha,\delta\in\mathbb R
+
+$$
+
+such that
+
+$$
+
+B=\alpha u-\beta v,
+\qquad D=-\gamma u+\delta v.
+\tag{G.5.2}
+
+$$
+
+Only the coefficients $\beta,\gamma$, corresponding to the ear areas, are required to be positive. The coefficients $\alpha,\delta$ may have either sign; a pentagon with one reflex vertex may have a triangular convex hull.
+
+If $\delta>0$, the transverse heights for the direction $CA$ are
+
+$$
+
+A,C:0,\quad B:-\beta,\quad D:\delta,\quad E:1.
+
+$$
+
+The boundary chains are monotone in height, and $A,C$ form an equal-height convex-reflex pair on opposite chains. The cancellation argument G.3 applies. If $\alpha>0$, the symmetric argument in direction $CE$ applies.
+
+A candidate not directly excluded by this cancellation must therefore satisfy
+
+$$
+
+\alpha\le0,\qquad\delta\le0.
+
+$$
+
+Writing
+
+$$
+
+s=-\alpha\ge0,\quad t=-\delta\ge0,
+
+$$
+
+gives the residual family
+
+$$
+
+\boxed{P=(u,-su-\beta v,0,-\gamma u-tv,v),}
+\tag{G.5.3}
+
+$$
+
+$$
+
+\boxed{s,t\ge0,\quad\beta,\gamma>0,
+\quad\epsilon:=\beta\gamma-st>0.}
+\tag{G.5.4}
+
+$$
+
+The last inequality is exactly the determinant condition that $C$ be strictly reflex. Set
+$K_0=|\det(u,v)|/2$. The three triangle areas are
+$\beta K_0,K_0,\gamma K_0$, and hence
+
+$$
+
+|P|=K_0(1+\beta+\gamma).
+\tag{G.5.5}
+
+$$
+
+This parameter family covers both triangular and quadrilateral convex hulls.
+
+Here is a full verification of the cancellation hypotheses for $\delta>0$. One may take $H(X)=\det(u,X)/\det(u,v)$ as height. It is the signed Euclidean height perpendicular to $u$, multiplied by a nonzero constant, so only the height scale and possibly its orientation change. No general affine spectral transformation is made. The vertex heights are $H(B)=-\beta<0$, $H(A)=H(C)=0$, $H(D)=\delta>0$, and $H(E)=1$.
+
+If $0<\delta<1$, the lowest vertex is $B$, the highest is $E$, and the strictly increasing chains are $BAE$ and $BCDE$. If $\delta>1$, the highest vertex is $D$, and the chains are $BC D$ and $BAED$, again strictly increasing. If $\delta=1$, the top is the horizontal side $DE$, and the two chains from the lowest vertex are $BAE$ and $BCD$. The horizontal side lies only at the upper endpoint of the projection and is not an interior horizontal boundary segment.
+
+In every case, each chain is a continuous piecewise affine graph of height, with no interior horizontal side. Simplicity of the original boundary prevents the chains from meeting at an interior height. Their width is therefore strictly positive and each interior section is a single interval. The nonadjacent vertices $A,C$ lie on opposite chains; they alone have interior height zero and are respectively strictly convex and strictly reflex. Thus every hypothesis of @lem-steiner holds.
+
+For $\alpha>0$, simply exchange the labels $A\leftrightarrow E$, $B\leftrightarrow D$, $u\leftrightarrow v$, $\alpha\leftrightarrow\delta$, $\beta\leftrightarrow\gamma$, and read the boundary in reverse. The three cases correspond to $0<\alpha<1$, $\alpha=1$, and $\alpha>1$. The lowest vertex becomes $D$ and the equal-height pair becomes $C,E$. In the equality case, the upper horizontal side is $AB$. Thus the symmetric cancellation satisfies all hypotheses as well.
+:::
+
+::: {#lem-ear .lemma name="Four strict ear-length restrictions at a critical candidate" date="2026-10-11" export="lem-ear"}
+Let $ABCDE$ be an area-critical pentagon as in @def-domain with the triangulation $ABC,ACE,CDE$ having disjoint interiors. Then
+
+$$
+
+|AB|,|BC|<|AC|,\qquad |CD|,|DE|<|CE|.
+
+$$
+
+More precisely, if the ear $ABC$ satisfies $|AB|\ge|AC|$, and $t$ parametrizes the side from $B$ to $C$, then $\int_0^1(t-1/2)(\partial_\nu U)^2dt>0$.
+:::
+
+::: {.proof of="lem-ear"}
+Use the definitions and notation of @def-domain, in particular its ground state and criticality. The strict moment established below contradicts the zero-moment identity in @lem-variations.
+After a rigid motion, write
+
+$$
+
+B=(0,0),\quad C=(\ell,0),\quad A=(a_0,b_0),\quad b_0>0.
+
+$$
+
+The length condition is equivalent to $a_0\ge\ell/2$. Put
+$T_-=\triangle ABC\cap\{x<\ell/2\}$ and
+$\mathcal R(x,y)=(\ell-x,y)$. Triangle geometry gives
+$\mathcal R(T_-)\subset\triangle ABC$.
+
+Set $W=U\circ\mathcal R-U$. On $T_-$,
+
+$$
+
+(-\Delta-\lambda)W=0.
+
+$$
+
+On the base and reflection axis, $W=0$. The remaining boundary lies on $AB$, where the original function vanishes and the reflected point lies either inside the ear or on the interior diagonal $AC$. Thus the boundary values are nonnegative and not identically zero. Since $T_-\subsetneq P$, strict domain monotonicity gives $\lambda_1(T_-)>\lambda_1(P)$, and the maximum principle gives $W>0$. The inward normal to the base points in the positive $y$ direction. At each open base point $0<x<\ell$, the function $U$ is positive on the $y>0$ side and zero at $y=0$. Regularity along the open side gives the normal derivative and hence $U_y(x,0)=\lim_{y\downarrow0}U(x,y)/y\ge0$. Applying Hopf's lemma to $W>0$ gives
+
+$$
+
+0< W_y(x,0)=U_y(\ell-x,0)-U_y(x,0)\quad(0<x<\ell/2).
+
+$$
+
+Both normal derivatives are nonnegative and the reflected derivative is strictly larger, so their squares have the same strict ordering. The outer normal is $-e_y$, and the squared flux is $g=U_y^2$. Thus
+
+$$
+
+(\partial_\nu U)^2(\ell-x)>(\partial_\nu U)^2(x)
+\quad(0<x<\ell/2).
+
+$$
+
+Consequently,
+
+$$
+
+\int_0^\ell(x-\ell/2)g(x)\,dx
+=\int_0^{\ell/2}(\ell/2-x)[g(\ell-x)-g(x)]\,dx>0.
+
+$$
+
+This contradicts the central-moment condition (G.2.1).
+
+Exchanging the two endpoints similarly excludes $|BC|\ge|AC|$. Repeating the argument for the other ear gives the necessary conditions at every area-critical candidate,
+
+$$
+
+\boxed{|AB|,|BC|<|AC|,\qquad |CD|,|DE|<|CE|.}
+\tag{G.6.2}
+
+$$
+
+These conditions genuinely exclude minimizers: on the finite-dimensional manifold of vertex coordinates with fixed area, a noncritical point has a first-order descent direction tangent to the area constraint. Local area normalization produces an actual same-area competitor. Differentiability follows from @lem-hadamard-corners.
+
+For completeness, verify every geometric inclusion used in the reflection argument. Let $y=b_0\tau$, $0<\tau<1$. The open horizontal section of the ear triangle is
+
+$$
+
+(L(\tau),R(\tau))=(a_0\tau,\ell+(a_0-\ell)\tau),\qquad
+L(\tau)+R(\tau)-\ell=(2a_0-\ell)\tau\ge0.
+
+$$
+
+If $T_-$ has a nonempty section at this height, then $L(\tau)<\ell/2$ and $R(\tau)\ge\ell-L(\tau)>\ell/2$. The section of $T_-$ is therefore $(L(\tau),\ell/2)$, and the reflected section is $(\ell/2,\ell-L(\tau))\subset(L(\tau),R(\tau))$. This proves $\mathcal R(T_-)\subset\triangle ABC$ at every height.
+
+The boundary other than the base and axis is the open portion of $AB$ with $0<\tau<\min(1,\ell/(2a_0))$. There the reflected horizontal coordinate is $\ell-L(\tau)>\ell/2>L(\tau)$. If $a_0>\ell/2$, then $\ell-L(\tau)<R(\tau)$, so the reflected point lies strictly inside the ear. If $a_0=\ell/2$, then $\ell-L(\tau)=R(\tau)$, and the reflected point lies on the open interior diagonal $AC$. In both cases it is an interior point of $P$, so $U\circ\mathcal R>0$, whereas $U=0$ on $AB$. This proves that the boundary data of $W$ are nonnegative and not identically zero.
+
+To exclude the second ear side explicitly, relabel $(A',B',C')=(C,B,A)$. The base is now $B'C'=BA$ and the interior diagonal is $A'C'=CA$. The assumption $|BC|\ge|AC|$ is precisely $|A'B'|\ge|A'C'|$. The same proof contradicts the central zero-moment identity of @lem-variations on $BA$. The analogous two relabelings of ear $CDE$ give the other two strict inequalities.
+:::
+
+::: {#lem-five-edge-approximation .lemma name="Area-normalized approximation with exactly five active sides" date="2026-10-11" export="lem-five-edge-approximation"}
+Use @def-domain. Every simple polygon $Q$ of area $A>0$ and active side count $m\in\{3,4\}$ admits a sequence of simple polygons $Q_\varepsilon$ of area exactly $A$ and exactly five active sides such that $\lambda_1(Q_\varepsilon)\to\lambda_1(Q)$. Thus every previously obtained strict same-area spectral gap is preserved by sufficiently close such approximations.
+:::
+
+::: {.proof of="lem-five-edge-approximation"}
+Use the active-side and spectral definitions in @def-domain, together with the external triangulation theorem for simple polygons.
+
+To replace a competitor $Q$ with fewer than five active sides, suppose its side count is $m=3$ or $4$. Choose midpoints on $5-m$ different open sides and disjoint neighborhoods that meet no other side. Move each selected midpoint a distance $\varepsilon>0$ along its side's outer normal, leaving all original vertices fixed. Each chosen side is replaced by two positive-length noncollinear sides. The old nonflat angles persist for small perturbations. The disjoint local neighborhoods ensure simplicity, so the resulting polygon has exactly five active sides.
+
+To check spectral continuity, take a finite nondegenerate triangulation of a rectangle containing $Q$, including all original vertices and selected midpoints. Construct a continuous piecewise affine field $V$ that takes the appropriate outer normal at each selected midpoint and is zero at the original polygon vertices. Additional boundary mesh points take the linearly interpolated boundary values, while all remaining mesh vertices and the exterior of the rectangle have value zero. The field $V$ is globally Lipschitz, and $F_\varepsilon=I+\varepsilon V$ is bi-Lipschitz whenever $\varepsilon\|DV\|_\infty<1$. Its image is exactly the polygon described above. After pulling back the Rayleigh quotient, the Jacobian and energy matrix converge uniformly to $1,I$. The Rayleigh comparison in both directions gives $\lambda_1(F_\varepsilon Q)\to\lambda_1(Q)$, and the area tends to $|Q|$. The scaling factor restoring the area tends to one, so the existing strict spectral gap is preserved.
+
+Here are the precise comparison constants and function spaces. Set $J_\varepsilon=\det DF_\varepsilon$ and $B_\varepsilon=J_\varepsilon DF_\varepsilon^{-1}DF_\varepsilon^{-T}$. On the finite mesh, $DF_\varepsilon=I+\varepsilon DV$ almost everywhere. Hence there is $\delta_\varepsilon\downarrow0$ such that $1-\delta_\varepsilon\le J_\varepsilon\le1+\delta_\varepsilon$ and $(1-\delta_\varepsilon)I\le B_\varepsilon\le(1+\delta_\varepsilon)I$. Choose $\varepsilon$ small enough that $\delta_\varepsilon<1$. The Sobolev chain rule and change of variables hold for the bi-Lipschitz map: first apply them on each triangle to smooth compactly supported functions, then extend by $H^1$ density. Pullback and inverse pullback are bounded on $H^1$. A compactly supported function remains compactly supported in the corresponding domain, where convolution in a neighborhood of the compact support gives smooth $H^1$ approximations. Thus the two maps carry the respective $H_0^1$ spaces into one another and are inverse bijections.
+For nonzero $u\in H_0^1(Q)$, set $u_\varepsilon=u\circ F_\varepsilon^{-1}$. Then
+
+$$
+
+\frac{1-\delta_\varepsilon}{1+\delta_\varepsilon}
+\frac{\int_Q|\nabla u|^2}{\int_Qu^2}
+\le \frac{\int_{F_\varepsilon Q}|\nabla u_\varepsilon|^2}{\int_{F_\varepsilon Q}u_\varepsilon^2}
+\le \frac{1+\delta_\varepsilon}{1-\delta_\varepsilon}
+\frac{\int_Q|\nabla u|^2}{\int_Qu^2}.
+
+$$
+
+Taking the infimum over nonzero functions, using the bijection, gives the same two-sided eigenvalue bounds and hence $\lambda_1(F_\varepsilon Q)\to\lambda_1(Q)$. Also $|F_\varepsilon Q|=\int_QJ_\varepsilon\to A$. Put $s_\varepsilon=(A/|F_\varepsilon Q|)^{1/2}$ and $Q_\varepsilon=s_\varepsilon F_\varepsilon Q$. In two dimensions, $x=sy$ preserves Dirichlet energy and multiplies mass by $s^2$, with a bijection between the corresponding $H_0^1$ spaces. Thus $\lambda_1(s\Omega)=s^{-2}\lambda_1(\Omega)$. It follows that $|Q_\varepsilon|=A$ and $\lambda_1(Q_\varepsilon)=(|F_\varepsilon Q|/A)\lambda_1(F_\varepsilon Q)\to\lambda_1(Q)$. Positive scaling preserves simplicity and the number of active sides. Hence every fixed strict spectral gap survives for sufficiently small $\varepsilon$.
+
+The triangulation above is taken compatible with $\partial Q$: every boundary segment between consecutive original vertices and selected midpoints is a union of mesh edges. Its existence follows from the permitted triangulation theorem for simple polygons. Choose a generic direction in which the vertex projections are distinct, giving unique leftmost and rightmost vertices, and take a sufficiently large rectangle containing $Q$ and aligned with that direction. Join these extreme vertices to the left and right rectangle boundaries. The two segments are disjoint and, apart from their initial endpoints, lie outside $Q$. They split the annular region between the rectangle and $Q$ into two simple polygons. Triangulate these polygons and $Q$, then subdivide adjacent triangles at the selected side midpoints. This yields a finite nondegenerate compatible mesh.
+
+On each prescribed boundary segment, the values of $V$ are interpolated linearly from its endpoints. Any further mesh subdivision uses that same interpolation, rather than assigning zero at a newly inserted boundary point. Consequently, $F_\varepsilon$ is affine on each entire prescribed boundary segment and creates no additional corners. Its boundary image is precisely the designated pentagon, so the side count and Rayleigh continuity comparison apply.
+:::

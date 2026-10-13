@@ -1,0 +1,30 @@
+{
+  "changed_old_nodes": [
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-psgs-regular-dual-pressure-1011h"
+  ],
+  "new_nodes": [
+    "lem-arc-gaussian-marginal-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-disk-polynomial-bound-1012",
+    "lem-arc-levelset-spectral-budget-1012"
+  ],
+  "transitively_affected_nodes": [
+    "lem-ppsb-spectral-deficit-transfer-1011",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-pressure-rebuild-1011-regular-calibration",
+    "prp-psgs-all-affine-pressure-1011h",
+    "prp-psgs-pressure-image-1011h",
+    "prp-psgs-pressure-kernel-exists-1011h",
+    "prp-psgs-regular-dual-pressure-1011h",
+    "thm-main-convex-pentagon-dirichlet",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-psgs-pressure-polarity-1011h",
+    "thm-psgs-weak-transport-dual-1011h",
+    "thm-tpm-convex-global-comparison-tpm1011",
+    "thm-tpm-no-exit-all-affine-tpm1011"
+  ],
+  "withdrawn_tags": [],
+  "reason": "Changes to the log-concavity premise and explicit spectral budget do not inherit prior verification status."
+}

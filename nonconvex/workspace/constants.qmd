@@ -1,0 +1,82 @@
+---
+title: "constants"
+---
+
+::: {#lem-pi-rational .lemma name="T.C Rational bounds for the constants" date="2026-10-11" export="lem-pi-rational"}
+We have $493/50<\pi^2<987/100$ and $6/7<\sqrt3/2<13/15$.
+:::
+
+::: {.proof of="lem-pi-rational"}
+Two integral identities with signed remainders provide the required rational bounds. For $0<x<1$,
+$$
+\begin{aligned}
+\arctan x&=x-\frac{x^3}{3}+\int_0^x\frac{t^4}{1+t^2}\,dt,\\
+\arctan x&=x-\frac{x^3}{3}+\frac{x^5}{5}
+-\int_0^x\frac{t^6}{1+t^2}\,dt.
+\end{aligned}
+$$
+Both integrals are strictly positive, and $0<\arctan x<x$. These identities follow by applying
+two finite polynomial divisions to $1/(1+t^2)$ and integrating from $0$ to $x$; no infinite-series truncation is needed.
+
+Let $\theta=\arctan(1/5)$ and $\varphi=\arctan(1/239)$.
+The tangent double-angle and subtraction identities give
+
+$$
+
+\tan(2\theta)=\frac5{12},\quad
+\tan(4\theta)=\frac{120}{119},\quad
+\tan(4\theta-\varphi)=1.
+
+$$
+
+Since $\theta=\arctan(1/5)\in(0,\pi/4)$, we have $2\theta\in(0,\pi/2)$. Moreover, $\tan(2\theta)=5/12<1$ implies $2\theta<\pi/4$, hence $4\theta<\pi/2$. The inequality $0<1/239<1/5$ gives $0<\varphi<\theta$, so $0<4\theta-\varphi<\pi/2$. Tangent is strictly increasing on this interval; consequently $\tan(4\theta-\varphi)=1$ implies $4\theta-\varphi=\pi/4$.
+
+The signed integral remainders therefore yield
+
+$$
+
+\ell_\pi=
+16\left(\frac15-\frac1{3\cdot5^3}\right)-\frac4{239}
+<\pi
+
+$$
+
+and
+
+$$
+
+\pi<
+u_\pi=
+16\left(\frac15-\frac1{3\cdot5^3}+\frac1{5\cdot5^5}\right)
+-4\left(\frac1{239}-\frac1{3\cdot239^3}\right).
+
+$$
+
+Both endpoints are positive rational numbers. Squaring and cross-multiplying gives
+
+$$
+
+\ell_\pi^2>\frac{493}{50},\qquad
+u_\pi^2<\frac{987}{100}.
+
+$$
+
+This proves the two asserted rational bounds for $\pi^2$.
+
+The remaining bounds
+
+$$
+
+\frac67<\frac{\sqrt3}{2}<\frac{13}{15}
+
+$$
+
+also follow by squaring:
+
+$$
+
+\frac34-\frac{36}{49}=\frac3{196}>0,\qquad
+\frac{169}{225}-\frac34=\frac1{900}>0.
+
+$$
+:::

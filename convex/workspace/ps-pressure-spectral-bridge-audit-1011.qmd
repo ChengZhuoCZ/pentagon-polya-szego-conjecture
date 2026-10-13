@@ -1,0 +1,202 @@
+---
+title: "压力框架与最终谱传递：解析复核和统一形状余量"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: analytic-replacements-1012/spectral-normalization.qmd
+      use:
+        - lem-arc-spectral-normalization-1012
+    - from: ps-convex-geometric-tensor-switch-1011g/geometry-domain.qmd
+      use:
+        - def-psgs-normalized-geometry-1011h
+    - from: ps-convex-geometric-tensor-switch-1011g/geometry-41-proof.qmd
+      use:
+        - def-geom41-deletion-1011g
+    - from: ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd
+      use:
+        - def-psgs-pressure-action-1011h
+        - prp-psgs-all-affine-pressure-1011h
+        - prp-psgs-regular-dual-pressure-1011h
+        - thm-psgs-pressure-polarity-1011h
+        - thm-psgs-weak-transport-dual-1011h
+    - from: ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd
+      use:
+        - lem-psgs-actual-pressure-weights-1011h
+        - lem-psgs-same-source-coupling-1011h
+        - prp-psgs-pressure-kernel-exists-1011h
+        - def-psgs-regular-pressure-kernel-1011h
+    - from: ps-pressure-central-short-analytic-closure-1011.qmd
+      use:
+        - thm-ppcs-central-short-pressure-budget-1011
+    - from: ps-pressure-unit-short-analytic-closure-1011.qmd
+      use:
+        - thm-ppus-unit-short-pressure-budget-1011
+    - from: true-pressure-terminal-migration-1011/geometry-interface.qmd
+      use:
+        - lem-tpm-analytic-amplitude-cap-tpm1011
+        - lem-tpm-analytic-geometric-domain-tpm1011
+    - from: true-pressure-terminal-migration-1011/uniform-source.qmd
+      use:
+        - thm-tpm-uniform-real-budget-tpm1011
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+---
+
+::: {#lem-ppsb-spectral-deficit-transfer-1011 .lemma name="同源压力正余量到所有仿射像的谱正余量" date="2026-10-11" export="lem-ppsb-spectral-deficit-transfer-1011"}
+取 @prp-psgs-regular-dual-pressure-1011h 的同一个正则参考压力，
+其常数为 $J_R,C_0,I,q=I/J_R\in(0,5/12)$。
+设严格凸目标 $P$ 面积为 $m|R|$，并有
+@lem-psgs-same-source-coupling-1011h 的合法耦合及准确数据
+$$
+C>|K|,\qquad \mathcal E=I\operatorname{av}\sqrt{j_i\omega_i},
+\qquad \operatorname{av}j_i=m,\quad\operatorname{av}\omega_i=1,
+\quad j_i,\omega_i>0.
+$$
+置
+$$
+D=\frac{\sqrt{C^2-|K|^2}}{C_0}-\sqrt m,\quad
+L_{\rm ent}=\sqrt m-\operatorname{av}\sqrt{j_i\omega_i},\quad
+\delta=7D-5L_{\rm ent}.
+$$
+若 $\delta>0$，则
+$$
+\epsilon:=(1-q)D-qL_{\rm ent}>\delta/12>0.
+$$
+对任意平移 $b$ 和任意非奇异实线性映射 $L$，有
+$$
+\boxed{
+F(b+LP)\ge F(R)\left(1+\frac\epsilon{\sqrt m}\right)^2.}
+\tag{1}
+$$
+这里的 $D$ 是完整压力增益，不是积分核 $D_\lambda$。
+:::
+
+::: {.proof of="lem-ppsb-spectral-deficit-transfer-1011"}
+本段压力 $J$ 及面积谱积 $F(P)=|P|\lambda_1(P)$ 均采用 @def-psgs-pressure-action-1011h 的定义。
+以下推导沿用 @lem-psgs-same-source-coupling-1011h 所给对象、记号与适用条件。
+五项 Cauchy--Schwarz 给
+$\operatorname{av}\sqrt{j_i\omega_i}\le
+\sqrt{\operatorname{av}j_i\operatorname{av}\omega_i}=\sqrt m$，
+故 $L_{\rm ent}\ge0$。因此
+$$
+\epsilon=\frac{1-q}{7}\delta+\frac{5-12q}{7}L_{\rm ent}
+>\frac\delta{12}.
+$$
+严格性使用 $q<5/12$ 与 $\delta>0$，没有假设 $L_{\rm ent}>0$。
+@prp-psgs-all-affine-pressure-1011h 给
+$$
+\begin{aligned}
+J(b+LP)&\ge\sqrt{|\det L|}
+       \bigl[\sqrt{C^2-|K|^2}+\mathcal E\bigr]\\
+&=J_R\sqrt{|\det L|}\bigl(\sqrt m+\epsilon\bigr)>0.
+\end{aligned}
+$$
+现在使用 @thm-psgs-pressure-polarity-1011h 的单向上桥，
+并使用 @prp-psgs-regular-dual-pressure-1011h 的参考校准：
+$$
+F(b+LP)\ge\frac{J(b+LP)^2}{|\det L|m|R|}
+\ge\frac{J_R^2}{|R|}\left(1+\frac\epsilon{\sqrt m}\right)^2.
+$$
+$J_R^2/|R|=F(R)$，证明 (1)。
+面积及仿射行列式均在平方之后准确消去。
+:::
+
+::: {#thm-ppsb-no-exit-coercivity-1011 .theorem name="整个无严格出口域的统一纯解析形状余量" date="2026-10-11" export="thm-ppsb-no-exit-coercivity-1011"}
+采用 @def-psgs-normalized-geometry-1011h 的严格凸规范五边形 $P_{c,d}$，
+设它没有严格四边形出口，$t=|c|,s=|d|$。
+则对每个非奇异实线性映射 $L$ 和平移 $b$，
+$$
+\boxed{
+F(b+LP_{c,d})\ge
+F(R)\left(1+\frac{t^2+s^2}{75000}\right)^2.}
+\tag{2}
+$$
+当 $(t,s)\ne(0,0)$ 时此比较严格强于 $F(R)$。
+当 $t=s=0$ 时，$F(b+LR)=F(R)$ 当且仅当 $L$ 是相似变换。
+此式只针对无严格出口分支，不声称该微小常数最优。
+:::
+
+::: {.proof of="thm-ppsb-no-exit-coercivity-1011"}
+本段压力 $J$ 及面积谱积 $F(P)=|P|\lambda_1(P)$ 均采用 @def-psgs-pressure-action-1011h 的定义。
+无严格出口采用 @def-geom41-deletion-1011g 的真实外包四边形与新增面积比，
+由 @def-psgs-normalized-geometry-1011h 固定为不存在新增面积比 $<1/25$ 的该类出口。
+参考核的 $R,p,k,T,\mu,I$ 及全部核条件采用 @def-psgs-regular-pressure-kernel-1011h；
+角常数、径向积分与 $W,V,C_0$ 的可容许条件采用 @def-psgs-tensor-weights-1011h，
+即 $\alpha=\pi/5$、$a_0=\alpha\cot\alpha$ 和同一 $r$。
+所有耦合的相关、推前绝对连续密度和熵，都取 @thm-psgs-weak-transport-dual-1011h 的定义与适用条件。
+完整核及源权采用 @def-psgs-exact-tensor-1011h，特别地
+$\omega_i=1+\kappa\Re(cn_i)$；其五根平均是 $1$，在 $\kappa=0$ 时各权均为 $1$。
+以下推导沿用 @def-psgs-normalized-geometry-1011h 所给对象、记号与适用条件。
+@lem-tpm-analytic-geometric-domain-tpm1011 与
+@lem-tpm-analytic-amplitude-cap-tpm1011 给
+$$
+s<r<5/8,\quad t<27/50,\quad
+m=1+r(t^2-s^2)>7/8,\quad j_i>41m/100.
+$$
+特别地
+$$
+m<1+\frac58\left(\frac{27}{50}\right)^2
+=\frac{4729}{4000}<\frac65.
+\tag{3}
+$$
+@prp-psgs-regular-dual-pressure-1011h、
+@prp-psgs-pressure-kernel-exists-1011h 与
+@lem-psgs-actual-pressure-weights-1011h
+提供同一个真实参考压力及其实际积分权。
+以下每个源都通过 @lem-psgs-same-source-coupling-1011h 构造合法耦合。
+五根平均给 $\operatorname{av}j_i=m,\operatorname{av}\omega_i=1$；
+其源权正性由 $\kappa t<1$ 保证。
+
+若 $0\le s\le t,t>0$，取 $\kappa=6/5$。
+@thm-ppcs-central-short-pressure-budget-1011 给 $C>|K|$ 及
+$$
+\delta\ge\frac{t^2}{2500aF_C},\qquad
+a=\frac{59}{100}m,\quad
+F_C=m^3\left(\frac{141}{200}-\frac35t\right)(m+2)>0.
+$$
+这里 m 与双振幅关联，不能同时取彼此不相容的独立最坏端点。
+@lem-arc-spectral-normalization-1012 适用于同一 $r,t,s,m,a,F_C$，给
+$$aF_C\sqrt m(t^2+s^2)<\frac{24957}{10000}t^2.$$
+@lem-ppsb-spectral-deficit-transfer-1011 给 $\epsilon>\delta/12$，于是
+$$\frac\epsilon{\sqrt m}>
+\frac{t^2}{30000aF_C\sqrt m}>
+\frac{t^2+s^2}{74871}>\frac{t^2+s^2}{75000}.$$
+
+若 $t\le s\le2t,t>0$，取 $\kappa=1$。
+@thm-ppus-unit-short-pressure-budget-1011 给 $C>|K|$、$\delta>0$ 及
+$$
+\epsilon>\frac{s^2}{3000aF_C},\qquad
+a=\frac{59}{100}m,\quad
+F_C=m^3\left(\frac{141}{200}-\frac t2\right)\frac{7+8m}{15}>0.
+$$
+这时 $m\le1$，故 $aF_C\le8319/20000<1/2$。
+于是 $\epsilon>s^2/1500$。又 $\sqrt m\le1$、$t^2+s^2\le2s^2$，所以
+$$\frac\epsilon{\sqrt m}>\frac{t^2+s^2}{3000}>\frac{t^2+s^2}{75000}.$$
+
+若 $s\ge2t,s>0$，取 $\kappa=0$。
+@thm-tpm-uniform-real-budget-tpm1011 的新完整熵界给 $C=C_0>0,K=0$ 及
+$$\epsilon\ge\frac3{200}s^2.$$
+其证明还直接给 $\delta=7D-5L_{\rm ent}>9s^2/50>0$；也可在同一耦合保持 D、L 不变，令该定理的标量 q 从下方趋向 $5/12$ 得到 $\delta\ge9s^2/50$。
+此段 $m\le1$，且 $t^2+s^2\le5s^2/4$，故
+$$\frac\epsilon{\sqrt m}\ge\frac3{250}(t^2+s^2)>\frac{t^2+s^2}{75000}.$$
+三个解析区域穷尽非零 $(t,s)$，包含 $t=0,s>0$ 并覆盖两条交界 $s=t,s=2t$。
+每一支同一数据的 $\delta>0$，所以均可代入 @lem-ppsb-spectral-deficit-transfer-1011，得到 (2)。
+
+最后若 $t=s=0$，规范域正是 $R$。
+参考映射与其 $C=C_0>0,K=0,\mathcal E=I$ 采用
+@prp-psgs-regular-dual-pressure-1011h 的同一真实对象。
+@prp-psgs-all-affine-pressure-1011h 的声明对这个参考目标和映射明确给出：
+若 $L$ 不是相似变换，则 $J(b+LR)>J_R\sqrt{|\det L|}$。
+@thm-psgs-pressure-polarity-1011h 的上桥适用于有正面积的严格凸多边形
+$Q=b+LR$，给 $J(Q)^2\le |Q|F(Q)$。
+结合 $|Q|=|\det L||R|$ 与 $J_R^2=|R|F(R)$，
+上述严格压力比较即给 $F(b+LR)>F(R)$。
+若 $L=\rho O$（$\rho>0$、$O$ 正交），则对 $u\in H_0^1(R)$ 取
+$v(b+\rho Ox)=u(x)$，面积换元给 $\int v^2=\rho^2\int u^2$、
+$\int|\nabla v|^2=\int|\nabla u|^2$；逆换元也合法。
+Rayleigh 下确界因而给 $\lambda_1(b+LR)=\rho^{-2}\lambda_1(R)$，
+同时面积为 $\rho^2|R|$，故 $F(b+LR)=F(R)$。
+这排除了全部非相似仿射像，无须一般压力上桥的等号分类。
+:::

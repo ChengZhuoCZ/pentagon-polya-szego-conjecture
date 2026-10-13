@@ -1,0 +1,296 @@
+---
+title: "同源真实张量：有限核、完整导数尾、实际斜率与精确适用域"
+lang: zh-CN
+---
+
+::: {#def-psgs-tensor-weights-1011h .definition name="可容许的真实压力积分权" date="2026-10-11" export="def-psgs-tensor-weights-1011h" status="verified"}
+令 $\alpha=\pi/5$，$a_0=\alpha\cot\alpha$，$r=(\sqrt5-1)/2$。
+设 $W\in W^{1,1}(0,\alpha)$、$V\in L^1(0,\alpha)$，并且几乎处处
+$$
+W>0,\qquad 0\le V\le\tan(\alpha-\beta)W,\qquad |W'|\le2V.
+$$
+记 $C_0=10\int_0^\alpha W>0$。
+对定义在 $(0,\infty)\times[0,\alpha]$ 邻域的实 $C^1$ 函数
+$k(\rho,\beta)$，导数均取经典偏导数。
+只有在下列两个径向积分对几乎每个 $\beta$ 绝对收敛时，才定义其候选权为
+$$
+W(\beta)=\int_0^\infty f(\rho)k_\rho\,d\rho,
+\quad V(\beta)=\int_0^\infty\frac{f(\rho)}\rho k_\beta\,d\rho,
+\quad f(\rho)=\frac{\rho^2}{(1+\rho^2)^2}.
+$$
+本章在使用这些候选权时明确要求上述可积性、角压缩及导数条件成立。
+当 $k$ 取为真实压力的极坐标表达时，同样须另行证明这些条件；
+此定义本身不声称任意 $C^1$ 输入都产生可容许权。
+:::
+
+::: {#def-psgs-exact-tensor-1011h .definition name="固定源的完整标量、自旋与铅笔" date="2026-10-11" export="def-psgs-exact-tensor-1011h" status="verified"}
+采用 @def-psgs-tensor-weights-1011h。对 $c,d\in\mathbb C$，记 $t=|c|,s=|d|$，$n_i=e^{(2i+1)\pi i/5}$，$x_i=\Re(cn_i)$。
+这里节点指标为 $i=0,1,2,3,4$，公式中指数的虚数单位与节点指标按通常语境区分；
+所有 $\operatorname{av}_i F_i$ 都表示等权平均 $\frac15\sum_{i=0}^4F_i$。
+对固定实数 $\kappa$，置
+$$
+\omega_i=1+\kappa x_i,\quad
+\delta_i(\beta)=\kappa[\beta x_i+a_0\Im(cn_i)],\quad q_\beta=e^{-2i\beta},
+$$
+$$
+P_i^\pm=1+cn_i(1\pm rq_\beta)+dn_i^2(r\pm q_\beta).
+$$
+未对称化的核定义为
+$$
+\begin{aligned}
+A&=\Re\operatorname{av}_i(\omega_iP_i^-e^{-i\delta_i}),&
+B&=-\Im\operatorname{av}_i(\omega_iP_i^+e^{-i\delta_i}),\\
+X&=e^{2i\beta}\operatorname{av}_i(n_i^2\omega_iP_i^-e^{i\delta_i}),&
+Y&=i e^{2i\beta}\operatorname{av}_i(n_i^2\omega_iP_i^+e^{i\delta_i}).
+\end{aligned}
+$$
+随后将 $A,X$ 替换为关于 $\beta$ 的偶部，将 $B,Y$ 替换为奇部。
+定义
+$$
+C=10\int_0^\alpha(AW+BV),\quad K=10\int_0^\alpha(XW+YV),\quad
+\bar A=\frac1\alpha\int_0^\alpha A,\quad \bar Z=\frac1\alpha\int_0^\alpha X.
+$$
+对复参数 $\lambda$，令
+$$
+A_\lambda=A-\Re(\bar\lambda X),\quad B_\lambda=B-\Re(\bar\lambda Y),
+\quad D_\lambda=A_\lambda'/\beta,\quad
+H_\lambda=B_\lambda'+2A_\lambda-2\bar A_\lambda.
+$$
+$D_\lambda$ 在 $\beta=0$ 按连续延拓解释，$\bar A_\lambda=\bar A-\Re(\bar\lambda\bar Z)$。
+:::
+
+::: {.proof of="def-psgs-exact-tensor-1011h"}
+有限等权平均中的指数、三角函数及多项式都光滑，故所定义的四个核光滑。
+取偶部后 $A_\lambda$ 是实值光滑偶函数，所以 $A_\lambda'(0)=0$，并有
+$$
+\lim_{\beta\to0}\frac{A_\lambda'(\beta)}{\beta}=A_\lambda''(0).
+$$
+这给 $D_\lambda$ 唯一的有限连续延拓。
+@def-psgs-tensor-weights-1011h 给有限正的 $\alpha$、$W,V\in L^1$；
+四个核在紧区间上有界，因此所有列出的积分绝对收敛。
+:::
+
+::: {#lem-psgs-tensor-ibp-1011h .lemma name="真实积分权的铅笔积分分部" date="2026-10-11" export="lem-psgs-tensor-ibp-1011h"}
+采用 @def-psgs-exact-tensor-1011h。
+如果在 $[0,\alpha]$ 上 $D_\lambda\ge0$、$H_\lambda\ge0$，则
+$$
+C-\Re(\bar\lambda K)\ge C_0[\bar A-\Re(\bar\lambda\bar Z)].
+$$
+:::
+
+::: {.proof of="lem-psgs-tensor-ibp-1011h" status="verified"}
+在 @def-psgs-exact-tensor-1011h 中，奇偶性给 $B_\lambda(0)=0$。
+置 $G(\beta)=\int_0^\beta(A_\lambda-\bar A_\lambda)$。
+$A_\lambda$ 非减，故每个初段平均不大于全段平均，$G\le0$；又 $G(0)=G(\alpha)=0$。
+$(B_\lambda+2G)'=H_\lambda\ge0$，故 $B_\lambda+2G\ge0$。
+利用 @def-psgs-tensor-weights-1011h 的 Sobolev 积分分部及 $W'\ge-2V$，得到
+$$
+\begin{aligned}
+\frac{C-\Re(\bar\lambda K)-C_0\bar A_\lambda}{10}
+&=\int_0^\alpha[-GW'+B_\lambda V]\\
+&\ge\int_0^\alpha(B_\lambda+2G)V\ge0.
+\end{aligned}
+$$
+所有端点项因 $G$ 的两端零值消失；没有给未知混合导数指定符号。
+:::
+
+::: {#def-psgs-finite-kernel-rule-1011h .definition name="完整有限核的生成规则" date="2026-10-11" export="def-psgs-finite-kernel-rule-1011h" status="verified"}
+采用 @def-psgs-exact-tensor-1011h 及 @def-psgs-tensor-weights-1011h 中的实常数 $\alpha,a_0,r$。引入形式变量 $n$，规定
+$$
+\mathcal R(n^j)=\begin{cases}(-1)^{j/5},&5\mid j,\\0,&5\nmid j.\end{cases}
+$$
+并将 $\mathcal R$ 按系数线性延拓到所有有限 Laurent 多项式；即
+$\mathcal R(\sum_j b_jn^j)=\sum_j b_j\mathcal R(n^j)$，系数可依赖其余参数。
+令
+$$
+\mathsf H=\frac\kappa2[(a_0+i\beta)cn+(-a_0+i\beta)\bar c n^{-1}],\quad
+\mathsf W=\frac\kappa2(cn+\bar c n^{-1}),
+$$
+$$
+\mathsf T_\pm=cn(1\pm rq_\beta)+dn^2(r\pm q_\beta).
+$$
+总次数为 $N$ 的有限系数是
+$$
+\mathcal R\left[\frac{(\varepsilon\mathsf H)^N}{N!}
+ +(\mathsf W+\mathsf T_\pm)\frac{(\varepsilon\mathsf H)^{N-1}}{(N-1)!}
+ +\mathsf W\mathsf T_\pm\frac{(\varepsilon\mathsf H)^{N-2}}{(N-2)!}\right].
+$$
+负阶乘项省略。标量核使用 $\varepsilon=-1$，自旋核使用 $\varepsilon=1$ 且在 $\mathcal R$ 内另乘 $n^2$，再按 @def-psgs-exact-tensor-1011h 乘 $e^{2i\beta}$ 或 $ie^{2i\beta}$ 并取奇偶部。
+次数 $0,1$ 分别给 $(A,B,X,Y)=(1,0,0,0)$ 和零。
+保留 $2\le N\le7$，其余是完整指数余项；没有把保留多项式作为完整核重新定义。
+记 $\gamma=3\kappa/4$，$C_p=51543/917504$、$C_m=22815/458752$。
+:::
+
+::: {.proof of="def-psgs-finite-kernel-rule-1011h"}
+采用 @def-psgs-exact-tensor-1011h 的节点及完整核，常数采用
+@def-psgs-tensor-weights-1011h。对每个整数 $j$，有限几何级数给
+$$
+\frac15\sum_{i=0}^4n_i^j
+=e^{\pi i j/5}\frac15\sum_{i=0}^4e^{2\pi i ji/5}
+=\begin{cases}(-1)^{j/5},&5\mid j,\\0,&5\nmid j.\end{cases}
+$$
+这同样适用于负整数，故有限 Laurent 多项式的根投影等于节点平均。
+在各节点直接代入，得到
+$\mathsf H(n_i)=i\delta_i$、$\mathsf W(n_i)=\kappa x_i$、
+$\mathsf T_\pm(n_i)=P_i^\pm-1$。
+因此完整复表达式是
+$(1+\mathsf W)(1+\mathsf T_\pm)e^{\varepsilon\mathsf H}$。
+两个前因子均为一次式，提取总次数 $N$ 恰给声明中三项；
+有限平均、取实虚部和奇偶投影都是线性运算，故可与有限系数提取交换。
+
+次数零由 $\mathcal R(1)=1$、$\mathcal R(n^2)=0$ 给
+$(A,B,X,Y)=(1,0,0,0)$。
+次数一的 $\varepsilon\mathsf H+\mathsf W+\mathsf T_\pm$
+仅含根指数 $-1,1,2$；自旋再乘 $n^2$ 后仅含指数 $1,3,4$。
+这些都不是五的倍数，故该次四个核均为零。
+保留次数二至七是上述准确系数的有限部分，余下项来自同一完整指数；
+并未用有限多项式替代完整核。
+:::
+
+::: {#lem-psgs-constant-and-full-tail-1011h .lemma name="常数有理隔离与同源完整余项" date="2026-10-11" export="lem-psgs-constant-and-full-tail-1011h"}
+采用 @def-psgs-finite-kernel-rule-1011h。常数满足
+$$
+\frac{86480626597720996723}{10^{20}}<a_0<\frac{86480626597720996724}{10^{20}},\quad
+\frac{61803398874989484820}{10^{20}}<r<\frac{61803398874989484821}{10^{20}}.
+$$
+对 $0\le\kappa\le4/3$、$0\le t\le27/50$、$0\le s\le5/8$，完整标量角均值和完整自旋角均值的各自余项模均不超过
+$$
+\tau=\gamma^7(C_pt^8+C_mst^7).
+$$
+实际自旋积分余项除以 $C_0$ 也不超过 $\tau$。
+对 $|\lambda|\le1/2$，完整 $D_\lambda/t^2,H_\lambda/t^2$ 的余项模分别不超过
+$$
+E_D=\gamma^7(\tfrac94t^6+\tfrac{23}{10}st^5),\qquad
+E_H=\gamma^7(\tfrac{13}{20}t^6+\tfrac35st^5).
+$$
+最后两式在 $t=0$ 按连续振幅多项式理解。
+:::
+
+::: {.proof of="lem-psgs-constant-and-full-tail-1011h" status="verified"}
+使用 @def-psgs-tensor-weights-1011h 的 $\alpha=\pi/5,a_0=\alpha\cot\alpha,r=(\sqrt5-1)/2$，
+以及 @def-psgs-exact-tensor-1011h 的 $t=|c|,s=|d|$、完整核、积分及铅笔定义。
+先把常数隔离的有限证书写在此处。令
+$$
+T_N(x)=\sum_{j=0}^{N-1}\frac{(-1)^jx^{2j+1}}{2j+1},\quad
+S_N(x)=\sum_{j=0}^{N-1}\frac{(-1)^jx^{2j+1}}{(2j+1)!},\quad
+C_N(x)=\sum_{j=0}^{N-1}\frac{(-1)^jx^{2j}}{(2j)!}.
+$$
+在本段正参数范围内，偶数项数为下和，奇数项数为上和，来自交错余项符号。
+Machin 恒等式给
+$$
+\pi_-:=16T_{40}(1/5)-4T_{15}(1/239)<\pi
+<\pi_+:=16T_{39}(1/5)-4T_{16}(1/239).
+$$
+为核对恒等式的分支，置 $u=\arctan(1/5),v=\arctan(1/239)$；
+$0<v<u$、$\tan2u=5/12<1$ 给 $0<4u-v<\pi/2$，且正切加法式给 $\tan(4u-v)=1$，
+故 $4u-v=\pi/4$。
+所需短包围如下，表中小数均为精确有理数：
+
+| 量 | 下界 | 上界 |
+|---|---:|---:|
+| $\pi$ | 3.141592653589793238462643383279 | 3.141592653589793238462643383280 |
+| $\alpha$ | .628318530717958647692528676655900 | .628318530717958647692528676655901 |
+| $\sin\alpha$ | .587785252292473129168705954639 | .587785252292473129168705954640 |
+| $\cos\alpha$ | .809016994374947424102293417182 | .809016994374947424102293417183 |
+
+第一、二行分别与 $\pi_\pm$、$\pi_\pm/5$ 通分比较；
+第二行保留三十三位小数，使后续三角函数的端点替换仍有严格余量。
+记第二行端点为 $\alpha_L,\alpha_U$，则第三行比较
+$S_{20}(\alpha_L),S_{19}(\alpha_U)$，第四行比较
+$C_{20}(\alpha_U),C_{19}(\alpha_L)$；
+每个所列下界到对应有限下和、有限上和到所列上界的差均严格大于 $10^{-35}$，
+这些均是上述有限有理和的直接整数比较。
+$0<\alpha_L<\alpha_U<1$，故正弦递增、余弦递减，替换端点方向合法。
+所有正弦分母为正。记目标 $a_0$ 端点为 $a_{0,L},a_{0,U}$，第三、四行端点为 $s_L,s_U,c_L,c_U$，直接交叉乘法给
+$$
+\alpha_Lc_L-a_{0,L}s_U>\frac3{5\cdot10^{21}}>0,\qquad
+a_{0,U}s_L-\alpha_Uc_U>\frac{51}{10^{22}}>0.
+$$
+所以得到目标 $a_0$ 隔离。
+对 $r$，两端代入 $x^2+x-1$，以共同分母 $10^{40}$ 计的分子分别为
+$-102564734430989567600$、$121042063318989402041$。
+此多项式在正轴严格递增，故得到目标 $r$ 隔离。
+
+按 @def-psgs-finite-kernel-rule-1011h，所有遗漏纯项至少有七个源因子，遗漏混合项也至少有七个源因子。
+这里角域始终为 $|\beta|\le\alpha$，$|q_\beta|=1$，复数 $\lambda$ 固定且不随 $\beta$ 变化。
+由上述隔离得 $a_0<13/15,r<5/8$，且 $\alpha<22/35$。
+因为 $(13/15)^2+(22/35)^2<(9/8)^2$，Cauchy--Schwarz 给
+$|\delta|\le\kappa t\sqrt{a_0^2+\beta^2}\le(9/8)\kappa t=(3/2)\gamma t$；
+又 $\delta'=\kappa x_i$，故 $|\delta'|\le(4/3)\gamma t$、$\delta''=0$。
+取 $f_j=(3/2)^j/j!$，指数实余项用 $|e^{ix}-\sum_{j<N}(ix)^j/j!|\le |x|^N/N!$。
+$|\delta|\le(3/2)\gamma t$、$|\delta'|\le(4/3)\gamma t$、$\delta''=0$。
+纯项余项模支付常数
+$$
+C_p=\frac54[f_8+(\tfrac43+\tfrac{13}8)f_7+\tfrac43\tfrac{13}8 f_6],\quad
+C_m=\frac54\tfrac{13}8[f_7+\tfrac43 f_6].
+$$
+具体地，权的定义给 $W>0$ 几乎处处和 $0\le v:=V/W\le\tan(\alpha-\beta)$。
+由 $\cos2\alpha=r/2$、$r>3/5$，有
+$\tan^2\alpha=(2-r)/(2+r)<7/13<9/16$，所以 $\sqrt{1+v^2}<5/4$。
+未作奇偶投影时，实际自旋的前因子合并为
+$$
+P^-+ivP^+=(1+iv)(1+cn+rdn^2)+q_\beta(-1+iv)(rcn+dn^2).
+$$
+故常数、纯 $c$、混合 $d$ 的系数模分别不超过
+$(5/4)(1,13/8,13/8)$，再乘 $1+\omega_i-1$，其中 $|\omega_i-1|\le(4/3)\gamma t$，
+就给显示的 $C_p,C_m$。奇偶投影是 $\beta$ 与 $-\beta$（连同 $v\mapsto-v$）两表达式的平均，不增此界。
+实际积分以 $10W/C_0$ 的概率密度积分，保持同一上界；角均值以 $d\beta/\alpha$ 积分也保持上界。
+无 $v$ 的标量和自旋均值可使用更小因子 $1$，因此共同因子 $5/4$ 足够。
+所有上述余项的源次幂至少为七；因 $0\le\gamma\le1$，更高幂均不超过 $\gamma^7$。
+
+为明确微分余项，纯项中前因子及其一、二阶导数的正系数上界依次为
+$$
+p=(1,7/3,4/3),\quad p'=(0,5/4,5/3),\quad p''=(0,5/2,10/3),\quad q=(1,71/24,13/6),
+$$
+混合项对应
+$$
+p=(1,4/3),\quad p'=(2,8/3),\quad p''=(4,16/3),\quad q=(13/8,13/6).
+$$
+为逐项说明这些向量，$\cos2\beta\ge\cos2\alpha=r/2$ 给
+$|1-rq_\beta|=|r-q_\beta|\le1$，而两个加号模均不超过 $1+r<13/8$。
+于是减号前因子的纯部分 $(1+\mathsf W)[1+cn(1-rq_\beta)]$ 有模系数
+$(1,1+4/3,4/3)=p$；其一、二阶导数只微分 $q_\beta$，对应
+$(0,2r,(4/3)2r)\le p'$、$(0,4r,(4/3)4r)\le p''$。
+加号改用 $13/8$，得到 $q=(1,4/3+13/8,(4/3)(13/8))$，导数向量仍相同。
+混合部分为 $(1+\mathsf W)dn^2(r\pm q_\beta)$；提去 $s$ 后，
+减号模系数为 $(1,4/3)$，一、二阶导数分别为 $(2,8/3)$、$(4,16/3)$，
+加号模系数为 $(13/8,13/6)$。这逐项给出所列向量，额外自旋相位 $e^{2i\beta}$ 在下步处理。
+对纯项取 $n=8$，混合取 $n=7$，令 $k_0=4/3$，定义
+$$
+R=\sum_jp_jf_{n-j},\quad R'=\sum_j[p'_jf_{n-j}+k_0p_jf_{n-j-1}],
+$$
+$$
+R''=\sum_j[p''_jf_{n-j}+2k_0p'_jf_{n-j-1}+k_0^2p_jf_{n-j-2}],\quad
+R_B=\sum_jq_jf_{n-j},\quad R_B'=\sum_j[p'_jf_{n-j}+k_0q_jf_{n-j-1}].
+$$
+这些卷积和来自每个前因子乘指数 Taylor 余项：若前因子振幅阶为 $j$，
+指数余项从 $n-j$ 阶起；微分一次使该阶降低一并带因子 $k_0$，微分两次带 $2k_0,k_0^2$。
+实相位的积分型 Taylor 余项及其导数分别以 $|\delta|^m/m!$ 控制，故给 $R,R',R''$ 及加号对应量。
+恢复相应振幅和 $\gamma^7$ 之前，减号原始余项的三阶预算为 $(R,R',R'')$，加号为 $(R_B,R_B')$。
+额外相位使自旋二阶预算为 $R''+4R'+4R$、加号一阶预算为 $R_B'+2R_B$。
+所以 $|\lambda|\le1/2$ 给 $A_\lambda$ 余项二阶预算
+$R''+(R''+4R'+4R)/2=(3/2)R''+2R'+2R$。
+保留齐次项与取偶部可交换，故此余项是光滑偶函数，其一阶导数在零点为零；
+$A_{\lambda,\rm rem}'(\beta)/\beta=\beta^{-1}\int_0^\beta A_{\lambda,\rm rem}''(u)du$
+的模由同一二阶预算控制，零点取二阶导数值。
+对于 $H_\lambda=B_\lambda'+2A_\lambda-2\bar A_\lambda$，
+第一项预算为 $(3/2)R_B'+R_B$；$A_\lambda$ 的模不超过 $(3/2)R$，其角均值同样，
+故后两项共不超过 $6R$。这正给所列两个完整常数。
+逐项有理求和依次给
+$$
+D_p=1279743/573440<9/4,\quad D_m=40881/17920<23/10,
+$$
+$$
+H_p=147555/229376<13/20,\quad H_m=335907/573440<3/5.
+$$
+恢复遗漏振幅并除以 $t^2$ 得 $E_D,E_H$。
+这一步先在 $t>0$ 进行。未归一化的纯项余量为 $O(\gamma^7t^8)$，
+混合项为 $O(\gamma^7st^7)$，上述各角导数估计也有相同振幅阶。
+因此除以 $t^2$ 后的共同上界是 $O(t^6+st^5)$；
+在声明的 $0\le s\le5/8$、$0\le\gamma\le1$ 域中，
+$t^6+st^5\le t^6+(5/8)t^5$ 随 $t\downarrow0$ 一致趋于零。
+$t=0$ 时 $\delta=0$、$\mathsf W=0$，指数展开本身与有限部分完全相同，
+故没有遗漏项。由此两个归一化余量在 $t=0$ 的规定解释均为连续延拓值 $0$，
+其显示上界 $E_D,E_H$ 也取 $0$，并未在零点直接作除法。
+所有余项的源次数都在微分时保留；这里不是将旧源的导数余量无理由移植到新源。
+:::

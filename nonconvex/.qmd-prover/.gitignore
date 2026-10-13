@@ -1,0 +1,5 @@
+*
+!.gitignore
+!config.yml
+!statement-locks.json
+!.external.qmd

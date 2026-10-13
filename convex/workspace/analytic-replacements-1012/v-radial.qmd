@@ -1,0 +1,303 @@
+---
+title: "两条低阶自旋通道的完整径向界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: bessel-core.qmd
+      use:
+        - def-arc-bessel-data-1012
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+---
+
+::: {#lem-arc-v-radial-1012 .lemma name="两条低阶自旋通道的完整径向界" date="2026-10-12" export="lem-arc-v-radial-1012"}
+采用 @def-arc-bessel-data-1012 的组合标量和 @lem-arc-geometric-constants-1012 的角常数，在 $0\le q\le81/125,0\le\beta\le\alpha,\epsilon=\pm1$ 上，
+$$|v_{-2}|+|v_3|\le\frac{249}{500}q^2\le\frac12q^2.$$
+:::
+
+::: {.proof of="lem-arc-v-radial-1012"}
+本证明记 $Q_*=81/125$，仅作径向上限；低模组合标量 $Q$ 不在本节使用。
+
+采用 @def-arc-bessel-data-1012 的统一定义及 @lem-arc-geometric-constants-1012 的常数有理区间。
+
+## 1. 源权完整的前两层
+
+设 $z=a+ib$、$R^2=a^2+b^2$。以
+
+$$\Psi_k=e^{ik\arg z}J_k(qR),\qquad
+J_n(t)=\sum_{l\ge0}\frac{(-1)^l(t/2)^{n+2l}}{l!(n+l)!},\quad J_{-n}=(-1)^nJ_n$$
+
+表示原源相位。原权 $\omega=1+q\cos\vartheta$ 给准确的
+
+$$W_k=\Psi_k+\frac q2(\Psi_{k-1}+\Psi_{k+1})=(1-i\partial_b)\Psi_k.$$
+
+所以移位后确实是 $e^{2ib}W_k=(-1-i\partial_b)(e^{2ib}\Psi_k)$；这里保留了移位导数产生的 $-1$。以下直接从完整 $W_k$ 展开，不把它误换成无权 $\Psi_k$。
+
+将三个相邻径向级数按同一 $q$ 总阶合并，准确得到
+
+$$W_{-2}=q^2p_2+q^4p_{21}+\mathcal R_2,\qquad
+W_3=q^3p_3+q^5p_{31}+\mathcal R_3,$$
+
+$$p_2=\frac{\bar z(\bar z-2)}8,\qquad
+p_3=\frac{z^2(z+3)}{48},$$
+$$p_{21}=\frac{\bar z^2[-R^2+2a+4ib]}{96},\qquad
+p_{31}=\frac{z^3[-R^2-3a+5ib]}{768}.$$
+
+第6节对 $\mathcal R_2,\mathcal R_3$ 的所有径向阶数给界，故上式不是无尾截断。
+
+对上述任意多项式 $p$，令
+
+$$c_p=\Re(e^{2ib}p),\quad s_p=\Im(e^{2ib}p),\quad
+\mathcal V_\epsilon p=\frac{s_p(\beta)}\beta-2\epsilon(I_\beta c_p-I_\alpha c_p).$$
+
+因为 $s_p(0)=0$，有准确连续积分式
+
+$$\mathcal V_\epsilon p=I_\beta d_{p,\epsilon}+2\epsilon C_p,\quad
+C_p=I_\alpha c_p,\quad
+d_{p,\epsilon}=\Re\left(e^{2ib}[(2-2\epsilon)p-ip']\right).\tag{1}$$
+
+记
+
+$$A_\epsilon=\mathcal V_\epsilon p_2,\quad B_\epsilon=\mathcal V_\epsilon p_3,
+\quad A_{1,\epsilon}=\mathcal V_\epsilon p_{21},\quad B_{1,\epsilon}=\mathcal V_\epsilon p_{31}.$$
+
+## 2. 少量基础常数与三角形状
+
+全稿只须以下宽有理包围：
+
+$$\frac{86480}{100000}<a<\frac{86481}{100000},\qquad
+\frac{3947}{10000}<X:=\alpha^2<\frac{3948}{10000},\qquad
+R<L:=\frac{107}{100}.\tag{2}$$
+
+@lem-arc-geometric-constants-1012 从 Machin 恒等式 $\pi=16\arctan(1/5)-4\arctan(1/239)$ 和交错级数直接推得 (2)，不从浮点常数取值。
+
+设 $x=b^2\in[0,2/5]$。由正弦余弦的交错级数，
+
+$$\cos2b\ge1-2x+\frac23x^2-\frac4{45}x^3>\frac3{10},\qquad
+\sin2b\ge b,\quad\sin2b\le2b.\tag{3}$$
+
+此外 $\sin2b\ge2b\cos2b$，因为两边之差在0为0，导数为 $4b\sin2b\ge0$。
+
+## 3. 首层的符号、分支比较与单一连续形状
+
+### 3.1 对两个分支，$A_\epsilon\le-1/6$、$B_\epsilon\ge1/16$
+
+直接求导给
+
+$$c_{p_2}'=\frac{b(2a-3)\cos2b+(3a-a^2-1+x)\sin2b}{4}.$$
+
+这里 $3a-a^2-1+x>0$，利用 (3)，
+
+$$c_{p_2}'\ge\frac{b\cos2b}{4}(8a-2a^2-5+2x)\ge0.$$
+
+最后的二次多项式在 (2) 上正。因此 $I_\beta c_{p_2}\le C_{p_2}$，即 $A_-\le A_+$。
+
+同样，
+
+$$c_{p_3}'=-\frac{b(3a^2+9a+3-x)}{24}\cos2b
+-\frac{2a^3+9a^2+6a-(6a+9)x}{48}\sin2b\le0.$$
+
+两个括号在 $a\in[.86,.87],x\in[0,.4]$ 均正。因此 $B_-\ge B_+$。
+
+由 (1)，$d_{p_2,+}'=\Re e^{2ib}[-b/2+i(3-2a)/4]\le0$，故 $A_+$ 随 $\beta$ 非增。第7节端点式给
+
+$$A_+(0)=\frac{1-a}{4}+2C_{p_2}\le-\frac16.$$
+
+再由
+
+$$d_{p_3,+}'=\Re e^{2ib}\left[-\frac{b(2a+3)}8+i\frac{a^2+3a+1-x}{8}\right]\le0,$$
+
+知 $B_+$ 随 $\beta$ 非增。在 $b=\alpha$，$z=R_\alpha e^{i\alpha}$，且 $5\alpha=\pi$，所以
+
+$$B_+(\alpha)=\frac{R_\alpha^2\sin\alpha}{16\alpha}
+=\frac{\alpha}{16\sin\alpha}\ge\frac1{16}.$$
+
+综上，两个分支均满足要求的首层符号。
+
+### 3.2 组合首层的共同上界
+
+设 $F(\beta)=-A_-(\beta)+Q_*B_-(\beta)$。因为上一节的分支比较和 $B_\epsilon\ge0$，
+
+$$-A_\epsilon+qB_\epsilon\le F(\beta).\tag{4}$$
+
+由 (1)，$F=I_\beta D+C_*$，其中 $C_*$ 与 $\beta$ 无关，并且
+
+$$D' =\Re e^{2ib}[b\,\mathcal R(x)+i\mathcal T(x)],$$
+
+$$\mathcal R=\frac{7-4a}{2}-\frac{Q_*}{24}(12a^2+42a+21-4x),$$
+$$\mathcal T=-\frac{4a^2-14a+7-4x}{4}
++\frac{Q_*}{24}[4a^3+21a^2+21a+3-(12a+21)x].$$
+
+这两个关于 $x$ 的仿射式在常数区间 (2)、$0\le x\le2/5$ 上满足
+
+$$\mathcal R\le\frac1{10},\qquad \mathcal T\ge1.$$
+
+这些是宽有理代入，直接有理区间代入所得包围分别含于 $[-.020,.024]$ 与 $[1.25,2]$。故 (3) 给
+
+$$D'\le b/10-\sin2b\le-9b/10\le0.$$
+
+所以 $F$ 非增，只需一个真实端点：
+
+$$F(0)=-\left[\frac{2a^2-5a+1}{4}-2C_{p_2}\right]
++Q_*\left[\frac{4a^3+15a^2+6a}{48}-2C_{p_3}\right]
+\le\frac{49}{100}.\tag{5}$$
+
+第7节显示该常数完全有理化后的公式，直接有理区间代入给 $F(0)\in[.48962,.48972]$。由 (4)–(5)，全域首层共同不超过 $.49$。这是连续形状证明，不是参数扫描。
+
+## 4. 第二径向层的负二模：单调性给 $1/40\le A_{1,\epsilon}\le1/16$
+
+对正分支，直接微分 (1) 给
+
+$$d_{p_{21},+}'=\Re e^{2ib}\left[
+\frac{b(9a+2x-6)}{24}
++i\frac{a^3-3a+(3a-9)x}{24}\right]\ge0,$$
+
+因为实部系数非负、虚部系数非正，而 $\sin2b,\cos2b\ge0$。
+
+对负分支则有
+
+$$d_{p_{21},-}'=\frac{b\mathcal F(x)\cos2b+\mathcal P(x)\sin2b}{24},$$
+
+$$\mathcal F=-4a^3+21a-6+(14-4a)x,\qquad
+\mathcal P=2a^4-7a^3+3a+21(1-a)x-2x^2.$$
+
+由 (2)，$\mathcal F\ge9$；又 $2a^4-7a^3+3a>-1$，且
+$21(1-a)-2x>0$，故 $\mathcal P\ge-1$。于是 (3) 给
+
+$$d_{p_{21},-}'\ge\frac{b(9\cos2b-2)}{24}\ge\frac{7b}{240}\ge0.$$
+
+因此两个 $A_{1,\epsilon}$ 均随 $\beta$ 非减。它们的端点为
+
+$$A_{1,-}(0)=\frac{a^3(5-2a)}{48}-2C_{p_{21}}\ge\frac1{40},$$
+$$A_{1,+}(0)=\frac{a^3}{48}+2C_{p_{21}}\ge\frac1{40}.$$
+
+上端点对两个分支相同，而且 $e^{2i\alpha}\bar z(\alpha)^2=R_\alpha^2$，所以
+
+$$A_{1,\epsilon}(\alpha)=\frac{a^2+X}{24}<\frac1{16}.$$
+
+这就证明全部所需区间。
+
+## 5. 第二径向层的三模：$|B_{1,\epsilon}|\le9/250$
+
+令
+
+$$N=4a^5+15a^4+4a^3+(-8a^3+30a^2+36a)x-(12a+25)x^2,$$
+$$M=3a^4+5a^3-3a^2+(2a^2+15a+5)x-x^2,$$
+$$N_+=3a^4+4a^3+(6a^2+36a)x-5x^2,\qquad
+M_+=a^3-3a^2+(3a+5)x.$$
+
+准确有
+
+$$d_{p_{31},-}=\Re e^{2ib}\left[-\frac N{768}-i\frac{bM}{192}\right],\qquad
+d_{p_{31},+}=\Re e^{2ib}\left[-\frac {N_+}{768}-i\frac{bM_+}{192}\right].$$
+
+$N,M$ 在 $x\in[0,2/5]$ 为正且递增：由 (2)，$N'\ge19$、$M'\ge18$。在 $x=2/5$ 代入，又用 $b\le19/30$，得到
+
+$$0\le N/768\le7/200,\qquad0\le bM/192\le7/200.$$
+
+负分支的实部是一个非正项与一个非负项之和，因此
+
+$$|d_{p_{31},-}|=|-N\cos2b/768+bM\sin2b/192|\le7/200.$$
+
+同理 $N_+$ 正且递增，且其上端点满足 $N_+/768\le1/40$。
+仿射式 $M_+$ 的两个端点均在 $[-8/5,8/5]$，故
+
+$$|bM_+|/192\le\frac{19}{3600}<\frac1{160},$$
+$$|d_{p_{31},+}|\le\frac1{40}+\frac1{160}=\frac1{32}<\frac7{200}.$$
+
+第7节的单一端点积分常数满足 $|C_{p_{31}}|\le1/2000$。代回 (1)，
+
+$$|B_{1,\epsilon}|\le\frac7{200}+\frac1{1000}=\frac9{250}.\tag{6}$$
+
+## 6. 全部未取径向层，一次阶乘正尾
+
+$\mathcal R_n$（$n=2,3$）由下列三条完整尾组成：$\Psi_{\pm n}$ 的 $l\ge2$，$(q/2)\Psi_{\pm(n-1)}$ 的 $l\ge2$，以及 $(q/2)\Psi_{\pm(n+1)}$ 的 $l\ge1$。正负阶的系数符号不影响此处范数界。
+
+记 $(m)_j=m!/(m-j)!$，$j=0,1,2$。这些尾的首项及其 $b$ 导数范数之和为 $q^{n+4}d_{n,j}$，其中
+
+$$d_{n,j}=\frac{(n+4)_jL^{n+4-j}+(n+4)(n+3)_jL^{n+3-j}}
+{2^{n+5}(n+2)!}.\tag{7}$$
+
+理由是 $z^{m+l}\bar z^l$ 的总次数为 $m+2l$，其 $j$ 阶导数范数至多 $(m+2l)_jL^{m+2l-j}$。这是 Leibniz 公式给出的正项和，不用相消。
+
+这里 $q^2L^2/4<1/8$。三条尾及 $j\le2$ 的最坏相邻正项比出现在 $n=2,m=3,l=1,j=2$，其上界为
+
+$$\frac18\frac1{2\cdot5}\frac{7\cdot6}{5\cdot4}=\frac{21}{800}<\frac1{32}.$$
+
+其余各起点的分母更大、导数附加比更小，往后项比亦递减。因此
+
+$$\sup_{|b|\le\alpha}|\mathcal R_n^{(j)}(b)|
+\le\frac{32}{31}q^{n+4}d_{n,j}.\tag{8}$$
+
+若偶实、奇虚的余项 $\mathcal R$ 的三个导数范数为 $D_0,D_1,D_2$，则乘 $e^{2ib}$ 后范数分别受
+$D_0,D_1+2D_0,D_2+4D_1+4D_0$ 控制。奇商和偶函数均值差因此满足
+
+$$|\mathcal V_\epsilon\mathcal R|
+\le D_1+2D_0+\frac{\alpha^2}{3}(D_2+4D_1+4D_0).\tag{9}$$
+
+其中均值差的细节是：偶实部 $c'(0)=0$，故
+$|I_\beta c-I_\alpha c|\le(\alpha^2-\beta^2)\sup|c''|/6$；算子前面的2产生 (9) 的 $\alpha^2/3$。
+
+置
+
+$$\Gamma_n=\frac{32}{31}\left[d_{n,1}+2d_{n,0}
++\frac2{15}(d_{n,2}+4d_{n,1}+4d_{n,0})\right].$$
+
+(8)–(9) 给两个标量余项 $|R_2|\le q^6\Gamma_2$、$|R_3|\le q^7\Gamma_3$。一个完整正有理数比较为
+
+$$Q_*^4\Gamma_2+Q_*^5\Gamma_3
+=\frac{605061106146587855492211663}{75683593750000000000000000000}
+<\frac1{125}.\tag{10}$$
+
+所以 $|R_2|+|R_3|\le q^2/125$。这是所有剩余径向层之和，不是别名尾，也没有丢掉任何源权邻模。
+
+## 7. 端点常数的显式来源与有限负担
+
+为方便手核，设 $Y=a^2+X$。四个真实端点积分均为有理式：
+
+$$C_{p_2}=-\frac{Y+a}{16Y},$$
+$$C_{p_3}=\frac{10a^4+12a^3-20a^2X-9a^2-12aX+3a+2X^2+3X}{192Y},$$
+$$C_{p_{21}}=\frac{2Y^2+3aY-3a-3X}{192Y},$$
+$$C_{p_{31}}=-\frac{\mathcal P_{31}(a,X)}{3072Y},$$
+
+$$\begin{aligned}
+\mathcal P_{31}={}&10a^6+10a^5-10a^4X+2a^4+20a^3X-24a^3\\
+&-18a^2X^2-52a^2X+33a^2-22aX^2+48aX-15a\\
+&+2X^3+10X^2-15X.
+\end{aligned}$$
+
+不需要数值积分。验证通式如下：对次数 $d$ 的 $p$，令
+
+$$H_p(b)=\sum_{j=0}^d\frac{(-1)^jp^{(j)}(b)}{(2i)^{j+1}}.$$
+
+则 $(e^{2ib}H_p)'=e^{2ib}p$，$\Re H_p(0)=0$；又
+$\cos2\alpha=(a^2-X)/Y$、$\sin2\alpha=2a\alpha/Y$。代入
+$C_p=\Re[e^{2i\alpha}H_p(\alpha)]/\alpha$ 就逐项得到上面四式。
+
+全部有限常数负担是：(2) 的基础常数；上述四个端点式给出的 (5)、$A_+(0)\le-1/6$、两个 $A_{1,\epsilon}(0)\ge1/40$、$|C_{p_{31}}|\le1/2000$；正文显示的低次多项式宽有理界；最后一个正阶乘数 (10)。没有隐藏的参数细分或大型系数符号表。
+
+
+
+## 8. 汇总、零点与闭域
+
+准确展开为
+
+$$v_{-2}=q^2(A_\epsilon+q^2A_{1,\epsilon})+R_2,\qquad
+v_3=q^3(B_\epsilon+q^2B_{1,\epsilon})+R_3.$$
+
+由 $A_\epsilon\le-1/6$、$A_{1,\epsilon}\le1/16$，括号
+$A_\epsilon+q^2A_{1,\epsilon}$ 非正。又 $B_\epsilon\ge0$，故
+
+$$\begin{aligned}
+\frac{|v_{-2}|+|v_3|}{q^2}
+&\le-A_\epsilon+qB_\epsilon
++q^2(-A_{1,\epsilon}+q|B_{1,\epsilon}|)
++\frac{|R_2|+|R_3|}{q^2}\\
+&\le\frac{49}{100}+q^2\left(-\frac1{40}+\frac{81}{125}\frac9{250}\right)+\frac1{125}\\
+&\le\frac{249}{500}<\frac12.
+\end{aligned}$$
+
+这里 $Q_*(9/250)=729/31250<1/40$，所以第二径向层整体无需花费首层预算。$q=0$ 时所有源模及目标两边为0，取非严格号即包含端点；$\beta=0$ 始终由 (1) 的连续积分处理。整个闭角域、两个 $\epsilon$、全部径向阶数都已覆盖。
+:::
+

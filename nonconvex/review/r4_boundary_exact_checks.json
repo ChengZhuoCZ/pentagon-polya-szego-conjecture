@@ -1,0 +1,93 @@
+{
+  "description": "Supplementary exact identities and endpoint arithmetic for R4 M.4",
+  "official_qmd_prover_verdict": false,
+  "proof_relies_on_execution": false,
+  "check_count": 21,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "geometric_j_minus_h_over_L_squared",
+      "passed": true
+    },
+    {
+      "name": "geometric_cubic_factorization",
+      "passed": true
+    },
+    {
+      "name": "geometric_j_minus_one_quarter",
+      "passed": true
+    },
+    {
+      "name": "R_envelope_derivative",
+      "passed": true
+    },
+    {
+      "name": "order_endpoint",
+      "passed": true
+    },
+    {
+      "name": "energy_endpoint",
+      "passed": true
+    },
+    {
+      "name": "head_range_margin",
+      "passed": true
+    },
+    {
+      "name": "scaled_energy_endpoint",
+      "passed": true
+    },
+    {
+      "name": "scaled_energy_upper",
+      "passed": true
+    },
+    {
+      "name": "radicand_endpoint",
+      "passed": true
+    },
+    {
+      "name": "radical_margin",
+      "passed": true
+    },
+    {
+      "name": "C_lower_endpoint",
+      "passed": true
+    },
+    {
+      "name": "D_lower_endpoint",
+      "passed": true
+    },
+    {
+      "name": "D_positive_margin",
+      "passed": true
+    },
+    {
+      "name": "uniform_response_partial_fractions",
+      "passed": true
+    },
+    {
+      "name": "convexity_lower_margin",
+      "passed": true
+    },
+    {
+      "name": "tangent_value",
+      "passed": true
+    },
+    {
+      "name": "tangent_slope",
+      "passed": true
+    },
+    {
+      "name": "tangent_uniform_margin",
+      "passed": true
+    },
+    {
+      "name": "one_sixth_margin",
+      "passed": true
+    },
+    {
+      "name": "original_declaration_margin",
+      "passed": true
+    }
+  ]
+}

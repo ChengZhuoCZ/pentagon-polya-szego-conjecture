@@ -1,0 +1,30 @@
+{
+  "baseline": "凸五边形-高振幅角点PDE解析替换-QMD项目-20261012.zip",
+  "archived_originals": [
+    {
+      "source_in_round5": "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+      "archive_member": "archive/before-sixth-replacement/workspace__ps-convex-geometric-tensor-switch-1011g__pressure-foundations.qmd.txt",
+      "sha256": "c57bf661e32055c411356968c09f0c0154b4506930b419353758f41460e4da3f"
+    }
+  ],
+  "new_derivations": [
+    "lem-arc-gaussian-marginal-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-disk-polynomial-bound-1012",
+    "lem-arc-levelset-spectral-budget-1012"
+  ],
+  "retained_corner_source_sha256": "494eb6c6c598992416ef7ed25443fc5c7e1510c050acd4a1b4c00154e8a57521",
+  "historical_method_references": [
+    {
+      "title": "Brascamp–Lieb (1976), JFA 22, 366–389",
+      "doi": "https://doi.org/10.1016/0022-1236(76)90004-5",
+      "metadata": "https://collaborate.princeton.edu/en/publications/on-extensions-of-the-brunn-minkowski-and-pr%C3%A9kopa-leindler-theorem/"
+    },
+    {
+      "title": "Almut Burchard, A Short Course on Rearrangement Inequalities",
+      "url": "https://www.math.toronto.edu/almut/rearrange.pdf"
+    }
+  ],
+  "reference_scope": "Historical method attribution and cross-check only; the target inequalities used here are derived in the new QMD lemmas."
+}

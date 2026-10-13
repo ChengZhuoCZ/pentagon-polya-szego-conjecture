@@ -1,0 +1,305 @@
+---
+title: "相反角点在整个中央振幅矩形上的解析支付"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: analytic-replacements-1012/finite-taylor-budget.qmd
+      use:
+        - lem-arc-finite-taylor-budget-1012
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-target-1011f
+        - prp-pscc-phase-identity-1011f
+        - def-pscc-scalar-series-1011f
+    - from: ps-pressure-opposite-corner-m-tail-1011.qmd
+      use:
+        - lem-ppocm-exact-fifth-degree-tail-1011
+    - from: ps-pressure-opposite-corner-refined-mean-1011.qmd
+      use:
+        - def-ppocr-retained-quadratic-corner-1011
+        - prp-ppocr-corner-lower-reduction-1011
+        - lem-ppocr-refined-joint-mean-1011
+---
+
+::: {#def-ppocf-univariate-coefficients-1011 .definition name="两个振幅比区间的准确一元系数" date="2026-10-11" export="def-ppocf-univariate-coefficients-1011" status="verified"}
+标量坐标、有限系数和同源因子分别采用
+@def-pscc-scalar-coordinates-1011f、@def-pscc-scalar-series-1011f、
+@def-pscc-scalar-target-1011f。
+$D_*$ 的准确多项式采用 @lem-ppocr-refined-joint-mean-1011，
+$\mathcal E_D$ 的准确有限表达采用 @lem-ppocm-exact-fifth-degree-tail-1011，
+$\mathcal Q$ 采用 @def-ppocr-retained-quadratic-corner-1011 的同一系数提取及替换。
+取 @def-pscc-scalar-coordinates-1011f 和
+@def-pscc-scalar-target-1011f 的同一组参数。
+令 $T=27/50$，采用
+@def-ppocr-retained-quadratic-corner-1011 的 $\mathcal Q$。
+由 @prp-ppocr-corner-lower-reduction-1011，其 $\sigma$ 次数至多为 $7$，定义
+$$
+\mathcal Q(t,\sigma)=\sum_{j=0}^7p_j(t)\sigma^j,\qquad
+e(t)=p_2(t)-\frac{22}{27}t^2,\qquad
+\mathscr D(t)=4p_0(t)e(t)-p_1(t)^2.
+\tag{1}
+$$
+把 $\sigma=(1+2y)/3$ 代入，并写成七次正基：
+$$
+\mathcal Q\left(t,\frac{1+2y}{3}\right)
+=\sum_{j=0}^7\binom7j\beta_j(t)y^j(1-y)^{7-j}.
+\tag{2}
+$$
+各系数的准确构造式为
+$$
+\beta_j(t)=\sum_{\ell=0}^7\frac{p_\ell(t)}{3^\ell}
+ \sum_{k=0}^{\min(j,\ell)}
+ \frac{\binom\ell k\binom jk}{\binom7k}2^k.
+\tag{3}
+$$
+
+以下统一使用一元系数算子：若 $\deg f\le n$，
+$$
+\mathfrak B_{n,i}[f]
+ =\sum_{k=0}^i
+ \frac{\binom ik}{\binom nk}T^k[t^k]f(t),
+\qquad
+f(TX)=\sum_{i=0}^n\binom ni
+ \mathfrak B_{n,i}[f]X^i(1-X)^{n-i}.
+\tag{4}
+$$
+对于已经以 $x\in[0,1]$ 为自变量的多项式，式 (4) 使用 $T=1$。
+所有系数属于 $\mathbb Q(r)$，先用 $r^2=1-r$ 唯一约简为 $u+vr$，
+这里 $u,v\in\mathbb Q$；对含 $t$ 的系数多项式逐个有理单项式系数作此运算。
+以后记 $\mathfrak l(u+vr)=u+(309/500)v$（$v\ge0$），
+而 $v<0$ 时记 $\mathfrak l(u+vr)=u+(15451/25000)v$。
+它是 $r\in[.618,.61804]$ 上该一次式的准确下界。
+:::
+
+::: {#lem-ppocf-low-ratio-coefficient-budgets-1011 .lemma name="低振幅比所需的三个负包络与一个判别式" date="2026-10-11" export="lem-ppocf-low-ratio-coefficient-budgets-1011"}
+在 @def-ppocf-univariate-coefficients-1011 的整个 $0\le t\le T$ 上，
+$$
+p_3\ge-t^2,\qquad p_4\ge-3t^2,\qquad p_5\ge-4t^2,
+\qquad p_6\ge0,\quad p_7\ge0,
+\tag{5}
+$$
+并且
+$$
+\mathscr D(t)>\frac{99}{10000},\qquad p_0(t)>0,\qquad e(t)>0.
+\tag{6}
+$$
+:::
+
+::: {.proof of="lem-ppocf-low-ratio-coefficient-budgets-1011"}
+采用 @def-ppocf-univariate-coefficients-1011 的同一 $\mathcal Q,p_j,e,\mathscr D$。
+全部多项式均由所引 $\mathcal E_D$ 的五次有限表达及 $D_*$ 重建，
+其 $m-1$ 展开中 $ghD_*$ 的系数仍为 $21,91,154,126,49,7$。
+以下应用 @lem-arc-finite-taylor-budget-1012；表中 $L,U,C$ 分别表示
+$\ell_0>L$、$M_1<U$、$\ell_2>C$，余项上界同样为严格比较。
+这些数由上述准确有限表达和引理的端点算子作有理运算得到。
+
+$p_4,p_5$ 的常数项和一次项均为零，因此
+$$F_3=p_3+t^2,\qquad F_4=p_4/t^2+3,\qquad F_5=p_5/t^2+4$$
+均为多项式；次数依次为 $9,9,7$。所需集中界只有：
+
+| 对象 | $a$ | $R$ | $L$ | $U$ | $C$ | 余项上界 | 支付 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| $F_3$ | $0.135$ | $0.135$ | $0.68724$ | $3.05813$ | — | $E_2<1.93001$ | (T1) |
+| $F_3$ | $0.405$ | $0.135$ | $0.08636$ | $0.75799$ | $7.38034$ | $E_3<7.48856$ | (T2) |
+| $F_4$ | $0.27$ | $0.27$ | $1.32832$ | $0.72478$ | — | $E_2<5.61014$ | (T1) |
+| $F_5'$ | $0.27$ | $0.27$ | $4.84833$ | $4.88526$ | — | $E_2<21.33958$ | (T1) |
+
+前两行分别在 $[0,.27]$、$[.27,.54]$ 给 $F_3>.06$；
+第三行在全区间给 $F_4>.72$。第四行给整个区间的 $F_5'>1.97$，
+而准确常数项满足 $F_5(0)>.238$，所以
+$$F_5(t)>.238+1.97t>0.$$
+由此得到 (5) 的前三条，包括乘回 $t^2$ 后的 $t=0$。
+
+对最后两个系数继续使用原来的准确因式，另把三次 $q_2$ 的四项正基比较改为凸性和端点值。
+
+写
+$$
+\underline c_1=\sum b_j\sigma^j,\qquad
+\underline c_2=\sum d_j\sigma^j,\qquad k=rt^2.
+$$
+直接按 $\sigma$ 次数收集
+$\mathcal Q=\underline c_0+k(1-\sigma^2)\underline c_1+
+k^2(1-\sigma^2)^2\underline c_2$，得到
+$$
+p_6=-kb_4+k^2d_2,\qquad p_7=k^2d_3.
+\tag{8}
+$$
+准确式给
+$$
+b_4=-\frac32\varphi r^4t^2,\qquad
+d_3=.17405(6.3-.9X-3.54X^2)>0,\quad X=t/T.
+\tag{9}
+$$
+这里 $0\le X\le1$，所以 $6.3-.9X-3.54X^2\ge1.86>0$，严格证明 $d_3>0$。
+准确五次式的 $g=59/100$、$\varphi=413/750$ 都正，
+$h=141/200-3t/5\ge381/1000>0$。
+此外
+$$
+.00077t^2+.0677t^4-.005t^6
+=t^2\{.00077+t^2(.0677-.005t^2)\}\ge0,
+$$
+因为 $t^2\le(27/50)^2<.3$ 给 $.0677-.005t^2>.0662>0$。
+因此 $d_2$ 是以下三次多项式 $q_2$ 加上非负改进项：
+$$
+\begin{aligned}
+q_2={}&154gh(.309-.231t^2)-6\theta(1+8h)r^2
+ +2.16\varphi r^2t^2-1.2g\eta r^2t\\
+&-\frac{g^2}{2}\{4(.6X^2)+9(.78-.26X-.48X^2)\},\\
+d_2={}&q_2+154gh(.00077t^2+.0677t^4-.005t^6).
+\end{aligned}
+\tag{10}
+$$
+这里 $g,\theta,\varphi,h$ 取准确五次式的记号；$\eta=14(1+h)/15$，以免与系数 $e(t)$ 混淆。
+$q_2$ 是三次式，准确运算给
+$$q_2'''=75.559176>0,\quad q_2'(0)<-15,\quad q_2'(T)<-18,\quad q_2(T)>6.5516.$$
+$q_2'$ 是凸二次函数，故在 $[0,T]$ 上不大于两个端点之间的弦，特别地 $q_2'<-15$。
+于是 $q_2$ 严格递减，$d_2\ge q_2\ge q_2(T)>13/2$。
+(8)--(10) 因而证明 $p_6,p_7\ge0$。
+
+
+最后，$\mathscr D$ 的次数为 $18$，全部高次项包含在下面的 $E_2,E_3$ 内：
+
+| 对象 | $a$ | $R$ | $L$ | $U$ | $C$ | 余项上界 | 支付 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| $\mathscr D$ | $0.04$ | $0.04$ | $0.018935$ | $0.00636$ | — | $E_2<4.887956$ | (T1) |
+| $\mathscr D$ | $0.145$ | $0.065$ | $0.011783$ | $0.016155$ | $0.909679$ | $E_3<3.538201$ | (T2) |
+| $\mathscr D$ | $0.3$ | $0.09$ | $0.019587$ | $0.030679$ | — | $E_2<0.84858$ | (T1) |
+| $\mathscr D$ | $0.465$ | $0.075$ | $0.01327$ | $0.007884$ | $1.604993$ | $E_3<14.950219$ | (T2) |
+
+四段分别是 $[0,.08]$、$[.08,.21]$、$[.21,.39]$ 和 $[.39,.54]$。
+第一、三行用 (T1)，第二、四行用 (T2)；所得下界分别严格大于
+$.01085,.01168,.00995,.01323$，因而共同给
+$$\mathscr D>99/10000.$$
+例如最紧的第三行直接给
+$$.019587-.030679\cdot.09-.848580\cdot.09^2
+=.009952392>99/10000.$$
+又由准确常数项
+$$p_0(0)=21(.59)(.705)(.05292)
+-\frac{413}{3000}(6.64)(.32)-\frac{.59^2}{2}(.78)-\frac1{2500}>.033.$$
+如果 $p_0$ 在区间中为零，则 $\mathscr D=-p_1^2\le0$，矛盾。
+连续性故给 $p_0>0$，再由 $4p_0e=\mathscr D+p_1^2>0$ 得 $e>0$。
+随包脚本逐项核对新重建多项式与归档原 51 项低比率正基系数的恒等，
+但这里的区间证明只使用所示完整余项、凸性和完成平方。
+:::
+
+::: {#lem-ppocf-high-ratio-coefficient-budgets-1011 .lemma name="高振幅比的连续二次支付" date="2026-10-11" export="lem-ppocf-high-ratio-coefficient-budgets-1011"}
+采用 @def-ppocf-univariate-coefficients-1011 的 $\beta_j$。
+整个 $0\le t\le T$ 上，
+$$
+\beta_j(t)>\frac1{50}\quad(0\le j\le6),\qquad
+\beta_7(t)>.0104.
+\tag{13}
+$$
+:::
+
+::: {.proof of="lem-ppocf-high-ratio-coefficient-budgets-1011"}
+使用 @def-ppocf-univariate-coefficients-1011 的准确构造式 (3)，
+和 @lem-arc-finite-taylor-budget-1012 的同一有限 Taylor 量。
+各行 $L,U,C$ 的含义仍为 $\ell_0>L,M_1<U,\ell_2>C$。
+$\beta_0,\ldots,\beta_5$ 的次数至多 $11$，$\beta_6$ 的次数至多 $9$，$\beta_7$ 的次数为 $7$。
+
+先在 $0\le t\le.27$，统一取 $a=R=.135$：
+
+| 对象 | $a$ | $R$ | $L$ | $U$ | $C$ | 余项上界 | 支付 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| $\beta_0$ | $0.135$ | $0.135$ | $0.07298$ | $0.08977$ | — | $E_2<1.45015$ | (T1) |
+| $\beta_1$ | $0.135$ | $0.135$ | $0.12924$ | $0.17574$ | — | $E_2<2.15057$ | (T1) |
+| $\beta_2$ | $0.135$ | $0.135$ | $0.21545$ | $0.33562$ | — | $E_2<2.86432$ | (T1) |
+| $\beta_3$ | $0.135$ | $0.135$ | $0.33639$ | $0.60991$ | — | $E_2<3.64357$ | (T1) |
+| $\beta_4$ | $0.135$ | $0.135$ | $0.4961$ | $1.04877$ | — | $E_2<4.57266$ | (T1) |
+| $\beta_5$ | $0.135$ | $0.135$ | $0.69755$ | $1.71649$ | — | $E_2<5.78167$ | (T1) |
+| $\beta_6$ | $0.135$ | $0.135$ | $0.94233$ | $2.69518$ | — | $E_2<7.45577$ | (T1) |
+| $\beta_7$ | $0.135$ | $0.135$ | $1.23029$ | $4.08747$ | — | $E_2<9.84334$ | (T1) |
+
+每行用 (T1)。前七行所得下界均大于 $.034$，末行大于 $.499$。
+因此这半段已给前七个系数 $>1/50$ 和端点系数 $>.0104$。
+
+在 $.27\le t\le.54$，前七个系数统一取 $a=.405,R=.135$：
+
+| 对象 | $a$ | $R$ | $L$ | $U$ | $C$ | 余项上界 | 支付 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| $\beta_0$ | $0.405$ | $0.135$ | $0.02793$ | $0.10313$ | $0.75039$ | $E_3<3.05701$ | (T2) |
+| $\beta_1$ | $0.405$ | $0.135$ | $0.05155$ | $0.17419$ | $1.24696$ | $E_3<4.43415$ | (T2) |
+| $\beta_2$ | $0.405$ | $0.135$ | $0.08952$ | $0.26933$ | $1.93714$ | $E_3<6.00968$ | (T2) |
+| $\beta_3$ | $0.405$ | $0.135$ | $0.13529$ | $0.42368$ | $2.8697$ | $E_3<7.79904$ | (T2) |
+| $\beta_4$ | $0.405$ | $0.135$ | $0.17847$ | $0.68179$ | $4.11424$ | $E_3<9.85277$ | (T2) |
+| $\beta_5$ | $0.405$ | $0.135$ | $0.20406$ | $1.09215$ | $5.79948$ | $E_3<12.28381$ | (T2) |
+| $\beta_6$ | $0.405$ | $0.135$ | $0.19302$ | $1.6909$ | $8.1729$ | $E_3<15.26102$ | (T2) |
+
+令 $V$ 为表中 $E_3$ 的上界，每行 $\kappa=C-.135V>0$；(T2) 给出的 $L-U^2/(4\kappa)$ 均大于 $1/50$。
+最紧的是 $j=0$，此时
+$$\kappa=.75039-.135(3.05701)=.33769365,$$
+$$\beta_0>.02793-\frac{.10313^2}{4(.33769365)}>.02005>1/50.$$
+其他六行同样按完整尾和得到，无须逐项判定十一阶正基系数的符号。
+
+对于 $\beta_7$，剩余区间用两行：
+
+| 对象 | $a$ | $R$ | $L$ | $U$ | $C$ | 余项上界 | 支付 |
+|---|---:|---:|---:|---:|---:|---:|---|
+| $\beta_7$ | $0.345$ | $0.075$ | $0.31082$ | $3.65771$ | $8.03753$ | $E_3<21.27347$ | (T3) |
+| $\beta_7$ | $0.48$ | $0.06$ | $0.01313$ | $0.39829$ | $15.90717$ | $E_3<18.27986$ | (T2) |
+
+第一行覆盖 $[.27,.42]$。保留非负二次项或将其丢去，(T3) 直接给
+$$\beta_7>.31082-3.65771\cdot.075-21.27347\cdot.075^3>.027> .0104.$$
+第二行覆盖 $[.42,.54]$，由 (T2)
+$$\beta_7>.01313-
+\frac{.39829^2}{4(15.90717-.06\cdot18.27986)}>.0104.$$
+三段包含所有端点，证明加强后的 (13)。旧 84 项高比率正基系数及端点 $H$ 的 6 项比较全部退出活动证明。
+原多项式与旧 84 项系数逐项恒等及原端点常数，在随包精确复算中另行核对。
+:::
+
+::: {#prp-ppocf-entire-opposite-corner-positive-1011 .proposition name="中央整振幅矩形上的相反角点严格正性" date="2026-10-11" export="prp-ppocf-entire-opposite-corner-positive-1011"}
+采用 @prp-pscc-phase-identity-1011f 的 $C,A,B$。
+整个 $0\le t\le27/50,\ 0\le\sigma\le1$ 上，
+$$
+\boxed{\mathcal Q(t,\sigma)>0,\qquad
+C-A+B-\frac1{2500}>0.}
+\tag{18}
+$$
+:::
+
+::: {.proof of="prp-ppocf-entire-opposite-corner-positive-1011"}
+标量坐标、有限系数和同源因子分别采用
+@def-pscc-scalar-coordinates-1011f、@def-pscc-scalar-series-1011f、
+@def-pscc-scalar-target-1011f。
+$D_*$ 的准确多项式采用 @lem-ppocr-refined-joint-mean-1011，
+$\mathcal E_D$ 的准确有限表达采用 @lem-ppocm-exact-fifth-degree-tail-1011，
+$\mathcal Q$ 采用 @def-ppocr-retained-quadratic-corner-1011 的同一系数提取及替换。
+使用 @def-ppocf-univariate-coefficients-1011 的同一组
+$p_j,e,\mathscr D,\beta_j$。
+当 $0\le\sigma\le1/3$，由
+@lem-ppocf-low-ratio-coefficient-budgets-1011，
+$$
+\begin{aligned}
+\mathcal Q
+&\ge p_0+p_1\sigma+p_2\sigma^2
+ -t^2\sigma^3-3t^2\sigma^4-4t^2\sigma^5\\
+&\ge p_0+p_1\sigma+
+  \left(p_2-\frac{22}{27}t^2\right)\sigma^2\\
+&=e\left(\sigma+\frac{p_1}{2e}\right)^2
+ +\frac{\mathscr D}{4e}>0 .
+\end{aligned}
+\tag{19}
+$$
+这里 $1/3+3/9+4/27=22/27$，且 $e,\mathscr D>0$。
+
+当 $1/3\le\sigma\le1$，令 $y=(3\sigma-1)/2\in[0,1]$。
+式 (2) 的七次正基非负、和为 $1$。
+由 @lem-ppocf-high-ratio-coefficient-budgets-1011，
+$\mathcal Q>.0104>0$。
+两片在 $\sigma=1/3$ 接合，且包含 $t=0,T$ 和 $\sigma=0,1$。
+
+@def-pscc-scalar-coordinates-1011f 给准确的
+$z=m-1=rt^2(1-\sigma^2)$，其中 $r=(\sqrt5-1)/2>0$。
+所述矩形上 $t^2\ge0$、$1-\sigma^2\ge0$，因此 $z\ge0$。
+最后使用 @prp-ppocr-corner-lower-reduction-1011 的同源下界
+$$
+C-A+B-\frac1{2500}>
+\mathcal Q+\frac{549}{65000}
+ \{rt^2(1-\sigma^2)\}^3\ge\mathcal Q>0,
+$$
+即得 (18)。
+这里 $C,A,B$ 始终是 @prp-pscc-phase-identity-1011f 定义的相同参数函数；
+没有更换熵来源、丢弃真实质量项或使用未认证的数值排序。
+:::

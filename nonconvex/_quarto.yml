@@ -1,0 +1,31 @@
+project:
+  type: book
+  output-dir: .qmd-prover/site/book
+book:
+  title: "Nonconvex Exclusion for Simple Pentagons of Fixed Area"
+  chapters:
+    - index.qmd
+    - goals.qmd
+    - workspace/foundations.qmd
+    - workspace/geometry.qmd
+    - workspace/candidate.qmd
+    - workspace/interface.qmd
+    - workspace/constants.qmd
+    - workspace/analytic.qmd
+    - workspace/algebra-definitions.qmd
+    - workspace/small.qmd
+    - workspace/robin.qmd
+    - workspace/monotonicity.qmd
+    - workspace/terminal.qmd
+    - workspace/high.qmd
+    - workspace/coupled.qmd
+    - workspace/assembly.qmd
+    - workspace/main-proof.qmd
+    - workspace/appendix.qmd
+format:
+  html:
+    toc: true
+lang: en
+filters:
+  - render/english-goal.lua
+bibliography: references.bib

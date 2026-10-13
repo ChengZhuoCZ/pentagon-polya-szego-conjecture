@@ -1,0 +1,211 @@
+---
+title: "共同相位原函数比较：混合第五阶的短解析预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-elementary-constants-1011
+---
+
+::: {#lem-ppmfo-exact-mixed-fifth-1011 .lemma name="混合第五阶的准确标量核" date="2026-10-11" export="lem-ppmfo-exact-mixed-fifth-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$，
+常数采用 @def-psgs-tensor-weights-1011h，特别地 $\alpha=\pi/5$、$a=a_0=\alpha\cot\alpha$、$r=(\sqrt5-1)/2$ 均为实数，$\beta\in[-\alpha,\alpha]$，
+并将 $(c,d)$ 同时换成 $(\varepsilon c,\varepsilon d)$。
+令 $A_{5,m},B_{5,m}$ 表示第五次系数中含 $d$ 的部分。
+置
+$$
+t=|c|,\quad s=|d|,\quad \zeta=\operatorname{Re}(d\bar c^2),\quad
+x=\beta^2,\quad M=a(a+2),\quad S=\frac{\sin2\beta}{\beta},\quad C=\cos2\beta,
+$$
+$$
+E=a^2M+6ax-x^2,\qquad H=2a^3+(4+2a)x,\qquad a=\alpha\cot\alpha.
+$$
+则
+$$
+A_{5,m}=\zeta t^2 f_5,\qquad B_{5,m}=\zeta t^2 g_5,
+$$
+其中
+$$
+f_5=-\frac{27}{1250}\{E(r-C)+xHS\},\qquad
+g_5=-\frac{27}{1250}\beta\{H(r+C)+ES\}.
+\tag{1}
+$$
+$f_5$ 为偶函数，$g_5$ 为奇函数。
+在 $\beta=0$ 处取 $S(0)=2$ 的连续延拓，故以上各式亦覆盖该点。
+:::
+
+::: {.proof of="lem-ppmfo-exact-mixed-fifth-1011" status="verified"}
+由 @def-psgs-tensor-weights-1011h，$a=a_0$ 及 $r,\beta$ 为实数；$\sin(2\beta)/\beta$ 在零点的连续值为 $2$。
+记 $Z=a+i\beta$、$u=-\kappa Z/2$、$v=\kappa\bar Z/2$，
+$q=e^{-2i\beta}$。
+由 @def-psgs-exact-tensor-1011h 的准确前因子，含 $d$ 的第五阶平均来自
+$$
+dn_i^2(r\pm q)
+\left[\frac{(ucn_i+v\bar c\bar n_i)^4}{24}
++\frac{\kappa}{2}(cn_i+\bar c\bar n_i)
+\frac{(ucn_i+v\bar c\bar n_i)^3}{6}\right].
+$$
+这些项的总根指数只可能为 $6,4,2,0,-2$，其中仅零能被 $5$ 整除，故五根平均仅保留总根指数为零的项。
+因此其中只保留 $d\bar c^2t^2$，其系数为
+$$
+\frac{uv^3}{6}+\frac{\kappa v^3}{12}+\frac{\kappa uv^2}{4}
+=-\frac{\kappa^4}{96}\bar Z^2(Z\bar Z+3Z-\bar Z).
+$$
+而
+$$
+\bar Z^2(Z\bar Z+3Z-\bar Z)=E-i\beta H.
+$$
+所以原平均的混合第五阶项为
+$$
+-\frac{\kappa^4}{96}d\bar c^2t^2(E-i\beta H)(r\pm q).
+$$
+取减号的实偶部、加号的负虚奇部，且
+$\kappa^4/96=27/1250$，即得 (1)。
+:::
+
+::: {#prp-ppmfo-mixed-fifth-green-budget-1011 .proposition name="混合第五阶两条原函数核的四十一百分比以内预算" date="2026-10-11" export="prp-ppmfo-mixed-fifth-green-budget-1011"}
+在 @lem-ppmfo-exact-mixed-fifth-1011 的记号下，定义
+对任意实或复值连续函数 $h$ 的线性算子
+$\mathcal Gh(\beta)=\int_0^\beta[h(u)-\alpha^{-1}\int_0^\alpha h(v)dv]du$。特别地
+$$
+\mathcal Gf_5(\beta)=\int_0^\beta
+\left(f_5(u)-\frac1\alpha\int_0^\alpha f_5(v)\,dv\right)du.
+$$
+在整个 $0\le\beta\le\alpha$ 上，
+$$
+|g_5|\le\frac3{10}\beta,\qquad |f_5'|\le\frac45\beta.
+$$
+因而两个符号均满足
+$$
+\boxed{
+|B_{5,m}\pm2\mathcal GA_{5,m}|
+\le\frac{61}{150}\,\beta s t^4
+}
+\tag{2}
+$$
+这里 $61/150<41/100$；在 $\beta st=0$ 时 (2) 两侧都为零。
+:::
+
+::: {.proof of="prp-ppmfo-mixed-fifth-green-budget-1011" status="verified"}
+所有含 $1/\beta$ 的商先在 $\beta>0$ 计算。零点由显式解析偶函数 $f_5$、奇函数 $g_5$ 得
+$f_5'(0)=g_5(0)=0$，且 $\mathcal Gh(0)=0$，故目标的零端点成立。
+减均值原函数是线性算子，所以 $\mathcal GA_{5,m}=\zeta t^2\mathcal Gf_5$。
+对 $K(\beta,u)=\min(\beta,u)-\beta u/\alpha\ge0$，在 $u=\beta$ 两侧分别分部积分给
+$\mathcal Gf_5(\beta)=-\int_0^\alpha K(\beta,u)f_5'(u)du$；
+端点项因 $K(\beta,0)=K(\beta,\alpha)=0$ 消失。
+采用 @lem-ppmfo-exact-mixed-fifth-1011 的准确公式
+$A_{5,m}=\zeta t^2f_5$、$B_{5,m}=\zeta t^2g_5$ 及其 $f_5,g_5$ 表达式。
+由 @lem-pplojm-elementary-constants-1011 以及 Taylor 界
+$$
+a\ge\frac{1-y/2+y^2/24-y^3/720}{1-y/6+y^2/120}>\frac67,
+\qquad y=\alpha^2<\frac25,
+$$
+有 $6/7<a<13/15$。
+最后一个严格号的交叉分子为
+$1-5y/2+29y^2/120-7y^3/720>0$。
+同时
+$$
+\frac35<r<\frac58,\quad
+\frac32<S\le2,\quad \frac3{10}<C\le1,\quad
+C_x=-S,\quad 1\le-S_x\le\frac43.
+\tag{3}
+$$
+最后一组界由积分表示具体导出。这里采用
+$\operatorname{sinc}z=\sin z/z$（$z\ne0$）、$\operatorname{sinc}0=1$。
+$S(x)=2\int_0^1\cos(2u\sqrt x)\,du$ 对 $x>0$ 求导给
+$$
+-S_x=4\int_0^1u^2\operatorname{sinc}(2u\sqrt x)\,du.
+$$
+右端在 $x=0$ 连续且值为 $4/3$，与 $S(x)$ 的解析零点导数相符。
+当 $0\le x\le\alpha^2$、$0\le u\le1$ 时，
+$z=2u\sqrt x\in[0,2\alpha]$。点态界为
+$$
+1-z^2/6\le\operatorname{sinc}z\le1;
+$$
+它们由 $\operatorname{sinc}z=\int_0^1\cos(vz)\,dv$
+及 $1-(vz)^2/2\le\cos(vz)\le1$ 积分得到，包含 $z=0$。
+所以
+$$
+4\int_0^1u^2(1-4u^2x/6)\,du
+=\frac43-\frac{8x}{15}\le-S_x\le\frac43.
+$$
+因 $x\le\alpha^2<2/5$，下界大于 $28/25>1$。
+最后从 $S(0)=2$ 积分 $S_x\le-1$ 得 $S(x)\le2-x$。
+同样 $S_x<0$、$C_x=-S<0$ 表明两函数均递减，
+故其全窗范围由 $S(0)=2$、$C(0)=1$ 及
+$S(\alpha^2)=\sin(2\alpha)/\alpha>3/2$、
+$C(\alpha^2)=r/2>3/10$ 给出，这逐项建立 (3) 的全区间三角界。
+
+由于 $a^3<(13/15)^3<49/75<2/3$，
+$$
+0<E<
+\frac23\frac{43}{15}+\frac{26}{5}\frac25
+=\frac{898}{225}<4,\qquad
+0<H<
+\frac{98}{75}+\frac{86}{15}\frac25=\frac{18}{5}.
+$$
+式 (1) 中 $g_5/\beta$ 括号内两项均非负，故
+$$
+|g_5|/\beta
+\le\frac{27}{1250}
+\left(\frac{18}{5}\frac{13}{8}+8\right)
+=\frac{7479}{25000}<\frac3{10}.
+\tag{4}
+$$
+
+对 $f_5$ 按 $x$ 求导，得到
+$$
+\frac{f_5'(\beta)}{\beta}=-\frac{27}{625}V,
+\qquad
+V=E_x(r-C)+(E+H+xH_x)S+xH S_x.
+$$
+这里 $0<E_x=6a-2x<26/5$，$r-C\le13/40$，
+而
+$$
+E+H+xH_x=a^3(a+4)+(10a+8)x-x^2
+\le\frac{16}{5}+\frac{50}{3}x.
+$$
+因为
+$a^3(a+4)<(49/75)(73/15)=3577/1125<16/5$。
+函数 $(16/5+(50/3)x)(2-x)$ 在 $[0,2/5]$ 递增，
+因为其导数为 $452/15-(100/3)x\ge84/5>0$，
+所以
+$$
+(E+H+xH_x)S
+\le\left(\frac{16}{5}+\frac{50}{3}\frac25\right)\frac85
+=\frac{1184}{75}.
+$$
+丢去负项 $xHS_x$，得
+$$
+V\le\frac{26}{5}\frac{13}{40}+\frac{1184}{75}
+=\frac{5243}{300}.
+$$
+反方向丢去正项 $(E+H+xH_x)S$，由 $|r-C|\le2/5$ 得
+$$
+V\ge-\frac{26}{5}\frac25-\frac25\frac{18}{5}\frac43=-4.
+$$
+因此
+$$
+\frac{|f_5'|}{\beta}
+\le\max\left\{\frac{108}{625},\frac{27}{625}\frac{5243}{300}\right\}
+=\frac{141561}{187500}<\frac45.
+\tag{5}
+$$
+一维 Dirichlet Green 核的非负性及
+$$
+\int_0^\alpha
+\left(\min(\beta,u)-\frac{\beta u}{\alpha}\right)u\,du
+=\frac{\beta(\alpha^2-\beta^2)}6\le\frac{\beta}{15}
+$$
+给 $2|\mathcal Gf_5|\le(8/75)\beta$。
+与 (4) 的 $3\beta/10$ 上界相加，得
+$$
+|g_5\pm2\mathcal Gf_5|\le\frac{61}{150}\beta.
+$$
+最后乘回 $|\zeta|t^2\le st^4$，即得 (2)。
+:::

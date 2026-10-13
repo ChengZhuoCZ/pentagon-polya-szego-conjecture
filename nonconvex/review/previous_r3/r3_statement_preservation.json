@@ -1,0 +1,15 @@
+{
+  "previous_declarations": 57,
+  "current_declarations": 58,
+  "all_previous_statement_bodies_preserved": true,
+  "changed_statement_bodies": [],
+  "new_declarations": [
+    "lem-regular-tail"
+  ],
+  "unchanged_parameter_definition_files": {
+    "analytic.qmd": true,
+    "algebra-definitions.qmd": true
+  },
+  "qmd_prover_available": false,
+  "quarto_available": false
+}

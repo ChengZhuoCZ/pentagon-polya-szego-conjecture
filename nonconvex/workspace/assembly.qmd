@@ -1,0 +1,27 @@
+---
+title: "Emptiness of the candidate set"
+qmd-prover:
+  imports:
+    - from: coupled.qmd
+      use: [lem-middle-spectral-closure]
+    - from: analytic.qmd
+      use: [def-analytic]
+    - from: candidate.qmd
+      use: [def-candidate]
+    - from: high.qmd
+      use: [lem-high]
+    - from: robin.qmd
+      use: [lem-robin]
+    - from: small.qmd
+      use: [lem-small]
+    - from: terminal.qmd
+      use: [lem-terminal]
+---
+
+::: {#lem-no-candidate .lemma name="The candidate parameter set is empty" date="2026-10-11" export="lem-no-candidate"}
+The set defined in @def-candidate is empty.
+:::
+
+::: {.proof of="lem-no-candidate"}
+Use all definitions, notation, and hypotheses in the exact statement of @def-candidate. If such data existed, @lem-small would give $h>3/8$. If $h\ge4$, this would contradict @lem-high. If $3/8<h<4$, @lem-middle-spectral-closure gives contradictory strict upper and lower spectral bounds at the same energy. Equivalently, @lem-robin maps the data into $\mathcal D$ of @def-analytic and gives $\mathcal G<0$, whereas @lem-terminal gives $\mathcal G>0$. This contradiction exhausts all heights.
+:::

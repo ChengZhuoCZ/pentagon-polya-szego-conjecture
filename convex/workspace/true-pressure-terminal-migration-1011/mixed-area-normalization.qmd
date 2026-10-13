@@ -1,0 +1,13 @@
+---
+title: "独立的平面混合面积规范"
+lang: zh-CN
+---
+
+::: {#def-tpm-mixed-area-normalization-tpm1011 .definition name="平面有内点凸体的混合面积准确归一化" date="2026-10-11" export="def-tpm-mixed-area-normalization-tpm1011" status="verified"}
+对平面具有非空内点的紧凸体 $P,Q$，记 $|K|$ 为二维 Lebesgue 面积，
+$P+Q=\{p+q:p\in P,q\in Q\}$ 为 Minkowski 和。定义
+$$
+V(P,Q)=\frac{|P+Q|-|P|-|Q|}{2}.
+$$
+多边形的域积分及 Dirichlet 谱在其内部进行。
+:::

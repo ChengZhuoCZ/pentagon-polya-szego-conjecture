@@ -1,0 +1,90 @@
+---
+title: "Exclusion of small heights"
+qmd-prover:
+  imports:
+    - from: candidate.qmd
+      use: [def-candidate]
+---
+
+::: {#lem-small .lemma name="Nonexistence of small-height candidates" date="2026-10-11" export="lem-small"}
+Any data satisfying @def-candidate must have $h>3/8$.
+:::
+
+::: {.proof of="lem-small"}
+Use all the parameter conditions in @def-candidate.
+Put $a=\beta/h\in(0,1]$, $v=1-q$, and define
+
+$$
+
+C_h=\frac{h^2+2h+2}{h+2},\qquad
+\underline S=ha+\frac1v.
+
+$$
+
+Since $\gamma\le k$, one has $\gamma\ge q/(1-q)$, and hence $S\ge\underline S$. The candidate inequalities $S/(2L^2)\le\rho<a/(h+2)$ give
+
+$$
+
+\underline S\le S<\frac{2aL^2}{h+2},
+\qquad v>\frac1{aC_h},\quad a>\frac1{C_h}.
+\tag{R.2.1}
+
+$$
+
+Also $d=v-ha/L>0$. Therefore
+
+$$
+
+\begin{aligned}
+Sd&\ge(ha+v^{-1})(v-ha/L)\\
+&=1-\frac{h^2a^2}{L}+ha\left(v-\frac1{Lv}\right)\\
+&>1+\frac h{C_h}-\frac{2hL}{h+2}a^2\\
+&\ge R(h):=1+\frac{h(h+2)}{h^2+2h+2}-\frac{2h(h+1)}{h+2}.
+\end{aligned}\tag{R.2.2}
+
+$$
+
+For the third line, the preceding expression is strictly increasing in $v$. On the other hand,
+
+$$
+
+\frac SL>\frac{1+h/C_h}{L}=
+Z(h):=\frac{2(h+1)}{h^2+2h+2},
+
+$$
+
+$$
+
+Z(h)-R(h)=\frac{2h^2(h+1)^2}{(h+2)(h^2+2h+2)}>0.
+
+$$
+
+It follows that
+
+$$
+
+S\min(d,L^{-1})>R(h).\tag{R.2.3}
+
+$$
+
+The function $R$ is strictly decreasing. Indeed, with $D=h^2+2h+2>h+2$,
+
+$$
+
+R'(h)=\frac{4(h+1)}{D^2}-\frac{2(h^2+4h+2)}{(h+2)^2}
+< -\frac{2h}{h+2}<0.
+
+$$
+
+Moreover,
+
+$$
+
+R(3/8)=\frac{12287}{14060}>\frac{13}{15}>\frac{\sqrt3}{2};
+
+$$
+
+The last comparison follows from $(13/15)^2-3/4=1/900$. If $h\le3/8$, (R.2.3) contradicts the strict triangle-container bound in the candidate definition.
+
+Thus every low-energy area-critical candidate has $h>3/8$.
+:::

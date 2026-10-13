@@ -1,0 +1,88 @@
+{
+  "scope": "PDF build, text-boundary checks, and visual review; not a mathematical verifier.",
+  "file": "manuscript/Nonconvex-Pentagon-Analytic-Proof-English-R3-20261012.pdf",
+  "pages": 83,
+  "bytes": 482636,
+  "sha256": "f84dd7d6c0a01ed98765047d729623a714c79cd28e4fe773f67e5f4073f0fde9",
+  "tex_file": "manuscript/Nonconvex-Pentagon-Analytic-Proof-English-R3-20261012.tex",
+  "tex_sha256": "43fb316e1e04c0675c6e890f73d975686ac697b12ac53da7c97f38a0f491c1ae",
+  "latex_warnings": [],
+  "overfull_boxes": [],
+  "underfull_boxes": [],
+  "missing_glyph_warnings": [],
+  "unresolved_reference_warnings": [],
+  "out_of_page_text_spans": [],
+  "english_manuscript": true,
+  "bibliography_embedded_in_tex": true,
+  "all_page_contact_sheets_reviewed": true,
+  "root_close_visual_review_pages": [
+    1,
+    2,
+    3,
+    34,
+    50,
+    55,
+    56,
+    59,
+    64,
+    65,
+    73,
+    74,
+    82,
+    83
+  ],
+  "independent_geometry_visual_review_pages": [
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47
+  ],
+  "independent_terminal_visual_review_pages": [
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59
+  ],
+  "additional_transition_review_pages": [
+    34
+  ],
+  "visual_findings": [],
+  "resolved_findings": [
+    {
+      "page": 55,
+      "issue": "Stale sentence described two majorants.",
+      "resolution": "Corrected to one majorant, rebuilt PDF, and independently reinspected. Only page 55 changed in extracted text."
+    }
+  ],
+  "minor_nonblocking_observations": [
+    "The Wronskian display continuation from page 33 to 34 is unambiguous.",
+    "The scalar-bound display continuation from page 56 to 57 is unambiguous."
+  ],
+  "new_proof_locations": {
+    "R.6.1": "pages 29-30",
+    "R.6.2": "pages 30-31",
+    "R.7": "pages 31-34",
+    "M.5": "pages 42-44",
+    "M.6": "pages 44-48",
+    "T.2 initial ratio": "page 50",
+    "T.3": "pages 53-58",
+    "crossing regular-tail reuse": "page 65",
+    "coupled regular-tail reuse": "pages 73-74"
+  },
+  "protected_goal_sha256": "14d7b31de04ca7979e4362c08bd276324fd8dc0364b6ff7ab07ec2a2d6ba184f",
+  "protected_goal_dependency_nodes_including_goal": 51,
+  "protected_goal_depends_on_conditional_convex_bridge": false,
+  "official_qmd_prover_run": false
+}

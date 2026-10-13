@@ -1,0 +1,167 @@
+{
+  "kind": "exact algebraic corroboration only",
+  "checks": [
+    {
+      "name": "original head identity",
+      "passed": true
+    },
+    {
+      "name": "retained partial-fraction identity",
+      "passed": true
+    },
+    {
+      "name": "one majorant product identity",
+      "passed": true
+    },
+    {
+      "name": "global squared remainder identity",
+      "passed": true
+    },
+    {
+      "name": "remainder base increases",
+      "passed": true
+    },
+    {
+      "name": "remainder base endpoint bound",
+      "passed": true
+    },
+    {
+      "name": "global quadratic minimum",
+      "passed": true
+    },
+    {
+      "name": "small positive pole",
+      "passed": true
+    },
+    {
+      "name": "negative square coefficient",
+      "passed": true
+    },
+    {
+      "name": "normalized curvature identity",
+      "passed": true
+    },
+    {
+      "name": "first derivative of head group",
+      "passed": true
+    },
+    {
+      "name": "second derivative of head group",
+      "passed": true
+    },
+    {
+      "name": "left endpoint derivative coefficients",
+      "passed": true
+    },
+    {
+      "name": "head group left derivative",
+      "passed": true
+    },
+    {
+      "name": "right endpoint derivative coefficients",
+      "passed": true
+    },
+    {
+      "name": "head group right derivative identity",
+      "passed": true
+    },
+    {
+      "name": "head group right derivative lower bound",
+      "passed": true
+    },
+    {
+      "name": "reciprocal derivative estimate",
+      "passed": true
+    },
+    {
+      "name": "head group scalar maximum",
+      "passed": true
+    },
+    {
+      "name": "head group maximum bound",
+      "passed": true
+    },
+    {
+      "name": "coarse head coefficients",
+      "passed": true
+    },
+    {
+      "name": "coarse maximum derivative",
+      "passed": true
+    },
+    {
+      "name": "coarse pointwise difference",
+      "passed": true
+    },
+    {
+      "name": "coarse maximum identity",
+      "passed": true
+    },
+    {
+      "name": "coarse maximum strict bound",
+      "passed": true
+    },
+    {
+      "name": "affine positive contribution",
+      "passed": true
+    },
+    {
+      "name": "shifted loss bound",
+      "passed": true
+    },
+    {
+      "name": "small pole loss bound",
+      "passed": true
+    },
+    {
+      "name": "uniform curvature margin",
+      "passed": true
+    },
+    {
+      "name": "positive curvature head value",
+      "passed": true
+    },
+    {
+      "name": "positive curvature head bound",
+      "passed": true
+    },
+    {
+      "name": "positive curvature shifted loss",
+      "passed": true
+    },
+    {
+      "name": "positive curvature coarse margin",
+      "passed": true
+    },
+    {
+      "name": "convex compensation",
+      "passed": true
+    },
+    {
+      "name": "tangent compensation identity",
+      "passed": true
+    },
+    {
+      "name": "tangent height value",
+      "passed": true
+    },
+    {
+      "name": "tangent height slope",
+      "passed": true
+    },
+    {
+      "name": "right-hand positive slope",
+      "passed": true
+    },
+    {
+      "name": "maximum tangent correction",
+      "passed": true
+    },
+    {
+      "name": "improved full-range margin",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "count": 40
+}

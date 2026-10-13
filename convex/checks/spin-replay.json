@@ -1,0 +1,57 @@
+{
+  "target_sha256": "d005b2437f277ec1a39766fbe4ca25a1514dd3f803f36f52400deb72c8db247c",
+  "original_sha256": "cdd9e39e9da081dea53600eef46c6ef5e3b31f57072a6585f87a6376660336e3",
+  "v2_definition_only_change": true,
+  "all_source_hashes_match": true,
+  "appendix_exact_substring_of_accepted_total_v2": true,
+  "moment_upper": "4599/40000",
+  "moment_budget": "23/200",
+  "rows": [
+    {
+      "branch": "U",
+      "kappa": "1",
+      "L": "84793/35000",
+      "D": "4246745031/5000000000000",
+      "E": "1822311189/5000000000000",
+      "h_t2_coefficient": "54160303215217/35000000000000",
+      "h_ts_coefficient": "84977982428323/35000000000000",
+      "K_t2_coefficient": "2253686973949991/7000000000000000",
+      "K_ts_coefficient": "5944493595851429/7000000000000000",
+      "margins_to_stated_coefficients": [
+        "313026050009/7000000000000000",
+        "5506404148571/7000000000000000"
+      ],
+      "margins_to_consumer_coefficients": [
+        "1/500",
+        "29/1000"
+      ]
+    },
+    {
+      "branch": "C",
+      "kappa": "6/5",
+      "L": "2135863/875000",
+      "D": "3095877127599/1220703125000000",
+      "E": "1328464856781/1220703125000000",
+      "h_t2_coefficient": "19149382614893193/8544921875000000",
+      "h_ts_coefficient": "25126133324309967/8544921875000000",
+      "K_t2_coefficient": "792486581392543439/1708984375000000000",
+      "K_ts_coefficient": "1748555363334129241/1708984375000000000",
+      "margins_to_stated_coefficients": [
+        "482168607456561/1708984375000000000",
+        "1444636665870759/1708984375000000000"
+      ],
+      "margins_to_consumer_coefficients": [
+        "13/500",
+        "23/500"
+      ]
+    }
+  ],
+  "U_consumer_endpoint": "19414647/50000000",
+  "C_consumer_endpoint": "56862/134477",
+  "U_domain": "0<=t<=27/50, 0<=s<=5/8; same-source admissible W,V",
+  "C_domain": "0<=s<=t<=27/50; same-source admissible W,V",
+  "old_stronger_actual_spin_used": false,
+  "new_mean_supplement_used": false,
+  "author_code_executed": false,
+  "status": "PASS_NEW_WEAK_ACTUAL_SPIN_BOUND_AND_LIMITED_CONSUMER_REPLACEMENT"
+}

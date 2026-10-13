@@ -1,0 +1,297 @@
+---
+title: "保留双振幅的同源熵信用与五分之一条带严格界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-target-1011f
+    - from: ps-pressure-adaptive-entropy-square-1011.qmd
+      use:
+        - prp-ppae-central-same-moment-credit-1011
+---
+
+::: {#lem-ppecf-fivepoint-moment-envelopes-1011 .lemma name="三分之一条带的真实五点矩包络" date="2026-10-11" export="lem-ppecf-fivepoint-moment-envelopes-1011"}
+取 @def-pscc-scalar-coordinates-1011f 的
+$r,m,\delta,p,h_0$，设 $0<t\le1/3,\ 0\le\sigma\le1$。
+令 $n_j=e^{(2j+1)\pi i/5}$、$|c|=t$、$|d|=t\sigma$，
+$x_j=\Re(cn_j)$、$z_j=\Re(dn_j^2)$，
+并令 $\Delta_j=\delta x_j+2rz_j$、$S_j=px_j+rz_j$。
+平均均使用原来五个节点的等权平均。记
+$$
+V_2=\operatorname{av}\Delta^2,\quad
+V_3=\operatorname{av}\Delta^2S,\quad
+F_4=\operatorname{av}\Delta^2S^2.
+$$
+则
+$$
+\begin{aligned}
+\frac{V_2}{t^2}
+&=\frac{\delta^2}{2}+2r^2\sigma^2,\\
+\frac{(.8-.75t^2)^2}{2}+.7639\sigma^2
+&<\frac{V_2}{t^2}\le .32+.764\sigma^2,\\
+|V_3|&\le t^3(.9\sigma+.92\sigma^2),\\
+0\le F_4&\le t^4 f(\sigma),
+\end{aligned}
+\tag{1}
+$$
+其中
+$$
+f(\sigma)=.6144+.8\sigma+2.023\sigma^2+.474\sigma^3+.220\sigma^4.
+\tag{2}
+$$
+这些界同时作用于同一组真实矩，没有把不同矩的极端相位拼成新的数据。
+:::
+
+::: {.proof of="lem-ppecf-fivepoint-moment-envelopes-1011" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f，
+$r^2+r=1$、$.618<r<.61804<5/8$，
+$$
+1\le m=1+rt^2(1-\sigma^2)<1.07,\quad
+.8-.75t^2<\delta=2-1.2m\le .8,\quad p=1+.6m.
+$$
+在 $t>0$ 时第一条 $\delta$ 的严格下界成立。
+五点平均满足 $\operatorname{av}n_j^k=0$（$5\nmid k$），
+而 $\operatorname{av}n_j^{5\ell}=(-1)^\ell$。
+因此，写
+$$
+U=\Re(c^2\bar d),\quad V=\Re(cd^2),\quad
+Q=\Re(c^3d),\quad Z=\Re(\bar c d^3),
+$$
+直接展开实部得
+$$
+\begin{gathered}
+\operatorname{av}x^2=t^2/2,\quad
+\operatorname{av}z^2=t^2\sigma^2/2,\quad
+\operatorname{av}xz=0,\\
+\operatorname{av}x^2z=U/4,\quad
+\operatorname{av}xz^2=-V/4,\\
+\operatorname{av}x^4=3t^4/8,\quad
+\operatorname{av}x^2z^2=t^4\sigma^2/4,\quad
+\operatorname{av}z^4=3t^4\sigma^4/8,\\
+\operatorname{av}x^3z=-Q/8,\quad
+\operatorname{av}xz^3=-Z/8.
+\end{gathered}
+\tag{3}
+$$
+纯三次平均为零。于是
+$$
+V_3=\alpha U-\beta V,\quad
+\alpha=\frac{r\delta(\delta+4p)}4,\quad
+\beta=r^2(\delta+p),
+\tag{4}
+$$
+且由 $\delta+2p=4$，
+$$
+\begin{aligned}
+F_4={}&t^4\left\{\frac{3\delta^2p^2}{8}
++\frac{r^2}{4}(\delta^2+8\delta p+4p^2)\sigma^2
++\frac32r^4\sigma^4\right\}\\
+&-\delta rp\,Q-2r^3 Z.
+\end{aligned}
+\tag{5}
+$$
+式 (3) 的二次身份先给 $V_2$ 的准确式及 (1) 的上下界。
+这里 $2r^2> .76392>.7639$，$2r^2<.764$。
+
+接着 $\alpha=r(3-1.2m-.36m^2)$ 在 $m\ge1$ 递减，
+而 $\beta=r^2(3-.6m)$ 也递减；
+两者在此域为正，所以 $\alpha\le1.44r<.9$、
+$\beta\le2.4r^2<.92$。再用 $|U|\le t^3\sigma$、
+$|V|\le t^3\sigma^2$，得三次矩界。
+
+最后
+$$
+0<\delta p=2-.72m^2\le1.28,\qquad
+\frac{\delta^2+8\delta p+4p^2}{4}=6-.72m^2\le5.28.
+$$
+由 $Q=\Re(c^3d)$、$Z=\Re(\bar c d^3)$，还有
+$|Q|\le|c|^3|d|=t^4\sigma$、$|Z|\le|c||d|^3=t^4\sigma^3$。
+所以 $-\delta rpQ\le1.28r t^4\sigma$，
+$-2r^3Z\le2r^3t^4\sigma^3$；这里使用 $\delta p,r>0$。
+因而 (5) 依次有界于
+$$
+t^4\left\{.6144+.8\sigma+2.023\sigma^2
++.474\sigma^3+.220\sigma^4\right\}.
+$$
+分别用了 $3(1.28)^2/8=.6144$、
+$1.28r<.8$、$5.28r^2<2.023$、
+$2r^3<.474$、$3r^4/2<.220$。
+同时 $F_4$ 按定义非负。这证明全部断言。
+:::
+
+::: {#prp-ppecf-two-amplitude-entropy-credit-1011 .proposition name="保留双振幅的同源熵信用函数" date="2026-10-11" export="prp-ppecf-two-amplitude-entropy-credit-1011"}
+在 @lem-ppecf-fivepoint-moment-envelopes-1011 的整个条带
+$0<t\le1/3,\ 0\le\sigma\le1$ 上，再满足
+@prp-ppae-central-same-moment-credit-1011 的真实熵条件。
+使用 @def-pscc-scalar-target-1011f 的 $a,F_C$。
+定义
+$$
+\begin{aligned}
+\ell(t,\sigma)={}&\frac12(.295+.6t)
+\left\{\frac{(.8-.75t^2)^2}{2}+.7639\sigma^2\right\}\\
+&-t(.205-.6t)(.9\sigma+.92\sigma^2)-t^2f(\sigma),\\
+v(t,\sigma)={}&(.295+.6t)(.32+.764\sigma^2)\\
+&+t(1.295+.6t)(.9\sigma+.92\sigma^2)+t^2f(\sigma).
+\end{aligned}
+\tag{5a}
+$$
+其中 $f$ 取 (2)，$x_+=\max\{x,0\}$。
+则 $v(t,\sigma)>0$，归一化的准确信用满足
+$$
+\boxed{
+\Xi:=\frac{5aF_C\Gamma}{t^2}\mathcal C_{\rm ent}
+\ \ge\
+\xi(t,\sigma):=\frac{14}{15}\frac{.59\,\ell(t,\sigma)_+^2}{v(t,\sigma)}
+\ \ge0.
+}
+\tag{5b}
+$$
+在 $\ell(t,\sigma)>0$ 的每一点，第一条不等式严格。
+这里的 $\xi$ 依赖两个振幅，但对同一振幅下所有满足真实熵前提的相位统一有效。
+:::
+
+::: {.proof of="prp-ppecf-two-amplitude-entropy-credit-1011" status="verified"}
+先识别两个依赖中的真实矩。令 $s=t\sigma$，则
+$0<t\le1/3<27/50$、$0\le s\le t$，所以
+@prp-ppae-central-same-moment-credit-1011 的中央参数范围满足。
+同一 @def-pscc-scalar-coordinates-1011f 给
+$m=1+rt^2(1-\sigma^2)=1+r(t^2-s^2)$、
+$\delta=2-6m/5$、$p=1+3m/5$。
+对 @lem-ppecf-fivepoint-moment-envelopes-1011 的同一组五节点数据，
+中央熵命题的 $j_i=m+2x_i+2rz_i$、$\omega_i=1+6x_i/5$ 给
+$$
+\Delta_i=j_i-m\omega_i
+=(2-6m/5)x_i+2rz_i=\delta x_i+2rz_i,
+$$
+$$
+S_i=(j_i+m\omega_i)/2-m
+=(1+3m/5)x_i+rz_i=px_i+rz_i.
+$$
+因此两个声明的 $V_2=\operatorname{av}\Delta_i^2$、
+$V_3=\operatorname{av}\Delta_i^2S_i$、
+$F_4=\operatorname{av}\Delta_i^2S_i^2$ 逐项相同，
+平均均为同一五节点的 $1/5$ 等权平均；以下矩包络作用于中央熵命题中的这些矩。
+先检查正矩分支：由 @lem-ppecf-fivepoint-moment-envelopes-1011，
+$V_2/t^2>(.8-.75t^2)^2/2+.7639\sigma^2\ge0$，且 $t>0$，故 $V_2>0$。
+因此下文调用中央命题的 $U_2>0$ 及 $\mathcal C_{\rm ent}$ 公式均满足其适用条件。
+@def-pscc-scalar-coordinates-1011f 给
+$h_0=.705-.6t\ge .505>1/2$。
+在 @prp-ppae-central-same-moment-credit-1011 的准确 $\mathcal W$ 中，
+用 @lem-ppecf-fivepoint-moment-envelopes-1011 的二次矩下界、
+三次矩绝对值上界和四次矩上界，并用 $m\ge1$，得到
+$$
+\frac{\mathcal W}{m^2t^2}<-\ell(t,\sigma).
+$$
+同样，在其准确 $U_2$ 中逐项取上界得到
+$$
+0<\frac{U_2}{m^2t^2}\le v(t,\sigma).
+$$
+$v>0$ 也可从第一项的正性直接看出。
+由 @def-pscc-scalar-target-1011f 的 $a=.59m$、
+$F_C=m^3h_0(m+2)$，及同源熵命题的 $\Gamma,\mathcal C_{\rm ent}$，
+准确约去正因子后有
+$$
+\Xi=\frac{14a}{15}\frac{\mathcal W^2}{t^2U_2}.
+$$
+若 $\ell>0$，上面两条矩界给
+$$
+\Xi>\frac{14}{15}\frac{a m^2\ell^2}{v}
+\ge\frac{14}{15}\frac{.59\ell^2}{v}.
+$$
+若 $\ell\le0$，右边使用正部后为零，直接由同源差平方的非负性得结论。
+所有界均从原数据逐项推出；没有把矩的独立极端值
+当成一组能够同时实现的新相位。
+:::
+
+::: {#cor-ppecf-one-tenth-strong-credit-1011 .corollary name="十分之一条带全幅比的强化熵信用" date="2026-10-11" export="cor-ppecf-one-tenth-strong-credit-1011"}
+在 @prp-ppecf-two-amplitude-entropy-credit-1011 的同源前提下，
+进一步设 $0<t\le1/10$。则整个 $0\le\sigma\le1$ 上，
+$$
+\boxed{\Xi\ge\xi(t,\sigma)>\frac1{200}.}
+\tag{17}
+$$
+此界对全部允许的共同相位有效。
+:::
+
+::: {.proof of="cor-ppecf-one-tenth-strong-credit-1011" status="verified"}
+其中第四矩包络采用 @lem-ppecf-fivepoint-moment-envelopes-1011 的准确多项式
+$f(\sigma)=.6144+.8\sigma+2.023\sigma^2+.474\sigma^3+.220\sigma^4$。
+使用 @prp-ppecf-two-amplitude-entropy-credit-1011 的
+$\ell,v,\xi$。
+先直接核对标量乘积：
+$$
+\begin{aligned}
+&\frac14(.295+.6t)(.8-.75t^2)^2-.0472-.07t\\
+&\quad=t[.026-.0885t-.18t^2+.041484375t^3+.084375t^4]>0,
+\end{aligned}
+$$
+因为在此区间内，方括号至少为
+$.026-.00885-.0018=.01535>0$。
+把它代入 $\ell$ 的定义，并用 $\sigma^3,\sigma^4\le\sigma^2$，
+再在 $0\le t\le1/10$ 取下面所列端点界，得到
+$$
+\ell(t,\sigma)\ge k_s(\sigma)
+:=.0472-.02105\sigma+.095082\sigma^2>0.
+\tag{18}
+$$
+下面重列三个系数，以核对较短区间没有改变方向：
+$$
+\begin{aligned}
+.0472+.07t-.6144t^2&\ge .0472,\\
+.1845t+.26t^2&\le .02105,\\
+.11267525+.04057t-2.165t^2&\ge .09508225>.095082.
+\end{aligned}
+$$
+第一、三行都是凹二次式，最小值在端点；第二行递增。
+第三行沿用 $\sigma^3,\sigma^4\le\sigma^2$ 的完整幅比控制。
+$k_s>0$ 也直接来自
+$.0472-.02105\sigma\ge .02615>0$。
+
+$v$ 关于 $t,\sigma$ 的各幂系数非负，所以
+$$
+v(t,\sigma)\le v(1/10,\sigma)
+=u_s(\sigma):=.119744+.12995\sigma+.41611\sigma^2
++.00474\sigma^3+.0022\sigma^4.
+\tag{19}
+$$
+令 $M=14(.59)/15=413/750$。准确展开后，$Mk_s^2-u_s/200$
+的五个幂系数依次为
+$$
+\frac{184007}{292968750},\
+-\frac{65399653}{37500000000},\
+\frac{23295697829}{7500000000000},\
+-\frac{2784990431}{1250000000000},\
+\frac{310459359751}{62500000000000}.
+$$
+它们分别严格大于
+$.000628,-.001744,.003106,-.002228,.004967$。
+因而对 $\sigma\ge0$，
+$$
+\begin{aligned}
+Mk_s^2-u_s/200
+>{}&.000628-.001744\sigma+.003106\sigma^2
+-.002228\sigma^3+.004967\sigma^4\\
+\ge{}&.000628-.001744\sigma+.002856\sigma^2>0.
+\end{aligned}
+\tag{20}
+$$
+第二步是在 $\sigma^2$ 内完成一个平方，使用
+$$
+4(.004967)(.00025)-(.002228)^2
+=\frac{377}{125000000000}>0.
+$$
+最后一步再次完成平方，使用
+$$
+4(.000628)(.002856)-(.001744)^2
+=\frac{32287}{7812500000}>0.
+$$
+结合 (18)--(20) 及 $v,u_s>0$，
+$$
+\xi(t,\sigma)=\frac{M\ell(t,\sigma)_+^2}{v(t,\sigma)}
+\ge\frac{Mk_s(\sigma)^2}{u_s(\sigma)}>\frac1{200}.
+$$
+再由同源命题的 $\Xi\ge\xi$ 得到 (17)。
+本证明全程保留同一组真实矩的信用，未把任何样本作为前提。
+:::

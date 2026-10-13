@@ -1,0 +1,385 @@
+---
+title: "共同相位原函数比较：第四阶标量损失的短解析预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-elementary-constants-1011
+---
+
+::: {#lem-ppsfo-exact-fourth-scalar-1011 .lemma name="第四阶标量核的纯项与共同相位混合项" date="2026-10-11" export="lem-ppsfo-exact-fourth-scalar-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$，
+常数采用 @def-psgs-tensor-weights-1011h，即 $\alpha=\pi/5$、$a=a_0=\alpha\cot\alpha$、$r=(\sqrt5-1)/2$；均为实数，$\beta\in[-\alpha,\alpha]$。
+把 $(c,d)$ 同时换成 $(\varepsilon c,\varepsilon d)$，
+记 $A_4,B_4$ 为完整核的四次系数。
+置
+$$
+t=|c|,\quad s=|d|,\quad
+a=\alpha\cot\alpha,\quad w=1-a,\quad x=\beta^2,\quad
+D=a(2-a),\quad P=a^2(3-a),
+$$
+$$
+E=a^2(1+a),\quad F=a+3,\quad
+S=\frac{\sin2\beta}{\beta},\quad C=\cos2\beta,\quad
+\xi=\operatorname{Re}(dc^3).
+$$
+则
+$$
+A_4=t^4f+\xi h,\qquad B_4=t^4g+\xi j,
+\tag{1}
+$$
+其中
+$$
+\begin{aligned}
+f&=\frac{\kappa^4}{64}(a^2+x)^2
+-\frac{\kappa^3}{16}\{(E+Fx)(1-rC)+rx(x-D)S\},\\
+g&=-\frac{\kappa^4}{16}\beta(a^2+x)
+-\frac{\kappa^3}{16}\beta\{(x-D)(1+rC)+r(E+Fx)S\},\\
+h&=\frac{\kappa^3}{48}\{(-P+3wx)(r-C)+x(3D+x)S\},\\
+j&=\frac{\kappa^3}{48}\beta\{(3D+x)(r+C)-(P-3wx)S\}.
+\end{aligned}
+\tag{2}
+$$
+$f,h$ 为偶函数，$g,j$ 为奇函数。
+式中 $S(0)$ 按连续延拓取 $2$。
+:::
+
+::: {.proof of="lem-ppsfo-exact-fourth-scalar-1011" status="verified"}
+由 @def-psgs-tensor-weights-1011h，$a=a_0$，并且 $a,r,\beta$ 为实数，故下面的相位改写及实虚部投影合法。
+以下推导沿用 @def-psgs-exact-tensor-1011h 所给对象、记号与适用条件。
+记 $z=cn_i$、$q=e^{-2i\beta}$、$Z=a+i\beta$，
+$u=-\kappa Z/2$、$v=\kappa\bar Z/2$。
+则原相位因子为 $\exp(uz+v\bar z)$，
+前因子准确为
+$$
+1+\frac\kappa2(z+\bar z)+z(1\pm rq)+dn_i^2(r\pm q)
++\frac\kappa2(z+\bar z)
+\{z(1\pm rq)+dn_i^2(r\pm q)\}.
+$$
+这里五根平均只保留指数为 $5$ 的倍数的项，
+并且 $\operatorname{av}n_i^{5j}=(-1)^j$。
+
+纯四阶部分分别来自指数本身、一次前因子与二次前因子。
+其保留的系数准确是
+$$
+t^4\left\{
+\frac{u^2v^2}{4}
++\frac\kappa4uv(u+v)
++(1\pm rq)\left(\frac{uv^2}{2}
++\frac{\kappa v^2}{4}+\frac{\kappa uv}{2}\right)
+\right\}.
+$$
+代入 $u,v$ 后成为
+$$
+t^4\left[
+\frac{\kappa^4}{64}(a^2+x)^2
++\frac{i\kappa^4}{16}\beta(a^2+x)
+-\frac{\kappa^3}{16}\{E+Fx-i\beta(x-D)\}(1\pm rq)
+\right].
+\tag{3}
+$$
+含 $d$ 的第四阶项只有 $dc^3$ 的根指数为 $5$，
+其余指数不被平均保留。
+该项的准确系数为
+$$
+-dc^3(r\pm q)
+\left(\frac{u^3}{6}+\frac{\kappa u^2}{4}\right)
+=\frac{\kappa^3}{48}dc^3Z^2(Z-3)(r\pm q).
+\tag{4}
+$$
+又
+$$
+Z^2(Z-3)=-P+3wx-i\beta(3D+x).
+$$
+对减号取实偶部，对加号取负虚奇部。
+为明确混合相位的消失，令 $F_\pm(\beta)=Z(\beta)^2(Z(\beta)-3)(r\pm e^{-2i\beta})$；
+因 $a,r$ 为实数，有 $F_\pm(-\beta)=\overline{F_\pm(\beta)}$。
+写 $dc^3=\xi+i\eta$，则 $\Re F_\pm$ 偶、$\Im F_\pm$ 奇，
+$\Re[(\xi+i\eta)F_-]=\xi\Re F_--\eta\Im F_-$ 的偶部去掉 $\eta$ 项，
+$-\Im[(\xi+i\eta)F_+]=-\xi\Im F_+-\eta\Re F_+$ 的奇部也去掉 $\eta$ 项。
+式 (3) 给 $f,g$，式 (4) 只保留共同相位 $\xi$ 并给 $h,j$，
+得到 (1)、(2)。没有分别选择混合项的相位。
+:::
+
+::: {#lem-ppsfo-pure-fourth-green-budget-1011 .lemma name="纯第四阶两条原函数核的七成预算" date="2026-10-11" export="lem-ppsfo-pure-fourth-green-budget-1011"}
+在 @lem-ppsfo-exact-fourth-scalar-1011 的记号下，令
+$$
+\mathcal Gf(\beta)=\int_0^\beta
+\left(f(u)-\frac1\alpha\int_0^\alpha f(v)\,dv\right)du.
+$$
+则在 $0\le\beta\le\alpha$ 上，
+$$
+-\frac12\beta\le g(\beta)\le0,\qquad
+|f'(\beta)|\le\frac32\beta,
+$$
+因而两个符号均满足
+$$
+\boxed{|g\pm2\mathcal Gf|\le\frac7{10}\beta.}
+\tag{5}
+$$
+:::
+
+::: {.proof of="lem-ppsfo-pure-fourth-green-budget-1011" status="verified"}
+以下推导沿用 @lem-ppsfo-exact-fourth-scalar-1011 所给对象、记号与适用条件。
+先列出全部要用的初等界。
+由 @lem-pplojm-elementary-constants-1011，$\alpha^2<2/5$、
+$a<13/15$、$3/5<r<5/8$。
+还可以把 $a$ 的下界提高到 $6/7$：
+对 $y=\alpha^2$，Taylor 上下界给
+$$
+a\ge
+\frac{1-y/2+y^2/24-y^3/720}{1-y/6+y^2/120}>\frac67,
+$$
+最后交叉相乘后的正分子为
+$1-5y/2+29y^2/120-7y^3/720>0$；
+前两项之和非负，后两项之和严格正。
+因此
+$$
+\frac7{10}<a^2<\frac{19}{25},\quad
+\frac{39}{40}<D<1,\quad
+\frac43<E<\frac{141}{100},\quad
+F<\frac{39}{10}.
+\tag{6}
+$$
+这些界逐个由 $6/7<a<13/15$ 代入相应单调多项式得到。
+
+视 $S,C$ 为 $x=\beta^2$ 的函数。
+准确有
+$S(x)=2\int_0^1\cos(2u\sqrt x)\,du$，
+且对 $x>0$，$-S_x=4\int_0^1u^2\operatorname{sinc}(2u\sqrt x)\,du$。
+这里 $\operatorname{sinc}(z)=\sin z/z$，在零点取 $1$。
+在 $0\le x\le\alpha^2$ 上被积函数连续且绝对值不超过 $4u^2$，
+故积分导数在 $x\downarrow0$ 连续延拓，$S_x(0)=-4/3$；
+同一积分恒等式或微积分基本定理给端点的右导数。
+由于 $0\le2u\sqrt x<\pi$，有 $0\le\operatorname{sinc}(2u\sqrt x)\le1$，给
+$$
+\frac32<S\le2,\quad \frac3{10}<C\le1,\quad
+C_x=-S,\quad 0\le-S_x\le\frac43.
+\tag{7}
+$$
+其中 $S$ 的下界也可由
+$S(\alpha^2)=(2+r)/(2a)>3/2$ 得到。
+以下含 $g/\beta$、$f'(\beta)/\beta$ 的计算先取 $\beta>0$。
+令
+$$
+Z_0=\kappa(a^2+x)+(x-D)(1+rC)+r(E+Fx)S.
+$$
+因为 $0\le x\le2/5<D$，(6)、(7) 给
+$$
+Z_0\ge
+\frac65\frac7{10}-\frac{13}{8}
++\frac35\frac43\frac32=\frac{83}{200}>0,
+$$
+以及
+$$
+Z_0\le
+\frac65\frac{29}{25}
++\frac54\frac{297}{100}
+-\frac{23}{40}\frac{59}{50}
+=\frac{2213}{500}<\frac{125}{27}.
+$$
+由 $g/\beta=-(27/250)Z_0$，得到 $-1/2<g/\beta<0$。
+
+对 $f$ 按 $x$ 求导，得到准确式
+$$
+\frac{f'(\beta)}{\beta}=2f_x
+=\frac{\kappa^4}{16}(a^2+x)-\frac{\kappa^3}{8}T,
+$$
+$$
+T=F(1-rC)+r\{E-D+(F+2)x\}S+rx(x-D)S_x.
+$$
+这里 $E-D=a(a^2+2a-2)>0$，故 $T\ge0$。
+又由 (6)、(7) 及 $x(D-x)\le D^2/4\le1/4$，
+$$
+\begin{aligned}
+T&\le
+\frac{39}{10}\frac{41}{50}
++\frac54\left\{\frac{141}{100}-\frac{39}{40}
++\frac{59}{10}\frac25\right\}
++\frac58\frac14\frac43\\
+&=\frac{1599}{500}+\frac{559}{160}+\frac5{24}
+=\frac{82801}{12000}.
+\end{aligned}
+$$
+因此
+$$
+-\frac32<
+-\frac{27}{125}\frac{82801}{12000}
+\le 2f_x
+\le\frac{81}{625}\frac{29}{25}<\frac32.
+$$
+最后使用区间 Dirichlet Green 核
+$g_\alpha(\beta,u)=\min(\beta,u)-\beta u/\alpha$。
+在 $0\le\beta,u\le\alpha$ 上，
+$$
+g_\alpha(\beta,u)=
+\begin{cases}
+u(1-\beta/\alpha),&u\le\beta,\\
+\beta(1-u/\alpha),&u\ge\beta,
+\end{cases}
+$$
+两个分支均非负，且在 $u=\beta$ 连续相接。
+$f$ 的显式公式在闭角区间上光滑，因而以下分部积分及端点取值合法。
+先取 $0<\beta<\alpha$，把积分分为 $[0,\beta]$ 与 $[\beta,\alpha]$：
+$$
+\begin{aligned}
+\int_0^\alpha g_\alpha(\beta,u)f'(u)\,du
+={}&\left(1-\frac\beta\alpha\right)\int_0^\beta uf'(u)\,du
++\beta\int_\beta^\alpha\left(1-\frac u\alpha\right)f'(u)\,du\\
+={}&\left(1-\frac\beta\alpha\right)
+\left[\beta f(\beta)-\int_0^\beta f(u)\,du\right]\\
+&+\beta\left[-\left(1-\frac\beta\alpha\right)f(\beta)
++\frac1\alpha\int_\beta^\alpha f(u)\,du\right]\\
+={}&-\int_0^\beta f(u)\,du
++\frac\beta\alpha\int_0^\alpha f(u)\,du
+=-\mathcal Gf(\beta).
+\end{aligned}
+$$
+第二行中 $u=0$ 的边界项因 $u=0$ 消失，$u=\alpha$ 的边界项因
+$1-u/\alpha=0$ 消失；两项 $\beta(1-\beta/\alpha)f(\beta)$ 相互抵消。
+两边均关于 $\beta$ 连续；在 $\beta=0,\alpha$ 时核为零，
+而定义给 $\mathcal Gf(0)=\mathcal Gf(\alpha)=0$，所以该表示包含两个端点。
+
+同样的分段直接计算给核的一阶矩：
+$$
+\begin{aligned}
+\int_0^\alpha g_\alpha(\beta,u)u\,du
+&=\left(1-\frac\beta\alpha\right)\frac{\beta^3}{3}
++\beta\left[\frac{u^2}{2}-\frac{u^3}{3\alpha}\right]_{u=\beta}^{u=\alpha}\\
+&=\left(1-\frac\beta\alpha\right)\frac{\beta^3}{3}
++\beta\left(\frac{\alpha^2}{6}-\frac{\beta^2}{2}
++\frac{\beta^3}{3\alpha}\right)\\
+&=\frac{\beta(\alpha^2-\beta^2)}6\le\frac{\beta}{15},
+\end{aligned}
+$$
+最后用 $\alpha^2<2/5$；上述多项式恒等式在零端点也直接成立。
+利用核的非负性和已证 $|f'(u)|\le3u/2$，得到
+$$
+2|\mathcal Gf(\beta)|
+\le3\int_0^\alpha g_\alpha(\beta,u)u\,du\le\frac\beta5.
+$$
+所以 $2|\mathcal Gf|\le\beta/5$，
+与 $|g|\le\beta/2$ 相加得到 (5)。
+最后在 $\beta=0$，显式公式及其解析性给 $g(0)=f'(0)=0$，而定义给 $\mathcal Gf(0)=0$，所以所有目标非严格不等式在该端点也成立。
+:::
+
+::: {#lem-ppsfo-mixed-fourth-green-budget-1011 .lemma name="混合第四阶两条原函数核的共同相位预算" date="2026-10-11" export="lem-ppsfo-mixed-fourth-green-budget-1011"}
+采用 @lem-ppsfo-exact-fourth-scalar-1011 的记号，
+并如上定义 $\mathcal Gh$。则在 $0\le\beta\le\alpha$，
+$$
+|j(\beta)|\le\frac15\beta,\qquad
+|h'(\beta)|\le\frac35\beta,
+$$
+从而两个符号均满足
+$$
+\boxed{|j\pm2\mathcal Gh|\le\frac7{25}\beta.}
+\tag{8}
+$$
+:::
+
+::: {.proof of="lem-ppsfo-mixed-fourth-green-budget-1011" status="verified"}
+以下推导沿用 @lem-ppsfo-exact-fourth-scalar-1011 所给对象、记号与适用条件。
+这里对一般函数明确置 $\bar H=\alpha^{-1}\int_0^\alpha H(v)\,dv$、
+$\mathcal GH(\beta)=\int_0^\beta(H(u)-\bar H)\,du$。
+由 @lem-pplojm-elementary-constants-1011，$\alpha^2<2/5$、$a<13/15$、$3/5<r<5/8$。
+令 $A=\alpha^2$；交错 Taylor 界给
+$$
+a\ge\frac{1-A/2+A^2/24-A^3/720}{1-A/6+A^2/120}>6/7,
+$$
+因交叉分子 $1-5A/2+29A^2/120-7A^3/720$ 的前两项非负、后两项之和正。
+因此 $0\le x\le A<2/5$，$39/40<D=1-(1-a)^2<1$。
+$C=\cos2\beta\in[r/2,1]$，故 $|r-C|\le\max(r/2,1-r)<2/5$，并且 $0<S\le2$。
+这里固定未归一化的正弦商
+$\operatorname{sinc}(z)=\sin z/z$（$z\ne0$），并取 $\operatorname{sinc}(0)=1$。
+准确积分式
+$$
+S(x)=2\int_0^1\cos(2u\sqrt x)\,du,\qquad
+-S_x=4\int_0^1u^2\operatorname{sinc}(2u\sqrt x)\,du
+$$
+给 $0\le-S_x\le4/3$；被积导数由 $4u^2$ 控制，所以此式及导数在 $x=0$ 连续延拓。
+由 $6/7<a<13/15$，
+$$
+0<w<\frac17,\qquad \frac75<P<\frac{13}{8},\qquad
+|r-C|\le\frac25.
+$$
+特别地 $P-3wx>7/5-6/35>0$。
+记 $Q=3D+x$；则 $0<Q\le17/5$，
+式 (2) 中 $j/\beta$ 是两个非负量之差乘以 $9/250$：
+$$
+Q(r+C)\le\frac{17}{5}\frac{13}{8}=\frac{221}{40},
+\qquad
+(P-3wx)S\le\frac{13}{4}.
+$$
+所以
+$$
+|j|/\beta\le\frac9{250}\frac{221}{40}
+=\frac{1989}{10000}<\frac15.
+$$
+
+对 $h$ 按 $x$ 求导，得到
+$$
+\frac{h'(\beta)}{\beta}
+=\frac9{125}
+\{3w(r-C)+[-P+3D+(3w+2)x]S+x(3D+x)S_x\}.
+$$
+中间方括号的下界是 $-13/8+3(39/40)=13/10>0$，并且不超过
+$$
+3-\frac75+\left(2+\frac37\right)\frac25=\frac{18}{7}.
+$$
+因此
+$$
+\frac{|h'(\beta)|}{\beta}
+\le\frac9{125}
+\left(\frac6{35}+\frac{36}{7}+\frac{136}{75}\right)
+=\frac9{125}\frac{3742}{525}<\frac35.
+$$
+取区间 Dirichlet Green 核 $g_\alpha(\beta,u)=\min(\beta,u)-\beta u/\alpha\ge0$。
+由 $\mathcal Gh$ 两端为零且 $(\mathcal Gh)''=h'$，两次分部积分给
+$$
+\mathcal Gh(\beta)=-\int_0^\alpha g_\alpha(\beta,u)h'(u)\,du,
+\quad \int_0^\alpha g_\alpha(\beta,u)u\,du=\frac{\beta(\alpha^2-\beta^2)}6<\frac\beta{15}
+$$
+（最后严格号对 $\beta>0$）。所以 $2|\mathcal Gh|\le(2/25)\beta$，
+与 $|j|\le\beta/5$ 相加即得 (8)。商的估计先对 $\beta>0$ 作出；在 $\beta=0$，奇性给 $j(0)=h'(0)=0$，且 $\mathcal Gh(0)=0$，故结论同样成立。
+:::
+
+
+
+::: {#cor-ppsfo-total-fourth-budget-closed-1011 .corollary name="含零端点的第四阶共同相位损失上界" date="2026-10-11" export="cor-ppsfo-total-fourth-budget-closed-1011"}
+采用 @lem-ppsfo-exact-fourth-scalar-1011 的核与参数，置
+$$
+\alpha=\pi/5,\qquad t=|c|,\qquad s=|d|,\qquad
+\mathcal GF(\beta)=\int_0^\beta
+\left(F(u)-\frac1\alpha\int_0^\alpha F(v)\,dv\right)\,du,
+\qquad G_4=\mathcal GA_4.
+$$
+则所有复参数 $c,d$、$0\le\beta\le\alpha$ 及两个符号均满足
+$$
+|B_4\pm2G_4|\le\beta\left(\frac7{10}t^4+\frac7{25}st^3\right).
+$$
+若 $0\le s\le t\le27/50$，还有
+$$
+|B_4\pm2G_4|\le\frac{35721}{125000}\,\beta t^2
+\le\frac3{10}\,\beta t^2.
+$$
+最后一个比较在且仅在 $\beta t^2>0$ 时严格。
+:::
+
+::: {.proof of="cor-ppsfo-total-fourth-budget-closed-1011" status="verified"}
+由定义，$\mathcal G$ 是关于被积函数的线性算子；所有核均在闭区间上连续。
+由 @lem-ppsfo-exact-fourth-scalar-1011，
+$G_4=t^4\mathcal Gf+\xi\mathcal Gh$ 且 $|\xi|\le st^3$。
+分别使用 @lem-ppsfo-pure-fourth-green-budget-1011
+和 @lem-ppsfo-mixed-fourth-green-budget-1011，
+将 $B_4\pm2G_4=t^4(g\pm2\mathcal Gf)+\xi(j\pm2\mathcal Gh)$
+应用三角不等式，得到第一个界。
+最后使用 $s\le t$ 及
+$(7/10+7/25)(27/50)^2=35721/125000<3/10$。
+乘以非负数 $\beta t^2$ 给非严格界；两常数之差严格为正，
+所以最后一步严格当且仅当 $\beta t^2>0$。
+:::

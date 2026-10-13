@@ -1,0 +1,283 @@
+---
+title: "完整共同相位比较：四阶自旋的两通道解析预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+        - def-psgs-finite-kernel-rule-1011h
+    - from: ps-pressure-low-spin-positive-ratios-1011.qmd
+      use:
+        - lem-ppspr-positive-ratio-product-1011
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-elementary-constants-1011
+---
+
+::: {#lem-ppfs-exact-fourth-spin-1011 .lemma name="四阶自旋的准确纯项与混合项" date="2026-10-11" export="lem-ppfs-exact-fourth-spin-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$，
+常数采用 @def-psgs-tensor-weights-1011h，$a=a_0=\alpha\cot\alpha$、$\alpha=\pi/5$、$r=(\sqrt5-1)/2$ 均为实数，且 $\beta\in[-\alpha,\alpha]$。
+$a=\alpha\cot\alpha$、$w=1-a$、$h_0=a(2-a)$，
+并置
+$$
+e=\frac9{250},\qquad f=\frac{27}{1250},\qquad g=\frac{27}{250},
+\qquad x=\beta^2,\quad C=\cos2\beta,\quad S=\frac{\sin2\beta}{\beta}.
+$$
+定义
+$$
+\begin{aligned}
+q_0&=ea^2(3-a),\\
+p_0&=q_0+fa^3(2-a),&
+p_2&=6fa-3ew,\\
+p_1&=-3eh_0+2fa^3,&
+p_3&=-e-2f(2-a),\\
+P(x)&=p_0+p_2x+fx^2,& L(x)&=p_1+p_3x,\\
+R(x)&=a^2(a+1)+(a+3)x.
+\end{aligned}
+\tag{1}
+$$
+则关于 $(c,d)\mapsto(\varepsilon c,\varepsilon d)$ 的四次系数为
+$$
+X_4=t^2\bar c^2 x_{\rm p}+t^2cd\,x_{\rm m},\qquad
+Y_4=t^2\bar c^2 y_{\rm p}+t^2cd\,y_{\rm m},
+\tag{2}
+$$
+其中四条实通道是
+$$
+\begin{aligned}
+x_{\rm p}&=PC-xLS-r(q_0-3ewx),\\
+y_{\rm p}/\beta&=-PS-LC+re(3h_0+x),\\
+x_{\rm m}&=g\{r[RC-x(x-h_0)S]-R\},\\
+y_{\rm m}/\beta&=g\{(h_0-x)(1+rC)-rRS\}.
+\end{aligned}
+\tag{3}
+$$
+所有零点商都按连续延拓解释。
+:::
+
+::: {.proof of="lem-ppfs-exact-fourth-spin-1011" status="verified"}
+由 @def-psgs-tensor-weights-1011h，明确有 $a=a_0$；下面全部实虚部投影使用 $a,r,\beta\in\mathbb R$。
+以下推导沿用 @def-psgs-exact-tensor-1011h 所给对象、记号与适用条件。
+在 @def-psgs-finite-kernel-rule-1011h 中令
+$z=a+i\beta$，$q=e^{-2i\beta}$。
+为逐项核对，置 $u=cn,v=\bar c n^{-1},w_d=dn^2$，
+$A=\kappa z/2,B=-\kappa\bar z/2$，则 $\mathsf H=Au+Bv$、
+$\mathsf W=\kappa(u+v)/2$、$\mathsf T_\pm=u(1\pm rq)+w_d(r\pm q)$。
+纯项的根指数只能在 $\{-4,-2,0,2,4\}$ 中；乘 $n^2$ 后只有指数零能通过五根平均。
+混合项仅含一个 $w_d$，其根指数在 $\{-1,1,3,5\}$ 中；乘 $n^2$ 后只有指数五能保留。
+因此纯项取 $uv^3=t^2\bar c^2n^{-2}$ 系数，混合项取 $u^2v w_d=t^2cd\,n^3$ 系数。
+所有贡献逐项为
+$$
+\begin{array}{c|c|c}
+\text{项}&[uv^3]&[u^2v w_d]\\\hline
+\mathsf H^4/24&AB^3/6&0\\
+\mathsf W\mathsf H^3/6&(\kappa/2)(B^3/6+AB^2/2)&0\\
+\mathsf T_\pm\mathsf H^3/6&(1\pm rq)B^3/6&(r\pm q)A^2B/2\\
+\mathsf W\mathsf T_\pm\mathsf H^2/2&(1\pm rq)\kappa B^2/4&(r\pm q)(\kappa/2)(AB+A^2/2)
+\end{array}
+$$
+没有二次 $d$ 项，因为整个前因子对 $d$ 仅一次。
+代入 $A,B$ 后，前两行纯系数分别是
+$-\kappa^4z\bar z^3/96$ 和 $\kappa^4(-\bar z^3+3z\bar z^2)/96$；
+后两行纯系数分别是 $-\kappa^3\bar z^3(1\pm rq)/48$ 和 $\kappa^3\bar z^2(1\pm rq)/16$。
+混合两项相加、尚未平均时是
+$-\kappa^3z(z\bar z+2\bar z-z)(r\pm q)/16$。
+四阶纯自旋在乘外面的 $n^2$ 之前，只留下根指数 $-2$。
+因此尚未乘 $e^{2i\beta}$ 的纯系数是
+$$
+t^2\bar c^2\bar z^2
+\left\{\frac{\kappa^4}{96}(3z-\bar z-z\bar z)
++\frac{\kappa^3}{48}(3-\bar z)(1\pm rq)\right\}.
+\tag{4}
+$$
+具体地，$H^4/4!$ 与 $WH^3/3!$ 的系数之和为
+$\kappa^4\bar z^2(3z-\bar z-z\bar z)/96$；
+$T_\pm H^3/3!$ 与 $WT_\pm H^2/2!$ 的和为余下一项。
+
+四阶含 $d$ 项的根指数为 $3$；乘外面的 $n^2$ 后，
+五根平均为 $-1$。合并两项得到
+$$
+t^2cd\,\frac{\kappa^3}{16}
+z(z\bar z+2\bar z-z)(r\pm q).
+\tag{5}
+$$
+这是同一有限展开的准确系数，不是截断核的重新定义。
+置
+$$
+Q=e\bar z^2(3-\bar z),\quad
+\mathcal P=Q+f\bar z^2(3z-\bar z-z\bar z),\quad
+\mathcal M=gz(z\bar z+2\bar z-z).
+$$
+直接乘开给
+$$
+\begin{aligned}
+\Re Q&=q_0-3ewx,&\Im Q&=-e\beta(3h_0+x),\\
+\Re\mathcal P&=P,&\Im\mathcal P&=\beta L,\\
+\Re\mathcal M&=gR,&\Im\mathcal M&=g\beta(x-h_0).
+\end{aligned}
+$$
+减号乘 $e^{2i\beta}$ 后取偶部，
+加号乘 $ie^{2i\beta}$ 后取奇部，分别给 (3)。
+:::
+
+::: {#lem-ppfs-fourth-spin-budget-1011 .lemma name="两支四阶自旋的统一无表预算" date="2026-10-11" export="lem-ppfs-fourth-spin-budget-1011"}
+采用 @lem-ppfs-exact-fourth-spin-1011。
+对 $\mathcal G F(\beta)=\int_0^\beta(F-\bar F)$，
+在整个 $0\le\beta\le\alpha$ 上，两种符号分别满足
+$$
+\boxed{
+|Y_4\pm2\mathcal GX_4|
+\le\beta\left(\frac13t^4+\frac58st^3\right).
+}
+\tag{6}
+$$
+当 $\beta t>0$ 时右侧的系数预算严格富余。
+:::
+
+::: {.proof of="lem-ppfs-fourth-spin-budget-1011" status="verified"}
+以下推导沿用 @lem-ppfs-exact-fourth-spin-1011 所给对象、记号与适用条件。
+由 @def-psgs-exact-tensor-1011h，$c,d\in\mathbb C$、$t=|c|\ge0$、$s=|d|\ge0$。
+本段 $\bar F=\alpha^{-1}\int_0^\alpha F(\beta)\,d\beta$ 表示线性角均值；
+故 $\mathcal GF(\beta)=\int_0^\beta(F-\bar F)$ 为线性算子且在 $0,\alpha$ 都为零。
+由 @lem-pplojm-elementary-constants-1011，$A=\alpha^2<2/5$、$a<13/15$、$0<r<5/8$。
+再由正弦与余弦的交错 Taylor 余项，
+$a\ge(1-A/2+A^2/24-A^3/720)/(1-A/6+A^2/120)>6/7$。
+分母为正，最后一个严格号的交叉分子为
+$1-5A/2+29A^2/120-7A^3/720>0$：前两项非负，后两项之和严格正。
+因此 $h_0=1-(1-a)^2>48/49$；$0\le\beta\le\alpha<\pi/4$ 又给 $0<C\le1$、$0<S\le2$，其中 $S(0)=2$。
+合并得到
+$$
+\frac67<a<\frac{13}{15},\quad 0<r<\frac58,\quad
+0\le x\le A:=\alpha^2<\frac25,\quad
+0<C\le1,\quad 0<S\le2,\quad
+\frac{48}{49}<h_0<1.
+\tag{7}
+$$
+在下文的 $x$ 导数里，$C_x=-S$，
+$xS_x=C-S/2$，并在零点连续解释。
+
+先证通用的原函数估计。若 $F$ 是 $x=\beta^2$ 的光滑函数，
+且 $|F_x|\le K$，则
+$(\mathcal GF)''=2\beta F_x$、$\mathcal GF(0)=\mathcal GF(\alpha)=0$。
+与显式函数 $K\beta(A-\beta^2)/3$ 比较的一维最大值原理给
+$$
+\frac{2|\mathcal GF|}{\beta}
+\le\frac{2K}{3}(A-x).
+\tag{8}
+$$
+
+对纯项，(1)、(7) 的端点替换给
+$$
+\frac7{100}<p_0<\frac3{40},\quad
+\frac9{100}<p_2<\frac1{10},\quad
+0<-p_1<\frac2{25},\quad
+0<-p_3<\frac{43}{500},\quad 0<f<\frac{11}{500}.
+\tag{9}
+$$
+这些都是低次有理式。具体地，
+$$
+p_0'(a)=3ea(2-a)+2fa^2(3-2a)>0,\qquad
+p_2'(a)=6f+3e>0
+$$
+在 $6/7<a<13/15$ 上成立，因为 $e,f,a>0$、$2-a>0$、$3-2a>0$。
+所以 $p_0,p_2$ 随 $a$ 严格增；
+$-p_1=3ea(2-a)-2fa^3$ 在 $a\ge6/7$ 严格减，
+因为其导数为 $6e(1-a)-6fa^2<0$。
+因此端点替换不需要未说明的区间极值。
+由 (9)，
+$$
+0<P<\frac3{25},\qquad
+0<-L<\frac{23}{200}.
+$$
+(3) 中的 $y_{\rm p}/\beta$ 是两项非负量之差，
+从而
+$$
+\frac{|y_{\rm p}|}{\beta}
+\le\max\{PS,\,-LC+re(3h_0+x)\}
+<\frac6{25};
+\tag{10}
+$$
+第二项小于 $23/200+153/2000<6/25$。
+
+准确微分给
+$$
+(x_{\rm p})_x
+=\{p_2-p_1+(2f-p_3)x\}C
+-\{p_0+p_1/2+(p_2+3p_3/2)x+fx^2\}S+3rew.
+\tag{11}
+$$
+这里两个花括号严格为正。
+第二个的下界可直接取
+$7/100-1/25+(9/100-129/1000)(2/5)>0$，
+上界小于 $P<3/25$。
+第一个的上界小于
+$1/10+2/25+(22/500+43/500)(2/5)=29/125$。
+故 (11) 仍是两项非负量之差，满足
+$$
+|(x_{\rm p})_x|
+<\max\left\{\frac{29}{125}+\frac{135}{14000},\,\frac6{25}\right\}
+<\frac14.
+\tag{12}
+$$
+由 (8)、(10)、(12)，
+$$
+\frac{|y_{\rm p}\pm2\mathcal Gx_{\rm p}|}{\beta}
+<\frac6{25}+\frac1{15}=\frac{23}{75}<\frac13.
+\tag{13}
+$$
+
+再证混合项。因为 $h_0-x>0$，
+(3) 中的 $y_{\rm m}/(g\beta)$ 也是两项非负量之差。
+又
+$$
+R<\frac{4732}{3375}+\frac{116}{75}
+=\frac{9952}{3375}<\frac{80}{27}.
+$$
+因此
+$$
+\frac{|y_{\rm m}|}{\beta}
+<g\max\left\{\frac{13}{8},\,\frac54\frac{80}{27}\right\}
+=\frac25.
+\tag{14}
+$$
+写
+$$
+B_0=a^2(a+1)-\frac{h_0}{2}+
+\left(a+\frac92\right)x.
+$$
+则
+$$
+(x_{\rm m})_x
+=g\{r[(a+3+h_0-x)C-B_0S]-(a+3)\}.
+\tag{15}
+$$
+这里 $B_0\ge(6/7)^2(1+6/7)-1/2=593/686>0$，而
+$r(a+3+h_0-x)C<(5/8)(a+4)<a+3$，最后一个比较等价于 $3a+4>0$。
+所以 (15) 严格为负。
+其模的上界由
+$$
+B_0<
+\frac{4732}{3375}-\frac{24}{49}+\frac{161}{75}
+=\frac{505873}{165375}<\frac{49}{16}
+$$
+给出：
+$$
+|(x_{\rm m})_x|
+<\frac{27}{250}
+\left(\frac{58}{15}+\frac54\frac{49}{16}\right)
+=\frac{199449}{240000}<\frac56.
+\tag{16}
+$$
+(8)、(14)、(16) 于是给
+$$
+\frac{|y_{\rm m}\pm2\mathcal Gx_{\rm m}|}{\beta}
+<\frac25+\frac29=\frac{28}{45}<\frac58.
+\tag{17}
+$$
+最后对 (2) 的两个复相位应用三角不等式，
+并保留 $|t^2\bar c^2|=t^4$、
+$|t^2cd|=st^3$，由 (13)、(17) 得 (6)。
+整个证明同时支付两种原函数符号。
+:::

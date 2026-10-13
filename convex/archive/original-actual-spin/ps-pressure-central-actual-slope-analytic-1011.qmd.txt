@@ -1,0 +1,564 @@
+---
+title: "实际自旋的短解析界：真实权重序与五根筛选"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-finite-kernel-rule-1011h
+        - def-psgs-tensor-weights-1011h
+        - lem-psgs-constant-and-full-tail-1011h
+    - from: ps-pressure-fourth-spin-two-channel-budget-1011.qmd
+      use:
+        - lem-ppfs-exact-fourth-spin-1011
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-elementary-constants-1011
+    - from: ps-pressure-low-spin-positive-ratios-1011.qmd
+      use:
+        - lem-ppspr-exact-low-spin-1011
+---
+
+::: {#lem-ppcaa-weight-order-1011 .lemma name="真实权重的递增通道上界" date="2026-10-11" export="lem-ppcaa-weight-order-1011"}
+采用 @def-psgs-tensor-weights-1011h，置
+$$
+u(\beta)=\tan(\alpha-\beta),\qquad W_*(\beta)=\cos^2(\alpha-\beta).
+$$
+若实连续函数 $x,y$ 满足 $y\ge0$ 且 $f=x+uy$ 非减，则
+$$
+\frac{\int_0^\alpha(xW+yV)}{\int_0^\alpha W}
+\le\frac{\int_0^\alpha fW_*}{\int_0^\alpha W_*}.
+\tag{1}
+$$
+若另有 $x\ge-m$，左侧也不小于 $-m$。
+:::
+
+::: {.proof of="lem-ppcaa-weight-order-1011" status="verified"}
+由 @def-psgs-tensor-weights-1011h，$W'\le2uW$、$0\le V\le uW$。
+由 @def-psgs-tensor-weights-1011h，$W\in W^{1,1}(0,\alpha)$，
+故取其在 $[0,\alpha]$ 上的绝对连续代表。
+$W_*$ 光滑且 $W_*\ge\cos^2\alpha>0$，所以 $1/W_*$ 也光滑有界，
+乘积 $g=W(1/W_*)$ 在整个闭区间绝对连续。
+又 $W_*'=2uW_*$，乘积法则几乎处处给
+$$
+g'=\frac{W'-2uW}{W_*}\le0.
+$$
+因此对任意 $0\le\beta_1<\beta_2\le\alpha$，
+$g(\beta_2)-g(\beta_1)=\int_{\beta_1}^{\beta_2}g'\le0$，
+即 $g$ 在整个闭区间非增。
+$f$ 连续、$g$ 绝对连续，故两者在紧区间有界，以下二重积分绝对可积。
+相对于概率测度 $d\nu=W_*\,d\beta/\int W_*$，
+$$
+2\operatorname{Cov}_\nu(f,g)
+=\iint(f(\beta)-f(\gamma))(g(\beta)-g(\gamma))\,d\nu(\beta)d\nu(\gamma)\le0.
+$$
+由于 $\mathbb E_\nu g=(\int W)/(\int W_*)>0$，
+$\operatorname{Cov}_\nu(f,g)\le0$ 可除以该正数，得到
+$\int fW/\int W\le\int fW_*/\int W_*$；再用 $yV\le yuW$ 得 (1)。
+最后 $xW+yV\ge-mW$，给下界。
+:::
+
+::: {#lem-ppcaa-low-actual-spin-1011 .lemma name="二三阶实际自旋的三个短预算" date="2026-10-11" export="lem-ppcaa-low-actual-spin-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$。
+令 $X_j,Y_j$ 为关于 $(c,d)\mapsto(\varepsilon c,\varepsilon d)$ 的 $j$ 次系数，
+$K_j=10\int(X_jW+Y_jV)$，$t=|c|,s=|d|$。当 $t>0$ 时，
+$$
+\frac{|K_2|}{C_0}<\frac9{50}t^2+\frac9{10}ts,\qquad
+\frac{|K_3|}{C_0}<\frac3{10}t^3.
+\tag{2}
+$$
+$t=0$ 时这些项均为零。
+更准确地，对 @lem-ppspr-exact-low-spin-1011 的三个实通道，记
+$J[x,y]=\int(xW+yV)/\int W$，则
+$$
+-9/50<J[x_0,y_0]<0,\qquad
+0<J[x_V,y_V]<9/10,\qquad |J[x_U,y_U]|<3/10.
+$$
+:::
+
+::: {.proof of="lem-ppcaa-low-actual-spin-1011" status="verified"}
+参数及可容许积分权的定义采用 @def-psgs-tensor-weights-1011h，特别保留 $a_0=\alpha\cot\alpha$ 与 $r\in\mathbb R$。
+以下推导沿用 @def-psgs-exact-tensor-1011h 所给对象、记号与适用条件。
+@lem-ppspr-exact-low-spin-1011 给准确分解
+$$
+X_2=\bar c^2x_0+cd\,x_V,\quad Y_2=\bar c^2y_0+cd\,y_V,\quad
+X_3=c^3x_U,\quad Y_3=c^3y_U.
+\tag{3}
+$$
+记 $a=\alpha\cot\alpha,p=1+a,w=1-a,b=9/50,e=9/250$。
+@lem-pplojm-elementary-constants-1011 的三角界，
+以及 @lem-psgs-constant-and-full-tail-1011h 的常数隔离和
+$\alpha^2=a^2(3-4r)$，给
+$$
+\frac{157}{250}<\alpha<\frac{22}{35},\quad
+\frac{197}{500}<\alpha^2<\frac25,\quad
+\frac67<a<\frac{13}{15},\quad
+\frac{309}{500}<r<\frac{619}{1000}<\frac58,\quad
+\frac2{15}<w<\frac17.
+\tag{4}
+$$
+例如 $a>6/7$ 也由
+$a\ge(1-\alpha^2/2+\alpha^4/24-\alpha^6/720)/(1-\alpha^2/6+\alpha^4/120)$
+的交叉分子 $1-5\alpha^2/2+29\alpha^4/120-7\alpha^6/720>0$ 得到。
+置 $C_\alpha=r/2=\cos2\alpha,S_\alpha=\sin2\alpha$，
+则 $19/20<S_\alpha<1$，因为 $S_\alpha^2=1-r^2/4$。
+
+纯二阶中令 $z=\beta^2,C_\beta=\cos2\beta,S_\beta=\sin(2\beta)/\beta,h_0=1-w^2$。
+零点商连续延拓。准确公式是
+$$
+x_0=-b\{(h_0+z)C_\beta+2wzS_\beta\},\quad
+y_0=b\{(h_0+z)\sin2\beta-2w\beta C_\beta\}.
+$$
+$\sin2\beta\ge2\beta C_\beta$、$h_0>w$ 给 $y_0\ge0$。
+花括号 $F$ 对 $z=\beta^2$ 的导数为
+$$
+F'=(1+2w)C_\beta+(w-h_0-z)S_\beta
+\le S_\beta(1/2+2w-h_0-z)<0,
+$$
+因为 $C_\beta\le S_\beta/2,w<1/7,h_0>48/49$。
+故 $0<F\le F(0)=h_0<1$，即 $-b<x_0<0$。
+令 $\theta=\alpha-\beta,u=\tan\theta$，和角公式给
+$$
+x_0+uy_0=-\frac b{\cos\theta}
+\{(h_0+z)\cos(\alpha+\beta)+2w\beta\sin(\alpha+\beta)\}<0.
+$$
+所以对 $0\le v=V/W\le u$，$-b<x_0+vy_0<0$。
+
+由 @lem-ppspr-exact-low-spin-1011 的混合二阶公式，
+$$
+x_V=\frac35\{p(1-r\cos2\beta)+r\beta\sin2\beta\}
+\ge\frac35p(1-r)>0,
+$$
+$$
+y_V=\frac35\{pr\sin2\beta+\beta(1+r\cos2\beta)\}\ge0.
+$$
+这里 $0\le\beta\le\alpha<\pi/4$、$p>0$、$0<r<1$，故每个所用三角项非负。
+令 $A_0=(1+r)/2,b_0=rS_\alpha$，
+$$
+f_V=x_V+uy_V=\frac35\{pA_0+b_0\beta+u(A_0\beta-pb_0)\}.
+\tag{5}
+$$
+由于 $pb_0>(13/7)(3/5)(15/16)>1$，而
+$A_0\alpha<(13/16)(16/25)=13/25$，
+$$
+f_V'=\frac35\{b_0+A_0u+(pb_0-A_0\beta)\sec^2\theta\}>0.
+$$
+可以应用 @lem-ppcaa-weight-order-1011。
+置 $I=\int W_*=\alpha/2+S_\alpha/4$。直接积分给
+$$
+\int\beta W_*=\alpha^2/4+(1-C_\alpha)/8,\quad
+\int\sin\theta\cos\theta=(1-C_\alpha)/4,\quad
+\int\beta\sin\theta\cos\theta=\alpha/4-S_\alpha/8.
+$$
+于是
+$$
+N_V:=\int f_VW_*=\frac35\left\{
+\frac{A_0\alpha(2p+1)}4+\frac{rS_\alpha\alpha^2}4+
+\frac{(2p-1)r^2S_\alpha}8\right\}.
+\tag{6}
+$$
+三项依次小于 $923/1500,1/16,41/300$，和为 $1629/2000$；
+这是代入 $A_0<13/16,\alpha<16/25,p<28/15,r<5/8,\alpha^2<2/5,r^2<2/5,S_\alpha<1$ 的有理界。
+而 $I>35/64$，故 $(3/2)I>105/128>1629/2000$。
+得到 $0<N_V/I<9/10$。
+
+纯三阶置
+$$
+T_0=ea^3+(3e+b)a^2+2ba,\quad T_1=3ea^2+2(3e+b)a+2b,\quad
+L=3ea+3e+b,\quad T=T_0-L\beta^2,\quad Q=T_1-e\beta^2.
+$$
+(4) 的端点替换给
+$$
+27/50<T_0<69/125,\quad T_1<941/1000,\quad
+19/50<L<191/500,\quad T(\alpha)>39/100,\quad Q(\alpha)>9/10.
+\tag{7}
+$$
+其中 $T(\alpha)$ 对 $a$ 的导数
+$3ea^2+2(3e+b)a+2b-3e\alpha^2>0$，故其下界在
+$a=6/7,\alpha^2=2/5$ 取得；其余也是同类低次有理比较。
+准确通道为
+$$
+x_U=-TC_\beta+\beta Q\sin2\beta+rb\{a(a+2)-\beta^2\},\quad
+y_U=T\sin2\beta+\beta QC_\beta+2rbp\beta.
+\tag{8}
+$$
+由 (7)，$y_U\ge0$，且
+$$
+x_U'=2\beta\{(L+Q)C_\beta-rb\}
++\{2T+T_1-3e\beta^2\}\sin2\beta>0.
+$$
+第一括号大于 $(19/50+9/10)(3/10)-(5/8)(9/50)>0$；
+第二括号由 (7) 为正。于是
+上述严格导数号用于 $0<\beta\le\alpha$，在 $\beta=0$ 导数为零，仍给全窗单调性。
+$$
+x_U\ge x_U(0)>-69/125+(3/5)(9/50)(6/7)(20/7)>-3/10.
+\tag{9}
+$$
+写 $f_U=x_U+uy_U=f_0+uf_1$，其中
+$$
+f_0=-C_\alpha T+S_\alpha\beta Q+rb\{a(a+2)-\beta^2\},\quad
+f_1=-S_\alpha T-C_\alpha\beta Q+2rbp\beta.
+$$
+微分得到
+$$
+f_0'=r\beta(L-2b)+S_\alpha(T_1-3e\beta^2)>0,\quad
+f_1'=2L\beta S_\alpha+r(2bp-T_1/2+3e\beta^2/2)>0.
+$$
+这里 $L>19/50>2b$，$T_1-3e\beta^2>9/10-2e(2/5)>0$，
+$2bp-T_1/2>(9/25)(13/7)-941/2000>0$。
+另有
+$$
+f_1(\alpha)/\alpha
+<- (39/100)(3/2)-(3/5)(9/20)+21/50<0.
+$$
+所以 $f_1<0$，$f_U'=f_0'+uf_1'-\sec^2\theta f_1>0$。
+
+为显示这次积分的全部计算，记 $I_n=\int_0^\alpha\beta^n\cos2\beta\,d\beta$、
+$J_n=\int_0^\alpha\beta^n\sin2\beta\,d\beta$。
+分部积分给 $I_n=\alpha^nS_\alpha/2-(n/2)J_{n-1}$、
+$J_n=-\alpha^nC_\alpha/2+(n/2)I_{n-1}$（$n\ge1$），从
+$I_0=S_\alpha/2$、$J_0=(1-C_\alpha)/2$ 起得到
+$$
+\begin{aligned}
+I_1&=\alpha S_\alpha/2+(C_\alpha-1)/4,&
+J_1&=-\alpha C_\alpha/2+S_\alpha/4,\\
+I_2&=\alpha^2S_\alpha/2+\alpha C_\alpha/2-S_\alpha/4,&
+J_2&=-\alpha^2C_\alpha/2+\alpha S_\alpha/2+(C_\alpha-1)/4,\\
+J_3&=-\alpha^3C_\alpha/2+3\alpha^2S_\alpha/4+3\alpha C_\alpha/4-3S_\alpha/8.
+\end{aligned}
+$$
+令 $\theta=\alpha-\beta$；积化和差给
+$\cos\theta\cos(\alpha+\beta)=(C_\beta+C_\alpha)/2$、
+$\cos\theta\sin(\alpha+\beta)=(\sin2\beta+S_\alpha)/2$。
+结合 $\cos2\theta=C_\alpha C_\beta+S_\alpha\sin2\beta$、
+$\sin2\theta=S_\alpha C_\beta-C_\alpha\sin2\beta$，(8) 的被积式准确为
+$$
+\begin{aligned}
+f_UW_*={}&-\tfrac12T(C_\beta+C_\alpha)+\tfrac12\beta Q(\sin2\beta+S_\alpha)\\
+&+\tfrac{rb}{2}[a(a+2)-\beta^2](1+C_\alpha C_\beta+S_\alpha\sin2\beta)\\
+&+rbp\beta(S_\alpha C_\beta-C_\alpha\sin2\beta).
+\end{aligned}
+$$
+所以 $N_U$ 的尚未化简的五组积分为
+$$
+\begin{aligned}
+&-\tfrac{T_0}{2}(I_0+C_\alpha\alpha)
++\tfrac{T_1}{2}(J_1+S_\alpha\alpha^2/2)
++\tfrac L2(I_2+C_\alpha\alpha^3/3)
+-\tfrac e2(J_3+S_\alpha\alpha^4/4)\\
+&+\tfrac{rb}{2}\{a(a+2)(\alpha+C_\alpha I_0+S_\alpha J_0)
+-\alpha^3/3-C_\alpha I_2-S_\alpha J_2\}
++rbp(S_\alpha I_1-C_\alpha J_1).
+\end{aligned}
+$$
+将显示的 $I_n,J_n$ 代入，使用 $p=1+a$、$C_\alpha^2+S_\alpha^2=1$，
+$N_U=\int f_UW_*$ 准确为以下五项之和：
+$$
+\begin{aligned}
+N_U={}&-T_0(C_\alpha\alpha/2+S_\alpha/4)\\
+&+T_1(S_\alpha\alpha^2/4-C_\alpha\alpha/4+S_\alpha/8)\\
+&+L(C_\alpha\alpha^3/6+C_\alpha\alpha/4+S_\alpha\alpha^2/4-S_\alpha/8)\\
+&+e(-S_\alpha\alpha^4/8-3S_\alpha\alpha^2/8+3S_\alpha/16
++C_\alpha\alpha^3/4-3C_\alpha\alpha/8)\\
+&+rb\{\alpha[(a^2+3a)/2+1/4]-\alpha^3/6
++S_\alpha[(a^2+a)/4-1/8]\}.
+\end{aligned}
+\tag{10}
+$$
+五项分别小于 $-9/50,1/6,3/200,0,13/80$。
+为显示全部替换方向，前三项的上界可取
+$$
+\begin{aligned}
+&-\frac{27}{50}\left[\frac{309}{1000}\frac{157}{250}\frac12+\frac{19}{80}\right]<-\frac9{50},\\
+&\frac{941}{1000}\left[\frac1{10}-\frac{309}{1000}\frac{157}{250}\frac14+\frac18\right]<\frac16,\\
+&\frac{191}{500}\left[\frac{619}{2000}\frac{22}{35}\frac{19}{60}-\frac{19}{800}\right]<\frac3{200}.
+\end{aligned}
+$$
+若被乘的括号非正，上界立即成立；否则按正系数上端替换。
+第四项除以 $e>0$ 后，先准确分组为
+$$
+S_\alpha\left(\frac3{16}-\frac{3\alpha^2}{8}-\frac{\alpha^4}{8}\right)
+-C_\alpha\alpha\left(\frac38-\frac{\alpha^2}{4}\right).
+$$
+第一括号在 $197/500<\alpha^2<2/5$ 上严格为正，且小于
+$3/16-(3/8)(197/500)=159/4000$；$S_\alpha<1$ 保持这个正上界。
+第二括号大于 $3/8-(2/5)/4=11/40$，
+所以负部分严格小于 $-(309/1000)(157/250)(11/40)$。
+二者之和小于 $159/4000-(309/1000)(157/250)(11/40)<0$。
+第五项的上界为
+$$
+\frac{619}{1000}\frac9{50}\left\{
+\frac{22}{35}\left[\frac{(13/15)^2+3(13/15)}2+\frac14\right]
+-\frac{(157/250)^3}6+\frac{(13/15)^2+13/15}4-\frac18\right\}<\frac{13}{80}.
+$$
+故 $N_U<197/1200<(3/10)(1103/2000)<(3/10)I$，
+其中 $I>\alpha/2+19/80>1103/2000$。
+结合 (9)、$y_U\ge0$ 与 @lem-ppcaa-weight-order-1011，
+实际纯三阶实系数的绝对值小于 $3/10$。
+对 (3) 的准确复字符取三角不等式，便得 (2)。
+$t=0$ 时 $c=0$，(3) 中 $\bar c^2,cd,c^3$ 全为零，
+故 $X_2=Y_2=X_3=Y_3=0$，进而 $K_2=K_3=0$，包括 $d\ne0$ 的情形。
+:::
+
+::: {#lem-ppcaa-fourth-actual-spin-1011 .lemma name="四阶实际自旋的直接点态预算" date="2026-10-11" export="lem-ppcaa-fourth-actual-spin-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$，
+$K_4=10\int(X_4W+Y_4V)$。当 $t>0$ 时，
+$$
+|K_4|/C_0<\tfrac14t^4+\tfrac{37}{100}st^3.
+\tag{11}
+$$
+更准确地，@lem-ppfs-exact-fourth-spin-1011 的纯、混合实通道满足
+$$
+\left|\frac{\int(x_{\rm p}W+y_{\rm p}V)}{\int W}\right|<301/1250,
+\qquad
+\left|\frac{\int(x_{\rm m}W+y_{\rm m}V)}{\int W}\right|<46/125.
+$$
+:::
+
+::: {.proof of="lem-ppcaa-fourth-actual-spin-1011" status="verified"}
+由 @lem-pplojm-elementary-constants-1011 有 $\alpha^2<2/5$、$a<13/15$、$8/13<r<5/8$。
+交错 Taylor 界给
+$a\ge(1-A/2+A^2/24-A^3/720)/(1-A/6+A^2/120)>6/7$，其中 $A=\alpha^2$；
+交叉分子 $1-5A/2+29A^2/120-7A^3/720>0$，因为前两项非负、后两项之和正。
+又 $\alpha=\pi/5<22/35<16/25$，
+$\tan^2\alpha=(2-r)/(2+r)<9/17<9/16$，故 $\tan\alpha<3/4$。
+以下推导沿用 @def-psgs-exact-tensor-1011h 所给对象、记号与适用条件。
+@lem-ppfs-exact-fourth-spin-1011 给
+$X_4=t^2\bar c^2x_{\rm p}+t^2cd\,x_{\rm m}$、
+$Y_4=t^2\bar c^2y_{\rm p}+t^2cd\,y_{\rm m}$。
+沿用其 $P,L,R,q_0,e,f,g$；置 $z=\beta^2,C_\beta=\cos2\beta,
+S_\beta=\sin(2\beta)/\beta,h_0=a(2-a),Q=q_0-3ewz$。
+显式低次系数与 $6/7<a<13/15,z<2/5$ 给
+$$
+0<P<3/25,\quad0<-L<23/200,\quad0<Q<3/50,\quad R<80/27,\quad g=27/250.
+$$
+具体地，$q_0(a)=ea^2(3-a)$ 和 $fa^3(2-a)$ 在此区间严格递增，
+因为导数分别为 $3ea(2-a)>0$ 和 $2fa^2(3-2a)>0$。端点代入给
+$$
+\frac1{20}<e(6/7)^2(3-6/7)<q_0<e(13/15)^2(3-13/15)<\frac3{50},
+$$
+$$
+0<p_0<e(13/15)^2(3-13/15)+f(13/15)^3(2-13/15)<\frac3{40},
+\quad 0<p_2=(6f+3e)a-3e<\frac1{10}.
+$$
+又 $-p_1=3ea(2-a)-2fa^3$ 的导数是 $6e(1-a)-6fa^2<0$，
+因为 $e/7<f(6/7)^2$，故
+$$
+0<3e(48/49)-2f(13/15)^3<-p_1
+<3e(6/7)(8/7)-2f(6/7)^3<\frac2{25}.
+$$
+以及 $0<-p_3=e+2f(2-a)<e+2f(8/7)<43/500$。
+因此 $P<3/40+(1/10)(2/5)+(11/500)(2/5)^2<3/25$，
+$0<-L<2/25+(43/500)(2/5)<23/200$。
+由 $0<w<1/7$，$3ewz<(27/250)(1/7)(2/5)<1/100$，得
+$Q=q_0-3ewz>1/20-1/100>0$ 且 $Q<q_0<3/50$。
+此外
+$$
+0<R<(13/15)^2(28/15)+(58/15)(2/5)=9952/3375<80/27.
+$$
+纯通道公式给
+$$
+-3/80<x_{\rm p}=PC_\beta+z(-L)S_\beta-rQ<53/250,\quad
+|y_{\rm p}|/\beta<6/25.
+$$
+后一式把 $y_{\rm p}/\beta=-PS_\beta-LC_\beta+re(3h_0+z)$
+写成两项非负量之差；其界分别为 $6/25$ 和 $23/200+153/2000<6/25$。
+混合通道是
+$$
+x_{\rm m}=g\{r[RC_\beta+z(h_0-z)S_\beta]-R\},\quad
+y_{\rm m}/\beta=g\{(h_0-z)(1+rC_\beta)-rRS_\beta\}.
+$$
+这里 $h_0=1-w^2>48/49$，故 $h_0-z>48/49-2/5>0$；
+又 $0<C_\beta\le1$、$0<S_\beta\le2$。两个非负项分别满足
+$(h_0-z)(1+rC_\beta)<13/8$、$rRS_\beta<(5/4)(80/27)$。
+因此 $|y_{\rm m}|/\beta<g\max\{13/8,100/27\}=2/5$，
+而 $x_{\rm m}>-gR>-8/25$。
+其导数为
+$$
+(x_{\rm m})_z=g\{r[(a+3+h_0-z)C_\beta-B_0S_\beta]-(a+3)\}<0,
+$$
+其中 $B_0=a^2(a+1)-h_0/2+(a+9/2)z\ge(6/7)^2(13/7)-1/2=593/686>0$，
+而 $r(a+3+h_0-z)C_\beta<(5/8)(a+4)<a+3$。
+又 $x_{\rm m}(0)=ga^2(a+1)(r-1)<0$，所以 $x_{\rm m}<0$。
+由 @def-psgs-tensor-weights-1011h，$v=V/W\le\tan(\alpha-\beta)$，
+$\tan x/x$ 递增以及 $\alpha<16/25,\tan\alpha<3/4$ 给
+$\beta v\le\alpha\tan\alpha/4<3/25$。
+于是
+$$
+|x_{\rm p}+vy_{\rm p}|<53/250+18/625=301/1250<1/4,\quad
+|x_{\rm m}+vy_{\rm m}|<8/25+6/125=46/125<37/100.
+$$
+乘回两个复字符并积分即得结论。
+:::
+
+::: {#lem-ppcaa-complete-actual-tail-1011 .lemma name="实际自旋五阶以上的完整根筛选尾" date="2026-10-11" export="lem-ppcaa-complete-actual-tail-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$。
+记 $K_{\rm h}$ 为全部五阶及以上实际自旋。
+当 $0<t\le27/50,0\le s\le5/8$ 时，
+$$
+|K_{\rm h}|/C_0<\tfrac{11}{200}t^2+\tfrac{21}{1000}ts.
+\tag{12}
+$$
+该界由如下非负包络给出。置 $k=6/5,L=9/7,b_*=13/8,T=27/50$、
+$E_j=L^j/j!$（负指标取零），以及
+$$
+p_n(j)=2^{-n}\sum_{\substack{0\le m\le n\\n-2m\equiv j\pmod5}}\binom nm,
+$$
+$$
+u_N=p_N(2)(E_N+kE_{N-1})+
+p_{N-1}(2)b_*(E_{N-1}+kE_{N-2}),\qquad
+v_N=p_{N-1}(1)b_*(E_{N-1}+kE_{N-2}).
+$$
+逐次包络满足
+$$
+\frac{|K_N|}{C_0}\le\frac54(u_Nt^N+v_Nst^{N-1}),\qquad
+H_p:=\frac54\sum_{N\ge5}T^{N-2}u_N<\frac{11}{200},\quad
+H_m:=\frac54\sum_{N\ge5}T^{N-2}v_N<\frac{21}{1000}.
+$$
+:::
+
+::: {.proof of="lem-ppcaa-complete-actual-tail-1011" status="verified"}
+参数及可容许积分权的定义采用 @def-psgs-tensor-weights-1011h，特别保留 $a_0=\alpha\cot\alpha$ 与 $r\in\mathbb R$。
+记 $a=a_0$。由 @lem-pplojm-elementary-constants-1011 有 $a<13/15$、$8/13<r<13/21<5/8$；
+初等界 $\pi<22/7$ 给 $\alpha<22/35$。
+又 $\cos(2\alpha)=r/2$，故
+$0<\tan^2\alpha=(2-r)/(2+r)<9/17<9/16$，即 $\tan\alpha<3/4$。
+以下推导沿用 @def-psgs-exact-tensor-1011h 所给对象、记号与适用条件。
+采用 @def-psgs-finite-kernel-rule-1011h。置
+$k=6/5,L=9/7,b_*=13/8,T=27/50,E_j=L^j/j!$，负指标取零。
+由 $a<13/15,\alpha<22/35$，
+$k^2(a^2+\alpha^2)<50548/30625<50625/30625=L^2$，
+指数的两个根系数因而均以 $L/2$ 为模上界。
+
+由权的定义，$W>0$ 几乎处处，且 $0\le v:=V/W\le\tan(\alpha-\beta)<3/4$。
+在 $W=0$ 的零测集上可任置 $v=0$，不改变任何积分。
+对这样的实数 $v$，奇偶投影前有准确组合
+$$
+P^-+ivP^+=(1+iv)(1+cn+rdn^2)
++q_\beta(-1+iv)(rcn+dn^2).
+\tag{13}
+$$
+两组共有模 $\sqrt{1+v^2}<5/4$，因为 $v\le\tan\alpha<3/4$；
+$cn,dn^2$ 的系数模各至多 $b_*\sqrt{1+v^2}$。
+奇偶投影后的 $X+vY$ 是 $(\beta,v)$、$(-\beta,-v)$ 两表达式的平均，
+故上述界不增。这里没有把独立的 $|X|+v|Y|$ 误换成割线因子。
+
+定义二项式记号
+$$
+p_n(j)=2^{-n}\sum_{\substack{0\le m\le n\\n-2m\equiv j\pmod5}}\binom nm,
+\qquad
+p_{n+1}(j)=\tfrac12[p_n(j-1)+p_n(j+1)],\quad p_n(-j)=p_n(j).
+$$
+五根平均准确消去不符合指数同余条件的项。总次数 $N$ 的剩余模和由
+$$
+\begin{aligned}
+u_N&=p_N(2)(E_N+kE_{N-1})
++p_{N-1}(2)b_*(E_{N-1}+kE_{N-2}),\\
+v_N&=p_{N-1}(1)b_*(E_{N-1}+kE_{N-2})
+\end{aligned}
+\tag{14}
+$$
+分别控制。常数与 $\mathsf W$、$cn$ 与 $\mathsf Wcn$、
+$dn^2$ 与 $\mathsf Wdn^2$ 三类的条件，计入外部 $n^2$ 后，
+恰为 $p_N(2),p_{N-1}(2),p_{N-1}(1)$。
+所以点态有 $|X_N+vY_N|\le(5/4)(u_Nt^N+v_Nst^{N-1})$。
+由 $C_0=10\int_0^\alpha W>0$，$10W/C_0$ 是概率密度；
+将此点态界对该密度积分并用积分三角不等式，得到所述 $|K_N|/C_0$ 界。
+所以完整预算是
+$$
+H_{\rm p}=\tfrac54\sum_{N\ge5}T^{N-2}u_N,\qquad
+H_{\rm m}=\tfrac54\sum_{N\ge5}T^{N-2}v_N.
+\tag{15}
+$$
+纯项为 $t^N$、混合项为 $st^{N-1}$，
+除以 $t^2,ts$ 后都只使用 $t^{N-2}\le T^{N-2}$，不需要 $s\le t$。
+当 $s=0$ 时混合部分准确为零。
+递推给
+$$
+\begin{array}{c|ccc}
+n&p_n(0)&p_n(1)&p_n(2)\\\hline
+4&3/8&1/16&1/4\\
+5&1/16&5/16&5/32\\
+6&5/16&7/64&15/64\\
+7&7/64&35/128&11/64\\
+8&35/128&9/64&57/256
+\end{array}.
+$$
+$n\ge5$ 的所有概率至多 $5/16$。在 $N=9$ 的 (14) 将概率换成 $5/16$，
+得 $\widehat u_9,\widehat v_9$。
+以后带振幅正项相邻比不超过 $LT/(N-1)\le243/2800<1/8$；
+故九阶以上由 $(5/4)(8/7)T^7\widehat u_9$、对应的 $\widehat v_9$ 控制。
+以下给每项乘 $10^5$ 后的严格有理上界：
+$$
+\begin{array}{c|cc}
+N&\text{纯}&\text{混合}\\\hline
+5&4820&1078\\6&551&896\\7&100&43\\8&9&12\\
+\ge9&2&2
+\end{array}.
+\tag{16}
+$$
+它们全部由 (14) 的阶乘式和显示概率行代入。完整整数比较为：
+
+对显示上界 m/10^5 与精确项 n/d，交叉差定义为 m d - 10^5 n；正整数差即严格上界的证书。
+
+|N|概率 (p_N(2),p_{N-1}(2),p_{N-1}(1))|纯项精确值|表上界/10^5|交叉差|混合项精确值|表上界/10^5|交叉差|
+|---:|---|---:|---:|---:|---:|---:|---:|
+|5|(5/32,1/4,1/16)|51842600991/1075648000000|4820/10^5|363260900000|13244041161/1229312000000|1078/10^5|794219900000|
+|6|(15/64,5/32,5/16)|33183727144317/6023628800000000|551/10^5|646754368300000|770579352621/86051840000000|896/10^5|44513377900000|
+|7|(11/64,15/64,7/64)|292439121683423121/295157811200000000000|100/10^5|271868951657687900000|363486813451047/860518400000000000|43/10^5|653609854895300000|
+|8|(57/256,11/64,35/128)|35523289215195535449/413220935680000000000000|9/10^5|166659499600446455100000|100818024349013127/843308032000000000000|12/10^5|37893949098687300000|
+
+对 N≥9，由 p_n(j)≤5/16，用 (14) 的上界系数
+$\hat u_9=4044797451/4628074479616$、$\hat v_9=2632227273/3305767485440$。
+每个正振幅项在 N→N+1 的相邻比不超过 L T/(N−1)；对 N≥9，
+$LT/(N-1)\le LT/8=243/2800<1/8$，且整数差 $2800-8\cdot243=856>0$。
+因此几何级数总尾分别不超过 (5/4)(8/7)T^7 $\widehat u_9$ 和 (5/4)(8/7)T^7 $\widehat v_9$：
+
+|N|尾项精确几何上界|表上界/10^5|交叉差|
+|---|---:|---:|---:|
+|≥9 pure|42310009972054085553/2530978231040000000000000|2/10^5|830955464874591444700000|
+|≥9 mixed|27534026986149505419/1807841593600000000000000|2/10^5|862280488585049458100000|
+
+列和纯项为 5482/10^5=2741/50000，与 11/200 的差为 9/50000>0。
+列和混合项为 2031/10^5=2031/100000，与 21/1000 的差为 69/100000>0。
+
+各列和为 $5482,2031$，故 $H_{\rm p}<11/200,H_{\rm m}<21/1000$。
+完整指数在闭振幅域上一致绝对收敛，可与有限根平均、奇偶投影及可积权积分交换。
+结合 (13)--(16) 得 (12)。
+:::
+
+::: {#prp-ppcaa-central-actual-spin-bound-1011 .proposition name="六比五源实际自旋的独立严格上界" date="2026-10-11" export="prp-ppcaa-central-actual-spin-bound-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$。
+在 $0<t\le27/50,0\le s\le5/8$ 上，
+$$
+\boxed{
+|K|/C_0<\frac{4699}{10000}t^2+\frac{257223}{250000}ts
+<\frac{49}{100}t^2+\frac{107}{100}ts.
+}
+\tag{17}
+$$
+在 $t=0,0\le s\le5/8$ 上，$C=C_0,K=0$。
+:::
+
+::: {.proof of="prp-ppcaa-central-actual-spin-bound-1011" status="verified"}
+完整 $C,K$ 与归一化采用 @def-psgs-exact-tensor-1011h。
+参数及可容许积分权的定义采用 @def-psgs-tensor-weights-1011h，特别保留 $a_0=\alpha\cot\alpha$ 与 $r\in\mathbb R$。
+@def-psgs-finite-kernel-rule-1011h 给零、一次自旋为零，
+且 $K=K_2+K_3+K_4+K_{\rm h}$。
+应用 @lem-ppcaa-low-actual-spin-1011、
+@lem-ppcaa-fourth-actual-spin-1011、
+@lem-ppcaa-complete-actual-tail-1011，并用 $t\le T=27/50$：
+$$
+\begin{aligned}
+|K|/C_0
+&<(.18+.3T+.25T^2+.055)t^2
++(.9+.37T^2+.021)ts\\
+&=.4699t^2+1.028892ts.
+\end{aligned}
+$$
+这两个系数严格小于 $.49,1.07$。
+$t=0$ 时 @def-psgs-exact-tensor-1011h 的节点正交性准确给
+$A=1,B=X=Y=0$，包括 $d\ne0$ 的情形。
+本证明没有使用 $C$ 的下界或实际斜率落盘的假设。
+:::

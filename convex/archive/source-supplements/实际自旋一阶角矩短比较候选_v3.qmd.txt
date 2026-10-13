@@ -1,0 +1,199 @@
+---
+title: "真实角质量的一阶矩：六标量到实际自旋的短连续比较"
+date: "2026-10-11"
+---
+
+本稿为新的独立候选，待全审；不修改任何已接受稿或项目。只使用已审 Bessel 完整源/配对、第1/2/3/5标量、H 上界、旧粗均值及真实权定义。**不使用原实际自旋、第四阶实际自旋、旧实际尾表或实际斜率结论**。总链稿只作准确源定义的引用，不把它下游的旧实际自旋输入反向作为前提。
+
+## 1. 范围与目标
+
+记 $\alpha=\pi/5,a=\alpha\cot\alpha,r=(\sqrt5-1)/2,T=27/50$。 原五节点为 $n_j=e^{(2j+1)i\alpha}$、$j=0,\ldots,4$，$\operatorname{av}=\frac15\sum_{j=0}^4$。$c,d\in\mathbb C,t=|c|,s=|d|$，两源 $\kappa=1,6/5$。本稿的 U 纯自旋结论域是 $0\le t\le T,0\le s\le5/8$；C 是 $0\le s\le t\le T$。它们覆盖原无出口严格凸几何的真实两支，但不由代数域自动推断真实压力可容许性。
+
+在以下同源可容许权前提下，拟证 $t>0$ 时
+$$\begin{array}{c|c}
+U& |K|/C_0<.322t^2+.850ts<.324t^2+.879ts\\
+C& |K|/C_0<.464t^2+1.024ts<.49t^2+1.07ts.
+\end{array}\tag{S1}$$
+$t=0$ 时 $K=0$，所有非严格界按连续延拓成立。U 的 .322/.850 并不蕴含旧引理较强的 .317/.823，故只能替代实际接口消费的 .324/.879 预算，不能逐字取代旧强引理。C 仅在 $s\le t$ 宣称，不能据此覆盖旧自旋引理 $s\le5/8$ 全矩形。
+
+保留旧粗均值
+$$|z_m|\le .144t^2+.570ts\quad(U),\qquad |z_m|\le.206t^2+.685ts\quad(C).\tag{S2}$$
+它们的合法域正是上列各域。新均值独立补充不在本稿依赖中。
+
+## 2. 真实权和完整核的准确归一
+
+$W\in W^{1,1}(0,\alpha),V\in L^1(0,\alpha)$，几乎处处
+$$W>0,\qquad0\le V\le uW,\qquad |W'|\le2V,\qquad u(\beta)=\tan(\alpha-\beta).$$
+$I=\int_0^\alpha W>0,C_0=10I$。完整原核 $X,Y$ 及 $z_m=\alpha^{-1}\int X$ 由附录定义；$G_Z(\beta)=\int_0^\beta(X-z_m)$，$h_\epsilon=Y+2\epsilon G_Z$。同源实际自旋为
+$$K=10\int_0^\alpha(XW+YV).$$
+定义 $d\mu_\epsilon=(V/2-\epsilon W'/4)d\beta/I\ge0$。由于 $G_Z(0)=G_Z(\alpha)=0$，绝对连续分部积分给
+$$\frac K{C_0}=z_m+\sum_{\epsilon=\pm1}\int_0^\alpha h_\epsilon\,d\mu_\epsilon,
+\qquad\sum_\epsilon d\mu_\epsilon=\frac V I\,d\beta.\tag{S3}$$
+这是复值等式，未将 $X$ 改为实部、未交换两个支号。$G_Z$ 光滑、$W$ 绝对连续，故分部积分合法。它与实际 $K/C$ 的先验界无关。
+
+### 真实角增量测度的一阶矩
+
+$\tan x$ 在 $[0,\alpha]$ 凸且 $\tan0=0$，所以
+$$\tan x\le \frac{x}{\alpha}\tan\alpha.$$
+于是全部 $\beta\in[0,\alpha]$ 上
+$$\beta u(\beta)\le\frac{\tan\alpha}{\alpha}\beta(\alpha-\beta)
+\le\frac{\alpha\tan\alpha}{4}<\frac{23}{200}.\tag{S4}$$
+最后常数完全有理可核：已审 $\alpha<63/100$；$\tan^2\alpha=5-2\sqrt5$，且
+$$\left(\frac{44671}{20000}\right)^2<5
+\ \Longrightarrow\ \tan^2\alpha<\frac{5329}{10000}=(73/100)^2.$$
+故 $\tan\alpha<73/100$，$\alpha\tan\alpha/4<4599/40000<23/200$。
+结合 $V\le uW$ 和 $I>0$ 得
+$$\boxed{\sum_\epsilon\int\beta\,d\mu_\epsilon
+=\frac{\int\beta V}{I}<\frac{23}{200}.}\tag{S5}$$
+此处无需独立最大化两支质量，不使用角增量总质量的 $3/8$ 帽来代替其更小一阶矩。若 $V=0$，左侧准确为0，仍严格小于正帽。
+
+## 3. 保留 t²/ts 阶的完整 h 界
+
+全部准确 Bessel/配对定义在附录。记 $q=\kappa t$、$x=e^{5i\theta},w=de^{-2i\theta}$，其中 $c=te^{i\theta}$；只在 $t>0$ 使用 $\theta$。准确保留低模满足
+$$e^{2i\theta}h^\#/\beta
+=-(v_{-2}+tQ-(v_3+tP)x)-w(J_0-Jx).$$
+已接受第1/2/3/5标量给
+$$|P|+|Q|\le\frac45qJ,\quad |v_{-2}|+|v_3|\le\frac12q^2,
+\quad |J_0|\le q^4/32,\quad |J/q-H_\epsilon|\le q^2/7.$$
+其中 $J\ge0$，闭轴按连续延拓。已审 H 二次包络给两个支号上 $H_\epsilon\le2381/1000$，所以
+$$0\le J\le\kappa t L_\kappa,\qquad
+L_\kappa:=\frac{2381}{1000}+\frac{\kappa^2T^2}{7}.$$
+合法三角不等式保留全部相位，得到
+$$|h^\#|/\beta\le q^2/2+(\tfrac45tq+s)J+s q^4/32
+\le\left(\frac{\kappa^2}{2}+\frac45\kappa^2TL_\kappa\right)t^2
++\left(\kappa L_\kappa+\frac{\kappa^4T^3}{32}\right)ts.\tag{S6}$$
+这次没有先把 $s$ 或一因子 $t$ 帽成常数而丢掉 t²/ts 结构。
+
+### 完整别名尾的原尺度拆分
+
+令 $F_*=1+t+rs,J_*=rt+s$。已审完整导数和均值尾 B9 给
+$$|h-h^\#|/\beta\le(F_*+J_*)\delta_1+(6F_*+4J_*)\delta_0,$$
+$$\delta_0\le q^6/2000,\qquad\delta_1\le q^6/400.$$
+因此恰有
+$$|h-h^\#|/\beta\le\frac{q^6}{2000}(11F_*+9J_*)
+=\frac{\kappa^6t^6}{2000}\{11+(11+9r)t+(11r+9)s\}.$$ 
+这里的 h 尾本身无需 $F_*\ge J_*$，也无需 s≤t；这区别于同时给 f/h 一张共同粗帽表的用途。用 $r<5/8$ 和 $t\le T$，有
+$$|h-h^\#|/\beta\le D_\kappa t^2+E_\kappa ts,$$
+$$D_\kappa=\frac{\kappa^6T^4}{2000}\left[11+\left(11+\frac{45}{8}\right)T\right],\quad
+E_\kappa=\frac{\kappa^6T^5}{2000}\left(\frac{55}{8}+9\right).\tag{S7}$$
+所有保留低模的无限径向尾已由所用四条标量证明支付；(S7) 是另一个完整整数别名尾，二者均保留。没有将已帽成 $\beta t/1000$ 的尾不合法地除以 t。
+
+设
+$$U_\kappa=\kappa^2/2+(4/5)\kappa^2TL_\kappa+D_\kappa,
+\qquad V_\kappa=\kappa L_\kappa+\kappa^4T^3/32+E_\kappa.$$
+两者正，全部角/支号共同满足
+$$|h_\epsilon|\le\beta(U_\kappa t^2+V_\kappa ts).\tag{S8}$$
+
+## 4. 一次积分支付与精确分数
+
+由 (S2)、(S3)、(S5)、(S8)，在 $t>0$ 时
+$$|K|/C_0<\left(a_\kappa+\frac{23}{200}U_\kappa\right)t^2
++\left(b_\kappa+\frac{23}{200}V_\kappa\right)ts,$$
+其中 $(a_1,b_1)=(.144,.570)$，$(a_{6/5},b_{6/5})=(.206,.685)$。严格性来自 (S5) 与 $U_\kappa t^2>0$，不依赖原均值界是否严格。
+
+四个准确系数是
+$$\begin{array}{c|cc}
+& t^2&ts\\\hline
+U&2253686973949991/7000000000000000&5944493595851429/7000000000000000\\
+C&792486581392543439/1708984375000000000&1748555363334129241/1708984375000000000.
+\end{array}\tag{S9}$$
+它们分别严格小于 $.322,.850,.464,1.024$，所以得到 (S1)。这些都是直接代入 (S7) 的四则分数，没有参数格、采样、Bernstein表或新的多项式正性清单。
+
+## 5. 轴与消费范围
+
+$\beta=0$ 的 h 与尾皆为0，归一表达按连续值；$\beta=\alpha$ 两支吻合，所有界含端点。$q=0$ 不用 $J/q$ 做除法。$t=0$ 时由五根筛选 $X=Y=0$，包括放大U矩形的 $d\ne0$；所以 $K=0$。这些点不被宣称为原实际无出口域的点。
+
+在真正 U 带 $t\le s\le2t,s<r$ 及真正 C 支上，已接受的 f≥0 与独立的标量对应式 $C/C_0=a_m+\sum_\epsilon\int f_\epsilon\,d\mu_\epsilon$ 给 $C\ge C_0a_m\ge C_0(1+.26t^2)$。结合 (S1)，原消费者所需
+$$|K|/C<\frac{.324t^2+.879ts}{1+.26t^2}<\frac12\quad(U),$$
+$$|K|/C<\frac{.49t^2+1.07ts}{1+.26t^2}\le\frac{56862}{134477}<\frac{17}{40}\quad(C)$$
+照旧成立。U 的最后比较只需 $s<619/1000$，其分子上界 $19414647/50000000<1/2$；C 用 $s\le t\le T$ 及 $x/(1+.26x)$ 递增。此后下游熵/谱模块仍需原证明，不因自旋预算变短而消失。
+
+## 6. 依赖、复杂度与非循环
+
+新实质是 (S5) 的真实角测度一阶矩与 (S6) 的保阶配对。新增有限负担仅为两套 L/D/E 代入及四个系数有理比较；原六式本身仍带其已披露短代数负担，不能把继承成本说成零。新证明只消费第1/2/3/5式；没有另消费第4/6式作为自旋上界，但下游 f≥0 仍由完整六式已审核承担。
+
+使用的旧粗均值、真实压力可容许性不能删去。原实际自旋、旧第四阶分解及旧高尾表从本候选推导链中完全未用；它们的旧更强陈述仍保存。本稿没有项目整合、engine状态或整篇根定理的验收声明。
+
+下列附录逐字摘录已冻结总链v2中第2–4节的定义和六式清单，仅用于自含定义；各命题证明与SHA依赖详见 SOURCE_BINDINGS.json 所列冻结独立稿与原始总绑定。新证明不把这份定义摘录之外的旧自旋依赖导入。
+
+# 附录：完整源与低模的原定义
+
+## 2. 完整源核没有去权或换号
+
+设
+
+$$\rho_j=\kappa\Re(cn_j),\quad\omega_j=1+\rho_j>0,
+\quad\chi_j=e^{i\kappa a\Im(cn_j)},$$
+$$F_j=1+cn_j+rdn_j^2,\qquad\mathcal J_j=rcn_j+dn_j^2,$$
+$$l_j=\Re(\omega_j\chi_j^{-1}F_j),\quad k_j=\Re(\omega_j\chi_j^{-1}\mathcal J_j),$$
+$$L_j=n_j^2\omega_j\chi_j F_j,\quad N_j=n_j^2\omega_j\chi_j\mathcal J_j.$$
+
+原奇偶对称核准确为
+
+$$A=\operatorname{av}[l_j\cos(\rho_j\beta)-k_j\cos((\rho_j+2)\beta)],$$
+$$B=\operatorname{av}[l_j\sin(\rho_j\beta)+k_j\sin((\rho_j+2)\beta)],$$
+$$X=\operatorname{av}[L_j\cos((\rho_j+2)\beta)-N_j\cos(\rho_j\beta)],$$
+$$Y=-\operatorname{av}[L_j\sin((\rho_j+2)\beta)+N_j\sin(\rho_j\beta)].$$
+
+$X$ 始终为复值偶核，不换成其实部。令 $a_m=I_\alpha A$、$z_m=I_\alpha X$，$I_\beta g=\beta^{-1}\int_0^\beta g$。再令
+
+$$G_A(\beta)=\int_0^\beta(A-a_m),\quad G_Z(\beta)=\int_0^\beta(X-z_m),$$
+$$f_\epsilon=B+2\epsilon G_A,\qquad h_\epsilon=Y+2\epsilon G_Z.$$
+
+两个量使用**同一个** $\epsilon$。令 $T_\lambda(\beta)=\beta[\operatorname{sinc}(\lambda\beta)-\operatorname{sinc}(\lambda\alpha)]$，则直接积分得到原完整 $f,h$，没有截掉 $\chi$ 或 $\omega$，也没有援引仅对完整均值成立的去源权恒等式替换被积核。
+
+## 3. 完整低模结构与别名全尾
+
+对 $t>0$ 写 $c=te^{i\theta}$，令径向参数 $q=\kappa t\le81/125$。此处 $q$ 不是原文的 $e^{-2i\beta}$。令 $R_b=\sqrt{a^2+b^2}>0$、$\delta(b)=\arctan(b/a)$，直接以交错级数定义整数阶 Bessel 函数（负阶 $J_{-n}=(-1)^nJ_n$）。完整源权模为
+
+$$W_k(b)=e^{ik\delta}J_k(qR_b)+\frac q2\big[e^{i(k-1)\delta}J_{k-1}(qR_b)+e^{i(k+1)\delta}J_{k+1}(qR_b)\big].$$
+
+反源相位满足 $W_k^-=W_{-k}^+$，而 $W_k(-b)=\bar W_k(b)$。原五节点的准确筛选保留
+
+$$\operatorname{av}n_j^m\omega_j\chi_j^\sigma e^{i\rho_j b}
+=\sum_{l\in\mathbb Z}(-1)^l e^{i(5l-m)\theta}W_{5l-m}^\sigma(b).$$
+
+它不各向同性；$(-1)^l$、负模与全部复方向都保留。只取 $|5l-m|\le5$ 定义 $f^\#,h^\#$，完整剩余别名及其导数由附录A给
+
+$$\begin{array}{c|cc}
+ &|f-f^\#|&|h-h^\#|\\\hline
+U&\le\beta t^2/750&\le\beta t/1000\\
+C&\le\beta t^2/250&\le\beta t/400
+\end{array}\tag{7}$$
+
+这些是**完整 f/h 的误差**，已经包含导数、均值积分、全部 $\beta$ 前因子和正确 $t$ 阶。不是只比较某个零阶 $K_m$ 的尾。实际 $a>0$ 无 $R_b=0$ 点；辐角采用连续提升，负阶与 $q=0$ 的延拓见附录A。对截段项的导数仍取真实导数，不错误截去求导时出现的相邻模。
+
+令 $\ell_k=\Re W_k,m_k=\Im W_k$，$c_k=\ell_k\cos2b-m_k\sin2b$、$s_k=\ell_k\sin2b+m_k\cos2b$，并定义实标量
+
+$$u_k=\frac{m_k(\beta)}\beta+2\epsilon(I_\beta\ell_k-I_\alpha\ell_k),\qquad
+v_k=\frac{s_k(\beta)}\beta-2\epsilon(I_\beta c_k-I_\alpha c_k).$$
+
+设 $x=e^{5i\theta},w=de^{-2i\theta}$，则附录B的准确配对为
+
+$$f^\#/\beta=A_0-A_5\Re x+\Re[w(P-Qx)],$$
+$$e^{2i\theta}h^\#/\beta=-(H_0-H_5x)-w(J_0-Jx),$$
+
+其中
+
+$$J=u_1+rv_1,\ J_0=u_{-4}+rv_{-4},\ K_5=u_5+u_{-5},\ P=ru_2+v_2,\ Q=ru_{-3}+v_{-3},$$
+$$A_0=u_0+tJ,\ A_5=K_5+tJ_0,\ H_0=v_{-2}+tQ,\ H_5=v_3+tP.$$
+
+这里 $J,J_0,K_5$ 是组合标量，不是 Bessel 函数或最终张量 $K$。两个核里的 $w$ 相同，且 $|w|=s$；接下来只用合法圆盘三角不等式，不无约束最小化，也不将独立最坏方向宣称为原相关极值。
+
+## 4. 六个全部径向标量及其承重机制
+
+令 $H_\epsilon$ 为 $J/q$ 的准确 $q=0$ 极限：
+
+$$H_\epsilon=\frac12\{1+r[2(1+a)\operatorname{sinc}(2\beta)+\cos2\beta
+-\epsilon((2a+1)(\operatorname{sinc}(2\beta)-\operatorname{sinc}(2\alpha))+
+\cos2\beta-\cos2\alpha)]\}.$$
+
+冻结附录D–H分别证明下列闭域不等式：
+
+1. $|P|+|Q|\le(4/5)qJ$
+2. $|v_{-2}|+|v_3|\le(249/500)q^2\le q^2/2$
+3. $|J_0|\le q^4/32$
+4. $|K_5|\le q^5/200$
+5. $|J/q-H_\epsilon|\le q^2/7$，$q=0$ 连续延拓
+6. $u_0\ge q^2[1/2+\epsilon(\alpha^2-\beta^2)/6]-q^4/12$
+

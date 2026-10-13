@@ -1,0 +1,21 @@
+---
+title: "凸五边形主定理证明"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../goals.qmd
+      use:
+        - thm-main-convex-pentagon-dirichlet
+    - from: true-pressure-terminal-migration-1011/global-gluing.qmd
+      use:
+        - thm-tpm-convex-global-comparison-tpm1011
+---
+
+::: {.proof of="thm-main-convex-pentagon-dirichlet"}
+对该目标中的面积 $A$ 凸五边形，应用 @thm-tpm-convex-global-comparison-tpm1011。
+再将同一比较定理应用于正五边形 $R_A$，其等号条件直接给
+$|R|\lambda_1(R)=A\lambda_1(R_A)$。
+将此恒等式代入对 $P$ 的比较，得到
+$A\lambda_1(P)\ge A\lambda_1(R_A)$。
+除以 $A>0$ 得目标的准确陈述。
+:::

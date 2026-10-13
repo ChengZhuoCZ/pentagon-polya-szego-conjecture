@@ -1,0 +1,57 @@
+---
+title: "压力—输运路线的直接复现记录与重建入口"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: reductions.qmd
+      use:
+        - def-spectral-functional
+        - lem-dirichlet-scaling
+---
+
+::: {#prp-pressure-route-quadrilateral-exit-1011 .proposition name="面积比二十六分之二十五的四边形出口" date="2026-10-11" export="prp-pressure-route-quadrilateral-exit-1011"}
+设 $P$ 是正面积有界开集，$Q$ 是包含 $P$ 的非退化凸四边形，且
+$|Q|\le(26/25)|P|$。则
+$$
+F(P)\ge\frac{25\pi^2}{13}.
+$$
+若参考域 $R$ 另满足 $F(R)<473/25$，则
+$$
+F(P)-F(R)>\frac{53}{1300}>0.
+$$
+:::
+
+::: {.proof of="prp-pressure-route-quadrilateral-exit-1011" status="verified"}
+按 @def-spectral-functional，$F(D)=|D|\lambda_1(D)$，其中 $\lambda_1$
+是有界开域的第一 Dirichlet 特征值；四边形取其内部，参考域 $R$ 取该定义中的开域。
+@lem-dirichlet-scaling 的零延拓域单调性给
+$\lambda_1(P)\ge\lambda_1(Q)$。
+四边形 Pólya–Szegő 定理准确给 $|Q|\lambda_1(Q)\ge2\pi^2$；
+其陈述见 [Freitas–Siudeja，式 (1.1)](https://www.numdam.org/item/10.1051/cocv/2009018.pdf)。
+因此
+$$
+F(P)\ge\frac{|P|}{|Q|}F(Q)
+\ge\frac{25}{26}\,2\pi^2=\frac{25\pi^2}{13}.
+$$
+用 $\pi>157/50$，有
+$$
+\frac{25\pi^2}{13}>\frac{24649}{1300}
+=\frac{473}{25}+\frac{53}{1300}.
+$$
+为核对所用的粗有理圆周率界，可用 Machin 恒等式
+$\pi=16\arctan(1/5)-4\arctan(1/239)$。
+交错级数给
+$$
+\pi>16\left(\frac15-\frac1{3\cdot5^3}\right)-\frac4{239}
+=\frac{281476}{89625}>\frac{157}{50}.
+$$
+Machin 恒等式由正切倍角公式直接核对：
+$\tan(2\arctan(1/5))=5/12$、
+$\tan(4\arctan(1/5))=120/119$，进而
+$\tan(4\arctan(1/5)-\arctan(1/239))=1$。
+为确认反正切的分支，置 $a=\arctan(1/5)$、$b=\arctan(1/239)$，
+则 $0<b<a<\pi/4$。又 $2a\in(0,\pi/2)$ 且 $\tan(2a)=5/12<1$，
+正切在该区间严格递增，故 $2a<\pi/4$。
+因此 $0<4a-b<4a<\pi/2$，其正切等于 $1$ 便强制 $4a-b=\pi/4$。
+代入假设 $F(R)<473/25$ 完成严格比较。
+:::

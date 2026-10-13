@@ -1,0 +1,838 @@
+---
+title: "Large-height exclusion by Sturm comparison"
+qmd-prover:
+  imports:
+    - from: constants.qmd
+      use: [lem-pi-rational]
+    - from: analytic.qmd
+      use: [def-analytic]
+    - from: candidate.qmd
+      use: [def-candidate]
+    - from: interface.qmd
+      use: [lem-interface]
+    - from: robin.qmd
+      use: [lem-regular-tail, lem-cot-rational]
+---
+
+::: {#def-high-operator .definition name="H.3 The two-interval comparison operator" date="2026-10-11" export="def-high-operator"}
+For real $2\le s\le3$ and $\ell>0,b\ge0$, let $K_{s;\ell,b}$ be the Friedrichs operator associated with
+$$
+-\partial_z^2+s(s-1)z^{-2}\mathbf1_{(0,\ell)}
+\quad\hbox{on }(0,\ell+b),
+$$
+with a Dirichlet condition at the right endpoint. Its form domain is $H_0^1(0,\ell+b)$, and the potential energy is finite on that domain. Functions in the operator domain and their first derivatives are continuous across the interface. The free interval is empty when $b=0$.
+:::
+
+::: {.proof of="def-high-operator"}
+Let $J=(0,\ell+b)$ and $V(z)=s(s-1)z^{-2}\mathbf1_{(0,\ell)}(z)$. The space $C_c^\infty(J)$ is dense in $L^2(J)$, and every one of its functions has finite potential energy. For a real compactly supported smooth $u$, integration by parts followed by Cauchy--Schwarz gives
+
+$$
+
+\int_J\frac{u^2}{z^2}=2\int_J\frac{uu'}z
+\le2\left(\int_J\frac{u^2}{z^2}\right)^{1/2}\left(\int_J|u'|^2\right)^{1/2},
+\quad \int_Ju^2/z^2\le4\int_J|u'|^2.
+
+$$
+
+Applying the same estimate to the real and imaginary parts covers complex functions. Approximation in $H_0^1$ extends this Hardy inequality to every $u\in H_0^1(J)$. The form domain is therefore exactly $H_0^1(J)$; its form norm, including the potential, is equivalent to the Sobolev norm. The form is closed and nonnegative, and $C_c^\infty(J)$ is a form core. The representation theorem for densely defined closed nonnegative symmetric forms (Kato, Chapter VI, Section 2 [@nc:kato]) gives a unique positive self-adjoint operator, which is the Friedrichs extension used here.
+
+Compact embedding on the finite interval gives a compact resolvent. The nonnegative potential and Dirichlet Poincare inequality give a strictly positive first eigenvalue; min--max yields $\lambda_n\ge n^2\pi^2/(\ell+b)^2$ for the full spectrum. When $b>0$, the interface conditions concern functions in the operator domain. For any $u\in D(K_{s;\ell,b})$, the representation theorem provides $f=K_{s;\ell,b}u\in L^2(J)$ such that $\int(u'\psi'+Vu\psi)=\int f\psi$ for every form-domain test function. Taking $\psi\in C_c^\infty(I)$ on an open neighborhood $I$ of the interface that avoids zero gives the distributional equation $-u''+Vu=f$. Since $V$ is bounded there and $u\in H^1(I)$, we have $u''=Vu-f\in L^2(I)$, hence $u\in H^2(I)$. One-dimensional Sobolev embedding makes $u,u'$ continuous across the whole interface neighborhood. Values and first derivatives therefore match, with no additional point potential. This applies to the entire operator domain, not merely to eigenfunctions. The right zero trace comes from $H_0^1$; the left endpoint is determined by closure of the smooth core, with no additional classical derivative condition. When $b=0$, the interface is the right endpoint and has Dirichlet zero trace; the free interval is empty.
+:::
+
+::: {#lem-high-area-cost .lemma name="H.2 The area cost of the actual crossing point" date="2026-10-11" export="lem-high-area-cost"}
+Use @def-candidate and set $\delta=1/h$ and $\eta=ph/S$, where $h\ge4$. If $p<q$, then $h>k$, the tails intersect at $x_c=hk(q-p)/(hq-kp)$, $\alpha=x_c/h\in(0,1/2)$, and $\eta<[1+4\alpha(1-\alpha)+3\delta+\delta^2]^{-1}$. If $p\ge q$, then $\eta<(1+\delta)^{-2}$.
+:::
+
+::: {.proof of="lem-high-area-cost"}
+Use the rational bounds in @lem-pi-rational; the weaker bounds invoked below follow by inclusion and comparison of squares.
+Use the height ordering, the strict upper bound $\rho<\beta/[h(h+2)]$, and the lower bound $\rho\ge S/[2(1+h)^2]$ from @def-candidate.
+
+**H.2 The actual crossing point incurs an area cost**
+
+
+If $p\ge q$, the long tail $p(1-x/h)$ dominates throughout the tail interval. Suppose $p<q$. First establish the area estimate without assuming that the height ordering is strict. The candidate inequalities $S/(2L^2)\le\rho<\beta/[h(h+2)]$ imply $S<2pL^3/[h(h+2)]=2ph+2p+2pL/[h(h+2)]$. Since $p\le h/L$ and $h\ge4$, the last remainder is at most $2/(h+2)\le1/3<1$, so $S<2ph+2p+1$. On the other hand, $S=1+p+q+ph+qk$ and $q>p$ imply $S>1+2p+ph+qk$. Comparison yields $qk<ph$. If $h=k$, this would give $q<p$, a contradiction. The given ordering $h\ge k$ therefore gives $h>k$. This argument does not mistake the permission to exchange the ears for an ordering assumption already imposed on the original data. The crossing point is
+
+$$
+
+x_c=\frac{hk(q-p)}{hq-kp},\qquad
+\alpha=\frac{x_c}{h},\qquad v=\frac kh.
+\tag{H.2.1}
+
+$$
+
+
+The denominator and location of the crossing point are valid as follows. The inequalities $p>0$, $q>p$, and $h>k>0$ give $hq-kp=p(h-k)+h(q-p)>0$, hence $x_c>0$. Moreover, $h(q-p)<hq-kp$ is equivalent to $hp>kp$, so $x_c<k$, that is, $0<\alpha<v=k/h<1$. Since $p\le h/(h+1)$, we also have $2p(h+1)/[h(h+2)]\le2/(h+2)\le1/3<1$, which makes the remainder in the following area estimate strictly smaller than one.
+
+The longitudinal lower bound and the outer-ear upper bound for a low-energy candidate give
+
+$$
+
+S<\frac{2p(h+1)^3}{h(h+2)}
+=2ph+2p+\frac{2p(h+1)}{h(h+2)}<2ph+2p+1.
+
+$$
+
+Since $S=1+p+q+ph+qk$ and $q>p$, it follows that
+
+$$
+
+qk<ph.
+\tag{H.2.2}
+
+$$
+
+The crossing equation also gives
+
+$$
+
+\frac{qk}{ph}=\frac{v^2(1-\alpha)}{v-\alpha}.
+\tag{H.2.3}
+
+$$
+
+If $\alpha\ge1/2$, then $\alpha<v<1$ and
+
+$$
+
+v^2(1-\alpha)-(v-\alpha)
+=(v-1)((1-\alpha)v-\alpha)\ge0,
+
+$$
+
+contradicting (H.2.2). Therefore
+
+$$
+
+0<\alpha<\frac12.
+\tag{H.2.4}
+
+$$
+
+The inequality $v-\alpha>0$ has already been checked. Since $v^2-4\alpha(v-\alpha)=(v-2\alpha)^2\ge0$, division by $v-\alpha$ gives the estimate used next.
+
+Using $v^2/(v-\alpha)\ge4\alpha$, $1/p\ge1+\delta$, and $q/p>1$, we obtain
+
+$$
+
+\begin{aligned}
+\frac S{ph}
+&=1+\frac{qk}{ph}+\delta\left(\frac1p+1+\frac qp\right)\\
+&>1+4\alpha(1-\alpha)+3\delta+\delta^2
+=:D(\alpha,\delta).
+\end{aligned}
+\tag{H.2.5}
+
+$$
+
+In the absence of a crossing, $\beta\le h$ and $\gamma>0$ give directly
+
+$$
+
+\eta=\frac{\beta h}{(h+1)(1+\beta+\gamma)}
+<(1+\delta)^{-2}.
+\tag{H.2.6}
+
+$$
+:::
+
+::: {#lem-free-sturm-bound .lemma name="H.4 An elementary free-interval response bound" date="2026-10-12" export="lem-free-sturm-bound"}
+For every $0<q\le4$,
+$$
+\sqrt q\cot\sqrt q\ge1-\frac{q}{3-q/4}.
+\tag{H.4.1}
+$$
+All denominators are positive on this interval.
+:::
+
+::: {.proof of="lem-free-sturm-bound"}
+Use the positive comparison function
+$$
+p_q(z)=z\left(1-\frac{qz^2}{12}\right)^2
+\qquad(0<z\le1).
+$$
+Direct differentiation gives the factored identity
+$$
+-p_q''-qp_q=\frac{q^2z^3}{144}(4-qz^2)\ge0.
+\tag{H.4.2}
+$$
+The solution $w(z)=\sin(\sqrt q\,z)/\sqrt q$ is positive on $(0,1]$, since $q\le4<\pi^2$ by @lem-pi-rational. The Wronskian vanishes at zero, and
+$$
+(w'p_q-wp_q')'=w(-p_q''-qp_q)\ge0.
+$$
+Integrating from zero to one and dividing by the positive interface values gives
+$$
+\sqrt q\cot\sqrt q=\frac{w'(1)}{w(1)}
+\ge\frac{p_q'(1)}{p_q(1)}
+=1-\frac{q}{3-q/4}.
+$$
+Since $q\le4$, the last denominator is at least $2$.
+:::
+
+::: {#lem-high-cost-reduction .lemma name="H.5.1 Reduction by concavity of the area cost" date="2026-10-11" export="lem-high-cost-reduction"}
+Let $0\le\alpha\le1/2$, $0\le\delta\le1/4$, and $\ell=1-\alpha,b=\alpha+\delta,D=1+4\alpha(1-\alpha)+3\delta+\delta^2,t=b/\ell$. Then $0\le t\le3/2$ and $D/\ell^2\ge F_0(t)$, where $F_0(t)=1+3t+t^2$ on $[0,1/4]$ and $F_0(t)=(9+138t+29t^2)/25$ on $[1/4,3/2]$. At each fixed ratio, the minimum is attained at $\delta=\min(t,1/4)$.
+:::
+
+::: {.proof of="lem-high-cost-reduction"}
+Use the rational bounds in @lem-pi-rational; the weaker bounds invoked below follow by inclusion and comparison of squares.
+
+
+**H.5.1 The concave quadratic area cost at a fixed ratio**
+
+
+Put $t=b/\ell$ and $z=1/(1+\delta)$. Since $\ell\ge1/2$, we have $0\le t\le3/2$.
+Inverting these relations gives
+
+$$
+
+\alpha=\frac{t-\delta}{1+t},\qquad
+\ell=\frac{1+\delta}{1+t},\qquad
+\max\{0,(t-1)/2\}\le\delta\le\min\{t,1/4\}.
+
+$$
+
+Direct substitution yields
+
+$$
+
+Q:=\frac D{\ell^2}
+=(1+t)^2(1+z-z^2)+4(1+t)z-4.
+\tag{H.5.2}
+
+$$
+
+For fixed $t$, the expression $Q$ is a strictly concave quadratic in $z$, while $\delta\mapsto z$ is strictly monotone. Its minimum therefore occurs at an endpoint of the admissible $\delta$ interval, including when that interval is a singleton.
+The four boundary segments give
+
+$$
+
+\begin{array}{c|c|c}
+\text{Boundary}&Q&\text{Range}\\\hline
+\delta=0&1+6t+t^2&0\le t\le1\\
+\alpha=0&1+3t+t^2&0\le t\le1/4\\
+\delta=1/4&(9+138t+29t^2)/25&1/4\le t\le3/2\\
+\alpha=1/2&t^2+4t+3&1\le t\le3/2
+\end{array}
+
+$$
+
+On $[0,1/4]$, $[1/4,1]$, and $[1,3/2]$, respectively, the value of $Q$ at the lower admissible endpoint minus its value at the upper endpoint is
+
+$$
+
+3t,\qquad \frac{4(4-t)(1+t)}{25},\qquad
+\frac{2(3-2t)(t+11)}{25},
+
+$$
+
+All three differences are nonnegative. Thus the exact minimum occurs at $\delta=\min\{t,1/4\}$ and equals
+
+$$
+
+F_0(t)=\begin{cases}
+1+3t+t^2,&0\le t\le1/4,\\
+(9+138t+29t^2)/25,&1/4\le t\le3/2.
+\end{cases}
+\tag{H.5.3}
+
+$$
+
+
+:::
+
+::: {#lem-crossing-sturm .lemma name="H.5 Direct Sturm bounds throughout the crossing range" date="2026-10-12" export="lem-crossing-sturm"}
+Use $K_{s;\ell,b}$ from @def-high-operator and $F_0$ from @lem-high-cost-reduction. Put
+$$
+C_s=\frac{25s-11}{2}.
+$$
+For every real $2\le s\le3$ and every $0\le t\le3/2$,
+$$
+\lambda_1(K_{s;1,t})>\frac{C_s}{F_0(t)}.
+\tag{H.5.4}
+$$
+Consequently, for the geometric parameters $\ell,b,D$ of @lem-high-cost-reduction,
+$$
+\lambda_1(K_{2;\ell,b})>\frac{39}{2D},\qquad
+\lambda_1(K_{3;\ell,b})>\frac{32}{D}.
+$$
+:::
+
+::: {.proof of="lem-crossing-sturm"}
+Use @def-high-operator and write $F(t)=F_0(t)$ as defined in @lem-high-cost-reduction.
+
+**1. A positive comparison function and a uniform pole-free bound.**
+
+
+For the fixed order $2\le s\le3$, use the positive function
+
+$$
+v_s(y)=y^s(1-y^2)e^{-s y^2/2}\qquad(0<y<1).
+$$
+
+Direct logarithmic differentiation gives
+
+$$
+-\frac{v_s''}{v_s}+\frac{s(s-1)}{y^2}
+=s^2+5s+s^2(1-y^2)+\frac{2}{1-y^2}
+\ge B_s:=s^2+5s+2\sqrt2\,s.
+\tag{H.5.5}
+$$
+
+The inequality is AM--GM applied to the last two terms. For a compactly supported smooth function $f$, integration by parts gives the ground-state identity
+$$
+\int_0^1\left(|f'|^2+\frac{s(s-1)}{y^2}|f|^2\right)
+=\int_0^1v_s^2\left|\left(\frac f{v_s}\right)'\right|^2
++\int_0^1\left(-\frac{v_s''}{v_s}+\frac{s(s-1)}{y^2}\right)|f|^2.
+$$
+Discarding the first nonnegative term gives a lower bound by $B_s\|f\|_2^2$. The Hardy inequality and form-core density in @def-high-operator extend that inequality to $H_0^1(0,1)$. Thus the first Friedrichs--Dirichlet eigenvalue on the singular interval satisfies $\lambda_D(s)\ge B_s$.
+
+The inequality $\sqrt2>45/32$ follows by squaring. Hence, for $2\le s\le3$,
+
+$$
+B_s-C_s>
+ s^2-\frac{75s}{16}+\frac{11}{2}
+=\left(s-\frac{75}{32}\right)^2+\frac7{1024}>0.
+\tag{H.5.6}
+$$
+
+The case $t=0$ of (H.5.4) follows immediately.
+
+For $t>0$, write $F=F_0(t)$ and set $E=C_s/F$, so $F>1$ and $0<E<C_s<B_s\le\lambda_D(s)$. Apply @lem-regular-tail with $a=s>1$ and $T=E<\lambda_D(s)$. Its Volterra construction gives the unique normalized regular solution $u$, which has finite form energy, is positive on $(0,1]$, and satisfies
+$$
+u(z)=z^s(1+O(z^2)),\qquad
+u'(z)=s z^{s-1}+O(z^{s+1}).
+$$
+Write $D_s(E)=u'(1)/u(1)$. The hypotheses needed for the regular solution and its positivity have all been verified by the preceding separated spectral bound.
+
+Use the rescaled comparison function
+
+$$
+g(z)=z^s\left(1-\frac{z^2}{F}\right)e^{-s z^2/(2F)}\qquad(0<z\le1).
+$$
+
+Its effective potential is the expression before the inequality in (H.5.5), at $y=z/\sqrt F$, divided by $F$. It therefore strictly exceeds $E$. The Wronskian identity
+
+$$
+(u'g-ug')'=u\left[-g''+\left(\frac{s(s-1)}{z^2}-E\right)g\right]>0
+$$
+
+and the regular asymptotics at zero give
+
+$$
+D_s(E)>\frac{g'(1)}{g(1)}
+=s\left(1-\frac1F\right)-\frac2{F-1}.
+\tag{H.5.7}
+$$
+
+All functions have positive value at the interface. The displayed regular asymptotics of $u$ and the explicit form of $g$ give $u'g-ug'=O(z^{2s+1})\to0$, which justifies integration at the singular endpoint.
+
+Let $q=Et^2=C_st^2/F$. The quantity $t^2/F(t)$ increases on either quadratic piece, since its derivative is $t(2a+bt)/F^2$ when $F=a+bt+ct^2$. The rational bounds in @lem-pi-rational therefore give
+
+$$
+0<q\le\frac{32}{29}<4\quad(0<t\le1/4),
+\qquad
+0<q\le\frac{32}{5}<\pi^2\quad(1/4\le t\le3/2).
+\tag{H.5.8}
+$$
+
+In particular, $E<\pi^2/t^2$, so the free segment also stays below its first separated Dirichlet eigenvalue. Its outward response at the shared physical energy is
+
+$$
+D_{\mathrm{free}}(E,t)=\sqrt E\cot(\sqrt E\,t)
+=\frac1t\sqrt q\cot\sqrt q.
+$$
+
+It remains to prove that the sum of the two outward responses is positive.
+
+**2. The first interval: a single concave quadratic bound.**
+
+By @lem-free-sturm-bound,
+$$
+\sqrt q\cot\sqrt q\ge1-\frac{q}{3-q/4}
+\qquad(0<q\le4).
+\tag{H.5.9}
+$$
+
+For $0<t\le1/4$, put $F=1+3t+t^2$. Combining (H.5.7) and (H.5.9) gives
+
+$$
+\begin{aligned}
+t(D_s+D_{\mathrm{free}})
+&>1-\frac2{3+t}+\frac{s t(F-1)}F
+-\frac{C_s t^2}{3F-C_st^2/4}.
+\end{aligned}
+$$
+
+Here $F\le29/16$, while $3F-C_st^2/4\ge3+9t-5t^2\ge3$. Therefore
+
+$$
+\begin{aligned}
+t(D_s+D_{\mathrm{free}})
+&>\frac13+\frac{8t}{39}
+-\left(\frac{C_s}{3}-\frac{48s}{29}\right)t^2\\
+&\ge P(t):=\frac13+\frac{8t}{39}-\frac{496t^2}{87}.
+\end{aligned}
+\tag{H.5.10}
+$$
+
+The last step uses
+
+$$
+\frac{C_s}{3}-\frac{48s}{29}
+=\frac{437s-319}{174}\le\frac{496}{87}.
+$$
+
+The quadratic $P$ is concave. Its endpoint values are
+
+$$
+P(0)=\frac13,\qquad P(1/4)=\frac{32}{1131}>0.
+$$
+
+Consequently the total interface response is strictly positive on the entire first interval, uniformly in $2\le s\le3$.
+
+**3. A simple rational lower bound for the free response.**
+
+For the second interval use the rational response function $\mathsf H$ from @def-analytic. The Sturm comparison with two zero endpoints in @lem-cot-rational gives $\sqrt q\cot\sqrt q>\mathsf H(q)$, and @lem-pi-rational gives $493/50<\Pi=\pi^2<987/100$. Put $k=q/\Pi\in(0,1)$. Then
+
+$$
+\begin{aligned}
+\mathsf H(q)
+&=1-\frac{2k}{1-k}-\frac{k/2}{1-k/4}
+-\frac{(\Pi/3-5/2)k}{1-k/9}\\
+&>1-\frac{2k}{1-k}-\frac{129k}{100(1-k/4)}.
+\end{aligned}
+$$
+
+Indeed, $0<\Pi/3-5/2<79/100$ and $1-k/9>1-k/4>0$. The last rational function decreases strictly in $k$. Since $\Pi>49/5$ and $129/100<13/10$, it follows that
+
+$$
+\sqrt q\cot\sqrt q>
+1-\frac{2q}{49/5-q}-\frac{13q/10}{49/5-q/4}
+\qquad\left(0<q\le\frac{32}{5}\right).
+\tag{H.5.11}
+$$
+
+All denominators are positive. The estimate follows from the scalar Sturm comparison in @lem-cot-rational.
+
+**4. The second interval: concavity of the response lower bound.**
+
+Throughout $1/4\le t\le3/2$, write
+
+$$
+F=a+bt+ct^2,\qquad a=\frac9{25},\ b=\frac{138}{25},\ c=\frac{29}{25}.
+$$
+
+Define
+
+$$
+A_s(t)=1+s t-\frac{s t}{F}-\frac{2t}{F-1},
+$$
+
+$$
+B_C(t)=\frac{10C t^2}{49F-5Ct^2}
++\frac{(13C/2)t^2}{49F-(5C/4)t^2},
+\qquad G_s(t)=A_s(t)-B_{C_s}(t).
+\tag{H.5.12}
+$$
+
+Equations (H.5.7) and (H.5.11) give $t(D_s+D_{\mathrm{free}})>G_s(t)$.
+
+**4a. The singular-side expression is strictly concave.**
+
+For a quadratic $Q=a+bt+ct^2$,
+
+$$
+\left(\frac tQ\right)''
+=-\frac{2[ab+3ac t-c^2t^3]}{Q^3}.
+$$
+
+Put $H=b+3ct>0$ and $X=c^2t^3>0$. Then
+
+$$
+A_s''=
+\frac{2s(aH-X)}{F^3}
++\frac{4((a-1)H-X)}{(F-1)^3}.
+$$
+
+Since $F>F-1>0$, $2\le s\le3$, and
+
+$$
+2sa+4(a-1)\le10a-4=-\frac25,
+$$
+
+we obtain
+
+$$
+A_s''<-
+\frac{2H}{5(F-1)^3}<0.
+\tag{H.5.13}
+$$
+
+The omitted $X$ terms have negative signs. The inequality $10a-4<0$ comes from the constant term $a=9/25$ in the area-cost quadratic.
+
+**4b. The sum of the two free fractions is strictly convex.**
+
+For $39/2\le C\le32$, put
+
+$$
+A=49a,\quad B=49b,\quad
+d=5C-49c,\quad e=49c-\frac{5C}{4},
+$$
+
+$$
+Q_-=A+Bt-dt^2,\qquad Q_+=A+Bt+et^2.
+$$
+
+The bounds on $q=Ct^2/F$ give $Q_->0$ and $Q_+>Q_-$. Moreover
+
+$$
+d\ge\frac{2033}{50}>40,\qquad
+0<\frac{421}{25}\le e\le\frac{6493}{200}<33.
+$$
+
+In particular, $d>e>0$. Set $\alpha=10C$ and $\beta=13C/2$, so $\alpha>\beta>0$.
+
+The second elementary identity is
+
+$$
+\left(\frac{t^2}{a+bt+ct^2}\right)''
+=\frac{2[a^2-3ac t^2-bc t^3]}{(a+bt+ct^2)^3}.
+$$
+
+With $M=A^2>0$ and $N=3At^2+Bt^3>0$, it gives
+
+$$
+\frac12 B_C''
+=\frac{\alpha(M+dN)}{Q_-^3}
++\frac{\beta(M-eN)}{Q_+^3}.
+$$
+
+Using $Q_-<Q_+$ and $\alpha d>\beta e$ yields
+
+$$
+\frac12 B_C''
+\ge\frac{\alpha M}{Q_-^3}+\frac{\beta M}{Q_+^3}
++\frac{(\alpha d-\beta e)N}{Q_+^3}>0.
+\tag{H.5.14}
+$$
+
+Thus $G_s''<0$ for every $2\le s\le3$ on the entire second interval.
+
+**5. The endpoint comparisons are short and uniform.**
+
+At $t=1/4$, $F=29/16$. The function $B_C$ increases in $C$, so $C\le32$ gives
+
+$$
+B_C(1/4)\le\frac{320}{1261}+\frac{208}{1381}
+<\frac13+\frac16=\frac12.
+$$
+
+Since $s\ge2$,
+
+$$
+A_s(1/4)=1+\frac{13s}{116}-\frac8{13}
+>\frac13+\frac{13}{58}.
+$$
+
+Therefore
+
+$$
+G_s(1/4)>\frac5{87}>0.
+\tag{H.5.15}
+$$
+
+At each fixed $t$, $A_s$ is affine in $s$. Both terms in $B_C$ are strictly convex increasing functions of $C$ wherever their denominators are positive. Since $C_s$ is affine, $G_s(t)$ is concave in $s$. It is therefore enough to bound its two order endpoints at $t=3/2$.
+
+There $F=45/4$. For $s=2$, $C_2=39/2$, and
+
+$$
+A_2(3/2)=\frac{2116}{615}>3,
+\qquad
+B_{39/2}(3/2)=\frac{78}{59}+\frac{1014}{1765}
+<\frac32+\frac35=\frac{21}{10}.
+$$
+
+Hence $G_2(3/2)>9/10$.
+For $s=3$, $C_3=32$, and the exact comparison is
+
+$$
+G_3(3/2)=\frac{1971}{410}-\frac{64}{17}-\frac{208}{205}
+=\frac{39}{1394}>0.
+\tag{H.5.16}
+$$
+
+Concavity in $s$ gives $G_s(3/2)\ge39/1394$. Concavity in $t$, (H.5.15), and $5/87>39/1394$ consequently imply
+
+$$
+G_s(t)\ge\frac{39}{1394}>0
+\qquad\left(2\le s\le3,\ \frac14\le t\le\frac32\right).
+\tag{H.5.17}
+$$
+
+**6. The common-interface conclusion.**
+
+For every $t>0$, the energy $E=C_s/F(t)$ lies strictly below the first separated Dirichlet eigenvalue on both sides. The total outward response at the same physical interface and the same physical energy is strictly positive by Sections 2 and 4–5. To identify the ODE responses with those in @lem-interface, normalize $u$ to have interface value one. Its regular asymptotics give finite form energy and zero outer trace. Subtracting a smooth trace-one lifting supported near the interface leaves an element of the side zero-trace form domain. Integration by parts against compactly supported smooth zero-trace tests gives the weak equation, and Hardy's inequality and density extend it to every zero-trace test. Since $E<\lambda_D(s)$, the shifted form is strictly coercive on that zero-trace space. Any other function with the same trace has the form $u/u(1)+z$ and shifted energy equal to the energy of $u/u(1)$ plus the strictly positive remainder energy of $z$. Thus the normalized ODE solution is the unique minimizing extension. The free solution has the same property by the ordinary interval equation. The full form has compact embedding by @def-high-operator, and the potential has bounded one-sided limits at the interface. Hence every hypothesis of the variational criterion @lem-interface is satisfied.
+
+To match its stated orientation explicitly, use $x=(1+t-z)/t$. This sends the free interval to $(0,1)$, the singular interval to $(1,1+1/t)$, and the interface to $x=1$. The energy becomes $t^2E=q$ on both pieces, and each outward response is multiplied by $t$. Thus the sign and the separated spectral hypotheses are preserved. The criterion gives $\lambda_1(K_{s;1,t})>E$. The case $t=0$ was established directly in Section 1.
+
+This proves (H.5.4). For the geometric parameters in @lem-high-cost-reduction, $t=b/\ell$ lies in $[0,3/2]$ and $D\ge\ell^2F_0(t)$. The change of variables $z=\ell x$ gives
+$$
+\lambda_1(K_{s;\ell,b})
+=\ell^{-2}\lambda_1(K_{s;1,t})
+>\frac{C_s}{\ell^2F_0(t)}
+\ge\frac{C_s}{D}.
+$$
+Since $C_2=39/2$ and $C_3=32$, this is the claimed pair of crossing bounds.
+:::
+
+::: {#lem-no-crossing-sturm .lemma name="H.6 Direct spectral bounds from positive comparison functions" date="2026-10-12" export="lem-no-crossing-sturm"}
+Use @def-high-operator. For real $2\le\sigma\le3$, define
+$$
+\Lambda_\sigma(\delta)=(1+\delta)^2\lambda_1(K_{\sigma;1,\delta}).
+$$
+The function $\Lambda_\sigma$ is nonincreasing for $\delta\ge0$. Throughout $0\le\delta\le1/4$,
+$$
+\Lambda_2(\delta)>\frac{625}{32}>\frac{39}{2},\qquad
+\Lambda_3(\delta)>\frac{1525}{48}>\frac{1587}{50}.
+\tag{H.6.1}
+$$
+:::
+
+::: {.proof of="lem-no-crossing-sturm"}
+**Scaling and the common form domain.** Use @def-high-operator and put $L_\delta=1+\delta$. The unitary map $u(x)\mapsto L_\delta^{1/2}u(L_\delta z)$ transforms $L_\delta^2K_{\sigma;1,\delta}$ into the form
+$$
+\int_0^1\left(|u'|^2+\sigma(\sigma-1)z^{-2}
+\mathbf1_{\{z<1/(1+\delta)\}}|u|^2\right)dz.
+$$
+The Hardy inequality proved in @def-high-operator gives the common domain $H_0^1(0,1)$ and equivalence of every form norm to the Sobolev norm. The potential is pointwise nonincreasing in $\delta$, so the Rayleigh principle proves that $\Lambda_\sigma$ is nonincreasing for every real $2\le\sigma\le3$ and all $\delta\ge0$.
+It suffices to prove the two strict bounds at $\delta=1/4$. On the complete interval $(0,5/4)$, use the pairs
+$$
+(a,E)=\left(2,\frac{25}{2}\right),\qquad
+(a,E)=\left(3,\frac{61}{3}\right).
+\tag{H.6.2}
+$$
+
+**One positive comparison family on the singular interval.** For either pair define
+$$
+\begin{gathered}
+A=2a+1,\quad \alpha=\frac EA,\quad
+\beta=\frac{\alpha^2}{A+2},\\
+\gamma=\frac{2\alpha}{A+4},\quad
+c=\frac1{23},\quad
+\theta=\frac{E}{(A+2)(A+4)}.
+\end{gathered}
+$$
+Set
+$$
+\begin{gathered}
+H(t)=1-\gamma t-ct^2,\qquad
+Y(t)=\alpha+\frac{\beta t}{H(t)},\\
+w(z)=z^a\exp\left[-\frac12\int_0^{z^2}Y(t)\,dt\right].
+\end{gathered}
+\tag{H.6.3}
+$$
+The two values of $\gamma$ are $5/9$ and $122/231$. Thus $H(t)\ge83/207>0$ on $[0,1]$. The function $w$ is positive on $(0,1]$, with
+$w(z)=z^a(1+O(z^2))$ and $w'(z)=az^{a-1}+O(z^{a+1})$. It has finite Sobolev and inverse-square potential energy near zero.
+
+Logarithmic differentiation gives $w'/w=a/z-zY(z^2)$. With $t=z^2$, its complete differential residual is
+$$
+\begin{aligned}
+\frac{(-\partial_z^2+a(a-1)z^{-2}-E)w}{w}
+&=AY+2tY'-tY^2-E\\
+&=\frac{\alpha^2t^3}{H(t)^2}
+\left[\frac{c(A+6)}{A+2}-(\theta+ct)^2\right].
+\end{aligned}
+\tag{H.6.4}
+$$
+To check the factorization directly, use
+$$
+H-tH'=1+ct^2,\qquad
+(A+2)\beta=\alpha^2,\qquad
+(A+4)\gamma=2\alpha.
+$$
+After multiplication by $H^2$, these identities reduce the residual to
+$t^3\{\beta c(A+6)-(d+\alpha ct)^2\}$, where
+$d=\alpha\gamma-\beta=A\beta/(A+4)=\alpha\theta$. This is the displayed square in (H.6.4).
+
+The two values of $\theta$ are $25/126$ and $61/297$, so throughout $0\le t\le1$,
+$$
+\theta+ct\le\frac{61}{297}+\frac1{23}<\frac14,
+\qquad
+\frac{c(A+6)}{A+2}\ge\frac{13}{207}
+=\frac1{16}+\frac1{3312}.
+$$
+Here $1/4-61/297-1/23=31/27324>0$. Hence
+$$
+\frac{(-\partial_z^2+a(a-1)z^{-2}-E)w}{w}
+>\frac{\alpha^2z^6}{3312H(z^2)^2}>0
+\qquad(0<z\le1).
+\tag{H.6.5}
+$$
+
+**The free polynomial and the complete comparison function.** Put $q=E/16$, which is $25/32$ or $61/48$, and define
+$$
+p_q(x)=x\left(1-\frac{qx^2}{12}\right)^2.
+$$
+Since $0<q<4$, this polynomial is positive on $(0,1]$ and satisfies
+$$
+-p_q''-q p_q=\frac{q^2x^3}{144}(4-qx^2)>0.
+\tag{H.6.6}
+$$
+Use the reversed coordinate $x=5-4z$ on the free interval and set
+$$
+g(z)=
+\begin{cases}
+w(z)/w(1),&0<z\le1,\\[2mm]
+p_q(5-4z)/p_q(1),&1\le z<5/4.
+\end{cases}
+\tag{H.6.7}
+$$
+Then $g$ is continuous and positive in the open interval, $g(1)=1$, and $g\in H_0^1(0,5/4)$ with finite potential energy. Its free-side residual is
+$$
+(-\partial_z^2-E)g
+=\frac{16}{p_q(1)}(-p_q''-q p_q)(5-4z)>0.
+$$
+Thus both pieces use the same physical energy $E$.
+
+Set $D_a=g'(1^-)=a-\alpha-\beta/H(1)$ and
+$F_a=-g'(1^+)=4p_q'(1)/p_q(1)$. The free derivative is
+$F_a=4[1-q/(3-q/4)]$. Direct substitution gives
+$$
+\begin{aligned}
+D_2+\frac{11}{4}&=\frac{27}{1162}>0,
+&F_2-\frac{11}{4}&=\frac{195}{1436}>0,\\
+D_3+\frac{21}{10}&=\frac{2071}{307260}>0,
+&F_3-\frac{21}{10}&=\frac1{206}>0.
+\end{aligned}
+\tag{H.6.8}
+$$
+Consequently $J:=g'(1^-)-g'(1^+)=D_a+F_a>0$. This derivative jump is intentional: $g$ is a form-domain comparison function, not an element of the operator domain with matching derivatives.
+
+**The whole-interval form inequality.** Write
+$V(z)=a(a-1)z^{-2}\mathbf1_{(0,1)}(z)$ and, on each open piece, put
+$\rho=[-g''+(V-E)g]/g$. The two residual identities give $\rho>0$ almost everywhere. This function is bounded: the singular residual is $O(z^6)$ at zero, while the free residual divided by $g$ is
+$$
+\frac{q^2x^2(4-qx^2)}{9(1-qx^2/12)^2},\qquad x=5-4z,
+$$
+which extends to zero at the other endpoint. All one-sided interface values are finite.
+
+For $u\in C_c^\infty(0,5/4)$, integration by parts separately on the two pieces gives
+$$
+\begin{aligned}
+\int_0^{5/4}\bigl(|u'|^2+(V-E)|u|^2\bigr)\,dz
+&=\int_0^{5/4}g^2\left|\left(\frac ug\right)'\right|^2 dz\\
+&\quad+\int_0^{5/4}\rho|u|^2\,dz+J|u(1)|^2.
+\end{aligned}
+\tag{H.6.9}
+$$
+The outer boundary terms vanish; the two interface terms add to $J|u(1)|^2$ because $g(1)=1$. Discarding the first nonnegative integral, form-core density and the Hardy inequality from @def-high-operator extend the resulting inequality to every $u\in H_0^1(0,5/4)$. Indeed, the shifted form is continuous in the form norm, $\rho$ is bounded, and evaluation at $1$ is continuous in $H^1$.
+
+The right side after this omission is strictly positive for every nonzero $u$, since $\rho>0$ almost everywhere. The compact embedding established in @def-high-operator ensures that the first Rayleigh quotient is attained. Applying the inequality to a first eigenfunction therefore gives
+$\lambda_1(K_{2;1,1/4})>25/2$ and $\lambda_1(K_{3;1,1/4})>61/3$.
+Multiplication by $(5/4)^2$ and scaling monotonicity prove (H.6.1) on the entire interval, including $\delta=0$, with the exact margins
+$$
+\frac{625}{32}-\frac{39}{2}=\frac1{32}>0,
+\qquad
+\frac{1525}{48}-\frac{1587}{50}=\frac{37}{1200}>0.
+$$
+:::
+
+::: {#lem-high .lemma name="Nonexistence of large-height candidates" date="2026-10-11" export="lem-high"}
+There are no data satisfying @def-candidate with $h\ge4$.
+:::
+
+::: {.proof of="lem-high"}
+Suppose, to the contrary, that data in @def-candidate exist with $h\ge4$. Use the rational bounds in @lem-pi-rational and set
+$$
+\eta=\frac{ph}{S},\qquad r=\frac{\rho h}{p},\qquad
+\delta=\frac1h\in(0,1/4],\qquad L=1+h.
+$$
+Since $S>ph$, the candidate lower bound $\rho\ge S/(2L^2)$ and the strict upper bound
+$\rho<\beta/[h(h+2)]$ yield
+$$
+\frac8{25}\le\frac{h^2}{2(h+1)^2}<r<\frac{h+1}{h+2}
+=\frac{1+\delta}{1+2\delta}<1.
+\tag{H.1.1}
+$$
+
+**Choice of weight.** Define
+$$
+\sigma=\begin{cases}2,&r\le2/3,\\3,&r>2/3,\end{cases}
+\qquad A=\frac{\sigma(\sigma-1)p^2}{h^2}>0,
+\qquad\tau=\frac{A}{\pi^2\rho^2}.
+\tag{H.1.2}
+$$
+Put $\mu_\tau=\mu(A)$ and $E_\tau=2(\pi^2\rho+A/\rho)/S$.
+The candidate condition requires $\mu_\tau\le E_\tau$, whereas
+$$
+E_\tau h^2=2\eta\left(\pi^2r+\frac{\sigma(\sigma-1)}r\right).
+\tag{H.1.3}
+$$
+
+**Area and the operator with its complete interface.** If $p<q$, @lem-high-area-cost gives $h>k$,
+a crossing ratio $0<\alpha<1/2$, and
+$\eta<D^{-1}$, where $D=1+4\alpha(1-\alpha)+3\delta+\delta^2$.
+In this case set $(\ell,b)=(1-\alpha,\alpha+\delta)$. If $p\ge q$, the same lemma gives
+$\eta<(1+\delta)^{-2}$, and we set $(\ell,b)=(1,\delta)$.
+
+Reverse and rescale the original interval by $z=(L-y)/h$ and $v(z)=\sqrt h\,u(L-hz)$.
+This unitary map sends $H_0^1(0,L)$ bijectively onto $H_0^1(0,1+\delta)$ and satisfies
+$$
+\int_0^{1+\delta}|v'|^2=h^2\int_0^L|u'|^2,
+\qquad
+\int_0^{1+\delta}\frac{h^2A}{f(L-hz)^2}|v|^2
+=h^2\int_0^L\frac{A}{f(y)^2}|u|^2.
+$$
+The long tail dominates for $0<z<1-\alpha$ in the crossing case and for $0<z<1$ in the noncrossing case. Thus
+$f(L-hz)=pz$. The comparison potential from @def-high-operator therefore satisfies
+$$
+V_K(z)=\frac{\sigma(\sigma-1)}{z^2}\mathbf1_{(0,\ell)}(z)
+\le\frac{h^2A}{f(L-hz)^2}.
+\tag{H.3.1}
+$$
+On the remaining interval we only lower a nonnegative potential to zero. The functions retain their common $H_0^1$ domain, with no additional zero trace at the interface.
+The image of every function in the original form domain lies in the comparison form domain. Comparing their Rayleigh quotients and then taking infima yields
+$$
+h^2\mu_\tau\ge\lambda_1(K_{\sigma;\ell,b}).
+\tag{H.3.2}
+$$
+
+**Crossing case.** The strictly convex function $r\mapsto2(ar+c/r)$ attains its maximum on a closed interval at an endpoint.
+Since $\pi^2<10$, for $8/25<r\le2/3$ we have
+$$
+2(\pi^2r+2/r)<\max\{189/10,58/3\}<39/2;
+$$
+Similarly, for $2/3<r<1$,
+$$
+2(\pi^2r+6/r)<\max\{94/3,32\}=32.
+$$
+With $C_2=39/2,C_3=32$, equation (H.1.3), the inequality $\eta<D^{-1}$, and @lem-crossing-sturm give
+$$
+E_\tau h^2<\frac{C_\sigma}{D}
+<\lambda_1(K_{\sigma;\ell,b})\le h^2\mu_\tau,
+$$
+contradicting the candidate condition.
+
+**Noncrossing case.** The bound $2(\pi^2r+2/r)<39/2$ for $\sigma=2$ was established above.
+For $\sigma=3$, use $2/3<r<1$ and $\pi^2<987/100$.
+The same endpoint comparison for the strictly convex function gives the uniform bound
+$$
+2(\pi^2r+6/r)
+<\max\left\{\frac{779}{25},\frac{1587}{50}\right\}
+=\frac{1587}{50}.
+$$
+Set $B_2=39/2$ and $B_3=1587/50$.
+The area inequality $\eta<(1+\delta)^{-2}$ from @lem-high-area-cost, equation (H.1.3), and the direct spectral bounds in @lem-no-crossing-sturm give, for either order,
+$$
+E_\tau h^2
+<\frac{B_\sigma}{(1+\delta)^2}
+<\frac{\Lambda_\sigma(\delta)}{(1+\delta)^2}
+=\lambda_1(K_{\sigma;1,\delta})
+\le h^2\mu_\tau.
+$$
+This contradicts the candidate condition throughout $0\le\delta\le1/4$.
+All possible data have now been excluded.
+
+To recover the complete Robin response, note that $E_\tau<\mu_\tau$ also places $E_\tau$ below both first eigenvalues obtained by imposing
+an additional zero trace at $y=1$: a zero-trace function on either side extends by zero to an admissible test function for the complete
+Rayleigh quotient. Thus all spectral hypotheses of @lem-interface hold, and the complete response sum is strictly positive.
+:::

@@ -1,0 +1,57 @@
+{
+  "description": "R4 uniform denominator and direct reciprocal head bounds",
+  "official_qmd_prover_verdict": false,
+  "proof_relies_on_execution": false,
+  "check_count": 12,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "order_square_identity",
+      "passed": true
+    },
+    {
+      "name": "radical_scalar_gap",
+      "passed": true
+    },
+    {
+      "name": "energy_multiplier",
+      "passed": true
+    },
+    {
+      "name": "uniform_denominator_square",
+      "passed": true
+    },
+    {
+      "name": "positive_denominator_constant",
+      "passed": true
+    },
+    {
+      "name": "head_endpoint",
+      "passed": true
+    },
+    {
+      "name": "head_endpoint_gap",
+      "passed": true
+    },
+    {
+      "name": "height_threshold",
+      "passed": true
+    },
+    {
+      "name": "large_height_reciprocal_identity",
+      "passed": true
+    },
+    {
+      "name": "large_height_denominator_endpoint",
+      "passed": true
+    },
+    {
+      "name": "large_height_ratio_endpoint",
+      "passed": true
+    },
+    {
+      "name": "large_height_positive_margin",
+      "passed": true
+    }
+  ]
+}

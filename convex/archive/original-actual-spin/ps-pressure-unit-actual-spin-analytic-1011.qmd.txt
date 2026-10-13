@@ -1,0 +1,399 @@
+---
+title: "单位源实际自旋：准确源系数的短解析预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-finite-kernel-rule-1011h
+        - def-psgs-tensor-weights-1011h
+        - lem-psgs-constant-and-full-tail-1011h
+    - from: ps-pressure-central-actual-slope-analytic-1011.qmd
+      use:
+        - lem-ppcaa-complete-actual-tail-1011
+        - lem-ppcaa-fourth-actual-spin-1011
+        - lem-ppcaa-low-actual-spin-1011
+    - from: ps-pressure-central-sinc-means-1011.qmd
+      use:
+        - lem-ppsm-source-homogeneity-1011
+    - from: ps-pressure-fourth-spin-two-channel-budget-1011.qmd
+      use:
+        - lem-ppfs-exact-fourth-spin-1011
+    - from: ps-pressure-low-spin-positive-ratios-1011.qmd
+      use:
+        - lem-ppspr-exact-low-spin-1011
+---
+
+::: {#lem-ppuasa-unit-actual-spin-1011 .lemma name="单位源完整实际自旋的短解析预算" date="2026-10-11" export="lem-ppuasa-unit-actual-spin-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=1$。
+对
+$$
+0\le t=|c|\le\frac{27}{50},\qquad 0\le s=|d|\le\frac58,
+$$
+及 @def-psgs-tensor-weights-1011h 的任意同源可容许权重，
+在 $t>0$ 时有
+$$
+\boxed{
+\frac{|K|}{C_0}
+<
+\frac{10263151}{32400000}t^2+\frac{88837}{108000}ts
+<
+\frac{317}{1000}t^2+\frac{823}{1000}ts
+<
+\frac{324}{1000}t^2+\frac{879}{1000}ts.
+}
+\tag{1}
+$$
+在 $t=0$ 时 $K=0$。本结论不要求 $s\le t$ 或 $s\le2t$。
+:::
+
+::: {.proof of="lem-ppuasa-unit-actual-spin-1011" status="verified"}
+以下推导沿用 @def-psgs-tensor-weights-1011h 所给对象、记号与适用条件。
+记 $\eta=5/6,T=27/50,a=\alpha\cot\alpha,p=1+a,z=a+i\beta$。
+由 @lem-psgs-constant-and-full-tail-1011h 的常数隔离，及
+$\alpha^2=a^2(3-4r)$、$\cos2\alpha=r/2$，可取
+$$
+6/7<a<13/15,\quad 3/5<r<5/8,\quad
+\alpha^2<2/5,\quad \cos2\beta>3/10,\quad \sec\alpha<5/4.
+\tag{2}
+$$
+下文需要的角窗上界 $\alpha<22/35$ 可以直接证明。
+由 @def-psgs-tensor-weights-1011h，$\alpha=\pi/5$。
+在 $0<x<1$ 上 $x^4(1-x)^4/(1+x^2)>0$；多项式除法给
+$$
+\frac{x^4(1-x)^4}{1+x^2}
+=x^6-4x^5+5x^4-4x^2+4-\frac4{1+x^2}.
+$$
+积分并用 $\arctan1=\pi/4$，得到
+$$
+0<\int_0^1\frac{x^4(1-x)^4}{1+x^2}\,dx
+=\frac17-\frac23+1-\frac43+4-\pi=\frac{22}{7}-\pi.
+$$
+故 $\pi<22/7$，从而 $\alpha<22/35$。
+对于实通道写 $J[x,y]=\int(xW+yV)/\int W$。
+下标 $6$ 表示源强度 $6/5$。中央源的各引理对任意可容许权重成立，
+所以可以对当前固定的 $W,V$ 使用，并无跨源的实际权重替换。
+
+**二阶。**
+@def-psgs-finite-kernel-rule-1011h 的五根投影使零、一次自旋消失。
+@lem-ppspr-exact-low-spin-1011 的纯二阶来自根指数 $-2$，只含
+$\kappa^2$；混合二阶来自根指数 $3$，只含 $\kappa$。因此
+$$
+(x_{0,1},y_{0,1})=\eta^2(x_{0,6},y_{0,6}),\qquad
+(x_{V,1},y_{V,1})=\eta(x_{V,6},y_{V,6}).
+$$
+用 @lem-ppcaa-low-actual-spin-1011 的两个准确实通道界，
+$$
+\frac{|K_{2,1}|}{C_0}<\frac18t^2+\frac34ts.
+\tag{3}
+$$
+
+**三阶。**
+在 @def-psgs-finite-kernel-rule-1011h 的生成式中暂时保留任意实 $\kappa$。
+置形式字符 $u_c=cn,v_c=\bar c n^{-1},w_d=dn^2$，
+$h=\kappa/2$、$\chi_\pm=1\pm rq_\beta$、$\xi_\pm=r\pm q_\beta$。
+因为 $a,\beta$ 实，生成因子准确为
+$$
+\mathsf H=h(zu_c-\bar z v_c),\quad
+\mathsf W=h(u_c+v_c),\quad
+\mathsf T_\pm=\chi_\pm u_c+\xi_\pm w_d.
+$$
+次数三的纯字符根指数在 $\{-3,-1,1,3\}$，
+混合字符根指数在 $\{0,2,4\}$。
+乘外部 $n^2$ 后，纯字符中只有 $n^3$ 变为 $n^5$ 并保留，
+其根平均为 $-1$；混合指数变为 $2,4,6$，全部消失。
+所以纯项准确提取 $u_c^3=c^3n^3$。
+其四类贡献及组合系数逐项为
+$$
+\begin{array}{c|c}
+\text{项}&[u_c^3]\\\hline
+\mathsf H^3/3!&h^3z^3/6\\
+\mathsf W\mathsf H^2/2!&h^3z^2/2\\
+\mathsf T_\pm\mathsf H^2/2!&\chi_\pm h^2z^2/2\\
+\mathsf W\mathsf T_\pm\mathsf H&\chi_\pm h^2z
+\end{array}
+$$
+前三行取相应指数式中全为 $u_c$ 的项，最后一行取
+$hu_c\cdot\chi_\pm u_c\cdot hzu_c$，因此表内的 $1/6,1/2,1$ 保留了阶乘。
+求和并乘上述根平均 $-1$，尚未旋转的三次自旋为
+$$
+\widehat Z_{3,\pm}
+=-c^3\left[\frac{h^3}{6}z^2(z+3)
++\chi_\pm\frac{h^2}{2}z(z+2)\right]
+=-c^3\{T_\kappa(z)\pm rq_\beta F_\kappa(z)\},
+$$
+其中准确置
+$$
+b_\kappa=\kappa^2/8,\quad e_\kappa=\kappa^3/48,\quad
+T_\kappa(z)=e_\kappa z^3+(3e_\kappa+b_\kappa)z^2+2b_\kappa z,\quad
+F_\kappa(z)=b_\kappa z(z+2),
+$$
+按照 @def-psgs-exact-tensor-1011h，减号乘 $e^{2i\beta}$、
+加号乘 $ie^{2i\beta}$，在取奇偶部之前分别得到
+$$
+X_{3,\rm raw}=-c^3[e^{2i\beta}T_\kappa-rF_\kappa],\qquad
+Y_{3,\rm raw}=-ic^3[e^{2i\beta}T_\kappa+rF_\kappa].
+$$
+$z(-\beta)=\bar z(\beta)$，且 $T_\kappa,F_\kappa$ 的系数实，
+因此 $X$ 的偶部把各括号替换为实部；
+$Y$ 的奇部由 $-i(Z-\bar Z)/2=\Im Z$ 给实虚部公式
+$$
+x_{U,\kappa}=-\Re(T_\kappa e^{2i\beta})+r\Re F_\kappa,\qquad
+y_{U,\kappa}=\Im(T_\kappa e^{2i\beta})+r\Im F_\kappa.
+\tag{4}
+$$
+故三次自旋为 $c^3(x_{U,\kappa},y_{U,\kappa})$，混合三阶项为零。
+在 $\kappa=6/5$ 时 (4) 正是 @lem-ppspr-exact-low-spin-1011 的纯三阶通道。
+
+$b_1=\eta^2b_6,e_1=\eta^2e_6-1/240$，所以
+$$
+J_{U,1}=\eta^2J_{U,6}-J_e/240,
+\tag{5}
+$$
+其中 $J_e$ 是只保留 $T_e=z^2(z+3),F_e=0$ 的通道。
+记
+$$
+T_e^{\rm re}=a^2(a+3)-3(a+1)\beta^2,\qquad
+Q_e=3a^2+6a-\beta^2.
+$$
+(2) 给 $T_e^{\rm re}>972/343-56/25>0,Q_e>0$，故
+$$
+x_e=-T_e^{\rm re}\cos2\beta+\beta Q_e\sin2\beta\ge-a^2(a+3)>-3,
+\qquad
+y_e=T_e^{\rm re}\sin2\beta+\beta Q_e\cos2\beta\ge0.
+$$
+于是 $J_e>-3$，由 @lem-ppcaa-low-actual-spin-1011，
+$$
+J_{U,1}<\eta^2(3/10)+3/240=53/240<9/40.
+\tag{6}
+$$
+
+负方向直接用单位源。置
+$$
+T_{0,1}=a^3/48+3a^2/16+a/4,\quad
+T_{1,1}=a^2/16+3a/8+1/4,\quad L_1=(a+3)/16,
+$$
+$$
+T_1^{\rm re}=T_{0,1}-L_1\beta^2,\qquad Q_1=T_{1,1}-\beta^2/48.
+$$
+端点替换给 $L_1>6/25,Q_1>3/5,T_1^{\rm re}>1/4,T_{0,1}<23/60$。
+中间两式例如分别由
+$$
+9/196+9/28+1/4-1/120>3/5,\qquad
+501/1372-(29/120)(2/5)>1/4
+$$
+给出；最后一式直接代入 $a<13/15$。
+从 (4) 微分，
+$$
+x_{U,1}'=
+2\beta\{(L_1+Q_1)\cos2\beta-r/8\}
++\{2T_1^{\rm re}+T_{1,1}-\beta^2/16\}\sin2\beta>0.
+$$
+第一括号大于 $(6/25+3/5)(3/10)-(5/8)(1/8)>0$；
+第二括号为正；所写严格导数界适用于 $0<\beta\le\alpha$，在零点导数为零。
+且 (4) 给 $y_{U,1}\ge0$。因此
+$$
+J_{U,1}\ge x_{U,1}(0)>
+-23/60+(3/5)(1/8)(6/7)(20/7)
+=-587/2940>-9/40.
+$$
+与 (6) 合并，
+$$
+|K_{3,1}|/C_0<(9/40)t^3.
+\tag{7}
+$$
+
+**四阶。**
+继续在同一生成式中保留任意实 $\kappa$。
+次数四的纯根指数在 $\{-4,-2,0,2,4\}$，混合根指数在 $\{-1,1,3,5\}$；
+乘外部 $n^2$ 后，纯项只保留指数零，混合项只保留指数五。
+因此分别提取
+$u_cv_c^3=c\bar c^3n^{-2}=t^2\bar c^2n^{-2}$ 与
+$u_c^2v_cw_d=c^2\bar c d n^3=t^2cd n^3$。
+四类贡献如下：
+$$
+\begin{array}{c|c|c}
+\text{项}&[u_cv_c^3]&[u_c^2v_cw_d]\\\hline
+\mathsf H^4/4!&-h^4z\bar z^3/6&0\\
+\mathsf W\mathsf H^3/3!&h^4(-\bar z^3/6+z\bar z^2/2)&0\\
+\mathsf T_\pm\mathsf H^3/3!&-\chi_\pm h^3\bar z^3/6&-\xi_\pm h^3z^2\bar z/2\\
+\mathsf W\mathsf T_\pm\mathsf H^2/2!&\chi_\pm h^3\bar z^2/2&\xi_\pm h^3(-z\bar z+z^2/2)
+\end{array}
+$$
+例如第一行用 $\binom{4}{1}/4!=1/6$；
+第二行的两个贡献用 $\binom{3}{0}/3!=1/6$ 和 $\binom{3}{1}/3!=1/2$；
+第三行混合项用 $\binom{3}{2}/3!=1/2$；
+第四行混合项的两个贡献用 $\binom{2}{1}/2!=1$ 和 $\binom{2}{2}/2!=1/2$。
+纯项的根平均是 $\mathcal R(n^0)=1$，其前两行之和为
+$h^4\bar z^2(3z-\bar z-z\bar z)/6$，
+后两行之和为 $\chi_\pm h^3\bar z^2(3-\bar z)/6$。
+代入 $h=\kappa/2$，尚未乘旋转因子的纯系数准确为
+$$
+\bar z^2\left\{
+\frac{\kappa^4}{96}(3z-\bar z-z\bar z)
++\frac{\kappa^3}{48}(3-\bar z)(1\pm rq_\beta)
+\right\},
+\tag{8}
+$$
+振幅字符 $t^2\bar c^2$；混合系数为
+$$
+\frac{\kappa^3}{16}z(z\bar z+2\bar z-z)(r\pm q_\beta),
+\tag{9}
+$$
+振幅字符 $t^2cd$，其中 $q_\beta=e^{-2i\beta}$。
+这里混合两行在平均前相加为
+$-\xi_\pm h^3z(z\bar z+2\bar z-z)/2$；
+外部 $n^2$ 把 $n^3$ 变为 $n^5$，平均 $-1$ 正好抵消这一负号，得到 (9)。
+整个生成式对 $w_d$ 至多一次，所以没有遗漏二次 $d$ 字符。
+
+还明确记录旋转与奇偶投影，以核对与实际通道的连接。
+记
+$$
+\begin{aligned}
+Q_\kappa&=\frac{\kappa^3}{48}\bar z^2(3-\bar z),\\
+\mathcal P_\kappa&=Q_\kappa+\frac{\kappa^4}{96}\bar z^2(3z-\bar z-z\bar z),\\
+\mathcal M_\kappa&=\frac{\kappa^3}{16}z(z\bar z+2\bar z-z).
+\end{aligned}
+$$
+于是 (8) 是 $\mathcal P_\kappa\pm rq_\beta Q_\kappa$，
+(9) 是 $(r\pm q_\beta)\mathcal M_\kappa$。
+乘旋转因子但尚未作奇偶投影时，
+$$
+\begin{aligned}
+X_{4,\rm raw}&=t^2\bar c^2(e^{2i\beta}\mathcal P_\kappa-rQ_\kappa)
++t^2cd(re^{2i\beta}\mathcal M_\kappa-\mathcal M_\kappa),\\
+Y_{4,\rm raw}&=it^2\bar c^2(e^{2i\beta}\mathcal P_\kappa+rQ_\kappa)
++it^2cd(re^{2i\beta}\mathcal M_\kappa+\mathcal M_\kappa).
+\end{aligned}
+$$
+三个多项式在 $-\beta$ 处都成为 $\beta$ 处的共轭，故偶、奇投影给
+$$
+\begin{aligned}
+x_{{\rm p},\kappa}&=\Re(e^{2i\beta}\mathcal P_\kappa)-r\Re Q_\kappa,&
+y_{{\rm p},\kappa}&=-\Im(e^{2i\beta}\mathcal P_\kappa)-r\Im Q_\kappa,\\
+x_{{\rm m},\kappa}&=r\Re(e^{2i\beta}\mathcal M_\kappa)-\Re\mathcal M_\kappa,&
+y_{{\rm m},\kappa}&=-r\Im(e^{2i\beta}\mathcal M_\kappa)-\Im\mathcal M_\kappa.
+\end{aligned}
+$$
+$Y$ 的负虚部来自 $i(Z-\bar Z)/2=-\Im Z$。
+在 $\kappa=6/5$ 时，上式就是 @lem-ppfs-exact-fourth-spin-1011 的四条实通道。
+所有旋转、投影与 $J$ 都是实线性的，因此源系数逐项比较给
+$$
+J_{{\rm p},1}=\eta^3J_{{\rm p},6}-J_F/480,\qquad
+J_{{\rm m},1}=\eta^3J_{{\rm m},6},
+\tag{10}
+$$
+其中 $J_F$ 对应
+$$
+H_F=\bar z^2(3z-\bar z-z\bar z)
+=\bar z^2\{a(2-a)-\beta^2+4i\beta\}.
+$$
+令 $v=V/W$，其实际通道为 $\Re\{(1+iv)e^{2i\beta}H_F\}$。
+由 (2) 和 $0\le v\le\tan(\alpha-\beta)$，
+$$
+|J_F|\le\sup_\beta\sec\alpha\,(a^2+\beta^2)
+\sqrt{(a(2-a)-\beta^2)^2+16\beta^2}
+<\frac54\frac{259}{225}\frac{11}{4}<4.
+$$
+使用了 $a^2+\beta^2<259/225$，
+$0<a(2-a)-\beta^2<1$ 和 $37/5<(11/4)^2$。
+再用 @lem-ppcaa-fourth-actual-spin-1011 的准确通道界，
+$$
+|J_{{\rm p},1}|<\eta^3(301/1250)+4/480=319/2160<3/20.
+$$
+混合项用更松的 $|J_{{\rm m},6}|<37/100$ 即够，于是
+$$
+|K_{4,1}|/C_0<(3/20)t^4+\eta^3(37/100)st^3.
+\tag{11}
+$$
+
+**完整尾项。**
+由 @lem-ppsm-source-homogeneity-1011，总次数 $N\ge5$ 的纯项分别带
+$\kappa^N,\kappa^{N-1}$，混合项带 $\kappa^{N-1}$。
+在 @lem-ppcaa-complete-actual-tail-1011 的正项包络中，
+单位源每项至多为中央对应项的 $\eta^{N-1}\le\eta^4$ 倍。
+具体说，设该引理证明中的 $k=6/5,E_j=(9/7)^j/j!$、
+$b_*=13/8$，则
+$$
+u_N=p_N(2)(E_N+kE_{N-1})+
+p_{N-1}(2)b_*(E_{N-1}+kE_{N-2}),\qquad
+v_N=p_{N-1}(1)b_*(E_{N-1}+kE_{N-2}).
+$$
+为独立确认每个包络项，令 $z=a+i\beta$。
+由前面的 $a<13/15$、$\alpha<22/35$ 有
+$k^2|z|^2<(6/5)^2[(13/15)^2+(22/35)^2]=50548/30625<(9/7)^2$，
+且 $1+r<13/8=b_*$。@def-psgs-finite-kernel-rule-1011h 的四类有限项分别给：
+$$
+\begin{array}{c|c|c}
+\text{项}&\text{纯包络系数}&\text{混合包络系数}\\\hline
+\mathsf H^N/N!&p_N(2)E_N&0\\
+\mathsf W\mathsf H^{N-1}/(N-1)!&p_N(2)kE_{N-1}&0\\
+\mathsf T_\pm\mathsf H^{N-1}/(N-1)!&p_{N-1}(2)b_*E_{N-1}&p_{N-1}(1)b_*E_{N-1}\\
+\mathsf W\mathsf T_\pm\mathsf H^{N-2}/(N-2)!&p_{N-1}(2)b_*kE_{N-2}&p_{N-1}(1)b_*kE_{N-2}
+\end{array}
+$$
+这里 $p_n(j)=2^{-n}\sum_{0\le v\le n,\ n-2v\equiv j\ (5)}\binom nv$；
+外部 $n^2$ 的根筛选给指数条件，额外 $cn$ 与 $dn^2$ 分别把条件平移到表中 $2,1$。
+$\mathsf W$ 的两项各绝对值 $kt/2$，两概率平均使用二项递推，给显示的 $p_N$ 或 $p_{N-1}$。
+四行全为分别取模后的正项，纯、混合振幅分别是 $t^N,st^{N-1}$。
+现在逐行核实偶 $X$、奇 $Y$ 的加权模因子。设 $v=V/W$（$W>0$ 几乎处处）。
+共同旋转 $e^{2i\beta}$ 不改变模；未作奇偶投影的每行可写为
+减号 $F_0-q_\beta F_1$、加号 $F_0+q_\beta F_1$。
+前两行分别取 $F_0=\mathsf H^N/N!$、
+$F_0=\mathsf W\mathsf H^{N-1}/(N-1)!$，且均有 $F_1=0$。
+第三行中，纯项的 $(F_0,F_1)$ 为共同指数因子乘 $(cn,rcn)$，
+混合项为同一因子乘 $(rdn^2,dn^2)$；第四行再同时乘 $\mathsf W$。
+于是对任意复数 $Z_0=e^{2i\beta}F_0$、$Z_1=e^{2i\beta}q_\beta F_1$，
+$$
+\left|\Re(Z_0-Z_1)+v\Im(Z_0+Z_1)\right|
+\le\sqrt{1+v^2}\,(|Z_0|+|Z_1|).
+$$
+这是分别对 $Z_0$ 用 $(\Re Z_0)+v\Im Z_0$、
+对 $Z_1$ 用 $-\Re Z_1+v\Im Z_1$ 的二维 Cauchy--Schwarz；
+没有把两个不同符号通道当成同一个复表达式。
+同时，对原始完整复核 $X_{\rm raw}+vY_{\rm raw}$，
+$Y_{\rm raw}$ 包含定义中的 $i$，故它准确等于
+$$
+(1+iv)Z_0+(-1+iv)Z_1,
+\qquad
+|(1+iv)Z_0+(-1+iv)Z_1|
+\le\sqrt{1+v^2}(|Z_0|+|Z_1|).
+$$
+这由 $|1+iv|=|-1+iv|=\sqrt{1+v^2}$ 直接给出，
+因而同一预算控制完整 $K$ 的复模及各实通道。
+纯、混合两对模和的系数均为 $1+r<b_*$，前两行系数为 $1$，
+故恰得到表中的逐行正包络。
+取 $X$ 的偶部、$Y$ 的奇部时，是 $\beta,-\beta$ 两表达式的半和，
+第二项相当于把 $v$ 改成 $-v$，上述估计仍然相同；
+各系数的模上界只依赖 $|\beta|$，五根投影也保持这些上界。
+最后 $0\le v\le\tan(\alpha-\beta)\le\tan\alpha$，
+因此 $\sqrt{1+v^2}\le\sec\alpha<5/4$。
+前两行含 $N$ 个源因子，后两行含 $N-1$ 个源因子。
+所以单位源第一括号两项各多出 $\eta^N$，其余多出 $\eta^{N-1}$。
+这里缩放的是逐项正包络，未把存在抵消的两个实际积分相除。
+同源模因子 $\sqrt{1+(V/W)^2}<5/4$ 和五根筛选不变，所以
+$$
+|K_{{\rm h},1}|/C_0<
+\eta^4\{(11/200)t^2+(21/1000)ts\}.
+\tag{12}
+$$
+两种振幅始终分别是 $t^N,st^{N-1}$；此步只使用 $t\le T$。
+这里逐项积分合法：有限个根节点与紧角区间上，$|\mathsf H|\le9t/7$，
+$t\le T$、$s\le5/8$，所以指数级数及乘以有限前因子的级数均一致绝对收敛。
+上面 $E_j=(9/7)^j/j!$ 给可求和的正上界；
+而 $W,V\in L^1[0,\alpha]$，故各项被一可积函数乘该可求和序列控制。
+由控制收敛（或对绝对值先用 Tonelli），可以把完整级数与对 $W,V$ 的积分交换。
+五根平均、奇偶投影都是有限线性操作，同样与这些极限交换。
+
+将 (3)、(7)、(11)、(12) 相加，得到
+$$
+\begin{aligned}
+|K|/C_0<&\{1/8+(9/40)T+(3/20)T^2+(11/200)\eta^4\}t^2\\
+&+\{3/4+(37/100)\eta^3T^2+(21/1000)\eta^4\}ts.
+\end{aligned}
+$$
+两个括号准确等于 (1) 的两个分数。
+$t=0$ 时源密度为一、指数位移为零，剩余 $d$ 项由五根平均消失，
+故由 @def-psgs-exact-tensor-1011h 直接得 $K=0$。
+:::

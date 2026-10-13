@@ -1,0 +1,11 @@
+---
+title: "受保护中心定理"
+qmd-prover:
+  imports:
+    - from: workspace/foundations.qmd
+      use: [def-domain]
+---
+
+::: {#thm-main-nonconvex-pentagon .theorem .goal name="固定面积简单五边形的非凸排除" date="2026-10-11" export="thm-main-nonconvex-pentagon"}
+每个面积为 $A>0$ 的非凸简单至多五边形 $P\in\mathscr P_{\le5}(A)$，都存在同面积的简单至多五边形 $Q$，满足 $\lambda_1(Q)<\lambda_1(P)$。若竞争类要求恰好五条有效边，也可选择这样的 $Q$ 有恰好五条有效边。因此，这两个固定面积竞争类中的任何全局极小者，若存在，必为凸多边形。竞争类及谱泛函采用 第~@def-domain~条。
+:::

@@ -1,0 +1,108 @@
+---
+title: "凸角的统一初等屏障与截角谱代价"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: sobolev-convex-foundations.qmd
+      use:
+        - lem-arc-convex-zero-extension-1012
+    - from: dirichlet-spectral-foundations.qmd
+      use:
+        - lem-arc-dirichlet-spectrum-1012
+---
+
+::: {#lem-arc-corner-barrier-1012 .lemma name="固定凸多边形角点的幂次屏障与导数控制" date="2026-10-12" export="lem-arc-corner-barrier-1012"}
+设 $Q$ 为有界凸多边形的内部，所有内角小于 $\pi$，
+$u\in H_0^1(Q)$ 是正 Dirichlet 特征函数，$-\Delta u=\lambda u$、$\lambda>0$。
+则 $u\in H^2(Q)$，$u,\nabla u$ 连续延至闭域，在顶点同时为零。
+具体地，对内角为 $\omega$ 的固定顶点 $v$，任取 $1<\nu<\pi/\omega$，
+存在 $R,C_j>0$，使整个角窗内
+$$|D^ju(x)|\le C_j|x-v|^{\nu-j},\qquad j=0,1,2,\quad0<|x-v|<R.$$
+特别地 $uD^2u\to0$。常数只针对固定域、固定角与固定 $\nu$。
+若从 $Q$ 切去包含于 $B(v,C\varepsilon)$ 的顶角片，得到有内点的多边形 $Q_\varepsilon$，则
+$$0\le\lambda_1(Q_\varepsilon)-\lambda_1(Q)=O(\varepsilon^{2\nu})=o(\varepsilon).$$
+此处 $u$ 的正性使它为第一基态；切角结论对充分小的 $\varepsilon>0$ 成立。
+:::
+
+::: {.proof of="lem-arc-corner-barrier-1012"}
+@lem-arc-dirichlet-spectrum-1012 已证明正第一基态存在；与之互相测试弱方程得 $\lambda=\lambda_1(Q)$。
+先只从 $u\in H_0^1(Q)$ 的弱方程出发，建立内点及开边的光滑性。
+在以开边上一点为圆心、只接触该直边的圆盘内作奇反射：给整个圆盘的测试函数 $\phi$，
+原半圆盘中的测试函数是 $\phi-\phi\circ\mathcal R$，其中 $\mathcal R$ 为该直边反射。
+这个光滑测试函数在直边上为零；在宽度 $\eta$ 的边界条带内截断时，
+函数为 $O(\eta)$，截断梯度为 $O(1/\eta)$，故 $H^1$ 误差趋零，允许作为原弱方程的测试。
+局部先乘紧支截断，再将 $u$ 零延拓：$H_0^1$ 的闭包定义保证其全空间 $H^1$ 归属。
+将该零延拓减去它的镜像，便是较小圆盘内的奇延拓；所以奇延拓属于 $H^1$。
+原弱方程因此直接给 $-\Delta\widetilde u=\lambda\widetilde u$，不产生边界质量。
+
+对内圆盘或上述反射圆盘的任一弱解 $v$，令
+$$V(x_1,x_2,z)=v(x_1,x_2)e^{\sqrt\lambda z}.$$
+分布意义下 $\Delta_{x,z}V=e^{\sqrt\lambda z}(\Delta_xv+\lambda v)=0$。
+弱调和函数的均值性质给光滑代表：可先将 $V$ 卷积光滑化，
+在紧含的球上用均值公式，再以局部 $L^1$ 极限取得同一调和代表。
+这正是 Weyl 引理的均值证明；球 Poisson 公式及此事实可参见
+[Leon Simon, Lectures on PDE, Lecture 4, pp.32--36](https://math.stanford.edu/~lms/lecs-on-pde.pdf)。
+在三维半径 $a$ 的球中，Poisson 核为
+$$P_a(x,\zeta)=\frac{a^2-|x|^2}{4\pi a|x-\zeta|^3},\qquad |\zeta|=a.$$
+在同心、半径减半的球内对核求一、二阶导数并积分，得到
+$$|D^jv(x_0)|\le C_ja^{-j}e^{\sqrt\lambda a}
+\|v\|_{L^\infty(B_a(x_0))},\qquad j=1,2.$$
+使用一个稍小的三维球即可保证其闭包位于圆柱内；常数吸收这个固定比例。
+于是 $u$ 在内部和每条开边附近光滑，开边上为零。
+到此未使用角点连续性、全域有界性或凸多边形 $H^2$ 正则性。
+
+在顶点的极坐标 $0<\theta<\omega$ 中令
+$$f(\theta)=\cos(\nu(\theta-\omega/2))>0,\quad
+b=\frac{\lambda}{4(\nu+1)},\quad
+\Psi(\rho,\theta)=\rho^\nu f(\theta)(1-b\rho^2).$$
+直接计算
+$$\Delta(\rho^\nu f)=0,\quad
+\Delta(\rho^{\nu+2}f)=4(\nu+1)\rho^\nu f,\quad
+(-\Delta-\lambda)\Psi=\lambda b\rho^{\nu+2}f\ge0.$$
+缩小 $R$，使角窗 $W_R=Q\cap B(v,R)$ 恰为截断楔形，
+且 $1-bR^2>0$、$4\lambda R^2<1$。
+外圆弧连同其两个端点避开顶点；刚证的内部和开边光滑性使 $u$ 在此有界。
+而 $f\ge\cos(\nu\omega/2)>0$，故可选 $C$ 使圆弧上 $u\le C\Psi$。
+两条直边上原函数的零延拓属于 $H^1$、$\Psi\ge0$。
+说明正部测试的归属：在稍宽的角窗将 $\Psi$ 延为非负 $H^1$ 函数，
+再与 $u$ 的零延拓取差的正部；在两条直边外该正部为零。
+外圆弧附近函数光滑，且正部在圆弧上为零，所以逐段分部积分将其在圆外零延拓时没有跳跃项。
+顶点附近使用上述 $H^1$ 正部构造，不需预设顶点的点值。
+于是 $w=(u-C\Psi)_+$ 的全空间零延拓属于 $H^1$。
+$W_R$ 是有界开凸集，@lem-arc-convex-zero-extension-1012 遂给 $w\in H_0^1(W_R)$。
+对差的弱方程以 $w$ 测试，准确得到
+$$\int_{W_R}|\nabla w|^2\le\lambda\int_{W_R}w^2.$$
+将 $w$ 零延拓到包含 $W_R$ 的边长 $2R$ 正方形，
+沿一条坐标线积分并使用 Cauchy--Schwarz，再由密度推广至 $H_0^1$，有
+$$\int w^2\le4R^2\int|\partial_1w|^2\le4R^2\int|\nabla w|^2.$$
+由于 $4\lambda R^2<1$，必有 $w=0$。结合 $u>0$，得整个角窗内 $u=O(\rho^\nu)$。
+此能量测试同时给出了所需的小角窗比较，不再引用单独的比较原理或楔形谱界。
+
+将目标角窗半径缩为前述半径的一半。为使导数估计覆盖整个角窗，对闭单位角弧取有限圆盘覆盖。
+内弧圆盘留在楔形内，两个端点附近的圆盘只接触自身直边，避开原点及另一条射线；
+全部放大圆盘均可取在 $1/2<|x|<2$ 内。
+将此固定有限覆盖乘以 $\rho$，单边圆盘先作零 Dirichlet 奇反射。
+反射保持距顶点的距离，故放大圆盘上函数绝对值仍为 $O(\rho^\nu)$。
+缩放方程为 $-\Delta U=\lambda\rho^2U$，参数有界。
+上面的三维调和提升和 Poisson 核导数界（$a$ 与 $\rho$ 成固定比例）及有限覆盖给上述全部 $C_j$，于是
+$\nabla u=O(\rho^{\nu-1})\to0$、$uD^2u=O(\rho^{2\nu-2})\to0$。
+所以 $u,\nabla u$ 在每个顶点连续延拓且极限为零；结合内部及开边光滑性得到闭域连续性。
+最后才推出全域二阶可积性：每个角窗上
+$$\int_{W_R}|D^2u|^2\le C\int_0^R\rho^{2\nu-4}\rho\,d\rho
+=\frac{CR^{2\nu-2}}{2\nu-2}<\infty,$$
+其中关键是 $\nu>1$。去掉有限角窗后的闭域由有限个内部或开边光滑邻域覆盖，
+故那里二阶导数亦平方可积。内部经典导数与分布导数一致，
+于是原 $u\in H^1$ 满足 $u\in H^2(Q)\cap H_0^1(Q)$。
+这里 $H^2$ 是屏障和导数估计的结论，不是它们的前提。
+
+
+最后将 $u$ 归一化为 $\int_Q u^2=1$。
+取径向 Lipschitz 截断 $\chi_\varepsilon$，在 $B(v,C\varepsilon)$ 内为零，
+在 $B(v,2C\varepsilon)$ 外为一，且 $|\nabla\chi_\varepsilon|=O(\varepsilon^{-1})$。
+被删片在零区内，故 $\chi_\varepsilon u\in H_0^1(Q_\varepsilon)$。
+以 $\chi_\varepsilon^2u$ 测试原方程，准确得到
+$$\int|\nabla(\chi_\varepsilon u)|^2
+=\lambda\int\chi_\varepsilon^2u^2+\int u^2|\nabla\chi_\varepsilon|^2.$$
+角点估计给最后一项 $O(\varepsilon^{2\nu})$，质量损失 $O(\varepsilon^{2\nu+2})$。
+Rayleigh 商与域单调性遂给所述双向谱界。整个论证只用幂次屏障，不用 Bessel 角点解。
+:::

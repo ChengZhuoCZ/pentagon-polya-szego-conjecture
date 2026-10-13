@@ -1,0 +1,26 @@
+---
+title: "无四边形出口的完整振幅域与互补域面积下界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: geometry-41-proof.qmd
+      use:
+        - def-geom41-deletion-1011g
+---
+
+::: {#def-psgs-normalized-geometry-1011h .definition name="归一化五边形与无严格出口" date="2026-10-11" export="def-psgs-normalized-geometry-1011h" status="verified"}
+令 $r=(\sqrt5-1)/2$、$\varphi=1+r=1/r$、$\zeta=e^{2\pi i/5}$、$n_i=e^{(2i+1)\pi i/5}$。
+设 $p_i=\zeta^i+c\zeta^{2i}+d\zeta^{-2i}$ 按显示顺序构成逆时针严格凸五边形 $P$。
+记 $t=|c|$、$s=|d|$、$u=t^2-s^2$、$m=1+ru$、$R=\operatorname{conv}\{\zeta^i\}$。
+称 $P$ 无严格出口，是指没有 @def-geom41-deletion-1011g 的外包四边形使新增面积比严格小于 $1/25$。
+定义
+$$
+\begin{aligned}
+A_i&=1+\varphi u+2\varphi\Re(c\zeta^i)+2\Re(d\zeta^{2i}),\\
+B_i&=1-ru-2r\Re(c\zeta^i)+2\Re(d\zeta^{2i}),\\
+b_i&=r-\varphi^2u-2\Re(cn_i)-2\varphi\Re(dn_i^2),\\
+Q_i&=mb_i-5(2-r)A_iA_{i+1}.
+\end{aligned}
+$$
+下标模 $5$，$\operatorname{av}$ 表示五个下标的算术平均。
+:::

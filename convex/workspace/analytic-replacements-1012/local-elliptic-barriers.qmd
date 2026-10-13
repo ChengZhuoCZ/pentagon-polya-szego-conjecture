@@ -1,0 +1,60 @@
+---
+title: "局部指数屏障：严格正性、开边导数与角压缩"
+lang: zh-CN
+---
+
+::: {#lem-arc-local-elliptic-barrier-1012 .lemma name="局部椭圆指数屏障的极值与边界结论" date="2026-10-12" export="lem-arc-local-elliptic-barrier-1012"}
+设 $\Omega\subset\mathbb R^d$ 为连通开集，
+$$Lf=\operatorname{tr}(a(x)D^2f)+b(x)\cdot\nabla f-c(x)f,$$
+其中 $a$ 对称、系数连续，在每个紧含于 $\Omega$ 的紧集上
+$\nu I\preceq a\preceq\Lambda I$（$\nu>0$）且 $|b|,c$ 有界，$c\ge0$。
+则非负 $v\in C^2(\Omega)$ 若满足 $Lv\le0$，必有 $v\equiv0$ 或 $v>0$ 于整个 $\Omega$。
+
+另设 $B_R(y)$ 是一个内切球，$p\in\partial B_R(y)$，
+$v\in C^2(B_R(y))\cap C(\overline{B_R(y)})$ 在球内正、闭球非负、$v(p)=0$，
+且 $Lv\le0$。若上述椭圆性及系数界在环带 $R/2<|x-y|<R$ 上一致成立，
+则以 $\mathbf n=(p-y)/R$ 记球外法向，有
+$$\liminf_{t\downarrow0}\frac{v(p-t\mathbf n)}t>0.$$
+若 $v$ 在 $p$ 有一阶导数，则 $\partial_{\mathbf n}v(p)<0$。
+
+还设 $D$ 为有界开集、$f\in C^2(D)\cap C(\overline D)$，
+在 $D$ 内 $a\succ0,c>0$。若 $Lf\ge0$ 且边界 $f\le0$，则 $f\le0$ 于 $D$。
+这一最后结论只需系数在内点有限，不要求对无界域作全局一致椭圆性假设。
+:::
+
+::: {.proof of="lem-arc-local-elliptic-barrier-1012"}
+先作环带计算。置 $r=|x-y|$，取
+$$\beta(x)=e^{-\alpha r^2}-e^{-\alpha R^2},\qquad R/2<r<R.$$
+在此环带设 $|b|\le B$、$0\le c\le C$、$\nu I\preceq a\preceq\Lambda I$。
+直接求导给
+$$L\beta=e^{-\alpha r^2}
+\{4\alpha^2(x-y)^{\mathsf T}a(x-y)-2\alpha\operatorname{tr}a
+-2\alpha b\cdot(x-y)-c\}+ce^{-\alpha R^2}.$$
+因而
+$$L\beta\ge e^{-\alpha r^2}\{\alpha^2\nu R^2-2\alpha(d\Lambda+BR)-C\}.$$
+写 $M=\nu R^2>0,D_0=d\Lambda+BR$，例如取
+$$\alpha=\frac{2D_0+1+CM}{M}$$
+时，花括号准确等于
+$$\frac{(2D_0+1)(1+CM)+C^2M^2}{M}>0.$$
+故 $\beta>0$ 于环带、$\beta=0$ 于外球面，且 $L\beta>0$。
+
+因为 $v$ 在内球面正，选 $\varepsilon>0$ 使 $v-\varepsilon\beta\ge0$ 于内球面；
+外球面同样非负。如果 $q=v-\varepsilon\beta$ 在环带内有负最小值，
+该点 $\nabla q=0,D^2q\succeq0$，于是 $Lq\ge0$，与 $Lq<0$ 矛盾。
+所以整个环带 $v\ge\varepsilon\beta$，从而
+$$\liminf_{t\downarrow0}\frac{v(p-t\mathbf n)}t
+\ge2\varepsilon\alpha R e^{-\alpha R^2}>0.$$
+这证明内切球的边界断言，无需另引比较定理或 Hopf 引理。
+
+现在证明内部严格性。若零点集 $Z=\{v=0\}$ 与正集都非空，连通性给正集的一个内部边界点。
+可在其附近选择 $y$ 使 $v(y)>0$，且
+$R=\operatorname{dist}(y,Z)<\operatorname{dist}(y,\partial\Omega)$。
+距离由某个 $p\in Z\cap\Omega$ 取得：闭球可取紧含于 $\Omega$，在其中 $Z$ 闭。
+于是 $B_R(y)$ 内 $v>0$，闭球非负，且 $v(p)=0$；紧含性提供前面环带所需的一致局部系数界。
+边界断言给沿内法向严格正的一阶下界；但 $p$ 是 $\Omega$ 的内点，
+$v\ge0,v(p)=0$ 迫使 $\nabla v(p)=0$，矛盾。故不能同时有零点与正点。
+
+最后，若有界域中 $f$ 有正值，其正最大值必在内点取得。
+该点 $\nabla f=0,D^2f\preceq0$，且 $c>0$，所以 $Lf<0$，与假设矛盾。
+这给出最后的有界域比较结论。
+:::

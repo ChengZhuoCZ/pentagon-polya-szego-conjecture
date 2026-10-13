@@ -1,0 +1,54 @@
+{
+  "changed_old_nodes": [
+    "lem-ppol-linear-second-phase-cost-1011",
+    "lem-ppol-two-interval-discriminants-1011",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-pressure-rebuild-1011-attainment",
+    "prp-pressure-rebuild-1011-regular-calibration",
+    "prp-psgs-pressure-image-1011h",
+    "prp-tpr-support-hadamard-tpr1011",
+    "thm-psgs-pressure-polarity-1011h",
+    "thm-psgs-weak-transport-dual-1011h"
+  ],
+  "new_nodes": [
+    "lem-arc-corner-barrier-1012",
+    "lem-arc-pressure-gap-1012",
+    "lem-arc-phase-short-payments-1012"
+  ],
+  "transitively_affected_nodes": [
+    "lem-ppol-linear-second-phase-cost-1011",
+    "lem-ppol-two-interval-discriminants-1011",
+    "lem-ppsb-spectral-deficit-transfer-1011",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-ppca-entire-amplitude-phase-budget-1011",
+    "prp-ppca-same-source-strict-budget-1011",
+    "prp-ppol-low-ratio-rank-one-payment-1011",
+    "prp-pressure-rebuild-1011-attainment",
+    "prp-pressure-rebuild-1011-regular-calibration",
+    "prp-psgs-all-affine-pressure-1011h",
+    "prp-psgs-pressure-image-1011h",
+    "prp-psgs-pressure-kernel-exists-1011h",
+    "prp-psgs-regular-dual-pressure-1011h",
+    "prp-tpr-support-hadamard-tpr1011",
+    "thm-main-convex-pentagon-dirichlet",
+    "thm-ppcs-central-short-pressure-budget-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-psgs-pressure-polarity-1011h",
+    "thm-psgs-weak-transport-dual-1011h",
+    "thm-tpm-convex-global-comparison-tpm1011",
+    "thm-tpm-no-exit-all-affine-tpm1011"
+  ],
+  "withdrawn_tags": [
+    "lem-ppsb-spectral-deficit-transfer-1011",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-pressure-rebuild-1011-attainment",
+    "prp-psgs-all-affine-pressure-1011h",
+    "prp-psgs-pressure-image-1011h",
+    "prp-psgs-pressure-kernel-exists-1011h",
+    "prp-psgs-regular-dual-pressure-1011h",
+    "prp-tpr-support-hadamard-tpr1011",
+    "thm-psgs-pressure-polarity-1011h",
+    "thm-psgs-weak-transport-dual-1011h"
+  ],
+  "reason": "Proof or premise changed; old verification status is not inherited."
+}

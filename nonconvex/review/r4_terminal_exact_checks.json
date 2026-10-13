@@ -1,0 +1,119 @@
+{
+  "kind": "exact algebraic corroboration only; global implications proved in prose",
+  "checks": [
+    {
+      "name": "original head variable is unchanged",
+      "passed": true
+    },
+    {
+      "name": "head loss uses the original k",
+      "passed": true
+    },
+    {
+      "name": "weighted gap product identity",
+      "passed": true
+    },
+    {
+      "name": "positive linear rescaling, without squaring",
+      "passed": true
+    },
+    {
+      "name": "third derivative of the weighted gap",
+      "passed": true
+    },
+    {
+      "name": "normalized third derivative",
+      "passed": true
+    },
+    {
+      "name": "lower-height reciprocal bound",
+      "passed": true
+    },
+    {
+      "name": "strict coarse constant in cubic bound",
+      "passed": true
+    },
+    {
+      "name": "scalar cubic derivative",
+      "passed": true
+    },
+    {
+      "name": "positive scalar critical point",
+      "passed": true
+    },
+    {
+      "name": "scalar cubic maximum value",
+      "passed": true
+    },
+    {
+      "name": "scalar cubic maximum bound",
+      "passed": true
+    },
+    {
+      "name": "strict negative third-derivative margin",
+      "passed": true
+    },
+    {
+      "name": "lower-interval curvature endpoint",
+      "passed": true
+    },
+    {
+      "name": "strong-convexity tangent value",
+      "passed": true
+    },
+    {
+      "name": "strong-convexity tangent slope",
+      "passed": true
+    },
+    {
+      "name": "strong-convexity square completion",
+      "passed": true
+    },
+    {
+      "name": "strong-convexity strict margin",
+      "passed": true
+    },
+    {
+      "name": "upper-interval initial derivative",
+      "passed": true
+    },
+    {
+      "name": "upper-interval left endpoint value",
+      "passed": true
+    },
+    {
+      "name": "upper-interval right endpoint value",
+      "passed": true
+    },
+    {
+      "name": "unchanged original response partial fractions",
+      "passed": true
+    },
+    {
+      "name": "original payment differs by the positive gap",
+      "passed": true
+    },
+    {
+      "name": "retained tangent height value",
+      "passed": true
+    },
+    {
+      "name": "retained tangent height slope",
+      "passed": true
+    },
+    {
+      "name": "retained upper-interval slope",
+      "passed": true
+    },
+    {
+      "name": "retained reciprocal tangent remainder",
+      "passed": true
+    },
+    {
+      "name": "retained strict payment margin",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "count": 28
+}

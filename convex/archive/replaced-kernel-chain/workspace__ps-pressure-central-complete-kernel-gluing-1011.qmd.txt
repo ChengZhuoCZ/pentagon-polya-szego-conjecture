@@ -1,0 +1,209 @@
+---
+title: "中央源的完整共同相位双核接合"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: ps-pressure-fourth-spin-two-channel-budget-1011.qmd
+      use:
+        - lem-ppfs-fourth-spin-budget-1011
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-exact-second-third-scalar-1011
+    - from: ps-pressure-low-spin-positive-ratios-1011.qmd
+      use:
+        - lem-ppspr-exact-low-spin-1011
+    - from: ps-pressure-mixed-fifth-order-tail-1011.qmd
+      use:
+        - lem-ppmfo-exact-mixed-fifth-1011
+        - prp-ppmfo-mixed-fifth-green-budget-1011
+    - from: ps-pressure-nine-tenths-low-order-margin-1011.qmd
+      use:
+        - prp-ppnm-nine-tenths-low-order-margin-1011
+    - from: ps-pressure-root-filtered-high-tail-1011.qmd
+      use:
+        - lem-pprf-filtered-tail-1011
+    - from: ps-pressure-scalar-fourth-order-tail-1011.qmd
+      use:
+        - cor-ppsfo-total-fourth-budget-closed-1011
+---
+
+::: {#thm-ppcc-central-complete-two-kernel-1011 .theorem name="中央源完整两条原函数核的严格共同相位余量" date="2026-10-11" export="thm-ppcc-central-complete-two-kernel-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$，
+并记 $t=|c|$、$s=|d|$。设
+$$
+0\le s\le t\le\frac{27}{50},\qquad
+0\le\ell\le
+\frac{(49/100)t^2+(107/100)ts}{1+(13/50)t^2}.
+\tag{1}
+$$
+令
+$$
+G_A(\beta)=\int_0^\beta(A-\bar A),\qquad
+G_X(\beta)=\int_0^\beta(X-\bar Z).
+$$
+则对所有复相位、所有 $0\le\beta\le\alpha$，
+两个符号分别满足
+$$
+\boxed{
+B\pm2G_A-\ell\,|Y\pm2G_X|
+\ge\frac{9363039}{100000000}\,\beta t^2
+\ge\frac9{100}\,\beta t^2.
+}
+\tag{2}
+$$
+:::
+
+::: {.proof of="thm-ppcc-central-complete-two-kernel-1011" status="verified"}
+参数及可容许积分权的定义采用 @def-psgs-tensor-weights-1011h，特别保留 $a_0=\alpha\cot\alpha$ 与 $r\in\mathbb R$。
+以下推导沿用 @def-psgs-exact-tensor-1011h 所给对象、记号与适用条件。
+记 $\mathcal GF(\beta)=\int_0^\beta(F-\bar F)$，
+$T=27/50$。由 (1)，
+$$
+\ell\le
+\frac{(39/25)T^2}{1+(13/50)T^2}
+=\frac{56862}{134477}<\frac{17}{40}.
+\tag{3}
+$$
+最后一个比较的交叉正余量为
+$17\cdot134477-40\cdot56862=11629$。
+
+完整指数级数及其前两阶角导数在此闭参数域上一致收敛，
+所以齐次分解、有限五根平均和 $\mathcal G$ 可逐项交换。
+先将 $(c,d)$ 同时换为 $(\varepsilon c,\varepsilon d)$，
+以下下标表示 $\varepsilon$ 的次数。令 $\zeta=e^{2\pi\mathrm i/5}$，
+则 $n_i=n_0\zeta^i$，故对每个整数 $j$（包括负整数），
+$$
+\operatorname{av}_i n_i^j=
+\frac{n_0^j}{5}\sum_{i=0}^4\zeta^{ij}
+=\begin{cases}(-1)^{j/5},&5\mid j,\\0,&5\nmid j.\end{cases}
+$$
+由 @def-psgs-exact-tensor-1011h，原始标量核的零次项为 $1$；
+原始自旋核的零次项含 $\operatorname{av} n_i^2=0$。
+一次项来自 $\omega_i-1$、$P_i^\pm-1$ 及指数的一次项，
+其根指数均属于 $\{-1,1,2\}$。三个平均全为零；
+自旋外面的 $n_i^2$ 则把这三个指数移为 $\{1,3,4\}$，
+其平均亦全为零。取定义规定的实部、虚部及奇偶部保持这些零值，
+从而 $A_0=1$，$B_0=X_0=Y_0=0$，
+$A_1=B_1=X_1=Y_1=0$。
+
+上述定义中 $\omega_i$ 和指数只依赖 $c,\bar c$，
+而 $P_i^\pm$ 关于 $d$ 仅一次。因此第五阶标量项含 $d$ 的部分
+正是关于 $d$ 线性的混合部分。
+@lem-ppmfo-exact-mixed-fifth-1011 明确定义并给出同一齐次分解中的
+$A_{5,m}=\operatorname{Re}(d\bar c^2)t^2 f_5$、
+$B_{5,m}=\operatorname{Re}(d\bar c^2)t^2 g_5$。
+余下第五阶纯标量项，以及六阶起的所有标量混合项和五阶起的自旋项，
+正是 @lem-pprf-filtered-tail-1011 的四个尾项。
+由 @lem-pplojm-exact-second-third-scalar-1011、
+@lem-ppspr-exact-low-spin-1011 以及各尾项的定义，精确分解为
+$$
+\begin{aligned}
+A&=1+A_2+A_3+A_4+A_{5,m}+A_{\rm h},&
+B&=B_2+B_3+B_4+B_{5,m}+B_{\rm h},\\
+X&=X_2+X_3+X_4+X_{\rm h},&
+Y&=Y_2+Y_3+Y_4+Y_{\rm h}.
+\end{aligned}
+\tag{4}
+$$
+常数 $1$ 的减均值原函数为零；一次项也全部为零。
+
+对两个符号中的任意一个，
+@prp-ppnm-nine-tenths-low-order-margin-1011 给低阶共同相位预算
+$$
+B_2+B_3\pm2\mathcal G(A_2+A_3)
+-\ell|Y_2+Y_3\pm2\mathcal G(X_2+X_3)|
+\ge\frac9{10}\beta t^2.
+\tag{5}
+$$
+剩余标量代价由
+@cor-ppsfo-total-fourth-budget-closed-1011、
+@prp-ppmfo-mixed-fifth-green-budget-1011
+及 @lem-pprf-filtered-tail-1011 控制：
+$$
+\begin{aligned}
+|B_4\pm2\mathcal GA_4|&\le\frac{49}{50}\beta t^4,\\
+|B_{5,m}\pm2\mathcal GA_{5,m}|&\le\frac{61}{150}\beta s t^4,\\
+|B_{\rm h}\pm2\mathcal GA_{\rm h}|&\le\frac{161}{1000}\beta t^2.
+\end{aligned}
+\tag{6}
+$$
+其中第一行使用 $s\le t$。
+自旋部分由 @lem-ppfs-fourth-spin-budget-1011
+及 @lem-pprf-filtered-tail-1011 得
+$$
+|Y_4\pm2\mathcal GX_4|\le\frac{23}{24}\beta t^4,\qquad
+|Y_{\rm h}\pm2\mathcal GX_{\rm h}|\le\frac{52}{125}\beta t^2.
+\tag{7}
+$$
+
+将 (6)、(7) 通过三角不等式从 (5) 的余量中扣除。
+在 $\beta t>0$ 时，除以 $\beta t^2$ 的总代价至多为
+$$
+\begin{aligned}
+&\frac{49}{50}T^2+\frac{61}{150}T^3+\frac{161}{1000}
++\frac{17}{40}\left(\frac{23}{24}T^2+\frac{52}{125}\right)\\
+&\qquad=
+\frac{35721}{125000}+\frac{400221}{6250000}
++\frac{161}{1000}+\frac{95013}{800000}+\frac{221}{1250}
+=\frac{80636961}{100000000}.
+\end{aligned}
+$$
+故剩余至少为
+$$
+\frac9{10}-\frac{80636961}{100000000}
+=\frac{9363039}{100000000}>\frac9{100}.
+$$
+乘回 $\beta t^2$ 即得 (2)。
+$t=0$ 时 $s=\ell=0$，完整核直接为 $A=1$、$B=X=Y=0$；
+$\beta=0$ 时两条奇核和两条原函数均为零。
+因此所有闭端点也包含在结论中。
+:::
+
+::: {#cor-ppcc-central-complete-weight-comparison-1011 .corollary name="中央完整核比较到抽象积分权的严格接合" date="2026-10-11" export="cor-ppcc-central-complete-weight-comparison-1011"}
+在 @thm-ppcc-central-complete-two-kernel-1011 的范围内，
+对任意 $|\lambda|\le\ell$ 以及
+@def-psgs-tensor-weights-1011h 的积分权 $W,V$，
+有
+$$
+\boxed{
+C-\operatorname{Re}(\bar\lambda K)
+-C_0[\bar A-\operatorname{Re}(\bar\lambda\bar Z)]
+\ge\frac{9t^2}{10}\int_0^\alpha\beta V(\beta)\,d\beta
+\ge0.
+}
+\tag{8}
+$$
+:::
+
+::: {.proof of="cor-ppcc-central-complete-weight-comparison-1011" status="verified"}
+采用 @def-psgs-exact-tensor-1011h 的 $C,K,\bar A,\bar Z$ 准确积分定义，
+以及 @def-psgs-tensor-weights-1011h 的 $C_0=10\int W$、
+$W\in W^{1,1}$、$V\ge0$ 和 $|W'|\le2V$。
+令
+$$
+G_\lambda=G_A-\operatorname{Re}(\bar\lambda G_X),\qquad
+B_\lambda=B-\operatorname{Re}(\bar\lambda Y).
+$$
+由 @thm-ppcc-central-complete-two-kernel-1011 的两种符号，
+$B_\lambda\pm2G_\lambda\ge9\beta t^2/100$。
+所以 $B_\lambda-2|G_\lambda|\ge9\beta t^2/100$。
+定义给 $G_\lambda(0)=0$，而 $\int_0^\alpha A=\alpha\bar A$、
+$\int_0^\alpha X=\alpha\bar Z$ 给 $G_\lambda(\alpha)=0$。
+这些核光滑，故 $G_\lambda$ 连续可微；$W$ 有绝对连续代表，
+所以分部积分边界项 $[G_\lambda W]_0^\alpha$ 严格为零。
+使用上述准确积分定义并作 Sobolev 积分分部，
+$$
+\begin{aligned}
+C-\operatorname{Re}(\bar\lambda K)
+-C_0[\bar A-\operatorname{Re}(\bar\lambda\bar Z)]
+&=10\int_0^\alpha[-G_\lambda W'+B_\lambda V]\\
+&\ge10\int_0^\alpha(B_\lambda-2|G_\lambda|)V\\
+&\ge\frac{9t^2}{10}\int_0^\alpha\beta V.
+\end{aligned}
+$$
+这保留了同一个源、同一相位与原来的真实积分权。
+:::

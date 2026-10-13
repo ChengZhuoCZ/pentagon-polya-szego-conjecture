@@ -1,0 +1,197 @@
+{
+  "scope": "Supplementary formal rational identities and exact scalar comparisons; no parameter sampling.",
+  "official_qmd_prover_run": false,
+  "proof_relies_on_execution": false,
+  "check_count": 47,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "common denominator lower bound",
+      "passed": true
+    },
+    {
+      "name": "uniform square upper bound",
+      "passed": true
+    },
+    {
+      "name": "uniform positive residual gap",
+      "passed": true
+    },
+    {
+      "name": "order 2: complete formal rational residual identity",
+      "passed": true
+    },
+    {
+      "name": "order 2: H-tH' identity",
+      "passed": true
+    },
+    {
+      "name": "order 2: first cancellation",
+      "passed": true
+    },
+    {
+      "name": "order 2: second cancellation",
+      "passed": true
+    },
+    {
+      "name": "order 2: square parameter identity",
+      "passed": true
+    },
+    {
+      "name": "order 2: independent differential residual in z",
+      "passed": true
+    },
+    {
+      "name": "order 2: positive-denominator parameter bound",
+      "passed": true
+    },
+    {
+      "name": "order 2: square parameter upper bound",
+      "passed": true
+    },
+    {
+      "name": "order 2: positive term lower bound",
+      "passed": true
+    },
+    {
+      "name": "order 2: regular normalization data",
+      "passed": true
+    },
+    {
+      "name": "order 2: interface denominator",
+      "passed": true
+    },
+    {
+      "name": "order 2: direct singular interface inequality",
+      "passed": true
+    },
+    {
+      "name": "order 2: free polynomial differential identity",
+      "passed": true
+    },
+    {
+      "name": "order 2: free comparison parameter range",
+      "passed": true
+    },
+    {
+      "name": "order 2: positive interface value of free polynomial",
+      "passed": true
+    },
+    {
+      "name": "order 2: free derivative rational formula",
+      "passed": true
+    },
+    {
+      "name": "order 2: free interface inequality",
+      "passed": true
+    },
+    {
+      "name": "order 2: positive complete derivative jump",
+      "passed": true
+    },
+    {
+      "name": "order 2: bounded free residual ratio identity",
+      "passed": true
+    },
+    {
+      "name": "order 2: shared physical energy",
+      "passed": true
+    },
+    {
+      "name": "order 3: complete formal rational residual identity",
+      "passed": true
+    },
+    {
+      "name": "order 3: H-tH' identity",
+      "passed": true
+    },
+    {
+      "name": "order 3: first cancellation",
+      "passed": true
+    },
+    {
+      "name": "order 3: second cancellation",
+      "passed": true
+    },
+    {
+      "name": "order 3: square parameter identity",
+      "passed": true
+    },
+    {
+      "name": "order 3: independent differential residual in z",
+      "passed": true
+    },
+    {
+      "name": "order 3: positive-denominator parameter bound",
+      "passed": true
+    },
+    {
+      "name": "order 3: square parameter upper bound",
+      "passed": true
+    },
+    {
+      "name": "order 3: positive term lower bound",
+      "passed": true
+    },
+    {
+      "name": "order 3: regular normalization data",
+      "passed": true
+    },
+    {
+      "name": "order 3: interface denominator",
+      "passed": true
+    },
+    {
+      "name": "order 3: direct singular interface inequality",
+      "passed": true
+    },
+    {
+      "name": "order 3: free polynomial differential identity",
+      "passed": true
+    },
+    {
+      "name": "order 3: free comparison parameter range",
+      "passed": true
+    },
+    {
+      "name": "order 3: positive interface value of free polynomial",
+      "passed": true
+    },
+    {
+      "name": "order 3: free derivative rational formula",
+      "passed": true
+    },
+    {
+      "name": "order 3: free interface inequality",
+      "passed": true
+    },
+    {
+      "name": "order 3: positive complete derivative jump",
+      "passed": true
+    },
+    {
+      "name": "order 3: bounded free residual ratio identity",
+      "passed": true
+    },
+    {
+      "name": "order 3: shared physical energy",
+      "passed": true
+    },
+    {
+      "name": "order 2 scaling to exact retained constant",
+      "passed": true
+    },
+    {
+      "name": "order 3 scaling to exact retained constant",
+      "passed": true
+    },
+    {
+      "name": "order 2 retained final margin",
+      "passed": true
+    },
+    {
+      "name": "order 3 retained final margin",
+      "passed": true
+    }
+  ]
+}

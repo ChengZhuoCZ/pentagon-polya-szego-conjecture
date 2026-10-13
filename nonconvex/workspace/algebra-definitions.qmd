@@ -1,0 +1,44 @@
+---
+title: "Rational terminal constructions"
+qmd-prover:
+  imports:
+    - from: analytic.qmd
+      use: [def-analytic]
+---
+
+::: {#def-terminal-rationals .definition name="T: explicit rational constructions" date="2026-10-11" export="def-terminal-rationals"}
+For real $h$ for which the denominators below are nonzero, put $L=1+h$ and $\Pi_+=987/100$, and define
+$$
+\begin{gathered}
+s=\frac{1381h+1712}{500(h+2)},\quad v=\frac{2(h+7)}{67},\quad B=2s+5,\\
+\mathcal C_h(\tau)=2s+3-\frac{13\tau}{10B},\qquad
+\mathcal D_h(\tau)=2s+1-\frac{\tau}{\mathcal C_h(\tau)},\\
+\mathcal L_h(\tau)=\frac1h\left(s-\frac{\tau}{\mathcal D_h(\tau)}\right).
+\end{gathered}
+$$
+Also define
+$$
+\begin{aligned}
+H_2(k)&=1-\frac{2k}{1-k}-\frac{2k}{4-k}-\frac{79k}{100(1-k/9)},\\
+H_1(k)&=1-\frac{2k}{1-k}-\frac{129k}{100(1-k/4)}.
+\end{aligned}
+$$
+$$
+\begin{gathered}
+w=\frac{60h^3+143h^2+16h+8}{15hL(4h+9)},\quad
+ d=\frac{52h^2+119h-8}{15hL(4h+9)},\\
+ e=\frac{3(60h^2+127h-8)}{hL(h+2)(60h+127)},\\
+ k=e-\frac1{2(h+2)^2},\quad A_- =\frac{493}{100(h+2)^2}.
+\end{gathered}
+$$
+Using $\mathcal B$ from @def-analytic, put
+$$
+\begin{aligned}
+J&=1-\frac{2k}{1-k}-\left(\frac{129}{100}+\frac1{4L}\right)k,\\
+G_* &=\frac{A_-(26h-5)}{60h^2}\left(1+\frac{33}{400L}\right),\\
+Z_\Psi&=s+h(J+G_*)-v\Pi_+h^2e.
+\end{aligned}
+$$
+These rational functions are defined on their common domain; their positivity and the validity of their denominators are established separately in the terminal comparison chapter.
+
+:::

@@ -1,0 +1,23 @@
+{
+  "packaged_at_utc": "2026-10-13T10:25:01Z",
+  "owner_github": "ChengZhuoCZ",
+  "date_note": "Source label dates are inherited claims, not independently verified timestamps. See GitHub server metadata for repository and release creation times.",
+  "sources": [
+    {
+      "project": "nonconvex",
+      "archive": "archives/Nonconvex-Pentagon-Analytic-English-R4-20261012.zip",
+      "sha256": "5b016d48f765e64df51369bc93efb643d5aa6a8d247256c7c69512a8445f78aa",
+      "files": 121,
+      "qmd_files": 18,
+      "source_label_date": "2026-10-12"
+    },
+    {
+      "project": "convex",
+      "archive": "archives/凸五边形-强极值Hilbert积分分布解析替换-QMD项目-20261012.zip",
+      "sha256": "6ec42494cd2489651e860f662d67ba5c41c6ac3e529d4d798c74b99bd3eb7fc0",
+      "files": 230,
+      "qmd_files": 70,
+      "source_label_date": "2026-10-12"
+    }
+  ]
+}

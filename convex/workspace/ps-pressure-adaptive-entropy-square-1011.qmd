@@ -1,0 +1,130 @@
+---
+title: "完整熵预算中的自适应尺度：回收一个准确非负平方"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: true-pressure-review-1011/sharp-entropy.qmd
+      use:
+        - lem-tpr-sharp-full-entropy-tpr1011
+    - from: analytic-replacements-1012/entropy-identities.qmd
+      use:
+        - lem-arc-reciprocal-square-1012
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+---
+
+::: {#lem-ppae-optimal-reciprocal-majorant-1011 .lemma name="倒数二次上界的准确最优尺度与平方信用" date="2026-10-11" export="lem-ppae-optimal-reciprocal-majorant-1011"}
+设有限组实数 $d_i,H_i$ 满足 $H_i>h>0$，
+平均 $\operatorname{av}$ 使用任意固定的正概率权。
+定义
+$$
+V=\operatorname{av}d_i^2,\qquad
+U_1=\operatorname{av}d_i^2(H_i-h),\qquad
+U_2=\operatorname{av}d_i^2H_i(H_i-h).
+$$
+若 $V>0$，则 $U_1,U_2>0$，且
+$$
+0<\operatorname{av}\frac{d_i^2}{H_i}
+\le\frac1h\left(V-\frac{U_1^2}{U_2}\right).
+\tag{1}
+$$
+对任意 $b>0$，记
+$$
+\mathcal B_b=\frac1h\left(V-\frac{2U_1}{b}+\frac{U_2}{b^2}\right).
+$$
+这个上界在所有 $b>0$ 中的唯一最小点为
+$b_*=U_2/U_1$，并有准确差
+$$
+\boxed{
+\mathcal B_b-\mathcal B_{b_*}
+=\frac{(U_2-bU_1)^2}{h b^2U_2}\ge0.
+}
+\tag{2}
+$$
+若 $V=0$，则所有 $d_i=0$，原倒数和为零；
+此时不定义 $b_*$，也不使用含 $U_2^{-1}$ 的式子。
+:::
+
+::: {.proof of="lem-ppae-optimal-reciprocal-majorant-1011"}
+采用 @lem-arc-reciprocal-square-1012，取相同的 $d_i,H_i,h,V,U_1,U_2$。
+当 $V>0$ 时，因所有概率权为正且所有 $H_i>h$，有 $U_1,U_2>0$。
+该引理的完成平方给本命题的唯一最优尺度、准确差和原倒数平均的严格正性。
+当 $V=0$ 时各 $d_i=0$，故所有倒数平均为零，按声明单独处理。
+:::
+
+::: {#prp-ppae-central-same-moment-credit-1011 .proposition name="中央真实熵的三矩自适应修正" date="2026-10-11" export="prp-ppae-central-same-moment-credit-1011"}
+采用 @def-pscc-scalar-coordinates-1011f 的中央范围：
+$0<t\le27/50,0\le s\le t,r=(\sqrt5-1)/2$，
+$m=1+r(t^2-s^2)$、$h_0=141/200-3t/5$。
+设 $|c|=t,|d|=s,n_i=e^{(2i+1)\pi\mathrm i/5}$，对同一组数据定义
+$$
+x_i=\Re(cn_i),\quad z_i=\Re(dn_i^2),\quad
+j_i=m+2x_i+2rz_i>41m/100,\quad \omega_i=1+6x_i/5,
+$$
+$$
+\Delta_i=j_i-m\omega_i,\quad
+S_i=(j_i+m\omega_i)/2-m,\quad
+V_2=\operatorname{av}\Delta_i^2,\quad
+V_3=\operatorname{av}\Delta_i^2S_i,\quad
+F_4=\operatorname{av}\Delta_i^2S_i^2,\quad
+L=\sqrt m-\operatorname{av}\sqrt{j_i\omega_i}.
+$$
+这里 $\operatorname{av}$ 是五点等权平均。再令
+$$
+H_i=m+S_i,\qquad h=mh_0,\qquad b=\frac{3m}{2},
+\qquad \Gamma=\frac{21}{50(m+2)}.
+$$
+若 $V_2>0$，置
+$$
+\begin{aligned}
+U_1&=m(1-h_0)V_2+V_3,\\
+U_2&=m^2(1-h_0)V_2+m(2-h_0)V_3+F_4,\\
+\mathcal W&=F_4+m(1/2-h_0)V_3-\frac{m^2}{2}(1-h_0)V_2,\\
+\mathcal C_{\rm ent}
+&=\frac{\mathcal W^2}{(9/4)m^3h_0U_2}.
+\end{aligned}
+\tag{4}
+$$
+则 $U_1,U_2>0$、$\mathcal C_{\rm ent}\ge0$，完整熵亏损满足
+$$
+\boxed{
+L\le\Gamma\mathcal B_b-\Gamma\mathcal C_{\rm ent},
+\qquad
+\mathcal B_b=\frac1{mh_0}
+\left(V_2-\frac{2U_1}{b}+\frac{U_2}{b^2}\right).
+}
+\tag{5}
+$$
+这里 $\Gamma\mathcal B_b$ 是固定尺度 $b=3m/2$ 时的原三矩上界。
+因此新的上界只需原来已有的三个真实矩，没有新增高阶矩。
+若 $V_2=0$，则 $L=0$，单独处理此情形。
+:::
+
+::: {.proof of="prp-ppae-central-same-moment-credit-1011"}
+采用 @def-pscc-scalar-coordinates-1011f 的同一中央数据。
+$1\le m\le1+(5/8)(27/50)^2<6/5$，$\omega_i\ge1-6t/5>0$。
+由 $j_i>41m/100$，
+$$H_i=(j_i+m\omega_i)/2>m(141/200-3t/5)=mh_0=h>0.$$
+所以 @lem-tpr-sharp-full-entropy-tpr1011 的中央条件全部满足，且它给
+$$0\le L\le\frac{250}{1899\sqrt m}\operatorname{av}\frac{\Delta_i^2}{H_i}.$$
+
+直接将 $H_i=m+S_i$ 展开，得到
+$$U_1=m(1-h_0)V_2+V_3,\quad
+U_2=m^2(1-h_0)V_2+m(2-h_0)V_3+F_4,$$
+$$U_2-bU_1=F_4+m(1/2-h_0)V_3-\tfrac12m^2(1-h_0)V_2=\mathcal W.$$
+若 $V_2>0$，@lem-ppae-optimal-reciprocal-majorant-1011 给
+$$0<\operatorname{av}\frac{\Delta_i^2}{H_i}
+\le\mathcal B_b-\frac{(U_2-bU_1)^2}{hb^2U_2}
+=\mathcal B_b-\mathcal C_{\rm ent},$$
+其中 $hb^2=(9/4)m^3h_0$。右侧整体非负，不能只调整其中一个有符号项。
+再由
+$$9m-(m+2)^2=(m-1)(4-m)\ge0,\quad
+\frac{250}{633}<\frac{21}{50},$$
+得到更强的完整同源界
+$$L\le\frac{250}{633(m+2)}(\mathcal B_b-\mathcal C_{\rm ent})
+\le\frac{21}{50(m+2)}(\mathcal B_b-\mathcal C_{\rm ent}).$$
+最后一个乘数就是原定义的 $\Gamma$，所以原有下游信用常数不变。
+若 $V_2=0$，每个 $\Delta_i=0$，故 $j_i=m\omega_i$、
+$\operatorname{av}\sqrt{j_i\omega_i}=\sqrt m\operatorname{av}\omega_i=\sqrt m$，于是 L 为零。
+:::

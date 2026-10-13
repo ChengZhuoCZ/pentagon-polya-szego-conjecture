@@ -1,0 +1,35 @@
+---
+title: "有限多项式的集中余项和连续二次支付"
+lang: zh-CN
+---
+
+::: {#lem-arc-finite-taylor-budget-1012 .lemma name="完整有限 Taylor 余项的三种连续下界" date="2026-10-12" export="lem-arc-finite-taylor-budget-1012"}
+令 $r=(\sqrt5-1)/2$，$r_-=309/500$、$r_+=15451/25000$。
+设 $F\in\mathbb Q(r)[t]$ 的次数至多 $N$，$a,R$ 为有理数、$R>0$，写准确有限恒等式
+$$F(a+z)=\sum_{j=0}^Nc_jz^j,\qquad c_j=F^{(j)}(a)/j!=u_j+v_jr.$$
+其中 $u_j,v_j\in\mathbb Q$ 由 $r^2=1-r$ 唯一约简得到。定义
+$$\ell_j=\min\{u_j+v_jr_-,u_j+v_jr_+\},\quad
+M_j=\max\{|u_j+v_jr_-|,|u_j+v_jr_+|\},\quad
+E_k=\sum_{j=k}^NM_jR^{j-k}.$$
+在整个 $|z|\le R$ 上，以下三种支付成立：
+
+若 $\ell_0>L$、$M_1<U$、$E_2<V$，则
+$$F(a+z)>L-UR-VR^2.\tag{T1}$$
+若 $\ell_0>L$、$M_1<U$、$\ell_2>C$、$E_3<V$，且 $\kappa=C-VR>0$，则
+$$F(a+z)>L-U|z|+\kappa|z|^2
+\ge L-\frac{U^2}{4\kappa}.\tag{T2}$$
+若第二种比较成立但只要求 $C\ge0$，则也有
+$$F(a+z)>L-UR-VR^3.\tag{T3}$$
+所有十进制有限数在应用中均解释为准确有理数。
+:::
+
+::: {.proof of="lem-arc-finite-taylor-budget-1012"}
+$x^2+x-1$ 在正轴递增，在 $r_-,r_+$ 的值分别为
+$-19/250000$ 和 $8401/625000000$，所以 $r_-<r<r_+$。
+因此 $c_j\ge\ell_j$ 且 $|c_j|\le M_j$，并有完整尾和界
+$$\left|\sum_{j=k}^Nc_jz^j\right|\le E_k|z|^k.$$
+保留常数和一次项，直接得到 (T1)。保留二次项并使用
+$|z|^3\le R|z|^2$，得到 (T2) 的首式；其后二次式用完成平方取下界。
+若仅丢去非负二次项，并用 $|z|\le R$，得到 (T3)。
+这些界包含全部高次项，既不截断丢项，也不把区间采样当作证明。
+:::

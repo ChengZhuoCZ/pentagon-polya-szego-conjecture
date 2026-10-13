@@ -1,0 +1,186 @@
+---
+title: "八个初等角矩统一生成 C/U 精细均值"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+    - from: ../ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+---
+
+::: {#lem-arc-eight-moments-1012 .lemma name="八角矩与统一径向系数" date="2026-10-12" export="lem-arc-eight-moments-1012"}
+采用 @lem-arc-geometric-constants-1012 的 $\alpha,a,r,X=\alpha^2$，令 $I g=\alpha^{-1}\int_0^\alpha g(b)db$。
+八个初等角矩由下列公式准确生成：
+$$C_0=\frac{2+r}{4a},\quad S_0=\frac{C_0-r/2}{2},\qquad
+C_j=X^jC_0-jS_{j-1},\quad S_j=-\frac{X^jr}{4}+\frac{2j+1}{2}C_j\quad(1\le j\le3).$$
+它们满足 $C_j=I(b^{2j}\cos2b)$、$S_j=I(b^{2j+1}\sin2b)$。
+此处的 $C_0$ 是角矩，仅在本文件使用，区别于实际张量的权归一化常数。
+
+令 $z=a+ib,R^2=a^2+b^2$，整数 $k$ 的符号变量为 $z_k=z$（$k\ge0$）及 $z_k=\bar z$（$k<0$）。定义
+$$D_{k,l}=I\Re(z_k^{|k|}R^{2l}),\qquad H_{k,l}=I\Re(e^{2ib}z_k^{|k|}R^{2l}),$$
+$$\eta_{k,l}=\frac{(-1)^{l+|k|\mathbf1_{k<0}}}{2^{|k|+2l}l!(|k|+l)!},\qquad
+\tau_{k,l}=\eta_{k,l}H_{k,l},\quad b_{k,l}=\eta_{k,l}(rD_{k,l}+H_{k,l}),\quad
+ e_{k,l}=\eta_{k,l}(D_{k,l}+rH_{k,l}).$$
+以下仅使用 $|k|+2l\le7$，故所有量仅依赖上述八矩及 $I b^{2j}=X^j/(2j+1)$。
+:::
+
+::: {.proof of="lem-arc-eight-moments-1012"}
+常数按 @lem-arc-geometric-constants-1012 固定。
+对 $b^{2j}\cos2b$ 和 $b^{2j+1}\sin2b$ 分部积分，边界代入
+$\sin(2\alpha)/(2\alpha)=(2+r)/(4a)$、$\cos2\alpha=r/2$ 即得递推；$j=0$ 单独积分给两初值。
+有限矩的取值可完全写为如下二项式规则：展开
+$$(a+\iota ib)^{|k|}(a^2+b^2)^l
+=\sum_{h=0}^{|k|}\sum_{j=0}^l
+\binom{|k|}{h}\binom lj\iota^h i^h a^{|k|-h+2(l-j)}b^{h+2j},$$
+其中 $\iota=1$ 或 $-1$ 按 $k$ 的符号选。
+对偶数次 $b^{2j}$ 的实部系数，D 中替成 $X^j/(2j+1)$、H 中替成 $C_j$；
+对奇数次 $b^{2j+1}$ 的虚部系数，D 中不计、H 中替成 $-S_j$。
+因为最高次数七，正好只需 $C_0,\ldots,C_3,S_0,\ldots,S_3$。
+该规则给全部公开有限和，不依赖 sinc 表或外部系数文件。
+:::
+
+::: {#thm-arc-moment-packets-1012 .theorem name="两源二十三系数与完整精细均值的统一生成" date="2026-10-12" export="thm-arc-moment-packets-1012"}
+使用 @def-psgs-exact-tensor-1011h 的完整含权均值及 @lem-arc-eight-moments-1012。
+对 $\kappa\in\{1,6/5\},c=te^{i\theta},d=se^{i\phi}$，$0\le t\le27/50,0\le s\le5/8$，置 $\zeta=t^2$。
+定义各多项式的升幂系数（未列出的系数为零）：
+$$\begin{aligned}
+A_{e,j-1}&=\frac{(-1)^j\kappa^{2j}D_{0,j}}{4^j(j!)^2}+\kappa^{2j-1}e_{1,j-1}&&(j=1,2,3),\\
+G_l&=\kappa^{2+2l}b_{2,l}&&(l=0,1,2),\\
+Q_l&=-\kappa^{3+2l}b_{-3,l}&&(l=0,1),\\
+P_l&=\kappa^{2+2l}\tau_{-2,l}+\mathbf1_{l\ge1}\kappa^{2l+1}b_{-3,l-1}&&(l=0,1,2),\\
+J_l&=\kappa^{3+2l}\tau_{3,l}+\kappa^{2+2l}b_{2,l}&&(l=0,1,2),\\
+M_l&=\kappa^{1+2l}e_{1,l}&&(l=0,1,2),\\
+F_l&=-\kappa^{4+2l}e_{-4,l}&&(l=0,1),\\
+\jmath_-&=\kappa^7\tau_{-7,0},\qquad \jmath_+=-\kappa^6e_{6,0},\\
+A_{o,0}&=F_0,\qquad A_{o,1}=F_1+\jmath_+.
+\end{aligned}$$
+$P_0$ 公式的第二项直接省略，不定义负径向指标。
+这里的 $J,P,Q$ 是均值多项式，区别于径向双核文件中的同名字母。
+令 $\mathsf A_e(\zeta)=\sum A_{e,l}\zeta^l$，其余多项式依此约定。
+则
+$$\bar A=1+t^2\mathsf A_e(\zeta)+t^5\mathsf A_o(\zeta)\cos5\theta
++st^2\mathsf G(\zeta)\cos(\phi-2\theta)+st^3\mathsf Q(\zeta)\cos(3\theta+\phi)+R_A,$$
+$$\begin{aligned}
+\bar Z={}&-t^2\mathsf P(\zeta)e^{-2i\theta}+t^3\mathsf J(\zeta)e^{3i\theta}+\jmath_-t^7e^{-7i\theta}\\
+&+ts\mathsf M(\zeta)e^{i(\theta+\phi)}+st^4\mathsf F(\zeta)e^{i(-4\theta+\phi)}
++\jmath_+st^6e^{i(6\theta+\phi)}+R_Z.
+\end{aligned}$$
+两种源各自二十三系数属于下表 $10^{-8}(v+(0,1)^n)$；所有数是准确有理端点。
+
+|组|U：$\kappa=1$ 的整数向量|C：$\kappa=6/5$ 的整数向量|
+|---|---|---|
+|$\mathsf A_e$|$(34559582,-4819280,188004)$|$(36194590,-7902548,452310)$|
+|$\mathsf A_o$|$(-81178,3797)$|$(-168330,11338)$|
+|$\mathsf G$|$(6059592,-370871,8245)$|$(8725812,-769038,24621)$|
+|$\mathsf Q$|$(1947939,-105670)$|$(3366039,-262940)$|
+|$\mathsf P$|$(10980167,-2767113,129010)$|$(15811440,-5064677,332635)$|
+|$\mathsf J$|$(5734979,-343687,7422)$|$(8164882,-701395,21670)$|
+|$\jmath_-$|$(45)$|$(163)$|
+|$\mathsf M$|$(56546697,-6049509,219162)$|$(67856036,-10453552,545346)$|
+|$\mathsf F$|$(-81178,2775)$|$(-168330,8288)$|
+|$\jmath_+$|$(1021)$|$(3049)$|
+
+置 $\gamma=3\kappa/4,C_p=51543/917504,C_m=22815/458752$，则完整余项满足
+$$|R_A|,|R_Z|\le\frac45\gamma^7(C_pt^8+C_mst^7).$$
+$\theta,\phi$ 在相应零振幅处任取。
+:::
+
+::: {.proof of="thm-arc-moment-packets-1012"}
+完整核采用 @def-psgs-exact-tensor-1011h，角常数采用 @def-psgs-tensor-weights-1011h；所有有限矩与其计算规则采用 @lem-arc-eight-moments-1012。
+先从完整含源权定义证明积分互易，而不在点态核上丢掉源权。
+记 $p_b=e^{-2ib},u_j=cn_j,x_j=\Re u_j,y_j=\Im u_j$、$\delta_j=\kappa(bx_j+ay_j)$，
+$\omega_j=1+\kappa x_j$，并令 $\langle H\rangle=(10\alpha)^{-1}\sum_j\int_{-\alpha}^\alpha H_j$。
+均值准确是 $\bar A=\Re\langle\omega P^-e^{-i\delta}\rangle$、
+$\bar Z=\langle n^2p_b^{-1}\omega P^-e^{i\delta}\rangle$。
+令 $\eta=e^{2i\alpha}$，则 $r=\eta+\eta^{-1},\eta^5=1,n_{j+1}=\eta n_j$，故
+$$P_j^-(\alpha)=1-cn_j\eta^{-2}+dn_j^2\eta=P_{j+1}^-(-\alpha),$$
+$$\delta_j(\alpha)=\frac{\kappa\alpha}{\sin\alpha}\Im(cn_je^{i\alpha})=\delta_{j+1}(-\alpha),\qquad
+n_j^2p_\alpha^{-1}=n_{j+1}^2p_{-\alpha}^{-1}.$$
+这包括末边回到首边。同时准确微分给
+$$\partial_b(P^-e^{-i\delta})=i(P^+-\omega P^-)e^{-i\delta},\qquad
+\partial_b(n^2p_b^{-1}P^-e^{i\delta})=in^2p_b^{-1}(P^++\omega P^-)e^{i\delta}.$$
+积分的端点和相消。定义
+$$\mathcal F=\langle e^{-i\delta}\rangle,\quad\mathcal T=\langle n^2e^{2ib}e^{i\delta}\rangle,
+\quad\mathcal B=\langle n^2(r+e^{-2ib})e^{-i\delta}\rangle,
+\quad\mathcal E=-\langle n^4(1+re^{2ib})e^{i\delta}\rangle.$$
+用 $n^{-4}=-n,n^{-2}=-n^3$ 展开以上积分恒等式，得
+$$\bar A=\Re\mathcal F+\Re(c\overline{\mathcal E}+d\mathcal B),\qquad
+\bar Z=-\mathcal T+c\overline{\mathcal B}+d\mathcal E.$$
+
+为逐个识别全部字符，定义整级数
+$$J_n(v)=\sum_{l\ge0}\frac{(-1)^l(v/2)^{n+2l}}{l!(n+l)!},\quad J_{-n}=(-1)^nJ_n,\quad
+\Psi_k=e^{ik\arctan(b/a)}J_k(qR),\quad q=\kappa t.$$
+两指数相乘并收集 Fourier 次数给
+$e^{iq(a\sin\vartheta+b\cos\vartheta)}=\sum_k\Psi_ke^{ik\vartheta}$。
+系列在紧域绝对一致收敛，故可逐项积分。定义
+$$T_k=I\Re(e^{2ib}\Psi_k),\quad B_k=I\Re[(r+e^{2ib})\Psi_k],\quad
+E_k=I\Re[(1+re^{2ib})\Psi_k].$$
+它们的准确径向展开为
+$$T_k=\sum_lq^{|k|+2l}\tau_{k,l},\quad
+B_k=\sum_lq^{|k|+2l}b_{k,l},\quad E_k=\sum_lq^{|k|+2l}e_{k,l}.$$
+五根筛选（包括负指数）为 $\operatorname{av}n^{5j}=(-1)^j$、其余为零，因此
+$$\mathcal T=\sum_j(-1)^je^{i(5j-2)\theta}T_{5j-2},\quad
+\mathcal B=\sum_j(-1)^je^{i(5j-2)\theta}B_{2-5j},\quad
+\mathcal E=-\sum_j(-1)^je^{i(5j-4)\theta}E_{5j-4}.$$
+$\mathcal B$ 的反指标来自负源和 $b\mapsto-b$，同时保留移位因子。
+在总次数七以内，$\mathcal T$ 仅保留 $k=-2,3,-7$；$c\overline{\mathcal B}$ 保留 $k=2,-3$；
+$d\mathcal B$ 保留 $k=2,-3$；$c\overline{\mathcal E},d\mathcal E$ 保留 $k=1,-4,6$。
+$\Re\mathcal F$ 中 $k=\pm5$ 配对为纯虚数而消失，故仅有 $I J_0(qR)$ 的偶数次。
+这逐项给声明的全部系数公式，特别 $A_{o,0}=F_0,A_{o,1}=F_1+\jmath_+$，两项不必独立计算。
+没有遗漏第七次的负七相位和混合正六相位。
+
+为使有理区间比较可直接复算，以下表列出由八矩公式向外取整所得的 $10^{-12}$ 单位包围 $[L,H]$。
+所用初始区间正是 @lem-arc-geometric-constants-1012 声明的十三位小数区间；
+依次按递推、二项式公式和系数公式作有理区间加乘除（唯一变量分母 $4a>0$）。
+每格均满足 $10^4v<L\le H<10^4(v+1)$，直接推出上表的严格开区间。
+
+|系数|U：$[L,H]$|C：$[L,H]$|
+|---|---:|---:|
+|$\mathsf A_{e,0}$|$[345595821759,345595821760]$|$[361945909930,361945909931]$|
+|$\mathsf A_{e,1}$|$[-48192794301,-48192794300]$|$[-79025475268,-79025475267]$|
+|$\mathsf A_{e,2}$|$[1880049229,1880049230]$|$[4523104279,4523104280]$|
+|$\mathsf A_{o,0}$|$[-811772126,-811772125]$|$[-1683290679,-1683290678]$|
+|$\mathsf A_{o,1}$|$[37972507,37972508]$|$[113385299,113385300]$|
+|$\mathsf G_{0}$|$[60595923405,60595923406]$|$[87258129703,87258129704]$|
+|$\mathsf G_{1}$|$[-3708708297,-3708708296]$|$[-7690377523,-7690377522]$|
+|$\mathsf G_{2}$|$[82458345,82458346]$|$[246219299,246219300]$|
+|$\mathsf Q_{0}$|$[19479392439,19479392440]$|$[33660390136,33660390137]$|
+|$\mathsf Q_{1}$|$[-1056696124,-1056696123]$|$[-2629398097,-2629398096]$|
+|$\mathsf P_{0}$|$[109801670540,109801670541]$|$[158114405577,158114405578]$|
+|$\mathsf P_{1}$|$[-27671122706,-27671122705]$|$[-50646762015,-50646762014]$|
+|$\mathsf P_{2}$|$[1290106475,1290106476]$|$[3326357675,3326357676]$|
+|$\mathsf J_{0}$|$[57349797280,57349797281]$|$[81648823759,81648823760]$|
+|$\mathsf J_{1}$|$[-3436867196,-3436867195]$|$[-7013949875,-7013949874]$|
+|$\mathsf J_{2}$|$[74221773,74221774]$|$[216706174,216706175]$|
+|$\jmath_-$|$[456134,456135]$|$[1634412,1634413]$|
+|$\mathsf M_{0}$|$[565466972514,565466972516]$|$[678560367017,678560367019]$|
+|$\mathsf M_{1}$|$[-60495089681,-60495089680]$|$[-104535514969,-104535514968]$|
+|$\mathsf M_{2}$|$[2191624549,2191624550]$|$[5453463198,5453463199]$|
+|$\mathsf F_{0}$|$[-811772126,-811772125]$|$[-1683290679,-1683290678]$|
+|$\mathsf F_{1}$|$[27759208,27759209]$|$[82888553,82888554]$|
+|$\jmath_+$|$[10213298,10213299]$|$[30496746,30496747]$|
+
+
+最后须在原含权表达式中界住完整 Taylor 余项。
+固定节点令 $w=\kappa x$、$U=cn(1-rp_b)$、$V_d=dn^2(r-p_b)$。
+两种均值的原复表达式均由
+$$(1+w)(1+U+V_d)e^{\pm i\delta}$$
+乘模一因子并作不增范数的平均得到。
+在本域，$|\delta|\le(9/8)\kappa t=(3/2)\gamma t$，
+$|w|\le(4/3)\gamma t$、$|U|\le(13/8)t$、$|V_d|\le(13/8)s$、$0\le\gamma\le1$。
+实相位的积分 Taylor 余项满足 $|\mathcal R_m(\delta)|\le|\delta|^m/m!$。
+总次数七以后准确剩余
+$$\mathcal R_8+(w+U)\mathcal R_7+wU\mathcal R_6+V_d\mathcal R_7+wV_d\mathcal R_6.$$
+这里每个纯或混合项至少有七个 $\gamma$ 因子，故更高幂也可上界为 $\gamma^7$。
+记 $f_m=(3/2)^m/m!$，则
+$$f_8+(\tfrac43+\tfrac{13}8)f_7+\tfrac{13}6f_6=\tfrac45C_p,\qquad
+\tfrac{13}8(f_7+\tfrac43f_6)=\tfrac45C_m.$$
+对两种均值分别积分即得所需余项，不带额外指数因子。
+前面的完整积分互易是整函数恒等式，所以其七次系数正是这个原含权表达式的七次系数，余项没有换源。
+$t=0$ 时指数及一次 $c$ 前因子为零，五根平均直接给 $\bar A=1,\bar Z=0$，公式连续成立。
+:::
+

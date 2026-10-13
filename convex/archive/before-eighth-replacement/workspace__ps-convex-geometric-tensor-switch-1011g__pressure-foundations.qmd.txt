@@ -1,0 +1,553 @@
+---
+title: "真实压力基础桥：基态、校准、弱对偶与一般仿射目标"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../analytic-replacements-1012/dirichlet-spectral-foundations.qmd
+      use:
+        - lem-arc-dirichlet-spectrum-1012
+    - from: ../analytic-replacements-1012/gaussian-ground-state.qmd
+      use:
+        - lem-arc-ground-state-log-concavity-1012
+    - from: ../analytic-replacements-1012/area-spectral-budget.qmd
+      use:
+        - lem-arc-levelset-spectral-budget-1012
+    - from: ../pressure-mixed-area-reconstruction-1011.qmd
+      use:
+        - def-pressure-rebuild-1011-functional
+        - prp-pressure-rebuild-1011-attainment
+    - from: ../true-pressure-review-1011/analysis-supplements.qmd
+      use:
+        - lem-tpr-closed-segment-injectivity-tpr1011
+        - prp-tpr-support-hadamard-tpr1011
+    - from: ../analytic-replacements-1012/corner-barrier.qmd
+      use:
+        - lem-arc-corner-barrier-1012
+---
+
+::: {#lem-psgs-strict-log-gradient-1011h .lemma name="真实基态的严格对数 Hessian 与全坡度" date="2026-10-11" export="lem-psgs-strict-log-gradient-1011h"}
+设 $Q$ 为有界严格凸多边形，$u>0$ 满足 $-\Delta u=\lambda u$、$u|_{\partial Q}=0$、$\int_Q u^2=1$。则 $w=-\log u$ 的 Hessian $H=D^2w$ 在内部严格正定，且 $\nabla w:Q\to\mathbb R^2$ 为微分同胚。$u,\nabla u$ 连续延拓到闭域，顶点处两者均为零。
+:::
+
+::: {.proof of="lem-psgs-strict-log-gradient-1011h"}
+先确认给定的正 Dirichlet 特征函数是第一基态。由 @lem-arc-dirichlet-spectrum-1012，取 $Q$ 的正第一 Dirichlet
+特征函数 $\phi_1\in H_0^1(Q)$，将 $u$ 和 $\phi_1$ 的弱特征方程互相测试，得到
+$$
+(\lambda-\lambda_1(Q))\int_Q u\phi_1=0.
+$$
+两函数在内部为正，因此该积分严格为正，故 $\lambda=\lambda_1(Q)$。
+@lem-arc-ground-state-log-concavity-1012 已从有限高斯积分、Dirichlet 热乘积的强极限及基态谱投影证明同一凸多边形的对数凹性，因此 $H\succeq0$。@lem-arc-corner-barrier-1012 适用于同一个正基态及每个固定凸角，给出 $u,\nabla u$ 的闭域连续性、顶点零值和 $uD^2u\to0$。其幂次屏障同时覆盖开边附近，不再另作角点展开。
+
+方程给 $\Delta w=|\nabla w|^2+\lambda$。对固定单位向量 $e$，$v=w_{ee}\ge0$ 满足
+$$
+(\Delta-2\nabla w\cdot\nabla-2\operatorname{tr}H)v
+=2|He|^2-2(\operatorname{tr}H)v\le0.
+$$
+最后不等式来自半正定矩阵 $H^2\preceq(\operatorname{tr}H)H$。若内部 $v=0$，强极小值原理给 $v\equiv0$，半正定性再给 $He=0$。于是 $w$ 沿每条平行 $e$ 的有限弦为仿射函数，与两端 $w\to+\infty$ 矛盾。因此 $H\succ0$。严格凸性使梯度单射。
+
+为证明满射，固定任意 $a\in\mathbb R^2$，令 $g_a(x)=w(x)-a\cdot x$。
+$u$ 在紧集 $\overline Q$ 上连续且在整个边界为零，所以当
+$\operatorname{dist}(x,\partial Q)\to0$ 时，$u(x)\to0$ 一致成立，因而
+$w(x)\to+\infty$ 一致成立。由于 $Q$ 有界，$a\cdot x$ 有界，故
+$g_a$ 同样一致趋于 $+\infty$。此外 $u$ 在闭域有有限正最大值，
+所以 $g_a$ 在 $Q$ 有有限下界。取任意 $x_0\in Q$，非空子水平集
+$\{x\in Q:g_a(x)\le g_a(x_0)\}$ 是紧含于 $Q$ 的紧集。
+$g_a$ 在此取得全域最小值，其内点驻定条件给 $\nabla w=a$。
+故梯度满射；其导数 $H$ 处处可逆，结合已证单射和局部逆定理，
+得到所述全局微分同胚。
+:::
+
+::: {#prp-psgs-pressure-image-1011h .proposition name="任意非驻定多边形的同法向压力像" date="2026-10-11" export="prp-psgs-pressure-image-1011h"}
+采用 @lem-psgs-strict-log-gradient-1011h 的记号。任取 $c_0>0$，存在只差平移的光滑梯度映射 $\mathcal T$，使
+$$
+D\mathcal T=\frac{u^2}{c_0}\operatorname{cof}H\succ0.
+$$
+它将 $Q$ 微分同胚映到一个同法向严格凸多边形 $P=\Pi_{c_0}(Q)$，并延拓为闭域同胚。该像的第 $i$ 条边长为 $c_0^{-1}\int_{e_i(Q)}(\partial_nu)^2$。其函数
+$$
+S(z)=\frac{|\nabla u|^2+\lambda u^2}{2c_0}(\mathcal T^{-1}z)
+$$
+在内部光滑严格凹、闭域连续、顶点零、开边正，并满足
+$$
+\nabla_zS=-\nabla_xw,\qquad
+4S^2\det(-D^2S)=(\lambda+|\nabla S|^2)^2.
+$$
+沿对应开边的原弧长 $\ell$ 与像弧长 $\tau$，有 $d\tau/d\ell=2S(\tau)$。
+此外 $-\nabla S:P\to\mathbb R^2$ 是光滑微分同胚。
+:::
+
+::: {.proof of="prp-psgs-pressure-image-1011h"}
+先使用 @lem-psgs-strict-log-gradient-1011h 的严格正定 Hessian、全坡度，
+以及 $u,\nabla u$ 的闭域连续性和顶点零值。
+对称矩阵
+$$
+D^2\varphi=\frac{|\nabla u|^2+\lambda u^2-c_0}{2}I-\nabla u\otimes\nabla u
+$$
+满足 Hessian 兼容条件。例如 $\partial_2\varphi_{11}-\partial_1\varphi_{12}=u_2(\Delta u+\lambda u)=0$，另一式相同。凸域单连通，故可积分。置 $\chi=\varphi+c_0|x|^2/4+u^2/4$、$\mathcal T=2\nabla\chi/c_0$。利用 $\operatorname{tr}H=|\nabla w|^2+\lambda$ 和二维余子式恒等式，直接得 $D^2\chi=u^2\operatorname{cof}H/2$。
+
+另一个没有角点奇性的表达为
+$$
+u^2\operatorname{cof}H=(|\nabla u|^2+\lambda u^2)I+uD^2u-\nabla u\otimes\nabla u.
+$$
+角点延拓无需调用前引理陈述以外的二阶导数估计。因为 $H\succ0$，二维余子式
+矩阵也正定，且
+$$
+\|u^2\operatorname{cof}H\|_{\mathrm{op}}
+\le u^2\operatorname{tr}H=|\nabla u|^2+\lambda u^2.
+$$
+前引理的顶点零值使右侧在每个角点趋于零，故 $D\mathcal T$ 在角点连续延拓为零。
+
+在任意开边点，选避开所有顶点的圆盘，$Q$ 在其中是半圆盘。
+零 Dirichlet 解沿平直边界的奇反射仍弱满足 $-\Delta u=\lambda u$；
+内部椭圆正则性给该延拓光滑。因此可以在开边计算上述表达式的极限，
+其中 $uD^2u\to0$、$u=0$ 且切向导数为零。
+得到
+$$
+D\mathcal T|_e=(\partial_nu)^2\tau_e\otimes\tau_e/c_0.
+$$
+Hopf 引理在这些光滑边界点给 $\partial_nu<0$。所以 $D\mathcal T$ 连续延至闭域，
+内部对称正定、每条开边切向系数严格正。
+@lem-tpr-closed-segment-injectivity-tpr1011 因而给 $\mathcal T$ 的闭域 Lipschitz
+延拓、严格单射及到其像的同胚。
+
+按逆时针次序记原顶点 $v_i$、像顶点 $z_i=\mathcal T(v_i)$。
+第 $i$ 条边的单位切向为 $\tau_i$、外法向为 $n_i$，有
+$$
+z_{i+1}-z_i=\ell'_i\tau_i,\qquad
+\ell'_i=c_0^{-1}\int_{e_i(Q)}(\partial_nu)^2\,ds>0.
+$$
+边上法向坐标恒定、切向严格递增，所以闭边准确映到上述线段。
+这些边向量闭合，其切向角严格递增一周，相邻转角在 $(0,\pi)$ 内。
+下面验证每条候选支撑线都支撑整个顶点集合。
+固定 $i$，将 $\tau_i$ 作为零角，按循环顺序写其余切向角
+$0<\theta_j<2\pi$，则 $n_i\cdot\tau_j=-\sin\theta_j$。
+这些法向增量先非正、后非负，而闭合性使它们的总和为零。
+第一个非零增量严格负、最后一个严格正，因为相邻转角均小于 $\pi$。
+所以沿顶点序列的累积和在除 $z_i,z_{i+1}$ 外的每个顶点处严格负：
+$$
+n_i\cdot(z_j-z_i)<0\quad(j\notin\{i,i+1\}),\qquad
+n_i\cdot(z_{i+1}-z_i)=0.
+$$
+于是 $[z_i,z_{i+1}]$ 是这些顶点的凸包的一条真边，外法向为 $n_i$。
+相邻正长边不平行，故凸包有内点；全部边均已列出。
+令 $P$ 为该凸包的内部，它是与 $Q$ 同法向的严格凸多边形，
+且 $\mathcal T(\partial Q)=\partial P$，边界被正向遍历恰好一次。
+
+最后用紧致性确认内部像准确等于 $P$。令 $V=\mathcal T(Q)$。
+内部导数可逆，故 $V$ 为非空开集；闭域单射给 $V\cap\partial P=\varnothing$。
+若 $z_j=\mathcal T(x_j)\in V$ 收敛到 $z\notin\partial P$，取 $x_j$ 在紧集 $\overline Q$ 中的收敛子列。
+连续性给 $z=\mathcal T(x)$，而 $x$ 不在边界，否则 $z\in\partial P$；所以 $z\in V$。
+因此 $V$ 在 $\mathbb R^2\setminus\partial P$ 中既开又闭。
+该补集有两个连通分支：凸多边形内部 $P$ 和其闭包的外部。
+外部连通可直接从内点沿射线向外走到包围多边形的大圆、再沿圆弧连接看出；该分支无界。
+$V$ 有界，所以不能包含整个外部分支，也就不与外部相交；
+$V$ 非空，故包含整个内部分支，即 $V=P$。
+结合单射和局部逆定理，得到内部微分同胚。此处无需拓扑度或绕数公式。
+
+设 $y=\nabla w$。直接微分得 $\nabla_x(|\nabla u|^2+\lambda u^2)=-2u^2\operatorname{cof}H\,y$，所以
+$$
+\nabla_zS=-y,\quad D_z^2S=-\frac{c_0}{u^2\det H}H^2\prec0,\quad
+\det(-D_z^2S)=c_0^2/u^4.
+$$
+这证明压力方程与内部正性；边界结论由 $u,\nabla u$ 的连续性和 Hopf 引理得到。
+边上 $2c_0S=(\partial_nu)^2$ 给弧长关系。
+最后 $-\nabla S=(\nabla w)\circ\mathcal T^{-1}$，右侧是两个已证光滑微分同胚的复合，
+故准确给出 $-\nabla S:P\to\mathbb R^2$ 的全坡度及微分同胚结论。
+
+最后，若 $\widetilde{\mathcal T}$ 也满足声明中的导数公式，则
+$D(\widetilde{\mathcal T}-\mathcal T)=0$ 于连通域 $Q$，故两映射的差为常向量。
+因此它们的像多边形及压力坐标只相差同一平移，证明所述唯一性。
+:::
+
+::: {#def-psgs-pressure-action-1011h .definition name="有限一阶矩源与倒压力作用量" date="2026-10-11" export="def-psgs-pressure-action-1011h"}
+置 $\mu(dy)=(1+|y|^2)^{-2}dy$，故 $\mu(\mathbb R^2)=\pi$、$\int|y|d\mu=\pi^2/2$。对于严格凸多边形 $P$，可容许压力 $h$ 指闭域连续非负、内部正且 $\int_P h^{-1}<\infty$ 的函数。定义
+$$
+k_h(y)=\max_{z\in\overline P}\{y\cdot z+h(z)\},\quad
+\mathcal A_P(h)=\int k_h\,d\mu+\frac14\int_P h^{-1},\quad
+J(P)=\inf_h\mathcal A_P(h).
+$$
+这里没有假定源具有有限二阶矩。记 $F(P)=|P|\lambda_1(P)$，而混合面积泛函 $\mathscr P$ 使用 @def-pressure-rebuild-1011-functional 的归一化。
+:::
+
+::: {.proof of="def-psgs-pressure-action-1011h"}
+极坐标积分给
+$$
+\int d\mu=2\pi\int_0^\infty\frac{r}{(1+r^2)^2}\,dr=\pi,
+\qquad
+\int |y|\,d\mu=2\pi\int_0^\infty\frac{r^2}{(1+r^2)^2}\,dr
+=2\pi\int_0^{\pi/2}\sin^2\theta\,d\theta=\pi^2/2.
+$$
+最后一步使用 $r=\tan\theta$。令 $M=\max_{z\in\overline P}|z|$。可容许 $h$ 连续有界，所以极大值定义良好，且
+$$
+-M|y|\le k_h(y)\le M|y|+\max_{\overline P}h.
+$$
+还须先确认可测性。对于任意 $y,y'$，每个 $z\in\overline P$ 都满足
+$|(y-y')\cdot z|\le M|y-y'|$；先对 $z$ 取极大值，再交换 $y,y'$，得到
+$$
+|k_h(y)-k_h(y')|\le M|y-y'|.
+$$
+因此 $k_h$ 是 Lipschitz 函数，特别是 Borel 可测。结合上述可积控制，
+$k_h$ 的积分绝对有限；另一项由可容许性有限，故作用量是实数。
+常函数 $h=1$ 可容许，给非空竞争类和有限上界；统一下界
+$\mathcal A_P(h)\ge-M\pi^2/2$ 又保证 $J(P)$ 是有限实数。
+:::
+
+::: {#lem-arc-pressure-gap-1012 .lemma name="全坡度压力的准确作用量缺口与边界值" date="2026-10-12" export="lem-arc-pressure-gap-1012"}
+采用 @def-psgs-pressure-action-1011h 的 $\mu,\mathcal A,J$。
+设 $P$ 为有界严格凸多边形，$s\in C(\overline P)\cap C^\infty(P)$，
+闭域非负、内部正且严格凹，开边正；设 $-\nabla s:P\to\mathbb R^2$ 为光滑微分同胚，并满足
+$$4s^2\det(-D^2s)=(1+|\nabla s|^2)^2.$$
+置 $T=(-\nabla s)^{-1}$。则 $T_\#\mu=dz/(4s^2)$，$s$ 可容许，
+对每个可容许 $h$ 有准确恒等式
+$$\begin{aligned}
+\mathcal A_P(h)-\mathcal A_P(s)
+={}&\int\big[k_h-k_s-(h-s)\circ T\big]d\mu
++\int_P\frac{(h-s)^2}{4s^2h}\,dz\ge0.
+\end{aligned}$$
+因此 $s$ 是唯一极小压力。还有
+$$\int_Ps^{-2}=4\pi,\quad \int_P\frac{|\nabla s|}{s^2}=2\pi^2,
+\quad1/s\in W^{1,1}(P),\qquad
+J(P)=\frac14\int_{\partial P}\frac{z\cdot n}{s}\,d\tau.$$
+该引理仅认证满足上述假设的候选压力，不断言候选压力的存在性。
+:::
+
+::: {.proof of="lem-arc-pressure-gap-1012"}
+由 @def-psgs-pressure-action-1011h，$\mu(\mathbb R^2)=\pi$，
+$\int|y|d\mu=\pi^2/2$。用整个微分同胚 $y=-\nabla s(z)$ 换元，
+方程准确给 $T_\#\mu=dz/(4s^2)$。
+取总质量得 $\int s^{-2}=4\pi$，Cauchy--Schwarz 再给 $\int s^{-1}<\infty$，所以 $s$ 可容许。
+凹函数切平面不等式与闭域连续性给
+$$k_s(y)=y\cdot T(y)+s(T(y)),$$
+而 $k_h(y)\ge y\cdot T(y)+h(T(y))$。
+用推前式以及准确代数恒等式
+$$\frac1{4h}-\frac1{4s}+\frac{h-s}{4s^2}
+=\frac{(h-s)^2}{4s^2h}$$
+即得声明中的完整缺口。各项绝对可积：$h-s$ 有界，
+$|k_h-k_s|\le\|h-s\|_\infty$，且 $s^{-2},s^{-1},h^{-1}$ 均可积。
+两项分别非负，等号强制 $h=s$ 几乎处处，再由连续性在闭域处处相同。
+
+同一换元给 $\int|\nabla s|/s^2=4\int|y|d\mu=2\pi^2$。
+因此内部光滑函数 $1/s$ 及其梯度都在 $L^1$ 中，故 $1/s\in W^{1,1}(P)$。
+下面直接证明所需边界可积性及散度恒等式。选 $a\in P$，记 $h_i'=(z-a)\cdot n_i>0$
+为第 $i$ 条边相对于 $a$ 的支撑数。令 $t=1-\delta$、
+$P_\delta=a+t(P-a)$、$z_\delta=a+t(z-a)$，$0<\delta<1/2$。
+$P_\delta$ 紧含于 $P$，故对光滑场 $(z-a)/s$ 用经典散度定理，有
+$$\int_{P_\delta}\operatorname{div}\frac{z-a}{s}\,dz
+=t^2\sum_i h_i'\int_{e_i(P)}\frac{d\tau}{s(z_\delta)}.$$
+左侧的被积函数绝对可积，因为 $s^{-1}$ 和 $|\nabla s|/s^2$ 可积。
+右侧非负。先让 $\delta\downarrow0$，在每条开边用闭域连续性及 Fatou 引理，
+得到 $\sum_i h_i'\int_{e_i(P)}s^{-1}<\infty$，从而全部边界积分有限。
+顶点为边界零测度集，不需对其赋有限的 $s^{-1}$ 值。
+凹性又给 $s(z_\delta)\ge t s(z)+\delta s(a)\ge t s(z)$，
+所以在开边 $1/s(z_\delta)\le2/s(z)$。
+现在对 $z/s$ 在 $P_\delta$ 上使用经典散度定理：
+体积分由绝对可积性收敛，边积分
+$t\int_{\partial P}(z_\delta\cdot n)/s(z_\delta)$ 由刚证的可积控制收敛。
+于是
+$$\int_P\operatorname{div}(z/s)\,dz=\int_{\partial P}(z\cdot n)/s\,d\tau.$$
+此论证同时覆盖顶点处 $1/s$ 无界的情形，无需一般 Sobolev 迹或 Gauss--Green 定理。
+在真实最大点 $z=T(y)$，有 $k_s=s-z\cdot\nabla s$。
+换元及刚证的向内多边形极限给
+$$\begin{aligned}
+J(P)=\mathcal A_P(s)
+&=\frac14\int_P\left(\frac2s-\frac{z\cdot\nabla s}{s^2}\right)dz\\
+&=\frac14\int_P\operatorname{div}(z/s)\,dz
+=\frac14\int_{\partial P}\frac{z\cdot n}{s}\,d\tau.
+\end{aligned}$$
+体积分绝对收敛，因为 $P$ 有界且上述两个一阶量可积。
+:::
+
+::: {#thm-psgs-pressure-polarity-1011h .theorem name="真实压力存在、唯一校准与混合面积极性" date="2026-10-11" export="thm-psgs-pressure-polarity-1011h"}
+采用 @def-psgs-pressure-action-1011h。每个严格凸多边形 $P$ 有唯一极小压力 $s$，它光滑严格凹且
+$$
+4s^2\det(-D^2s)=(1+|\nabla s|^2)^2,\quad
+T=(-\nabla s)^{-1},\quad T_\#\mu=\frac{dz}{4s^2}.
+$$
+这里 $-\nabla s:\operatorname{int}P\to\mathbb R^2$ 和
+$T:\mathbb R^2\to\operatorname{int}P$ 互为光滑微分同胚。
+该压力在闭域连续，开边正、顶点零，且 $1/s\in W^{1,1}(P)$。准确恒等式和谱转移为
+$$
+J(P)=\mathscr P(P)=\min_Q V(P,Q)\sqrt{\lambda_1(Q)},\qquad
+\frac{J(P)^2}{|P|}\le F(P).
+$$
+:::
+
+::: {.proof of="thm-psgs-pressure-polarity-1011h"}
+作用量及其可容许类采用 @def-psgs-pressure-action-1011h；
+混合面积、辅助凸体类、$\mathscr P$ 及谱记号采用
+@def-pressure-rebuild-1011-functional，特别地 $\lambda(Q)=\lambda_1(\operatorname{int}Q)$。
+由 @prp-pressure-rebuild-1011-attainment，取同法向真边极小体 $Q$，并令
+$\lambda=\lambda_1(Q)>0$、$c_0=\lambda/V(P,Q)>0$。
+选择 $Q$ 上的正基态 $u$，使 $\int_Q u^2=1$，并设 $w=-\log u$、$H=D^2w$；
+这些对象满足 @lem-psgs-strict-log-gradient-1011h 的全部假设。
+定义中的边压力准确为 $m_i(Q)=\int_{e_i(Q)}(\partial_nu)^2$，使用的是同一归一化。
+取得命题的压力方程和 @prp-psgs-pressure-image-1011h 的边长公式遂给
+$$
+\ell_i(\Pi_{c_0}(Q))=c_0^{-1}m_i(Q)=\ell_i(P).
+$$
+两多边形的有序单位外法向相同，所以有序边向量逐一相同，因而只差平移；
+调整平移后令该压力像等于 $P$。
+置 $s=S/\sqrt\lambda$，压力像命题的方程给所述归一化方程，
+其已明确陈述的全坡度微分同胚再经正数 $1/\sqrt\lambda$ 伸缩，
+给 $-\nabla s:P\to\mathbb R^2$ 及逆映射 $T$。
+压力像还给 $s$ 的闭域连续性、开边正性与内部严格凹性。
+因此 @lem-arc-pressure-gap-1012 的全部假设对这个已构造的 $s$ 成立。
+该引理给推前密度、可容许性、唯一极小性、$1/s\in W^{1,1}$，以及
+$$J(P)=\frac14\int_{\partial P}\frac{z\cdot n}{s}\,d\tau.$$
+
+边弧长关系为 $\int_{e_i(P)}d\tau/(2s)=\sqrt\lambda\,|e_i(Q)|$。
+使用经典平面多边形混合面积的支撑公式
+$2V(P,Q)=\sum_i h_P(n_i)|e_i(Q)|$，以及每条边上的 $z\cdot n_i=h_P(n_i)$，
+上述边界积分准确等于 $\sqrt\lambda V(P,Q)$。
+$Q$ 是已经选定的辅助极小体，所以该数等于 $\mathscr P(P)$。
+最后在混合面积下确界中取 $Q=P$ 得 $J(P)\le |P|\sqrt{\lambda_1(P)}$，
+两边非负，平方即谱转移。此处没有用未知的五边形尖锐谱比较。
+:::
+
+::: {#thm-psgs-weak-transport-dual-1011h .theorem name="保留准确密度的输运熵下界" date="2026-10-11" export="thm-psgs-weak-transport-dual-1011h"}
+采用 @def-psgs-pressure-action-1011h。设 $\gamma$ 是 $\mathbb R^2\times\overline P$ 上第一边缘为 $\mu$ 的正耦合，其第二边缘为 $\rho dz+\nu_s$。则
+$$
+J(P)\ge\int y\cdot z\,d\gamma+\int_P\sqrt\rho\,dz.
+$$
+对 $\gamma=(\mathrm{id},T)_\#\mu$、$T=(-\nabla s)^{-1}$ 取等。若 $X:\mathbb R^2\to P$ 为保向单射分片光滑映射，则
+$$
+J(P)\ge\int\left[y\cdot X(y)\mu(y)+\sqrt{\mu(y)\det DX(y)}\right]dy.
+$$
+此处保向分片光滑的准确约定为：$X$ 是 Borel 映射，存在至多可数个两两不交开集，
+其并集的补集具有二维 Lebesgue 测度零，且 $X$ 在各开集上属于 $C^1$、
+$\det DX\ge0$。导数和最后积分在这些开集上解释；允许零 Jacobian 点。
+:::
+
+::: {.proof of="thm-psgs-weak-transport-dual-1011h"}
+采用 @def-psgs-pressure-action-1011h 的可容许函数及源测度。
+对任意可容许 $h$，保留全部非负缺口，准确得到
+$$\begin{aligned}
+\mathcal A_P(h)-\int y\cdot z\,d\gamma-\int_P\sqrt\rho\,dz
+={}&\int[k_h(y)-y\cdot z-h(z)]\,d\gamma
++\int h\,d\nu_s\\
+&+\int_P\left(\sqrt{h\rho}-\frac1{2\sqrt h}\right)^2dz\ge0.
+\end{aligned}$$
+第一项由极大值定义非负，第二项由 $h\ge0$ 非负，最后一项是准确平方。
+各项有限：$P$ 有界、源一阶矩有限、$h$ 有界且 $h^{-1}$ 可积；
+$\int_P\rho\le\pi$ 给 $\int_P\sqrt\rho\le\sqrt{\pi|P|}$。
+取 $h$ 的下确界给弱对偶，奇异推前质量得到明确保留。
+
+取 @thm-psgs-pressure-polarity-1011h 的真实耦合。
+$-\nabla s(T(y))=y$ 和凹函数的切平面不等式给
+$$
+s(z)\le s(T(y))-y\cdot(z-T(y))\quad(z\in\operatorname{int}P).
+$$
+由闭域连续性，此式对 $z\in\overline P$ 也成立，故
+$k_s(y)=y\cdot T(y)+s(T(y))$。真实推前密度为 $\rho=1/(4s^2)$，
+没有奇异部分，所以以上两步同时取等。
+
+最后考虑陈述中的 $X$。令 $E_+$ 为各光滑片中 $\det DX>0$ 的点集，
+$E_0$ 为其中 $\det DX=0$ 的点集，$N$ 为片间例外集。
+因 $\mu$ 绝对连续，$\mu(N)=0$。在 $E_+$ 上，逆函数定理给局部微分同胚；
+结合全域单射，将这些局部图作可数分解后，通常换元公式给推前密度
+$$
+\rho_X(X(y))\det DX(y)=\mu(y)\quad\text{对几乎处处 }y\in E_+.
+$$
+$C^1$ 映射在每个光滑片内局部 Lipschitz。对各片作可数紧集穷竭并用面积公式，
+$X(E_0)$ 的平面测度为零，因为其 Jacobian 在 $E_0$ 上为零。
+所以 $E_0$ 所携带的推前质量属于奇异部分，不进入绝对连续熵。
+在 $X(E_+)$ 外，绝对连续密度几乎处处为零。
+再次使用 $E_+$ 上的单射换元，得到
+$$
+\int_P\sqrt{\rho_X(z)}\,dz
+=\int_{E_+}\sqrt{\frac{\mu(y)}{\det DX(y)}}\det DX(y)\,dy
+=\int_{\mathbb R^2}\sqrt{\mu(y)\det DX(y)}\,dy.
+$$
+最后一步中 $E_0$ 的被积式为零、$N$ 是零测集。
+将 $\gamma=(\mathrm{id},X)_\#\mu$ 代入已证耦合下界，即得最后断言。
+这里没有要求 $X$ 是凸梯度。
+:::
+
+::: {#prp-pressure-rebuild-1011-regular-calibration .proposition name="正五边形的混合面积压力准确校准" date="2026-10-11" export="prp-pressure-rebuild-1011-regular-calibration"}
+采用 @def-pressure-rebuild-1011-functional。若 $R$ 为正五边形，则
+$$\boxed{\mathscr P(R)=|R|\sqrt{\lambda(R)}.}$$
+更准确地，对每个 $K\in\mathcal K^2$ 都有
+$$V(R,K)\sqrt{\lambda(K)}\ge |R|\sqrt{\lambda(R)}.$$
+:::
+
+::: {.proof of="prp-pressure-rebuild-1011-regular-calibration"}
+将 $R$ 的中心置于原点，记内切圆半径为 $a_R>0$、边长为 $\ell_R$。
+取 @def-pressure-rebuild-1011-functional 的归一化正第一基态 $u$，
+$\lambda=\lambda_1(R)>0$、$\int_Ru^2=1$。
+正基态的唯一性及旋转不变性给 $u(Ox)=u(x)$（$O$ 为 $2\pi/5$ 旋转），
+所以五条边的真实压力积分 $m_i(R)$ 相等。
+对全部支撑数同时作 $h_i(\tau)=(1+\tau)a_R$，域恰为 $(1+\tau)R$。
+@prp-tpr-support-hadamard-tpr1011 适用于所有正长边和小双向参数，
+结合 Rayleigh 尺度律 $\lambda((1+\tau)R)=(1+\tau)^{-2}\lambda$，给
+$$\sum_{i=1}^5 a_Rm_i(R)=2\lambda,\qquad
+m_i(R)=\frac{2\lambda}{5a_R}=\frac{\lambda\ell_R}{|R|}.$$
+这里 $|R|=5a_R\ell_R/2$；没有用驻定点必为全局极小值的断言。
+
+取 $c_0=\lambda/|R|$，把同一个基态代入
+@prp-psgs-pressure-image-1011h；其正性、凸角条件由
+@lem-psgs-strict-log-gradient-1011h 满足。
+像多边形与 $R$ 同法向，且其每条边长为 $c_0^{-1}m_i(R)=\ell_R$。
+有序边向量相同，所以只差平移；调整平移使压力像恰为 $R$。
+令像压力为 $S$，并置 $s=S/\sqrt\lambda$。
+压力像定理给闭域连续、开边正、内部严格凹和全坡度；直接缩放其方程给
+$$4s^2\det(-D^2s)=(1+|\nabla s|^2)^2.$$
+因此 @lem-arc-pressure-gap-1012 直接认证 $s$ 是 $J(R)$ 的唯一极小压力。
+其边界积分公式及同一压力像的弧长关系 $d\tau=2S\,d\ell=2\sqrt\lambda s\,d\ell$ 给
+$$\begin{aligned}
+J(R)&=\frac14\sum_i a_R\int_{e_i(R)}\frac{d\tau}{s}
+=\frac{\sqrt\lambda}{2}\sum_i a_R\ell_R
+=|R|\sqrt\lambda.
+\end{aligned}$$
+最后，@thm-psgs-pressure-polarity-1011h 已独立证明 $J(R)=\mathscr P(R)$；
+其证明只使用辅助体取得、压力像和准确缺口，不使用本校准。
+由 $\mathscr P$ 的下确界定义，每个 $K$ 的目标都不小于该值，得到全部结论。
+本证明不使用谱 Brunn--Minkowski 不等式，也不假设所求五边形谱比较。
+:::
+
+::: {#prp-psgs-regular-dual-pressure-1011h .proposition name="正五边形真实对偶压力与严格 q 界" date="2026-10-11" export="prp-psgs-regular-dual-pressure-1011h"}
+令 $R$ 为外接圆半径为一、中心为零的正五边形。其 @thm-psgs-pressure-polarity-1011h 的压力记为 $s_R$，$k=k_{s_R}$，$T_R=\nabla k$，$\sigma=k-y\cdot\nabla k$。则 $k$ 在全平面光滑严格凸，具有 $D_5$ 对称性，且
+$$
+\nabla k(\mathbb R^2)=\operatorname{int}R,\quad |\nabla k|\le1,\quad
+0<\sigma\le\max s_R,\quad
+\det D^2k=\frac{4\sigma^2}{(1+|y|^2)^2},
+$$
+$$
+h_R\le k\le h_R+\max s_R.
+$$
+此外
+$$
+J_R:=J(R)=|R|\sqrt{\lambda_1(R)},\quad
+I=\int_R\frac{dz}{2s_R},\quad C_0=J_R-I>0,\quad
+0<q:=I/J_R<\frac{5\sqrt2}{17}<\frac5{12}.
+$$
+并且 $T_R=(-\nabla s_R)^{-1}$，$\sigma=s_R\circ T_R$。
+:::
+
+::: {.proof of="prp-psgs-regular-dual-pressure-1011h"}
+使用 @def-pressure-rebuild-1011-functional 的约定
+$\lambda(K)=\lambda_1(\operatorname{int}K)$，以及
+@def-psgs-pressure-action-1011h 的 $\mu(dy)=(1+|y|^2)^{-2}dy$、可容许类和
+$k_h(y)=\max_{z\in\overline R}(y\cdot z+h(z))$。
+@prp-pressure-rebuild-1011-regular-calibration 与 @thm-psgs-pressure-polarity-1011h
+于是准确给出 $J_R=|R|\sqrt{\lambda_1(R)}$。
+
+对任何保 $R$ 的正交变换 $O$，$h_O(z)=h(O^{-1}z)$ 保持可容许性，且
+$k_{h_O}(y)=k_h(O^Ty)$。径向源满足 $O_\#\mu=\mu$，面积测度也不变，
+所以 $\mathcal A_R(h_O)=\mathcal A_R(h)$。极小压力的唯一性给
+$s_R(Oz)=s_R(z)$，进而 $k(Oy)=k(y)$，这证明 $D_5$ 对称性。
+
+@thm-psgs-pressure-polarity-1011h 明确给出
+$T=(-\nabla s_R)^{-1}:\mathbb R^2\to\operatorname{int}R$ 的光滑微分同胚。
+对每个 $y$，严格凹性说明 $z=T(y)$ 是 $y\cdot z+s_R(z)$ 在闭域上的唯一最大点，
+因为它满足 $y+\nabla s_R(z)=0$；凹函数的切平面不等式保证全局最大，
+若闭域还有另一最大点，连接它与内点 $T(y)$ 的线段上，凹性将迫使函数恒取最大值，
+与内部严格凹性矛盾。因此
+$$
+k(y)=y\cdot T(y)+s_R(T(y)),\qquad
+\nabla k(y)=T(y),\qquad \sigma(y)=s_R(T(y)).
+$$
+中间等式可直接求导：所有含 $DT$ 的项相加为
+$(DT)^T(y+\nabla s_R(T))=0$。这也证明 $k$ 光滑。
+压力的 Hessian 为负半定，而其方程给正行列式，所以它负定。
+故 $D^2k=(-D^2s_R(T))^{-1}\succ0$，并且
+$$
+\det D^2k(y)=\frac{4s_R(T(y))^2}{(1+|\nabla s_R(T(y))|^2)^2}
+=\frac{4\sigma(y)^2}{(1+|y|^2)^2}.
+$$
+$T$ 的像是 $\operatorname{int}R$，遂得梯度像和 $|\nabla k|\le1$。
+$s_R\ge0$ 的最大值定义给
+$h_R(y)\le k(y)\le h_R(y)+\max s_R$；在真实最大点处
+$0<\sigma=s_R(T)\le\max s_R$。
+
+由同一压力定理的推前关系和定义中的 $\mu(\mathbb R^2)=\pi$，
+$$
+\int_R\frac{dz}{4s_R^2}=\pi,\qquad
+I^2=\left(\int_R\frac{1}{2s_R}\cdot1\,dz\right)^2
+\le |R|\int_R\frac{dz}{4s_R^2}=\pi|R|.
+$$
+这里使用 Cauchy--Schwarz，不要求源的二阶矩有限。
+另取 $R$ 上归一化正第一基态 $u_R$。
+@lem-psgs-strict-log-gradient-1011h 给出 $D^2(-\log u_R)\succ0$，
+@lem-arc-corner-barrier-1012 给其内部光滑性、闭域连续性及零 Dirichlet 边界值。
+故 @lem-arc-levelset-spectral-budget-1012 的全部假设满足。
+将弱特征方程以 $u_R$ 测试后，该引理给
+$$|R|\lambda_1(R)>\frac{289\pi}{50}.$$
+与刚证的 $I^2\le\pi|R|$、$J_R=|R|\sqrt{\lambda_1(R)}$ 合并，得到
+$$0<q^2\le\frac{\pi}{|R|\lambda_1(R)}<\frac{50}{289}
+<\frac{25}{144},\qquad
+0<q<\frac{5\sqrt2}{17}<\frac5{12}.$$
+因此 $C_0=J_R-I>0$。这一步使用的是明确多项式和层集积分的面积谱预算，
+无须第一 Bessel 零点、其数值估计或外部 Faber--Krahn 不等式。
+已证 $T_R=T$，故
+@thm-psgs-weak-transport-dual-1011h 的真实耦合取等式给
+$C_0=J_R-I=\int y\cdot T_R(y)d\mu$。
+取一条反射轴为极角零线，$0\le\beta\le\pi/5$ 为 $D_5$ 基本扇区；
+径向换元及 $D_5$ 对称性又给
+$C_0=10\int_0^{\pi/5}\int_0^\infty\rho^2(1+\rho^2)^{-2}k_\rho\,d\rho d\beta$。
+:::
+
+::: {#prp-psgs-all-affine-pressure-1011h .proposition name="真实标量自旋到所有非奇异仿射像" date="2026-10-11" export="prp-psgs-all-affine-pressure-1011h"}
+对严格凸目标 $P$，设 @thm-psgs-weak-transport-dual-1011h 的映射 $X$ 的相关和熵为
+$$
+C=\int X\cdot y\,d\mu,\quad K=\int X_{\mathbb C}y_{\mathbb C}\,d\mu,\quad
+\mathcal E=\int_P\sqrt\rho\,dz.
+$$
+$K$ 的复乘积不取共轭。若 $C>|K|$，则任意平移 $b$、非奇异实线性映射 $L$ 都满足
+$$
+J(b+LP)\ge\sqrt{|\det L|}\left[\sqrt{C^2-|K|^2}+\mathcal E\right].
+$$
+对 @prp-psgs-regular-dual-pressure-1011h 的参考目标 $P=R$ 和真实映射 $X=T_R$，$C=C_0,K=0,\mathcal E=I$。此时若 $L$ 不是相似变换，下界链给严格的归一化压力比较 $J(b+LR)>J_R\sqrt{|\det L|}$。
+:::
+
+::: {.proof of="prp-psgs-all-affine-pressure-1011h"}
+采用 @def-psgs-pressure-action-1011h 的源和极大值定义。
+其源有有限一阶矩 $\int|y|d\mu=\pi^2/2$，并因径向密度而满足
+$O_\#\mu=\mu$ 对所有正交 $O$ 成立；奇函数的绝对可积性给 $\int y\,d\mu=0$。
+$X$ 取值于有界的 $P$，故 $X\otimes y$ 的每一矩阵元素均绝对可积。
+
+若 $h'(b+Oz)=h(z)$，则
+$k_{h'}(y)=y\cdot b+k_h(O^Ty)$。源的正交不变性、中心为零和面积换元
+给两个对应作用量相等；可容许类也双射对应，所以 $J(b+OP)=J(P)$。
+另外，对 $t>0$ 取 $h_t(tz)=t h(z)$，有 $k_{h_t}=t k_h$，且二维换元给
+$\int_{tP}h_t^{-1}=t\int_Ph^{-1}$。可容许类的双射对应遂给 $J(tP)=tJ(P)$。
+极分解去掉 $L$ 的左正交因子后，可设 $L=B\succ0$。
+平移相关项因上述中心恒等式消失。置
+$$
+H=\operatorname{Sym}\int X\otimes y\,d\mu
+=\frac12\begin{pmatrix}C+\Re K&\Im K\\\Im K&C-\Re K\end{pmatrix}\succ0.
+$$
+则相关项为 $\operatorname{tr}(BH)$，反对称部分与 $B$ 的迹配对为零。
+矩阵 $H$ 的两个特征值为 $(C\pm|K|)/2>0$。
+对正定对称矩阵 $B^{1/2}HB^{1/2}$ 的两个特征值使用算术几何平均，得到
+$\operatorname{tr}(BH)\ge2\sqrt{\det B\det H}
+=\sqrt{\det B}\sqrt{C^2-|K|^2}$。
+仿射像的绝对连续密度为
+$\rho_B(z')=\rho(B^{-1}(z'-b))/\det B$，故其熵准确等于
+$\sqrt{\det B}\mathcal E$。对耦合映射 $b+BX$
+使用 @thm-psgs-weak-transport-dual-1011h，即得一般结论。
+
+在 @prp-psgs-regular-dual-pressure-1011h 的参考目标，令
+$T=(-\nabla s_R)^{-1}$，其全平面定义及光滑性由
+@thm-psgs-pressure-polarity-1011h 给出。
+根据已引用的极大值定义，凹性和 $y+\nabla s_R(T(y))=0$ 说明
+$T(y)$ 是 $k_{s_R}(y)$ 的唯一最大点。因此
+$k(y)=y\cdot T(y)+s_R(T(y))$，求导得 $\nabla k=T$。
+所以参考映射 $T_R=\nabla k$ 确实等于此压力最优耦合，而
+$\sigma=s_R(T_R)$。推前密度为 $1/(4s_R^2)$，于是
+$$
+\mathcal E=\int_R\frac{dz}{2s_R}=I,\qquad
+C=J_R-I=C_0,
+$$
+第二式使用已引用的弱输运定理对该真实耦合的取等结论。
+
+令 $\zeta=e^{2\pi\mathrm i/5}$。$k$ 的五重旋转对称给
+$T_R(\zeta y)=\zeta T_R(y)$，源也在此旋转下不变。
+因此在绝对收敛的积分中换元得到
+$$
+K=\int (T_R(\zeta y))_{\mathbb C}(\zeta y)_{\mathbb C}\,d\mu(y)
+=\zeta^2 K.
+$$
+$\zeta^2\ne1$，所以 $K=0$。于是未丢弃迹之前的界为
+$J(b+BR)\ge C_0\operatorname{tr}B/2+I\sqrt{\det B}$。
+若 $B$ 不是标量矩阵，则 $\operatorname{tr}B/2>\sqrt{\det B}$，又 $C_0>0$，
+所以严格。反之相似变换由刚证明的一次齐次性及等距不变性取等。
+:::

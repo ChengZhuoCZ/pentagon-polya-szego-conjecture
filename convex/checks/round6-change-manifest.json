@@ -1,0 +1,47 @@
+{
+  "baseline": "凸五边形-高振幅角点PDE解析替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+    "workspace/analytic-replacements-1012/gaussian-ground-state.qmd"
+  ],
+  "retired_qmd": [],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd"
+  ],
+  "old_active_qmd_bytes": 436488,
+  "new_active_qmd_bytes": 450167,
+  "old_fact_count": 139,
+  "new_fact_count": 144,
+  "changed_old_nodes": [
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-psgs-regular-dual-pressure-1011h"
+  ],
+  "new_nodes": [
+    "lem-arc-gaussian-marginal-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-disk-polynomial-bound-1012",
+    "lem-arc-levelset-spectral-budget-1012"
+  ],
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true,
+  "archived_original_count": 1,
+  "exact_check_count": 41,
+  "changed_non_qmd_config": [
+    "_quarto.yml"
+  ],
+  "quarto_chapters_complete": true,
+  "external_target_inputs_replaced": [
+    "Brascamp–Lieb ground-state log-concavity",
+    "Faber–Krahn invocation in q budget",
+    "first Bessel zero bound in q budget"
+  ],
+  "q_bound": {
+    "old": "5/12",
+    "new": "5*sqrt(2)/17"
+  },
+  "area_spectral_threshold": "289*pi/50",
+  "other_Bessel_kernel_arguments_preserved": true,
+  "scope": "Project-internal analytic derivations of the requested local conclusions. Basic spectral, Fourier, Sobolev and integral tools remain; no claim to improve the sharp Faber–Krahn constant or to independently verify the full proof."
+}

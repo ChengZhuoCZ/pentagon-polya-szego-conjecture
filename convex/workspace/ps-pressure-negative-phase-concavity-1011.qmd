@@ -1,0 +1,267 @@
+---
+title: "二维振幅比较：负第一相位系数的整片强凹性"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - lem-pscc-scalar-factors-1011f
+        - prp-pscc-phase-identity-1011f
+    - from: ps-pressure-exact-two-phase-quadratic-1011.qmd
+      use:
+        - lem-ppeqp-exact-angular-elimination-1011
+        - prp-ppeqp-central-instance-1011
+        - prp-ppeqp-exact-corner-classification-1011
+        - prp-ppeqp-quadratic-certificate-1011
+---
+
+::: {#lem-ppnpc-global-negative-coefficient-bound-1011 .lemma name="第一相位系数负部的全矩形解析界" date="2026-10-11" export="lem-ppnpc-global-negative-coefficient-bound-1011"}
+采用 @prp-pscc-phase-identity-1011f 的 $A$，
+并设 $0\le t\le27/50$、$0\le\sigma\le1$。
+定义
+$$
+J=A_F-(r/2+2)\mu_2-(r/2+3)\mu_3-t\mu_A,
+\qquad A=at\sigma J.
+$$
+则整个闭矩形上都有
+$$
+\boxed{
+J+\frac3{10}t\sigma>\frac{2}{125}.
+}
+\tag{1}
+$$
+特别地
+$$
+A>-\frac3{10}at^2\sigma^2
+\quad\text{当 }t\sigma>0;
+$$
+而在 $t\sigma=0$ 时 $A=0$。
+:::
+
+::: {.proof of="lem-ppnpc-global-negative-coefficient-bound-1011" status="verified"}
+坐标及全部标量参数采用 @def-pscc-scalar-coordinates-1011f 的准确公式；$A_F$ 和三个乘子采用 @def-pscc-scalar-target-1011f，其中 $Y=\sigma$。
+以下推导沿用 @prp-pscc-phase-identity-1011f 所给对象、记号与适用条件。
+首先只列出所用常数。
+$r$ 是 $z^2+z-1$ 的正根；在 $309/500$ 处该多项式为
+$-19/250000<0$，在 $5/8$ 处为 $1/64>0$，故
+$$
+.618<r<.625.
+\tag{2}
+$$
+由 @lem-pscc-scalar-factors-1011f，
+$$
+1\le m<6/5,\qquad .381\le h_0\le.705.
+$$
+在 @def-pscc-scalar-series-1011f 中丢去 $G$ 的正四次项，
+得到
+$$
+G\ge.08725812-.00769038(27/50)^2
+=.085015605192>.085=\frac{17}{200}.
+\tag{3}
+$$
+
+下面验证 $A_F$ 随 $m$ 单调，期间固定 $t,r$，
+所以 $h_0,G$ 也固定；$\delta,p,e_C$ 按原定义随 $m$ 变化。
+由 $B_0=3/2$，
+$$
+e_C=\frac{14}{15}(1+h_0)m,\qquad
+\alpha=r\left(3-\frac65m-\frac9{25}m^2\right).
+$$
+因此原来的准确表达为
+$$
+A_F=7Gh_0(m^4+2m^3)
++\frac{14r}{15}(1+h_0)
+\left(3m-\frac65m^2-\frac9{25}m^3\right).
+\tag{4}
+$$
+对 $m$ 求导得
+$$
+\partial_m A_F
+=7Gh_0(4m^3+6m^2)
++\frac{14r}{15}(1+h_0)
+\left(3-\frac{12}{5}m-\frac{27}{25}m^2\right).
+\tag{5}
+$$
+第一项严格大于
+$7(17/200)(381/1000)\cdot10=45339/20000>9/4$。
+第二项的前因子在 $(0,1)$ 内，因为
+$$
+\frac{14r}{15}(1+h_0)
+<\frac7{12}\frac{341}{200}=\frac{2387}{2400}<1.
+$$
+其括号随 $m$ 严格递减，且在 $m=6/5$ 等于
+$-897/625>-3/2$。
+故第二项始终大于 $-3/2$，从而 $\partial_m A_F>3/4$。
+可以在 (4) 中取 $m=1$ 得到下界，再使用 (3)：
+$$
+A_F\ge21Gh_0+\frac{168r}{125}(1+h_0)
+>\frac{357}{200}h_0+\frac{168r}{125}(1+h_0)=:\mathcal L(X),
+\qquad X=\frac{50t}{27}.
+$$
+由于 $h_0=.705-.324X$，
+$$
+\mathcal L(X)
+=1.258425+2.29152r-(.57834+.435456r)X.
+\tag{6}
+$$
+
+在固定 $X$ 后，三个乘子 $\mu_2,\mu_3,\mu_A$
+都关于 $\sigma$ 仿射。
+故把 $A_F$ 换成下界 $\mathcal L(X)$ 之后，
+$J+(3/10)t\sigma$ 是两个端点值的凸组合。
+在 $\sigma=0$ 的端点，准确化简为
+$$
+\begin{aligned}
+\mathcal J_0(X)={}&
+-1.081575+1.90152r
++(.20166-.305456r)X\\
+&+(.0996-.06r)X^2+.0324X^3.
+\end{aligned}
+\tag{7}
+$$
+由 (2)，前三个系数分别严格大于
+$$
+.09356436,\qquad .01075,\qquad .0621.
+$$
+因此 $\mathcal J_0(X)>.09356436$ 对 $0\le X\le1$ 成立。
+
+在 $\sigma=1$ 的端点，$\mu_2=0$，而准确化简给
+$$
+\begin{aligned}
+\mathcal J_1(X)={}&
+1.018425+2.25152r
+-(.37914+.355456r)X\\
+&-(.054+.09r)X^2-1.6848X^3.
+\end{aligned}
+\tag{8}
+$$
+所有非常数系数为负，所以它在 $[0,1]$ 递减，最小值在 $X=1$：
+$$
+\mathcal J_1(X)\ge-1.099515+1.806064r
+>-1.099515+1.806064(.618)
+=.016632552>\frac{2}{125}.
+\tag{9}
+$$
+结合两个端点，
+$$
+J+\frac3{10}t\sigma
+>(1-\sigma)\mathcal J_0(X)+\sigma\mathcal J_1(X)
+>\frac{2}{125}.
+$$
+这证明 (1)；乘回非负因子 $at\sigma$ 得其余结论。
+:::
+
+::: {#lem-ppnpc-positive-coupling-lower-1011 .lemma name="两个真实相位耦合系数的统一正下界" date="2026-10-11" export="lem-ppnpc-positive-coupling-lower-1011"}
+采用 @def-pscc-scalar-target-1011f 的 $Q_F,W_F$。
+在 $0\le t\le27/50$、$0\le\sigma\le1$ 上，
+$$
+\boxed{Q_F>\frac32,\qquad W_F>\frac25.}
+\tag{10}
+$$
+:::
+
+::: {.proof of="lem-ppnpc-positive-coupling-lower-1011" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f，$B_0=3/2$、$\delta=2-6m/5$、$p=1+3m/5$，且 $r=(\sqrt5-1)/2>3/5$；最后一个严格号由 $(11/5)^2<5$ 得到。
+以下推导沿用 @def-pscc-scalar-target-1011f 所给对象、记号与适用条件。
+记 $T=27/50$。
+本证明的 $1\le m<6/5$、$h_0\ge381/1000$
+采用 @lem-pscc-scalar-factors-1011f。
+@def-pscc-scalar-series-1011f 中三个多项式可丢去正四次项，得到
+$$
+\begin{aligned}
+q_{\min}&\ge.03366039-.00262940T^2>.0328,\\
+P_{\min}&\ge.15811440-.05064677T^2>.143,\\
+M_{\min}&\ge.67856036-.10453552T^2>.648.
+\end{aligned}
+\tag{11}
+$$
+三个严格比较都是直接有理数乘法。
+又 $F_C=m^3h_0(m+2)\ge3(.381)=1143/1000$，所以
+$$
+7F_C(q_{\min}+P_{\min}M_{\min})
+>\frac{8001}{1000}(.0328+.143\cdot.648)
+=\frac{125479683}{125000000}>1.
+$$
+由 $1\le m<6/5$ 有 $\delta>14/25$、$p\ge8/5$，
+而 $r>3/5$。因此 $Q_F$ 的另一项满足
+$$
+\frac{21}{10B_0^2}\delta rp
+=\frac{14}{15}\delta rp
+>\frac{14}{15}\frac{14}{25}\frac35\frac85
+=\frac{4704}{9375}>\frac12.
+$$
+两部分相加给 $Q_F>3/2$。
+最后
+$$
+W_F=\frac{28}{15}r^3
+>\frac{28}{15}\left(\frac35\right)^3
+=\frac{756}{1875}>\frac25.
+$$
+这证明 (10)。
+:::
+
+::: {#prp-ppnpc-negative-branch-concavity-1011 .proposition name="负第一相位系数整片上的严格凹二次判据" date="2026-10-11" export="prp-ppnpc-negative-branch-concavity-1011"}
+采用 @prp-ppeqp-central-instance-1011，令
+$$
+q_*=at^2\sigma Q_F,\qquad
+w_*=at^2\sigma^3W_F.
+$$
+若 $A<0$，则 $t\sigma>0$，并且
+$$
+\boxed{
+0<\frac{A^2}{4q_*w_*}<\frac3{80}<1.
+}
+\tag{12}
+$$
+因而 @prp-ppeqp-quadratic-certificate-1011 中原外变量为 $A$ 的
+二次式严格凹，其真实全相位极小值准确等于四个角点值的最小值。
+若 $A=0$，同样有 $A^2\le4q_*w_*$，角点结论仍成立。
+:::
+
+::: {.proof of="prp-ppnpc-negative-branch-concavity-1011" status="verified"}
+本中央实例采用 @def-pscc-scalar-coordinates-1011f，故
+$0\le t\le27/50$、$0\le\sigma\le1$、
+$m=1+rt^2(1-\sigma^2)\ge1$、$a=59m/100>0$。
+均值多项式采用 @def-pscc-scalar-series-1011f，
+$Q_F,W_F$ 及三个乘子采用 @def-pscc-scalar-target-1011f，
+而 $A,B,C$ 使用 @prp-pscc-phase-identity-1011f 的同一组公式。
+因此以下两个矩形界的全部振幅假设均成立。
+以下推导沿用 @prp-ppeqp-central-instance-1011、@prp-ppeqp-quadratic-certificate-1011 所给对象、记号与适用条件。
+由 @lem-ppnpc-global-negative-coefficient-bound-1011 的准确身份，
+如果 $t\sigma=0$，则 $A=at\sigma J=0$，故 $A<0$ 必推出 $t\sigma>0$。
+由 @lem-ppnpc-global-negative-coefficient-bound-1011，
+$$
+0<-A<\frac3{10}at^2\sigma^2.
+$$
+@lem-ppnpc-positive-coupling-lower-1011 则给
+$$
+4q_*w_*
+=4a^2t^4\sigma^4Q_FW_F
+>\frac{12}{5}a^2t^4\sigma^4.
+$$
+相除后即得
+$$
+\frac{A^2}{4q_*w_*}
+<\frac{9/100}{12/5}=\frac3{80}.
+$$
+因此 $f_2=A^2-4q_*w_*<0$。
+为把角点结论用于原相位，采用
+@lem-ppeqp-exact-angular-elimination-1011 的角模型 $\mathcal R$，其中
+$q,w$ 分别取 $q_*,w_*$。@prp-ppeqp-central-instance-1011 的准确表达给
+$$
+\widetilde R(t,\sigma,\theta,\phi)
+=\mathcal R(2\theta-\phi,\theta+2\phi).
+$$
+对任意实数 $x,y$，取 $\theta=(2x+y)/5,\phi=(-x+2y)/5$
+即可实现这两个角，所以原相位极小值与 $\min_{x,y}\mathcal R(x,y)$ 完全相同。
+现在 $A^2<4q_*w_*$，故
+@prp-ppeqp-exact-corner-classification-1011 的第二条适用，
+这个最小值准确等于该声明中四个真实角点的最小值。
+原外角二次式的严格凹性也由
+@prp-ppeqp-quadratic-certificate-1011 的 $f_2=A^2-4q_*w_*$ 公式得到。
+$A=0$ 时非负耦合直接给 $A^2\le4q_*w_*$ 及 $f_2\le0$，
+同一角点分类和上面的满射仍适用，包括 $q_*w_*=0$ 的退化边界。
+:::

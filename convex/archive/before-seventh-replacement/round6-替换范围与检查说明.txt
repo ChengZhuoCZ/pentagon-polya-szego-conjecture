@@ -1,0 +1,68 @@
+第六轮解析替换：基态对数凹性、Faber–Krahn 与 Bessel 零点界（2026-10-12）
+
+本版接续第五轮“凸五边形-高振幅角点PDE解析替换-QMD项目-20261012.zip”。核对了本项目所需的范围与接口后，已直接接入下述证明，前五轮成果及原稿归档完整保留。
+
+1. 基态对数凹性：从外部定理引用改为项目内解析证明。
+   新增三个引理，依次证明：
+   (a) 凸截断高斯积分对参数对数凹。一维从累积分布输运及加权 AM–GM 证明积分不等式，再用 Fubini 按维数归纳；没有把 Prékopa–Leindler 另列为未证明前提。
+   (b) 截断高斯算子 K_h 的乘积 K_(t/n)^n 强收敛到 Dirichlet 热算子。用 Fourier 型的单调极限、预解算子极小问题及谱函数多项式逼近直接证明，再以统一 2/n 标量误差比较乘积。没有直接调用 Trotter 乘积定理或概率表示。
+   (c) 每个有限高斯链积分对数凹；L2 极限通过 Fubini 传递插值不等式；长时间谱投影收敛到正第一基态，再由内部连续性得到逐点结论。
+   原严格对数 Hessian 与全坡度节点已改用这三个引理。其后将半正定加强为正定的强极小值论证保持。
+   这是把经典思路展开成项目内推导，并非声称发现新的对数凹性定理。
+
+2. Faber–Krahn：替换本项目实际需要的谱预算。
+   对严格对数 Hessian 的正函数，其正层集具有光滑凸边界，只有最大点临界。
+   周期 Fourier/Wirtinger 与 Green 公式直接给层集等周界；层上 Cauchy–Schwarz 和余面积公式给圆盘径向重排的能量比较。
+   随后用下述显式正多项式的加权平方恒等式，直接证明
+       |Q| ∫|∇v|² / ∫v² > 289*pi/50。
+   本证明展开了所需等周与重排步骤，没有把完整 Faber–Krahn 或 Pólya–Szegő 定理作为额外前提。
+   此处替换的是实际所需阈值；没有重写或声称加强完整的尖锐 Faber–Krahn 定理。
+
+3. Bessel 零点：从当前 q 证明中完全移除。
+   取 a=289/200 和 p(s)=Σ(k=0..5)(-as)^k/(k!)²。
+   p(1)=502163101517/1536000000000000>0，且 p'(s)≤-85411762559/230400000000<0（0≤s≤1）。
+   圆盘上的十次函数 phi(x)=p(|x|²/R²) 满足
+       (-Delta-289/(50R²))phi = a^6 (|x|²/R²)^5/(3600R²)，
+   右端除中心外严格为正。展开 ∫phi²|∇(f/phi)|² 给严格谱下界，无须 Bessel 函数、零点定位、无穷级数余项或外部 Barta 不等式。
+   原来的六项 Bessel 端点论证本来就是解析的。本轮进一步改成有限多项式论证，删除该证明对特殊函数零点的依赖。
+   其他章节用于双核、自旋矩和熵积分的 Bessel 函数仍保留，不属于本轮的零点替换范围。
+
+4. q 界衔接和加强。
+   真实压力的 J_R=|R|sqrt(lambda1(R)) 与 I²≤pi|R| 均不变。
+   新面积谱界给
+       0<q<5sqrt(2)/17<5/12。
+   q 的新上界约为 0.415945，原显式上界约为 0.416667。节点声明和证明已同步加强；下游继续使用 5/12 时仍然有效，不另改其常数表。
+   新谱阈值 289/50 大于原明确使用的 (12/5)²；它仍小于尖锐圆盘第一特征值。加强的是原显式 q 界，不是尖锐 Faber–Krahn 常数。
+
+5. 仍保留的基础与检查边界。
+   保留：Dirichlet 第一基态存在/正性/单性及离散谱；Hilbert 空间与自伴谱演算；Fourier/Plancherel；Lipschitz 域 Sobolev 零迹和零延拓；密度、积分换元、Fubini、收敛定理、Green/余面积公式；严格 Hessian 步骤中的强极小值原理。
+   本轮减少的是指定三处承重结论的外部引用，并非消除了全部经典分析基础。
+   checks/analytic-audit-round6.json 逐项列出解析步骤、适用条件和保留基础。这是本轮作者式核对，不是独立审稿意见。
+   41 项精确恒等/常数及正文绑定检查通过，包括多项式正性、残差、加权平方、q 的比较、Gaussian 凸性代数和换元系数。
+   这些有限检查不证明 L2 极限、无限维谱论或完整 PDE 论证；不能据此声称整篇主定理已独立审定或形式化。
+
+6. 项目状态与复算。
+   本轮新增 5 个引理、2 份 QMD，实质改写 2 个旧节点；1 份改动前数学文件逐字归档。
+   144 个节点、62 份活动 QMD；结构检查 0 错误、0 依赖循环、0 不可达，全部节点在根目标依赖闭包内。
+   根主定理 goals.qmd、statement-locks、AGENTS.md 和原 command、strict/strict/strict 配置逐字保留。结构检查仅在临时副本使用 backend=none，未调用外部验证器，144 节点均为 unverified。
+   受影响旧标签的处理见 checks/withdrawn-stale-statuses-round6.json。
+   复算（Python 3 + SymPy，可从任意目录执行）：
+       python3 -I tools/check-ground-state-spectral-budget.py
+   输出应与 checks/ground-state-spectral-budget.json 相同。
+
+7. 入口和来源。
+   workspace/analytic-replacements-1012/gaussian-ground-state.qmd：三个对数凹性支撑引理。
+   workspace/analytic-replacements-1012/area-spectral-budget.qmd：圆盘正多项式与层集面积谱预算。
+   workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd：两个原节点已直接改接。
+   archive/before-sixth-replacement：第五轮压力基础原稿及说明；不进入活动证明图。
+   checks/round6-source-map.json：原稿、新证明及历史来源的哈希绑定。
+   checks/round1-* 至 round5-*：保留的历史记录，不是本轮对旧内容重新审定的证书。
+   高斯/热流路线的历史来源：Brascamp–Lieb (1976), Journal of Functional Analysis 22, 366–389：
+   https://doi.org/10.1016/0022-1236(76)90004-5
+   书目信息核对：
+   https://collaborate.princeton.edu/en/publications/on-extensions-of-the-brunn-minkowski-and-pr%C3%A9kopa-leindler-theorem/
+   重排路线参考：Almut Burchard, A Short Course on Rearrangement Inequalities：
+   https://www.math.toronto.edu/almut/rearrange.pdf
+   这些参考用于历史归属和方法对照；本轮所需推导已展开在 QMD 中，未将其目标结论作为新黑箱引用。
+
+书籍目录已同步补齐：纳入本轮两份新稿及第五轮的 finite-taylor-budget.qmd，62 份活动 QMD 均列入 Quarto 章节。旧章节配置保存在 archive/before-sixth-replacement/round5-_quarto.yml。

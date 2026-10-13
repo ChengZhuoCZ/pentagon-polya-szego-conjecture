@@ -1,0 +1,83 @@
+---
+title: "从简单函数积分到收敛与欧氏空间换序"
+lang: zh-CN
+---
+
+本节保留可数可加测度的存在、Lebesgue 测度的完备性与正则性、矩形体积，以及实数完备性。
+非负积分按非负简单函数积分的上确界定义；下面展开所需的极限和换序结论。
+这不重建 Lebesgue 外测度，也不代替经典光滑换元公式。
+
+::: {#lem-arc-integral-limits-1012 .lemma name="简单函数出发的单调、Fatou 与控制收敛" date="2026-10-12" export="lem-arc-integral-limits-1012"}
+在可数可加测度空间上，非负可测函数满足单调收敛和 Fatou 不等式：
+$$0\le f_n\uparrow f\ \Longrightarrow\ \int f_n\uparrow\int f,
+\qquad \int\liminf f_n\le\liminf\int f_n.$$
+若 $f_n\to f$ 几乎处处且 $|f_n|\le g$、$\int g<\infty$，则
+$$\int|f_n-f|\to0,\qquad \int f_n\to\int f.$$
+积分对非负函数可加、对可积函数线性。对 $p=1$ 或 $2$，$L^p$ 收敛蕴含存在几乎处处收敛的子列。
+:::
+
+::: {.proof of="lem-arc-integral-limits-1012"}
+可数可加性先给集合从下连续：将递增集合写成首项和逐次差的互不相交并即可。
+设 $0\le f_n\uparrow f$，固定简单函数 $s=\sum_{i=1}^N a_i\mathbf1_{E_i}\le f$，
+其中 $a_i>0$、$E_i$ 两两不交，并取 $0<q<1$。
+在每个 $E_i$ 上，集合 $E_{i,n}=E_i\cap\{f_n\ge qa_i\}$ 递增穷竭 $E_i$。
+因此
+$$\lim_n\int f_n\ge q\sum_i a_i\lim_n\mu(E_{i,n})=q\int s.$$
+此式也允许右侧为无穷大。先令 $q\uparrow1$，再对所有 $s\le f$ 取上确界，
+结合 $f_n\le f$，即得单调收敛。
+非负可测函数可用截断后二进制向下取整的简单函数递增逼近；
+对两个函数同步这样逼近，用简单函数的可加性及刚证结论，得到非负积分可加性。
+正负部遂给可积函数的线性。
+
+对非负 $f_n$ 置 $g_N=\inf_{n\ge N}f_n$。
+单调收敛和 $g_N\le f_n$（$n\ge N$）给
+$$\int\liminf f_n=\lim_N\int g_N\le\lim_N\inf_{n\ge N}\int f_n,$$
+即 Fatou。控制收敛时 $|f|\le g$，将 Fatou 用于
+$2g-|f_n-f|\ge0$，得到
+$$2\int g\le2\int g-\limsup_n\int|f_n-f|.$$
+所以 $L^1$ 差趋零，其积分差也趋零。
+
+最后，若 $\|f_n-f\|_p\to0$，取子列满足
+$\int|f_{n_k}-f|^p\le2^{-k}$。
+单调收敛和有限可加性给
+$$\int\sum_k|f_{n_k}-f|^p=\sum_k\int|f_{n_k}-f|^p<\infty.$$
+该和几乎处处有限，所以其各项几乎处处趋零，证明子列结论。
+:::
+
+::: {#lem-arc-euclidean-fubini-1012 .lemma name="欧氏乘积空间的非负换序与可积换序" date="2026-10-12" export="lem-arc-euclidean-fubini-1012"}
+对 $F\ge0$ 的 Lebesgue 可测函数于 $\mathbb R^m\times\mathbb R^n$，截面几乎处处可测，
+截面积分有可测代表，且允许无穷大的等式成立：
+$$\int F(x,y)\,d(x,y)=\int\!\left(\int F(x,y)\,dy\right)dx
+=\int\!\left(\int F(x,y)\,dx\right)dy.$$
+若 $\int|F|<\infty$，则几乎所有截面绝对可积，并有相同的带符号换序公式。
+:::
+
+::: {.proof of="lem-arc-euclidean-fubini-1012"}
+先限于有限矩形 $X\times Y$。对矩形子集，指标函数的公式就是矩形体积乘法。
+令 $\mathcal D$ 是满足双向截面可测性、截面积分可测性及所述等式的 Borel 子集类。
+它含整个矩形；对补集，由有限测度和积分相减封闭；对互不相交可数并，
+由 @lem-arc-integral-limits-1012 的单调收敛封闭。
+故它是一个含矩形的“补集及互不相交可数并封闭类”。
+
+展开这里的生成步骤。令 $\mathcal D_0$ 为含矩形的最小此类，故 $\mathcal D_0\subset\mathcal D$。
+此类还对嵌套集合的差封闭：若 $A\subset B$ 都在类内，则
+$B\setminus A$ 是 $A\cup B^c$ 的补集。
+固定一个矩形 $A$，满足 $A\cap E\in\mathcal D_0$ 的 $E\in\mathcal D_0$ 又组成此种封闭类，
+并含全部矩形，因为矩形对交封闭。因此每个 $E\in\mathcal D_0$ 都满足该交条件。
+再固定这样的 $E$，对满足 $E\cap F\in\mathcal D_0$ 的 $F$ 重复同一论证，
+便知 $\mathcal D_0$ 对任意两集合的交封闭。
+配合补集及把可数并分解成互不相交的逐次差，$\mathcal D_0$ 就是一个 $\sigma$ 代数。
+有理矩形生成欧氏 Borel 集（每个开集是可数个有理小矩形之并），
+所以等式对全部 Borel 指标函数成立。这也逐项证明了所用生成论证，未另用单调类定理。
+
+简单函数由有限求和处理；一般非负 Borel 函数取简单递增逼近，
+在全空间和两次截面积分中分别应用 @lem-arc-integral-limits-1012，便得非负换序。
+再将有限矩形递增穷竭全空间，得到全部非负 Borel 函数的结论。
+
+对 Lebesgue 可测函数，可在一个 Borel 零集外取相同的 Borel 代表。
+这来自完备化：对二进制简单逼近中可数个水平集各取 Borel 代表，并合并其 Borel 零例外集。
+已证的 Borel 指标公式表明，该零集的截面几乎处处为零集。
+Lebesgue 测度的完备性因而给几乎所有截面的可测性与相同积分。
+最后对 $|F|$ 使用非负公式，有限总积分迫使截面绝对可积；
+对正负部相减即得可积换序。复值情形分别处理实部和虚部。
+:::

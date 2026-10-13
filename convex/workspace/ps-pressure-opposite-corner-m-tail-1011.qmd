@@ -1,0 +1,139 @@
+---
+title: "相反相位角点：保留真实均值参数的五次尾项"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-target-1011f
+        - prp-pscc-phase-identity-1011f
+---
+
+::: {#lem-ppocm-exact-fifth-degree-tail-1011 .lemma name="独立均值参数下的准确五次展开" date="2026-10-11" export="lem-ppocm-exact-fifth-degree-tail-1011"}
+采用 @prp-pscc-phase-identity-1011f 的 $C,A,B$，
+以及 @def-pscc-scalar-target-1011f 的同源因子。
+记 $h=h_0=.705-.6t$。在
+$C-A+B-\varepsilon$ 中取 $\varepsilon=1/2500$，
+暂时把 $m$ 替换为独立变量 $M$，
+并同时按原定义替换 $a,\delta,p,F_C,e_C,E^\circ,\alpha,\beta$。
+保持 $t,\sigma,h,G,d^\circ,\mu_2,\mu_3,\mu_A$ 不变。
+记所得表达为 $\mathcal E(M;t,\sigma)$，则有准确展开
+$$
+\mathcal E(1+z;t,\sigma)=\sum_{j=0}^{5}c_j(t,\sigma)z^j.
+\tag{2}
+$$
+设
+$$
+\begin{gathered}
+g=.59,\quad
+\theta=413/3000,\quad \varphi=413/750,\quad
+e=\frac{14}{15}(1+h),\\
+K=(1+r)^2\{-1+1.2(5/2+r/4)\},\qquad
+H=.6(1+r)^3,\qquad Z_g=g^2Kt-3g^3H.
+\end{gathered}
+\tag{3}
+$$
+为使 $D$ 的替换具有唯一含义，明确写出未展开的同一表达式。
+其中 $D=d^\circ-Gt\sigma$，且
+$$
+\delta_M=2-1.2M,\quad p_M=1+.6M,\quad
+\alpha_M=r\delta_M(\delta_M+4p_M)/4,\quad
+\beta_M=r^2(\delta_M+p_M),
+$$
+$$
+\begin{aligned}
+F_M={}&3\delta_M^2p_M^2/8+\delta_Mrp_M\sigma
++(r^2/4)(\delta_M^2+8\delta_Mp_M+4p_M^2)\sigma^2
++2r^3\sigma^3+3r^4\sigma^4/2,\\
+L={}&(1+r)\{r+2-.6(5/2+r/4)^2\},\quad
+a_\ell=r/2+\ell,\quad b_\ell=\ell r+\ell^2/2.
+\end{aligned}
+$$
+将 $D$ 暂看作独立参数，定义同一有限多项式
+$$
+\begin{aligned}
+\mathcal E_D(M;t,\sigma)={}&7gh(M^5+2M^4)D
+-\theta(1+8h)M^3(\delta_M^2/2+2r^2\sigma^2)
+-\varphi t^2MF_M\\
+&-geM^2t\sigma(\alpha_M+\sigma\beta_M)\\
+&+\sum_{\ell=2,3}\mu_\ell\{t^2(1+\ell r\sigma^2)^2
++gMt(a_\ell\sigma+b_\ell\sigma^2)
+-g^2M^2(1+\ell^2\sigma^2)/2\}\\
+&+\mu_A\{gM(L+\sigma)t^2+g^2M^2Kt-g^3M^3H\}-1/2500.
+\end{aligned}
+$$
+则 $\mathcal E=\mathcal E_D|_{D=d^\circ-Gt\sigma}$，后四个系数准确为
+$$
+\begin{aligned}
+c_2={}&154ghD+\theta(1+8h)(1.2-6r^2\sigma^2)\\
+&+\varphi t^2(1.296+2.16r\sigma+2.16r^2\sigma^2)\\
+&+get\sigma(2.76r-1.2r^2\sigma)\\
+&-\frac{g^2}{2}\{\mu_2(1+4\sigma^2)+\mu_3(1+9\sigma^2)\}
++\mu_AZ_g,\\
+c_3={}&126ghD+\theta(1+8h)(.4-2r^2\sigma^2)\\
+&-\varphi t^2(.864-.72r\sigma-.72r^2\sigma^2)
++get\sigma(2.64r+.6r^2\sigma)-g^3H\mu_A,\\
+c_4={}&49ghD-1.2\theta(1+8h)-.972\varphi t^2
++.36getr\sigma,\\
+c_5={}&7ghD-.72\theta(1+8h)-.1944\varphi t^2.
+\end{aligned}
+\tag{4}
+$$
+:::
+
+::: {.proof of="lem-ppocm-exact-fifth-degree-tail-1011" status="verified"}
+坐标、常数和 $h=h_0$ 采用 @def-pscc-scalar-coordinates-1011f；特别地 $Y=\sigma$、$B_0=3/2$。
+以下使用 @prp-pscc-phase-identity-1011f 的 $C,A,B$
+及 @def-pscc-scalar-target-1011f 给出的同源因子，
+不引入额外谱不等式。令 $\delta=2-1.2M$、$p=1+.6M$，并记
+$$
+F=\frac38\delta^2p^2+\delta rp\sigma
++\frac{r^2}{4}(\delta^2+8\delta p+4p^2)\sigma^2
++2r^3\sigma^3+\frac32r^4\sigma^4.
+$$
+对 $\ell=2,3$，记 $a_\ell=r/2+\ell$、$b_\ell=\ell r+\ell^2/2$。
+把原式按来源合并，准确得到
+$$
+\begin{aligned}
+\mathcal E(M)={}&7gh(M^5+2M^4)D\\
+&-\theta(1+8h)M^3(\delta^2/2+2r^2\sigma^2)
+-\varphi t^2MF\\
+&-geM^2t\sigma\{\alpha+\sigma\beta\}\\
+&+\sum_{\ell=2,3}\mu_\ell
+\{t^2(1+\ell r\sigma^2)^2
++gMt(a_\ell\sigma+b_\ell\sigma^2)
+-\tfrac12g^2M^2(1+\ell^2\sigma^2)\}\\
+&+\mu_A\{gM(L+\sigma)t^2+g^2M^2Kt-g^3M^3H\}-\varepsilon,
+\end{aligned}
+\tag{5}
+$$
+其中
+$$
+L=(1+r)\{r+2-.6(5/2+r/4)^2\},\quad
+\alpha=r\delta(\delta+4p)/4,\quad
+\beta=r^2(\delta+p).
+$$
+最后的 $\mu_A$ 一行来自 $U_{\rm geo}^{\circ}$ 的平方展开，
+并保留 $-A$ 中的 $a\mu_At^2\sigma$。
+
+令 $M=1+z$ 后，首先有
+$[z^j](M^5+2M^4)=\binom5j+2\binom4j$；
+所需的短系数恒等式为
+$$
+\begin{aligned}
+M^5+2M^4&=3+13z+22z^2+18z^3+7z^4+z^5,\\
+M^3\delta^2/2&=.32-1.2z^2-.4z^3+1.2z^4+.72z^5,\\
+[z^2,z^3,z^4,z^5](MF)
+&=\bigl(
+-1.296-2.16r\sigma-2.16r^2\sigma^2,\\
+&\hspace{15mm}.864-.72r\sigma-.72r^2\sigma^2,\ .972,\ .1944
+\bigr),\\
+M^2\alpha
+&=r(1.44+.96z-2.76z^2-2.64z^3-.36z^4),\\
+M^2\beta&=r^2(2.4+4.2z+1.2z^2-.6z^3).
+\end{aligned}
+$$
+逐项代入 (5)，便证明 (2)--(4)。特别地，
+这里保留了第四、第五系数的真实符号。
+:::

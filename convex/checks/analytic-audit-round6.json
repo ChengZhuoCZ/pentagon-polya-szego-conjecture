@@ -1,0 +1,50 @@
+{
+  "scope": "Author review of analytic steps and hypotheses; not an independent referee report, formal verification, or result of the finite check script.",
+  "steps": [
+    {
+      "step": "有限高斯边缘积分",
+      "node": "lem-arc-gaussian-marginal-1012",
+      "checked": "一维分位输运的归一化、正导数、开区间穷竭；凸支集切片、边缘连续性及 Fubini 归纳；高斯链二次式为凸。",
+      "retained_basis": "积分换元、控制/单调收敛、加权 AM–GM。"
+    },
+    {
+      "step": "Dirichlet 热乘积极限",
+      "node": "lem-arc-gaussian-dirichlet-limit-1012",
+      "checked": "K_h 是正自伴压缩；Fourier 型 a_h 单调增加到零延拓 H1 型；预解算子极小点的弱极限、能量与强收敛；连续谱函数的多项式逼近；统一 2/n 乘积误差。",
+      "retained_basis": "Plancherel、Lipschitz 域 H01 零延拓刻画、Hilbert 空间弱紧性、自伴谱演算、紧区间多项式逼近。"
+    },
+    {
+      "step": "基态对数凹性",
+      "node": "lem-arc-ground-state-log-concavity-1012",
+      "checked": "初值 1 在 L2 中；每个高斯乘积对数凹；固定插值参数下 L2 极限不等式由 Fubini 传递；第一特征值简单且系数 ∫u>0；先在有理参数上用内部连续性，后延至全部参数。",
+      "retained_basis": "有界连通域的离散谱、第一基态存在/正性/单性；第五轮角点引理。"
+    },
+    {
+      "step": "圆盘多项式谱界",
+      "node": "lem-arc-disk-polynomial-bound-1012",
+      "checked": "p 在闭区间有严格正下界；二维径向残差非负且仅中心为零；加权平方恒等式通过密度延至 H01；非零函数给严格号。",
+      "retained_basis": "分部积分、H01 密度、光滑正乘子的 H1 连续性。"
+    },
+    {
+      "step": "层集面积谱预算",
+      "node": "lem-arc-levelset-spectral-budget-1012",
+      "checked": "严格对数 Hessian 和边界零值保证唯一临界点、光滑紧凸层集；周期 Fourier 直接给等周界；余面积与层上 Cauchy–Schwarz 给重排能量；中心有界性和有限能量保证径向函数在 H1，外边界迹为零。",
+      "retained_basis": "规则层集换元/余面积、Green 公式、周期 Fourier 展开、Sobolev 迹。"
+    },
+    {
+      "step": "真实压力 q 的衔接",
+      "node": "prp-psgs-regular-dual-pressure-1011h",
+      "checked": "正五边形基态满足层集引理全部条件；J_R=|R|sqrt(lambda)、I²≤pi|R| 保持；面积谱界给 q²<50/289<25/144，所有原 q<5/12 的消费者仍有效。",
+      "retained_basis": "前五轮压力构造、严格 Hessian、校准及推前质量恒等式。"
+    }
+  ],
+  "no_new_black_box_for": [
+    "ground-state log-concavity",
+    "Prekopa-Leindler marginal theorem",
+    "Trotter heat product formula",
+    "Faber-Krahn theorem",
+    "Polya-Szego theorem",
+    "Barta inequality",
+    "first Bessel zero estimate"
+  ]
+}

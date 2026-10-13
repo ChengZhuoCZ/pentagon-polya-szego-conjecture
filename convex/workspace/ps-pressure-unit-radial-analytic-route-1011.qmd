@@ -1,0 +1,70 @@
+---
+title: "单位源的径向降维：相位次序与尚待压缩的导数预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: true-pressure-terminal-migration-1011/unit-scalar-factors.qmd
+      use:
+        - def-tpm-unit-scalar-tpm1011
+        - prp-tpm-unit-nineteen-factors-tpm1011
+---
+
+::: {#lem-ppur-normalized-phase-order-1011 .lemma name="单位源两个归一化相位系数的径向次序" date="2026-10-11" export="lem-ppur-normalized-phase-order-1011"}
+采用 @def-tpm-unit-scalar-tpm1011、
+@prp-tpm-unit-nineteen-factors-tpm1011，令
+$$
+P(m)=3m-m^2-m^3/4,\qquad Q(m)=3m-m^2/2,
+$$
+$$
+\mathfrak A=7m^3h\ell G+\frac{8r}{27}(1+h)P(m)
+-\frac23(r/2+5/8),
+$$
+$$
+\mathfrak B=\frac23(5r/8+25/128)
+-\frac{8r^2}{27}(1+h)Q(m).
+\tag{1}
+$$
+则
+$$
+A=a_0ms\rho^2\mathfrak A,\qquad
+B=a_0ms\rho\mathfrak B.
+\tag{2}
+$$
+对每个固定 $\rho\in[1/2,1]$，$\mathfrak A$ 在 $0\le s\le619/1000$
+上严格递减，$\mathfrak B$ 严格递增。
+因而除去 $s=0$ 的公共零因子，$A,B$ 各自至多变号一次。
+:::
+
+::: {.proof of="lem-ppur-normalized-phase-order-1011" status="verified"}
+按 @def-tpm-unit-scalar-tpm1011 的定义，
+$$
+m=1-r(1-\rho^2)s^2,\quad m_s=-2r(1-\rho^2)s\le0,\quad
+h_s=-\rho/2<0,\quad \ell=(7+8m)/15.
+$$
+$0<r<5/8,s<5/8$ 给
+$$
+4/5<m\le1,\qquad h>141/200-5/16>0,\qquad \ell>0.
+$$
+同一定义中的
+$G=.06059592-.00370871t^2+.00008245t^4$ 满足
+$$
+G>.0605-.0038(2/5)>.058,\qquad
+G_t=t(-.00741742+.00032980t^2)\le0
+$$
+在 $0\le t=s\rho<5/8$ 上成立。
+于是 $m^3h\ell G$ 严格递减：其四个正因子均非增，$h$ 严格递减。
+
+在 $4/5<m\le1$ 上，
+$$
+P(m)>0,\quad P'(m)=3-2m-3m^2/4\ge1/4,\qquad
+Q(m)>0,\quad Q'(m)=3-m\ge2.
+$$
+因此 $(1+h)P(m)$ 和 $(1+h)Q(m)$ 都严格递减。
+将这些导数符号代入 (1)，得到所述两个相反的严格次序。
+
+最后，由 @prp-tpm-unit-nineteen-factors-tpm1011，$A$ 的三项及 $B$ 的两项分别合并。
+用
+$m\delta(\delta+4p)/4=P(m)$、$m(\delta+p)=Q(m)$，
+恰得 (2)。它在 $s=0$ 也成立；归一化因子由 (1) 连续定义，
+无需在零点除以 $s$。
+:::

@@ -1,0 +1,44 @@
+{
+  "baseline": "凸五边形-双核与精细均值解析替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/entropy-identities.qmd",
+    "workspace/analytic-replacements-1012/spectral-normalization.qmd"
+  ],
+  "retired_qmd": [],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/ps-pressure-adaptive-entropy-square-1011.qmd",
+    "workspace/ps-pressure-central-analytic-amplitude-gluing-1011.qmd",
+    "workspace/ps-pressure-entropy-credit-one-fifth-strip-1011.qmd",
+    "workspace/ps-pressure-low-ratio-rank-one-payment-1011.qmd",
+    "workspace/ps-pressure-rank-one-gram-payment-1011.qmd",
+    "workspace/ps-pressure-spectral-bridge-audit-1011.qmd",
+    "workspace/true-pressure-review-1011/sharp-entropy.qmd",
+    "workspace/true-pressure-terminal-migration-1011/entropy-and-moments.qmd",
+    "workspace/true-pressure-terminal-migration-1011/geometry-interface.qmd",
+    "workspace/true-pressure-terminal-migration-1011/global-gluing.qmd",
+    "workspace/true-pressure-terminal-migration-1011/uniform-source.qmd"
+  ],
+  "old_active_qmd_bytes": 455496,
+  "new_active_qmd_bytes": 457562,
+  "old_fact_count": 132,
+  "new_fact_count": 135,
+  "changed_old_nodes": [
+    "lem-ppae-optimal-reciprocal-majorant-1011",
+    "lem-ppecf-fivepoint-moment-envelopes-1011",
+    "lem-tpm-analytic-amplitude-cap-tpm1011",
+    "lem-tpm-signed-reciprocal-budget-tpm1011",
+    "lem-tpm-unit-node-ratio-entropy-tpm1011",
+    "lem-tpr-sharp-full-entropy-tpr1011",
+    "prp-ppae-central-same-moment-credit-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-tpm-no-exit-all-affine-tpm1011",
+    "thm-tpm-uniform-real-budget-tpm1011"
+  ],
+  "new_fact_count_added": 3,
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true,
+  "archived_original_count": 8,
+  "exact_check_count": 73,
+  "scope": "Local proof replacements and stronger constants; unchanged foundational chains were not independently re-audited."
+}

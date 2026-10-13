@@ -1,0 +1,1065 @@
+---
+title: "Monotonicity and reduction to the terminal curves"
+qmd-prover:
+  imports:
+    - from: constants.qmd
+      use: [lem-pi-rational]
+    - from: analytic.qmd
+      use: [def-analytic]
+    - from: robin.qmd
+      use: [lem-pole-free]
+---
+
+::: {#lem-m34-identity .lemma name="M.3.4 A uniform lower bound from head-response monotonicity" date="2026-10-11" export="lem-m34-identity"}
+Let $3/8<h\le\sqrt2$, $L=1+h$, and $D_h=h^2+2h+2$, and set
+$$
+v_h=\frac3{2L^2}-\frac1{2(h+2)^2},\qquad
+R_2=\frac{2L^6}{5h^2(h+2)^2D_h}.
+$$
+Then $0<v_h<1$, and
+$$
+\frac2{15}+\frac1{5(1-v_h)^2}+\frac h6-R_2
+>\frac{321929}{15162000}>0.                    \tag{M.3.4}
+$$
+:::
+
+::: {.proof of="lem-m34-identity"}
+Set $y=L^{-2}$. Since $h>3/8$ and $h\le\sqrt2$,
+$$
+\frac16<y<\frac{64}{121}<\frac45.
+$$
+The lower bound follows from $(1+\sqrt2)^2=3+2\sqrt2<6$.
+Direct factorization gives
+$$
+R_2=\frac2{5(1-y)^2(1+y)},\qquad
+v_h-\frac54y=\frac{2-h^2}{4L^2(h+2)^2}\ge0.
+$$
+Since $h+2>L>11/8$, the definition gives the direct bounds
+$$
+0<v_h<\frac3{2L^2}<\frac{96}{121}<1.
+$$
+Thus all denominators are strictly positive.
+
+For $0<y<4/5$, define
+$$
+f(y)=\frac1{(1-5y/4)^2},\qquad
+g(y)=\frac2{(1-y)^2(1+y)}.
+$$
+The identity
+$$
+(1+y)^2-\frac89(1+3y)=\frac{(3y-1)^2}{9}\ge0
+$$
+and the inequality $1-5y/4<1-y$ give
+$$
+f'(y)>\frac{5}{2(1-y)^3},\qquad
+g'(y)=\frac{2(1+3y)}{(1-y)^3(1+y)^2}
+\le\frac9{4(1-y)^3}.
+$$
+Hence $f-g$ is strictly increasing. Since $v_h\ge5y/4$ and $h/6>1/16$,
+$$
+\begin{aligned}
+\frac2{15}+\frac1{5(1-v_h)^2}+\frac h6-R_2
+&>\frac{47}{240}+\frac{f(y)-g(y)}5\\
+&>\frac{47}{240}+\frac15\left(\frac{576}{361}-\frac{432}{175}\right)
+=\frac{321929}{15162000}>0.
+\end{aligned}
+$$
+This derivative comparison for a rational function covers the entire stated height interval.
+:::
+
+::: {#lem-derivatives .lemma name="Derivatives of the head response, tail response, and gain" date="2026-10-11" export="lem-derivatives"}
+On $\mathcal D_*$ from @def-analytic, let $X=-\mathsf H'(K),M=-\partial_T\mathsf T(\sigma,T),N=\partial_\sigma\mathsf T(\sigma,T)$. Then
+
+$$
+
+X>1/3,\quad M>1/(2\sigma+1)>1/6,\quad N>0,
+
+$$
+
+
+$$
+
+\frac13+\frac2\Pi[(1-K/\Pi)^{-2}-1]\le X\le\frac1{3(1-K/\Pi)^2},
+
+$$
+
+
+$$
+
+\mathcal B_A=\frac d{2w}+\frac{(1-A)d^2}{10w},\quad \mathcal B_w=-A\left[\frac{12-A}{20w^2}-\frac{2-A}{20}\right]>-\frac{3A}{5w^2}.
+
+$$
+
+The same tail-response monotonicity holds on every connected region where $T>0,r>0,C>0,D>0$.
+:::
+
+::: {.proof of="lem-derivatives"}
+We use the rational constant bounds in @lem-pi-rational; any weaker bounds below follow by inclusion or by squaring.
+Use all definitions and notation from @def-analytic.
+
+The notation is from @def-analytic, and the expressions are well defined by @lem-pole-free.
+Write
+
+$$
+
+X=-\mathsf H'(K),\quad
+M=-\partial_T\mathsf T(\sigma,T),\quad
+N=\partial_\sigma\mathsf T(\sigma,T).
+
+$$
+
+Direct differentiation gives
+
+$$
+
+X>\frac13,\qquad M>\frac1{2\sigma+1}>\frac16,\qquad N>0.  \tag{M.2.1}
+
+$$
+
+Indeed,
+
+$$
+
+C_T=-1/r,\quad D_T=-1/C-T/(rC^2)<0,
+
+$$
+
+
+$$
+
+M=1/D-TD_T/D^2>1/D>1/(2\sigma+1),
+
+$$
+
+whereas
+
+$$
+
+C_\sigma=1+(2\sigma+5)/r>0,\quad
+D_\sigma=2+TC_\sigma/C^2>0,\quad
+N=1+TD_\sigma/D^2>0.
+
+$$
+
+For the head response,
+
+$$
+
+X\ge\frac13+\frac2\Pi\left[(1-K/\Pi)^{-2}-1\right],\qquad
+X\le\frac1{3(1-K/\Pi)^2}.                                  \tag{M.2.2}
+
+$$
+
+More explicitly, setting $x=K/\Pi\in(0,1)$ gives
+
+$$
+
+X=\frac2\Pi(1-x)^{-2}+\frac1{2\Pi}(1-x/4)^{-2}
++\left(\frac13-\frac5{2\Pi}\right)(1-x/9)^{-2}.
+
+$$
+
+All three coefficients are positive because $\Pi>9$, and their sum is $1/3$. For $n=1,4,9$, we have $1-x\le1-x/n<1$, hence $1\le(1-x/n)^{-2}\le(1-x)^{-2}$. Since $x>0$, the first term is strictly larger than its value at zero, and the other two are no smaller than their values at zero. This proves $X>1/3$ and the lower estimate. Bounding all three terms by the common factor $(1-x)^{-2}$ gives the upper estimate.
+
+These expressions come from differentiating the terms of (M.1.5); their positive coefficients sum to $1/3$ at $K=0$.
+
+The partial derivatives of the two-term gain are
+
+$$
+
+\mathcal B_A=\frac d{2w}+\frac{(1-A)d^2}{10w},
+
+$$
+
+
+$$
+
+\mathcal B_w=-A\left[\frac{12-A}{20w^2}-\frac{2-A}{20}\right]
+>-\frac{3A}{5w^2}.                                        \tag{M.2.3}
+
+$$
+
+The full derivative, including both gain terms, is used throughout.
+For the larger region in the final assertion, we do not assume $\sigma>1$. Nevertheless, $D>0$ and $T/C>0$ imply $2\sigma+1=D+T/C>0$, hence $\sigma>-1/2$. Thus $2\sigma+5>0$, and the sign computations $C_\sigma=1+(2\sigma+5)/r>0$, $D_\sigma>0$, and $N>0$ remain valid throughout that region. Likewise, $\partial_T\mathsf T<0$ uses only $T,r,C,D>0$.
+:::
+
+::: {#lem-q-branch-monotone .lemma name="Strict monotonicity and one-sided derivatives when the long tail dominates" date="2026-10-11" export="lem-q-branch-monotone"}
+Use $\mathcal D_*$ from @def-analytic. For fixed $h,a$, the function $q\mapsto\mathcal G(h,a,(1+h)q/h)$ is strictly increasing over all admissible $q\le p$. At admissible interior points with $q<p$, the ordinary partial derivative satisfies $\partial_q\mathcal G>0$. If $q=p$ is admissible, the left derivative along the branch $q\le p$ is strictly positive. No two-sided partial derivative at $q=p$ is asserted.
+:::
+
+::: {.proof of="lem-q-branch-monotone"}
+We use the rational constant bounds in @lem-pi-rational; any weaker bounds below follow by inclusion or by squaring.
+Use all definitions and notation from @def-analytic.
+
+Fix $h,a$ and restrict to the branch $q\le p$. Here $m=p$, so $R=L/(h+2)$ and $\sigma$ are independent of $q$. Write $v=1-q$. All derivatives below refer to the extension of this branch; at $q=p$ they give the left derivative.
+Use the definitions in @def-analytic, the estimates in @lem-pole-free, and the derivative bounds in @lem-derivatives.
+
+$$
+
+-E_q=\frac{3\Pi a}{(h+2)(1+hav)^2}>0,
+
+$$
+
+
+$$
+
+\mathcal G_q=(-E_q)(X+hM)+\mathcal B_w.
+
+$$
+
+By (M.2.3),
+
+$$
+
+\mathcal G_q>
+(-E_q)\left[X+\frac h6-\mathcal R\right],\quad
+\mathcal R=\frac{a(1+hav)^2}{10(h+2)w^2}.                 \tag{M.3.2}
+
+$$
+
+Using $w\ge ha/L,\ v\le1,\ a>1/C_h$, we obtain
+
+$$
+
+\mathcal R\le
+\frac{L^2}{10h^2(h+2)}
+\max_{1/C_h\le a\le1}\left(\frac1a+2h+h^2a\right).
+
+$$
+
+The function in parentheses is convex, so its maximum occurs at an endpoint. Consequently,
+
+$$
+
+\mathcal R\le\max(R_1,R_2),
+
+$$
+
+
+$$
+
+R_1=\frac{L^4}{10h^2(h+2)},\qquad
+R_2=\frac{2L^6}{5h^2(h+2)^2D_h}.                         \tag{M.3.3}
+
+$$
+
+Since $h^2-C_h=L(h^2-2)/(h+2)$, the larger term is $R_1$ when $h\ge\sqrt2$
+and $R_2$ when $h\le\sqrt2$.
+
+If $h\ge\sqrt2>4/3$, then $L>7/3$ and $1-L^{-2}>40/49>0$. Since $h(h+2)=L^2-1$,
+
+$$
+\frac{6R_1}{h+2}
+=\frac3{5(1-L^{-2})^2}
+<\frac{7203}{8000}<1.
+$$
+
+Consequently $R_1<(h+2)/6=1/3+h/6$.
+
+In the other height range, the geometric condition gives
+
+$$
+
+K>\Pi v_h,\qquad v_h=\frac3{2L^2}-\frac1{2(h+2)^2}\in(0,1).
+
+$$
+
+Indeed, (M.1.1) gives $E=3\Pi a/((h+2)S_0)>3\Pi/(2L^2)$, while $a\le1$ gives $A\le\Pi/[2(h+2)^2]$. Subtraction yields $K>\Pi v_h$. Since $h+2>L>11/8$, we have $3/L^2>1/(h+2)^2$ and
+$$
+0<v_h<\frac3{2L^2}<\frac{96}{121}<1.
+$$
+
+By (M.2.2) and $\Pi<10$,
+
+$$
+
+X>\frac2{15}+\frac1{5(1-v_h)^2}.
+
+$$
+
+The uniform lower bound in @lem-m34-identity gives
+
+$$
+
+\frac2{15}+\frac1{5(1-v_h)^2}+\frac h6-R_2
+>\frac{321929}{15162000}>0.
+
+$$
+
+Substitution into (M.3.2) proves the asserted sign on this branch.
+
+The argument applies on the larger domain without the container restriction (M.1.2). Thus, when $q$ is subsequently decreased to zero or to the container boundary, intermediate points need not satisfy (M.1.2).
+For fixed $h,a$, admissibility of $q$ is equivalent to $q\ge0$, $q\le\min(p,h/L)$, $q<1-p$, and $q<1-1/(aC_h)$. The admissible set is therefore an interval. The branch formula is smooth in its interior and has the same left derivative limit at an admissible point $q=p$. Given two admissible points $q_1<q_2\le p$, integrating the strictly positive branch derivative gives $\mathcal G(q_2)>\mathcal G(q_1)$. This proves strict monotonicity and the left-derivative assertion.
+:::
+
+::: {#lem-other-branch .lemma name="Uniform positivity when the short tail is wider" date="2026-10-11" export="lem-other-branch"}
+On $\mathcal D_*\cap\{q>p\}$ from @def-analytic, we have $\mathcal G>1/150+\mathcal B(A,w)>1/150$.
+:::
+
+::: {.proof of="lem-other-branch"}
+
+Use the definitions in @def-analytic, the pole-free conclusions in @lem-pole-free, and the rational bounds in @lem-pi-rational. In particular,
+$$
+\frac{49}{5}<\Pi<\frac{99}{10}<10,
+\qquad 0<A<1,\qquad 0<K<\Pi.
+$$
+Suppose $q>p$. All the estimates below use only $\mathcal D_*$; the additional container restriction defining $\mathcal D$ is not used.
+
+**The geometric branch forces $h>2$.**
+
+Write $L=1+h$ and $D_h=h^2+2h+2$. The area condition is equivalent to
+$$
+p(1-q)>j(h):=\frac{h(h+2)}{LD_h}.
+\tag{M.4.2}
+$$
+If $h\le1$, then $q\le h/L\le1/2$. The function $q(1-q)$ is increasing on $[0,1/2]$, so
+$$
+p(1-q)<q(1-q)\le\frac{h}{L^2}<j(h),
+$$
+where the last difference is $j(h)-h/L^2=h^2/(L^2D_h)>0$. This contradicts (M.4.2), and hence $h>1$.
+
+For $1\le h\le2$, the identity
+$$
+h^3-h^2-4h+2=(h-2)(h-1)(h+2)-2\le-2
+$$
+gives $j(h)>1/4$. This again contradicts
+$p(1-q)<q(1-q)\le1/4$. Therefore
+$$
+2<h\le4.
+\tag{M.4.3}
+$$
+
+**A common order and energy range.**
+
+Since $m=q$ on this branch, (M.4.2) gives
+$$
+R=\frac{Lp}{(h+2)q}
+>\frac{h}{D_hq(1-q)}
+\ge\frac{4h}{D_h}\ge\frac8{13}.
+$$
+The last inequality follows because $(4h/D_h)'=4(2-h^2)/D_h^2<0$ on $[2,4]$. Consequently,
+$$
+\sigma(\sigma-1)=\frac{\Pi R^2}{2}
+>\frac{1568}{845}
+>\frac{741}{400}
+=\frac{39}{20}\frac{19}{20}.
+$$
+As $\sigma>1$, this implies
+$$
+\sigma>\frac{39}{20}.
+\tag{M.4.4}
+$$
+
+Also $S_0=Lp+(1-q)^{-1}>Lp+(1-p)^{-1}$. Therefore
+$$
+E<\frac{3\Pi L}{h(h+2)}
+\frac{p(1-p)}{1+Lp(1-p)}
+\le\frac{3\Pi L}{h(h+2)(h+5)}.
+\tag{M.4.5}
+$$
+Here $0<p<1$, $p(1-p)\le1/4$, and $t/(1+Lt)$ is increasing for $t\ge0$.
+
+Set
+$$
+e(h)=\frac{3L}{h(h+2)(h+5)},\qquad
+u(h)=h^2e(h)=\frac{3hL}{(h+2)(h+5)}.
+$$
+The logarithmic derivatives are
+$$
+\frac{e'}e=\frac1L-\frac1h-\frac1{h+2}-\frac1{h+5}<0,
+$$
+$$
+\frac{u'}u=\frac1h+\frac1L-\frac1{h+2}-\frac1{h+5}>0.
+$$
+In the second line, pair $1/h$ with $-1/(h+2)$ and $1/L$ with $-1/(h+5)$. Thus (M.4.3) and (M.4.5) imply
+$$
+\frac K\Pi<e(h)<e(2)=\frac9{56}<\frac16,
+\qquad
+T<\Pi u(h)\le\Pi u(4)=\frac{10\Pi}{9}<11.
+\tag{M.4.6}
+$$
+
+**One affine lower bound for the tail response.**
+
+By (M.4.4) and (M.4.6),
+$$
+r^2=(2\sigma+5)^2-4T
+>\frac{3521}{100}>\left(\frac{59}{10}\right)^2.
+$$
+It follows that
+$$
+C=\sigma+\frac12+\frac r2>\frac{27}{5},
+$$
+$$
+D=2\sigma+1-\frac TC
+>\frac{49}{10}-\frac{55}{27}
+=\frac{773}{270}>\frac{20}{7}.
+$$
+All the quantities used in these divisions are strictly positive. Hence the same estimate holds throughout the branch:
+$$
+\mathsf T(\sigma,T)=\sigma-\frac TD
+>\frac{39}{20}-\frac{7T}{20}.
+\tag{M.4.7}
+$$
+**Reduce the whole response to one rational function.**
+
+Let $x=K/\Pi$. The three coefficients
+$$
+\frac2\Pi,\qquad \frac1{2\Pi},\qquad
+\frac13-\frac5{2\Pi}
+$$
+are positive and sum to $1/3$. Applying their common denominator bound in the formula for $\mathsf H$ gives
+$$
+\mathsf H(K)\ge1-\frac{K}{3(1-x)}
+>1-\frac{2K}{5}>1-\frac{2E}{5},
+$$
+where (M.4.6) was used. Combining this with (M.4.7) and $T=h^2E$ yields
+$$
+\mathcal G-\mathcal B(A,w)
+>1+\frac{39}{20h}-\frac{8+7h}{20}E.
+$$
+Use (M.4.5) and $\Pi<10$ in this expression. The exact partial-fraction identity gives
+$$
+\begin{aligned}
+\mathcal G-\mathcal B(A,w)
+&>1+\frac{39}{20h}
+-\frac{3(8+7h)L}{2h(h+2)(h+5)}\\
+&=F(h):=1+\frac3{4h}+\frac3{2(h+2)}-\frac{54}{5(h+5)}.
+\end{aligned}
+\tag{M.4.8}
+$$
+
+**A single tangent proves the uniform positive margin.**
+
+For $2\le h\le4$,
+$$
+\frac{(h+5)^3}{2}F''(h)
+=\frac34\left(\frac{h+5}{h}\right)^3
++\frac32\left(\frac{h+5}{h+2}\right)^3-\frac{54}{5}.
+$$
+The first ratio is at least $9/4>2$, and the second is at least $3/2$. Therefore
+$$
+\frac{(h+5)^3}{2}F''(h)
+>6+\frac{81}{16}-\frac{54}{5}
+=\frac{21}{80}>0.
+$$
+Thus $F$ is strictly convex on this full interval. At the single interior point $h=3$,
+$$
+F(3)=\frac15,\qquad F'(3)=\frac{61}{2400}>0.
+$$
+Its supporting tangent gives, for every $2<h\le4$,
+$$
+F(h)\ge\frac15+\frac{61}{2400}(h-3)
+>\frac{419}{2400}>\frac16>\frac1{150}.
+$$
+Substitution into (M.4.8) proves the first stated inequality. Finally, $0<A<1$ and $0<w<1$ imply $\mathcal B(A,w)>0$, giving its last strict inequality as well.
+
+:::
+
+::: {#lem-zero-monotone .lemma name="Monotonicity on the boundary with vanishing short-tail width" date="2026-10-11" export="lem-zero-monotone"}
+On the admissible boundary $q=0$ from @def-analytic, with $3/8<h\le4$ fixed, the function $a\mapsto\mathcal G(h,a,0)$ is strictly decreasing.
+:::
+
+::: {.proof of="lem-zero-monotone"}
+We use the rational constant bounds in @lem-pi-rational; any weaker bounds below follow by inclusion or by squaring.
+Use all definitions and notation from @def-analytic.
+
+Use the notation of @def-analytic together with @lem-pole-free and @lem-derivatives.
+
+$$
+
+A=\frac{\Pi L^2p^2}{2h^2(h+2)^2},\qquad
+E=\frac{3\Pi Lp}{h(h+2)(1+Lp)}.
+
+$$
+
+The order $\sigma$ is constant. Define
+
+$$
+
+r_0=\frac{E_p}{A_p}
+=\frac{3h(h+2)}{Lp(1+Lp)^2}
+=\frac{3(h+2)}{a(1+ha)^2}.
+
+$$
+
+By @lem-derivatives,
+
+$$
+
+\frac p{2A}\frac{d\mathcal G(h,a,0)}{dp}
+=(1-r_0)X-r_0hM+J_0,                                    \tag{M.5.2}
+
+$$
+
+where the full two-term gain gives
+
+$$
+
+J_0=\mathcal B_A+\frac p{2A}\mathcal B_w
+=\frac{12-3A}{40p}-\frac{7-2A}{10}+\frac{6-5A}{40}p.      \tag{M.5.3}
+
+$$
+
+
+If $p<1/2$, then
+
+$$
+
+J_0\le \frac3{10p}-\frac7{10}+\frac{3p}{20}
+=:J_*(p).                                                \tag{M.5.4}
+
+$$
+
+Indeed, the difference is $A(1-p)(5p-3)/(40p)<0$.
+For fixed $0<A<1$, the expression in (M.5.3) satisfies
+$$
+\partial_pJ_0=-\frac{12-3A}{40p^2}+\frac{6-5A}{40}
+<-\frac{6+2A}{40}<0\qquad(0<p<1).
+$$
+Thus, if $p\ge1/2$,
+$$
+J_0(p,A)\le J_0(1/2,A)=-\frac{2+A}{80}<-\frac1{40}.
+$$
+This pointwise bound holds for every $0<A<1$, hence also for
+the geometric value $A=A(p)$.
+
+First assume $3/8<h\le1$. Then $p\le1/2,r_0>1$. By $X>1/3,M>1/6$,
+it suffices to prove
+
+$$
+
+r_0(h+2)/6-1/3-J_*(p)>0.
+
+$$
+
+After multiplication by $p$, the left-hand side becomes
+
+$$
+
+\frac{h(h+2)^2}{2L(1+Lp)^2}
+-\frac3{10}+\frac{11p}{30}-\frac{3p^2}{20}.
+
+$$
+
+Since $p\le h/L$, the first term is at least $h(h+2)^2/(2L^3)$.
+This function is increasing on $[3/8,1]$ and has value $1083/2662>3/10$ at $3/8$.
+The sum of the remaining two terms is positive as well. Thus (M.5.2) is negative.
+
+Next assume $1\le h\le4,r_0\ge1$. If $p\ge1/2$, the conclusion is immediate.
+If $p<1/2$, then
+
+$$
+
+\frac{r_0hp}{6}
+=\frac{h^2(h+2)}{2L(1+Lp)^2}
+\ge\frac3{4(1+2p)^2}.
+
+$$
+
+Here the left-hand side is strictly increasing in $h$. Set
+$f(p)=3/[4(1+2p)^2]$. Since
+$$
+f''(p)=\frac{18}{(1+2p)^4}>0,
+$$
+the tangent at $p=1/2$ gives
+$$
+f(p)\ge\frac3{16}-\frac38\left(p-\frac12\right)
+=\frac38-\frac{3p}{8}.
+$$
+Consequently,
+$$
+\frac3{4(1+2p)^2}-pJ_*(p)
+\ge\frac3{40}+\frac{p(13-6p)}{40}>\frac3{40}.
+$$
+Thus $r_0h/6>J_0$, so (M.5.2) is again negative.
+
+Finally assume $r_0<1$. Since $a\le1$, this forces $h>5/2$, and
+$r_0\ge18/25$. We must also have $p>1/2$; otherwise
+
+$$
+
+r_0\ge\frac{24h(h+2)}{L(h+3)^2}>1
+\quad(1\le h\le4),
+
+$$
+
+a contradiction. The numerator minus denominator in the last comparison is
+$-h^3+17h^2+33h-9>0$.
+Thus $J_0<0$. Also $K/\Pi<4/21$, so (M.2.2) gives $X<147/289<3/5$.
+Consequently the right-hand side of (M.5.2) is less than
+
+$$
+
+\frac7{25}\frac35-\frac{18}{25}\frac{5/2}{6}
+=-\frac{33}{250}<0.
+
+$$
+
+This establishes the required derivative sign in every case.
+We record the monotonicity computations and the bounds used in the final branch. Let $F(h)=h(h+2)^2/[2(1+h)^3]$. Then
+
+$$
+
+F'(h)/F(h)=\frac1h+\frac2{h+2}-\frac3{1+h}=\frac{2-h}{h(1+h)(h+2)}>0\quad(3/8\le h\le1).
+
+$$
+
+For fixed $p>0$, let $B(h)=h^2(h+2)/[2(1+h)(1+(1+h)p)^2]$. Since $p/(1+(1+h)p)<1/(1+h)$,
+
+$$
+
+B'(h)/B(h)=\frac2h+\frac1{h+2}-\frac1{1+h}-\frac{2p}{1+(1+h)p}>\frac{h+4}{h(1+h)(h+2)}>0.
+
+$$
+
+These identities justify the endpoint lower bounds in the first two cases.
+
+Since $a(1+ha)^2$ is increasing for $a>0$, the bound $a\le1$ gives $r_0\ge R_0(h):=3(h+2)/(1+h)^2$. Moreover, $R_0'(h)=-3(h+3)/(1+h)^3<0$. Therefore $r_0\ge54/49>1$ when $h\le5/2$, and $r_0\ge18/25$ when $h\le4$. This proves both bounds used in the final case. On $q=0$, we also have
+
+$$
+
+K/\Pi<\frac{3a}{(h+2)(1+ha)}\le\frac3{(h+2)(1+h)}<\frac4{21}\quad(h>5/2),
+
+$$
+
+The second inequality uses the increase of $a/(1+ha)$ with $a$; the last uses $(h+2)(h+1)>(9/2)(7/2)$.
+The admissible values of $a$ form exactly the interval $1/C_h<a\le1$. The strictly negative derivative therefore proves the asserted strict decrease.
+:::
+
+::: {#lem-container-monotone .lemma name="Monotonicity on the container equality boundary" date="2026-10-11" export="lem-container-monotone"}
+Fix $h$. In $\mathcal D_*\cap\{q\le p\}$ from @def-analytic, along the curve $F(p,q)=(Lp+(1-q)^{-1})(1-p-q)=c$, the function $\mathcal G$ strictly decreases as $a$ increases.
+:::
+
+::: {.proof of="lem-container-monotone"}
+We use the rational constant bounds in @lem-pi-rational; any weaker bounds below follow by inclusion or by squaring.
+Use all definitions and notation from @def-analytic.
+
+Apply @def-analytic, @lem-pole-free, and @lem-derivatives.
+Fix $h$ and set
+
+$$
+
+F(p,q):=\left(Lp+\frac1{1-q}\right)(1-p-q)=c,\qquad q\le p.
+                                                                  \tag{M.6.1}
+
+$$
+
+The conditions of the larger geometric domain (M.1.1) remain in force. Write $v=1-q,d=v-p$.
+We have $F_q=-Lp-p/v^2<0$. Furthermore, $F=c<1$ implies
+$Lv(v-p)<1$, whence
+
+$$
+
+F_p=Lv-2Lp-1/v<-Lp<0.
+
+$$
+
+Thus $q_p<0,v_p>0$ along the equality curve.
+
+On the admissible part of this equality boundary, we shall prove
+
+$$
+
+\frac d{da}\mathcal G(h,a,b_c(h,a))<0.                    \tag{M.6.2}
+
+$$
+
+
+Since $S_0=c/d$, we have
+
+$$
+
+E=\frac{3\Pi Lpd}{ch(h+2)},\qquad
+A=\frac{\Pi L^2p^2}{2h^2(h+2)^2}.
+
+$$
+
+Write $\alpha=Lv^2$. Implicit differentiation gives
+
+$$
+
+d_p=\frac{d(1-\alpha)}{p(1+\alpha)},\qquad
+E_p=\frac{2E}{p(1+\alpha)}.
+
+$$
+
+Let
+
+$$
+
+r_c=\frac{E}{A(1+\alpha)}.
+
+$$
+
+The derivative of the full gain is
+
+$$
+
+J_c=\mathcal B_A-\frac{d\,\mathcal B_w}{2A}
+       \frac{1-\alpha}{1+\alpha}.
+
+$$
+
+Consequently,
+
+For fixed $h$, along the admissible branch $q\le p$ we have $m=p=ha/L$, so $R=\rho_+h/m=(a/(h+2))h/(ha/L)=L/(h+2)$. Thus $\sigma$ is independent of $p$ on this branch, and $\sigma_p=0$: no derivative of the tail order occurs in the chain rule. If an endpoint satisfies $q=p$, only the one-sided derivative within the admissible branch is intended. Monotonicity follows from the derivative in the interior of the admissible interval and continuity at its endpoints.
+
+$$
+
+\frac p{2A}\frac{d\mathcal G}{dp}
+=(1-r_c)X-r_chM+J_c.                                     \tag{M.6.3}
+
+$$
+
+
+We first obtain uniform geometric bounds. Set $x=hav=Lp v$. Then (M.1.3) gives
+
+$$
+
+x>\frac{h(h+2)}{D_h}.
+
+$$
+
+The identity $c=(1+x)(1-p/v)$ gives
+
+$$
+
+\alpha=\frac{x(1+x)}{x+1-c}.                              \tag{M.6.4}
+
+$$
+
+Let $y=d/v=c/(1+x)>c/L$. Direct substitution yields
+
+$$
+
+r_c=\frac{6h(h+2)y^2}{cL(c-y^2)}
+>\frac{6h(h+2)}{L(L^2-c)}>1.                             \tag{M.6.5}
+
+$$
+
+The last inequality holds for $3/8<h\le4$: its numerator minus denominator is
+
+$$
+
+-h^3+3h^2+(9+c)h+c-1
+\ge(5+c)h+c-1>0.
+
+$$
+
+Also $S_0>1+h/C_h=2L^2/D_h$, so
+
+$$
+
+d<\frac{cD_h}{2L^2}.                                    \tag{M.6.6}
+
+$$
+
+
+First suppose $h\ge1/2$. Then $x>5/13$ and
+$x^2>25/169>1/7>1-c$, hence $\alpha>1$.
+Therefore
+
+$$
+
+J_c\le\mathcal B_A\le\frac{3d}{5w}
+<\frac{3cD_h}{5(2L^2-cD_h)}.
+
+$$
+
+Using $X>1/3,M>1/6,r_c>1$, a sufficient condition for negativity in (M.6.3) is
+
+$$
+
+\frac{h(h+2)^2}{L(L^2-c)}
+-\frac13-\frac{3cD_h}{5(2L^2-cD_h)}>0.                    \tag{M.6.7}
+
+$$
+
+We prove the stronger uniform lower bound $1/8$ directly.
+Set $y=L^{-1}$, and extend to $0\le y\le2/3$ the function
+$$
+\mathcal F_c(y)=
+\frac{(1+y)(1-y^2)}{1-cy^2}
+-\frac13-\frac{3c(1+y^2)}{5(2-c-cy^2)}.
+$$
+This is exactly the left-hand side of (M.6.7). By $6/7<c<7/8$,
+$$
+1-cy^2>\frac{11}{18},\qquad
+2-c-cy^2>\frac{53}{72}.
+$$
+For $\eta>0$, wherever the denominator is positive, write
+$W_\eta(y)=y^2/(\eta-cy^2)$. Direct differentiation gives
+$$
+W_\eta'(y)=\frac{2\eta y}{(\eta-cy^2)^2}\ge0,\qquad
+W_\eta''(y)=\frac{2\eta(\eta+3cy^2)}{(\eta-cy^2)^3}>0.
+$$
+The identities
+$$
+\frac{(1+y)(1-y^2)}{1-cy^2}
+=1+y-(1-c)(1+y)W_1(y),
+$$
+$$
+\frac{c(1+y^2)}{2-c-cy^2}
+=\frac{c}{2-c}+\frac{2c}{2-c}W_{2-c}(y)
+$$
+show that
+$$
+\mathcal F_c''(y)
+=-(1-c)\bigl(2W_1'(y)+(1+y)W_1''(y)\bigr)
+-\frac{6c}{5(2-c)}W_{2-c}''(y)<0.
+$$
+Thus $\mathcal F_c$ lies above its endpoint chord. The endpoint bounds are
+$$
+\mathcal F_c(0)=\frac23-\frac{3c}{5(2-c)}
+>\frac15,
+$$
+$$
+\begin{aligned}
+\mathcal F_c(2/3)
+&=\frac{25}{3(9-4c)}-\frac13-\frac{39c}{5(18-13c)}\\
+&>\frac{175}{117}-\frac13-\frac{273}{265}
+=\frac{4099}{31005}>\frac18.
+\end{aligned}
+$$
+In the second line, the first rational term increases with $c$ and is
+bounded below using $c>6/7$; the subtracted term increases with $c$ and
+is bounded above using $c<7/8$. Hence $\mathcal F_c>1/8$ on
+$[0,2/3]$, proving (M.6.7) for every $h\ge1/2$.
+
+Next suppose $3/8<h<1/2$. We have $x>57/185,c>6/7$.
+
+To justify substituting these two lower bounds, set $f(x,c)=x(1+x)/(x+1-c)$. Its denominator is positive for $x>0,0<c<1$, and
+
+$$
+
+f_x=\frac{x^2+(1-c)(2x+1)}{(x+1-c)^2}>0,\qquad
+f_c=\frac{x(1+x)}{(x+1-c)^2}>0.
+
+$$
+
+Therefore $f(x,c)>f(57/185,6/7)=48279/54020$, giving the required strict comparison.
+
+Hence
+
+$$
+
+\alpha>\frac{48279}{54020}>\frac78.
+
+$$
+
+By (M.6.6) and $c<13/15$,
+
+$$
+
+d<\frac{481}{726}<\frac23,\qquad w>\frac13.
+
+$$
+
+By (M.6.5), $h>3/8$, $h<1/2$, and $c>6/7$,
+
+$$
+
+r_c>\frac{6h(h+2)}{L(L^2-c)}
+>\frac{6(3/8)(19/8)}{(3/2)(9/4-6/7)}
+=\frac{133}{52}>\frac52.
+
+$$
+
+Moreover $K>\Pi v_h$ and $v_h\ge44/75$, so (M.2.2) gives $X>5/4$.
+Since $(1-\alpha)/(1+\alpha)<1/15$,
+
+$$
+
+J_c\le\frac{3d}{5w}+\frac{d}{50w^2}
+<\frac65+\frac3{25}=\frac{33}{25}.
+
+$$
+
+The right-hand side of (M.6.3) is consequently less than
+
+$$
+
+-\frac32\frac54+\frac{33}{25}=-\frac{111}{200}<0.
+
+$$
+
+This proves (M.6.2) in all cases.
+
+For completeness, we justify the quantities used at small heights and the shape of the admissible interval. Define
+
+$$
+
+v_h=\frac3{2(1+h)^2}-\frac1{2(h+2)^2}.
+
+$$
+
+From $S_0<2aL^2/(h+2)$ we obtain $E>3\Pi/(2L^2)$; together with $A\le\Pi/[2(h+2)^2]$, this gives $K>\Pi v_h$. Since $v_h'=-3/(1+h)^3+1/(h+2)^3<0$, for $3/8<h<1/2$ we have $v_h>v_{1/2}=44/75$. The lower bound in @lem-derivatives therefore yields
+
+$$
+
+X>\frac13+\frac15[(75/31)^2-1]=\frac{18797}{14415}>\frac54,
+
+$$
+
+where we used $\Pi<10$.
+
+For fixed $h$ and $0<p\le h/L$, we have $F(p,0)=1+Lp(h-Lp)/L\ge1>c$, while $F(p,1-p)=0$ and $F_q<0$. Hence the root $q_c(p)\in(0,1-p)$ is unique. Along the curve $q_c'(p)<0$, so $q_c(p)-p$ strictly decreases and $a(1-q_c)$ strictly increases. Both $q_c\le p$ and $a(1-q_c)>1/C_h$ are therefore preserved when $p$ increases. Moreover $q_c\le p\le h/L$ gives $b\le1$, and all other domain conditions are automatically preserved. The admissible part is thus an interval; its strictly negative derivative proves strict monotonicity between any two admissible points.
+:::
+
+::: {#lem-boundary .lemma name="Reduction to two terminal curves" date="2026-10-11" export="lem-boundary"}
+On $\mathcal D$ from @def-analytic, the following hold. If $q>p$, then $\mathcal G>1/150$. If $q\le p$ and $S_0d<c$, then $\mathcal G(h,a,b)>\Psi(h)$, and the terminal point belongs to $\mathcal D_*$ and satisfies $q_c\le p$. If $q\le p$ and $S_0/L<c$, then $\mathcal G(h,a,b)>\Phi(h)$, with $\sqrt3-1<h\le4$ and the terminal point in $\mathcal D_*$. At least one of these cases applies.
+:::
+
+::: {.proof of="lem-boundary"}
+We use the rational constant bounds in @lem-pi-rational; any weaker bounds below follow by inclusion or by squaring.
+Use all definitions and notation from @def-analytic.
+
+Use the boundary definitions of @def-analytic, continuous well-definedness from @lem-pole-free, and the respective monotonicity statements of @lem-q-branch-monotone, @lem-other-branch, @lem-zero-monotone, and @lem-container-monotone.
+For fixed $h,a$, put $\beta=ha,p=\beta/L,\epsilon=1-c$, and define
+
+$$
+
+v_c(h,a)=
+\frac{\beta p-\epsilon+
+\sqrt{(\beta p-\epsilon)^2+4\beta p}}{2\beta},
+
+$$
+
+
+$$
+
+q_c(h,a)=1-v_c(h,a),\qquad b_c(h,a)=\frac Lh q_c(h,a).
+                                                                  \tag{M.7.1}
+
+$$
+
+This gives the unique root of $S_0d=c$. Indeed,
+
+$$
+
+F(p,0)=(1+\beta)(1-\beta/L)
+=1+\frac{\beta(h-\beta)}L\ge1>c,
+
+$$
+
+while $F$ strictly decreases with $q$ and vanishes at $q=1-p$.
+Hence $0<q_c<1-p$.
+
+The first boundary function is
+
+$$
+
+\boxed{\Psi(h)=\mathcal G(h,1,b_c(h,1)).}                 \tag{M.7.2}
+
+$$
+
+Only the geometrically admissible heights inherited from an actual candidate need to be considered.
+Equivalently, within $3/8<h\le4$ we require
+
+$$
+
+\mathscr R(h)<c,\qquad
+\mathscr R(h)=
+1+\frac{h(h+2)}{D_h}-\frac{2hL}{h+2}.                    \tag{M.7.3}
+
+$$
+
+This is exactly the condition that $a=1,q=q_c$ satisfy (M.1.3). The inequality $q_c\le p$ holds automatically in this height range.
+
+
+At the terminal point $a=1$, if $3/8<h<1$, then
+
+$$
+
+F(p,p)=1-\frac{2h^2}{1+h}
+\le\frac{35}{44}<c,
+
+$$
+
+so $q_c<p$. If $h\ge1$, then $q_c<1-p\le p$.
+Thus no additional comparison between the two ear widths is needed beyond (M.7.3).
+
+The second boundary function is
+
+$$
+
+a_\triangle(h)=\frac{cL-1}{h},\qquad
+\boxed{\Phi(h)=\mathcal G(h,a_\triangle(h),0).}           \tag{M.7.4}
+
+$$
+
+Its relevant height range is
+
+$$
+
+\sqrt3-1<h\le4.                                         \tag{M.7.5}
+
+$$
+
+The condition $b=0$ is used only to extend the comparison function continuously; it does not assert that the boundary still represents a domain with five active sides.
+
+\textbf{Reduction to two one-variable boundary functions.}
+For every parameter in the original domain (M.1.1)–(M.1.2), at least one of the following cases applies:
+
+
+
+- If $q>p$, then $\mathcal G>1/150$.
+
+- If $q\le p$ and $S_0d<c$, then
+
+$$
+
+  \mathcal G(h,a,b)>\Psi(h);
+
+$$
+
+
+- If $q\le p$ and $S_0/L<c$, then
+
+$$
+
+  \mathcal G(h,a,b)>\Phi(h).
+
+$$
+
+
+
+The first case is @lem-other-branch.
+In the second case, $q>q_c(h,a)$, so @lem-q-branch-monotone gives
+$\mathcal G(h,a,b)>\mathcal G(h,a,b_c(h,a))$.
+Increase $a$ to $1$ along $S_0d=c$. Then $q_c$ decreases and $a(1-q_c)$ increases,
+so all conditions of the larger geometric domain remain valid. Applying @lem-container-monotone proves the second case.
+
+In the third case, first decrease $q$ to zero using @lem-q-branch-monotone. The condition $S_0/L<c$ implies
+
+$$
+
+a<a_\triangle(h)<1.
+
+$$
+
+Then increase $a$ to $a_\triangle(h)$ using @lem-zero-monotone, proving the third case.
+For this branch to be nonempty, we also need $a_\triangle>1/C_h$, equivalently,
+
+$$
+
+c>\frac{2L}{L^2+1},
+
+$$
+
+Since $L>1$, this is equivalent to $L>\sqrt3$, namely (M.7.5).
+
+
+We finish by verifying the equality root and both admissible paths in detail. Write $v=1-q$. Then
+
+$$
+
+F_q=-Lp-p/v^2<0,\qquad F_p=Lv-2Lp-1/v.
+
+$$
+
+On $F=c<1$, the identity $F-1=p[L(v-p)-1/v]<0$ gives $Lv(v-p)<1$, hence $F_p<-Lp<0$. The implicit-function formula $q_c'(p)=-F_p/F_q<0$ proves monotonicity of the equality root. As $a$ increases along the root curve, $p$ increases, $q_c$ decreases, and $a(1-q_c)$ strictly increases. Thus $q_c\le p$ and $a(1-q_c)>1/C_h$ are preserved. The root itself lies in $(0,1-p)$, and $q_c\le p\le h/L$, so all remaining $\mathcal D_*$ conditions hold up to $a=1$.
+
+In the third branch, first fix $h,a$ and decrease $q$ from its original value to zero. The inequalities $q\ge0$, $q\le p$, and $q\le h/L$ are preserved; $w=p+q$ does not increase and stays below one, while $a(1-q)$ does not decrease and remains strictly above $1/C_h$. The whole segment therefore lies in $\mathcal D_*$. From $S_0/L<c$ and $S_0\ge1+ha$, we obtain $0<a<a_\triangle$; moreover $c<1$ implies $a_\triangle<1$. Keeping $q=0$ fixed and increasing $a$ to $a_\triangle$ preserves $a>1/C_h$ and $p=ha/L\le h/L<1$, so the second segment also lies in $\mathcal D_*$. If the original point has $q=0$, the first comparison may be an equality, but the second segment has positive length. Its strict decrease from @lem-zero-monotone makes the final comparison strict.
+:::

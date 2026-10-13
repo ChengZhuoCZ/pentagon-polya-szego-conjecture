@@ -1,0 +1,18 @@
+{
+  "arithmetic": "Exact Laurent-polynomial arithmetic over rational numbers",
+  "parameter_relation": "T = c (2 a + 5 - c)",
+  "check_count": 7,
+  "all_passed": true,
+  "proof_relies_on_execution": false,
+  "official_qmd_prover_verdict": false,
+  "checks": [
+    "L_a = -B_a A_a",
+    "L_(a+1) = -A_a B_a",
+    "L_(a+1) A_a = A_a L_a",
+    "H(1) = C D, where C D = A C - T",
+    "Direct barrier residual",
+    "Closed barrier has the same logarithmic derivative",
+    "Riccati numerator collapse"
+  ],
+  "scope": "Supplementary identity checks only; analytic hypotheses are proved in the source."
+}

@@ -1,0 +1,37 @@
+{
+  "baseline": "凸五边形-解析接口替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/finite-mass-kernels.qmd",
+    "workspace/analytic-replacements-1012/moment-packets.qmd",
+    "workspace/analytic-replacements-1012/u0-radial.qmd"
+  ],
+  "retired_qmd": [
+    "workspace/ps-pressure-central-complete-kernel-gluing-1011.qmd",
+    "workspace/ps-pressure-common-phase-square-budget-1011.qmd",
+    "workspace/ps-pressure-fourth-spin-two-channel-budget-1011.qmd",
+    "workspace/ps-pressure-low-order-joint-margin-1011.qmd",
+    "workspace/ps-pressure-low-spin-positive-ratios-1011.qmd",
+    "workspace/ps-pressure-mixed-fifth-order-tail-1011.qmd",
+    "workspace/ps-pressure-nine-tenths-low-order-margin-1011.qmd",
+    "workspace/ps-pressure-root-filtered-high-tail-1011.qmd",
+    "workspace/ps-pressure-scalar-fourth-order-tail-1011.qmd",
+    "workspace/ps-pressure-unit-kernels-short-1011.qmd",
+    "workspace/true-pressure-terminal-migration-1011/common-tensor.qmd"
+  ],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/analytic-replacements-1012/bessel-core.qmd",
+    "workspace/analytic-replacements-1012/j-radial.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd",
+    "workspace/ps-pressure-central-short-analytic-closure-1011.qmd",
+    "workspace/ps-pressure-central-sinc-means-1011.qmd",
+    "workspace/ps-pressure-unit-short-analytic-closure-1011.qmd",
+    "workspace/ps-pressure-unit-sinc-means-1011.qmd"
+  ],
+  "old_active_qmd_bytes": 1443403,
+  "new_active_qmd_bytes": 455496,
+  "old_fact_count": 162,
+  "new_fact_count": 132,
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true
+}

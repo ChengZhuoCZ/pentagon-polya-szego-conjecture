@@ -1,0 +1,52 @@
+[
+  {
+    "source": "mean/research/continuous_envelopes/mean_comparison_worker/CU完整均值九常数短解析候选_v3.qmd",
+    "archived": "archive/source-supplements/CU完整均值九常数短解析候选_v3.qmd.txt",
+    "sha256": "4e54e37e3b128ec3a71f9f403daf888162eb4de475c20f9f2d274c67643cbe40"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/actual_spin_moment/实际自旋一阶角矩短比较候选_v3.qmd",
+    "archived": "archive/source-supplements/实际自旋一阶角矩短比较候选_v3.qmd.txt",
+    "sha256": "76b0b765bcc2f009b5c3a6b740c2e0111024cf4a1c6470579c35b0c22c1b3ab0"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/Bessel全源低模连续机制_v2.qmd",
+    "archived": "archive/source-supplements/Bessel全源低模连续机制_v2.qmd.txt",
+    "sha256": "52c9a4df253f622729659210aa8db4e01957512fe18dc3e8cf58e51b37177491"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/Bessel低模两相位配对约化.qmd",
+    "archived": "archive/source-supplements/Bessel低模两相位配对约化.qmd.txt",
+    "sha256": "57b66ecec9964789246fd2ce178be4a46cb666fd3398b250060b035b2a18cf72"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/J5共同径向误差完整候选.qmd",
+    "archived": "archive/source-supplements/J5共同径向误差完整候选.qmd.txt",
+    "sha256": "c4a9124ca18daef10135998b358d3a41d4cdd2139ffa3db6c54dd5f8a6d3e212"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/PQ共同径向比值完整候选.qmd",
+    "archived": "archive/source-supplements/PQ共同径向比值完整候选.qmd.txt",
+    "sha256": "4b97f11edf6f17cb8d38ec5b687b4dfd9f3c13fcf9ce67c395d1e762923d7f3c"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/v_pair_worker/V低模配对_完整径向解析证明.qmd",
+    "archived": "archive/source-supplements/V低模配对_完整径向解析证明.qmd.txt",
+    "sha256": "58bf742bf38245bd5679f0217d3a60f700de79677de3d4f8b5063a9996389d57"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/high_mode_worker/高模两界_完整径向解析证明.qmd",
+    "archived": "archive/source-supplements/高模两界_完整径向解析证明.qmd.txt",
+    "sha256": "9029d449fa78b276a0d0a43d9702cb0bbef06a1f2967019faa93b1c410b2f3f3"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/六标量条件终端支付.qmd",
+    "archived": "archive/source-supplements/六标量条件终端支付.qmd.txt",
+    "sha256": "76c462b28e5ef8ce58271652f7896e9e850c6cf915f9799794a7b0042b64cff2"
+  },
+  {
+    "source": "spin/sources/research/continuous_envelopes/六标量接口与u0连续下界.qmd",
+    "archived": "archive/source-supplements/六标量接口与u0连续下界.qmd.txt",
+    "sha256": "31f67430690c8bbafc207c32ab3a55f5d13f04481a17fcca4570624a6b602d4d"
+  }
+]

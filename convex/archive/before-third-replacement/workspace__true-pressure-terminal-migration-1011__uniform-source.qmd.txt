@@ -1,0 +1,73 @@
+---
+title: "均匀源：二倍斜率外域与零第一模态"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../ps-convex-geometric-tensor-switch-1011g/geometry-domain.qmd
+      use:
+        - def-psgs-normalized-geometry-1011h
+    - from: ../ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: geometry-interface.qmd
+      use:
+        - lem-tpm-analytic-geometric-domain-tpm1011
+---
+
+::: {#thm-tpm-uniform-real-budget-tpm1011 .theorem name="新解析几何出口下的均匀源完整真实预算" date="2026-10-11" export="thm-tpm-uniform-real-budget-tpm1011"}
+设 @def-psgs-normalized-geometry-1011h 的严格凸 Fourier 五边形无严格出口，
+$s\ge2t$ 且 $(t,s)\ne(0,0)$。取 @def-psgs-exact-tensor-1011h 的同一实际权及 $\kappa=0$。
+则 $C=C_0,K=0$。令
+$$
+L_0=\sqrt m-\operatorname{av}\sqrt{j_i},\qquad D_0=1-\sqrt m.
+$$
+对每个 $0\le q<5/12$，有
+$$
+D_0,L_0\ge0,\qquad
+(1-q)D_0-qL_0\ge\frac{39}{400000}s^2>0.
+$$
+包括 $t=0,s>0$，不在该轴除以 $t$。
+:::
+
+::: {.proof of="thm-tpm-uniform-real-budget-tpm1011" status="verified"}
+参数及可容许积分权的定义采用 @def-psgs-tensor-weights-1011h，特别保留 $a_0=\alpha\cot\alpha$ 与 $r\in\mathbb R$。
+以下推导沿用 @def-psgs-normalized-geometry-1011h 所给对象、记号与适用条件。
+$\omega_i=1,\delta_i=0$；@def-psgs-exact-tensor-1011h 的五根平均消去全部一次 $c,d$ 项，
+故完整核准确为 $A=1,B=X=Y=0$，得到 $C=C_0,K=0$。
+@lem-tpm-analytic-geometric-domain-tpm1011 给 $j_i>41m/100$、$m>7/8>427/500$。
+$s\ge2t$ 给 $m\le1$。五根正交性给 $\operatorname{av}j_i=m$，
+故 Cauchy--Schwarz 给 $L_0\ge0$；准确有理化给
+$$
+L_0=\operatorname{av}\frac{(j_i-m)^2}{2\sqrt m(\sqrt{j_i}+\sqrt m)^2},
+\qquad\operatorname{av}(j_i-m)^2=2t^2+2r^2s^2.
+$$
+准确平方比较给 $(231/250)^2=53361/62500<427/500<m$、
+$(143/250)^2=20449/62500<41/100$。
+又 $5-(559/250)^2=19/62500>0$ 给 $r=(\sqrt5-1)/2>309/500$，
+而 $r^2=1-r<191/500$。
+由于 $\sqrt m>231/250$，$\sqrt{41/100}>143/250$，得到
+$$
+L_0<\frac{t^2+r^2s^2}{m^{3/2}(1+\sqrt{41/100})^2}
+<\frac{513}{1000}(t^2+r^2s^2).
+$$
+确实分母大于
+$$
+\frac{427}{500}\frac{231}{250}\left(1+\frac{143}{250}\right)^2
+=\frac{15234386013}{7812500000},
+$$
+其与 $513/1000$ 的积减一等于 $2740024669/7812500000000>0$。
+又 $D_0=(1-m)/(1+\sqrt m)\ge r(s^2-t^2)/2\ge0$，所以
+$$
+7D_0-5L_0\ge\left[\frac{21r}{8}-\frac{513}{200}\left(\frac14+r^2\right)\right]s^2
+\ge\frac{117}{100000}s^2.
+$$
+最后代入 $r>309/500,r^2<191/500$，所显示有理式恰为 $117/100000$。
+因此
+$$
+(1-q)D_0-qL_0
+=\frac{7D_0-5L_0}{12}+\left(\frac5{12}-q\right)(D_0+L_0)
+\ge\frac{39}{400000}s^2.
+$$
+$(t,s)\ne(0,0)$ 且 $s\ge2t$ 保证 $s>0$，得到严格正性。
+:::

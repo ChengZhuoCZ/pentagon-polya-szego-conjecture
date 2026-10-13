@@ -1,0 +1,133 @@
+---
+title: "analytic"
+---
+
+
+::: {#def-analytic .definition name="Intermediate-height parameter domains and explicit response functions" date="2026-10-11" export="def-analytic"}
+Write
+
+$$
+
+\Pi=\pi^2,\qquad c=\frac{\sqrt3}{2},\qquad L=1+h,\qquad
+D_h=h^2+2h+2,\qquad C_h=\frac{D_h}{h+2}.
+
+$$
+
+
+
+Assume
+
+$$
+
+\frac38<h\le4,\qquad 0<a\le1,\quad0\le b\le1,
+
+$$
+
+
+$$
+
+p=\frac{ha}{L},\quad q=\frac{hb}{L},\quad
+w=p+q<1,\quad d=1-w,\quad m=\max(p,q),
+
+$$
+
+
+$$
+
+S_0=ha+\frac1{1-q},\qquad
+S_0<\frac{2aL^2}{h+2}.                                      \tag{M.1.1}
+
+$$
+
+The value $b=0$ is allowed only for continuous extension to the boundary. Denote the domain defined by these conditions by
+$\mathcal D_*$. The original target domain additionally requires
+
+$$
+
+S_0\min(d,L^{-1})<c.                                       \tag{M.1.2}
+
+$$
+
+Condition (M.1.1) is equivalent to
+
+$$
+
+a(1-q)>\frac1{C_h}.                                        \tag{M.1.3}
+
+$$
+
+
+Define
+
+$$
+
+\rho_+=\frac a{h+2},\quad A=\frac{\Pi\rho_+^2}{2},\quad
+E=\frac{3\Pi\rho_+}{S_0},\quad K=E-A,\quad T=h^2E,
+
+$$
+
+
+$$
+
+R=\frac{\rho_+h}{m},\qquad
+\sigma=\frac{1+\sqrt{1+2\Pi R^2}}2.
+
+$$
+
+Combine the two gains on the connecting interval into
+
+$$
+
+\mathcal B(A,w)=\frac{A(1-w)}{2w}
++\frac{A(2-A)(1-w)^2}{20w}.                                \tag{M.1.4}
+
+$$
+
+Define
+
+$$
+
+\mathsf H(K)=1-\frac{2K}{\Pi-K}-\frac{2K}{4\Pi-K}
+-\frac{2K(1/6-5/(4\Pi))}{1-K/(9\Pi)}.                          \tag{M.1.5}
+
+$$
+
+Further, set
+
+$$
+
+r=\sqrt{(2\sigma+5)^2-4T},\quad
+C=\sigma+\frac12+\frac r2,\quad
+D=2\sigma+1-\frac TC,
+
+$$
+
+
+$$
+
+\mathsf T(\sigma,T)=\sigma-\frac TD.                       \tag{M.1.6}
+
+$$
+
+The function to be estimated is
+
+$$
+
+\mathcal G(h,a,b)=\mathsf H(K)+\mathcal B(A,w)
++\frac{\mathsf T(\sigma,T)}h.                              \tag{M.1.7}
+
+$$
+
+
+
+Here $\mathcal D_*$ is defined only by (M.1.1) and the preceding parameter inequalities; $\mathcal D$ additionally imposes (M.1.2). The responses involving radicals are initially defined where the radicals are real and the denominators are nonzero. Subsequent lemmas establish their validity throughout the domains used below.
+Define the boundary quantities, using $p=ha/(1+h),\beta=ha,c=\sqrt3/2$:
+
+$$
+
+v_c=\frac{\beta p-(1-c)+\sqrt{(\beta p-(1-c))^2+4\beta p}}{2\beta},\quad q_c=1-v_c,\quad b_c=(1+h)q_c/h.
+
+$$
+
+Define $\Psi(h)=\mathcal G(h,1,b_c(h,1))$, $a_\triangle(h)=(c(1+h)-1)/h$, and $\Phi(h)=\mathcal G(h,a_\triangle(h),0)$ whenever the corresponding parameters belong to $\mathcal D_*$.
+:::

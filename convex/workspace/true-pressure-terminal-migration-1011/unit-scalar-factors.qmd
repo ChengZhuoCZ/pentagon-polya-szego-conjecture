@@ -1,0 +1,122 @@
+---
+title: "单位源平衡域：完整归一化标量与十九因式"
+lang: zh-CN
+---
+
+::: {#def-tpm-unit-scalar-tpm1011 .definition name="单位源归一化标量与完整均值尾" date="2026-10-11" export="def-tpm-unit-scalar-tpm1011" status="verified"}
+令
+$$
+r=\frac{\sqrt5-1}{2},\quad S=\frac{619}{1000},\quad
+s=SX,\quad \rho=\frac{1+Y}{2},\quad t=s\rho,
+\qquad 0\le X,Y\le1.
+$$
+定义
+$$
+m=1+r(t^2-s^2),\quad a_0=\frac{59}{100},\quad a=a_0m,
+\quad \lambda_c=\frac58,\quad \mu_c=\frac23,
+$$
+$$
+\delta=2-m,\quad p=1+\frac m2,\quad
+h=\frac{141}{200}-\frac t2,\quad
+\ell=\frac{7+8m}{15},\quad F_C=m^3h\ell,
+$$
+$$
+\alpha_c=\frac{r\delta(\delta+4p)}4,
+\qquad \beta_c=r^2(\delta+p),\quad
+\gamma=\frac34,\quad C_p=\frac{51543}{917504},\quad C_m=\frac{22815}{458752}.
+$$
+完整均值包络因子为
+$$
+b(t)=.34559582-.04819280t^2-.00081178t^3+.00188004t^4+.00003797t^5,
+$$
+$$
+e(t)=.00000002+.01947940t-.00105669t^3,\qquad
+G=.06059592-.00370871t^2+.00008245t^4,
+$$
+$$
+A_c=b(t)-se(t)-\gamma^7C_pt^6-\gamma^7C_mst^5,
+$$
+$$
+z_p=.10980168+.05734980t-.02767112t^2-.00343686t^3
+       +.00129011t^4+.00007469t^5+\gamma^7C_pt^6,
+$$
+$$
+z_m=.56546698-.06049508t^2+.00081178t^3+.00219163t^4
+       -.00001753t^5+\gamma^7C_mt^6.
+$$
+这些因式完整包含 $\gamma^7(C_pt^8+C_mst^7)$ 对归一化标量与自旋包络的贡献，不是后文可以省去的截断项。本定义只给出代数包络；真实均值的尾界由同源角积分模块另行提供。
+
+置 $F=m^4h\ell$、$Z=\rho z_p+z_m$，并定义没有 $s$ 分母的多项式
+$$
+\widehat D=\rho^2A_c+\frac r2(1-\rho^2)-\frac12s^2\rho^2Z^2,
+\qquad \widehat V_2=\frac{\delta^2\rho^2}{2}+2r^2,
+$$
+$$
+\widehat F_+=s^2\left[
+\frac38\delta^2p^2\rho^4+\delta rp\rho^3
++\frac{r^2}{4}(\delta^2+8\delta p+4p^2)\rho^2
++2r^3\rho+\frac32r^4\right],
+$$
+$$
+\widehat E=\frac2{15}\left\{
+\left[1-\frac89(1-h)\right]\widehat V_2m^2+\frac49\widehat F_+\right\},
+\qquad e_F=\frac8{27}(1+h)m,
+$$
+$$
+A_F=7GF_C+e_F\alpha_c,\qquad B_F=e_F\beta_c.
+$$
+对独立相位参数 $u,v\in[-1,1]$，令
+$$
+g_c=a\left[(r/2+\lambda_c)s\rho^2u
+       -(r\lambda_c+\lambda_c^2/2)s\rho v\right]
+       -s^2(\rho^2+r\lambda_c)^2
+       +\frac{a^2}{2}(\rho^2+\lambda_c^2),
+$$
+$$
+R=a\left[7\widehat D F_C-5\widehat E
+            +A_Fs\rho^2u-B_Fs\rho v\right]-\mu_c g_c.
+$$
+所有运算先在二次域 $r^2=1-r$ 中约化。形式原点 $s=0$ 也由上述多项式定义；它不依赖在真实谱比较中除以零。
+:::
+
+::: {#prp-tpm-unit-nineteen-factors-tpm1011 .proposition name="单位源标量的十九个完整因式恒等式" date="2026-10-11" export="prp-tpm-unit-nineteen-factors-tpm1011"}
+采用 @def-tpm-unit-scalar-tpm1011。令 $C$ 为下列前十四项之和，$A$ 为随后三项之和，$B$ 为最后两项之和：
+$$
+\begin{aligned}
+C_A&=7a_0F\rho^2A_c,&
+C_{\rm area}&=\tfrac72a_0rF(1-\rho^2),\\
+C_{\rm spin}&=-\tfrac72a_0Fs^2\rho^2Z^2,&
+C_{E1a}&=-\tfrac{a_0}{27}m^3(1+8h)\delta^2\rho^2,\\
+C_{E1b}&=-\tfrac{4a_0r^2}{27}m^3(1+8h),&
+C_{E2a}&=-\tfrac{a_0}{9}ms^2\delta^2p^2\rho^4,\\
+C_{E2b}&=-\tfrac{8a_0r}{27}ms^2\delta p\rho^3,&
+C_{E2c1}&=-\tfrac{2a_0r^2}{27}ms^2\delta^2\rho^2,\\
+C_{E2c2}&=-\tfrac{16a_0r^2}{27}ms^2\delta p\rho^2,&
+C_{E2c3}&=-\tfrac{8a_0r^2}{27}ms^2p^2\rho^2,\\
+C_{E2d}&=-\tfrac{16a_0r^3}{27}ms^2\rho,&
+C_{E2e}&=-\tfrac{4a_0r^4}{9}ms^2,\\
+C_{{\rm cov}1}&=\mu_cs^2(\rho^2+r\lambda_c)^2,&
+C_{{\rm cov}2}&=-\tfrac12\mu_ca_0^2m^2(\rho^2+\lambda_c^2),\\
+A_{\rm src}&=7a_0Fs\rho^2G,&
+A_{\rm ent}&=\tfrac{8a_0}{27}m^2s\rho^2(1+h)\alpha_c,\\
+A_{\rm cov}&=-\mu_ca_0(r/2+\lambda_c)ms\rho^2,&
+B_{\rm ent}&=-\tfrac{8a_0}{27}m^2s\rho(1+h)\beta_c,\\
+B_{\rm cov}&=\mu_ca_0(r\lambda_c+\lambda_c^2/2)ms\rho.
+\end{aligned}
+$$
+则恒等地 $R=C+Au+Bv$。所有均值尾仍在这些因式内。
+:::
+
+::: {.proof of="prp-tpm-unit-nineteen-factors-tpm1011" status="verified"}
+按 @def-tpm-unit-scalar-tpm1011 展开 $R$。$aF_C=a_0F$，故 $7a\widehat DF_C$ 的三个常相位项依次给 $C_A,C_{\rm area},C_{\rm spin}$。因为
+$$
+1-\frac89(1-h)=\frac{1+8h}{9},
+$$
+$-5a\widehat E$ 中的 $\widehat V_2$ 两项分别给 $C_{E1a},C_{E1b}$。其余部分是
+$$
+-\frac8{27}a_0m\widehat F_+.
+$$
+将 $\widehat F_+$ 的五组项展开，其中包含三项的混合平方括号分成三项，即按顺序给 $C_{E2a},C_{E2b},C_{E2c1},C_{E2c2},C_{E2c3},C_{E2d},C_{E2e}$。
+
+$-\mu_cg_c$ 的相位无关项给两项 $C_{{\rm cov}1},C_{{\rm cov}2}$；其 $u,v$ 项给 $A_{\rm cov},B_{\rm cov}$。最后 $aA_Fs\rho^2u$ 展开为 $A_{\rm src}u+A_{\rm ent}u$，$-aB_Fs\rho v=B_{\rm ent}v$。逐项合并即得完整恒等式。
+:::

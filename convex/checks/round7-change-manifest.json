@@ -1,0 +1,76 @@
+{
+  "baseline": "凸五边形-基态对数凹性与谱下界解析替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/dirichlet-spectral-foundations.qmd",
+    "workspace/analytic-replacements-1012/gaussian-energy.qmd",
+    "workspace/analytic-replacements-1012/interval-variational.qmd",
+    "workspace/analytic-replacements-1012/sobolev-convex-foundations.qmd"
+  ],
+  "retired_qmd": [],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+    "workspace/analytic-replacements-1012/corner-barrier.qmd",
+    "workspace/analytic-replacements-1012/gaussian-ground-state.qmd",
+    "workspace/fourier-pressure-geometry-reconstruction-1011.qmd",
+    "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+    "workspace/true-pressure-review-1011/analysis-supplements.qmd"
+  ],
+  "substantive_modified_old_math_files": 8,
+  "old_active_qmd_bytes": 450167,
+  "new_active_qmd_bytes": 474605,
+  "old_fact_count": 144,
+  "new_fact_count": 150,
+  "changed_old_nodes": [
+    "def-pressure-rebuild-1011-functional",
+    "lem-arc-corner-barrier-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-levelset-spectral-budget-1012",
+    "lem-arc-pressure-gap-1012",
+    "lem-psgs-actual-pressure-weights-1011h",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-pressure-rebuild-1011-area-fan-formulas",
+    "prp-pressure-rebuild-1011-attainment",
+    "prp-tpr-support-hadamard-tpr1011"
+  ],
+  "new_nodes": [
+    "lem-arc-convex-zero-extension-1012",
+    "lem-arc-dirichlet-compactness-1012",
+    "lem-arc-dirichlet-spectrum-1012",
+    "lem-arc-gaussian-energy-1012",
+    "lem-arc-interval-variational-1012",
+    "lem-arc-positive-compact-spectrum-1012"
+  ],
+  "new_lemma_count": 6,
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true,
+  "archived_original_math_count": 8,
+  "exact_check_count": 44,
+  "round6_replayed_exact_count": 41,
+  "changed_non_qmd_config": [
+    "_quarto.yml"
+  ],
+  "quarto_chapters_complete": true,
+  "replaced_local_inputs": [
+    "Dirichlet ground-state existence, positivity, simplicity, discrete spectrum and long-time projection",
+    "general spectral calculus in the Gaussian product proof",
+    "full-space Fourier/Plancherel energy identity",
+    "periodic Fourier/Wirtinger premise in the layer-set isoperimetric bound",
+    "convex-domain zero-extension characterization and Dirichlet compactness",
+    "general trace theorem for radial rearrangement and angular endpoints",
+    "general Sobolev Gauss-Green in the pressure boundary identity",
+    "general bi-Lipschitz Sobolev composition in the five-fan energy identity"
+  ],
+  "scope_change": {
+    "heat_product_old": "bounded Lipschitz domain",
+    "heat_product_new": "nonempty bounded open convex set",
+    "all_current_consumers_satisfy_new_scope": true,
+    "dirichlet_spectrum_scope": "nonempty bounded connected open set"
+  },
+  "prior_numeric_budgets_unchanged": true,
+  "q_bound": "5*sqrt(2)/17 < 5/12",
+  "scope": "Project-internal analytic derivations and author review, with basic integration/distribution/Hilbert tools retained. No independent full-proof verification."
+}

@@ -1,0 +1,15 @@
+---
+title: "Nonconvex exclusion for simple pentagons of fixed area"
+---
+
+This project develops an analytic proof that every nonconvex simple polygon with at most five active sides has a strictly better competitor of the same area for the first Dirichlet eigenvalue. The central statement is @thm-main-nonconvex-pentagon; its complete proof is in `workspace/main-proof.qmd`. The preceding chapters establish the geometric reduction, the spectral comparison for the actual sections, the common-interface response principle, parameter monotonicity, terminal positivity, and the exclusion of large-height candidates.
+
+This third English analytic edition makes the response estimates more direct. A Volterra equation constructs the regular inverse-square solutions, differential factorization proves the exact adjacent-order identity, and one positive comparison function gives the original tail bound. The cotangent estimate follows from an elementary Sturm comparison using both zero endpoints. The first terminal curve is controlled by one reciprocal majorant and one tangent after a global convex correction. Direct concavity and tangent estimates simplify both boundary derivatives. The complete derivations appear in the mathematical chapters, and `ANALYTIC_CHANGES.md` records their exact scope.
+
+The previous common-tail curvature estimate, variational Hadamard argument, second terminal-curve proof, and crossing and noncrossing Sturm comparisons remain part of the proof. The crossing result holds uniformly for every real order between two and three. Historical review records are preserved separately.
+
+The theorem excludes nonconvex global minimizers. The appendix proves the existence connection and gives a conditional bridge to a separate convex-pentagon extremal theorem; that convex theorem is explicitly a hypothesis of the final corollary. The central nonconvex-exclusion result does not depend on it.
+
+The canonical goal and its statement lock retain their original identity. An English presentation of that exact goal is supplied by the rendering layer. The proof chapters, rendered manuscript, and supporting documentation are in English.
+
+The hypotheses for classical external inputs are recorded in `external-inputs.md`, with the bibliography in `references.bib`: [@PS; @FS; @nc:brock; @nc:brock2000; @nc:CF; @nc:Capriani; @nc:grisvard; @nc:henrot; @nc:BB; @nc:kato; @nc:henrot2006].

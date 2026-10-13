@@ -1,0 +1,261 @@
+---
+title: "Admissible domains and critical variations"
+---
+
+::: {#def-domain .definition name="Admissible domains, criticality, and the spectral functional" date="2026-10-11" export="def-domain"}
+Let $\mathscr P_{\le5}(A)$ denote the bounded open domains of area $A>0$ whose boundaries are simple polygonal Jordan curves with at most five active sides.
+Active sides are obtained by merging consecutive collinear sides; self-intersections, retraced edges, and cracks are excluded.
+A reflex angle has interior angle in $(\pi,2\pi)$, and a strictly convex angle has interior angle in $(0,\pi)$.
+A domain is called area-critical if every infinitesimal vertex displacement with zero first variation of area also has zero first variation of the first eigenvalue. Set
+
+$$
+
+\lambda_1(P)=\inf_{u\in H_0^1(P)\setminus\{0\}}\frac{\int_P|\nabla u|^2}{\int_Pu^2},\qquad F(P)=|P|\lambda_1(P).
+
+$$
+
+A strict competitor is a simple polygon $Q$ with at most five sides, the same area, and $\lambda_1(Q)<\lambda_1(P)$. An ear $ABC$ has boundary sides $AB,BC$, an open diagonal $AC$ contained in the domain, and triangular interior contained in $P$.
+:::
+
+::: {#lem-square .lemma name="A pentagon strictly below the square threshold" date="2026-10-11" export="lem-square"}
+In the notation of @def-domain, for every $A>0$ there is a convex polygon $Q$ with exactly five active sides, $|Q|=A$, and $F(Q)<2\pi^2$.
+:::
+
+::: {.proof of="lem-square"}
+Use the spectral functional in @def-domain. Let $S=(0,1)^2$, choose $0<\varepsilon\le1/32$, and remove
+$\{x,y\ge0:x+y\le\varepsilon\}$ from the corner at the origin. The resulting open domain $Q_\varepsilon$ is a convex pentagon, and
+$$
+|Q_\varepsilon|=1-\varepsilon^2/2.
+$$
+The positive normalized ground state of the square is $U=2\sin(\pi x)\sin(\pi y)$. Define
+$$
+\eta_\varepsilon(r)=\min\{1,\max\{0,r/\varepsilon-1\}\},\qquad
+r=(x^2+y^2)^{1/2}.
+$$
+This function vanishes on the cut, so $\eta_\varepsilon U\in H_0^1(Q_\varepsilon)$. Testing the weak eigenvalue equation on the square with
+$\eta_\varepsilon^2U$ gives the exact identity
+$$
+\int_S|\nabla(\eta_\varepsilon U)|^2
+=2\pi^2\int_S\eta_\varepsilon^2U^2
++\int_SU^2|\nabla\eta_\varepsilon|^2.
+$$
+In the first quadrant, $0\le U\le2\pi^2xy\le\pi^2r^2$. Estimate over the quarter disk of radius $2\varepsilon$ and put $C_0=16\pi^5/3$. Then
+$$
+1-\int_S\eta_\varepsilon^2U^2\le C_0\varepsilon^6,
+\qquad
+\int_SU^2|\nabla\eta_\varepsilon|^2\le C_0\varepsilon^4.
+$$
+These estimates use only $|\nabla\eta_\varepsilon|\le\varepsilon^{-1}$ and
+$\int_0^{\pi/2}\int_0^{2\varepsilon}\pi^4r^5\,dr\,d\theta
+=C_0\varepsilon^6$. Since $\pi<4$ and $\varepsilon\le1/32$,
+$C_0\varepsilon^6<1/2$, and
+$$
+\frac{C_0\varepsilon^4}{1-C_0\varepsilon^6}
+<2C_0\varepsilon^4
+\le\frac{\pi^5}{96}\varepsilon^2
+<\frac{2\pi^2}{3}\varepsilon^2.
+$$
+The Rayleigh principle therefore gives
+$$
+F(Q_\varepsilon)
+<\left(1-\frac{\varepsilon^2}{2}\right)
+ \left(2\pi^2+\frac{2\pi^2}{3}\varepsilon^2\right)
+=2\pi^2-\frac{\pi^2}{3}\varepsilon^2
+ -\frac{\pi^2}{3}\varepsilon^4
+<2\pi^2.
+$$
+For example, one may fix $\varepsilon=1/32$. Finally, take
+$t=(A/|Q_\varepsilon|)^{1/2}$. The planar scaling law preserves $F$ and gives $|tQ_\varepsilon|=A$.
+:::
+
+::: {#lem-variations .lemma name="Flux moments and the energy tensor at an area-critical polygon" date="2026-10-11" export="lem-variations"}
+Let $P$ be an area-critical simple polygon as in @def-domain, with no flat angles. Let $U$ be its positive $L^2$-normalized ground state and $\lambda=\lambda_1(P)$. On each side $x_i+t(x_{i+1}-x_i)$, put $g_i(t)=(\partial_\nu U)^2$. Then
+
+$$
+
+\int_0^1g_i(t)dt=\lambda/|P|,\quad \int_0^1(t-1/2)g_i(t)dt=0,\quad \int_P\nabla U\otimes\nabla U=(\lambda/2)I.\tag{G.2.1}
+
+$$
+
+All the flux integrals are finite.
+:::
+
+::: {.proof of="lem-variations"}
+Use the admissible class, area-criticality, normalized Dirichlet ground state, and spectral functional of @def-domain.
+
+The corner Hadamard formula @lem-hadamard-corners applies to simple polygons without flat angles and to boundary fields obtained by affine interpolation of vertex velocities. To construct such an admissible field $V$, take a finite nondegenerate triangulation in a large rectangle containing $P$, compatible with $\partial P$. Choose a generic direction so that all vertex projections are distinct. Join the unique leftmost and rightmost vertices to the corresponding sides of the rectangle. Except at their initial endpoints, these two disjoint segments lie outside $P$ and split the surrounding annular region into two simple polygons. Triangulate these polygons and $P$, using identical subdivisions on shared sides. Assign the prescribed velocity $V_i$ to each original vertex; at any additional mesh point on an old side, use the linear interpolation of its endpoint velocities. Set all other mesh velocities, and the field outside the rectangle, to zero. The resulting $V$ is continuous, piecewise affine, and globally Lipschitz. Its restriction to every old side is affine, so $I+tV$ creates no additional boundary vertices. If $|t|\operatorname{Lip}(V)<1$, the distance estimate and the contraction mapping construction of inverse images give a global bi-Lipschitz map. The image domain remains simple. Positive edge lengths and nonflat angles persist under sufficiently small perturbations, so the number of active sides is unchanged.
+
+The vertex velocity space is $\mathbb R^{2m}$. The Hadamard formula makes $D\lambda$ linear on this space, and the vertex area formula gives linearity of the area differential as well. Uniform dilation gives $D|P|=2|P|>0$, so the area differential is nonzero. Criticality means $\ker D|P|\subset\ker D\lambda$. Choose $W$ with $D|P|[W]=1$. For every $V$, one has $V-D|P|[V]W\in\ker D|P|$, whence $D\lambda[V]=D\lambda[W]D|P|[V]$. Thus a single multiplier $\kappa=D\lambda[W]$ exists.
+
+Write $D\lambda=\kappa D|P|$. Moving only $x_i$, with velocity $V_i$, gives
+
+$$
+
+D\lambda[V_i]=-|e_{i-1}|V_i\cdot\nu_{i-1}
+\int_0^1t g_{i-1}(t)\,dt
+-|e_i|V_i\cdot\nu_i\int_0^1(1-t)g_i(t)\,dt,
+
+$$
+
+$$
+
+D|P|[V_i]=\tfrac12V_i\cdot
+(|e_{i-1}|\nu_{i-1}+|e_i|\nu_i).
+
+$$
+
+The two adjacent normals are linearly independent. Hence both weighted moments equal $-\kappa/2$. Uniform dilation gives
+$-2\lambda=2\kappa|P|$, so $\kappa=-\lambda/|P|$. Adding and subtracting the two endpoint moments proves the flux identities.
+
+The absolute integrability of the edge fluxes near all corners and the disappearance of the artificial circular boundary terms follow from @lem-hadamard-corners.
+
+The tensor identity follows from @lem-energy-tensor, whose proof uses only area-criticality and the Rayleigh comparison in both parameter directions.
+:::
+
+::: {#lem-energy-tensor .lemma name="G.2.2 Isotropy of the energy tensor" date="2026-10-11" export="lem-energy-tensor"}
+Let $P$ be an area-critical simple polygon in the sense of @def-domain. Let $U$ be its positive $L^2$-normalized first Dirichlet eigenfunction and $\lambda=\lambda_1(P)$. Then
+$$
+\int_P\nabla U\otimes\nabla U=\lambda I/2.
+$$
+:::
+
+::: {.proof of="lem-energy-tensor"}
+Use area-criticality and the Rayleigh definition in @def-domain, and put
+$E=\int_P\nabla U\otimes\nabla U$. For any symmetric trace-free matrix $M$, let
+$B_t=\exp(tM)$ and $P_t=B_tP$. Since $\det B_t=1$, this is an area-preserving deformation through simple polygons. Criticality gives
+$$
+\lambda_1(P_t)=\lambda+o(t)\qquad(t\to0).
+$$
+Use the same ground state as an affine trial function, $U_t=U\circ B_t^{-1}\in H_0^1(P_t)$.
+Its mass remains one, and $B_t^{-1}B_t^{-T}=\exp(-2tM)$. Hence
+$$
+\lambda_1(P_t)
+\le\int_P\nabla U^{\mathsf T}\exp(-2tM)\nabla U
+=\lambda-2t(M:E)+O(t^2).
+$$
+For $t>0$, divide by $t$ and let $t\downarrow0$ to obtain $M:E\le0$.
+For $t<0$, divide by $t$ and let $t\uparrow0$ to obtain $M:E\ge0$.
+Thus $M:E=0$ for every symmetric trace-free $M$, so $E$ is a scalar matrix.
+Since $\operatorname{tr}E=\int_P|\nabla U|^2=\lambda$,
+$$
+E=\frac\lambda2 I.\tag{G.2.2}
+$$
+This argument does not differentiate the deformed ground state or use criticality of any one-dimensional comparison operator.
+:::
+
+::: {#lem-hadamard-corners .lemma name="Corner control and the vertex Hadamard formula at convex and reflex angles" date="2026-10-11" export="lem-hadamard-corners"}
+Let $P$ be a bounded simple polygon, with all interior angles $\omega_i\in(0,2\pi)$. Let $U\in H_0^1(P)$ be its positive first Dirichlet eigenfunction, normalized by $\int_PU^2=1$, and put $\lambda=\lambda_1(P)$. Let $V$ be a continuous piecewise affine vector field on a finite compatible triangulation, extended outside as a Lipschitz field. For small $t$, set $F_t=I+tV$. Then
+
+$$
+
+D\lambda[V]=-\int_{\partial P}(\partial_\nu U)^2V\cdot\nu\,ds.
+
+$$
+
+Every edge integral is absolutely convergent. The conclusion covers both strictly convex and reflex corners.
+:::
+
+::: {.proof of="lem-hadamard-corners"}
+Use the spectral definition in @def-domain.
+
+First justify differentiation and the corner estimates. If $\|tDV\|_\infty<1$, then $F_t$ is bi-Lipschitz and preserves simplicity of the boundary. Pulling functions back to $P$ gives the energy and mass forms
+
+$$
+
+a_t(u,u)=\int_P\det(DF_t)|DF_t^{-T}\nabla u|^2,
+\qquad m_t(u,u)=\int_P\det(DF_t)u^2.
+
+$$
+
+The first variation follows directly from the Rayleigh principle. Write $\lambda_t=\lambda_1(F_tP)$. All forms have the fixed domain $H_0^1(P)$. Since $DV$ is bounded, their coefficients admit the uniform expansions
+$$
+a_t=a_0+t\dot a_0+O(t^2),\qquad
+m_t=m_0+t\dot m_0+O(t^2).
+$$
+Here the energy remainder, evaluated on $(u,u)$, is bounded by $Ct^2\|\nabla u\|_2^2$, and the mass remainder by $Ct^2\|u\|_2^2$, with $C$ independent of $u$ and small $t$. Indeed,
+$$
+\det(DF_t)=1+t\operatorname{div}V+O(t^2),
+$$
+$$
+\det(DF_t)DF_t^{-1}DF_t^{-T}
+=I+t\bigl((\operatorname{div}V)I-DV-DV^{\mathsf T}\bigr)+O(t^2)
+$$
+almost everywhere, with bounded remainders. Comparing each energy and mass form with its value at $t=0$, uniformly over all nonzero trial functions, gives $\lambda_t\to\lambda$.
+
+For each small $t$, choose the nonnegative minimizing eigenfunction $u_t$ on the fixed domain, normalized by the same condition $m_0(u_t,u_t)=1$. Coercivity and Rellich compactness give such a minimizer. The identity
+$$
+a_t(u_t,u_t)=\lambda_t m_t(u_t,u_t)
+$$
+and the coefficient comparison show that $u_t$ is bounded in $H_0^1(P)$ and that $a_0(u_t,u_t)\to\lambda$. Every sequence $t\to0$ therefore has a subsequence converging weakly in $H_0^1(P)$ and strongly in $L^2(P)$ to a nonnegative normalized function $u_*$. Weak lower semicontinuity and the Rayleigh principle give
+$$
+\lambda\le a_0(u_*,u_*)\le\liminf_{t\to0}a_0(u_t,u_t)=\lambda.
+$$
+Thus $u_*$ is a ground state. Positivity and simplicity on the connected domain $P$ imply $u_*=U$. The convergence of the energy norms then improves the weak convergence to strong convergence in $H_0^1(P)$. Applying this argument to every sequence $t\to0$ shows that $u_t\to U$ strongly as $t\to0$.
+
+Put $D=\dot a_0(U,U)-\lambda\dot m_0(U,U)$. The fixed trial function $U$ gives the upper bound
+$$
+\lambda_t-\lambda\le tD+O(t^2).
+$$
+For the lower bound, use the minimizing function $u_t$ and expand its quotient:
+$$
+\lambda_t-\lambda
+=\frac{(a_0-\lambda m_0)(u_t,u_t)}{m_t(u_t,u_t)}
++t\frac{(\dot a_0-\lambda\dot m_0)(u_t,u_t)}{m_t(u_t,u_t)}
++O(t^2)
+\ge tD+o(|t|).
+$$
+The first numerator is nonnegative by the Rayleigh principle at $t=0$; strong convergence makes the second quotient tend to $D$. Both bounds hold for positive and negative $t$, so $\lambda_t=\lambda+tD+o(|t|)$. Evaluating the coefficient derivatives gives
+
+$$
+
+D\lambda[V]=\int_P\{(\operatorname{div}V)(|\nabla U|^2-\lambda U^2)-2\nabla U\cdot DV\nabla U\}.
+
+$$
+
+Near each vertex, the domain is exactly a sector $0<r<r_0,0<\theta<\omega$. Put $\alpha=\pi/\omega>1/2$ and choose $r_0$ so that $\lambda r_0^2<\min(1/8,\alpha^2/2)$ and the sector meets no other vertex. Odd reflection of $U$ across each open straight side preserves the weak Helmholtz equation because the trace is zero. Standard interior elliptic regularity therefore makes the circular trace $F(\theta)=U(r_0,\theta)$ smooth up to both endpoints, where it vanishes. Write its sine coefficients as $c_n$; they are bounded and satisfy $\sum n^2|c_n|^2<\infty$. For $\nu=n\alpha$, define
+
+$$
+
+B_\nu(r)=r^\nu\sum_{j\ge0}\frac{(-\lambda r^2/4)^j}{j!(\nu+1)\cdots(\nu+j)},
+
+$$
+
+with the empty product equal to one. The series converges absolutely and solves the radial equation term by term. On $0\le r\le r_0$, the alternating terms decrease in magnitude, giving
+
+$$
+
+\frac56\le B_\nu(r)/r^\nu\le1,\qquad
+|B_\nu'(r)|\le C(\nu+1)r^{\nu-1},
+
+$$
+
+where $C$ is independent of $n$. The derivative estimate follows directly by differentiating the absolutely convergent series: every denominator factor $\nu+j\ge3/2$, and the additional factor $\nu+2j$ is uniformly controlled by the associated exponential series.
+The regular solution is therefore
+
+$$
+
+U(r,\theta)=\sum_{n\ge1}c_n\frac{B_{n\alpha}(r)}{B_{n\alpha}(r_0)}\sin(n\alpha\theta)
+
+$$
+
+To identify this series with the original weak solution, note that $\sum n^2|c_n|^2<\infty$ ensures convergence in the energy space of the whole sector, with the same boundary trace. The energy of each term is bounded by $C(n\alpha+1)|c_n|^2$, and its radial equation holds termwise. The angular Poincaré inequality gives the zero-trace spectral bound $\lambda_D\ge\alpha^2/r_0^2>\lambda$, so the weak solution with this boundary trace is unique. The singular radial branch $r^{-n\alpha}$ is not in $H^1$ and supplies no additional term. On $r\le r_0/2$, the series and its first derivatives converge uniformly and absolutely because $\sum_{n\ge1}(n+1)(r/r_0)^{n\alpha}$ is bounded by a constant multiple of $(r/r_0)^\alpha$. Consequently,
+
+$$
+
+|U|\le Cr^\alpha,\qquad |\nabla U|\le Cr^{\alpha-1}.
+
+$$
+
+This covers convex corners $\alpha>1$, flat angles $\alpha=1$, and reflex corners $1/2<\alpha<1$; it controls the differentiated expansion as well as the function itself.
+
+Set $T=(|\nabla U|^2-\lambda U^2)I-2\nabla U\otimes\nabla U$. Away from the vertices, direct calculation using $-\Delta U=\lambda U$ gives $\operatorname{div}T=0$. Remove a sector cap of radius $\varepsilon$ at each vertex and apply the divergence theorem to $TV$. On every original open side, $U=0$ and its tangential derivative vanishes, so $T\nu=-(\partial_\nu U)^2\nu$. Each artificial circular arc contributes in absolute value at most
+
+$$
+
+C\|V\|_\infty\varepsilon(\varepsilon^{2\alpha-2}+\lambda\varepsilon^{2\alpha})
+=O(\varepsilon^{2\alpha-1})\longrightarrow0.
+
+$$
+
+The original edge flux near the vertex is also integrable, since $\int_0^{r_0}r^{2\alpha-2}dr<\infty$. The volume integral converges because $U\in H^1$ and $DV\in L^\infty$. Letting $\varepsilon\to0$ proves the formula. For piecewise affine $V$, one may integrate cell by cell; terms on shared mesh edges cancel by continuity of $V$. Equivalently, one may apply the weak divergence theorem for Lipschitz fields.
+:::

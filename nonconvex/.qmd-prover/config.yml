@@ -1,0 +1,20 @@
+project:
+  exclude: [.qmd-prover, source, .codex]
+goals:
+  id-prefix: thm-main-
+  protect-statements: true
+semantic:
+  wildcard-imports: false
+verification:
+  backend: codex
+  model: gpt-6.1-sol
+  effort: xhigh
+  fresh-context: true
+  citations: strict
+  rigor: strict
+  rigor-disprove: strict
+  assumptions: forbid
+  tools: [file-read, web-search, code]
+render:
+  graph-engine: builtin
+  output-dir: .qmd-prover/generated

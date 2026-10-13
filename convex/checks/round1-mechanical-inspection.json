@@ -1,0 +1,50 @@
+{
+  "operation": "QMD mechanical analysis of a temporary copy with verifier disabled",
+  "not_mathematical_or_formal_verification": true,
+  "ok": true,
+  "summary": {
+    "goals": 1,
+    "notes": 63,
+    "facts": 162,
+    "errors": 0,
+    "files": 63,
+    "kinds": {
+      "corollary": 8,
+      "definition": 22,
+      "lemma": 82,
+      "proposition": 37,
+      "theorem": 13
+    },
+    "statuses": {
+      "unverified": 162
+    },
+    "globally_verified_goals": 0,
+    "globally_disproved_goals": 0
+  },
+  "diagnostics": [],
+  "cycles": [],
+  "new_mean_closure": [
+    "def-psgs-exact-tensor-1011h",
+    "def-psgs-tensor-weights-1011h",
+    "lem-arc-geometric-constants-1012",
+    "thm-arc-complete-means-1012"
+  ],
+  "new_spin_closure": [
+    "def-arc-bessel-data-1012",
+    "def-psgs-exact-tensor-1011h",
+    "def-psgs-tensor-weights-1011h",
+    "lem-arc-bessel-tail-1012",
+    "lem-arc-geometric-constants-1012",
+    "lem-arc-high-modes-1012",
+    "lem-arc-j-radial-1012",
+    "lem-arc-low-mode-pairing-1012",
+    "lem-arc-pq-radial-1012",
+    "lem-arc-v-radial-1012",
+    "thm-arc-actual-spin-1012",
+    "thm-arc-complete-means-1012"
+  ],
+  "old_spin_and_coefficient_dependencies_absent_from_replacements": true,
+  "fine_means_and_unit_full_kernels_retained_under_main_goal": true,
+  "original_verification_configuration_preserved": true,
+  "source_snapshot_id": "sha256:a102bea052e5648dc117f852d39f5a7f2561cfd4284c71ca26b2d6c9259d3033"
+}

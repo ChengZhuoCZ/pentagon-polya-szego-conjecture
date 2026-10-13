@@ -1,0 +1,257 @@
+---
+title: "两源共同有限角计算、精细均值与真实张量斜率"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-finite-kernel-rule-1011h
+        - lem-psgs-constant-and-full-tail-1011h
+        - def-psgs-tensor-weights-1011h
+---
+
+::: {#def-tpm-common-finite-calculus-tpm1011 .definition name="两源的共同字符、均值与单角区间包围" date="2026-10-11" export="def-tpm-common-finite-calculus-tpm1011" status="verified"}
+采用 @def-psgs-tensor-weights-1011h、@def-psgs-exact-tensor-1011h 和
+@def-psgs-finite-kernel-rule-1011h 的 $\alpha=\pi/5$、$a=\alpha\cot\alpha$、
+$r=(\sqrt5-1)/2$ 及真实积分权。
+本构造只使用两个固定有理源强度 $\kappa\in\{1,6/5\}$；不对任意实源强度声称产生有理系数包围。
+令 $T=27/50$、$S=619/1000$，并固定
+$\gamma=3\kappa/4$、$C_p=51543/917504$、$C_m=22815/458752$。
+$t>0$ 时写 $c=te^{i\theta}$、$d=se^{i(2\theta+\chi)}$、$\sigma=s/t$、
+$q=e^{-2i\beta}$、$z=a+i\beta$。对形式 Laurent 变量 $n$ 定义
+$$
+\mathfrak h=\frac\kappa2(zn-\bar z n^{-1}),\qquad
+w=\frac\kappa2(n+n^{-1}),
+$$
+$$
+V_\pm=n(1\pm rq)+\sigma e^{i\chi}n^2(r\pm q),
+$$
+$$
+D_N(\eta,V)=\frac{(\eta\mathfrak h)^N}{N!}
++(w+V)\frac{(\eta\mathfrak h)^{N-1}}{(N-1)!}
++wV\frac{(\eta\mathfrak h)^{N-2}}{(N-2)!}.
+$$
+负阶乘项为零，且
+$$
+\mathcal A_\theta(n^j)=
+\begin{cases}(-1)^{j/5}e^{ij\theta},&5\mid j,\\0,&5\nmid j.\end{cases}
+$$
+按系数线性延拓到有限 Laurent 多项式。
+设 $\mathsf Ef(\beta)=[f(\beta)+f(-\beta)]/2$、
+$\mathsf Of(\beta)=[f(\beta)-f(-\beta)]/2$，复值函数逐分量应用。
+四个有限核为
+$$
+\begin{aligned}
+A_N&=\mathsf E\Re\mathcal A_\theta D_N(-1,V_-),&
+B_N&=-\mathsf O\Im\mathcal A_\theta D_N(-1,V_+),\\
+X_N&=\mathsf E\{q^{-1}\mathcal A_\theta[n^2D_N(1,V_-)]\},&
+Y_N&=\mathsf O\{iq^{-1}\mathcal A_\theta[n^2D_N(1,V_+)]\}.
+\end{aligned}
+$$
+提取纯、混合字符后的系数记为 $(P_{b,j,N,\ell},Q_{b,j,N,\ell})$：
+$b=\mathrm p,\mathrm m$ 区分纯项和对 $d$ 线性的混合项；$j=0,2$ 区分标量与自旋。
+实际幅度分别为 $t^N,st^{N-1}$。
+纯标量相位是 $\cos(5\ell\theta)$，混合标量相位是 $\cos(5\ell\theta+\chi)$；
+自旋使用相应完整复指数，统一旋转后的自旋为 $e^{2i\theta}K$。
+记
+$$
+M_{b,j,N,\ell}=\frac1\alpha\int_0^\alpha P_{b,j,N,\ell}(\beta)\,d\beta.
+$$
+下文的 $\bar P$ 专指此角均值 $M_{b,j,N,\ell}$，不表示复共轭；$\bar z$ 仍表示复共轭。
+
+所有有限系数可无递归地由下列二项和生成。
+若前因子第 $\nu$ 阶写成 $\sum_e v_{\nu e}n^e$，
+$\nu=0,1,2$ 分别对应 $1,w+V,wV$，则平均为
+$$
+\sum_{\nu=0}^2\sum_{\substack{e\in\mathbb Z,\ 0\le j\le N-\nu\\5\mid e+2j-N+\nu+q_0}}
+ v_{\nu e}\frac{(\eta\kappa/2)^{N-\nu}}{(N-\nu)!}
+ \binom{N-\nu}{j}z^j(-\bar z)^{N-\nu-j}
+ (-1)^{(e+2j-N+\nu+q_0)/5}
+ e^{i(e+2j-N+\nu+q_0)\theta}.
+$$
+标量取 $q_0=0$，自旋取 $q_0=2$ 并另乘 $q^{-1}$。
+
+角积分采用 $h_\alpha=a^2(3-4r)=\alpha^2$，
+$$
+I_0=\frac{2+r}{4a},\qquad
+J_{2j+1}=-\frac r4h_\alpha^j+\frac{2j+1}{2}I_{2j},\qquad
+I_{2j}=\frac{2+r}{4a}h_\alpha^j-jJ_{2j-1},
+$$
+其中 $I_k=\alpha^{-1}\int_0^\alpha\beta^k\cos2\beta$，
+$J_k=\alpha^{-1}\int_0^\alpha\beta^k\sin2\beta$；
+另有 $\alpha^{-1}\int_0^\alpha\beta^{2j}=h_\alpha^j/(2j+1)$。
+
+包围的参数取
+$$
+a_L=864806265977/10^{12},\quad a_H=864806265978/10^{12},
+$$
+$$
+r_L=61803398874989484820/10^{20},\quad
+r_H=61803398874989484821/10^{20}.
+$$
+对任一有理系数，分别按单项式系数的符号包围分子和分母；
+分母先取得严格正下界，再取四个端点商的最小、最大值。
+在整个 $x=\beta^2\in[0,2/5]$ 上使用
+$$
+2-\frac43x+\frac4{15}x^2-\frac8{315}x^3
+\le\frac{\sin2\beta}{\beta}\le2-\frac43x+\frac4{15}x^2,
+$$
+$$
+1-2x+\frac23x^2-\frac4{45}x^3
+\le\cos2\beta\le1-2x+\frac23x^2.
+$$
+对每个系数下界 $l$，若 $l\ge0$ 则乘三角下界，若 $l<0$ 则乘三角上界。
+这给每个待估式的有理多项式下界 $p(x)$。
+将 $p(x)=\sum c_j(x-1/5)^j$ 定义中心仿射下界
+$$
+\mathscr Lp=c_0+c_1(x-1/5)
+-\sum_{\substack{j\ge3\\j\text{ 奇}}}\frac{|c_j|}{5^j}
+-\sum_{\substack{j\ge2\\j\text{ 偶},\ c_j<0}}\frac{|c_j|}{5^j}.
+$$
+上界由负表达式的下界反号得到。对每个齐次阶 $N$，先将
+$\mathcal O(P_{b,j,N,\ell},Q_{b,j,N,\ell})$ 作上述中心仿射下、上包围，
+再按非负幅度幂 $t^{N-2}$ 逐字符求和。
+记所得下、上仿射函数在 $x=0,2/5$ 的两个端点多项式为
+$L_{b,j,\ell,e}(t),U_{b,j,\ell,e}(t)$，$e=0,1$，
+$\mathcal O$ 分别取 $\mathcal D=P'/\beta$、$\mathcal H=Q'+2P-2\bar P$。
+零点商均按奇偶性延拓。
+:::
+
+::: {.proof of="def-tpm-common-finite-calculus-tpm1011"}
+由 @def-psgs-tensor-weights-1011h 及 @def-psgs-exact-tensor-1011h，全部角参数为实数，$q=e^{-2i\beta}$。
+在 @def-psgs-finite-kernel-rule-1011h 的二项式中展开每个幂并作五根投影，即得所列有限和；
+每次只涉及有限个 Laurent 单项式，所以各系数及线性投影无收敛问题。
+两个允许的 $\kappa$ 均为有理数，因而固定该源后，有限系数属于
+$\mathbb Q[a,r,i\beta,q,q^{-1}]$ 中由显示二项和生成的子类。
+下面明确说明剥离相位后的实性及角形式。
+对一个固定的纯或混合字符，先剥离其 $e^{i\Phi}$；
+混合项还提取原来的线性因子 $\sigma$，所有根投影符号均为实数 $\pm1$。
+将剩余的原始标量系数或包含自旋外因子 $q^{-1}$ 的原始自旋系数记为 $g_\pm(\beta)$。
+这里共轭只作用于系数，不作用于作为形式变量的 $n$。
+由于 $z(-\beta)=\overline{z(\beta)}$、
+$q(-\beta)=\overline{q(\beta)}$，而 $a,r,\kappa$ 及二项式系数均为实数，
+每一个显示的有限乘积都满足
+$$
+g_\pm(-\beta)=\overline{g_\pm(\beta)}.
+$$
+所以 $\Re g_\pm$ 偶、$\Im g_\pm$ 奇。
+标量的取实偶部和负虚奇部逐字符给
+$\cos\Phi\,\Re g_-$ 与 $-\cos\Phi\,\Im g_+$：
+$\sin\Phi$ 乘的部分分别是奇函数和偶函数，因而被相应投影消去。
+自旋的复值投影则逐字符给
+$$
+\mathsf E(e^{i\Phi}g_-)=e^{i\Phi}\Re g_-,\qquad
+\mathsf O(ie^{i\Phi}g_+)=-e^{i\Phi}\Im g_+.
+$$
+因此提取完整复字符后的自旋系数也为实数；
+相反纯字符合并只是这些实函数的实系数线性组合，不改变上述奇偶性。
+这证明这里 $P$ 实偶、$Q$ 实奇，而不是仅仅依赖核的解析性。
+
+还须检查所包围的全部角因子。$V_\pm$ 对 $q$ 至多一次，
+$wV_\pm$ 也对 $q$ 至多一次；指数幂 $\mathfrak h^j$ 只含 $a+i\beta$ 与 $a-i\beta$。
+所以原始标量字符只含频率 $0,-2$，
+乘 $q^{-1}$ 后的自旋字符只含频率 $0,2$。
+具体地，每个 $g_\pm$ 可写为
+$$
+U(\beta)+V(\beta)e^{2\epsilon i\beta},\qquad \epsilon\in\{-1,1\},
+$$
+其中 $U,V$ 是 $i\beta$ 的多项式，系数属于 $\mathbb Q[a,r]$；
+其正、负号由上述标量或自旋频率决定。
+每个这样的多项式都可唯一写成
+$u_e(x)+i\beta u_o(x)$，$x=\beta^2$，
+其中 $u_e,u_o\in\mathbb Q[a,r][x]$。
+用 $e^{2\epsilon i\beta}=\cos2\beta+\epsilon i\sin2\beta$ 展开实部和虚部，
+可见每个提取后或合并后的字符对都具有形式
+$$
+P=p_0(x)+p_c(x)C+x p_s(x)S,\qquad
+Q=\beta\{q_0(x)+q_c(x)C+q_s(x)S\},
+$$
+其中 $C=\cos2\beta$、$S=\sin(2\beta)/\beta$，$S(0)=2$，
+六个乘子都属于 $\mathbb Q[a,r][x]$。
+此处 $x p_s S=\beta p_s\sin2\beta$，故没有额外角频率或未处理的商。
+
+以下下标 $x$ 表示对多项式变量 $x$ 求导。
+在 $\beta>0$ 使用 $C_\beta=-2\beta S$ 及
+$S_\beta=(2C-S)/\beta$，逐项求导得到
+$$
+\mathcal D=2p_{0,x}+(2p_{c,x}+2p_s)C
++(-2p_c+p_s+2x p_{s,x})S,
+$$
+$$
+\begin{aligned}
+\mathcal H={}&q_0+2xq_{0,x}+2p_0-2M\\
+&+(q_c+2xq_{c,x}+2q_s+2p_c)C\\
+&+2x(q_{s,x}-q_c+p_s)S.
+\end{aligned}
+$$
+因此 $\mathcal D,\mathcal H$ 均准确为
+$R_0(x)+R_c(x)\cos2\beta+R_s(x)\sin(2\beta)/\beta$，
+$R_0,R_c,R_s$ 是 $x$ 的多项式，其系数为 $a,r$ 的有理函数。
+这些公式右端在零点连续，给 $\mathcal D(0)=P''(0)$，
+所以零点也由同一三角包围覆盖。
+
+由正五边形三角恒等式，$\cos2\alpha=r/2$，
+$\tan^2\alpha=(2-r)/(2+r)=3-4r$，以及
+$\sin2\alpha/(2\alpha)=(2+r)/(4a)$。
+结合 $a=\alpha\cot\alpha$ 得 $a^2(3-4r)=\alpha^2$。
+对 $\beta^{2j}\cos2\beta$ 分部积分得
+$I_{2j}=\alpha^{2j}\sin2\alpha/(2\alpha)-jJ_{2j-1}$（$j\ge1$）；
+对 $\beta^{2j+1}\sin2\beta$ 分部积分得
+$J_{2j+1}=-\alpha^{2j}\cos2\alpha/2+(2j+1)I_{2j}/2$（$j\ge0$）。
+代入三角值就是所列递推，$I_0$ 直接积分；无三角函数的矩由幂积分得到。
+
+这些角矩同时确定了实际需要的分母。若
+$p_0=\sum_jp_{0,j}x^j$、$p_c=\sum_jp_{c,j}x^j$、$p_s=\sum_jp_{s,j}x^j$，
+则该字符的均值准确为
+$$
+M=\sum_jp_{0,j}\frac{h_\alpha^j}{2j+1}
++\sum_jp_{c,j}I_{2j}+\sum_jp_{s,j}J_{2j+1}.
+$$
+三和均有限。原始二项和及六个角乘子的系数只有来自
+$N!$、$2$ 的幂、两个固定有理 $\kappa$ 的分母等正整数分母，
+因而属于 $\mathbb Q[a,r]$。
+$h_\alpha=a^2(3-4r)$ 也是多项式；
+$I_0=(2+r)/(4a)$ 的分母为 $4a$。
+在所列 $I_{2j},J_{2j+1}$ 递推中，只作加减、乘整数或有理数及乘 $h_\alpha^j$，
+不再除以任何参数。因此归纳给每个角矩及每个 $M$
+都属于 $\mathbb Q[a,r,a^{-1}]$，而且可以使用正整数乘 $a$ 作共同分母。
+无三角矩的 $(2j+1)$ 也只扩大这个正整数。
+上述 $\mathcal D,\mathcal H$ 的系数遂可统一表示为
+$$
+\frac{N(a,r)}{d a^k},\qquad
+N\in\mathbb Q[a,r],\quad d\in\mathbb Z_{>0},\quad k\in\{0,1\}.
+$$
+需要整数分子时，把 $N$ 的有限有理分母清入 $d$ 即可。
+这里采用这一共同分母表示进行声明中的单项式符号包围，
+所以并不对任意抽象有理函数假定分母正性。
+
+@lem-psgs-constant-and-full-tail-1011h 的精确有理隔离严格包含于本构造的 $[a_L,a_H]$、$[r_L,r_H]$，
+这由十进制分母通分直接可见。
+尤其 $a_L>43/50>0$，因为以分母 $10^{12}$ 计的整数差为
+$864806265977-860000000000=4806265977>0$；
+$r_L>0$ 也由其显示的正分子直接成立。
+对于上述实际共同分母 $d a^k$，单项式系数为正，
+定向下界准确为 $d a_L^k>0$，上界为 $d a_H^k$。
+任何已清出的正整数分母因子仍保持该严格正下界。
+因此每个实际生成的系数，包括含角均值的系数，
+所要求的分母正下界都确实取得；
+分子的正、负单项式再在这个正参数矩形上按声明方向逐项包围。
+又 $\pi<22/7$ 给 $\alpha^2<484/1225<2/5$。
+对 $x\in[0,2/5]$，正弦商与余弦的幂级数绝对项依次递减趋零；交错余项符号给所写上下多项式。
+三角下多项式均为正：正弦商的下界至少
+$2-(4/3)(2/5)-(8/315)(2/5)^3>0$；余弦的下界至少
+$1-2(2/5)-(4/45)(2/5)^3>0$。
+因此若实际系数 $b\ge l$、三角量 $T\ge0$，先有 $bT\ge lT$，
+再按 $l$ 的符号选三角下界或上界，即得到正确的乘积下界。
+有理函数的分母先取得严格正下界，四个端点商的最小最大值便覆盖整个分子分母矩形。
+
+最后置 $y=x-1/5$，则 $|y|\le1/5$。
+在 $\sum c_jy^j$ 中，偶数次且系数非负的项均可舍去；
+其余每个 $j\ge2$ 的项都不小于 $-|c_j|/5^j$。
+保留常数和一次项，正好得到 $p\ge\mathscr Lp$。
+对负表达式同理给上界，乘非负振幅幂求和保持不等号。
+角核及其各阶系数均为实解析函数；$P$ 偶使 $P'(0)=0$，
+故 $P'(\beta)/\beta\to P''(0)$，从而零点商的延拓合法。
+这完成有限构造及其所声称包围性质的说明。
+:::

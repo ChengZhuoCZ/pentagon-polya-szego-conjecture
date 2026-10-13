@@ -1,0 +1,7 @@
+{
+  "id": "thm-main-nonconvex-pentagon",
+  "canonical_sha256": "14d7b31de04ca7979e4362c08bd276324fd8dc0364b6ff7ab07ec2a2d6ba184f",
+  "chapter_title": "The main theorem and its scope",
+  "name": "Nonconvex exclusion for simple pentagons of fixed area",
+  "statement_markdown": "Every nonconvex simple polygon $P\\in\\mathscr P_{\\le5}(A)$ of area $A>0$ admits a simple polygon $Q$ of the same area with at most five active sides such that $\\lambda_1(Q)<\\lambda_1(P)$. If the admissible class requires exactly five active sides, $Q$ can also be chosen with exactly five active sides. Consequently, any global minimizer in either fixed-area class, if it exists, is convex. The admissible classes and spectral functional are those of @def-domain."
+}

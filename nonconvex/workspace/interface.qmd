@@ -1,0 +1,74 @@
+---
+title: "The common-interface response criterion"
+---
+
+::: {#lem-interface .lemma name="The response criterion at a common interface" date="2026-10-11" export="lem-interface"}
+On the finite interval $(0,1+h)$, let $V\ge0$ be locally integrable on the two open subintervals, and suppose that the Friedrichs form domain embeds compactly into $L^2$. Impose a Dirichlet condition at the left endpoint and the Friedrichs condition at the right endpoint. Assume that the potential is bounded near the interface and has one-sided limits there. Let $E$ lie strictly below the first eigenvalue on each side when an additional zero trace is imposed at the interface. Write $Q_{I,E}(v)=\int_I(|v'|^2+(V-E)|v|^2)$. Let $g_H,g_T$ be the unique minimizers of $Q_{I,E}$ with interface trace one and the stated outer endpoint conditions. Define $\mathfrak d_H=g_H'(1)$ and $\mathfrak d_T=-g_T'(1)$. Then
+$$
+Q_{H,E}(g_H)=\mathfrak d_H,\qquad Q_{T,E}(g_T)=\mathfrak d_T.
+$$
+Every function in the full form domain has a unique decomposition on the two sides as $v=cg_H+z_H,cg_T+z_T$, where $c=v(1)$ and $z_H,z_T$ belong to the respective zero-trace form domains, and
+$$
+\int_0^{1+h}(|v'|^2+(V-E)|v|^2)
+=(\mathfrak d_H+\mathfrak d_T)|c|^2+Q_{H,E}(z_H)+Q_{T,E}(z_T).
+$$
+Both zero-trace remainder forms are strictly positive definite. A nonnegative response sum implies that the first eigenvalue of the full operator is at least $E$; a positive response sum implies that it is strictly greater than $E$. Conversely, if the first eigenvalue of the full operator is strictly greater than $E$, then the response sum is strictly positive.
+:::
+
+::: {.proof of="lem-interface"}
+**G.10. The Robin response criterion at a common interface.**
+
+Consider the full operator $-\partial_y^2+V$ on $(0,1+h)$, split at $y=1$ into the connecting segment and the complete tail. Assume that $E$ lies strictly below the first Dirichlet--Dirichlet eigenvalue on each side. Take the normalized solutions
+$$
+g_H(0)=0,\quad g_H(1)=1,
+\qquad g_T(1)=1,\quad g_T\text{ satisfies the right Friedrichs condition},
+$$
+and define
+$$
+\mathfrak d_H(E)=g_H'(1),\qquad
+\mathfrak d_T(E)=-g_T'(1).
+\tag{G.10.1}
+$$
+Both derivatives refer to the same physical interface.
+
+Given the interface value $c_1=v(1)$ of a test function, use $c_1g_H,c_1g_T$ as the energy-minimizing extensions. The remainders vanish at both endpoints of their respective segments. Integration by parts and the differential equation on each segment give
+$$
+\begin{aligned}
+\int_0^{1+h}(|v'|^2+(V-E)v^2)
+={}&[\mathfrak d_H(E)+\mathfrak d_T(E)]|v(1)|^2\\
+&+\mathcal E_{H,E}(z_H)+\mathcal E_{T,E}(z_T),
+\end{aligned}
+\tag{G.10.2}
+$$
+where the last two forms are strictly positive definite on their zero-trace spaces. Thus a nonnegative response sum gives a first eigenvalue at least $E$, and a positive response sum gives a first eigenvalue strictly greater than $E$.
+
+For the strict assertion, the decomposition makes the shifted energy of every nonzero function positive. Compact embedding ensures that the first eigenvalue is attained. If it were equal to $E$, its eigenfunction would have zero interface value and zero remainders on both sides, hence would vanish identically, a contradiction.
+
+We now justify the minimizing extensions and the treatment of singular endpoints. On either side interval $I$, let $\mathcal V_0$ denote the Friedrichs form domain with zero trace at the interface and the outer endpoint, and set $Q_E(z)=\int_I(|z'|^2+V|z|^2-E|z|^2)$. If the first eigenvalue on that side is $\lambda_D>E$, then $Q_E(z)\ge(\lambda_D-E)\|z\|_2^2$. Moreover, $Q_E\ge(1-E/\lambda_D)Q_0$ when $E\ge0$, whereas $Q_E\ge Q_0$ when $E<0$. Hence $Q_E$ is coercive in the form norm. Since $V$ is bounded near the interface, choose a smooth trace lifting $\psi$, supported near the interface, with interface value one. It has finite energy. The direct minimization argument below gives a unique minimizer $g$ in $\psi+\mathcal V_0$, satisfying $Q_E(g,z)=0$ for every $z\in\mathcal V_0$.
+
+On either side of the interface, choose an endpoint neighborhood $I=(1-\delta,1)$ or $I=(1,1+\delta)$ on which $V$ is bounded. The minimizer belongs to $H^1(I)$, and its weak equation gives $g''=(V-E)g\in L^2(I)$. Thus $g\in H^2(I)$ and $g'\in H^1(I)$. The absolutely continuous representative in one dimension extends continuously to the interface, so the one-sided derivative trace exists. Choose the smooth lifting $\psi$ within this neighborhood, vanishing at its other endpoint. Integration by parts for $g\in H^2$ and $\psi\in H^1$ gives $\int_I(g'\psi'+(V-E)g\psi)=[g'\psi]_{\partial I}$. The weak equation cancels the interior term; $\psi(1)=1$ and its other endpoint value is zero. Therefore this is precisely the outward derivative from that side. No singular outer endpoint is involved. Testing with this lifting and integrating only within the interface neighborhood gives $Q_E(g,\psi)=\partial_{\nu_I}g(1)$. Since $g-\psi\in\mathcal V_0$, we obtain $Q_E(g)=\partial_{\nu_I}g(1)$ without assuming a classical boundary value at the singular endpoint.
+
+The relation between the side form domains and the full Friedrichs form domain follows explicitly from core approximation. The full domain is the closure, in the form norm, of compactly supported smooth functions on the full open interval. Nonnegativity of $V$ makes this norm control $H^1$. Let core functions $v_n$ converge to $v$. Continuity of the interface trace gives $c_n=v_n(1)\to c=v(1)$. Choose smooth liftings $\psi_H,\psi_T$ with interface value one, supported in the neighborhood where $V$ is bounded and away from their outer endpoints. Each $v_n|_I-c_n\psi_I$ is smooth up to the interface, vanishes there, and is supported away from the outer endpoint.
+
+Such a smooth interface-zero function $z$ can also be cut off near the interface to obtain a compactly supported smooth function in the side interval. Choose a cutoff equal to zero at distance less than $\varepsilon$ from the interface, equal to one at distance greater than $2\varepsilon$, and with derivative bounded by $C/\varepsilon$. Because $z(1)=0$ and $z$ is smooth, $|z|\le C|y-1|$. The integral of the squared gradient error is $O(\varepsilon)$, and the squared $L^2$ error is $O(\varepsilon^3)$. Boundedness of the interface potential also makes the potential-energy error $O(\varepsilon^3)$. Consequently each $v_n|_I-c_n\psi_I$ belongs to the side zero-trace Friedrichs domain. These functions converge in the form norm to $v|_I-c\psi_I$, which belongs to the same domain by closedness. Since $g_I-\psi_I$ also belongs to it, so does $v|_I-cg_I$.
+
+The reverse gluing assertion is equally explicit. An element of a side zero-trace form domain is approximated by compactly supported smooth functions on that side. Their zero extensions are compactly supported and smooth on the full interval, so the zero extension belongs to the full form domain. The two liftings have the common interface value one; their gluing is a compactly supported $H^1$ function in a region where $V$ is bounded. Local convolution approximates it by compactly supported smooth functions both in $H^1$ and in the potential-weighted $L^2$ norm. The glued lifting therefore belongs to the full form domain. Adding the zero-extended remainders shows that any two admissible side functions with the same interface trace glue to a function in the full form domain, in particular the two minimizers $g_H,g_T$. All cutoffs and convolutions occur where the potential is bounded. Possible singular behavior at the outer endpoints is handled by the original Friedrichs core approximation, without assuming classical derivative traces there.
+
+A full-domain function $v$ has a unique interface trace $c$. On each side it can be written as $v=cg+z$, with $z\in\mathcal V_0$. Weak orthogonality cancels the cross term and gives exactly (G.10.2). The definition and closedness of the Friedrichs domain extend the identity from the smooth core to the full form domain, including the first eigenfunction of the full operator.
+
+Existence of the minimizer requires only the coercivity and completeness already established. Denote the bilinear form by $B_E$. On $\psi+\mathcal V_0$,
+$$
+Q_E(\psi+z)=Q_E(z)+2B_E(\psi,z)+Q_E(\psi).
+$$
+Cauchy--Schwarz applied separately to the gradient, nonnegative potential, and $L^2$ terms gives $|B_E(\psi,z)|\le C\|z\|_{\mathrm{form}}$. Together with $Q_E(z)\ge c\|z\|_{\mathrm{form}}^2$, this gives a finite infimum $m$. Choose $w_n\in\psi+\mathcal V_0$ with $Q_E(w_n)\to m$. Their differences belong to $\mathcal V_0$, and the parallelogram identity yields
+$$
+\begin{aligned}
+0\le Q_E(w_n-w_j)
+&=2Q_E(w_n)+2Q_E(w_j)-4Q_E((w_n+w_j)/2)\\
+&\le2Q_E(w_n)+2Q_E(w_j)-4m\longrightarrow0.
+\end{aligned}
+$$
+Hence $w_n-\psi$ is Cauchy in the form norm. By closedness it converges to some $z\in\mathcal V_0$, and $Q_E(\psi+z)=m$. If two minimizers were distinct, the same identity and coercivity would give a contradiction; thus the minimizer is unique. Finally, differentiating along $g+t z_0$ for any $z_0\in\mathcal V_0$ gives $B_E(g,z_0)=0$, the required weak orthogonality. No additional existence theorem is needed.
+
+For the converse strict assertion, glue the two minimizing extensions with common interface value one to obtain a nonzero full-domain function $g$. The decomposition gives $Q_E(g)=\mathfrak d_H+\mathfrak d_T$. If the first eigenvalue of the full operator is $\mu>E$, the Rayleigh principle gives $Q_E(g)\ge(\mu-E)\|g\|_2^2>0$.
+:::

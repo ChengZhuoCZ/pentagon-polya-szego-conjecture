@@ -1,0 +1,271 @@
+{
+  "scope": "R2 terminal Psi and Phi replacements",
+  "arithmetic": "Exact fractions and exact rational-function identities",
+  "all_passed": true,
+  "count": 63,
+  "checks": [
+    {
+      "name": "Psi head-energy identity",
+      "passed": true
+    },
+    {
+      "name": "Psi common partial-fraction identity",
+      "passed": true
+    },
+    {
+      "name": "Psi lower majorant product identity",
+      "passed": true
+    },
+    {
+      "name": "Psi lower product third derivative",
+      "passed": true
+    },
+    {
+      "name": "Psi lower third-derivative bound constant",
+      "passed": true
+    },
+    {
+      "name": "Psi lower second-derivative endpoint",
+      "passed": true
+    },
+    {
+      "name": "Psi lower product tangent value",
+      "passed": true
+    },
+    {
+      "name": "Psi lower product tangent derivative",
+      "passed": true
+    },
+    {
+      "name": "Psi lower product tangent margin",
+      "passed": true
+    },
+    {
+      "name": "Psi lower small pole coefficient",
+      "passed": true
+    },
+    {
+      "name": "Psi lower shifted coefficient",
+      "passed": true
+    },
+    {
+      "name": "Psi lower normalized curvature identity",
+      "passed": true
+    },
+    {
+      "name": "Psi lower coefficient bounds",
+      "passed": true
+    },
+    {
+      "name": "Psi lower scalar-maximum derivative",
+      "passed": true
+    },
+    {
+      "name": "Psi lower scalar maximum value",
+      "passed": true
+    },
+    {
+      "name": "Psi lower scalar maximum bound",
+      "passed": true
+    },
+    {
+      "name": "Psi lower shifted-reciprocal bound",
+      "passed": true
+    },
+    {
+      "name": "Psi lower small-pole loss bound",
+      "passed": true
+    },
+    {
+      "name": "Psi lower positive curvature margin",
+      "passed": true
+    },
+    {
+      "name": "Psi lower payment tangent value",
+      "passed": true
+    },
+    {
+      "name": "Psi lower payment tangent slope",
+      "passed": true
+    },
+    {
+      "name": "Psi lower payment margin",
+      "passed": true
+    },
+    {
+      "name": "Psi upper majorant product identity",
+      "passed": true
+    },
+    {
+      "name": "Psi upper product second derivative",
+      "passed": true
+    },
+    {
+      "name": "Psi upper second-derivative endpoint",
+      "passed": true
+    },
+    {
+      "name": "Psi upper product tangent value",
+      "passed": true
+    },
+    {
+      "name": "Psi upper product tangent slope",
+      "passed": true
+    },
+    {
+      "name": "Psi upper product tangent margin",
+      "passed": true
+    },
+    {
+      "name": "Psi upper normalized curvature identity",
+      "passed": true
+    },
+    {
+      "name": "Psi upper reciprocal second-derivative decomposition",
+      "passed": true
+    },
+    {
+      "name": "Psi upper convexity coefficient bounds",
+      "passed": true
+    },
+    {
+      "name": "Psi upper first bracket bound",
+      "passed": true
+    },
+    {
+      "name": "Psi upper ratio logarithmic derivative",
+      "passed": true
+    },
+    {
+      "name": "Psi upper ratio endpoint",
+      "passed": true
+    },
+    {
+      "name": "Psi upper second bracket bound",
+      "passed": true
+    },
+    {
+      "name": "Psi upper coarse coefficient bounds",
+      "passed": true
+    },
+    {
+      "name": "Psi upper curvature at x=1/6 by coarse bounds",
+      "passed": true
+    },
+    {
+      "name": "Psi upper first shifted reciprocal at x=2/7",
+      "passed": true
+    },
+    {
+      "name": "Psi upper second shifted reciprocal at x=2/7",
+      "passed": true
+    },
+    {
+      "name": "Psi upper curvature at x=2/7 by coarse bounds",
+      "passed": true
+    },
+    {
+      "name": "Psi upper curvature at x=2/5 by coarse bounds",
+      "passed": true
+    },
+    {
+      "name": "Psi upper left-endpoint payment",
+      "passed": true
+    },
+    {
+      "name": "Psi upper transition derivative",
+      "passed": true
+    },
+    {
+      "name": "Psi upper tangent value",
+      "passed": true
+    },
+    {
+      "name": "Psi upper tangent slope",
+      "passed": true
+    },
+    {
+      "name": "Psi upper positive tangent margin",
+      "passed": true
+    },
+    {
+      "name": "Psi comparison of lower and upper uniform margins",
+      "passed": true
+    },
+    {
+      "name": "Phi reciprocal denominator identity",
+      "passed": true
+    },
+    {
+      "name": "Phi short subtraction identity",
+      "passed": true
+    },
+    {
+      "name": "Phi reciprocal majorant identity",
+      "passed": true
+    },
+    {
+      "name": "Phi positive completed square",
+      "passed": true
+    },
+    {
+      "name": "Phi payment partial fractions",
+      "passed": true
+    },
+    {
+      "name": "Phi normalized curvature identity",
+      "passed": true
+    },
+    {
+      "name": "Phi reciprocal-sum convexity identity",
+      "passed": true
+    },
+    {
+      "name": "Phi curvature coefficient bounds",
+      "passed": true
+    },
+    {
+      "name": "Phi first curvature-endpoint cube bounds",
+      "passed": true
+    },
+    {
+      "name": "Phi second curvature-endpoint cube bounds",
+      "passed": true
+    },
+    {
+      "name": "Phi first curvature endpoint",
+      "passed": true
+    },
+    {
+      "name": "Phi second curvature endpoint",
+      "passed": true
+    },
+    {
+      "name": "Phi tangent value",
+      "passed": true
+    },
+    {
+      "name": "Phi tangent slope",
+      "passed": true
+    },
+    {
+      "name": "Phi left tangent distance",
+      "passed": true
+    },
+    {
+      "name": "Phi positive tangent margin",
+      "passed": true
+    }
+  ],
+  "exact_endpoint_data": {
+    "psi_lower_payment_at_1_2": "105145468/7396171875",
+    "psi_lower_derivative_at_1_2": "-357200649213/5160884375000",
+    "psi_upper_payment_at_1_2": "2433531573/923699687500",
+    "psi_upper_derivative_at_3_2": "-149796111140233433/6010955790564375000",
+    "psi_upper_payment_at_17_8": "30400178207917/13725647553750000",
+    "psi_upper_derivative_at_17_8": "11525960738983536155737/32591802711187012605468750",
+    "phi_payment_at_9_4": "9786437/673718500",
+    "phi_derivative_at_9_4": "209699639/52112125975"
+  },
+  "interpretation": "These checks corroborate displayed identities and individual rational comparisons. They do not establish interval signs by numerical sampling. The interval proofs are the reciprocal-majorant, curvature, concavity, and tangent arguments in terminal.qmd. This is not official qmd-prover verification."
+}

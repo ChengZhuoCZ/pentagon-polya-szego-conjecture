@@ -1,0 +1,49 @@
+{
+  "changed_old_nodes": [
+    "lem-ppae-optimal-reciprocal-majorant-1011",
+    "lem-ppecf-fivepoint-moment-envelopes-1011",
+    "lem-tpm-analytic-amplitude-cap-tpm1011",
+    "lem-tpm-signed-reciprocal-budget-tpm1011",
+    "lem-tpm-unit-node-ratio-entropy-tpm1011",
+    "lem-tpr-sharp-full-entropy-tpr1011",
+    "prp-ppae-central-same-moment-credit-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-tpm-no-exit-all-affine-tpm1011",
+    "thm-tpm-uniform-real-budget-tpm1011"
+  ],
+  "transitively_affected_nodes": [
+    "cor-ppecf-one-tenth-strong-credit-1011",
+    "lem-ppae-optimal-reciprocal-majorant-1011",
+    "lem-ppecf-fivepoint-moment-envelopes-1011",
+    "lem-tpm-analytic-amplitude-cap-tpm1011",
+    "lem-tpm-signed-reciprocal-budget-tpm1011",
+    "lem-tpm-two-source-signed-entropy-coupled-tpm1011",
+    "lem-tpm-unit-node-ratio-entropy-tpm1011",
+    "lem-tpr-sharp-full-entropy-tpr1011",
+    "prp-ppae-central-same-moment-credit-1011",
+    "prp-ppca-entire-amplitude-phase-budget-1011",
+    "prp-ppca-same-source-strict-budget-1011",
+    "prp-ppecf-two-amplitude-entropy-credit-1011",
+    "prp-ppol-low-ratio-rank-one-payment-1011",
+    "prp-pprg-high-ratio-full-phase-payment-1011",
+    "thm-main-convex-pentagon-dirichlet",
+    "thm-ppcs-central-short-pressure-budget-1011",
+    "thm-ppsb-no-exit-coercivity-1011",
+    "thm-ppus-unit-short-pressure-budget-1011",
+    "thm-tpm-convex-global-comparison-tpm1011",
+    "thm-tpm-no-exit-all-affine-tpm1011",
+    "thm-tpm-uniform-real-budget-tpm1011"
+  ],
+  "withdrawn_tags": [
+    "cor-ppecf-one-tenth-strong-credit-1011",
+    "lem-ppecf-fivepoint-moment-envelopes-1011",
+    "lem-tpm-analytic-amplitude-cap-tpm1011",
+    "lem-tpm-two-source-signed-entropy-coupled-tpm1011",
+    "prp-ppca-entire-amplitude-phase-budget-1011",
+    "prp-ppca-same-source-strict-budget-1011",
+    "prp-ppecf-two-amplitude-entropy-credit-1011",
+    "prp-ppol-low-ratio-rank-one-payment-1011",
+    "prp-pprg-high-ratio-full-phase-payment-1011"
+  ],
+  "reason": "Changed proof or premise; previous verified tags are not inherited."
+}

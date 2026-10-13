@@ -1,0 +1,101 @@
+---
+title: "不经过 Bessel 零点的面积谱下界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: interval-variational.qmd
+      use:
+        - lem-arc-interval-variational-1012
+    - from: sobolev-convex-foundations.qmd
+      use:
+        - lem-arc-convex-zero-extension-1012
+---
+
+::: {#lem-arc-disk-polynomial-bound-1012 .lemma name="圆盘上的十次多项式谱下界" date="2026-10-12"}
+对半径 $R>0$ 的平面圆盘 $B_R$ 及任意非零 $f\in H_0^1(B_R)$，有
+$$\int_{B_R}|\nabla f|^2>\frac{289}{50R^2}\int_{B_R}|f|^2.$$
+此结论不使用 Bessel 函数或其零点。
+:::
+
+::: {.proof of="lem-arc-disk-polynomial-bound-1012"}
+令 $a=289/200$、$c=4a=289/50$，取准确五次多项式
+$$p(s)=\sum_{k=0}^{5}\frac{(-as)^k}{(k!)^2},\qquad 0\le s\le1.$$
+直接有
+$$p(1)=\frac{502163101517}{1536000000000000}>0,$$
+$$p'(s)=-a+\frac{a^2s}{2}-\frac{a^3s^2}{12}
++\frac{a^4s^3}{144}-\frac{a^5s^4}{2880}
+\le-a+\frac{a^2}{2}+\frac{a^4}{144}
+=-\frac{85411762559}{230400000000}<0.$$
+故 $p(s)\ge p(1)>0$，全过程只涉及有限有理式。
+令 $\phi(x)=p(|x|^2/R^2)$。二维径向微分给
+$$(-\Delta-c/R^2)\phi
+=\frac1{R^2}\{-4(sp''(s)+p'(s))-cp(s)\}
+=\frac{a^6s^5}{3600R^2}\ge0,\qquad s=|x|^2/R^2.$$
+余项对 $x\ne0$ 严格为正。
+对 $f\in C_c^\infty(B_R)$，展开平方并分部积分得到准确恒等式
+$$\int|\nabla f|^2-\frac c{R^2}\int f^2
+=\int\phi^2\left|\nabla\left(\frac f\phi\right)\right|^2
++\int\frac{(-\Delta-c/R^2)\phi}{\phi}f^2.$$
+$\phi$ 在闭盘上光滑且有正下界，所以 $f\mapsto f/\phi$ 在 $H^1$ 上连续，
+恒等式由密度延至 $H_0^1(B_R)$。第二个积分对非零 $f$ 严格为正，
+因为其权重仅在单点 $x=0$ 消失。这证明严格号，且没有调用 Barta 不等式作为外部结果。
+:::
+
+::: {#lem-arc-levelset-spectral-budget-1012 .lemma name="规则凸层集的面积归一化谱预算" date="2026-10-12" export="lem-arc-levelset-spectral-budget-1012"}
+设 $Q$ 为有界凸多边形的内部，
+$v\in H_0^1(Q)\cap C(\overline Q)\cap C^\infty(Q)$，
+$v>0$ 于 $Q$、$v=0$ 于边界，且 $D^2(-\log v)\succ0$ 于内部。
+则
+$$|Q|\,\frac{\int_Q|\nabla v|^2}{\int_Qv^2}>\frac{289\pi}{50}.$$
+:::
+
+::: {.proof of="lem-arc-levelset-spectral-budget-1012"}
+记 $M=\max_{\overline Q}v>0$。$-\log v$ 严格凸且在边界趋于无穷，
+故有唯一内点极小值；于是 $v$ 只有一个临界点，即唯一最大点。
+对 $0<\tau<M$，超水平集 $Q_\tau=\{v>\tau\}$ 紧含于 $Q$，为凸域，
+边界为光滑闭曲线且 $\nabla v\ne0$。记其面积 $A(\tau)$ 和周长 $L(\tau)$。
+
+先在这里证明所需平面等周界。设 $\gamma:[0,L]\to\partial Q_\tau$ 为正向弧长参数，
+将其平移到 $\int_0^L\gamma=0$。@lem-arc-interval-variational-1012 的周期零均值不等式逐分量给
+$$\int_0^L|\gamma|^2\le\left(\frac L{2\pi}\right)^2
+\int_0^L|\gamma'|^2=\frac{L^3}{4\pi^2}.$$
+面积的 Green 公式及 Cauchy--Schwarz 因而给
+$$A(\tau)=\frac12\int_0^L\det(\gamma,\gamma')
+\le\frac12\left(\int|\gamma|^2\int|\gamma'|^2\right)^{1/2}
+\le\frac{L(\tau)^2}{4\pi}.$$
+
+规则层集的余面积公式给
+$$-A'(\tau)=G(\tau):=\int_{v=\tau}\frac{d\ell}{|\nabla v|}>0,\qquad
+\int_Q|\nabla v|^2=\int_0^M\left(\int_{v=\tau}|\nabla v|\,d\ell\right)d\tau.$$
+可先在 $\varepsilon\le\tau\le M-\varepsilon$ 的紧规则层集带使用换元，
+再让 $\varepsilon\downarrow0$；唯一临界点为零测度集，端点由单调收敛处理。
+在每条水平曲线上使用 Cauchy--Schwarz，再用刚证的等周界，得到
+$$\int_Q|\nabla v|^2
+\ge\int_0^M\frac{L(\tau)^2}{G(\tau)}\,d\tau
+\ge\int_0^M\frac{4\pi A(\tau)}{G(\tau)}\,d\tau.\tag{S1}$$
+
+令 $R=(|Q|/\pi)^{1/2}$，在 $B_R$ 上定义径向递减 $v^*$，使
+$$v^*(r)=\tau\quad\Longleftrightarrow\quad \pi r^2=A(\tau).$$
+由于 $A$ 在 $(0,M)$ 上连续严格递减，且端点极限为 $|Q|$、$0$，该定义唯一。
+其端点取值为 $v^*(0)=M,v^*(R)=0$。逐层积分及一维换元给
+$$\int_{B_R}(v^*)^2=\int_0^M2\tau A(\tau)\,d\tau=\int_Qv^2,$$
+$$\int_{B_R}|\nabla v^*|^2
+=\int_0^M\frac{4\pi A(\tau)}{G(\tau)}\,d\tau
+\le\int_Q|\nabla v|^2.\tag{S2}$$
+这些等式先在闭环带上成立，再以非负积分取极限。
+$v^*$ 有界且连续到中心和边界，右式有限使其弱径向导数平方可积；
+将 $v^*$ 在盘外延为零，在 $\varepsilon<r<R-\varepsilon$ 上对任意全空间紧支测试函数分部积分。
+内圆的边界项由有界性乘以周长趋零；外圆的边界项由 $v^*(R-\varepsilon)\to0$ 及有界周长趋零。
+体积中的函数与梯度项分别由有界性及 (S2) 的平方可积性收敛。
+所以零延拓属于 $H^1(\mathbb R^2)$，其分布梯度就是盘内梯度的零延拓。
+由 @lem-arc-convex-zero-extension-1012 得 $v^*\in H_0^1(B_R)$，无须边界迹定理。
+
+现在对非零 $v^*$ 应用 @lem-arc-disk-polynomial-bound-1012，并使用 (S2)：
+$$\frac{\int_Q|\nabla v|^2}{\int_Qv^2}
+\ge\frac{\int_{B_R}|\nabla v^*|^2}{\int_{B_R}(v^*)^2}
+>\frac{289}{50R^2}=\frac{289\pi}{50|Q|}.$$
+所需的重排能量比较、平面等周界和圆盘下界均已在上面推导；
+这里没有以完整 Faber--Krahn 定理、Pólya--Szegő 定理或 Bessel 零点作前提。
+保留的积分工具是规则层集换元/余面积、Green 公式及收敛定理；
+周期常数由一维变分和常微分方程给出，零边界归属由向内伸缩与卷积给出。
+:::

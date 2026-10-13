@@ -1,0 +1,461 @@
+---
+title: "共同相位原函数比较：低阶自旋的比值与乘积界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-elementary-constants-1011
+---
+
+::: {#lem-ppspr-exact-low-spin-1011 .lemma name="二三阶自旋的三个实通道" date="2026-10-11" export="lem-ppspr-exact-low-spin-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$，
+常数采用 @def-psgs-tensor-weights-1011h，其中 $a=a_0=\alpha\cot\alpha$、$r=(\sqrt5-1)/2$ 均为实数，$\alpha=\pi/5$，$\beta\in[-\alpha,\alpha]$。
+$a=\alpha\cot\alpha$、$p=1+a$、$w=1-a$。置
+$$
+b=\frac9{50},\qquad e=\frac9{250},\qquad
+T(z)=ez^3+(3e+b)z^2+2bz,\qquad F(z)=bz(z+2).
+$$
+定义六个实系数函数
+$$
+\begin{aligned}
+x_0&=b\{(w^2-1-\beta^2)\cos2\beta-2w\beta\sin2\beta\},\\
+y_0&=b\{(1-w^2+\beta^2)\sin2\beta-2w\beta\cos2\beta\},\\
+x_V&=\frac\kappa2\{p(1-r\cos2\beta)+r\beta\sin2\beta\},\\
+y_V&=\frac\kappa2\{pr\sin2\beta+\beta(1+r\cos2\beta)\},\\
+x_U&=-\operatorname{Re}\{T(a+i\beta)e^{2i\beta}\}
++r\operatorname{Re}F(a+i\beta),\\
+y_U&=\operatorname{Im}\{T(a+i\beta)e^{2i\beta}\}
++r\operatorname{Im}F(a+i\beta).
+\end{aligned}
+\tag{1}
+$$
+若 $X_j,Y_j$ 是完整自旋关于 $(c,d)\mapsto(\varepsilon c,\varepsilon d)$
+的 $j$ 次系数，则
+$$
+X_2=\bar c^2x_0+cd\,x_V,\quad Y_2=\bar c^2y_0+cd\,y_V,\qquad
+X_3=c^3x_U,\quad Y_3=c^3y_U.
+\tag{2}
+$$
+对实或复值连续函数 $f$ 按复线性积分记
+$\mathcal Gf(\beta)=\int_0^\beta(f-\alpha^{-1}\int_0^\alpha f)$，并定义
+$$
+P_\pm=\frac{y_0\pm2\mathcal Gx_0}{\beta},\quad
+V_\pm=\frac{y_V\pm2\mathcal Gx_V}{\beta},\quad
+U_\pm=\frac{y_U\pm2\mathcal Gx_U}{\beta},
+\tag{3}
+$$
+在零点按连续延拓解释。则
+$$
+Y_2+Y_3\pm2\mathcal G(X_2+X_3)
+=\beta\{\bar c^2P_\pm+cd\,V_\pm+c^3U_\pm\}.
+\tag{4}
+$$
+:::
+
+::: {.proof of="lem-ppspr-exact-low-spin-1011" status="verified"}
+由 @def-psgs-tensor-weights-1011h，$a=a_0$ 且 $a,r,\beta$ 为实数。
+为明确系数提取，暂记 $u=cn_i,v=\bar c n_i^{-1},z=a+i\beta,h=\kappa/2,q=e^{-2i\beta}$，
+则 $i\delta_i=h(zu-\bar z v)$。令 $G=(1+h(u+v))e^{h(zu-\bar z v)}$；直接展开得
+$$
+[u]G=h(z+1),\quad [v^2]G=h^2(\bar z^2/2-\bar z),\quad
+[u^2]G=h^2(z^2/2+z),\quad [u^3]G=h^3(z^3/6+z^2/2).
+$$
+乘 $P_i^\pm$ 后，二阶保留的 $n^{-2}$ 项来自 $[v^2]G$，
+$n^3$ 项来自 $dn_i^2(r\pm q)[u]G$；五根平均连同外部 $n_i^2$ 分别给符号 $+1,-1$。
+三阶纯 $n^3$ 项来自 $[u^3]G+(1\pm rq)[u^2]G$，平均给负号。
+代入 $h^2/2=\kappa^2/8$、$h^3/6=\kappa^3/48$ 即得到下面显示的系数。
+根据 @def-psgs-exact-tensor-1011h，五根平均后、尚未乘
+$e^{2i\beta}$ 的二阶自旋项为
+$$
+\frac{\kappa^2}{8}\bar c^2\{(1-a+i\beta)^2-1\}
+-\frac\kappa2 cd\,(p+i\beta)(r\pm e^{-2i\beta}).
+$$
+三阶纯项为
+$$
+-c^3\left\{\frac{\kappa^3}{48}(a+i\beta)^2(a+3+i\beta)
++\frac{\kappa^2}{8}(1\pm r e^{-2i\beta})
+(a+i\beta)(a+2+i\beta)\right\};
+$$
+三阶的含 $d$ 项全部消失。
+这些式子可由原定义的指数逐项展开直接核对：
+二阶可保留的根指数为 $-2,3$，
+三阶纯项可保留的根指数为 $3$，
+再乘外面的 $n_i^2$；指数 $5$ 的五根平均是 $-1$。
+三阶含 $d$ 的指数是 $0,2,4$，乘 $n_i^2$ 后都不是 $5$ 的倍数。
+对减号乘 $e^{2i\beta}$ 取偶部，
+对加号乘 $ie^{2i\beta}$ 取奇部，得到 (1)、(2)。
+复线性积分直接给 (4)。由 (1)，六个系数函数都是实解析的，$x_0,x_V,x_U$ 偶、$y_0,y_V,y_U$ 奇。
+对每对 $x,y$，$N_\pm(\beta)=y(\beta)\pm2\mathcal Gx(\beta)$ 是 $C^1$ 函数且 $N_\pm(0)=0$，故
+$N_\pm(\beta)/\beta\to N_\pm'(0)=y'(0)\pm2(x(0)-\alpha^{-1}\int_0^\alpha x)$。
+这给出 (3) 的有限连续零点值。
+:::
+
+::: {#lem-ppspr-positive-ratio-product-1011 .lemma name="低阶自旋两分支的统一正比值和乘积上界" date="2026-10-11" export="lem-ppspr-positive-ratio-product-1011"}
+采用 @lem-ppspr-exact-low-spin-1011。
+在整个 $0\le\beta\le\alpha$ 上，两种符号分别均满足
+$$
+\boxed{
+0<P_\pm<\frac35,\qquad U_\pm>0,\quad V_\pm>0,\qquad
+\frac23\le\frac{U_\pm}{V_\pm}\le\frac54,\qquad U_\pm V_\pm<10.
+}
+\tag{5}
+$$
+:::
+
+::: {.proof of="lem-ppspr-positive-ratio-product-1011" status="verified"}
+以下推导沿用 @lem-ppspr-exact-low-spin-1011 所给对象、记号与适用条件。
+先把常数稍作收紧。由 @lem-pplojm-elementary-constants-1011，
+$x=\alpha^2<2/5$。Taylor 上下界给
+$$
+a\ge
+\frac{1-x/2+x^2/24-x^3/720}{1-x/6+x^2/120}>\frac67.
+$$
+最后一式的交叉分子为
+$1-5x/2+29x^2/120-7x^3/720>0$；
+前两项之和非负，最后两项之和严格为正。
+因此以后使用
+$$
+\frac67<a<\frac{13}{15},\quad
+\frac35<r<\frac58,\quad
+\frac{197}{500}<A:=\alpha^2<\frac25,\quad
+\frac2{15}<w<\frac17.
+\tag{6}
+$$
+写 $x=\beta^2$、$S(x)=\sin(2\beta)/\beta$、
+$C(x)=\cos2\beta$，并记 $S_A=S(A)$、$C_A=C(A)$。
+这些函数在零点连续延拓。初等积分
+$S(x)=2\int_0^1\cos(2u\sqrt x)\,du$ 给
+$$
+1\le -S'(x)\le\frac43,\quad -C'(x)=S(x),\quad
+\frac32<S_A<\frac{49}{32},\quad \frac3{10}<C_A<\frac5{16}.
+\tag{7}
+$$
+这里 $\operatorname{sinc}(z)=\sin z/z$（$z\ne0$），且 $\operatorname{sinc}(0)=1$。
+事实上
+$-S'=4\int_0^1u^2\operatorname{sinc}(2u\sqrt x)\,du$，
+上下界 $1-z^2/6\le\operatorname{sinc}z\le1$ 给
+$4/3-8x/15\le-S'\le4/3$，足以得到 (7)。
+其中端点界不需估计三角余项：
+@lem-pplojm-elementary-constants-1011 给 $C_A=r/2$、$S_A=(2+r)/(2a)$，
+所以 (6) 的有理端点直接给
+$$
+\frac3{10}<C_A<\frac5{16},\qquad
+\frac{2+3/5}{2(13/15)}=\frac32<S_A
+<\frac{2+5/8}{2(6/7)}=\frac{49}{32}.
+$$
+于是
+$$
+A-x\le S-S_A\le\frac43(A-x),\qquad
+\frac32(A-x)\le C-C_A\le2(A-x).
+\tag{8}
+$$
+
+以下每个原函数都取零点值为零。若 $I_f'=f$、$I_f(0)=0$，
+则定义 (3) 的中心化积分准确给
+$$
+\frac{\mathcal Gf(\beta)}{\beta}
+=\frac{I_f(\beta)}{\beta}-\frac{I_f(\alpha)}{\alpha}\qquad(\beta>0).
+$$
+先处理 $V_\pm$。对 (1) 中的 $x_V$，原函数为
+$$
+I_V(\beta)=\frac\kappa2\left[
+p\beta-\frac r2\beta\cos2\beta-r\left(\frac p2-\frac14\right)\sin2\beta
+\right].
+$$
+逐项微分给 $I_V'=x_V$，且 $I_V(0)=0$。
+除以 $\beta$ 并减去 $\alpha$ 处的平均，得到
+$$
+\frac{\mathcal Gx_V}{\beta}
+=-\frac{\kappa r}{4}\left[(C-C_A)+(p-1/2)(S-S_A)\right].
+$$
+又 $y_V/\beta=\kappa[prS+1+rC]/2$。
+由 $C_A=r/2$、$aS_A=1+C_A$、$r^2+r=1$，
+$y_V(\alpha)/\alpha=\kappa[2+(1+r)/(2a)]/2$。
+因此两个中心化分支准确为
+$$
+\begin{aligned}
+V_+&=V_A+\frac{\kappa r}{4}(S-S_A),\\
+V_-&=V_A+J(S-S_A)+\kappa r(C-C_A),\\
+V_A&=\frac\kappa2\left\{2+\frac{1+r}{2a}\right\},\qquad
+J=\kappa r(p-\tfrac14).
+\end{aligned}
+\tag{9}
+$$
+由 (6) 得
+$$
+\frac74<V_A<\frac{283}{160},\qquad
+\frac{81}{70}<J<\frac{97}{80},\qquad
+0<V_+<\frac{149}{80}<\frac{15}{8},\qquad 0<V_-<3.
+\tag{10}
+$$
+这些端点计算具体为
+$$
+V_A>\frac35\left[2+\frac{1+3/5}{2(13/15)}\right]
+=\frac{114}{65}>\frac74,\quad
+V_A<\frac35\left[2+\frac{1+5/8}{2(6/7)}\right]=\frac{283}{160},
+$$
+$$
+\frac65\frac35\left(\frac67+\frac34\right)=\frac{81}{70}<J
+<\frac65\frac58\left(\frac{13}{15}+\frac34\right)=\frac{97}{80}.
+$$
+由 $0\le S-S_A<1/2$，$V_+<283/160+(3/16)(1/2)=149/80$。
+(8)、$J>0$ 和 $\kappa r>0$ 使 $V_-$ 的最大值在 $\beta=0$。
+这个最大值在 (9) 中可写成
+$V_-=2J+\kappa r+\kappa-V_A+\kappa rS_A/4$，
+再代入 (6)、(7)，给
+$$
+V_-\le V_-(0)
+<\frac{97}{40}+\frac34+\frac65-\frac74+\frac3{16}\frac{49}{32}
+=\frac{1491}{512}<3.
+$$
+
+处理 $U_\pm$ 时定义
+$$
+\begin{aligned}
+T_0&=ea^3+(3e+b)a^2+2ba,&
+T_1&=3ea^2+2(3e+b)a+2b,& L&=3ea+3e+b,\\
+R_2&=\frac{27}{500},&
+R_0&=R_2a^2+\frac{117}{500}a+\frac{63}{1000},&
+R_1&=2R_2a+\frac{117}{500}.
+\end{aligned}
+$$
+记 $T_A=T_0-LA$、$Q_A=T_1-eA$、
+$R_A=R_0-R_2A$。代入 (6) 的有理端点，给出
+$$
+\begin{gathered}
+T_0<\frac{69}{125},\quad T_1<\frac{941}{1000},\quad
+\frac{39}{100}<T_A<\frac{41}{100},\quad
+\frac9{10}<Q_A<\frac{19}{20},\\
+\frac7{25}<R_A<\frac{29}{100},\quad
+\frac8{25}<R_1<\frac{33}{100},\quad
+\frac7{10}<E_3:=2L-R_2<\frac{71}{100}.
+\end{gathered}
+\tag{11}
+$$
+为完整核对这些有限比较，各量的有理端点如下；
+$T_A,Q_A,R_A$ 的下界取 $(a,A)=(6/7,2/5)$，上界取 $(13/15,197/500)$，
+其余量分别取 $a=6/7,13/15$。
+
+| 量 | 严格下端点 | 严格上端点 |
+|---|---:|---:|
+| $T_0$ | $23274/42875$ | $51727/93750$ |
+| $T_1$ | $1143/1225$ | $5877/6250$ |
+| $T_A$ | $83736/214375$ | $752633/1875000$ |
+| $Q_A$ | $28134/30625$ | $115767/125000$ |
+| $R_A$ | $69003/245000$ | $71271/250000$ |
+| $R_1$ | $1143/3500$ | $819/2500$ |
+| $E_3$ | $99/140$ | $1773/2500$ |
+
+端点方向有如下逐项理由：$T_0,T_1,R_1,E_3$ 关于 $a$ 的导数为正；
+$T_A,Q_A,R_A$ 关于 $A$ 的导数分别为 $-L,-e,-R_2<0$，
+关于 $a$ 的导数分别为
+$$
+T_1-3eA>2b-3e(2/5)=\frac{198}{625}>0,\quad
+6ea+2(3e+b)>0,\quad 2R_2a+117/500>0.
+$$
+表内每个分数与 (11) 的相应界限交叉相乘即可比较，正分母保留方向。
+
+置
+$$
+U_A=T_AS_A+Q_AC_A+2rbp,\qquad
+E_1=2T_A-R_A,\qquad E_2=2Q_A-R_1.
+$$
+由 (6)、(7)、(11)，
+$$
+\frac54<U_A<\frac{27}{20},\quad
+\frac{49}{100}<E_1<\frac{27}{50},\quad
+\frac{147}{100}<E_2<\frac{79}{50}.
+\tag{12}
+$$
+其中 $U_A$ 的端点计算为
+$$
+U_A>\frac{39}{100}\frac32+\frac9{10}\frac3{10}
++2\frac35\frac9{50}\frac{13}{7}
+=\frac{8793}{7000}>\frac54,
+$$
+$$
+U_A<\frac{41}{100}\frac{49}{32}+\frac{19}{20}\frac5{16}
++2\frac58\frac9{50}\frac{28}{15}
+=\frac{4303}{3200}<\frac{27}{20}.
+$$
+另四个界限来自
+$2(39/100)-29/100=49/100$、$2(41/100)-7/25=27/50$，
+以及 $2(9/10)-33/100=147/100$、$2(19/20)-8/25=79/50$。
+对 $T(z)$ 使用
+$R(z)=T'(z)/2-T''(z)/4+T'''(z)/8$，
+其系数正是 $R_2,117/500,63/1000$。
+这里的 $R$ 通过 $R'+2R=T'$ 给出完整复原函数。
+明确置 $K(z)=[T(z)-R(z)]/2$，则 $K'+2K=T$，从而
+$$
+\frac{d}{d\beta}\left[-iK(a+i\beta)e^{2i\beta}\right]
+=T(a+i\beta)e^{2i\beta}.
+$$
+因此 (1) 中 $x_U$ 的零点为零的实原函数是
+$$
+I_U(\beta)=-\frac12\Im\{[T(a+i\beta)-R(a+i\beta)]e^{2i\beta}\}
++rb\{a(a+2)\beta-\beta^3/3\}.
+$$
+写
+$$
+M(x)=[T_0-R_0-(L-R_2)x]S+[T_1-R_1-ex]C,
+$$
+则 $I_U(\beta)/\beta=-M(x)/2+rb[a(a+2)-x/3]$。
+从 $\alpha$ 处的平均减去后准确得到
+$$
+\frac{2\mathcal Gx_U}{\beta}=-M(x)+M(A)+\frac{2rb}{3}(A-x).
+$$
+另一方面，$y_U/\beta=(T_0-Lx)S+(T_1-ex)C+2rbp$。
+将这两式相加或相减，并在 $x=A$ 处收集常数项 $U_A$，得到
+$$
+\begin{aligned}
+U_+-U_A
+&=R_A(S-S_A)+R_2(A-x)S+R_1(C-C_A)+\frac{2rb}{3}(A-x),\\
+U_--U_A
+&=E_1(S-S_A)+E_2(C-C_A)+E_3(A-x)S\\
+&\hspace{12mm}+2e(A-x)C-\frac{2rb}{3}(A-x).
+\end{aligned}
+\tag{13}
+$$
+第一行非负。并且 $S\le2$、$0\le S-S_A<1/2$、$0\le C-C_A<7/10$、
+$0\le A-x<2/5$，所以其上界为
+$$
+U_+<\frac{27}{20}+\frac{29}{100}\frac12
++\frac{27}{500}\frac25\,2+\frac{33}{100}\frac7{10}
++\frac3{40}\frac25
+=\frac{2249}{1250}<2.
+$$
+因此
+$$
+\frac{U_+}{V_+}>\frac{5/4}{15/8}=\frac23,\qquad
+\frac{U_+}{V_+}<\frac2{7/4}=\frac87<\frac54,\qquad
+U_+V_+<\frac{15}{4}<10.
+$$
+
+对减号分支，先比较 $U_--(2/3)V_-$。
+在 (13)、(9) 中相减，$S-S_A$ 的系数不小于 $-191/600$，
+$C-C_A$ 的系数严格为正，其余项的下界结合 (8) 给
+$$
+\begin{aligned}
+U_--\tfrac23 V_-
+&>\frac{17}{240}
++\left(-\frac{191}{450}+\frac{21}{20}-\frac3{40}\right)(A-x)>0.
+\end{aligned}
+$$
+反向比较 $U_--(5/4)V_-$ 时，
+$S-S_A$ 的系数小于 $-1269/1400$，
+$C-C_A$ 的系数小于 $17/25$。
+此外 $2eC-2rb/3<0$，因为 $C\le1$、$r>3/5$。
+故
+$$
+U_--\tfrac54V_-
+<-\frac{67}{80}+\frac{2623}{1400}(A-x)
+\le-\frac{67}{80}+\frac{2623}{3500}<0.
+\tag{14}
+$$
+这证明减号分支的正比值界。
+
+最后给出比粗比值更强的乘积上界。
+把 (13) 第二行展开为 $S,C,x$ 的形式，其 $S,C$ 的系数分别为
+$E_1+E_3(A-x)>0$、$E_2+2e(A-x)>0$。
+对 $x$ 求导，除两项含 $S',C'$ 的负项外，
+还剩 $-E_3S-2eC+2rb/3<0$。
+因此 $U_-$ 随 $x$ 递减，最大值在零点。
+由 (13) 第一行，
+$$
+U_+(0)>\frac54+\frac7{25}\frac{15}{32}
++\frac8{25}\frac{11}{16}=\frac{1281}{800}.
+$$
+又 $y_U(\beta)/\beta$ 在零点为 $2T_0+T_1+2rbp$，
+用 (11) 和 $2rbp<21/50$ 得
+$$
+U_-(0)=2(2T_0+T_1+2rbp)-U_+(0)
+<\frac{493}{100}-\frac{1281}{800}
+=\frac{2663}{800}<\frac{10}{3}.
+$$
+与 $V_-<3$ 合并给 $U_-V_-<10$。
+
+尚需处理 $P_\pm$。令 $d_P=(w^2-w)/2-1/4$，
+则 (1) 中 $x_0$ 的实原函数为
+$$
+I_P(\beta)=b\{(d_P-\beta^2/2)\sin2\beta+(w-1/2)\beta\cos2\beta\}.
+$$
+直接微分给 $I_P'=x_0$、$I_P(0)=0$，故同一中心化规则给
+$$
+\frac{2\mathcal Gx_0}{\beta}
+=2b\{(d_P-x/2)S-(d_P-A/2)S_A+(w-1/2)(C-C_A)\}.
+$$
+将其加到 $y_0/\beta=b[(1-w^2+x)S-2wC]$，并记
+$P_A=b\{(1-w^2+A)S_A-2wC_A\}$，得到
+$$
+P_+=P_A+b\{(\tfrac12-w)(S-S_A)-(C-C_A)\}.
+\tag{15}
+$$
+这里 $1-w^2+A>0$；该表达式随 $A,S_A$ 增、随 $w,C_A$ 减。
+(6)、(7) 给出准确的有理端点比较
+$$
+\frac9{50}\left[(1-1/49+197/500)\frac32-\frac27\frac5{16}\right]
+<P_A<
+\frac9{50}\left[(1-4/225+2/5)\frac{49}{32}-\frac4{15}\frac3{10}\right].
+$$
+两端分别为 $108657/306250>7/20$、$14663/40000<2/5$。
+由 (8)，花括号非正；同时
+$P_+>7/20-(9/50)(7/10)>0$。
+设 $h(x)=y_0(\beta)/\beta$，则
+$$
+h'(x)=b\{(1+2w)S+(1-w^2+x)S'\}.
+$$
+由 (6)、(7)，$0<1-w^2+x<1-(2/15)^2+2/5=311/225$，
+$(1+2w)S>(19/15)(3/2)=19/10$，且 $S'\ge-4/3$。
+因 $1-w^2+x$ 为正，带符号的下界为
+$$
+\frac{h'(x)}b
+>\frac{19}{10}-\frac43\frac{311}{225}
+=\frac{77}{1350}>\frac1{30}>0.
+$$
+所以 $h(x)\le P_A$。
+由 $S(x)=2\int_0^1\cos(2u\beta)\,du$，以及余弦在 $[0,2\alpha]$ 上递减，得到 $S\ge2C$。
+对 $\beta>0$，直接微分给
+$x_0'(\beta)/\beta=2b[(1-w-w^2+x)S-(1+2w)C]
+\ge2b(1-4w-2w^2+2x)C>0$，因为 $w<1/7$、$C>0$。
+所以 $x_0$ 递增；在 $0<\beta\le\alpha$，其 $[0,\beta]$ 上平均不大于 $[0,\alpha]$ 上平均，
+由此 $\mathcal Gx_0(\beta)=\beta[\beta^{-1}\int_0^\beta x_0-\alpha^{-1}\int_0^\alpha x_0]\le0$。
+零点由定义同样成立。因此 $P_-\ge P_+>0$。
+结合 (15)，
+$$
+P_-=2h-P_+\le P_A+b(C-C_A)
+<\frac25+\frac{63}{500}<\frac35.
+$$
+加号分支已有 $P_+<2/5$。这完成全部 (5)。
+:::
+
+::: {#cor-ppspr-common-phase-low-spin-bound-1011 .corollary name="两条原函数分支保留同一相位的低阶自旋界" date="2026-10-11" export="cor-ppspr-common-phase-low-spin-bound-1011"}
+采用 @lem-ppspr-exact-low-spin-1011，写
+$c=te^{i\phi}$、$d=se^{i\theta}$，
+$t>0$、$\sigma=s/t$、$\psi=\theta-2\phi$。
+本比较的角区间为 $0\le\beta\le\alpha=\pi/5$。则两种符号均满足
+$$
+\frac{|Y_2+Y_3\pm2\mathcal G(X_2+X_3)|}{\beta t^2}
+\le P_\pm+
+\sqrt{t^2U_\pm^2+\sigma^2V_\pm^2+2t\sigma U_\pm V_\pm\cos\psi}.
+\tag{16}
+$$
+分母为零的端点以连续延拓解释。
+:::
+
+::: {.proof of="cor-ppspr-common-phase-low-spin-bound-1011" status="verified"}
+由 @lem-ppspr-exact-low-spin-1011，
+先在 $0<\beta\le\alpha$ 将 (4) 乘 $e^{2i\phi}$ 并除以 $\beta t^2$，
+得到
+$P_\pm+e^{5i\phi}(tU_\pm+\sigma V_\pm e^{i\psi})$。
+由 @lem-ppspr-positive-ratio-product-1011，$P_\pm,U_\pm,V_\pm$ 都为正。
+三角不等式及最后括号的准确模平方给 (16)；
+没有将两个相位分别取独立最坏值。
+在 $\beta=0$，上述恒等式右侧的 $P_\pm,U_\pm,V_\pm$ 均有
+前引理给出的连续延拓；因 $t>0$，同一恒等式也给左侧归一化模的
+单侧连续延拓。令 $\beta\downarrow0$ 即包含该端点。
+:::

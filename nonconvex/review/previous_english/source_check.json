@@ -1,0 +1,305 @@
+{
+  "scope": "Custom static source checks only; not qmd-prover, not a mathematical verifier.",
+  "official_qmd_prover_run": false,
+  "qmd_files": 18,
+  "declarations": 61,
+  "proof_blocks": 57,
+  "kinds": {
+    "theorem": 2,
+    "definition": 8,
+    "lemma": 50,
+    "corollary": 1
+  },
+  "preserved_files": {
+    "goals.qmd": true,
+    ".qmd-prover/statement-locks.json": true,
+    "AGENTS.md": true,
+    ".qmd-prover/config.yml": true
+  },
+  "findings": [],
+  "duplicate_equation_tags": {},
+  "source_bytes_after": 229477,
+  "goals_sha256": "14d7b31de04ca7979e4362c08bd276324fd8dc0364b6ff7ab07ec2a2d6ba184f",
+  "dependency_edges": {
+    "thm-main-nonconvex-pentagon": [
+      "def-candidate",
+      "def-domain",
+      "lem-double",
+      "lem-five-edge-approximation",
+      "lem-geometry-input",
+      "lem-hadamard-corners",
+      "lem-no-candidate",
+      "lem-single",
+      "lem-square"
+    ],
+    "def-terminal-rationals": [
+      "def-analytic"
+    ],
+    "def-trace-polynomials": [],
+    "def-analytic": [],
+    "def-polygonal-limit": [],
+    "lem-limit-winding-area": [
+      "def-polygonal-limit"
+    ],
+    "lem-five-segment-degeneration": [
+      "def-polygonal-limit",
+      "lem-limit-winding-area"
+    ],
+    "lem-degenerate-threshold": [
+      "def-domain",
+      "def-polygonal-limit",
+      "lem-five-segment-degeneration"
+    ],
+    "lem-polygonal-spectral-continuity": [
+      "def-polygonal-limit",
+      "lem-limit-winding-area"
+    ],
+    "thm-simple-minimizer-exists": [
+      "def-domain",
+      "def-polygonal-limit",
+      "lem-degenerate-threshold",
+      "lem-limit-winding-area",
+      "lem-polygonal-spectral-continuity",
+      "lem-square"
+    ],
+    "cor-conditional-convex-bridge": [
+      "def-domain",
+      "thm-main-nonconvex-pentagon",
+      "thm-simple-minimizer-exists"
+    ],
+    "lem-no-candidate": [
+      "def-analytic",
+      "def-candidate",
+      "lem-high",
+      "lem-middle-spectral-closure",
+      "lem-robin",
+      "lem-small",
+      "lem-terminal"
+    ],
+    "lem-largest-section": [],
+    "lem-weighted-section": [
+      "def-candidate",
+      "def-domain",
+      "lem-energy-tensor",
+      "lem-largest-section"
+    ],
+    "lem-triangle-container": [
+      "def-domain",
+      "lem-ear",
+      "lem-single"
+    ],
+    "def-candidate": [],
+    "lem-geometry-input": [
+      "def-candidate",
+      "def-domain",
+      "lem-ear",
+      "lem-energy-tensor",
+      "lem-largest-section",
+      "lem-single",
+      "lem-triangle-container",
+      "lem-weighted-section"
+    ],
+    "lem-pi-rational": [],
+    "def-coupled-model": [
+      "def-analytic",
+      "lem-interface"
+    ],
+    "lem-coupled-response-lower-bound": [
+      "def-analytic",
+      "def-coupled-model",
+      "lem-cot-rational",
+      "lem-head-response",
+      "lem-interface",
+      "lem-pole-free",
+      "lem-tail-recurrence",
+      "lem-terminal"
+    ],
+    "lem-middle-spectral-closure": [
+      "def-analytic",
+      "def-candidate",
+      "def-coupled-model",
+      "lem-coupled-response-lower-bound",
+      "lem-robin"
+    ],
+    "def-domain": [],
+    "lem-square": [
+      "def-domain"
+    ],
+    "lem-variations": [
+      "def-domain",
+      "lem-energy-tensor",
+      "lem-hadamard-corners"
+    ],
+    "lem-energy-tensor": [
+      "def-domain"
+    ],
+    "lem-hadamard-corners": [
+      "def-domain"
+    ],
+    "lem-reflex-fan": [
+      "def-domain"
+    ],
+    "lem-steiner": [
+      "def-domain",
+      "lem-five-edge-approximation"
+    ],
+    "lem-double": [
+      "def-domain",
+      "lem-steiner"
+    ],
+    "lem-single": [
+      "def-domain",
+      "lem-reflex-fan",
+      "lem-steiner"
+    ],
+    "lem-ear": [
+      "def-domain",
+      "lem-hadamard-corners",
+      "lem-variations"
+    ],
+    "lem-five-edge-approximation": [
+      "def-domain"
+    ],
+    "def-high-operator": [],
+    "lem-high-area-cost": [
+      "def-candidate",
+      "lem-pi-rational"
+    ],
+    "lem-green-trace": [
+      "def-high-operator",
+      "def-trace-polynomials",
+      "lem-characteristic-trace-identity",
+      "lem-pi-rational"
+    ],
+    "lem-high-cost-reduction": [
+      "lem-pi-rational"
+    ],
+    "lem-trace-single-valley": [
+      "def-trace-polynomials",
+      "lem-green-trace",
+      "lem-pi-rational"
+    ],
+    "lem-trace-uniform-envelope": [
+      "def-trace-polynomials",
+      "lem-high-cost-reduction",
+      "lem-trace-single-valley"
+    ],
+    "lem-trace-endpoints": [
+      "def-high-operator",
+      "def-trace-polynomials",
+      "lem-green-trace",
+      "lem-high-cost-reduction",
+      "lem-trace-single-valley",
+      "lem-trace-uniform-envelope"
+    ],
+    "lem-no-crossing-sturm": [
+      "def-high-operator",
+      "lem-interface",
+      "lem-pi-rational",
+      "lem-tail-recurrence"
+    ],
+    "lem-high": [
+      "def-candidate",
+      "def-high-operator",
+      "lem-high-area-cost",
+      "lem-interface",
+      "lem-no-crossing-sturm",
+      "lem-pi-rational",
+      "lem-trace-endpoints"
+    ],
+    "lem-characteristic-trace-identity": [
+      "def-high-operator"
+    ],
+    "lem-interface": [],
+    "lem-m34-identity": [],
+    "lem-derivatives": [
+      "def-analytic",
+      "lem-pi-rational",
+      "lem-pole-free"
+    ],
+    "lem-q-branch-monotone": [
+      "def-analytic",
+      "lem-derivatives",
+      "lem-m34-identity",
+      "lem-pi-rational",
+      "lem-pole-free"
+    ],
+    "lem-other-branch": [
+      "def-analytic",
+      "lem-derivatives",
+      "lem-pi-rational",
+      "lem-pole-free"
+    ],
+    "lem-zero-monotone": [
+      "def-analytic",
+      "lem-derivatives",
+      "lem-pi-rational",
+      "lem-pole-free"
+    ],
+    "lem-container-monotone": [
+      "def-analytic",
+      "lem-derivatives",
+      "lem-pi-rational",
+      "lem-pole-free"
+    ],
+    "lem-boundary": [
+      "def-analytic",
+      "lem-container-monotone",
+      "lem-other-branch",
+      "lem-pi-rational",
+      "lem-pole-free",
+      "lem-q-branch-monotone",
+      "lem-zero-monotone"
+    ],
+    "lem-head-response": [],
+    "lem-tail-recurrence": [],
+    "lem-cot-rational": [
+      "def-analytic"
+    ],
+    "lem-pole-free": [
+      "def-analytic",
+      "lem-pi-rational"
+    ],
+    "lem-robin": [
+      "def-analytic",
+      "def-candidate",
+      "lem-cot-rational",
+      "lem-head-response",
+      "lem-interface",
+      "lem-pole-free",
+      "lem-tail-recurrence"
+    ],
+    "lem-small": [
+      "def-candidate"
+    ],
+    "lem-common-tail-line": [],
+    "lem-terminal-comparison": [
+      "def-analytic",
+      "def-terminal-rationals",
+      "lem-common-tail-line",
+      "lem-derivatives",
+      "lem-pi-rational",
+      "lem-pole-free"
+    ],
+    "lem-psi-payment": [
+      "def-analytic",
+      "def-terminal-rationals",
+      "lem-common-tail-line"
+    ],
+    "lem-phi-payment": [
+      "def-terminal-rationals",
+      "lem-common-tail-line"
+    ],
+    "lem-terminal": [
+      "def-analytic",
+      "def-terminal-rationals",
+      "lem-boundary",
+      "lem-phi-payment",
+      "lem-pi-rational",
+      "lem-psi-payment",
+      "lem-q-branch-monotone",
+      "lem-terminal-comparison",
+      "lem-zero-monotone"
+    ]
+  }
+}

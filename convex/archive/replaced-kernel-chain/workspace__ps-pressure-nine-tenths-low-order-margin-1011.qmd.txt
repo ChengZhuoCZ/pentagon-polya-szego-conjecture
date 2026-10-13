@@ -1,0 +1,564 @@
+---
+title: "共同相位低阶预算的九成余量"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-pressure-common-phase-square-budget-1011.qmd
+      use:
+        - lem-ppcsb-one-square-1011
+    - from: ps-pressure-low-order-joint-margin-1011.qmd
+      use:
+        - lem-pplojm-elementary-constants-1011
+        - lem-pplojm-exact-endpoint-dominance-1011
+        - lem-pplojm-exact-second-third-scalar-1011
+        - lem-pplojm-uniform-low-order-margin-1011
+    - from: ps-pressure-low-spin-positive-ratios-1011.qmd
+      use:
+        - cor-ppspr-common-phase-low-spin-bound-1011
+        - lem-ppspr-exact-low-spin-1011
+        - lem-ppspr-positive-ratio-product-1011
+---
+
+::: {#lem-ppnm-refined-minus-ratios-1011 .lemma name="减号分支的标量自旋联动比值" date="2026-10-11" export="lem-ppnm-refined-minus-ratios-1011"}
+采用 @lem-ppspr-exact-low-spin-1011 和
+@lem-pplojm-exact-endpoint-dominance-1011 的记号。
+令 $N(\beta)=(\widetilde B_3-2\widetilde G_3)/\beta$，
+其中波浪号表示三阶标量中
+$\operatorname{Re}(d\bar c^2)$ 的系数。记 $D=\alpha^2-\beta^2$。
+则在整个角窗上，
+$$
+\boxed{
+\frac34\le\frac{N}{U_-}\le\frac{15}{16},\quad
+\frac{U_-}{V_-}\le\frac87,\quad
+V_-\ge\frac74+2D,\quad
+0<P_-<\frac{263}{500}.
+}
+\tag{1}
+$$
+加号分支满足
+$$
+0<P_+<\frac25,\qquad U_+V_+<\frac{15}{4}.
+\tag{2}
+$$
+所有零点商都按连续延拓解释。
+:::
+
+::: {.proof of="lem-ppnm-refined-minus-ratios-1011" status="verified"}
+@lem-pplojm-uniform-low-order-margin-1011 定义的 $G_3$ 是 $A_3$ 的减均值积分；
+采用 @lem-ppspr-exact-low-spin-1011 的线性算子，即 $G_3=\mathcal G(A_3)$。
+因此 $\widetilde G_3=\mathcal G(\widetilde A_3)$，其中波浪号系数在零相位时仍按
+@lem-pplojm-exact-second-third-scalar-1011 的显式公式定义。
+先说明负角窗。@lem-ppspr-exact-low-spin-1011 的三个 $x$ 通道均偶、三个 $y$ 通道均奇；
+偶函数的减均值积分 $\mathcal Gx$ 为奇函数，因此 $P_\pm,U_\pm,V_\pm$ 均为偶函数。
+@lem-pplojm-exact-second-third-scalar-1011 的 $\widetilde A_3$ 偶、$\widetilde B_3$ 奇，
+所以 $N$ 也偶。故所有本题比值只需在 $|\beta|\in[0,\alpha]$ 证明；
+@lem-ppspr-positive-ratio-product-1011 的正性在该非负角窗适用，并由偶性延拓到全角窗。
+以下使用 $x=\beta^2$、$A=\alpha^2$、
+$S=\sin(2\beta)/\beta$、$C=\cos2\beta$，
+角端点值用下标 $A$ 表示。
+由 @lem-pplojm-elementary-constants-1011 的初等常数和 Taylor 界，
+$$
+\frac67<a<\frac{13}{15},\quad
+\frac8{13}<r<\frac{13}{21}<\frac58,\quad
+\frac{197}{500}<A<\frac25.
+\tag{3}
+$$
+其中 $a>6/7$ 可由
+$7(1-A/2+A^2/24-A^3/720)-6(1-A/6+A^2/120)>0$ 直接得到。
+写 $\Delta S=S-S_A$、$\Delta C=C-C_A$。
+积分式 $S=2\int_0^1\cos(2v\sqrt x)\,dv$ 给
+$$
+1\le-S'\le\frac43,\quad C'=-S,\quad
+D\le\Delta S\le\frac43D,\quad
+\frac32D\le\Delta C\le2D.
+\tag{4}
+$$
+具体地，取 $\operatorname{sinc}z=\sin z/z$、$\operatorname{sinc}0=1$，
+对上述积分求导并在 $x=0$ 连续延拓，得到
+$$
+-S'(x)=4\int_0^1v^2\operatorname{sinc}(2v\sqrt x)\,dv.
+$$
+由 $1-z^2/6\le\operatorname{sinc}z\le1$，
+$4/3-8x/15\le-S'(x)\le4/3$；$x\le A<2/5$ 时下界大于 $28/25>1$。
+另外 $S_A=(2+r)/(2a)>3/2$，$S\le2$，
+积分 $C'=-S$ 即得到 (4) 的 $\Delta C$ 界。
+
+取 @lem-ppspr-exact-low-spin-1011 中的 $b=9/50,e=9/250$，
+并置
+$$
+\begin{aligned}
+T_0&=ea^3+(3e+b)a^2+2ba,&
+T_1&=3ea^2+2(3e+b)a+2b,& L_T&=3ea+3e+b,\\
+R_2&=27/500,&
+R_0&=R_2a^2+(117/500)a+63/1000,&R_1&=2R_2a+117/500,\\
+T_A&=T_0-L_TA,&Q_A&=T_1-eA,&R_A&=R_0-R_2A,\\
+E_1&=2T_A-R_A,&E_2&=2Q_A-R_1,&E_3&=2L_T-R_2.
+\end{aligned}
+$$
+下面完整计算 @lem-ppspr-exact-low-spin-1011 的中心化积分。
+对每个偶核 $f$，若 $I_f'=f$ 且 $I_f(0)=0$，则该引理的定义给
+$$
+\frac{\mathcal Gf(\beta)}{\beta}
+=\frac{I_f(\beta)}{\beta}-\frac{I_f(\alpha)}{\alpha}\qquad(\beta>0).
+$$
+所有式子在零点取解析连续延拓。
+首先，$x_V$ 的原函数为
+$$
+I_V(\beta)=\frac\kappa2\left[
+p\beta-\frac r2\beta\cos2\beta-r\left(\frac p2-\frac14\right)\sin2\beta
+\right].
+$$
+微分时余弦项合并为 $-pr\cos2\beta$，正弦项为 $r\beta\sin2\beta$，
+故 $I_V'=x_V$，且 $I_V(0)=0$。除以 $\beta$ 后作上述端点平均扣除，得到
+$$
+\frac{2\mathcal Gx_V}{\beta}
+=-\frac{\kappa r}{2}\{\Delta C+(p-1/2)\Delta S\}.
+$$
+又 $y_V/\beta=\kappa[prS+1+rC]/2$。
+由 $C_A=r/2$、$aS_A=1+C_A$、$r^2+r=1$，
+其端点值化为 $\kappa[2+(1+r)/(2a)]/2$。
+
+对于 $U_\pm$，采用该引理的多项式
+$T(z)=ez^3+(3e+b)z^2+2bz$、$F(z)=bz(z+2)$，并置
+$$
+R(z)=\frac{T'(z)}2-\frac{T''(z)}4+\frac{T'''(z)}8
+=R_2z^2+\frac{117}{500}z+\frac{63}{1000}.
+$$
+因为 $T^{(4)}=0$，逐项相消给 $R'+2R=T'$。
+因此 $K(z)=[T(z)-R(z)]/2$ 满足 $K'+2K=T$，且
+$$
+\frac{d}{d\beta}\{-iK(a+i\beta)e^{2i\beta}\}
+=T(a+i\beta)e^{2i\beta}.
+$$
+取其实部的负值并积分 $r\Re F(a+i\beta)=rb[a(a+2)-\beta^2]$，
+得到 $x_U$ 的原函数
+$$
+I_U(\beta)=-\frac12\Im\{[T(a+i\beta)-R(a+i\beta)]e^{2i\beta}\}
++rb\{a(a+2)\beta-\beta^3/3\}.
+$$
+上式在零点为零；上述复微分等式给 $I_U'=x_U$。
+写
+$$
+\mathcal M(x)=[T_0-R_0-(L_T-R_2)x]S+[T_1-R_1-ex]C.
+$$
+展开 $T(a+i\beta)-R(a+i\beta)$ 得
+$I_U(\beta)/\beta=-\mathcal M(x)/2+rb[a(a+2)-x/3]$。
+减去 $\alpha$ 处的平均，得到
+$$
+\frac{2\mathcal Gx_U}{\beta}
+=-\mathcal M(x)+\mathcal M(A)+\frac{2rb}{3}D,
+\qquad
+\frac{y_U}{\beta}=(T_0-L_Tx)S+(T_1-ex)C+2rbp.
+$$
+分别相加、相减并收集 $x=A$ 处的常数项，现在得到
+$$
+\begin{aligned}
+V_+&=V_A+\frac{\kappa r}{4}\Delta S,\\
+V_-&=V_A+J\Delta S+\kappa r\Delta C,\\
+V_A&=\frac\kappa2\left(2+\frac{1+r}{2a}\right),\qquad
+J=\kappa r(p-\tfrac14),\\
+U_+-U_A&=R_A\Delta S+R_2DS+R_1\Delta C+\frac{2rb}{3}D,\\
+U_--U_A&=E_1\Delta S+E_2\Delta C+E_3DS
++2eDC-\frac{2rb}{3}D,\\
+U_A&=T_AS_A+Q_AC_A+2rbp .
+\end{aligned}
+\tag{5}
+$$
+代入 (3) 的端点并保持各项方向，得到
+$$
+\begin{gathered}
+\frac{49}{100}<E_1<\frac{27}{50},\qquad
+\frac{147}{100}<E_2<\frac{77}{50},\qquad
+\frac7{10}<E_3<\frac{71}{100},\\
+\frac74<V_A<\frac{283}{160},\qquad
+\frac{81}{70}<J<\frac{97}{80},\qquad
+T_0<\frac{69}{125},\quad T_1<\frac{941}{1000}.
+\end{gathered}
+\tag{6}
+$$
+为说明这些替换的方向，$T_0,T_1,R_1,E_3$ 关于 $a$ 严格递增。
+$T_A,Q_A,R_A$ 关于 $A$ 的导数分别为 $-L_T,-e,-R_2<0$，
+关于 $a$ 的导数分别为
+$$
+T_1-3eA>2b-3e(2/5)=198/625>0,\quad
+6ea+2(3e+b)>0,\quad 2R_2a+117/500>0.
+$$
+因此 $T_A,Q_A,R_A$ 的下端点取 $(a,A)=(6/7,2/5)$，
+上端点取 $(13/15,197/500)$；其余量分别取 $a=6/7,13/15$。
+准确代入的分数为：
+
+| 量 | 严格下端点 | 严格上端点 |
+|---|---:|---:|
+| $T_0$ | $23274/42875$ | $51727/93750$ |
+| $T_1$ | $1143/1225$ | $5877/6250$ |
+| $T_A$ | $83736/214375$ | $752633/1875000$ |
+| $Q_A$ | $28134/30625$ | $115767/125000$ |
+| $R_A$ | $69003/245000$ | $71271/250000$ |
+| $R_1$ | $1143/3500$ | $819/2500$ |
+| $E_3$ | $99/140$ | $1773/2500$ |
+
+表中分数给 $39/100<T_A<41/100$、$7/25<R_A<29/100$、
+$8/25<R_1<33/100$，因此
+$2(39/100)-29/100=49/100<E_1<2(41/100)-7/25=27/50$。
+特别地，$Q_A$ 的两个比较有严格正差
+$$
+\frac{28134}{30625}-\frac{459}{500}=\frac{81}{122500}>0,
+\qquad \frac{93}{100}-\frac{115767}{125000}=\frac{483}{125000}>0.
+$$
+所以 $Q_A>459/500$；$E_2$ 的下界和上界分别为
+$$
+E_2>2\frac{28134}{30625}-\frac{819}{2500}
+=\frac{184941}{122500}>\frac{147}{100},\qquad
+E_2<2\frac{93}{100}-\frac8{25}=\frac{77}{50}.
+$$
+此外 $T_0<51727/93750<69/125$、$T_1<5877/6250<941/1000$，
+$99/140>7/10$、$1773/2500<71/100$ 给 $E_3$ 的界。
+剩余 $V_A,J$ 的定向代入是
+$$
+V_A>\frac35\left[2+\frac{1+3/5}{2(13/15)}\right]
+=\frac{114}{65}>\frac74,\quad
+V_A<\frac35\left[2+\frac{1+5/8}{2(6/7)}\right]=\frac{283}{160},
+$$
+$$
+\frac65\frac35\left(\frac67+\frac34\right)=\frac{81}{70}<J
+<\frac65\frac58\left(\frac{13}{15}+\frac34\right)=\frac{97}{80}.
+$$
+(4)--(6) 立刻给 $V_->7/4+2D$。
+
+标量三阶采用 @lem-pplojm-exact-second-third-scalar-1011 的公式：
+$\widetilde A_3=b[L_{\rm sc}(r-C)+2p\beta\sin2\beta]$、
+$\widetilde B_3=b[L_{\rm sc}\sin2\beta+2p\beta(r+C)]$，
+其中 $L_{\rm sc}=p^2-1-\beta^2$、$b=\kappa^2/8=9/50$；
+这里 $L_{\rm sc}$ 与上面三次自旋的常数 $L_T$ 分别定义。
+令
+$$
+V(\beta)=r\{(p^2-1)\beta-\beta^3/3\}
++\left(\frac{-2p^2+2p+1}{4}+\frac{\beta^2}{2}\right)\sin2\beta
++(1/2-p)\beta\cos2\beta.
+$$
+直接微分得 $V'=\widetilde A_3/b,V(0)=0$，故
+$\widetilde G_3=b[V(\beta)-\beta V(\alpha)/\alpha]$。
+于是
+$N=b[L_{\rm sc} S+2p(r+C)-2V(\beta)/\beta+2V(\alpha)/\alpha]$。
+这给 $N(\alpha)=M_3$；$V$ 为解析奇函数，故所有零点商有连续延拓。
+代入 $x=\beta^2,D=A-x$ 并收集，标量三阶的减号分支准确写为
+$$
+N-M_3=b\{F_1\Delta S+F_2\Delta C+2DS-\tfrac{2r}{3}D\},
+\quad
+F_1=2p^2-p-\tfrac32-2A,\quad F_2=4p-1.
+\tag{7}
+$$
+为了核对端点关系，分别展开
+$$
+\begin{aligned}
+T_A&=b(p^2-1-A)+e(a^3+3a^2-3pA),\\
+Q_A&=2bp+e(3a^2+6a-A).
+\end{aligned}
+$$
+这里 $p^2-1=a^2+2a$；将两式代入 $U_A$，
+其 $b$ 部分为 $b[(p^2-1-A)S_A+2pC_A+2pr]$。
+$C_A=r/2$ 把后两项化为 $3pr$，恰是
+@lem-pplojm-exact-endpoint-dominance-1011 所定义的 $M_3$。
+余下 $e$ 部分给关键关系
+$$
+U_A=M_3+eZ,\quad
+Z=(a^3+3a^2-3pA)S_A+(3a^2+6a-A)C_A.
+\tag{8}
+$$
+第一对括号关于 $a$ 的导数 $3a^2+6a-3A>0$，
+第二对的导数 $6a+6>0$；两者都关于 $A$ 递减。
+依 (3) 作与上表相同的定向代入，分别得到
+$$
+\frac35<\frac{1038}{1715}<a^3+3a^2-3pA<\frac{11777}{16875}<1,
+\qquad
+\frac{34}{5}<\frac{1702}{245}<3a^2+6a-A<\frac{10589}{1500}<8.
+$$
+又 $3/2<S_A<49/32$、$3/10<C_A<5/16$，故
+$$
+\frac1{10}<eZ<\frac3{20}.
+\tag{9}
+$$
+具体下界为 $(9/250)[(3/5)(3/2)+(34/5)(3/10)]=1323/12500>1/10$，
+上界为 $(9/250)[49/32+8(5/16)]=1161/8000<3/20$。
+而 @lem-pplojm-exact-endpoint-dominance-1011 给
+$27/25\le M_3<5/4$。
+
+比较 $(15/16)U_--N$。其端点值由 (8)、(9) 大于 $1/64$。
+在 (5)、(7) 相减后，
+$\Delta S$ 的系数大于 $-1/20$，
+$\Delta C$ 的系数大于 $1/5$，
+$DS$ 的系数为 $(15/16)E_3-2b>0$，
+其余两项也非负。
+具体使用 $F_1<141/50$、$F_2<97/15$ 与 (6) 即可。
+为明确前一范围的定向代入，(3) 给 $13/7<p=1+a<28/15$。
+$F_1=2p^2-p-3/2-2A$ 的偏导数为 $4p-1>0$、$-2<0$，
+因此
+$$
+2(13/7)^2-13/7-3/2-2(2/5)=1343/490
+<F_1<
+2(28/15)^2-28/15-3/2-2(197/500)=3166/1125<141/50.
+$$
+由 (4)，可能的负项也被
+$-(1/20)(4/3)D+(1/5)(3/2)D>0$ 支付。
+故 $N<(15/16)U_-$。
+
+反向比较 $N-(3/4)U_-$。其端点值至少为 $63/400$。
+$\Delta S$ 的系数大于 $2/25$：
+这里 $F_1>1343/490$，故
+$bF_1-(3/4)E_1>12087/24500-81/200>2/25$。
+$\Delta C$ 的系数非负，因为
+$bF_2>81/70$、$(3/4)E_2<231/200$。
+剩余三项用 (6) 下界，得到
+$$
+N-\tfrac34U_-
+>\frac{63}{400}
++\left(\frac2{25}-\frac{69}{200}-\frac{27}{500}-\frac3{160}\right)D
+\ge\frac{63}{400}-\frac{1351}{10000}>0.
+\tag{10}
+$$
+这证明第一组比值。
+
+为进一步收紧 $U_-/V_-$，令 $F=(8/7)V_--U_-$。
+由 (5)，
+$$
+F'=\left(\tfrac87J-E_1-E_3D\right)S'
++\left(\tfrac87\kappa r-E_2-2eD\right)C'
++E_3S+2eC-\tfrac{2rb}{3}.
+$$
+第一括号不超过 $627/700$，第二括号不超过 $-429/700$。
+利用 (4)、(6) 及 $2rb/3<3/40$，得
+$$
+F'\ge-\frac{209}{175}+\frac{1287}{1400}+\frac{21}{20}-\frac3{40}
+=\frac7{10}>0.
+\tag{11}
+$$
+只需核对 $x=0$。由 (5) 取 $S(0)=2,C(0)=1$，
+$$
+\frac{V_-(0)}\kappa
+=1+\frac{1+r}{4a}+r(a+3/4)(2-S_A)+r(1-C_A).
+$$
+其中 $raS_A+rC_A=r(1+2C_A)=r+r^2=1$，
+且 $r(2+r)=1+r$。扣除这两项后准确化为
+$$
+V_-(0)=\kappa\left\{r(2a+\tfrac52)-\frac{1+r}{8a}\right\}
+$$
+大括号关于 $a,r$ 的导数分别为
+$2r+(1+r)/(8a^2)>0$、$2a+5/2-1/(8a)>0$。
+因此取 $a=6/7,r=8/13$ 给
+$$
+V_-(0)>\frac65\left[
+\frac8{13}\left(\frac{12}{7}+\frac52\right)
+-\frac{1+8/13}{8(6/7)}\right]
+=\frac{10299}{3640}>\frac{21623}{7644}>\frac{707}{250}.
+$$
+后两比较的正差分别为 $1/1560$ 与 $103/136500$。
+为上界 $U_-(0)$，先用
+$T_A>39/100$、$Q_A>459/500$、
+$S_A>377/250$、$C_A>4/13$、$2rbp>72/175$
+得到
+$$
+U_A>\frac{39}{100}\frac{377}{250}
++\frac{459}{500}\frac4{13}+\frac{72}{175}
+=\frac{2916573}{2275000}>\frac{32}{25};
+$$
+最后的正差为 $4573/2275000$。
+这里 $S_A>(2+8/13)/(2(13/15))=255/169>377/250$，
+$C_A=r/2>4/13$，而 $2rbp>2(8/13)(9/50)(13/7)=72/175$。
+由 (5) 的加号积分式，在零点
+$\Delta S>2-49/32=15/32$、$\Delta C>1-5/16=11/16$、
+$D=A>197/500$，故
+$$
+U_+(0)>
+\frac{32}{25}+\frac{21}{160}+\frac{11}{50}
++\frac{5319}{125000}+\frac{1773}{62500}
+=\frac{170217}{100000}.
+$$
+四个修正项分别是
+$(7/25)(15/32)=21/160$、$(8/25)(11/16)=11/50$、
+$(27/500)(197/500)2=5319/125000$、
+$[2(3/5)(9/50)/3](197/500)=1773/62500$。
+另一方面
+$2y_U(\beta)/\beta$ 在零点的连续极限
+$2(2T_0+T_1+2rbp)$ 满足
+$$
+2(2T_0+T_1+2rbp)
+<2\left(2\frac{69}{125}+\frac{941}{1000}+\frac{21}{50}\right)
+=\frac{493}{100},
+$$
+其中 $2rbp<2(5/8)(9/50)(28/15)=21/50$。
+故
+$$
+U_-(0)<\frac{493}{100}-\frac{170217}{100000}
+=\frac{322783}{100000}<\frac{323}{100}.
+$$
+于是 $F(0)>(8/7)(707/250)-323/100=1/500$，结合 (11) 得 $U_-/V_-<8/7$。
+
+最后核对 (2) 与 $P_-$ 的上界。
+取 $w=1-a$、$2/15<w<1/7$，以及
+$d_P=(w^2-w)/2-1/4$。
+@lem-ppspr-exact-low-spin-1011 的 $x_0$ 有零点为零的原函数
+$$
+I_P(\beta)=b\{(d_P-\beta^2/2)\sin2\beta+(w-1/2)\beta\cos2\beta\}.
+$$
+其导数中余弦系数为
+$2d_P+w-1/2-\beta^2=w^2-1-\beta^2$，
+正弦系数为 $-\beta-2(w-1/2)\beta=-2w\beta$，故 $I_P'=x_0$。
+采用与 $I_U,I_V$ 相同的 $\alpha$ 平均扣除，得到
+$$
+\frac{2\mathcal Gx_0}{\beta}
+=2b\{(d_P-x/2)S-(d_P-A/2)S_A+(w-1/2)\Delta C\}.
+$$
+再加上 $y_0/\beta=b[(1-w^2+x)S-2wC]$，
+其 $S$ 系数相消为 $1/2-w$、$C$ 系数为 $-1$，所以
+$P_+=P_A+b\{(1/2-w)\Delta S-\Delta C\}$，其中
+$$
+P_A=b\{(1-w^2+A)S_A-2wC_A\}.
+$$
+$3/2<S_A<49/32$、$3/10<C_A<5/16$ 与 (3) 给准确有理数界
+$$
+\frac9{50}\left[(1-1/49+197/500)\frac32-\frac27\frac5{16}\right]
+<P_A<
+\frac9{50}\left[(1-4/225+2/5)\frac{49}{32}-\frac4{15}\frac3{10}\right].
+$$
+两端分别为 $108657/306250>7/20$ 和 $14663/40000<2/5$。
+(4) 给 $0<P_+<2/5$。
+$y_0/\beta$ 随 $x$ 递增且不超过 $P_A$，
+所以 $P_-=2y_0/\beta-P_+<2/5+63/500=263/500$。
+这些单调性可直接由准确系数公式中的
+$h(x)=y_0(\beta)/\beta$（$x=\beta^2$，零点取连续值）及
+$h'=(9/50)\{(1+2w)S+(1-w^2+x)S'\}$ 验证：
+$2/15<w<1/7$、$S>3/2$、$S'\ge-4/3$、$x<2/5$ 给
+$$
+h'>(9/50)\{(19/15)(3/2)-(7/5)(4/3)\}=(9/50)(1/30)>0.
+$$
+此外 (4) 给
+$$
+b\{\Delta C-(1/2-w)\Delta S\}
+\le b(3/2+w)D<(9/50)(23/14)(2/5)=207/1750<63/500,
+$$
+这正是上述 $P_-$ 上界中保留的修正量。
+最后展示两个统一上界。首先
+$$
+U_A<\frac{41}{100}\frac{49}{32}+\frac{19}{20}\frac5{16}
++\frac{21}{50}=\frac{4303}{3200}<\frac{27}{20},
+$$
+这里 $Q_A<93/100<19/20$，其余界已在 (6) 后核对。
+$S\le2$、$\Delta S<1/2$、$\Delta C<7/10$、$D<2/5$ 和 $2rb/3<3/40$
+代入 (5) 的 $U_+$ 式，得到
+$$
+U_+<\frac{27}{20}+\frac{29}{100}\frac12
++\frac{27}{500}\frac25\,2+\frac{33}{100}\frac7{10}
++\frac3{40}\frac25=\frac{2249}{1250}<2.
+$$
+同一组界在 (5) 的 $V_+$ 式给
+$$
+V_+<\frac{283}{160}+\frac3{16}\frac12
+=\frac{149}{80}<\frac{15}{8}.
+$$
+故 $U_+V_+<15/4$。
+所用正号已由 @lem-ppspr-positive-ratio-product-1011 保证。
+:::
+
+::: {#prp-ppnm-nine-tenths-low-order-margin-1011 .proposition name="中央两分支低阶共同相位余量均大于九成" date="2026-10-11" export="prp-ppnm-nine-tenths-low-order-margin-1011"}
+采用 @lem-pplojm-exact-endpoint-dominance-1011 与
+@cor-ppspr-common-phase-low-spin-bound-1011 的记号。
+设 $0<t\le27/50$、$0\le s\le t$，以及
+$$
+0\le\ell\le\frac{(49/100)t^2+(107/100)ts}{1+(13/50)t^2}.
+$$
+则两条准确低阶积分核均满足
+$$
+\boxed{
+B_2+B_3\pm2\mathcal G(A_2+A_3)
+-\ell\,|Y_2+Y_3\pm2\mathcal G(X_2+X_3)|
+\ge\frac9{10}\,\beta t^2.
+}
+\tag{12}
+$$
+当 $\beta>0$ 时可取严格不等号。
+:::
+
+::: {.proof of="prp-ppnm-nine-tenths-low-order-margin-1011" status="verified"}
+采用 @lem-ppspr-exact-low-spin-1011 的同一角区间与线性积分算子
+$\mathcal GF(\beta)=\int_0^\beta[F(u)-\alpha^{-1}\int_0^\alpha F(v)\,dv]\,du$。
+@lem-pplojm-uniform-low-order-margin-1011 中的标量记号逐字定义为
+$$
+G_j(\beta)=\int_0^\beta
+\left[A_j(u)-\frac1\alpha\int_0^\alpha A_j(v)\,dv\right]du
+=\mathcal G(A_j)(\beta),\qquad j=2,3.
+$$
+令 $\zeta=\Re(d\bar c^2)$，$\widetilde A_3$ 为
+@lem-pplojm-exact-second-third-scalar-1011 所示 $A_3$ 的 $\zeta$ 系数，
+即使 $\zeta=0$ 也按该公式定义。由于 $\zeta$ 不随角变量改变，积分线性给
+$G_3=\zeta\mathcal G(\widetilde A_3)$；
+因此下文及 @lem-ppnm-refined-minus-ratios-1011 的
+$\widetilde G_3$ 恰为 $\mathcal G(\widetilde A_3)$。
+标量依赖中出现的 $G_2+G_3$ 因而就是目标中的 $\mathcal G(A_2+A_3)$。
+
+先取 $0<\beta\le\alpha$。写 $\sigma=s/t$、$\psi=\arg d-2\arg c$（$d=0$ 时角度任取）。
+由 @cor-ppspr-common-phase-low-spin-bound-1011，
+自旋部分除以 $\beta t^2$ 不超过
+$P_\pm+\sqrt{t^2U_\pm^2+\sigma^2V_\pm^2+
+2t\sigma U_\pm V_\pm\cos\psi}$。
+因为 $s\le t$，且 $z\mapsto z/(1+(13/50)z)$ 在非负轴上严格递增，
+$$
+\ell\le\frac{(39/25)t^2}{1+(13/50)t^2}
+\le\frac{(39/25)(27/50)^2}{1+(13/50)(27/50)^2}
+=\frac{56862}{134477}<\frac{17}{40}.
+$$
+最后一个比较的正整数差为 $17\cdot134477-40\cdot56862=11629>0$。
+加号分支使用 @lem-pplojm-exact-endpoint-dominance-1011 的
+标量下界 $M_2+sM_3\cos\psi$，以及
+@lem-ppcsb-one-square-1011 配平方。
+@lem-ppspr-positive-ratio-product-1011 给
+$t^2(U_+/V_+)+\sigma^2(V_+/U_+)<17/10$；
+这里令 $z=U_+/V_+\in[2/3,5/4]$，利用
+$(729/2500)z+1/z$ 对 $z$ 的凸性在两端点取上界，
+所得值分别为 $1059/625$ 与 $2329/2000$，均小于 $17/10$。
+@lem-ppnm-refined-minus-ratios-1011 给
+$P_+<2/5$、$U_+V_+<15/4$。
+于是归一化余量大于
+$$
+\frac{247}{100}-\frac{17}{100}-\frac{17}{16}-\frac{1445}{4608}
+=\frac9{10}+\frac{551}{23040}>\frac9{10}.
+\tag{13}
+$$
+
+减号分支保留更准确的基线。由
+@lem-pplojm-exact-second-third-scalar-1011 及
+@lem-ppspr-exact-low-spin-1011，
+$A_2/t^2=x_V-\kappa^2(a^2+\beta^2)/4$，
+所以
+$$
+\frac{B_2-2G_2}{\beta t^2}
+=\frac{18}{25}+V_--\frac6{25}D,\qquad D=\alpha^2-\beta^2.
+$$
+三阶项的准确系数为 $sN\cos\psi$。
+对 @lem-ppcsb-one-square-1011 取 $M=N$，
+令 $z=U_-/V_-$、$q=N/U_-$，并丢去非负平方。
+所得归一化下界为
+$$
+\frac{18}{25}-\frac6{25}D-\ell P_-
++V_-\left\{1-\frac q2(t^2z^2+\sigma^2)-\frac{\ell^2}{2q}\right\}.
+$$
+由 @lem-ppnm-refined-minus-ratios-1011，
+花括号不小于
+$$
+c_*=
+1-\frac{15}{32}\left(1+\frac{729}{2500}\frac{64}{49}\right)
+-\frac23\left(\frac{17}{40}\right)^2
+=\frac{68297}{294000}.
+$$
+因此利用 $V_-\ge7/4+2D$，减号分支的下界大于
+$$
+\begin{aligned}
+\frac{18}{25}-\frac{4471}{20000}+\frac74c_*
++\left(2c_*-\frac6{25}\right)D
+&\ge\frac{18}{25}-\frac{4471}{20000}+\frac74c_*\\
+&=\frac9{10}+\frac{17521}{5880000}>\frac9{10}.
+\end{aligned}
+\tag{14}
+$$
+其中 $2c_*-6/25>0$。
+最后乘回 $\beta t^2$；$\beta=0$ 由连续性成立。
+:::

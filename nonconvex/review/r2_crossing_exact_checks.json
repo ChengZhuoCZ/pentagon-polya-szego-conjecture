@@ -1,0 +1,161 @@
+{
+  "scope": "Supplementary exact polynomial identities and rational arithmetic; no parameter sampling.",
+  "official_qmd_prover_run": false,
+  "proof_relies_on_execution": false,
+  "check_count": 38,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "singular barrier: coefficient of s^2",
+      "passed": true
+    },
+    {
+      "name": "singular barrier: coefficient of s",
+      "passed": true
+    },
+    {
+      "name": "singular barrier: constant coefficient",
+      "passed": true
+    },
+    {
+      "name": "free barrier: coefficient of q^0",
+      "passed": true
+    },
+    {
+      "name": "free barrier: coefficient of q^1",
+      "passed": true
+    },
+    {
+      "name": "free barrier: coefficient of q^2",
+      "passed": true
+    },
+    {
+      "name": "free barrier: coefficient of q^3",
+      "passed": true
+    },
+    {
+      "name": "completed-square lower bound for B_s-C_s",
+      "passed": true
+    },
+    {
+      "name": "formal curvature identity for t/(a+bt+ct^2)",
+      "passed": true
+    },
+    {
+      "name": "formal curvature identity for t^2/(a+bt+ct^2)",
+      "passed": true
+    },
+    {
+      "name": "formal convexity numerator for a*t/(b-c*t)",
+      "passed": true
+    },
+    {
+      "name": "area cost at 1/4",
+      "passed": true
+    },
+    {
+      "name": "area cost at 3/2",
+      "passed": true
+    },
+    {
+      "name": "target at order 2",
+      "passed": true
+    },
+    {
+      "name": "target at order 3",
+      "passed": true
+    },
+    {
+      "name": "strict rational lower bound for sqrt(2)",
+      "passed": true
+    },
+    {
+      "name": "first-interval P(1/4)",
+      "passed": true
+    },
+    {
+      "name": "uniform coefficient in first-interval P",
+      "passed": true
+    },
+    {
+      "name": "negative concavity constant 10a-4",
+      "passed": true
+    },
+    {
+      "name": "minimum of d",
+      "passed": true
+    },
+    {
+      "name": "minimum of e",
+      "passed": true
+    },
+    {
+      "name": "maximum of e",
+      "passed": true
+    },
+    {
+      "name": "free penalty at t=1/4 and C=32",
+      "passed": true
+    },
+    {
+      "name": "two short bounds for the first endpoint",
+      "passed": true
+    },
+    {
+      "name": "singular bound at t=1/4 and s=2",
+      "passed": true
+    },
+    {
+      "name": "first endpoint response margin",
+      "passed": true
+    },
+    {
+      "name": "singular bound at t=3/2 and s=2",
+      "passed": true
+    },
+    {
+      "name": "free penalty at t=3/2 and C=39/2",
+      "passed": true
+    },
+    {
+      "name": "two short bounds for the order-2 endpoint",
+      "passed": true
+    },
+    {
+      "name": "singular bound at t=3/2 and s=3",
+      "passed": true
+    },
+    {
+      "name": "free penalty at t=3/2 and C=32",
+      "passed": true
+    },
+    {
+      "name": "hard endpoint response margin 39/1394",
+      "passed": true
+    },
+    {
+      "name": "comparison of the two endpoint margins",
+      "passed": true
+    },
+    {
+      "name": "maximum free energy on the first interval",
+      "passed": true
+    },
+    {
+      "name": "maximum free energy on the second interval",
+      "passed": true
+    },
+    {
+      "name": "rational pi lower-bound weakening",
+      "passed": true
+    },
+    {
+      "name": "rational cotangent coefficient bound",
+      "passed": true
+    },
+    {
+      "name": "combined cotangent coefficient",
+      "passed": true
+    }
+  ]
+}

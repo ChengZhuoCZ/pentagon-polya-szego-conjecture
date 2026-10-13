@@ -1,0 +1,258 @@
+---
+title: "Reduction of geometric candidates"
+qmd-prover:
+  imports:
+    - from: foundations.qmd
+      use: [def-domain, lem-energy-tensor, lem-variations]
+    - from: geometry.qmd
+      use: [lem-ear, lem-single]
+---
+
+::: {#lem-largest-section .lemma name="G.7 Spectral lower bound from the longest connected section" date="2026-10-11" export="lem-largest-section"}
+Let $\Omega\subset\mathbb R^2$ be a bounded Lipschitz open set whose vertical projection is contained in a finite open interval $I$. Let $\ell(y)$ be the length of the longest connected component of the horizontal open section $\Omega_y$, setting $\ell=0$ on an empty section, and put $V(y)=\pi^2/\ell(y)^2$, with value $+\infty$ on empty sections. In integrals, use the convention $Vv^2=0$ when $V=+\infty,v=0$. For $u\in H_0^1(\Omega)$, take its zero extension and define $v(y)=\|u(\cdot,y)\|_{L^2(\mathbb R)}$. Then $\ell,V$ are measurable, $v\in H_0^1(I)$, and
+
+$$
+
+\int_I v^2=\int_\Omega u^2,\qquad
+\int_I |v'|^2\le\int_\Omega |u_y|^2,\qquad
+\int_I Vv^2\le\int_\Omega |u_x|^2.
+
+$$
+
+Consequently, each nonzero $u$ produces a nonzero $v$ in the one-dimensional form domain, and
+
+$$
+
+\lambda_1(\Omega)\ge\inf_{0\ne v\in H_0^1(I),\ \int_I Vv^2<\infty}
+\frac{\int_I(|v'|^2+Vv^2)}{\int_Iv^2}.\tag{G.7.4}
+
+$$
+:::
+
+::: {.proof of="lem-largest-section"}
+First check measurability of the section length. Each $\Omega_y$ is a bounded open set and is the union of at most countably many disjoint open intervals $J$. Their total length has a uniform finite upper bound. If the section is nonempty, its positive supremum of component lengths is attained: if that supremum is $M>0$, only finitely many components have length at least $M/2$, and their maximum is $M$. For $r>0$, the condition $\ell(y)>r$ is equivalent to the existence of rational numbers $a<b$ with $b-a>r$ and $[a,b]\times\{y\}\subset\Omega$. For each such rational pair, the set of heights satisfying this inclusion is open, by compactness of the segment and openness of $\Omega$. Thus $\{y:\ell(y)>r\}$ is a countable union of open sets. Hence $\ell$ is lower semicontinuous and $V$ is measurable as an extended-valued function.
+
+Let $\widetilde u$ be the zero extension. By the definition of $H_0^1$, one has $\widetilde u\in H^1(\mathbb R^2)$. Regard $L^2(\mathbb R_x)$ as the target Hilbert space. Fubini's theorem and the definition of weak derivatives show that $w(y)=\widetilde u(\cdot,y)$ belongs to $H^1(\mathbb R_y;L^2(\mathbb R_x))$, with weak derivative $\widetilde u_y(\cdot,y)$. On every finite interval of heights, take its absolutely continuous representative. The fundamental theorem for the Bochner integral gives
+
+$$
+
+|\|w(t)\|_2-\|w(s)\|_2|\le\|w(t)-w(s)\|_2
+\le\int_s^t\|w'(y)\|_2\,dy\quad(s<t).
+
+$$
+
+Therefore $v=\|w\|_2$ is absolutely continuous, and the Lebesgue differentiation theorem gives $|v'|\le\|w'\|_2$ almost everywhere. This also handles points where $v=0$ without division by $v$. Fubini gives $\|v\|_2=\|u\|_2$, and hence $v\in H^1(\mathbb R)$. Since $w=0$ almost everywhere outside $I$, its norm has a continuous representative vanishing at both endpoints of $I$. Thus $v|_I\in H_0^1(I)$.
+
+For the zero trace on each component, choose $u_n\in C_c^\infty(\Omega)$ whose zero extensions converge to $\widetilde u$ in $H^1(\mathbb R^2)$, and pass to a subsequence with summable squared errors. Fubini then gives $u_n(\cdot,y)\to\widetilde u(\cdot,y)$ in $H^1(\mathbb R_x)$ for almost every $y$. For every such $y$ and every component $J$, one has $u_n(\cdot,y)|_J\in C_c^\infty(J)$: the support stays a positive distance from $\partial\Omega$ and therefore avoids both endpoints of $J$. Restriction is continuous in $H^1$, so closedness of $H_0^1(J)$ gives $\widetilde u(\cdot,y)|_J\in H_0^1(J)$. The same subsequence works for every component.
+
+Apply the Dirichlet Poincaré inequality on each interval, then sum the nonnegative terms and use Tonelli's theorem. This yields
+
+$$
+
+\int_\mathbb R |\widetilde u_x(x,y)|^2\,dx
+\ge\sum_J\frac{\pi^2}{|J|^2}\int_J\widetilde u^2
+\ge\frac{\pi^2}{\ell(y)^2}v(y)^2.
+
+$$
+
+On an empty section, $v=0$, and the right-hand side is zero by convention. Integration gives a finite upper bound for the potential energy, so the constructed $v$ lies in the stated form domain. The function $v$ is nonzero whenever $u$ is nonzero. Add the vertical derivative bound, compare Rayleigh quotients, and take the infimum over $u$ to obtain the spectral lower bound.
+:::
+
+::: {#lem-weighted-section .lemma name="G.8 Comparison for every weight from planar criticality" date="2026-10-11" export="lem-weighted-section"}
+Use the spectral and profile notation of @def-domain and @def-candidate. Suppose an area-critical pentagon is expressed in normalized coordinates with physical height $\rho y$, area $S\rho/2$, and longest connected section width $f(y)$, $0<y<L$. Then, for every $A>0$, one has $\mu(A)\le\rho^2\lambda_1(P)/2+A\lambda_1(P)/(2\pi^2)$. If $F(P)\le2\pi^2$, then $\mu(A)\le2(\pi^2\rho+A/\rho)/S$ and $\rho\ge S/(2L^2)$.
+:::
+
+::: {.proof of="lem-weighted-section"}
+Use the ground state, area-criticality, and functional $F(P)=|P|\lambda_1(P)$ from @def-domain. Use the quadratic-form construction of $\mu(A)$ in @def-candidate, without assuming its spectral necessary condition. Set $\lambda=\lambda_1(P)$ and let $U$ be the positive $L^2$-normalized ground state. By @lem-energy-tensor, the energies in the two coordinate directions both equal $\lambda/2$.
+
+For physical height $Y\in(0,\rho L)$, let $w(Y)=\|U(\cdot,Y)\|_{L^2(\mathbb R)}$. By hypothesis, the physical longest component has width $\ell(Y)=f(Y/\rho)$. The full slicing conclusion of @lem-largest-section gives $w\in H_0^1(0,\rho L)$, $\int w^2=1$, and the bounds $\int|w'|^2\le\lambda/2$ and $\pi^2\int f(Y/\rho)^{-2}w(Y)^2dY\le\lambda/2$. Set $v(y)=\sqrt\rho w(\rho y)$. Changing variables yields
+
+$$
+
+ v\in H_0^1(0,L),\qquad\int_0^L v^2=1,\qquad
+\int_0^L|v'|^2\le\rho^2\lambda/2,\qquad
+\pi^2\int_0^L f^{-2}v^2\le\lambda/2.
+
+$$
+
+The last bound places $v$ in the Friedrichs form domain for every $A>0$. The Rayleigh principle therefore gives
+
+$$
+
+\mu(A)\le\rho^2\lambda/2+A\lambda/(2\pi^2).
+
+$$
+
+Since the area is $S\rho/2$, the assumption $F(P)\le2\pi^2$ implies $\lambda\le4\pi^2/(S\rho)$. Substitution gives $\mu(A)\le2(\pi^2\rho+A/\rho)/S$. Finally, the vertical Dirichlet Poincaré inequality gives
+
+$$
+
+\pi^2/L^2\le\int|v'|^2\le\rho^2\lambda/2\le2\pi^2\rho/S,
+
+$$
+
+which is $\rho\ge S/(2L^2)$.
+:::
+
+::: {#lem-triangle-container .lemma name="G.9 A triangular container" date="2026-10-11" export="lem-triangle-container"}
+Consider the signed family in @lem-single and assume the four ear-length bounds in @lem-ear. Put $h=\beta+s\ge k=\gamma+t>0$, $L=1+h$, $p=\beta/L$, $q=\gamma/(1+k)$, $S=1+\beta+\gamma$, and $d=1-p-q>0$. There is a proper triangular container $T\supsetneq P$ with $|P|/|T|=S\min(d,L^{-1})$. If $F(P)\le2\pi^2$, then $S\min(d,L^{-1})<\sqrt3/2$.
+:::
+
+::: {.proof of="lem-triangle-container"}
+Use the spectral functional in @def-domain and the signed representation in @lem-single. Its nonnegative parameters are $s,t$, so $h=\beta+s$, $k=\gamma+t$, and $\beta\gamma>st$. The four strict ear-length inequalities in @lem-ear are the prescribed geometric hypotheses.
+
+By a Euclidean similarity alone, write the vertices as
+$$
+A=(0,0),\quad E=(1,0),\quad C=(\xi,\rho),\quad
+B=(L\xi-\beta,L\rho),\quad D=(J\xi-t,J\rho),
+$$
+where $J=1+k\le L=1+h$, $\rho>0$, and $|P|=S\rho/2$. At physical height $\rho y$, the lines through $AB,ED$ have horizontal coordinates
+$$
+x_-(y)=y(\xi-p),\qquad x_+(y)=1+y(\xi-1+q),
+\qquad x_+(y)-x_-(y)=1-dy.
+$$
+The signed representation also gives the strict relation
+$$
+\frac\beta h+\frac\gamma k-1=\frac{\beta\gamma-st}{hk}>0.
+$$
+If $p+q\le k/J$, then $L/h\le J/k$ would imply
+$$
+\frac\beta h+\frac\gamma k=\frac Lh p+\frac Jk q
+\le\frac Jk(p+q)\le1,
+$$
+a contradiction. Thus $p+q>k/J$.
+
+If $d\le1/L$, the two outer side lines meet at height $y=1/d\ge L$. Together with the base $AE$, they bound a triangle $T$. The vertices $A,E$ are on its base, $B,D$ are on its two lateral sides, and the horizontal distances from $C$ to these sides are $p,q>0$. Thus all five vertices lie in the closed triangle. The triangulation $ABC,ACE,CDE$ from @lem-single has disjoint interiors, so the entire polygon $P$ lies in $T$. Its area is $\rho/(2d)$.
+
+If $d\ge1/L$, take $T=ABE$. Its right side lies on
+$$
+x_B(y)=1+y(\xi-p-1/L).
+$$
+The horizontal distances from $C$ to the left and right sides are $p>0$ and $h/L-p\ge q>0$. At the height $J$ of $D$, the corresponding distances are
+$$
+x_D-x_-(J)=J(p+q)-k>0,\qquad
+x_B(J)-x_D=J(d-1/L)\ge0.
+$$
+Hence all vertices lie in $T$, and the same triangulation gives $P\subset T$. In this case, $|T|=\rho L/2$. The two cases agree at $d=1/L$ and yield
+$$
+\frac{|P|}{|T|}=S\min(d,L^{-1}).\tag{G.9.1}
+$$
+
+In both containers, $C$ is an interior point of $T$ but a strictly reflex vertex of $P$, with interior angle less than $2\pi$. Choose a small disk around that vertex, contained in $T$, and meeting no other side. The complement of $P$ in this disk contains a sector of positive angle. Thus $T\setminus P$ contains a nonempty open set, and strict domain monotonicity gives $\lambda_1(P)>\lambda_1(T)$. The classical triangle inequality $|T|\lambda_1(T)\ge4\pi^2/\sqrt3$ applies to this nondegenerate triangle. Consequently,
+$$
+F(P)>\frac{4\pi^2}{\sqrt3}S\min(d,L^{-1}).
+$$
+If $F(P)\le2\pi^2$, it follows that
+$$
+S\min(d,L^{-1})<\frac{\sqrt3}{2}.\tag{G.9.2}
+$$
+:::
+
+::: {#def-candidate .definition name="Parameter data for a low-energy critical candidate" date="2026-10-11" export="def-candidate"}
+Candidate data are real numbers $h,k,\beta,\gamma,\rho$ satisfying
+
+$$
+
+\begin{gathered}
+h\ge k>0,\quad0<\beta\le h,\quad0<\gamma\le k,\quad L=1+h,\\
+p=\frac\beta L,\quad q=\frac\gamma{1+k},\quad S=1+\beta+\gamma,\quad d=1-p-q>0.
+\end{gathered}
+
+$$
+
+$$
+
+\frac S{2L^2}\le\rho<\rho_+=\frac\beta{h(h+2)},\qquad S\min(d,L^{-1})<\sqrt3/2.
+
+$$
+
+Define $f(y)=1-dy$ for $0<y<1$, and
+
+$$
+
+f(1+x)=\max\{p(1-x/h)_+,q(1-x/k)_+\},\quad0<x<h.
+
+$$
+
+For $A>0$, let $\mu(A)$ be the first eigenvalue on $(0,L)$ of the quadratic form $\int(|v'|^2+Af^{-2}|v|^2)$ on $H_0^1(0,L)\cap L^2(f^{-2}dy)$, with the Friedrichs condition at the singular endpoint. The data are also required to satisfy, for every $A>0$,
+
+$$
+
+\mu(A)\le\frac2S(\pi^2\rho+A/\rho).
+
+$$
+
+This defines a set of conditions and does not assert that the set is nonempty. If $h=k$, the two ears may be exchanged to arrange $p\ge q$.
+:::
+
+::: {.proof of="def-candidate"}
+Set $f(1)=\max(p,q)$; its value at this single point does not affect the form. Since $d>0$ and $p+q>0$, the connecting segment satisfies $f\ge p+q>0$. On the tail, $f\ge p(1-x/h)>0$. Hence $f^{-2}$ is essentially bounded on every compact interior interval. Near the right endpoint, if $k<h$, the shorter tail vanishes and $f=p(L-y)/h$; if $k=h$, then $f=\max(p,q)(L-y)/h$. Every smooth compactly supported function therefore lies in the form domain, which is dense in $L^2$.
+
+If a sequence is Cauchy for the norm $\|v\|_{H_0^1}^2+A\|v/f\|_2^2$, it converges in $H_0^1$ to some $v$, and its weighted components converge in $L^2$ to some $w$. Passing to almost everywhere convergent subsequences and using $f>0$ almost everywhere yields $w=v/f$. Thus the form domain is complete and the quadratic form is closed. Its norm controls the $H_0^1$ norm. Compactness of $H_0^1\hookrightarrow L^2$ on a bounded interval gives compact resolvent for the Friedrichs operator, and the Rayleigh infimum is attained by a nonzero normalized function. This establishes the existence of $\mu(A)$ for every $A>0$.
+:::
+
+::: {#lem-geometry-input .lemma name="Every geometric critical candidate yields parameter data" date="2026-10-11" export="lem-geometry-input"}
+An area-critical pentagon as in @def-domain, represented as in @lem-single and satisfying $F(P)\le2\pi^2$, can be transformed into the data of @def-candidate using only a Euclidean similarity and an exchange of the two ears.
+:::
+
+::: {.proof of="lem-geometry-input"}
+Use area-criticality from @def-domain and the signed representation from @lem-single,
+$$
+P=(u,-su-\beta v,0,-\gamma u-tv,v),
+\quad s,t\ge0,\quad\beta,\gamma>0,\quad\beta\gamma>st.
+$$
+The target data and one-dimensional form are those of @def-candidate. Only Euclidean similarities and relabeling of the ears are used below.
+
+**Ear-length restrictions.** By @lem-ear, each of the four outer ear sides is strictly shorter than its corresponding interior diagonal. Let $a_0=|u|$, $b_0=|v|$, and $\theta=\angle(u,v)$. The inequality $|AB|<|AC|$, together with $s\ge0$, forces $\cos\theta<0$. Linear independence gives $c_0=-\cos\theta\in(0,1)$. Set $X=\beta b_0/a_0$ and $Y=\gamma a_0/b_0$. The two left-ear inequalities are
+$$
+s^2+X^2-2c_0sX<1,\qquad
+(s+1)^2+X^2-2c_0(s+1)X<1.
+$$
+The first gives $X<s+1$, and the second gives $X>s$. Similarly, the right ear gives $t<Y<t+1$. Thus
+$$
+st<\beta\gamma<(s+1)(t+1).\tag{G.6.3}
+$$
+Define
+$$
+h=\beta+s,\quad k=\gamma+t,\quad L=1+h,\quad
+p=\frac\beta{1+h},\quad q=\frac\gamma{1+k},\quad S=1+\beta+\gamma.
+$$
+Exchange the ears, if necessary, so that $h\ge k>0$; when $h=k$, arrange $p\ge q$ as well. Since $s,t\ge0$, one has $0<\beta\le h$, $0<\gamma\le k$, and
+$$
+d=1-p-q=
+\frac{(s+1)(t+1)-\beta\gamma}{(1+h)(1+k)}>0.\tag{G.6.5}
+$$
+
+**Physical height and sections.** Normalize by a similarity so that $A=(0,0),E=(1,0),C=(\xi,\rho)$, where $\rho>0$. Then
+$$
+B=(L\xi-\beta,L\rho),\quad
+D=((1+k)\xi-t,(1+k)\rho),\quad |P|=S\rho/2.\tag{G.7.1}
+$$
+Completing the square in $|AB|^2<|AC|^2$ gives
+$$
+\left(\xi-\frac{\beta(1+h)}{h(h+2)}\right)^2+\rho^2
+<\left(\frac\beta{h(h+2)}\right)^2,
+\qquad 0<\rho<\rho_+:=\frac\beta{h(h+2)}.\tag{G.7.2}
+$$
+At height $\rho y$, for $0<y<1$, the section is the single interval between the outer sides and has width $1-dy$. At $y=1+x>1$, it splits into the two ear intervals, with widths $p(1-x/h)_+$ and $q(1-x/k)_+$. For $0<x<k$, the open gap between the two ear intervals has width
+$$
+x\left(\frac\beta h-\frac t k\right)=\frac{x(\beta\gamma-st)}{hk}>0,
+$$
+by strict reflexivity. For $x\ge k$, only the longer ear can remain. The longest connected component therefore has exactly the profile
+$$
+f(y)=1-dy\quad(0<y<1),\qquad
+f(1+x)=\max\{p(1-x/h)_+,q(1-x/k)_+\}\quad(0<x<h).\tag{G.7.3}
+$$
+This is the longest component required by @lem-largest-section; the intervals on opposite sides of the notch are not combined into a fictitious connected section.
+
+**Spectral and container restrictions.** Area-criticality and @lem-energy-tensor give energy $\lambda_1(P)/2$ in each coordinate direction. Thus @lem-weighted-section applies to the physical height and actual sections just obtained. Under $F(P)\le2\pi^2$, it gives the necessary conditions, for every $A>0$,
+$$
+\mu(A)\le\frac2S\left(\pi^2\rho+\frac A\rho\right),
+\qquad \rho\ge\frac S{2L^2}.\tag{G.8.4}
+$$
+Finally, the established representation and ear-length inequalities allow application of @lem-triangle-container, yielding
+$$
+S\min(d,L^{-1})<\sqrt3/2.
+$$
+All the geometric, aspect-ratio, and spectral conditions for every weight in @def-candidate have now been obtained.
+:::

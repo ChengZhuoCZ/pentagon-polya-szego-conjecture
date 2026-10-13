@@ -1,0 +1,74 @@
+第七轮解析替换：基础谱理论、Fourier 与 Sobolev 输入（2026-10-12）
+
+已接续第六轮项目直接完成替换：新增 6 个引理、4 份 QMD，实质改写 11 个旧节点、8 份旧数学文件。
+这些输入原本就是经典解析理论；本轮的进展是将实际使用的结论展开为项目内证明，并减少一般性外部定理的调用。
+不把它们描述为原有数值证书，也不以形式化或独立审定的名义交付。
+
+1. 基础谱理论：本项目所需链条已在项目内展开。
+   正紧算子从二次型最大值、逐次正交补和紧性得到完整对角分解。
+   Dirichlet 预解从 H01 上的严格凸极小问题构造；卷积紧性给离散谱，双重 Hilbert Parseval 给能量展开。
+   基态非负性用模的光滑链式逼近；内部正性用调和提升和均值公式；单性用正基态与正交性。
+   长时间基态投影直接对正交系数估计，并保留准确的 exp[-t(lambda2-lambda1)] 衰减。
+   这一谱引理覆盖任意非空有界连通开集，因而涵盖压力泛函中的全部紧凸体内部，不限于五边形。
+   热乘积的算子函数只用本轮证明的正紧算子对角分解及 Bernstein 多项式逼近；一般无界自伴谱测度定理退出这一步。
+   特别核对了 R_h 通常不紧：紧的是 K_h，实际使用 K_h 的正交分解处理 R_h。
+
+2. Fourier：第六轮新增的两处无限维 Fourier 输入均已退出实际证明。
+   (a) 原 Plancherel 能量式改为高斯卷积恒等式：
+       a_h(F) = h^-1 ∫(0..h) ||grad(G_(s/2)*F)||² ds。
+       梯度能量随时间递减，故 a_h 随 h↓0 单调增加；有限极限恰好刻画 F∈H1。
+       此后接入凸域零延拓和原变分预解极限，保持 K_(t/n)^n → exp(-tA) 及 2/n 的算子比较误差。
+   (b) 层集等周所需的周期 Wirtinger 常数改为：一维变分极小元 → -f''=mu*f → 周期条件。
+       直接得到 (L/(2*pi))²；奇延拓同时给零端点常数 (L/pi)²，并接入压力泛函的条带谱下界。
+   五个单位根的有限 Fourier 代数、有限频率系数提取以及已有绝对收敛核展开仍保留；它们不是这里移除的无限维 Fourier 定理。
+
+3. Sobolev：将承重接口改为具体构造。
+   凸域 H01 零延拓的反向刻画：向内伸缩令支集距边界至少 epsilon*r，再光滑化。
+   H01→L2 紧性：线段平移估计、卷积误差、固定卷积族的有限网格逼近，不引用 Rellich 定理。
+   圆盘径向重排的 H01 归属：环带分部积分证明全空间零延拓属于 H1，再用凸域刻画，不引用一般迹定理。
+   压力边界积分：先在内缩多边形上用经典散度定理，正支撑数和 Fatou 给 ∫边界 1/s 有限，再用凹性建立控制收敛。
+       这一步明确允许顶点处 1/s 无界，取代原一般 Sobolev 迹及 Gauss–Green 引用。
+   实际角积分权：弱导数直接积分成 Lipschitz 代表，通常连续端点给积分分部的边值。
+   角点反射：由 H01 的零延拓再取奇反射；正部测试用凸域的零延拓刻画。
+   Hadamard 与五扇仿射换元：光滑紧支逼近和逐片公共边抵消，直接推广到 H01；Hadamard 的紧性/单性改接新谱引理。
+
+4. 范围限制与剩余输入。
+   热乘积引理从原“有界 Lipschitz 域”明确收窄为“非空有界开凸集”；当前所有调用均符合这个范围。
+   零延拓的双向刻画也只对有界凸域声明；单向 H01 零延拓及紧性对任意有界开集适用。
+   保留 Lebesgue 积分、Fubini、收敛定理、分布导数、Hilbert 完备性/弱紧性/正交投影、基本链式法则、常微分方程及经典光滑换元。
+   保留规则层集的余面积/Green 工具，以及严格对数 Hessian 步骤中的强极小值原理；其他几何与输运输入未作整轮重审。
+   因而不能说“所有 Sobolev、谱论和 PDE 基础已清零”；可说本轮指定链条的高阶外部调用已逐项缩减。
+   前六轮的数值预算和 q<5sqrt(2)/17<5/12 保持，不借本轮提高已有常数。
+
+5. 检查及状态。
+   本轮 44 项有限精确恒等式/正文绑定检查通过；第六轮 41 项脚本复算结果逐字一致。
+   第六轮脚本中的旧 Fourier 乘子恒等式仅作历史复算，不是新热乘积证明的前提。
+   150 个节点、66 份活动 QMD：结构检查 0 错误、0 依赖循环、0 不可达，全部在根目标依赖闭包中。
+   原有 4 个未使用导入、35 个未使用导出保持；它们不是结构错误。
+   25 个旧节点位于本轮改动的反向依赖闭包，撤去 3 个节点上的陈旧 verified 标签；详见对应 JSON。
+   共 8 份改动前数学文件按字节归档（其中 8 份为正文改写，其余仅涉及状态撤回）。
+   goals.qmd、statement-locks、AGENTS.md、.gitignore 和原 command、strict/strict/strict 配置均逐字保持。
+   结构检查仅在临时副本用 backend=none；未调用外部验证器，150 节点均为 unverified。
+   有限代数、文件哈希及结构检查不证明紧性、无限维极限、谱完备性或整篇 PDE 结论。
+   checks/analytic-audit-round7.json 是本轮作者式数学核对，不能视作独立审稿或形式化证书。
+
+6. 复算与入口。
+   Python 3 + SymPy（脚本从任意工作目录均可运行）：
+       python3 -I tools/check-spectral-sobolev-foundations.py
+       python3 -I tools/check-ground-state-spectral-budget.py
+   输出分别对应 checks/spectral-sobolev-foundations.json、checks/ground-state-spectral-budget.json。
+   新证明位于 workspace/analytic-replacements-1012/：
+       sobolev-convex-foundations.qmd
+       dirichlet-spectral-foundations.qmd
+       gaussian-energy.qmd
+       interval-variational.qmd
+   gaussian-ground-state.qmd、area-spectral-budget.qmd 与原压力/角点/形变节点已直接改接。
+   _quarto.yml 已包括全部 66 份活动 QMD；Quarto inspect 检查的是章节配置，未宣称整书渲染外观经过验收。
+   archive/before-seventh-replacement 保存本轮原稿；前六轮源文件归档与检查记录全部保留。
+   MEMBER_SHA256SUMS.txt 覆盖包内除自身外的全部文件。
+
+7. 经典方法对照来源（所需推导已写入项目）。
+   Richard Melrose, Functional Analysis, Chapter 3, §18：
+   https://math.mit.edu/~rbm/18-102-S18/Chapter3.pdf
+   Leon Simon, Lectures on PDE, Lecture 4（调和均值与 Weyl 引理）：
+   https://math.stanford.edu/~lms/lecs-on-pde.pdf

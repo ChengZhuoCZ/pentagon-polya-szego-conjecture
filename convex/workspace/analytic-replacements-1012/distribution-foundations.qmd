@@ -1,0 +1,108 @@
+---
+title: "平方可积空间的完备性与测试函数卷积"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: integral-foundations.qmd
+      use:
+        - lem-arc-integral-limits-1012
+        - lem-arc-euclidean-fubini-1012
+---
+
+弱导数在这里仅指测试恒等式：$D_i f=g$ 当且仅当
+$\int f\,\partial_i\phi=-\int g\phi$ 对每个 $\phi\in C_c^\infty$ 成立。
+不需要一般分布空间的拓扑或抽象对偶理论。
+
+::: {#lem-arc-l2-sobolev-completeness-1012 .lemma name="L2、H1 的完备性与弱导数的极限闭合" date="2026-10-12" export="lem-arc-l2-sobolev-completeness-1012"}
+对任意开集 $U\subset\mathbb R^d$，实 $L^2(U)$、$H^1(U)$ 及
+$H_0^1(U)=\overline{C_c^\infty(U)}^{H^1}$ 都是可分 Hilbert 空间。
+若 $f_n\to f$ 于 $L^2(U)$、$D_if_n\rightharpoonup g_i$ 于 $L^2(U)$，则
+$f\in H^1(U)$ 且 $D_if=g_i$。同样的结论在函数与导数都强收敛时成立。
+:::
+
+::: {.proof of="lem-arc-l2-sobolev-completeness-1012"}
+$2|fg|\le f^2+g^2$ 先保证 $L^2$ 函数乘积可积；
+积分的 Cauchy--Schwarz 不等式由 $\int(f-tg)^2\ge0$ 的判别式给出；
+再展开 $\|f+g\|_2^2$ 得三角不等式。
+弱导数的唯一性由 @lem-arc-test-convolution-1012 的零测试结论给出；
+因此 $H^1$ 的内积不依赖导数代表的选取。
+若 $f_n$ 是 $L^2$ Cauchy 序列，抽取子列使
+$\|f_{n_{k+1}}-f_{n_k}\|_2\le2^{-k}$。
+写 $d_k=f_{n_{k+1}}-f_{n_k}$，由有限三角不等式及
+@lem-arc-integral-limits-1012 的单调收敛，
+$$\int\left(\sum_{k\ge1}|d_k|\right)^2
+=\lim_N\left\|\sum_{k=1}^N|d_k|\right\|_2^2\le1.$$
+因此 $f_{n_1}+\sum_k d_k$ 几乎处处绝对收敛为一个 $L^2$ 函数 $f$。
+对每个尾和重复同一估计，得
+$\|f-f_{n_K}\|_2\le\sum_{k\ge K}2^{-k}\to0$。
+原序列的 Cauchy 性遂给整个序列强收敛，证明完备性。
+
+$H^1$ Cauchy 序列的函数及每个弱导数都在 $L^2$ 强收敛，记极限为 $f,g_i$。
+对紧支光滑 $\phi$ 用 Cauchy--Schwarz 取极限，得到
+$$\int f\partial_i\phi=\lim_n\int f_n\partial_i\phi
+=-\lim_n\int D_if_n\phi=-\int g_i\phi.$$
+所以 $D_if=g_i$，即 $H^1$ 完备。最后一个等式在导数仅弱收敛时也成立，
+这同时给声明的弱导数闭合。$H_0^1$ 按定义为闭子空间，故也完备。
+
+为核对可分性，先截断函数的支集与值，再用有理值简单函数逼近于 $L^2$。
+每个有限测度可测集 $E$，由 Lebesgue 正则性选 $K\subset E\subset O$，
+$K$ 紧、$O$ 开、$|O\setminus K|$ 任意小；
+用有限个闭包包含于 $O$ 的有理小矩形覆盖 $K$，其并与 $E$ 的对称差测度任意小。
+因而有限个有理矩形指标的有理线性组合，在 $L^2(\mathbb R^d)$ 稠密。
+限制到 $U$ 后仍稠密，因为可先将函数零延拓；这是可数族。
+$H^1$ 通过 $f\mapsto(f,D_1f,\ldots,D_df)$ 等距嵌入有限个 $L^2$ 的乘积。
+可分度量空间的任意子空间仍可分：对每个有理半径和可数稠密中心的球，
+只要与该子空间相交，就选其中一点；所选点为可数稠密集。
+因此 $H^1$ 及 $H_0^1$ 均可分，完成论证。
+:::
+
+::: {#lem-arc-test-convolution-1012 .lemma name="局部测试、卷积与弱微分的直接规则" date="2026-10-12" export="lem-arc-test-convolution-1012"}
+取非负 $\rho\in C_c^\infty(B_1)$、$\int\rho=1$，
+$\rho_\eta(x)=\eta^{-d}\rho(x/\eta)$。则：
+
+1. 对 $p=1,2$，全空间 $L^p$ 平移强连续，$\rho_\eta*f\to f$ 于 $L^p$；
+   局部 $L^1$ 函数在紧含的子域上也有相应卷积收敛。对 $k\in L^1$、$F\in L^2$，
+   $$\|k*F\|_2\le\|k\|_1\|F\|_2.$$
+2. 局部可积函数的卷积在距边界大于 $\eta$ 处光滑。
+   测试意义下的微分与此局部卷积交换：若 $D_i f=g_i$，则
+   $D_i(\rho_\eta*f)=\rho_\eta*g_i$；若常系数微分算子 $P$ 满足 $Pf=0$，则
+   $P(\rho_\eta*f)=0$。若 $\psi$ 光滑，则
+   $D_i(\psi f)=\psi D_if+(\partial_i\psi)f$，按测试意义理解。
+3. 若 $\int f\phi=0$ 对所有紧支光滑测试函数成立，则 $f=0$ 几乎处处。
+   若在连通开集上所有 $D_if=0$，则 $f$ 几乎处处等于一个常数。
+:::
+
+::: {.proof of="lem-arc-test-convolution-1012"}
+有限测度指标函数可由连续紧支函数逼近于 $L^p$（$p=1,2$）：
+先将 $E$ 截断在大球内，截断误差由测度从下连续性趋零；对这个有界部分，
+由正则性取 $K\subset E\subset O$、$|O\setminus K|$ 小且 $O$ 有界，
+在 $K$ 取一、$O$ 外取零、介于零与一之间的连续函数可由到这两个闭集的距离构造。
+结合值与支集截断、简单函数逼近，得到连续紧支函数的 $L^p$ 稠密性。
+这些函数的平移强连续由一致连续性和共同有界支集给出；平移保持 $L^p$ 范数，故推广到全部 $L^p$。
+
+用 @lem-arc-euclidean-fubini-1012 对绝对值和非负平方换序。
+$p=1$ 时积分三角不等式给
+$$\|\rho_\eta*f-f\|_1\le\int\rho_\eta(z)\|f(\cdot-z)-f\|_1\,dz.$$
+$p=2$ 时，关于概率测度 $\rho_\eta(z)dz$ 的 Cauchy--Schwarz 给
+$$\|\rho_\eta*f-f\|_2^2
+\le\int\rho_\eta(z)\|f(\cdot-z)-f\|_2^2\,dz.$$
+支集内 $|z|<\eta$，故两式由平移连续性趋零。
+同样，关于 $|k(z)|dz$ 的 Cauchy--Schwarz 给
+$$|k*F(x)|^2\le\|k\|_1\int|k(z)|\,|F(x-z)|^2dz.$$
+右侧几乎处处有限，积分后即得所述卷积范数界。
+局部情形先在一个较大但紧含的邻域上乘等于一的光滑截断，归结到全空间 $L^1$。
+
+在紧子域上，核的任意阶导数都有共同紧支控制，
+用 @lem-arc-integral-limits-1012 的控制收敛逐次求导，得
+$$D_x^\alpha(\rho_\eta*f)(x)=\int f(y)D_x^\alpha\rho_\eta(x-y)dy.$$
+将 $y\mapsto\rho_\eta(x-y)$ 作为弱导数的测试函数，
+并用 $D_x\rho_\eta(x-y)=-D_y\rho_\eta(x-y)$，即得微分交换。
+同一测试对任意有限阶常系数 $P$ 给 $Pf=0$ 的断言。
+乘子公式则把 $\psi\phi$ 代入弱导数定义并展开普通乘积导数即可。
+
+若全部测试积分为零，以上核测试使每个局部卷积为零；其局部 $L^1$ 极限为 $f$，故 $f=0$ 几乎处处。
+若所有一阶弱导数为零，局部卷积的普通梯度为零，因此在小球上为常数。
+卷积于该球的 $L^1$ 收敛使这些常数收敛；$f$ 在每个小球几乎处处为常数。
+选取紧含于域的有理小球的可数覆盖。相交小球的交集有正测度，故常数一致；
+连通性将这些局部常数连接成同一常数，可数个零例外集之并仍为零集。
+:::

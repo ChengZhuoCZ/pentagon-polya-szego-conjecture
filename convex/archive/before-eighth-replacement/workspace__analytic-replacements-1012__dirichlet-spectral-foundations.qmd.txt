@@ -1,0 +1,113 @@
+---
+title: "正紧算子的逐次极值与 Dirichlet 基态谱投影"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: sobolev-convex-foundations.qmd
+      use:
+        - lem-arc-dirichlet-compactness-1012
+---
+
+这里只展开实际用到的正紧算子及 Dirichlet 离散谱，不使用一般无界自伴算子的谱测度定理。
+保留 Hilbert 空间的弱紧性、正交投影和正交级数的 Parseval 恒等式；后者是 Hilbert 几何，
+不是 Fourier 变换的 Plancherel 定理。
+
+::: {#lem-arc-positive-compact-spectrum-1012 .lemma name="正紧算子的极值构造与对角估计" date="2026-10-12" export="lem-arc-positive-compact-spectrum-1012"}
+设 $T$ 是实可分 Hilbert 空间上的有界、非负、自伴、紧算子。
+则空间是 $\ker T$ 与至多可数个正特征值所对应的正交特征向量的闭线性张成之正交直和。
+非零特征值按重数排列为 $\rho_1\ge\rho_2\ge\cdots>0$；若有无限个，则 $\rho_j\to0$。
+任何有界标量函数作用于这些对角系数及核上的 $0$ 系数，都定义一个有界算子，
+其范数不超过该函数在 $[0,\|T\|]$ 上的上确界。
+若连续函数由多项式在该区间一致逼近，相应对角算子也在算子范数下一致逼近。
+:::
+
+::: {.proof of="lem-arc-positive-compact-spectrum-1012"}
+置 $m=\sup_{\|x\|=1}\langle Tx,x\rangle$。非负二次式的判别式给
+$$|\langle Tx,y\rangle|^2\le\langle Tx,x\rangle\langle Ty,y\rangle,$$
+因而 $\|Tx\|\le m\|x\|$，即 $m=\|T\|$。
+若 $m>0$，取单位极大序列 $x_j$。弱紧性及紧性给子列
+$x_j\rightharpoonup x$、$Tx_j\to Tx$ 强收敛，所以 $\langle Tx,x\rangle=m$。
+$\|x\|\le1$ 而 $\langle Tx,x\rangle\le m\|x\|^2$ 强制 $\|x\|=1$。
+在单位球面沿每个正交方向求导，得 $Tx=mx$。
+其正交补因自伴性不变，在该补空间重复极大化。
+
+若无限重复，得到正交单位向量 $e_j$ 及递减的正特征值 $\rho_j$。
+紧性不允许 $\rho_j\ge c>0$，因为此时 $Te_j=\rho_je_j$ 两两相距至少 $\sqrt2c$；
+故 $\rho_j\to0$。在所有已选特征向量的正交补上，二次型上界不超过每个 $\rho_j$，
+于是算子在那里为零。若构造有限步停止，同样是因为剩余算子为零。
+反之核与所有正特征向量正交，故该补空间恰为核。
+由正交分解，逐坐标乘以有界标量即得范数估计；
+对两个标量函数的差应用该估计即得一致逼近结论。
+:::
+
+::: {#lem-arc-dirichlet-spectrum-1012 .lemma name="有界连通域的基态、离散谱与长时间投影" date="2026-10-12" export="lem-arc-dirichlet-spectrum-1012"}
+设 $Q\subset\mathbb R^d$ 是非空有界连通开集。
+其弱 Dirichlet Laplacian 具有实 $L^2(Q)$ 正交规范特征基 $u_j\in H_0^1(Q)$，
+特征值满足
+$$0<\lambda_1<\lambda_2\le\lambda_3\le\cdots\longrightarrow\infty.$$
+$\lambda_1$ 等于 Rayleigh 下确界，$u_1$ 可取内部光滑、处处正且 $\|u_1\|_2=1$，
+在这两个归一化条件下唯一；任意正弱 Dirichlet 特征函数的特征值必为 $\lambda_1$。
+对 $v\in H_0^1(Q)$ 有
+$$\int_Q|\nabla v|^2=\sum_{j\ge1}\lambda_j|\langle v,u_j\rangle|^2.$$
+以这些系数定义 $S_tf=\sum_j e^{-t\lambda_j}\langle f,u_j\rangle u_j$，则
+$$\|e^{t\lambda_1}S_tf-\langle f,u_1\rangle u_1\|_2
+\le e^{-t(\lambda_2-\lambda_1)}\|f\|_2\qquad(t>0).$$
+:::
+
+::: {.proof of="lem-arc-dirichlet-spectrum-1012"}
+在 $H_0^1(Q)$ 上写
+$$b(v,w)=\int_Q(\nabla v\cdot\nabla w+vw).$$
+给定 $f\in L^2(Q)$，严格凸泛函 $b(v,v)-2\langle f,v\rangle$
+的极小序列在 $H_0^1$ 有界；Hilbert 弱紧性和范数弱下半连续性给唯一极小点 $Rf$。
+其 Euler 方程是 $b(Rf,w)=\langle f,w\rangle$。由此 $R$ 线性，
+$\|Rf\|_{H^1}\le\|f\|_2$，且
+$$\langle Rf,g\rangle=b(Rf,Rg)=\langle f,Rg\rangle,
+\qquad\langle Rf,f\rangle=b(Rf,Rf)\ge0.$$
+@lem-arc-dirichlet-compactness-1012 给 $R:L^2\to L^2$ 紧。
+若 $Rf=0$，则 $f$ 与所有 $C_c^\infty(Q)$ 正交，从而 $f=0$；
+这里 $L^2$ 密度由先截断到紧含于 $Q$ 的集合、再光滑化得到。
+故 @lem-arc-positive-compact-spectrum-1012 给完整正交基及 $Ru_j=\rho_ju_j$。
+Euler 方程给
+$$\int\nabla u_j\cdot\nabla w=(\rho_j^{-1}-1)\int u_jw.$$
+置 $\lambda_j=\rho_j^{-1}-1$。前一紧性引理的 Poincaré 界给 $\lambda_j\ge L^{-2}>0$。
+$L^2(Q)$ 无限维且 $R$ 单射，故有无限个特征值，且 $\lambda_j\to\infty$。
+这些 $u_j/\sqrt{1+\lambda_j}$ 在 $b$ 内积下也是完整正交规范系：
+若 $b(v,u_j)=0$ 对全部 $j$ 成立，弱特征方程给 $\langle v,u_j\rangle=0$，所以 $v=0$。
+两种 Hilbert Parseval 恒等式相减，得能量公式。
+它也证明首个 $\lambda_j$ 是 Rayleigh 下确界。
+
+为说明首基态的正性与单性，不另调用正性改善或强最大值定理。
+取实第一特征函数 $v$。其模属于 $H_0^1$，能量不增加：
+对 $\psi_\varepsilon(r)=\sqrt{r^2+\varepsilon^2}-\varepsilon$ 有
+$\psi_\varepsilon(0)=0$、$|\psi_\varepsilon'|\le1$。
+先以定义中的 $C_c^\infty$ 序列逼近 $v$，应用光滑链式法则，
+再用控制收敛传递导数，得到 $\psi_\varepsilon(v)\in H_0^1$ 及能量上界。
+令 $\varepsilon\downarrow0$，弱紧性、$L^2$ 收敛及弱下半连续性给 $|v|\in H_0^1$ 和同一上界。
+Rayleigh 最小性强制 $|v|$ 也为极小点；对任意 $H_0^1$ 方向变分，
+其弱方程就是 $-\Delta|v|=\lambda_1|v|$。
+
+任一弱方程 $-\Delta w=\lambda w$（$\lambda>0$）的局部光滑性可直接从调和提升得到。
+令 $U(x,z)=w(x)e^{\sqrt\lambda z}$，则 $\Delta_{x,z}U=0$ 于分布意义。
+局部卷积 $U_\eta$ 是光滑调和函数。光滑调和函数的球面均值公式由散度定理推得；
+对任意固定小半径的径向光滑单位积分核 $\kappa_r$，它给
+$U_\eta=\kappa_r*U_\eta$ 于更小的球内。
+令 $\eta\downarrow0$ 于局部 $L^1$，得 $U=\kappa_r*U$，于是 $U$ 有光滑调和代表。
+若 $w\ge0$ 且内点取零，则 $U\ge0$ 的球均值为零，故它在该球为零。
+连通域中零点集因而既开又闭，非零的非负解只能处处正。
+此论证仅用光滑调和函数的均值公式，并未使用待证 Dirichlet 谱结论。
+
+因此 $|v|$ 处处正，取它归一化为 $u_1$。
+每个非零的实第一特征函数 $w$ 及 $|w|$ 都有上述光滑代表，
+并且 $|w|>0$；连通性迫使 $w$ 保持一个符号。
+若第一特征空间维数大于一，可取非零 $w\perp u_1$，与固定符号及 $u_1>0$ 矛盾。
+故它是一维，$\lambda_2>\lambda_1$。
+任一正弱特征函数与 $u_1$ 互相测试，得到
+$$(\lambda-\lambda_1)\int_Qwu_1=0,$$
+而积分严格正，所以 $\lambda=\lambda_1$。
+
+最后，$S_t$ 的级数由 $L^2$ 正交性收敛。将首项分离，其余每项的乘子
+不超过 $e^{-t(\lambda_2-\lambda_1)}$，直接平方求和便得声明的投影估计。
+若需算子记号，取 $Au_j=\lambda_ju_j$、
+$D(A)=\{f:\sum\lambda_j^2|\langle f,u_j\rangle|^2<\infty\}$。
+逐坐标求解表明 $(I+A)^{-1}=R$，因此它正是上述弱 Dirichlet 算子，且 $S_t=e^{-tA}$。
+:::

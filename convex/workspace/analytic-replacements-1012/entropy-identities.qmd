@@ -1,0 +1,58 @@
+---
+title: "同源完整熵的两个统一平方恒等式"
+lang: zh-CN
+---
+
+::: {#lem-arc-hellinger-identity-1012 .lemma name="相同总质量的完整平方根熵恒等式" date="2026-10-12" export="lem-arc-hellinger-identity-1012"}
+对任意有限正概率权取平均 $\operatorname{av}$。设 $A_i,B_i>0$、
+$\operatorname{av}A_i=\operatorname{av}B_i=m>0$，定义
+$$L=\frac{m-\operatorname{av}\sqrt{A_iB_i}}{\sqrt m},\quad
+\Delta_i=A_i-B_i,\quad H_i=(A_i+B_i)/2.$$
+则 $L\ge0$，并有准确恒等式
+$$L=\frac1{2\sqrt m}\operatorname{av}
+\frac{\Delta_i^2}{(\sqrt{A_i}+\sqrt{B_i})^2}.$$
+若 $|\Delta_i|/(2H_i)\le\eta<1$，则
+$$L\le\frac1{4\sqrt m(1+\sqrt{1-\eta^2})}
+\operatorname{av}\frac{\Delta_i^2}{H_i}.$$
+另若 $B_i=m$、$A_i\ge\rho m$、$\rho>0$，则直接有
+$$L\le\frac{\operatorname{av}\Delta_i^2}{2m^{3/2}(1+\sqrt\rho)^2}.$$
+不使用熵级数截断，也不要求源的二阶矩。
+:::
+
+::: {.proof of="lem-arc-hellinger-identity-1012"}
+Cauchy--Schwarz 给 $\operatorname{av}\sqrt{A_iB_i}\le m$。
+由两个平均相等，
+$$2\sqrt m L=\operatorname{av}(\sqrt{A_i}-\sqrt{B_i})^2.$$
+逐项有理化给第一个恒等式。又
+$$(\sqrt A+\sqrt B)^2=2H\left(1+\sqrt{1-\Delta^2/(4H^2)}\right),$$
+所以分母有下界 $2H(1+\sqrt{1-\eta^2})$，给第二式。
+若 $B=m,A\ge\rho m$，则原分母至少为 $m(1+\sqrt\rho)^2$，给最后一式。
+零差情形所有式子同时为零；没有对 $\Delta$ 作除法。
+:::
+
+::: {#lem-arc-reciprocal-square-1012 .lemma name="完整倒数预算的准确缺口与最优尺度" date="2026-10-12" export="lem-arc-reciprocal-square-1012"}
+取任意有限正概率权，$d_i\in\mathbb R$、$H_i\ge h>0$。定义
+$$V=\operatorname{av}d_i^2,\quad U_1=\operatorname{av}d_i^2(H_i-h),\quad
+U_2=\operatorname{av}d_i^2H_i(H_i-h),$$
+$$\mathcal B_b=\frac1h\left(V-\frac{2U_1}b+\frac{U_2}{b^2}\right)\quad(b>0).$$
+则
+$$\mathcal B_b-\operatorname{av}\frac{d_i^2}{H_i}
+=\operatorname{av}\frac{d_i^2(H_i-h)(H_i-b)^2}{hb^2H_i}\ge0.$$
+若 $U_2>0$，则 $U_1>0$，$b_*=U_2/U_1$ 是 $\mathcal B_b$ 的唯一正极小点，且
+$$\mathcal B_b-\mathcal B_{b_*}=\frac{(U_2-bU_1)^2}{hb^2U_2},\qquad
+0\le\operatorname{av}\frac{d_i^2}{H_i}\le\mathcal B_{b_*}=\frac1h(V-U_1^2/U_2).$$
+若 $U_2=0$，则 $U_1=0$，所有 $b>0$ 都给准确的 $V/h$，不定义 $b_*$。
+特别在所有 $H_i>h$ 且 $V>0$ 时，$U_1,U_2>0$，原倒数平均严格正。
+:::
+
+::: {.proof of="lem-arc-reciprocal-square-1012"}
+直接通分有
+$$\frac1h\left[1-\frac{2(H-h)}b+\frac{H(H-h)}{b^2}\right]-\frac1H
+=\frac{(H-h)(H-b)^2}{hb^2H}.$$
+乘 $d_i^2$ 求平均即得准确缺口。
+$U_1,U_2$ 是同一非负权 $d_i^2(H_i-h)$ 的零阶和一阶矩；$H_i>0$ 保证它们同时为零或同时严格正。
+在非零情形，令 $z=1/b>0$，完成平方
+$$\mathcal B_b=\frac1h(V-U_1^2/U_2)+\frac{U_2}{h}(z-U_1/U_2)^2,$$
+给唯一最小点及准确差。$U_2=0$ 时，对每个 $d_i\ne0$ 均有 $H_i=h$，故原平均准确等于 $V/h$。
+:::
+

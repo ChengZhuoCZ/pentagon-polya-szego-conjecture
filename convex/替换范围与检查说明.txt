@@ -1,0 +1,73 @@
+第八轮解析替换：强极值原理、Hilbert 空间、积分与分布基础（2026-10-12）
+
+已接续第七轮项目直接替换：新增 7 个引理、4 份 QMD，实质改写 17 个旧节点、10 份旧数学文件。
+本轮把实际使用的经典分析输入进一步展开为项目内证明。这些本来就是解析定理，进展在于减少外部黑箱，而不是把数值证据改称解析证明。
+
+1. 强极小值原理：指定的三处实际调用均已展开。
+   统一使用环带屏障 beta=exp(-alpha*r²)-exp(-alpha*R²)。
+   对 L=tr(aD²)+b·grad-c，写 M=nu*R²、D0=d*Lambda+B*R，取 alpha=(2*D0+1+C*M)/M。
+   L beta 的下界括号准确为 ((2*D0+1)*(1+C*M)+C²*M²)/M>0。
+   负最小点反证得到内切球的一阶严格下界；正集内切球与内部零点的梯度为零矛盾，得到强极小值结论。
+   (a) 严格对数 Hessian：对 v=w_ee>=0 使用 a=I、b=-2 grad w、c=2 tr H>=0；只要求紧内局部系数界。
+   (b) 压力像开边：先由奇反射和调和提升取得开边光滑性，再对 Delta u=-lambda*u<0 使用球屏障，直接得到外法向导数<0；原 Hopf 调用退出。
+   (c) 角压缩：先在有界截断楔使用 c=2/sigma>0 的正最大点反证，再用局部强原理取得严格符号；没有假设无界楔上全局一致椭圆。
+   角点引理的声明同时补明原证明已给出的内部光滑性与开边光滑奇延拓，以便消费者明确调用。
+
+2. Hilbert：本项目实际使用的主要接口均已构造证明。
+   平行四边形恒等式 → 闭子空间正交投影 → 连续泛函的 Riesz 表示。
+   有限 Bessel 恒等式与完备性 → 正交级数收敛、Parseval。
+   有界序列的闭张成可分 → 坐标对角子列 → 弱收敛子列；也证明闭子空间弱闭、范数弱下半连续、弱收敛加范数收敛推出强收敛。
+   强制对称二次型用中点恒等式直接证明极小序列 Cauchy，再得唯一极小点与 Euler 方程；Dirichlet 预解及热预解均已改接。
+   具体 L2 完备性由可求和差级数证明；H1 完备性与弱导数闭合由测试积分取极限证明；H01 按闭包定义取得完备性。
+   有理矩形简单函数给可分性。弱导数唯一性明确接入本轮零测试引理。
+
+3. 积分与分布：展开所需结论，保留清楚的起点。
+   从可数可加测度及简单函数积分出发，证明单调收敛、积分可加性、Fatou、控制收敛、L1/L2 收敛的几乎处处子列。
+   欧氏空间 Tonelli/Fubini 从矩形体积、展开的生成类论证、简单递增逼近及 Lebesgue 完备化得到，包含几乎处处截面和无穷大非负积分。
+   连续紧支函数稠密 → L1/L2 平移连续 → 卷积近似恒等；积分加权 Cauchy 给 Young 卷积界。
+   核作为测试函数，直接证明弱微分与卷积交换、光滑乘子规则、零测试唯一性和弱梯度为零则局部乃至全域为常数。
+   一维弱原函数与乘积积分公式以 Fubini 直接证明。无须调用一般分布空间的拓扑或抽象对偶理论。
+   高斯能量、凸域零延拓、有限网格紧性、层集积分、压力边界 Fatou/DCT、实际角积分权及 Hadamard 弱极限均已接入新引理。
+
+4. 还能替代多少，以及本轮保留什么。
+   强极值方面：本轮定位的 3 处承重调用已全部改为显式屏障证明。
+   Hilbert 方面：所需的投影、表示、Parseval、有界序列弱子列、二次极小构造和具体空间完备性已展开。
+   积分/分布方面：所需收敛、欧氏换序及局部弱微分接口已展开，但不重建全部测度论或一般分布理论。
+   仍保留实数完备性、通常集合与序列基础、Lebesgue 测度存在/可数可加性/完备化/正则性/矩形体积。
+   仍保留经典光滑微积分、截断函数构造、换元、Green/散度及规则层集余面积；其他几何和输运部分未作本轮全面重审。
+   因此不报告“全部基础已清零”或没有定义分母的替代百分比。
+   前七轮的有限相位与系数预算、热乘积 2/n 误差、q<5sqrt(2)/17<5/12 全部保留。
+
+5. 检查和验证状态。
+   本轮 36 项有限精确代数/微分恒等式与正文绑定检查通过；第七轮 44 项及第六轮 41 项脚本复算结果与原记录逐字相同。
+   157 个节点、70 份活动 QMD：结构检查 0 错误、0 依赖循环、0 不可达，全部在根目标依赖闭包中。
+   原有 4 个未使用导入和 35 个未使用导出保持，不作为错误。
+   32 个旧节点属于本轮改动的反向依赖闭包，撤去 1 个节点上的陈旧 verified 标记。
+   10 份改动前数学文件逐字节归档；前七轮归档和检查记录全部保留。
+   goals.qmd、statement-locks、AGENTS.md、.gitignore 及 command、strict/strict/strict 验证配置逐字保持。
+   结构检查仅在临时副本以 backend=none 进行；未调用外部验证器；157 节点均为 unverified。
+   有限恒等式、源文件绑定、依赖图和哈希检查不能认证强极值定理、无限维极限、Fubini 或整篇凸五边形定理。
+   checks/analytic-audit-round8.json 是作者式数学核对，不是独立审稿或形式化证明证书。
+
+6. 项目入口和复算。
+   新证明位于 workspace/analytic-replacements-1012/：
+       local-elliptic-barriers.qmd
+       hilbert-foundations.qmd
+       integral-foundations.qmd
+       distribution-foundations.qmd
+   Python 3 + SymPy；脚本可从任意工作目录执行：
+       python3 -I tools/check-extrema-hilbert-integrals.py
+       python3 -I tools/check-spectral-sobolev-foundations.py
+       python3 -I tools/check-ground-state-spectral-budget.py
+   对应记录在 checks/extrema-hilbert-integrals.json、spectral-sobolev-foundations.json、ground-state-spectral-budget.json。
+   后两项是历史有限检查复算，不代表本轮重审了全部旧证明。
+   _quarto.yml 包括全部 70 份活动 QMD。Quarto inspect 只核对章节配置，不宣称整书渲染外观已经验收。
+   本轮原稿在 archive/before-eighth-replacement；MEMBER_SHA256SUMS.txt 覆盖除自身外全部包内文件。
+
+7. 经典方法对照来源（实际所需推导已写入项目）。
+   Leon Simon, Lectures on PDE, Lecture 13（指数屏障、Hopf、强极值原理）：
+   https://math.stanford.edu/~lms/lecs-on-pde.pdf
+   Richard Melrose, Functional Analysis, Chapter 3（Hilbert 空间）：
+   https://math.mit.edu/~rbm/18-102-S18/Chapter3.pdf
+   Terence Tao, An Introduction to Measure Theory（作者初稿，积分极限和乘积积分）：
+   https://terrytao.wordpress.com/wp-content/uploads/2012/12/gsm-126-tao5-measure-book.pdf

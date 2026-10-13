@@ -1,0 +1,91 @@
+{
+  "scope": "Author mathematical review of explicit derivations and applicability, not independent verification or formal proof. Finite checks do not establish the analytic conclusions.",
+  "steps": [
+    {
+      "step": "局部指数屏障",
+      "nodes": [
+        "lem-arc-local-elliptic-barrier-1012"
+      ],
+      "hypotheses": "a 对称、局部一致正定；系数在紧内子集有界；c>=0。内切球结论另要求环带上统一界。最后的有界域比较要求 c>0。",
+      "argument_checked": "准确计算 L beta，显式选择 alpha 使其严格正；负最小点反证给球内线性下界；若内部零点与正点共存，正集内切球的下界与零点梯度为零矛盾。",
+      "retained_basis": "光滑二阶微分、紧致性、连通性和距离函数。"
+    },
+    {
+      "step": "三处实际极值原理接口",
+      "nodes": [
+        "lem-psgs-strict-log-gradient-1011h",
+        "prp-psgs-pressure-image-1011h",
+        "lem-psgs-pressure-angular-order-1011h",
+        "lem-arc-corner-barrier-1012"
+      ],
+      "hypotheses": "严格 Hessian 的 v=w_ee>=0，a=I,b=-2 grad w,c=2 tr H>=0；开边用 L=Delta；角楔用 A=(D²k)^-1,c=2/sigma>0。",
+      "argument_checked": "严格 Hessian 只使用紧内局部系数界；开边先由奇反射与调和提升得到光滑性，再以 Delta u<0 使用内切球屏障；角楔先截断为有界域比较，再以局部严格性排除内部零点。",
+      "scope_clarification": "角点引理的声明补明原证明已给出的内部光滑和开边奇反射光滑延拓；不更改锁定目标。无界角楔不假设全局统一椭圆性。"
+    },
+    {
+      "step": "抽象 Hilbert 基础",
+      "nodes": [
+        "lem-arc-hilbert-sequences-1012",
+        "lem-arc-coercive-quadratic-1012"
+      ],
+      "hypotheses": "实完备内积空间；二次型有界对称且强制。",
+      "argument_checked": "平行四边形恒等式构造投影；投影到泛函核给 Riesz 表示；有限 Bessel 恒等式与完备性给 Parseval；序列闭张成可分，坐标对角子列给弱收敛；中点恒等式使二次极小序列 Cauchy，避免引用 Lax-Milgram 或弱紧致性取得极小点。",
+      "retained_basis": "实数完备性、有限维内积代数、序列与可数选择的通常基础。"
+    },
+    {
+      "step": "积分极限与换序",
+      "nodes": [
+        "lem-arc-integral-limits-1012",
+        "lem-arc-euclidean-fubini-1012"
+      ],
+      "hypotheses": "可数可加测度；Fubini 只对欧氏乘积 Lebesgue 空间。DCT 要求可积控制函数。",
+      "argument_checked": "简单函数和集合从下连续性给单调收敛，再给可加性、Fatou、控制收敛及 Lp 的几乎处处子列；有限矩形指标公式经展开的 pi-lambda 生成论证到 Borel 集，再由简单逼近和完备化处理 Lebesgue 可测函数。",
+      "retained_basis": "Lebesgue 测度存在、完备化、正则性、矩形体积；不重建外测度或光滑换元。"
+    },
+    {
+      "step": "具体 Hilbert 空间",
+      "nodes": [
+        "lem-arc-l2-sobolev-completeness-1012"
+      ],
+      "hypotheses": "任意开集 U；H01 定义为紧支光滑函数的 H1 闭包。",
+      "argument_checked": "抽取差的 L2 范数可求和子列，以单调收敛控制绝对差级数，得到 L2 完备性；函数和导数分量取极限并传递测试恒等式，给 H1 完备及弱导数闭合；有理矩形简单函数和正则性给可分性。弱导数唯一性明确改接零测试引理。",
+      "retained_basis": "上面的积分基础和实数基础；不假定一般分布空间拓扑。"
+    },
+    {
+      "step": "测试函数、卷积与弱导数",
+      "nodes": [
+        "lem-arc-test-convolution-1012",
+        "lem-arc-convex-zero-extension-1012",
+        "lem-arc-interval-variational-1012"
+      ],
+      "hypotheses": "全空间 L1/L2 或局部可积函数；光滑紧支卷积核；有限阶常系数微分算子。",
+      "argument_checked": "正则性给连续紧支稠密，平移连续性与积分加权 Cauchy 给近似恒等和 Young 界；核测试及控制收敛给微分交换与乘子规则；局部卷积收敛给零测试唯一性、弱梯度零的常数性。后者以可数球覆盖处理全域零例外集；一维原函数经 Fubini 直接得到弱导数、绝对连续代表及乘积积分式。",
+      "retained_basis": "光滑截断的初等构造、经典积分换元和微分。"
+    },
+    {
+      "step": "旧证明接线与常数",
+      "nodes": [
+        "lem-arc-positive-compact-spectrum-1012",
+        "lem-arc-dirichlet-spectrum-1012",
+        "lem-arc-gaussian-energy-1012",
+        "lem-arc-gaussian-dirichlet-limit-1012",
+        "lem-arc-gaussian-marginal-1012",
+        "lem-arc-ground-state-log-concavity-1012",
+        "lem-arc-dirichlet-compactness-1012",
+        "lem-arc-levelset-spectral-budget-1012",
+        "lem-arc-pressure-gap-1012",
+        "lem-psgs-actual-pressure-weights-1011h",
+        "prp-tpr-support-hadamard-tpr1011"
+      ],
+      "argument_checked": "预解由强制二次型极小构造；谱与热极限改接弱子列、Parseval、下半连续及弱加范数强收敛；高斯与层集积分改接收敛/Fubini；卷积紧性误差改用加权平方 Cauchy，压力边界仍先 Fatou 后控制收敛；Hadamard 使用新 Hilbert 接口。",
+      "unchanged": "前七轮有限相位/系数预算，热乘积 2/n 比较，q<5sqrt(2)/17<5/12；热乘积仍限于有界开凸集。"
+    }
+  ],
+  "remaining_foundations": [
+    "Real-number completeness and elementary countable set/sequence foundations",
+    "Existence, countable additivity, completion and regularity of Lebesgue measure, and rectangular volume",
+    "Elementary smooth calculus, smooth cutoff construction, classical change of variables, Green/divergence and regular-level coarea",
+    "Other geometry/transport inputs outside this local foundation audit"
+  ],
+  "scope_change": "Corner-barrier statement now explicitly includes interior smoothness and smooth odd extension near open edges, both already proved in its existing argument. Locked goals unchanged."
+}

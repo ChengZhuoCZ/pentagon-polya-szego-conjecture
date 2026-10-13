@@ -1,0 +1,178 @@
+---
+title: "A sharper explicit polynomial upper bound for the regular pentagon"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: reductions.qmd
+      use:
+        - def-spectral-functional
+        - lem-dirichlet-scaling
+        - lem-pentagon-polynomial-upper-bound
+---
+
+::: {#lem-regular-pentagon-sharper-polynomial-bound .lemma name="An explicit regular-pentagon Rayleigh bound below 18.92" date="2026-09-22" export="lem-regular-pentagon-sharper-polynomial-bound"}
+Every regular pentagon $R$ satisfies
+$$
+F(R)<B_\sharp<\frac{473}{25}=18.92,
+$$
+where $F$ is the functional of @def-spectral-functional and
+$$
+\begin{aligned}
+z&=\sqrt5,\qquad t=\sqrt{5-2z},\\
+M(z)&=2976133761169-1268712226452z,\\
+N(z)&=488270310067325-217799942883039z,\\
+B_\sharp&=\frac{26}{9}\,t\,\frac{N(z)}{M(z)}.
+\end{aligned}
+$$
+In particular this improves the constant
+$B=\frac{66}{7}(5-\sqrt5)\sqrt{5-2\sqrt5}$ of
+@lem-pentagon-polynomial-upper-bound. The trial value is
+$B_\sharp\approx18.91980058994593$; the proof below uses only
+exact arithmetic, not this decimal evaluation.
+:::
+
+::: {.proof of="lem-regular-pentagon-sharper-polynomial-bound" status="verified"}
+By @lem-dirichlet-scaling take the inradius of $R$ to be one,
+with one outward edge normal equal to $(1,0)$. Its area is $5t$.
+Put
+$$
+r^2=x^2+y^2,\qquad
+H_5=x^5-10x^3y^2+5xy^4,
+\qquad
+p=16-20r^2+5r^4-H_5.
+$$
+Direct multiplication gives
+$$
+p=16\prod_{j=0}^4
+\left(1-x\cos\frac{2\pi j}{5}-y\sin\frac{2\pi j}{5}\right).
+$$
+Thus $p$ vanishes on every edge and is positive in the interior.
+Choose the integer polynomial
+$$
+q=-4r^2+6r^6+(1-6r^2)H_5,
+\qquad f_0=p,\qquad f_1=pq,
+\qquad v=100f_0+f_1.
+$$
+All these trial functions have zero boundary trace. In particular
+$v\in H^1_0(R)$ and $v\not\equiv0$, since $v(0)=1600$.
+The polynomials are invariant under rotation through $2\pi/5$.
+
+We give the complete two-dimensional Rayleigh matrices. The five
+rotated copies of
+$$
+T=\{(x,y):0<x<1,\ -tx<y<tx\}
+$$
+partition $R$ up to null sets. Define the normalized matrices
+$$
+\mathsf M_{ij}=\frac{297}{20000t}\int_T f_i f_j,
+\qquad
+\mathsf K_{ij}=\frac{297}{20000t}
+                    \int_T\nabla f_i\cdot\nabla f_j,
+\qquad i,j\in\{0,1\}.
+$$
+They are
+$$
+\mathsf M=\frac1{676715039}
+\begin{pmatrix}
+676715039&-88189904088+39247847496z\\
+-88189904088+39247847496z&
+153725250963712-68747756368896z
+\end{pmatrix},
+$$
+$$
+\mathsf K=\frac1{780825045}
+\begin{pmatrix}
+7362064710-1472412942z&-4677664203960+2090632213296z\\
+-4677664203960+2090632213296z&
+16486562115846400-7373000485496448z
+\end{pmatrix}.
+$$
+Every entry can be checked by expanding the displayed polynomials
+and using the single monomial rule
+$$
+\frac1t\int_Tx^m y^n=
+\begin{cases}
+0,&n\text{ odd},\\
+\displaystyle\frac{2(5-2z)^{n/2}}{(n+1)(m+n+2)},&n\text{ even}.
+\end{cases}
+$$
+Here $m,n$ are nonnegative integers and all subsequent reductions
+use only $z^2=5$. As a check on the energy entries, reflection
+symmetry gives $\partial_\nu f_j=0$ on both radial sides of $T$,
+while $f_i=0$ on its outer side. Hence the same entries are
+obtained from $\int_T f_i(-\Delta f_j)$.
+
+For the coefficient vector $c=(100,1)^{\mathsf T}$ the matrices give
+$$
+c^{\mathsf T}\mathsf M c
+=\frac{48M(z)}{676715039},
+\qquad
+c^{\mathsf T}\mathsf K c
+=\frac{32N(z)}{780825045}.
+$$
+Since $676715039/780825045=13/15$, the Rayleigh principle of
+@def-spectral-functional yields
+$$
+F(R)\leq 5t\,
+\frac{c^{\mathsf T}\mathsf Kc}{c^{\mathsf T}\mathsf Mc}
+=\frac{26}{9}t\frac{N(z)}{M(z)}=B_\sharp.
+$$
+The inequality is strict. Otherwise the nonzero polynomial $v$
+would be a first eigenfunction and satisfy the polynomial identity
+$-\Delta v=\lambda_1(R)v$. Its highest-degree term is
+$6r^2H_5^2$, of degree twelve, whereas $\Delta v$ has degree
+at most ten and $\lambda_1(R)>0$. This is impossible.
+
+It remains to certify the rational bound on $B_\sharp$.
+Use the exact enclosure
+$$
+\frac{2236067977499}{10^{12}}
+<z<\frac{2236067977500}{10^{12}}.
+$$
+It follows simply by squaring, since
+$$
+5\cdot10^{24}-2236067977499^2=3531629704999>0,
+$$
+$$
+2236067977500^2-5\cdot10^{24}=940506250000>0.
+$$
+Both $M(z)$ and $N(z)$ are positive. For an entirely arithmetic
+check, their values at the upper endpoint of this enclosure have
+numerators
+$$
+139206978936954359170000,
+\qquad 1254832285232464216377500,
+$$
+respectively, over the positive denominator $10^{12}$.
+The coefficients of $z$ in $M,N$ are negative, so these are
+strict positive lower bounds for their actual values.
+
+Since all quantities being squared are positive,
+$B_\sharp<473/25$ is equivalent to
+$$
+81\cdot473^2 M(z)^2
+-625\cdot26^2(5-2z)N(z)^2>0.
+$$
+Expansion and $z^2=5$ reduce its left side exactly to
+$$
+-1902999002282797156863367505533627031
++851047026047032915966440285220798976z.
+$$
+At the lower endpoint of the enclosure for $z$, this expression
+is positive: after multiplication by $10^{12}$ its numerator is
+$$
+6730508391591047998601635913170241024>0.
+$$
+Its $z$ coefficient is positive, so the expression is strictly
+positive at $z=\sqrt5$. This proves $B_\sharp<473/25$.
+Finally the same enclosure gives $B>18.93>18.92$ for the old
+constant in @lem-pentagon-polynomial-upper-bound. Explicitly,
+$$
+B^2=\frac{4356}{49}(250-110z)
+>\frac{4356}{49}
+\left(250-110\frac{2236067977500}{10^{12}}\right)
+>\left(\frac{1893}{100}\right)^2,
+$$
+where the last comparison is rational arithmetic. Thus the new
+constant is strictly smaller than the old one as well.
+:::

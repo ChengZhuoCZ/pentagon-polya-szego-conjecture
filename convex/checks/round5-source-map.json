@@ -1,0 +1,37 @@
+{
+  "baseline": "凸五边形-共同相位压力校准解析替换-QMD项目-20261012.zip",
+  "archived_originals": [
+    {
+      "source_in_round4": "workspace/analytic-replacements-1012/corner-barrier.qmd",
+      "archive_member": "archive/before-fifth-replacement/workspace__analytic-replacements-1012__corner-barrier.qmd.txt",
+      "sha256": "566bc7692886d2c3cf75ab269c35a10c326684ee395be24cbaa0c54ccb3298da"
+    },
+    {
+      "source_in_round4": "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+      "archive_member": "archive/before-fifth-replacement/workspace__pressure-mixed-area-reconstruction-1011.qmd.txt",
+      "sha256": "16c044ed005c76b99a7940162a119390c78fb84f01cf1b58a8309784aec3b32b"
+    },
+    {
+      "source_in_round4": "workspace/ps-pressure-opposite-corner-entire-amplitude-1011.qmd",
+      "archive_member": "archive/before-fifth-replacement/workspace__ps-pressure-opposite-corner-entire-amplitude-1011.qmd.txt",
+      "sha256": "7ba6e61faf74cdd0d2be290e15e7ef356c424236f4154b73f80103195ed80dd3"
+    }
+  ],
+  "finite_definition_sources": {
+    "workspace/ps-pressure-opposite-corner-m-tail-1011.qmd": "3e3ff6b753c4ef3c6b450b88396ed7136403958170ab5130dc7e1de27e76ab0a",
+    "workspace/ps-pressure-opposite-corner-refined-mean-1011.qmd": "b307fb11a74300441df2f2d9fd009733263b49081733a41c85f88ff691310929",
+    "workspace/ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd": "894e104db981e3e7ed30221676b7f68724159b256c8358b1213ce1f4618fd619"
+  },
+  "new_derivations": [
+    "lem-arc-finite-taylor-budget-1012",
+    "lem-ppocf-low-ratio-coefficient-budgets-1011",
+    "lem-ppocf-high-ratio-coefficient-budgets-1011",
+    "lem-arc-corner-barrier-1012",
+    "def-pressure-rebuild-1011-functional"
+  ],
+  "external_reference_checked": {
+    "title": "Leon Simon, Lectures on PDE, Lecture 4, pp.32–36",
+    "url": "https://math.stanford.edu/~lms/lecs-on-pde.pdf",
+    "scope": "Weak harmonic smoothness and ball Poisson formula only; polygon estimates are derived in the project."
+  }
+}

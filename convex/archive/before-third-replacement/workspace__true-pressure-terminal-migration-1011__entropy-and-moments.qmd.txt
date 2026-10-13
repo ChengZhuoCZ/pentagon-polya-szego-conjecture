@@ -1,0 +1,169 @@
+---
+title: "同源完整熵：五根矩与带符号的倒数上界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../true-pressure-review-1011/sharp-entropy.qmd
+      use:
+        - lem-tpr-related-node-ratio-tpr1011
+        - lem-tpr-sharp-full-entropy-tpr1011
+---
+
+::: {#lem-tpm-five-root-entropy-moments-tpm1011 .lemma name="两源完整熵的准确二三四阶矩" date="2026-10-11" export="lem-tpm-five-root-entropy-moments-tpm1011"}
+令 $r=(\sqrt5-1)/2$，$n_i=e^{(2i+1)\pi i/5}$，$c,d\in\mathbb C$，
+$t=|c|,s=|d|$，$x_i=\Re(cn_i),z_i=\Re(dn_i^2)$，$\operatorname{av}$ 表示五点平均。
+记
+$$
+U=\Re(c^2\bar d),\quad V=\Re(cd^2),\quad Q=\Re(c^3d),\quad W_3=\Re(\bar c d^3).
+$$
+给定实数 $\delta,p>0$ 满足 $\delta+2p=4$，置
+$\Delta_i=\delta x_i+2rz_i$、$S_i=px_i+rz_i$。则
+$$
+\begin{aligned}
+V_2:=\operatorname{av}\Delta_i^2&=\delta^2t^2/2+2r^2s^2,\\
+V_3:=\operatorname{av}\Delta_i^2S_i&=\alpha_3U-\beta_3V,\\
+\alpha_3&=r\delta(\delta+4p)/4,\qquad\beta_3=r^2(\delta+p),\\
+F_4:=\operatorname{av}\Delta_i^2S_i^2
+&=3\delta^2p^2t^4/8-\delta rpQ
+ +r^2(\delta^2+8\delta p+4p^2)t^2s^2/4
+ -2r^3W_3+3r^4s^4/2.
+\end{aligned}
+$$
+特别地 $F_4\le F_+$，其中 $F_+$ 把 $-Q,-W_3$ 分别换成 $t^3s,ts^3$。
+:::
+
+::: {.proof of="lem-tpm-five-root-entropy-moments-tpm1011" status="verified"}
+因为 $n_i^5=-1$，五点平均满足
+$\operatorname{av}n_i^k=0$（$5\nmid k$），否则为 $(-1)^{k/5}$。
+将 $x=(cn+\bar c n^{-1})/2$、$z=(dn^2+\bar d n^{-2})/2$ 展开，得到
+$$
+\operatorname{av}x^2=t^2/2,\quad \operatorname{av}z^2=s^2/2,\quad\operatorname{av}xz=0,
+$$
+$$
+\operatorname{av}x^2z=U/4,\quad\operatorname{av}xz^2=-V/4,
+\quad\operatorname{av}x^4=3t^4/8,\quad\operatorname{av}z^4=3s^4/8,
+$$
+$$
+\operatorname{av}x^2z^2=t^2s^2/4,\quad\operatorname{av}x^3z=-Q/8,
+\quad\operatorname{av}xz^3=-W_3/8.
+$$
+二次式直接给 $V_2$。三次式中 $x^2z$ 系数为 $r\delta(\delta+4p)$，
+$xz^2$ 系数为 $4r^2(\delta+p)$，其余纯三次平均为零，得 $V_3$。
+四次式中 $x^3z$ 系数为 $2r\delta p(\delta+2p)=8r\delta p$，
+$xz^3$ 系数为 $4r^3(\delta+2p)=16r^3$，其余三项按所列纯矩展开，得 $F_4$。
+最后 $Q\ge-t^3s,W_3\ge-ts^3$ 且两乘数为正，给 $F_4\le F_+$。
+:::
+
+::: {#lem-tpm-signed-reciprocal-budget-tpm1011 .lemma name="完整正分母的二次倒数上界及准确负三阶项" date="2026-10-11" export="lem-tpm-signed-reciprocal-budget-tpm1011"}
+采用 @lem-tpm-five-root-entropy-moments-tpm1011。若 $m,h_0>0$、$H_i=m+S_i\ge mh_0$，置 $B=3/2$，则
+$$
+0\le\operatorname{av}\frac{\Delta_i^2}{H_i}
+\le \mathcal B:=\frac{1+(1-h_0)(1-2B)/B^2}{mh_0}V_2
+ +\frac{2-h_0-2B}{B^2m^2h_0}V_3
+ +\frac{F_4}{B^2m^3h_0}.
+$$
+因此 $\mathcal B\ge0$。也可整体以 $F_+$ 放宽最后项。
+:::
+
+::: {.proof of="lem-tpm-signed-reciprocal-budget-tpm1011" status="verified"}
+对 $h=mh_0,b=Bm$，准确通分给
+$$
+\frac1h\left[1-\frac{2(H-h)}b+\frac{H(H-h)}{b^2}\right]-\frac1H
+=\frac{(H-h)(H-b)^2}{hb^2H}\ge0\quad(H\ge h>0).
+$$
+乘 $\Delta_i^2$ 求平均，按 $H_i=m+S_i$ 展开。
+常数、$S_i$、$S_i^2$ 系数依次为声明中的三个系数；应用
+@lem-tpm-five-root-entropy-moments-tpm1011 得到准确上界。
+左端非负，所以整个右端非负。这也允许整体乘数放宽；不能仅放宽正项而独立处理负三阶项。
+$F_4\le F_+$ 且其系数为正，故最后的放宽合法。
+:::
+
+::: {#lem-tpm-unit-node-ratio-entropy-tpm1011 .lemma name="单位源平衡域的相关节点比和完整熵" date="2026-10-11" export="lem-tpm-unit-node-ratio-entropy-tpm1011"}
+采用 @lem-tpm-five-root-entropy-moments-tpm1011 的节点及记号。
+若 $0<t\le27/50$、$t\le s\le2t$、$s<r$、$m=1+r(t^2-s^2)>4/5$、
+$j_i=m+2x_i+2rz_i>41m/100$，置 $\omega_i=1+x_i$，则
+$$
+\frac45<m\le1,\quad\omega_i>0,\quad
+\frac7{20}<\frac{j_i}{m\omega_i}<\frac{20}7.
+$$
+置 $\delta=2-m,p=1+m/2,H_i=m+px_i+rz_i$、
+$\Delta_i=j_i-m\omega_i$、$L=\sqrt m-\operatorname{av}\sqrt{j_i\omega_i}$。
+则 $H_i>m(141/200-t/2)>0$，且
+$$
+0\le L\le\frac2{15\sqrt m}\operatorname{av}\frac{\Delta_i^2}{H_i}.
+$$
+:::
+
+::: {.proof of="lem-tpm-unit-node-ratio-entropy-tpm1011" status="verified"}
+以下推导沿用 @lem-tpm-five-root-entropy-moments-tpm1011 所给对象、记号与适用条件。
+$s\ge t$ 给 $m\le1$，前提给 $m>4/5$。
+$r<619/1000=:S$，于是 $t,s<S$、$rs<S^2$，且 $\omega_i\ge1-t>0$。
+置 $b_0=1-m/2+rs>0$。由 $z_i\ge-s$，
+$\omega_i\le b_0+j_i/2$；$q\mapsto q/[m(b_0+q/2)]$ 严格递增，故
+$$
+\frac{j_i}{m\omega_i}>\frac{41/100}{1-(59/200)m+rs}
+\ge\frac{41/100}{1-(59/200)(4/5)+S^2}>\frac7{20}.
+$$
+另一方面，比值先以 $z_i\le s$ 放宽。
+$(m+2x+2rs)/(m(1+x))$ 对 $x$ 的导数符号为 $2-m-2rs>1-2S^2>0$。
+所以可令 $x=t$；所得式子对 $m$ 递减、对 $t$ 递增、对 $rs$ 递增，给
+$$
+\frac{j_i}{m\omega_i}\le\frac{m+2t+2rs}{m(1+t)}
+\le\frac{4/5+2S+2S^2}{(4/5)(1+S)}<\frac{20}7.
+$$
+两个末行都是显示有理数的直接比较。
+$H_i=(j_i+m\omega_i)/2>m(41/100+1-t)/2$，给其正下界。
+
+五根平均给 $\operatorname{av}j_i=m,\operatorname{av}\omega_i=1$，故 Cauchy--Schwarz 给 $L\ge0$。
+准确有理化给
+$$
+L=\frac1{2\sqrt m}\operatorname{av}
+\frac{\Delta_i^2}{(\sqrt{j_i}+\sqrt{m\omega_i})^2}.
+$$
+比值区间给 $|\Delta_i|/(2H_i)<13/27$。
+$1-(13/27)^2=560/729>49/64$，故完整分母大于
+$2H_i(1+7/8)=15H_i/4$。代回得完整熵上界。
+:::
+
+
+
+::: {#lem-tpm-two-source-signed-entropy-coupled-tpm1011 .lemma name="保留实际节点耦合的两源带符号熵终端" date="2026-10-11" export="lem-tpm-two-source-signed-entropy-coupled-tpm1011"}
+采用 @lem-tpm-five-root-entropy-moments-tpm1011 的节点。取以下任一组数据：
+
+- 中央源：$0<t\le27/50,0\le s\le t$，$m=1+r(t^2-s^2)$、$j_i=m+2x_i+2rz_i>41m/100$，$\kappa=6/5$，$h_0=141/200-3t/5$、$F_C=m^3h_0(m+2)$、$k_E=250/633$、$k_3=1250/633$；
+- 单位源：@lem-tpm-unit-node-ratio-entropy-tpm1011 的数据，$\kappa=1$，$h_0=141/200-t/2$、$\ell=(7+8m)/15$、$F_C=m^3h_0\ell$、$k_E=2/15$、$k_3=2/3$。
+
+置 $\omega_i=1+\kappa x_i$、$\delta=2-\kappa m,p=1+\kappa m/2$、$B=3/2$、$L=\sqrt m-\operatorname{av}\sqrt{j_i\omega_i}$，及
+$$
+E_F=k_E\left\{[1+(1-h_0)(1-2B)/B^2]m^2V_2+F_+/B^2\right\},
+\quad e_F=k_3(2B+h_0-2)m/B^2.
+$$
+则 $F_C>0$, $\delta,p>0$, $L\ge0$，并且
+$$
+-5F_CL\ge-5E_F+e_F(\alpha_3U-\beta_3V).
+$$
+:::
+
+::: {.proof of="lem-tpm-two-source-signed-entropy-coupled-tpm1011" status="verified"}
+以下推导沿用 @lem-tpm-five-root-entropy-moments-tpm1011 所给对象、记号与适用条件。
+两源均明确有 $j_i=m+2x_i+2rz_i$，故
+$\Delta_i=j_i-m\omega_i=(2-\kappa m)x_i+2rz_i$，
+$H_i=(j_i+m\omega_i)/2=m+(1+\kappa m/2)x_i+rz_i$。
+五根平均给 $\operatorname{av}j_i=m$、$\operatorname{av}\omega_i=1$；源权正性由 $\kappa t<1$ 得到，
+所以 Cauchy--Schwarz 给 $L\ge0$。
+$\delta+2p=4$。中央段 @lem-tpr-related-node-ratio-tpr1011 给 $1\le m<6/5$，故 $\delta>0$，而 $h_0\ge381/1000$；
+单位段 @lem-tpm-unit-node-ratio-entropy-tpm1011 给 $4/5<m\le1$，同样 $\delta,p,h_0>0$。
+$H_i=m+px_i+rz_i>mh_0$ 对两源都由 $j_i>41m/100$、$\omega_i\ge1-\kappa t$ 得到。
+
+中央段 @lem-tpr-sharp-full-entropy-tpr1011 的完整熵系数是 $250/(1899\sqrt m)$。
+$9m-(m+2)^2=(m-1)(4-m)\ge0$，故 $\sqrt m\ge(m+2)/3$。
+单位段 @lem-tpm-unit-node-ratio-entropy-tpm1011 的系数是 $2/(15\sqrt m)$，且
+$$
+m-\ell^2=(1-m)(64m-49)/225\ge0,
+$$
+故 $\sqrt m\ge\ell>0$。应用 @lem-tpm-signed-reciprocal-budget-tpm1011，
+整个非负倒数预算可整体放宽系数，中央得到 $L\le k_E\mathcal B/(m+2)$，单位得到 $L\le k_E\mathcal B/\ell$。
+再把 $F_4$ 放宽为 $F_+$，乘 $5F_C$。三阶项系数为
+$-5k_E(2-h_0-2B)m/B^2=e_F$，其中 $5k_E=k_3$。
+常二四阶项给 $5E_F$，于是得到准确的带符号结论。
+:::

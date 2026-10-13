@@ -1,0 +1,33 @@
+---
+title: "Proof of the main theorem"
+qmd-prover:
+  imports:
+    - from: candidate.qmd
+      use: [def-candidate, lem-geometry-input]
+    - from: foundations.qmd
+      use: [def-domain, lem-hadamard-corners, lem-square]
+    - from: geometry.qmd
+      use: [lem-double, lem-five-edge-approximation, lem-single]
+    - from: assembly.qmd
+      use: [lem-no-candidate]
+---
+
+::: {.proof of="thm-main-nonconvex-pentagon"}
+Use the admissible class and spectral functional of @def-domain. If $P$ has three or four active sides, the classical Polya--Szego (1951) area-spectral bounds for triangles and simple quadrilaterals give $F(P)\ge2\pi^2$. By @lem-square, there is then a same-area genuine pentagonal competitor with strictly smaller eigenvalue. A simple triangle is itself necessarily convex, but the numerical threshold comparison still applies.
+
+Now suppose that there are five active sides. No angle is flat, and the interior-angle sum of a simple pentagon is $3\pi$. A nonconvex pentagon therefore has one or two strictly reflex angles. In the two-angle case, @lem-double gives a strict competitor. In the one-angle case, @lem-single either gives a strict competitor or places the polygon in the signed residual family.
+
+Before using the corner variation formula, choose the first eigenfunction and verify its admissibility. The domain $P$ is bounded and connected, with a simple polygonal Lipschitz boundary. Its nonnegative closed Dirichlet form on $H_0^1(P)$ embeds compactly into $L^2$, so the Rayleigh infimum is attained by an $L^2$-normalized function. Taking its absolute value makes it nonnegative. The weak eigenvalue equation, interior regularity, and the strong maximum principle then give a strictly positive first eigenfunction $U$ on connected $P$, with $\int_PU^2=1$. Positivity and the standard simplicity of the first eigenvalue provide the required ground-state properties. These classical existence and positivity results can be found in Henrot (2006), Chapter 1, Sections 1.2.2 and 1.3.3. Boundedness, connectedness, and Lipschitz boundary verify the zero-trace form and maximum-principle hypotheses.
+
+In the residual family, the differentiable vertex variation formula of @lem-hadamard-corners shows that, unless $P$ is area-critical, there is an area-tangent vertex velocity $V$ with $D\lambda[V]<0$, reversing its sign if necessary. Realize these vertex velocities as follows. Place the closure of $P$ inside a large rectangle. Choose a generic rotated direction in which all original vertices have distinct horizontal coordinates. Join the uniquely leftmost and rightmost vertices along outward horizontal rays to the corresponding rectangle sides. These two disjoint connecting segments lie outside $P$ and split the exterior annular region into two simple polygons. Triangulate $P$ and those two exterior polygons by finite nondegenerate triangulations, with matching subdivisions along common edges. Assign the chosen velocities $V_i$ to the original vertices. At additional mesh points on an original boundary edge, interpolate its two endpoint velocities linearly; give all other mesh points and rectangle-boundary points velocity zero. Affine interpolation on each triangle, extended by zero outside the rectangle, produces a globally continuous Lipschitz field $V$ that is affine along every entire original edge.
+
+Let $F_t=I+tV$. If $|t|\operatorname{Lip}(V)<1$, then $|F_t(x)-F_t(y)|\ge(1-|t|\operatorname{Lip}(V))|x-y|$. For any target point $y$, the contraction $x\mapsto y-tV(x)$ yields a unique preimage. Thus $F_t$ is a global bi-Lipschitz homeomorphism. The image boundary is simple, and each original edge maps to one segment, creating no extra breakpoints. Every original edge has positive length and every adjacent-edge determinant is nonzero. These finitely many quantities depend continuously on $t$, so they remain nonzero for sufficiently small $|t|$. Hence the five active sides and nonflat angles persist. This construction both validates the vertex displacement and supplies the piecewise affine field required by the corner Hadamard formula. Write $P_t=F_t(P)$. Its spectral and area derivatives are exactly those of the prescribed vertex velocities. Normalize to
+$Q_t=(|P|/|P_t|)^{1/2}P_t$.
+Area is then preserved exactly. Since $D|P|[V]=0$, we have
+$\frac d{dt}\lambda_1(Q_t)|_{t=0}=D\lambda[V]<0$.
+A sufficiently small positive $t$ therefore gives a strict competitor.
+
+If $P$ is area-critical, suppose for contradiction that $F(P)\le2\pi^2$. By @lem-geometry-input it produces data satisfying @def-candidate, contradicting @lem-no-candidate. Thus $F(P)>2\pi^2$, and @lem-square again supplies a strict competitor.
+
+Finally, @lem-five-edge-approximation handles the requirement of exactly five active sides. If a strict competitor $Q$ has fewer than five, introduce a nonflat breakpoint of amplitude $\varepsilon$ at the midpoint of an open edge; if necessary, repeat on another open edge. Each sufficiently small perturbation preserves simplicity and adds exactly one active side. Piecewise affine interpolation on a fixed triangulation gives bi-Lipschitz maps converging to the identity, whose derivatives and inverse derivatives also converge to the identity. Two-sided Rayleigh comparison then gives continuity of area and of the first eigenvalue. This remains true after area normalization, so the original strict spectral gap persists. We may therefore always choose a competitor with exactly five active sides. Such a competitor contradicts global minimality of any nonconvex domain, proving the final assertion.
+:::

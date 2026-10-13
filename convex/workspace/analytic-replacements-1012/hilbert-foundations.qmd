@@ -1,0 +1,77 @@
+---
+title: "Hilbert 空间的投影、弱子列与二次极小问题"
+lang: zh-CN
+---
+
+本节从实内积空间的完备性出发。具体 $L^2$ 与 $H^1$ 空间的完备性另由积分与弱导数构造证明。
+
+::: {#lem-arc-hilbert-sequences-1012 .lemma name="正交投影、Parseval 与有界序列的弱子列" date="2026-10-12" export="lem-arc-hilbert-sequences-1012"}
+实 Hilbert 空间 $H$ 中，每个闭线性子空间 $M$ 有正交投影，$H=M\oplus M^\perp$。
+每个连续线性泛函都唯一写成 $x\mapsto\langle x,z\rangle$。
+对可数正交规范系 $e_j$，其系数级数给闭张成空间上的投影；若该系完整，则
+$$x=\sum_j\langle x,e_j\rangle e_j,\qquad
+\|x\|^2=\sum_j|\langle x,e_j\rangle|^2.$$
+每个有界序列均有弱收敛子列；闭线性子空间对弱极限封闭。
+若 $x_n\rightharpoonup x$，则 $\|x\|\le\liminf\|x_n\|$；
+若再有 $\|x_n\|\to\|x\|$，则 $x_n\to x$ 强收敛。
+:::
+
+::: {.proof of="lem-arc-hilbert-sequences-1012"}
+Cauchy--Schwarz 由 $\|x-ty\|^2\ge0$ 的判别式得到。
+令 $d=\inf_{m\in M}\|x-m\|$，取距离极小序列 $m_n$。
+平行四边形恒等式给
+$$\|m_n-m_k\|^2
+=2\|x-m_n\|^2+2\|x-m_k\|^2
+-4\left\|x-\frac{m_n+m_k}2\right\|^2\longrightarrow0.$$
+完备性和 $M$ 闭给极小点 $m$；沿每个 $h\in M$ 对 $\|x-m-th\|^2$ 求导得
+$x-m\perp M$。该分解唯一，就是投影。
+非零连续泛函 $\ell$ 的核是闭子空间。取 $y\notin\ker\ell$，
+令 $e$ 为 $y-P_{\ker\ell}y$ 的单位化，则 $e\perp\ker\ell$、$\ell(e)\ne0$。
+因为 $x-\ell(x)e/\ell(e)\in\ker\ell$，有
+$\ell(x)=\ell(e)\langle x,e\rangle$；零泛函取 $z=0$。表示的唯一性由取 $x=z_1-z_2$ 得到。
+
+对有限正交和直接展开平方，得到
+$$\left\|x-\sum_{j=1}^N\langle x,e_j\rangle e_j\right\|^2
+=\|x\|^2-\sum_{j=1}^N|\langle x,e_j\rangle|^2.$$
+故系数平方和收敛，部分和由完备性收敛到某个 $p$。
+$x-p$ 与每个 $e_j$ 正交，所以 $p$ 就是其闭张成上的投影；若张成稠密，余项为零。
+这给 Parseval，而不使用任何 Fourier 变换。
+可分空间的可数完整正交系可由可数稠密集逐次 Gram--Schmidt 构造，跳过零余项。
+
+对任意有界序列 $x_n$，其闭线性张成 $M$ 可分：有限有理线性组合是可数稠密集。
+在 $M$ 取上述正交系 $e_j$。依次抽取再对角化，使所有系数
+$\langle x_{n_k},e_j\rangle\to a_j$。若 $\|x_n\|\le C$，有限平方和恒等式给
+$\sum_{j=1}^N a_j^2\le C^2$，所以 $x=\sum_j a_je_j$ 在 $M$ 中收敛。
+对任意 $y\in M$，先用有限正交和逼近 $y$，误差一致不超过
+$2C$ 乘逼近误差；有限系数已收敛，因此 $\langle x_{n_k},y\rangle\to\langle x,y\rangle$。
+对 $y\in H$ 再投影到 $M$，得到对全部 $y$ 的收敛；由刚证的泛函表示，这正是弱收敛。
+若 $x_n\in N$ 且 $N$ 是闭子空间，用 $N^\perp$ 中的向量测试极限，得到 $x\in N$。
+
+当 $x\ne0$，以 $x/\|x\|$ 测试弱收敛得范数下半连续；$x=0$ 时平凡。
+最后
+$$\|x_n-x\|^2=\|x_n\|^2+\|x\|^2-2\langle x_n,x\rangle$$
+证明弱收敛加范数收敛蕴含强收敛。
+:::
+
+::: {#lem-arc-coercive-quadratic-1012 .lemma name="强制对称二次型的直接极小构造" date="2026-10-12" export="lem-arc-coercive-quadratic-1012"}
+设 $H$ 为实 Hilbert 空间，$B$ 是有界对称双线性型，且
+$B(v,v)\ge c\|v\|^2$（$c>0$），$\ell$ 为有界线性泛函。
+则 $J(v)=B(v,v)-2\ell(v)$ 有唯一极小点 $u$，满足
+$$B(u,w)=\ell(w)\quad(w\in H),\qquad\|u\|\le\|\ell\|/c.$$
+此外任意有界非负对称型 $a$ 都是弱下半连续的，因为
+$$a(v,v)=\sup_w\{2a(v,w)-a(w,w)\}.$$
+:::
+
+::: {.proof of="lem-arc-coercive-quadratic-1012"}
+$J(v)\ge c\|v\|^2-2\|\ell\|\|v\|$，故下确界 $m$ 有限，极小序列 $v_n$ 有界。
+对称双线性展开给
+$$J\left(\frac{x+y}2\right)
+=\frac{J(x)+J(y)}2-\frac14B(x-y,x-y).$$
+于是
+$$c\|v_n-v_k\|^2\le2(J(v_n)-m)+2(J(v_k)-m)\longrightarrow0.$$
+完备性给 $v_n\to u$；$B,\ell$ 连续，故 $J(u)=m$。
+沿任意 $w$ 求一维导数得到 Euler 方程；令 $w=u$ 得范数上界。
+若有两个解，取其差测试并用强制性即可得到相等。
+最后非负性给 $a(v-w,v-w)\ge0$，且取 $w=v$ 达到等号，得到声明的上确界式。
+对固定 $w$，$a(v,w)$ 是连续线性泛函，故弱连续；上确界因而弱下半连续。
+:::

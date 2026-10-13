@@ -1,0 +1,89 @@
+---
+title: "凸域零延拓与 Dirichlet 紧性的直接证明"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: integral-foundations.qmd
+      use:
+        - lem-arc-integral-limits-1012
+        - lem-arc-euclidean-fubini-1012
+    - from: distribution-foundations.qmd
+      use:
+        - lem-arc-l2-sobolev-completeness-1012
+        - lem-arc-test-convolution-1012
+---
+
+本节固定 $H^1$ 为函数及其一阶分布导数均在 $L^2$ 的空间，
+$H_0^1(Q)$ 按定义是 $C_c^\infty(Q)$ 在 $H^1(Q)$ 中的闭包。
+积分极限、弱微分与具体函数空间完备性使用项目内基础引理；这里展开零延拓及有限网格紧性。
+
+::: {#lem-arc-convex-zero-extension-1012 .lemma name="凸域零延拓的向内伸缩刻画" date="2026-10-12" export="lem-arc-convex-zero-extension-1012"}
+对任意开集 $U\subset\mathbb R^d$，零延拓将 $H_0^1(U)$ 等距映入 $H^1(\mathbb R^d)$，
+并保持弱梯度为零延拓。若 $Q\subset\mathbb R^d$ 还是非空有界开凸集，$E$ 为其零延拓，
+则对 $v\in L^2(Q)$，
+$$v\in H_0^1(Q)\quad\Longleftrightarrow\quad Ev\in H^1(\mathbb R^d).$$
+此时 $\nabla(Ev)=E(\nabla v)$ 几乎处处，能量保持。
+此外 $C_c^\infty(\mathbb R^d)$ 在 $H^1(\mathbb R^d)$ 中稠密，且
+$$\|F(\,\cdot-z)-F\|_2\le |z|\,\|\nabla F\|_2
+\qquad(F\in H^1(\mathbb R^d)).$$
+:::
+
+::: {.proof of="lem-arc-convex-zero-extension-1012"}
+由 @lem-arc-test-convolution-1012，$L^2$ 平移强连续，且非负紧支单位积分核
+$\rho_\eta(x)=\eta^{-d}\rho(x/\eta)$ 满足 $\rho_\eta*F\to F$ 于 $L^2$。
+测试意义下的微分交换使此结论对每个弱导数同样成立。
+先以支集逐渐扩大的光滑截断 $\chi_R$ 乘 $F$，其中
+$0\le\chi_R\le1$、$\chi_R=1$ 于 $B_R$、支集在 $B_{2R}$、$|\nabla\chi_R|\le C/R$，
+由 @lem-arc-integral-limits-1012 的控制收敛及 $|\nabla\chi_R|$ 界，有 $\chi_RF\to F$ 于 $H^1$；
+再卷积便得到 $C_c^\infty$ 稠密性。
+对光滑函数，沿长度为 $|z|$ 的线段积分及 Cauchy--Schwarz 给所述平移估计；
+由刚证密度将它延至 $H^1$。
+
+若 $v\in H_0^1(Q)$，取定义中的光滑紧支逼近。其零延拓在全空间的 $H^1$ 范数
+与原范数相同，@lem-arc-l2-sobolev-completeness-1012 的完备性使极限存在且就是 $Ev$，并给梯度及能量恒等式。
+这一方向对任意开集成立。
+
+反之，设 $F=Ev\in H^1(\mathbb R^d)$。选 $B(x_0,r)\subset Q$，令
+$$F_\varepsilon(x)=F\left(x_0+\frac{x-x_0}{1-\varepsilon}\right),\qquad 0<\varepsilon<1/2.$$
+凸性给
+$$x_0+(1-\varepsilon)(\overline Q-x_0)+B(0,\varepsilon r)\subset Q.$$
+所以 $F_\varepsilon$ 的支集紧含于 $Q$，距补集至少 $\varepsilon r$。
+这里也有 $|\partial Q|=0$：将 $\overline Q$ 向 $x_0$ 按任意比例 $\sigma<1$ 缩小后包含于 $Q$，
+故 $|\partial Q|\le(1-\sigma^d)|\overline Q|$，令 $\sigma\uparrow1$。
+缩放算子在函数与梯度上的范数因子分别为
+$(1-\varepsilon)^{d/2}$ 和 $(1-\varepsilon)^{d/2-1}$，在该参数区间一致有界。
+对光滑紧支函数伸缩强连续，再用全空间 $H^1$ 密度，得到
+$F_\varepsilon\to F$ 于 $H^1(\mathbb R^d)$。
+将每个 $F_\varepsilon$ 用半径小于 $\varepsilon r/2$ 的核光滑化，
+并令该半径足够小以使 $H^1$ 误差趋零，就得 $C_c^\infty(Q)$ 对 $v$ 的逼近。
+因此 $v\in H_0^1(Q)$，其余恒等式由第一方向给出。
+:::
+
+::: {#lem-arc-dirichlet-compactness-1012 .lemma name="有界开集的 Dirichlet Poincaré 界与紧性" date="2026-10-12" export="lem-arc-dirichlet-compactness-1012"}
+设 $Q\subset\mathbb R^d$ 是非空有界开集，包含于某个边长 $L$ 的开立方体。
+则
+$$\|v\|_2^2\le L^2\|\nabla v\|_2^2\qquad(v\in H_0^1(Q)),$$
+且 $H_0^1(Q)$ 中每个有界序列都具有在 $L^2(Q)$ 中强收敛的子列。
+:::
+
+::: {.proof of="lem-arc-dirichlet-compactness-1012"}
+@lem-arc-convex-zero-extension-1012 的任意开集单向结论
+允许把每个函数零延拓到全空间，保持函数和梯度的 $L^2$ 范数；该方向无需凸性。
+对光滑紧支函数沿立方体一条坐标线从端点积分，
+$|v(t,x')|^2\le L\int|\partial_1v(s,x')|^2ds$。
+再用 @lem-arc-euclidean-fubini-1012 对 $t,x'$ 积分得 $L^2$ 常数，最后以定义中的密度推广。
+
+若 $F_j=Ev_j$ 的 $H^1$ 范数统一有界，则它们支集均在同一有界闭集内。
+使用前一引理的核和线段估计，对概率权 $\rho_\eta(z)dz$ 应用 Cauchy--Schwarz，再用上述换序公式，得到
+$$\|\rho_\eta*F_j-F_j\|_2^2
+\le\int\rho_\eta(z)\|F_j(\cdot-z)-F_j\|_2^2dz\le C^2\eta^2.$$
+对固定 $\eta>0$，$\rho_\eta*F_j$ 支集在共同的紧集内，且
+$$\|D^\alpha(\rho_\eta*F_j)\|_\infty
+\le\|D^\alpha\rho_\eta\|_2\|F_j\|_2,\qquad |\alpha|\le1.$$
+所以它们一致有界且一致 Lipschitz。用有限网格记录函数值，
+网格间的误差由共同 Lipschitz 常数乘网格宽度控制；
+有限个有界函数值可取收敛子列。因此该族在一致范数、进而 $L^2$ 范数中全有界。
+给定任意 $L^2$ 误差，先选 $\eta$ 使 $C\eta$ 小于该误差的三分之一，
+再为卷积族选有限网。这证明 $\{F_j\}$ 本身在 $L^2$ 全有界。
+@lem-arc-l2-sobolev-completeness-1012 的 $L^2$ 完备性给收敛子列；限制到 $Q$ 即得结论。
+:::

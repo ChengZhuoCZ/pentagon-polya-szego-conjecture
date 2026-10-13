@@ -1,0 +1,76 @@
+"""Round 7: finite identities and source bindings, not infinite-dimensional proof certification."""
+from pathlib import Path
+import json
+import sympy as S
+checks={}
+def ck(n,v):
+ assert bool(v),n
+ checks[n]=True
+def eq(n,a,b=0):ck(n,S.simplify(S.expand(a-b))==0)
+x,y,h,s,t,d,r,w,z=S.symbols('x y h s t d r w z',positive=True)
+G=(4*S.pi*h)**(-d/2)*S.exp(-r*r/(4*h))
+eq('gaussian_radial_heat_equation',S.diff(G,h),S.diff(G,r,2)+(d-1)*S.diff(G,r)/r)
+eq('gaussian_convolution_complete_square',(x-y)**2/(4*s)+y*y/(4*t),(s+t)/(4*s*t)*(y-t*x/(s+t))**2+x*x/(4*(s+t)))
+eq('gaussian_convolution_prefactor',(4*S.pi*s)**(-S.Rational(1,2))*(4*S.pi*t)**(-S.Rational(1,2))*S.sqrt(4*S.pi*s*t/(s+t)),(4*S.pi*(s+t))**(-S.Rational(1,2)))
+xx=S.symbols('xx',real=True);g=(4*S.pi*h)**(-S.Rational(1,2))*S.exp(-xx*xx/(4*h))
+eq('gaussian_mass',S.integrate(g,(xx,-S.oo,S.oo)),1)
+eq('gaussian_second_moment',S.integrate(xx*xx*g,(xx,-S.oo,S.oo)),2*h)
+eq('half_time_energy_derivative_factor',2*S.Rational(1,2),1)
+m=S.symbols('m',integer=True,positive=True);u=S.symbols('u',real=True)
+pg=(1-u+u*z)**m
+mean=S.diff(pg,z).subs(z,1);fac2=S.diff(pg,z,2).subs(z,1)
+eq('bernstein_mass',pg.subs(z,1),1)
+eq('bernstein_mean',mean/m,u)
+eq('bernstein_variance',(fac2+mean)/m**2-u*u,u*(1-u)/m)
+eq('bernstein_variance_maximum_remainder',S.Rational(1,4)-u*(1-u),(u-S.Rational(1,2))**2)
+k=S.symbols('k',real=True);rh=1/(1+(1-k)/h)
+eq('resolvent_to_heat_multiplier',1/rh-1,(1-k)/h)
+eq('resolvent_lower_endpoint',rh.subs(k,0),h/(h+1))
+eq('resolvent_upper_endpoint',rh.subs(k,1),1)
+eq('form_dual_supremum_difference',x*x-(2*x*y-y*y),(x-y)**2)
+L=S.symbols('L',positive=True)
+for n in (1,2):
+ f=S.sin(n*S.pi*xx/L)
+ eq(f'interval_sine_mass_{n}',S.integrate(f*f,(xx,0,L)),L/2)
+ eq(f'interval_sine_energy_{n}',S.integrate(S.diff(f,xx)**2,(xx,0,L)),n*n*S.pi**2/(2*L))
+M=S.Matrix([[S.cos(z),S.sin(z)/w],[-w*S.sin(z),S.cos(z)]])
+ck('periodic_monodromy_determinant',S.trigsimp((M-S.eye(2)).det()-(2-2*S.cos(z)))==0)
+eq('dirichlet_odd_extension_constant',(2*L/(2*S.pi))**2,(L/S.pi)**2)
+fv,sv,gx,gy,ax,ay,delta=S.symbols('f s gx gy ax ay delta',real=True)
+sfun=S.Function('s')(x,y)
+eq('pressure_divergence',S.diff((x-ax)/sfun,x)+S.diff((y-ay)/sfun,y),2/sfun-((x-ax)*S.diff(sfun,x)+(y-ay)*S.diff(sfun,y))/sfun**2)
+nx,ny=S.symbols('nx ny',real=True);tau=1-delta
+xdel=ax+tau*(x-ax);ydel=ay+tau*(y-ay)
+eq('homothetic_flux_coefficient',tau*((xdel-ax)*nx+(ydel-ay)*ny),tau*tau*((x-ax)*nx+(y-ay)*ny))
+eq('homothetic_original_flux_limit',S.limit(tau*(xdel*nx+ydel*ny),delta,0),x*nx+y*ny)
+lam,coef=S.symbols('lambda coefficient',positive=True)
+eq('form_parseval_subtraction',(1+lam)*coef**2-coef**2,lam*coef**2)
+eq('gaussian_positivity_half_time',h/2+h/2,h)
+# Source assertions confirm the intended implementation, not its analytic validity.
+root=Path(__file__).resolve().parent.parent
+ar=root/'workspace/analytic-replacements-1012'
+heat=(ar/'gaussian-ground-state.qmd').read_text();energy=(ar/'gaussian-energy.qmd').read_text()
+level=(ar/'area-spectral-budget.qmd').read_text();sob=(ar/'sobolev-convex-foundations.qmd').read_text()
+spec=(ar/'dirichlet-spectral-foundations.qmd').read_text();interval=(ar/'interval-variational.qmd').read_text()
+pressure=(root/'workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd').read_text()
+fan=(root/'workspace/fourier-pressure-geometry-reconstruction-1011.qmd').read_text()
+ck('heat_convex_scope',r'为非空有界开凸集' in heat)
+ck('heat_uses_convolution_energy','@lem-arc-gaussian-energy-1012' in heat and r'\widehat{Ev}' not in heat)
+ck('heat_uses_proved_zero_extension','@lem-arc-convex-zero-extension-1012' in heat)
+ck('heat_uses_proved_compact_diagonalization','@lem-arc-positive-compact-spectrum-1012' in heat)
+ck('heat_bernstein_variance_bound',r'\frac{\|\Phi\|_\infty}{2m\delta^2}' in heat)
+ck('gaussian_energy_integral_identity',r'\frac1h\int_0^h E(s/2)\,ds' in energy)
+ck('zero_extension_has_general_forward_direction','对任意开集' in sob)
+ck('zero_extension_uses_inward_dilation',r'\frac{x-x_0}{1-\varepsilon}' in sob)
+ck('spectrum_has_general_connected_scope','非空有界连通开集' in spec)
+ck('spectrum_first_gap_projection',r'e^{-t(\lambda_2-\lambda_1)}' in spec)
+ck('spectrum_local_harmonic_lift',r'U(x,z)=w(x)e^{\sqrt\lambda z}' in spec)
+ck('periodic_ode_in_source',r'f(x)=a\cos(\sqrt\mu x)+b\sin(\sqrt\mu x)' in interval)
+ck('levelsets_use_variational_interval','@lem-arc-interval-variational-1012' in level and '周期 Fourier 展开' not in level)
+ck('radial_rearrangement_uses_zero_extension','@lem-arc-convex-zero-extension-1012' in level and '外圆的边界项' in level)
+ck('pressure_vertex_integrability_fatou','Fatou 引理' in pressure and '为第 $i$ 条边相对于 $a$ 的支撑数' in pressure)
+ck('pressure_inward_concavity_domination',r's(z_\delta)\ge t s(z)+\delta s(a)\ge t s(z)' in pressure)
+ck('pressure_no_sobolev_gauss_green_premise','换元及 Sobolev Gauss--Green 给' not in pressure)
+ck('fan_direct_interface_cancellation','公共边两侧函数值相同、外法向相反' in fan)
+ck('q_bound_preserved',r'0<q:=I/J_R<\frac{5\sqrt2}{17}<\frac5{12}.' in pressure)
+print(json.dumps({'passed':True,'check_count':len(checks),'checks':checks,'scope':'Finite symbolic identities and source transcription/dependency bindings only. Does not certify Sobolev limits, compactness, spectral completeness, trace replacement, PDE claims or the root theorem.'},ensure_ascii=False,indent=2))

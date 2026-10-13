@@ -1,0 +1,92 @@
+{
+  "scope": "Author mathematical review of explicit derivations and applicability, not independent verification or formal proof. Finite checks do not establish the analytic conclusions.",
+  "steps": [
+    {
+      "step": "凸域零延拓",
+      "nodes": [
+        "lem-arc-convex-zero-extension-1012"
+      ],
+      "hypotheses": "反向刻画只声明于非空有界开凸集；H01 到全空间 H1 的正向零延拓对任意开集成立。",
+      "argument_checked": "内球使伸缩支集距补集至少 epsilon*r；全空间截断和卷积给 H1 密度；伸缩的函数/梯度范数均一致受控；卷积半径小于边界距离。",
+      "retained_basis": "Lebesgue 正则性、L2 完备性、分布导数、积分换元。"
+    },
+    {
+      "step": "Dirichlet 紧性",
+      "nodes": [
+        "lem-arc-dirichlet-compactness-1012"
+      ],
+      "hypotheses": "任意非空有界开集；函数属于按闭包定义的 H01。",
+      "argument_checked": "零延拓保持 H1；线段积分给 Poincare 与统一平移误差；固定卷积后的支集、C1 界一致；有限网格给全有界，再用 L2 完备性。",
+      "retained_basis": "Hilbert/L2 基础，不调用 Rellich。"
+    },
+    {
+      "step": "正紧算子与基态离散谱",
+      "nodes": [
+        "lem-arc-positive-compact-spectrum-1012",
+        "lem-arc-dirichlet-spectrum-1012"
+      ],
+      "hypotheses": "前者为正紧自伴算子（允许非零核）；后者为有界连通开集，无边界光滑性要求。",
+      "argument_checked": "非负二次型 Cauchy 界、逐次正交极大化及紧性给完整对角分解；弱变分预解 R 为紧正自伴且单射；L2 与 H1 的两套 Hilbert Parseval 给型能量；模的平滑链式逼近产生非负极小点；调和提升和均值论证给内部正性、单性；逐项估计给长时间基态投影。",
+      "retained_basis": "Hilbert 弱紧性、正交投影、正交级数；光滑调和均值由经典散度公式推得。"
+    },
+    {
+      "step": "去掉 Plancherel 与一般谱演算",
+      "nodes": [
+        "lem-arc-gaussian-energy-1012",
+        "lem-arc-gaussian-dirichlet-limit-1012"
+      ],
+      "hypotheses": "全空间卷积能量适用于全部 L2；截断 Dirichlet 热乘积明确限于有界开凸集，覆盖当前全部消费者。",
+      "argument_checked": "高斯配方与 Jensen 给半群及压缩；d/ds ||G_(s/2)*F||²=-||grad G_(s/2)*F||²；梯度能量随时间递减，其起始平均给型单调性；梯度弱极限刻画 H1；变分预解强收敛；K_h 的连续核有限秩逼近给紧性；R_h 本身通常不紧，使用 K_h 的对角分解处理它；Bernstein 权重均值方差给统一多项式逼近；沿用 2/n 乘积误差。",
+      "retained_basis": "积分收敛、Hilbert 弱紧性和本轮所证零延拓；无需 Fourier 变换或一般谱测度定理。"
+    },
+    {
+      "step": "周期与条带常数",
+      "nodes": [
+        "lem-arc-interval-variational-1012",
+        "lem-arc-levelset-spectral-budget-1012",
+        "prp-pressure-rebuild-1011-attainment"
+      ],
+      "hypotheses": "一维 W11 原函数；周期 H1 零均值；零端点 H1；条带步骤先对光滑紧支函数逐线应用再取闭包。",
+      "argument_checked": "弱导数积分给绝对连续代表；有限网格紧性给周期极小元；Euler 方程、周期导数条件及常系数 ODE 给 (L/2pi)^2；奇延拓给 (L/pi)^2；层集等周所需常数不变。",
+      "retained_basis": "一维积分、Hilbert 弱紧性、常系数 ODE、经典 Green 公式。"
+    },
+    {
+      "step": "径向重排的零边界归属",
+      "nodes": [
+        "lem-arc-levelset-spectral-budget-1012"
+      ],
+      "hypotheses": "径向函数有界、连续到中心与边界，外边界值为零，前文给有限梯度能量。",
+      "argument_checked": "环带上对全空间测试函数分部积分；中心项由周长趋零，外项由函数值趋零；得到全空间 H1 零延拓，再用向内伸缩刻画进入 H01。",
+      "retained_basis": "规则层集换元/余面积、Green、控制/单调收敛；一般迹定理退出该接口。"
+    },
+    {
+      "step": "压力边界积分",
+      "nodes": [
+        "lem-arc-pressure-gap-1012"
+      ],
+      "hypotheses": "闭域连续、开边正、闭域非负的凹压力；s^-1 与 |grad s|/s² 可积。允许顶点处 1/s 发散。",
+      "argument_checked": "内点平移使全部支撑数正；内缩多边形的非负通量和 Fatou 先给每条边 s^-1 可积；凹性给 1/s(z_delta)<=2/s(z)，再允许控制收敛；最后用原 z/s 场，保留任意坐标原点的准确边界公式。",
+      "retained_basis": "经典光滑散度定理及积分收敛，无需一般 Sobolev 迹/Gauss-Green。"
+    },
+    {
+      "step": "其余 Sobolev 接口",
+      "nodes": [
+        "lem-arc-corner-barrier-1012",
+        "lem-psgs-actual-pressure-weights-1011h",
+        "prp-tpr-support-hadamard-tpr1011",
+        "prp-pressure-rebuild-1011-area-fan-formulas"
+      ],
+      "hypotheses": "角窗凸、直边可反射；积分权弱导数有界；形变光滑且两向导数有界；扇映射有限片仿射且 Jacobian 正。",
+      "argument_checked": "角点先零延拓再奇反射，正部测试用凸域刻画；角权弱导数积分为 Lipschitz 代表并匹配端点；Hadamard 用本轮紧性和单性；扇图逐片分部积分使公共边项抵消，再由 H01 闭包推广换元。",
+      "retained_basis": "分布导数、光滑乘子/正部链式法则、经典有限片换元；未声称替换一切 Sobolev/PDE 理论。"
+    }
+  ],
+  "remaining_foundations": [
+    "Lebesgue measure/integration and convergence theorems",
+    "distributional derivatives and Hilbert completeness/weak compactness/orthogonal projections",
+    "elementary smooth calculus, change of variables, classical Green/divergence, regular-level coarea",
+    "strong minimum principle in strict Hessian proof",
+    "other geometry/transport inputs outside this round"
+  ],
+  "scope_change": "Heat-product lemma narrowed from bounded Lipschitz domains to bounded open convex sets; every current use is convex. General Dirichlet spectrum covers bounded connected open sets."
+}

@@ -1,0 +1,40 @@
+---
+title: "第六标量 u₀ 的完整径向下界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: bessel-core.qmd
+      use:
+        - def-arc-bessel-data-1012
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+---
+
+::: {#lem-arc-u0-radial-1012 .lemma name="零模的连续下界" date="2026-10-12" export="lem-arc-u0-radial-1012"}
+采用 @def-arc-bessel-data-1012 及 @lem-arc-geometric-constants-1012。在 $0\le q\le81/125,0\le\beta\le\alpha,\epsilon=\pm1$ 上，
+$$u_0\ge q^2\left[\frac12+\frac\epsilon6(\alpha^2-\beta^2)\right]-\frac{q^4}{12}.$$
+:::
+
+::: {.proof of="lem-arc-u0-radial-1012"}
+采用 @def-arc-bessel-data-1012 的全部定义与 @lem-arc-geometric-constants-1012 的常数界。
+全部 Bessel 函数使用所引定义中的整级数，$R_b^2=a^2+b^2$。
+由 $J_{-1}=-J_1$，准确有
+$$W_0(b)=J_0(qR_b)+i\frac{qb}{R_b}J_1(qR_b),$$
+$$u_0=\frac q{R_\beta}J_1(qR_\beta)+2\epsilon(I_\beta-I_\alpha)J_0(qR_b).$$
+置 $y=R_b^2$、$T(y)=J_0(q\sqrt y)-1+q^2y/4$。
+因为 $q^2y/4<.121$，相邻项模递减；对级数及其导数逐项交错比较给
+$$\frac q{\sqrt y}J_1(q\sqrt y)\ge\frac{q^2}{2}-\frac{q^4y}{16},\qquad
+0\le T'(y)\le\frac{q^4y}{32}.$$
+以 $I_\gamma g=\int_0^1g(\gamma v)\,dv$ 比较两个区间，得到
+$$0\le I_\alpha T-I_\beta T\le\frac{q^4}{64}
+\left[\frac{2a^2}{3}(\alpha^2-\beta^2)+\frac{\alpha^4-\beta^4}{5}\right].$$
+对两个 $\epsilon$ 均可向下支付这个误差，从而
+$$u_0\ge q^2\left[\frac12+\frac\epsilon6(\alpha^2-\beta^2)\right]
+-q^4\left[\frac{a^2+\beta^2}{16}+\frac{a^2(\alpha^2-\beta^2)}{48}+\frac{\alpha^4-\beta^4}{160}\right].$$
+最后方括号不超过 $(a^2+\alpha^2)/16$：两者之差是
+$$(\alpha^2-\beta^2)\left[\frac1{16}-\frac{a^2}{48}-\frac{\alpha^2+\beta^2}{160}\right]\ge0,$$
+因为 $a<1,\alpha^2<2/5$。又 $(107/100)^2/16<1/12$。
+所有公式在 $q=0$ 或 $\beta=0$ 连续成立。
+:::
+

@@ -1,0 +1,63 @@
+---
+title: "一维绝对连续性与不用 Fourier 展开的尖锐 Poincaré 界"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: integral-foundations.qmd
+      use:
+        - lem-arc-euclidean-fubini-1012
+    - from: distribution-foundations.qmd
+      use:
+        - lem-arc-l2-sobolev-completeness-1012
+        - lem-arc-test-convolution-1012
+    - from: hilbert-foundations.qmd
+      use:
+        - lem-arc-hilbert-sequences-1012
+---
+
+::: {#lem-arc-interval-variational-1012 .lemma name="一维弱导数、端点与周期和零边界变分常数" date="2026-10-12" export="lem-arc-interval-variational-1012"}
+若 $f,g\in L^1(0,L)$、$L>0$，且分布导数 $f'=g$，则 $f$ 有绝对连续代表，
+满足 $f(b)-f(a)=\int_a^b g$（$0\le a\le b\le L$）。
+若另有连续代表，其端点就是该绝对连续代表的端点。
+对 $f\in H^1(0,L)$，有以下两个尖锐不等式：
+$$\int_0^L f^2\le\left(\frac L{2\pi}\right)^2\int_0^L(f')^2
+\quad\text{当 } f(0)=f(L),\ \int_0^L f=0,$$
+$$\int_0^L f^2\le\left(\frac L\pi\right)^2\int_0^L(f')^2
+\quad\text{当 }f(0)=f(L)=0.$$
+它们也逐分量适用于向量值函数。
+:::
+
+::: {.proof of="lem-arc-interval-variational-1012"}
+令 $F(x)=\int_0^x g(t)dt$，对紧支测试函数用 @lem-arc-euclidean-fubini-1012 得
+$$\int_0^L F(x)\phi'(x)dx
+=\int_0^L g(t)\left(\int_t^L\phi'(x)dx\right)dt=-\int_0^L g(t)\phi(t)dt.$$
+所以 $(f-F)'=0$。@lem-arc-test-convolution-1012 的零弱导数结论给 $f=F+c$ 几乎处处。
+可积函数积分的绝对连续性由先截断 $|g|$ 再控制剩余 $L^1$ 尾部得到，
+故 $F$ 绝对连续，证明积分与端点断言。
+两个此类原函数的乘积公式，可将乘积展开成二重积分，
+按 $s<t$、$t<s$ 划分积分矩形并换序，得到 $d(FG)=F\,dG+G\,dF$ 的积分形式，
+从而也得到所需积分分部公式。
+
+在周期、零均值、$\int f^2=1$ 的实 $H^1$ 函数中极小化 $\int(f')^2$。
+对这类函数，连续性和零均值保证至少一点取零，故
+$$\|f\|_\infty\le\sqrt L\,\|f'\|_2,
+\qquad |f(x)-f(y)|\le\sqrt{|x-y|}\,\|f'\|_2.$$
+极小序列因此一致有界且等度连续；有限网格取子列证明它在一致范数下有收敛子列。
+由 @lem-arc-l2-sobolev-completeness-1012 的 $L^2$ Hilbert 性和 @lem-arc-hilbert-sequences-1012 的弱子列构造，导数可取弱收敛子列；
+@lem-arc-l2-sobolev-completeness-1012 的测试闭合确定其为极限导数，@lem-arc-hilbert-sequences-1012 的范数下半连续性给极小元 $f$。
+约束在一致极限下保持，上述粗界给极小值 $\mu>0$。
+对周期零均值方向变分，Euler 方程为
+$$\int f'\varphi'=\mu\int f\varphi.$$
+对任意周期方向减去其均值，式子不变，所以它对全部周期 $H^1$ 测试函数成立。
+内点测试给 $f''=-\mu f$；由前面的积分原函数结论逐次提升，$f$ 光滑。
+分部积分及任意相同端点的测试值再给 $f'(0)=f'(L)$。
+常系数常微分方程的通解为
+$$f(x)=a\cos(\sqrt\mu x)+b\sin(\sqrt\mu x).$$
+函数及导数的周期条件有非零解，恰当 $\sqrt\mu L=2\pi k$，$k$ 为正整数。
+试函数 $\sin(2\pi x/L)$ 给 $\mu\le(2\pi/L)^2$，故 $k=1$，即得第一个尖锐常数。
+
+对于两端零值的 $f$，在 $(-L,L)$ 上作奇延拓，再按周期 $2L$ 延续。
+拼接值在 $0,\pm L$ 连续；逐段分部积分时端点项抵消，故延拓在周期 $H^1$ 中，均值为零。
+其质量、能量均为原来的两倍。应用第一个不等式，得到第二个常数。
+$\sin(\pi x/L)$ 取得等号；向量值情形对各分量求和即可。
+:::

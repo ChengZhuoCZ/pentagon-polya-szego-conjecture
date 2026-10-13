@@ -1,0 +1,585 @@
+---
+title: "Head and tail responses and pole-free comparison"
+qmd-prover:
+  imports:
+    - from: constants.qmd
+      use: [lem-pi-rational]
+    - from: analytic.qmd
+      use: [def-analytic]
+    - from: candidate.qmd
+      use: [def-candidate]
+    - from: interface.qmd
+      use: [lem-interface]
+---
+
+::: {#lem-head-response .lemma name="R.5 Two gains in the connecting-segment response" date="2026-10-11" export="lem-head-response"}
+Let $0<A\le2$, $0<d<1$, $w=1-d$, and $0<E-A<\pi^2$. Suppose that $E$ lies below the first Dirichlet--Dirichlet eigenvalue for $V(y)=A/(1-dy)^2$ on $(0,1)$. Let $u$ solve $-u''+Vu=Eu$, with $u(0)=0,u(1)=1$. Then $u'(1)\ge\sqrt{E-A}\cot\sqrt{E-A}+Ad/(2w)+A(2-A)d^2/(20w)$.
+:::
+
+::: {.proof of="lem-head-response"}
+Write $f_0(y)=1-dy$, $\kappa^2=E-A$, and $c=(2-A)/20$, and set
+$$
+b_1(y)=\frac{Ady^2}{2f_0(y)},\qquad
+b_2(y)=\frac{cAd^2y^3}{f_0(y)},\qquad b=b_1+b_2.
+$$
+Since $0<A\le2$, we have $c\ge0$ and $cA\le1/20$. Differentiating the displayed rational functions gives
+$$
+A(f_0^{-2}-1)-(b_1'+2b_1/y+b_1^2)
+=\frac{Ad^2y^2}{f_0^2}\left(\frac12-\frac{Ay^2}{4}\right),
+$$
+and
+$$
+\frac{f_0^2}{Ad^2y^2}
+\left(b_2'+\frac{2b_2}y+2b_1b_2+b_2^2\right)
+=5c+cdy(-4+Ay^2+cAdy^3)\le5c=\frac{2-A}{4}.
+$$
+The last inequality uses $-4+Ay^2+cAdy^3\le-4+2+1/20<0$. Subtracting yields the residual estimate on the whole interval:
+$$
+A(f_0^{-2}-1)-b'-2b/y-b^2
+\ge\frac{A^2d^2y^2(1-y^2)}{4f_0^2}\ge0.\tag{R.5.0}
+$$
+
+Because $(\sin t-t\cos t)'=t\sin t>0$ for $0<t<\pi$, we have $t\cot t<1$. Thus $0<\kappa<\pi$ implies $\kappa\cot(\kappa y)\le1/y$. The positive function
+$$
+g(y)=\sin(\kappa y)\exp\!\left(\int_0^y b(t)\,dt\right)
+$$
+satisfies
+$$
+\frac{-g''+(V-E)g}{g}
+=A(f_0^{-2}-1)-b'-2\kappa\cot(\kappa y)b-b^2\ge0.
+$$
+
+To justify positivity of the compared solution, let $u_0$ be the regular initial-value solution with $u_0(0)=0,u_0'(0)=1$. If its first zero occurred at $z\in(0,1]$, its restriction to $(0,z)$, extended by zero, would be a nonzero Dirichlet test function on $(0,1)$ with Rayleigh quotient $E$, contradicting the assumed Dirichlet--Dirichlet spectral bound. Hence $u_0>0$ on $(0,1]$, and the prescribed two-endpoint solution is $u=u_0/u_0(1)$. For $W=u'g-ug'$,
+$$
+W'=u[-g''+(V-E)g]\ge0,\qquad W(0)=0.
+$$
+Consequently $u'(1)/u(1)\ge g'(1)/g(1)$. Since $u(1)=1$ and $f_0(1)=w$,
+$$
+u'(1)\ge\sqrt{E-A}\cot\sqrt{E-A}
++\frac{Ad}{2w}+\frac{A(2-A)d^2}{20w}.\tag{R.5.1}
+$$
+Both gains come from the explicit differential residual of the connecting-segment potential.
+:::
+
+::: {#lem-regular-tail .lemma name="R.6.1 Regular tail solutions from a Volterra equation" date="2026-10-12" export="lem-regular-tail"}
+For real $a>1$, let $\lambda_D(a)$ be the first eigenvalue of the Friedrichs realization of $-\partial_z^2+a(a-1)z^{-2}$ on $(0,1)$ with a Dirichlet condition at $1$. Its form domain is $H_0^1(0,1)$, and $\lambda_D(a+1)\ge\lambda_D(a)$.
+
+For every $T>0$, the differential equation
+$$
+-u_a''+\frac{a(a-1)}{z^2}u_a=Tu_a
+$$
+has a unique solution on $(0,1]$ satisfying $u_a/z^a\to1$ at zero. It has finite form energy at the singular endpoint, and
+$$
+u_a=z^a(1+O(z^2)),\qquad
+u_a'=az^{a-1}+O(z^{a+1}),\qquad
+u_a'-\frac a z u_a=-\frac{T}{2a+1}z^{a+1}+O(z^{a+3}).
+$$
+If $0<T<\lambda_D(a)$, then $u_a>0$ on $(0,1]$, and $u_a/u_a(1)$ is the unique minimizer of the shifted form
+$$
+\int_0^1\left(|v'|^2+\frac{a(a-1)}{z^2}|v|^2-T|v|^2\right)\,dz
+$$
+over $v\in H^1(0,1)$ with $v(0)=0,v(1)=1$. Its outward response at $1$ is $D_a=u_a'(1)/u_a(1)$.
+:::
+
+::: {.proof of="lem-regular-tail"}
+For a real compactly supported smooth function, integration by parts and Cauchy--Schwarz give
+$$
+\int_0^1\frac{v^2}{z^2}
+=2\int_0^1\frac{vv'}z
+\le2\left(\int_0^1\frac{v^2}{z^2}\right)^{1/2}
+\left(\int_0^1|v'|^2\right)^{1/2},
+\qquad
+\int_0^1\frac{v^2}{z^2}\le4\int_0^1|v'|^2.
+$$
+Apply this to the real and imaginary parts for complex functions. Approximation extends the inequality to $H_0^1(0,1)$. Since $a(a-1)>0$, the form norm is equivalent to the $H_0^1$ norm, its closure has exactly that domain, and the smooth compactly supported functions are a form core. Compact embedding gives compact resolvent and a positive first eigenvalue. The potential increases with $a>1$, so the variational principle on this common domain gives $\lambda_D(a+1)\ge\lambda_D(a)$.
+
+Write $u_a=z^av$. For $v\in C[0,1]$, define
+$$
+(\mathcal K_av)(z)
+=\int_0^z\xi^{-2a}\int_0^\xi\eta^{2a}v(\eta)\,d\eta\,d\xi
+=\frac1{2a-1}\int_0^z
+\eta\left[1-\left(\frac\eta z\right)^{2a-1}\right]v(\eta)\,d\eta
+$$
+for $z>0$, and $(\mathcal K_av)(0)=0$. The second equality follows by changing the order of integration. The kernel is nonnegative, is bounded above by $\eta/(2a-1)$, and extends continuously at the origin.
+
+Set $\beta=T/(2a-1)>0$ and $\|v\|_\beta=\sup_{[0,1]}e^{-\beta z^2}|v(z)|$. This norm is equivalent to the uniform norm, so $C[0,1]$ is complete. The kernel bound gives
+$$
+\begin{aligned}
+e^{-\beta z^2}|T\mathcal K_a(v-w)(z)|
+&\le\frac{T}{2a-1}\|v-w\|_\beta
+e^{-\beta z^2}\int_0^z\eta e^{\beta\eta^2}\,d\eta\\
+&=\frac12(1-e^{-\beta z^2})\|v-w\|_\beta
+\le\frac12\|v-w\|_\beta.
+\end{aligned}
+$$
+Thus the successive iterates of $v\mapsto1-T\mathcal K_av$ have geometrically decreasing differences and converge uniformly to its unique fixed point
+$$
+v=1-T\mathcal K_av.
+$$
+Differentiating its integral formula for $z>0$ gives
+$$
+v'(z)=-Tz^{-2a}\int_0^z\eta^{2a}v(\eta)\,d\eta.
+$$
+Boundedness first gives $v'=O(z)$ and $v=1+O(z^2)$; substituting that estimate back gives
+$$
+v'(z)=-\frac{T}{2a+1}z+O(z^3).
+$$
+The derivative formula also yields $(z^{2a}v')'=-Tz^{2a}v$. Hence $u_a=z^av$ solves the differential equation and has all the stated asymptotics.
+
+To check uniqueness from the normalization alone, let $\widetilde u/z^a=\widetilde v\to1$. Then $p=z^{2a}\widetilde v'$ satisfies $p'=-Tz^{2a}\widetilde v$. Since the latter is integrable at zero, $p$ has a finite limit $\ell$, and
+$$
+p(z)=\ell+O(z^{2a+1}),\qquad
+\widetilde v'(z)=\ell z^{-2a}+O(z).
+$$
+If $\ell\ne0$, integration produces a nonzero term $\ell z^{1-2a}/(1-2a)$, contradicting boundedness of $\widetilde v$ because $a>1$. Thus $\ell=0$. Integrating from zero now gives exactly the same fixed-point equation, whose uniqueness proves $\widetilde u=u_a$.
+
+The asymptotics give $u_a(0)=0$ and
+$$
+|u_a'|^2+z^{-2}|u_a|^2=O(z^{2a-2}),
+$$
+so $u_a\in H^1(0,1)$ has finite potential energy. Suppose $T<\lambda_D(a)$. Its leading regular term is positive. If its first zero were $z_0\le1$, extension by zero from $(0,z_0)$ would give a nonzero member of $H_0^1(0,1)$ with Rayleigh quotient $T$. Indeed, integration of the equation has no boundary term: $u_a(z_0)=0$ and $u_au_a'=O(z^{2a-1})\to0$ at zero. This contradicts $T<\lambda_D(a)$, so $u_a>0$ on $(0,1]$.
+
+Normalize $g=u_a/u_a(1)$. Its differential equation gives the weak equation against compactly supported smooth zero-trace tests. Finite energy, Hardy's inequality, and form-core density extend it to every $w\in H_0^1(0,1)$. Every other function with the same traces is $g+w$, and its shifted energy equals that of $g$ plus that of $w$, since the mixed term vanishes. If $q_a$ denotes the unshifted form, then
+$$
+q_a(w)-T\|w\|_2^2
+\ge\left(1-\frac{T}{\lambda_D(a)}\right)q_a(w)>0
+\qquad(w\ne0).
+$$
+This proves the unique minimizing property. Integration by parts, with the already established zero boundary product at the singular endpoint, gives its shifted energy as $g'(1)=D_a$.
+:::
+
+::: {#lem-tail-recurrence .lemma name="R.6.2 Adjacent-order recurrence and a direct response bound" date="2026-10-11" export="lem-tail-recurrence"}
+Let $s>1$, and let $T>0$ lie below the first Friedrichs--Dirichlet eigenvalue of $-\partial_z^2+s(s-1)z^{-2}$ on $(0,1)$. Normalize the regular solution by $u_s/z^s\to1$, and write $D_s=u_s'(1)/u_s(1)$. Then $D_s=s-T/(s+D_{s+1})$, with positive denominator. If $s=\sigma$, $r=\sqrt{(2\sigma+5)^2-4T}>0$, $C=\sigma+1/2+r/2>0$, and $D=2\sigma+1-T/C>0$, then $D_\sigma\ge\sigma-T/D$.
+:::
+
+::: {.proof of="lem-tail-recurrence"}
+Use the regular solutions, asymptotics, and spectral ordering in @lem-regular-tail. Write $L_a=-\partial_z^2+a(a-1)z^{-2}$ for the differential expression, and set
+$$
+A_a=\partial_z-\frac a z,\qquad B_a=\partial_z+\frac a z.
+$$
+Composition gives
+$$
+L_a=-B_aA_a,\qquad
+L_{a+1}=-A_aB_a,\qquad
+L_{a+1}A_a=A_aL_a.
+$$
+These are differential identities on $(0,1]$; no Dirichlet operator-domain claim is made for the individual factors. Thus $A_au_a$ solves the order-$a+1$ equation at the same energy $T$. The sharper asymptotic in @lem-regular-tail and uniqueness of its normalized solution give
+$$
+A_au_a=-\frac{T}{2a+1}u_{a+1}.
+$$
+Applying $B_a$ and using $B_aA_au_a=-Tu_a$ then gives
+$$
+B_au_{a+1}=(2a+1)u_a.
+$$
+When $T<\lambda_D(s)$, spectral ordering gives $T<\lambda_D(s+1)$, so both regular interface values are positive. Consequently
+$$
+s+D_{s+1}=(2s+1)\frac{u_s(1)}{u_{s+1}(1)}>0,
+\qquad
+D_s=s-\frac{T}{s+D_{s+1}}.
+$$
+
+For the second assertion put $a=\sigma$, $A=2a+1$, $M=2a+3$, and $c=(2a+5-r)/2>0$. The given radical and denominators satisfy
+$$
+T=c(2a+5-c),\qquad
+C=M-c>0,\qquad D=A-\frac TC>0.
+$$
+Let $B=Ac+T$ and $H(z)=AM-Bz^2$. Then
+$$
+H(z)\ge H(1)=AM-Ac-T=CD>0,\qquad
+M-cz^2\ge C>0
+\quad(0\le z\le1).
+$$
+Define the positive comparison function
+$$
+w(z)=z^a\exp\left(-\int_0^z
+\frac{T\eta(M-c\eta^2)}{H(\eta)}\,d\eta\right),
+\qquad
+\frac{w'}w=\frac a z-\frac{Tz(M-cz^2)}{H(z)}.
+$$
+Its endpoint response is
+$$
+\frac{w'(1)}{w(1)}=a-\frac{TC}{CD}=a-\frac TD.
+$$
+To compute its residual, write $x=z^2$, $h(x)=AM-Bx$, and $f(x)=T(M-cx)/h(x)$. Direct differentiation gives
+$$
+f'=\frac{T^2M}{h^2},\qquad Af-T=\frac{T^2x}{h}.
+$$
+Since $M=A+2$, $2M-A=2a+5$, and $T=c(2a+5-c)$,
+$$
+h+2M-(M-cx)^2
+=[(2M-A)c-T]x-c^2x^2=c^2x(1-x).
+$$
+Therefore
+$$
+\frac{(L_a-T)w}{w}
+=Af+2xf'-xf^2-T
+=\frac{T^2x}{h^2}\bigl[h+2M-(M-cx)^2\bigr]
+=\frac{T^2c^2z^4(1-z^2)}{H(z)^2}\ge0.
+$$
+The inequality is strict for $0<z<1$. By @lem-regular-tail, $u_a>0$ at the given energy. Also $w=z^a(1+O(z^2))$ and $w'=az^{a-1}+O(z^{a+1})$, so the Wronskian $W=u_a'w-u_aw'$ tends to zero at the singular endpoint. Its derivative is
+$$
+W'=u_a(L_a-T)w>0\qquad(0<z<1).
+$$
+Integration to one and division by positive interface values give
+$$
+D_\sigma>\frac{w'(1)}{w(1)}
+=\sigma-\frac TD=\mathsf T(\sigma,T),
+$$
+where the last notation is from @def-analytic. In particular, the stated non-strict bound holds.
+:::
+
+::: {#lem-cot-rational .lemma name="R.7 A rational lower bound for the cotangent response" date="2026-10-11" export="lem-cot-rational"}
+With $\mathsf H$ defined in @def-analytic, one has $\sqrt K\cot\sqrt K>\mathsf H(K)$ for $0<K<\pi^2$.
+:::
+
+::: {.proof of="lem-cot-rational"}
+Write
+
+$$
+t=\frac{x^2}{\Pi},\qquad
+a=\frac{3\Pi}{2}-\frac{45}{4},\qquad
+p(x)=x(1-t)(1-t/4)(1-t/9)^a
+\qquad(0\le x\le\pi).
+\tag{R.7.1}
+$$
+
+Use the response definition in @def-analytic. The rational bounds in @lem-pi-rational imply
+
+$$
+\frac{49}{5}<\Pi<\frac{99}{10},\qquad
+\frac{69}{20}<a<\frac{18}{5}.
+$$
+
+On the entire closed interval, $1-t/9\ge8/9>0$. Thus its real power is a smooth function of $x$ there. The remaining factors are polynomials. Consequently $p\in C^\infty[0,\pi]$, with $p(0)=p(\pi)=0$, finite endpoint derivatives, and $p(x)>0$ for $0<x<\pi$. In particular, the real exponent causes no endpoint singularity.
+
+Logarithmic differentiation on the open interval gives
+
+$$
+\frac{xp'(x)}{p(x)}
+=1-\frac{2t}{1-t}-\frac{t/2}{1-t/4}
+-\frac{2at/9}{1-t/9}
+=\mathsf H(x^2),
+\tag{R.7.2}
+$$
+
+because $a/(9\Pi)=1/6-5/(4\Pi)$. Every denominator is positive for $0<x<\pi$.
+
+**The differential residual.**
+
+Define
+
+$$
+\begin{aligned}
+c_0(\Pi)&=\frac{665}{72}+\frac{5\Pi}{27}-\frac{\Pi^2}{9},\\
+c_1(\Pi)&=\frac{175}{432}-\frac{239\Pi}{162}+\frac{5\Pi^2}{36},\\
+c_2(\Pi)&=-\frac{1295}{1296}+\frac{131\Pi}{324}-\frac{\Pi^2}{36},\\
+R_\Pi(t)&=c_0+c_1t+c_2t^2-\frac{\Pi t^3}{324}.
+\end{aligned}
+\tag{R.7.3}
+$$
+
+The exact residual identity is
+
+$$
+-p''(x)-p(x)
+=\frac{xt}{\Pi}(1-t/9)^{a-2}R_\Pi(t).
+\tag{R.7.4}
+$$
+
+For a direct verification, put $Q(t)=(1-t)(1-t/4)$, $w(t)=1-t/9$, and $f(t)=Q(t)w(t)^a$, so $p(x)=xf(t)$. The chain rule gives
+
+$$
+p''(x)+p(x)=\frac{x}{\Pi}\bigl(6f'(t)+4tf''(t)+\Pi f(t)\bigr).
+$$
+
+Using $Q'=-5/4+t/2$, $Q''=1/2$, and $w'=-1/9$ yields
+
+$$
+\begin{aligned}
+&-\frac{6f'+4tf''+\Pi f}{w^{a-2}}\\
+&\quad=-\left(\Pi Q-\frac{15}{2}+5t\right)w^2
++\frac a9\left(6-\frac{35t}{2}+\frac{11t^2}{2}\right)w
+-\frac{4a(a-1)}{81}\,tQ\\
+&\quad=tR_\Pi(t).
+\end{aligned}
+$$
+
+The constant term cancels because $2a/3=\Pi-15/2$. Substituting $a=3\Pi/2-45/4$ in the remaining cubic gives precisely (R.7.3). This establishes the differential residual identity directly.
+
+We now prove the residual sign on the full interval using only three quadratic functions of $\Pi$. On $49/5<\Pi<99/10$,
+
+$$
+c_0'(\Pi)=\frac{5-6\Pi}{27}<0,\qquad
+c_2'(\Pi)=\frac{131-18\Pi}{324}<0.
+$$
+
+Evaluation at the single upper constant $99/10$ therefore gives
+
+$$
+c_0(\Pi)>c_0(99/10)=\frac{323}{1800}>0,
+\qquad
+c_2(\Pi)>c_2(99/10)=\frac{4553}{16200}>0.
+\tag{R.7.5}
+$$
+
+Also,
+
+$$
+c_1+2c_2=\frac{\Pi^2}{12}-\frac{2\Pi}{3}-\frac{2065}{1296},
+\qquad
+\frac{d}{d\Pi}(c_1+2c_2)=\frac{\Pi-4}{6}>0.
+$$
+
+Consequently
+
+$$
+c_1+2c_2<(c_1+2c_2)(99/10)
+=-\frac{419}{16200}<0.
+\tag{R.7.6}
+$$
+
+Since $c_2>0$, for every $0\le t\le1$ this proves
+
+$$
+R_\Pi'(t)=c_1+2c_2t-\frac{\Pi t^2}{108}
+<c_1+2c_2<0.
+\tag{R.7.7}
+$$
+
+The first inequality is strict also at the endpoints: at $t=0$ it follows from $c_2>0$, while at $t=1$ it follows from $\Pi>0$. Finally,
+
+$$
+R_\Pi(0)=c_0>0,
+\qquad
+R_\Pi(1)=\frac{700}{81}-\frac{8\Pi}{9}
+<\frac{700}{81}-\frac89\frac{49}{5}
+=-\frac{28}{405}<0.
+\tag{R.7.8}
+$$
+
+The intermediate value theorem and strict monotonicity give exactly one $t_*\in(0,1)$ with $R_\Pi(t_*)=0$. Hence $-p''-p$ is strictly positive on $0<x<x_*:=\sqrt{\Pi t_*}$ and strictly negative on $x_*<x<\pi$.
+
+**Comparison using both zero endpoints.**
+
+Let
+
+$$
+W(x)=\cos x\,p(x)-\sin x\,p'(x).
+$$
+
+The endpoint regularity established above makes $W$ continuously differentiable on $[0,\pi]$. Since both $p$ and $\sin$ vanish at both endpoints,
+
+$$
+W(0)=W(\pi)=0.
+$$
+
+Differentiation gives
+
+$$
+W'(x)=\sin x\,[-p''(x)-p(x)].
+\tag{R.7.9}
+$$
+
+Because $\sin x>0$ on the open interval, $W'>0$ before $x_*$ and $W'<0$ after $x_*$. Therefore
+
+$$
+W(x)=\int_0^x W'(y)\,dy>0\quad(0<x\le x_*),
+$$
+
+and
+
+$$
+W(x)=-\int_x^\pi W'(y)\,dy>0\quad(x_*\le x<\pi).
+$$
+
+Dividing the strictly positive Wronskian by the positive product $p(x)\sin x$ now yields
+
+$$
+x\cot x-\mathsf H(x^2)
+=\frac{xW(x)}{p(x)\sin x}>0
+\qquad(0<x<\pi).
+$$
+
+Taking $x=\sqrt K$ proves the required strict inequality on the entire original interval $0<K<\pi^2$.
+:::
+
+::: {#lem-pole-free .lemma name="Algebraic quantities and pole-free conditions in the middle-height region" date="2026-10-11" export="lem-pole-free"}
+Throughout $\mathcal D_*$ of @def-analytic, including $b=0$, one has $0<A<1$, $0<K<\pi^2$, $1<\sigma<5/2$, and $T<\pi^2(2\sigma+1)/3$. The quantities $r,C,D$ are all strictly positive. The first Dirichlet--Dirichlet eigenvalue of the connecting-segment potential $A/(1-dy)^2$ exceeds $E$. The first Friedrichs--Dirichlet eigenvalue of the long-tail model potential $Ah^2/(m^2z^2)$ on $(0,h)$ also exceeds $E$.
+:::
+
+::: {.proof of="lem-pole-free"}
+Use the notation of @def-analytic and the bounds $9<\Pi<10$ from @lem-pi-rational. Only the conditions defining $\mathcal D_*$ are used below, so $b=0$ is allowed.
+
+**The head.** From $0<a\le1$, $h>3/8$, and $S_0\ge1+ha$,
+$$
+0<A=\frac{\Pi a^2}{2(h+2)^2}<\frac{320}{361}<1,
+\qquad E\le\frac{3\Pi}{(1+h)(h+2)}<\Pi.
+$$
+Here we used $a/(1+ha)\le1/(1+h)$. Also $q\le h/(1+h)$, so $S_0\le1+2h$ and hence $\rho_+S_0<2$. Thus $E/A=6/(\rho_+S_0)>3$, giving $0<K=E-A<\Pi$. The head potential is at least $A$, so the interval Dirichlet Poincare inequality gives a first Dirichlet--Dirichlet eigenvalue at least $\Pi+A>E$.
+
+**The geometric energy bound for the tail.** Set
+$$
+R=\frac{\rho_+h}{m}=\frac{a(1+h)}{(h+2)\max(a,b)},
+\qquad \theta=\frac{mh}{S_0}.
+$$
+Then $0<R\le(1+h)/(h+2)\le5/6$, and
+$$
+T=3\Pi R\theta,\qquad
+T\le\frac{3\Pi h^2}{(1+h)(h+2)}\le\frac{8\Pi}{5}.\tag{R.4.3}
+$$
+The last rational function increases for $h>0$, since the numerator of its derivative is $3h^2+4h>0$.
+
+If $p\ge q$, then
+$$
+\theta\le\frac{ph}{1+(1+h)p}\le\frac{h^2}{(1+h)^2}\le\frac{16}{25}.
+$$
+If $q>p$, the bound $p\le h/(1+h)$ and the strict area condition in the definition imply
+$$
+S_0<\frac{2p(1+h)^3}{h(h+2)}
+=2ph+2p+\frac{2p(1+h)}{h(h+2)}<2ph+2p+1.
+$$
+On the other hand, $S_0=1+(1+h)p+q+q^2/(1-q)$, so
+$$
+\frac{q^2}{1-q}<ph+p-q<ph.
+$$
+Consequently
+$$
+\theta<\frac{h q(1-q)}{1+((1+h)/h)q^2}
+\le\frac{h}{2(1+\sqrt{2+1/h})}\le\frac45.\tag{R.4.4}
+$$
+The middle maximum follows directly by differentiation: for $c_1=(1+h)/h$, the derivative of $q(1-q)/(1+c_1q^2)$ has numerator $1-2q-c_1q^2$, whose unique positive zero is $(1+\sqrt{1+c_1})^{-1}$. Substitution gives the displayed maximum. The final expression increases with $h$ and equals $4/5$ at $h=4$.
+
+Let $B(R)=2+\sqrt{1+2\Pi R^2}=2\sigma+1$. Its derivative satisfies $0<B'(R)<\sqrt{2\Pi}<36/5$. Hence $B(R)-36R/5$ decreases, whereas $B(R)-24/5$ increases. At $R=2/3$, the bound $\Pi>9$ gives $B(R)>5$. Combining the two bounds for $T$ above yields
+$$
+\frac{3T}{\Pi}\le\min\!\left(\frac{36R}{5},\frac{24}{5}\right)
+<2\sigma+1-\frac15.\tag{R.4.5}
+$$
+In particular, $T<\Pi(2\sigma+1)/3$. Moreover, $R\le5/6$ and $\Pi<10$ imply $1<\sigma<5/2$.
+
+**The tail Dirichlet spectrum and the singular endpoint.** On $(0,h)$, the model potential is $\sigma(\sigma-1)/z^2$. The Hardy inequality
+$$
+\int_0^h\frac{|u|^2}{z^2}\le4\int_0^h|u'|^2
+$$
+follows first for compactly supported smooth functions by integration by parts and Cauchy--Schwarz, then extends by density to $H_0^1(0,h)$. Therefore the Friedrichs form is closed with domain exactly $H_0^1$, and compact embedding on the finite interval ensures attainment of its first eigenvalue.
+
+For $0<x<\pi$, define
+$J(x)=\sin x-x\cos x$ and
+$F(x)=(1-x^2/3)\sin x-x\cos x$.
+The identities $J(0)=F(0)=0$, $J'(x)=x\sin x>0$, and
+$F'(x)=xJ(x)/3>0$ show directly that
+$$
+1-x\cot x>\frac{x^2}{3}\qquad(0<x<\pi).
+$$
+Taking $g(z)=z^{\sigma-1}\sin(\pi z/h)>0$ and differentiating gives
+$$
+-\frac{g''}{g}+\frac{\sigma(\sigma-1)}{z^2}
+=\frac{\Pi}{h^2}+\frac{2(\sigma-1)}{z^2}
+\left(1-\frac{\pi z}{h}\cot\frac{\pi z}{h}\right)
+\ge\frac{\Pi(2\sigma+1)}{3h^2}.
+$$
+For a compactly supported smooth function $u=g\phi$, integration by parts gives Picone's identity:
+$$
+\int_0^h\left(|u'|^2+\frac{\sigma(\sigma-1)}{z^2}|u|^2\right)
+=\int_0^h g^2|\phi'|^2+
+\int_0^h\left(-\frac{g''}{g}+\frac{\sigma(\sigma-1)}{z^2}\right)|u|^2.
+$$
+Form-core density extends the resulting lower bound to the entire form domain. Since $T=h^2E<\Pi(2\sigma+1)/3$, the first tail Dirichlet--Dirichlet eigenvalue is strictly greater than $E$. No numerical information on Bessel zeros is used.
+
+**The radical and recurrence denominators.** Since $\Pi<10$ and $\sigma>1$,
+$$
+r^2-9>(2\sigma+5)^2-\frac{40}{3}(2\sigma+1)-9
+=\frac43(3\sigma-2)(\sigma-1)>0.
+$$
+Thus $r>3$ and $C=\sigma+1/2+r/2>\sigma+2$. The identity $\sigma(\sigma-1)=\Pi R^2/2$ and $\Pi<10$ give, uniformly for $\sigma>1$,
+$$
+\Pi R=\sqrt{2\Pi}\sqrt{\sigma(\sigma-1)}
+<\frac92\left(\sigma-\frac12\right).
+$$
+Indeed, $2\Pi<20<81/4$ and $\sigma(\sigma-1)=(\sigma-1/2)^2-1/4$. Since $\theta\le4/5$, it follows that
+$$
+T=3\Pi R\theta<\frac{54}{5}\left(\sigma-\frac12\right).
+$$
+Consequently the original denominator has the uniform positive product bound
+$$
+\begin{aligned}
+CD&=(2\sigma+1)C-T\\
+&>(2\sigma+1)(\sigma+2)-\frac{54}{5}\left(\sigma-\frac12\right)\\
+&=2\left(\sigma-\frac{29}{20}\right)^2+\frac{639}{200}>0.
+\end{aligned}
+$$
+As $C>0$, this proves $D>0$. All radicals and denominators are therefore admissible without an order split.
+:::
+
+::: {#lem-robin .lemma name="Positive explicit response excludes middle-height candidates" date="2026-10-11" export="lem-robin"}
+For candidate data in @def-candidate with $3/8<h\le4$, setting $a=\beta/h,b=(1+h)q/h$ gives a point in $\mathcal D$ of @def-analytic. If $\mathcal G\ge0$ at this point, a contradiction follows. Thus every such candidate must satisfy $\mathcal G<0$.
+:::
+
+::: {.proof of="lem-robin"}
+Use the parameters and the all-weight spectral condition of @def-candidate, together with the explicit functions of @def-analytic. We first check the parameter map. Since $0<\beta\le h$ and $0<\gamma\le k\le h$,
+$$
+a=\beta/h\in(0,1],\qquad
+0<q=\gamma/(1+k)\le k/(1+k)\le h/(1+h),
+\qquad b=(1+h)q/h\in(0,1].
+$$
+The inequality $\gamma\le k$ gives $k\ge q/(1-q)$ and $\gamma=q(1+k)\ge q/(1-q)$, hence
+$$
+S_0=ha+\frac1{1-q}\le1+\beta+\gamma=S.
+$$
+The candidate inequalities $S/(2L^2)\le\rho<a/(h+2)$ imply
+$$
+S_0\le S<\frac{2aL^2}{h+2}.
+$$
+Using $d>0$ and the strict container bound also gives
+$$
+w=p+q<1,\qquad S_0\min(d,L^{-1})\le S\min(d,L^{-1})<\sqrt3/2.
+$$
+These are exactly all the conditions defining $\mathcal D$.
+
+Choose the single potential coefficient $A_0=\Pi\rho_+^2/2$. Since $\beta\le h$,
+$$
+\frac\rho{\rho_+}\ge\frac{Sh(h+2)}{2\beta L^2}
+\ge\frac{(1+\beta)h(h+2)}{2\beta L^2}
+\ge\frac{h+2}{2L}>\frac12,
+$$
+whereas the ear-length restriction gives $\rho/\rho_+<1$. For $x=\rho/\rho_+\in(1/2,1)$,
+$$
+\frac32-x-\frac1{2x}=\frac{(1-x)(2x-1)}{2x}>0.
+$$
+Thus the same $A_0$ gives the strict upper bound throughout the admissible aspect-ratio interval:
+$$
+\mu(A_0)\le\frac2S\left(\Pi\rho+\frac{A_0}{\rho}\right)
+<\frac{3\Pi\rho_+}{S}\le\overline E:=\frac{3\Pi\rho_+}{S_0}.\tag{R.3.3}
+$$
+
+Compare the responses of the full operator at the same energy $\overline E$. By @lem-pole-free, the first Dirichlet eigenvalues of both the head and the inverse-square model tail exceed $\overline E$; also $0<A_0<1$, $0<K=\overline E-A_0<\Pi$, and all recurrence denominators are positive. The true tail profile satisfies
+$$
+f(1+x)\le m(1-x/h),\qquad 0<x<h.
+$$
+Therefore the true tail potential is at least the model potential $A_0/[m^2(1-x/h)^2]$, and its first Dirichlet eigenvalue also exceeds $\overline E$.
+
+Both tail potentials are nonnegative, bounded on compact interior subintervals, and at most $A_0h^2/[p^2(L-y)^2]$. The right-end Hardy inequality makes both zero-trace form domains equal to $H_0^1(1,L)$. Choose the same smooth trace-one lifting $\psi$, supported near the interface where both potentials are bounded. Both affine trace-one form domains are then $\psi+H_0^1(1,L)$. Comparing the shifted energies function by function and taking minima, @lem-interface shows that the true tail response is no smaller than the model tail response. The full form is likewise closed and compactly embedded, and the one-sided interface limits of the potentials are $A_0/w^2$ and $A_0/m^2$. Thus every hypothesis of the interface lemma is satisfied.
+
+By @lem-head-response and @lem-cot-rational, the head response obeys
+$$
+\mathfrak d_H(\overline E)\ge\mathsf H(K)+\mathcal B(A_0,w).
+$$
+For the model tail, set $z=(h-x)/h$. Its equation becomes
+$$
+-u''+\sigma(\sigma-1)z^{-2}u=T u,
+\qquad T=h^2\overline E,\quad\sigma(\sigma-1)=A_0h^2/m^2.
+$$
+By @lem-regular-tail, the normalized regular solution is positive, has finite endpoint form energy, and is the unique trace-one minimizing extension for this equation. Returning it to the physical interval multiplies its shifted energy and outward response by $1/h$, so its physical response is $D_\sigma(T)/h$. Applying the direct bound in @lem-tail-recurrence gives
+$$
+\mathfrak d_T^{\rm coupled}(\overline E)
+\ge\frac{D_\sigma(T)}h\ge\frac{\mathsf T(\sigma,T)}h.
+$$
+The point $z=1$ is always the original physical interface, and both sides retain the same function value.
+
+The full response sum is therefore bounded below by
+$$
+\mathfrak d_H(\overline E)+\mathfrak d_T^{\rm coupled}(\overline E)
+\ge\mathsf H(K)+\mathcal B(A_0,w)+\frac{\mathsf T(\sigma,T)}h
+=\mathcal G(h,a,b).
+$$
+If $\mathcal G\ge0$, @lem-interface gives $\mu(A_0)\ge\overline E$, contradicting (R.3.3). Every candidate must therefore satisfy $\mathcal G<0$.
+:::

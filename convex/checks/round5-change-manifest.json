@@ -1,0 +1,49 @@
+{
+  "baseline": "凸五边形-共同相位压力校准解析替换-QMD项目-20261012.zip",
+  "added_qmd": [
+    "workspace/analytic-replacements-1012/finite-taylor-budget.qmd"
+  ],
+  "retired_qmd": [],
+  "modified_qmd": [
+    "index.qmd",
+    "workspace/analytic-replacements-1012/corner-barrier.qmd",
+    "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+    "workspace/ps-pressure-opposite-corner-entire-amplitude-1011.qmd"
+  ],
+  "old_active_qmd_bytes": 448028,
+  "new_active_qmd_bytes": 436488,
+  "old_budget_file_bytes": 29375,
+  "new_budget_file_bytes": 13481,
+  "old_fact_count": 138,
+  "new_fact_count": 139,
+  "changed_old_nodes": [
+    "def-pressure-rebuild-1011-functional",
+    "lem-arc-corner-barrier-1012",
+    "lem-ppocf-high-ratio-coefficient-budgets-1011",
+    "lem-ppocf-low-ratio-coefficient-budgets-1011",
+    "prp-ppocf-entire-opposite-corner-positive-1011"
+  ],
+  "new_nodes": [
+    "lem-arc-finite-taylor-budget-1012"
+  ],
+  "main_goal_unchanged": true,
+  "verification_config_unchanged": true,
+  "archived_original_count": 3,
+  "exact_check_count": 342,
+  "old_Bernstein_comparisons_replaced": {
+    "F3_F4_F5": 28,
+    "q2": 4,
+    "D": 19,
+    "beta0_to_beta6": 84,
+    "beta7_H": 6,
+    "total": 141
+  },
+  "new_continuous_Taylor_rows": 25,
+  "new_bounds": {
+    "D": "99/10000",
+    "beta7": "0.0104",
+    "beta0_to_beta6": "1/50 (unchanged)"
+  },
+  "scope": "Local analytic replacements, removal of two polygon H2 citations, and strengthened bounds. Foundational PDE results remain; not a global proof audit."
+}

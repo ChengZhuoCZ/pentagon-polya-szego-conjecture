@@ -1,0 +1,137 @@
+---
+title: "真实角测度一阶矩支付 C/U 实际自旋"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ../ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-tensor-weights-1011h
+        - def-psgs-exact-tensor-1011h
+    - from: geometric-constants.qmd
+      use:
+        - lem-arc-geometric-constants-1012
+    - from: complete-means.qmd
+      use:
+        - thm-arc-complete-means-1012
+    - from: bessel-core.qmd
+      use:
+        - def-arc-bessel-data-1012
+        - lem-arc-bessel-tail-1012
+        - lem-arc-low-mode-pairing-1012
+    - from: j-radial.qmd
+      use:
+        - lem-arc-j-radial-1012
+    - from: pq-radial.qmd
+      use:
+        - lem-arc-pq-radial-1012
+    - from: v-radial.qmd
+      use:
+        - lem-arc-v-radial-1012
+    - from: high-modes.qmd
+      use:
+        - lem-arc-high-modes-1012
+---
+
+::: {#thm-arc-actual-spin-1012 .theorem name="一阶角矩给出的两源实际自旋预算" date="2026-10-12" export="thm-arc-actual-spin-1012"}
+采用 @def-psgs-exact-tensor-1011h 的完整张量及 @def-psgs-tensor-weights-1011h 的同源可容许权。
+记 $t=|c|,s=|d|,T=27/50$。则在 $t>0$ 时，
+$$\begin{array}{ll}
+\mathrm U:\ \kappa=1,\quad0<t\le T,\quad0\le s\le5/8,
+&|K|/C_0<.322t^2+.850ts<.324t^2+.879ts,\\
+\mathrm C:\ \kappa=6/5,\quad0\le s\le t\le T,
+&|K|/C_0<.464t^2+1.024ts<.49t^2+1.07ts.
+\end{array}$$
+$t=0$ 时 $K=0$。结论覆盖所有复方向。
+:::
+
+::: {.proof of="thm-arc-actual-spin-1012"}
+先用 @thm-arc-complete-means-1012 得同源完整均值界
+$$|z_m|\le.144t^2+.570ts\quad(\mathrm U),\qquad |z_m|\le.206t^2+.685ts\quad(\mathrm C).$$
+其适用域与本定理一致。以下仅使用 @def-psgs-tensor-weights-1011h 的可容许权条件。
+
+## 2. 真实权和完整核的准确归一
+
+$W\in W^{1,1}(0,\alpha),V\in L^1(0,\alpha)$，几乎处处
+$$W>0,\qquad0\le V\le uW,\qquad |W'|\le2V,\qquad u(\beta)=\tan(\alpha-\beta).$$
+$I=\int_0^\alpha W>0,C_0=10I$。完整原核 $X,Y$ 及 $z_m=\alpha^{-1}\int X$ 采用 @def-arc-bessel-data-1012；$G_Z(\beta)=\int_0^\beta(X-z_m)$，$h_\epsilon=Y+2\epsilon G_Z$。同源实际自旋为
+$$K=10\int_0^\alpha(XW+YV).$$
+定义 $d\mu_\epsilon=(V/2-\epsilon W'/4)d\beta/I\ge0$。由于 $G_Z(0)=G_Z(\alpha)=0$，绝对连续分部积分给
+$$\frac K{C_0}=z_m+\sum_{\epsilon=\pm1}\int_0^\alpha h_\epsilon\,d\mu_\epsilon,
+\qquad\sum_\epsilon d\mu_\epsilon=\frac V I\,d\beta.\tag{S3}$$
+这是复值等式，未将 $X$ 改为实部、未交换两个支号。$G_Z$ 光滑、$W$ 绝对连续，故分部积分合法。它与实际 $K/C$ 的先验界无关。
+
+### 真实角增量测度的一阶矩
+
+$\tan x$ 在 $[0,\alpha]$ 凸且 $\tan0=0$，所以
+$$\tan x\le \frac{x}{\alpha}\tan\alpha.$$
+于是全部 $\beta\in[0,\alpha]$ 上
+$$\beta u(\beta)\le\frac{\tan\alpha}{\alpha}\beta(\alpha-\beta)
+\le\frac{\alpha\tan\alpha}{4}<\frac{23}{200}.\tag{S4}$$
+最后常数完全有理可核：@lem-arc-geometric-constants-1012 给 $\alpha<63/100$；$\tan^2\alpha=5-2\sqrt5$，且
+$$\left(\frac{44671}{20000}\right)^2<5
+\ \Longrightarrow\ \tan^2\alpha<\frac{5329}{10000}=(73/100)^2.$$
+故 $\tan\alpha<73/100$，$\alpha\tan\alpha/4<4599/40000<23/200$。
+结合 $V\le uW$ 和 $I>0$ 得
+$$\boxed{\sum_\epsilon\int\beta\,d\mu_\epsilon
+=\frac{\int\beta V}{I}<\frac{23}{200}.}\tag{S5}$$
+此处无需独立最大化两支质量，不使用角增量总质量的 $3/8$ 帽来代替其更小一阶矩。若 $V=0$，左侧准确为0，仍严格小于正帽。
+
+## 3. 保留 t²/ts 阶的完整 h 界
+
+使用 @def-arc-bessel-data-1012 的统一定义及 @lem-arc-low-mode-pairing-1012 的准确配对。记 $q=\kappa t$、$x=e^{5i\theta},w=de^{-2i\theta}$，其中 $c=te^{i\theta}$；只在 $t>0$ 使用 $\theta$。准确保留低模满足
+$$e^{2i\theta}h^\#/\beta
+=-(v_{-2}+tQ-(v_3+tP)x)-w(J_0-Jx).$$
+@lem-arc-pq-radial-1012、@lem-arc-v-radial-1012、@lem-arc-high-modes-1012、@lem-arc-j-radial-1012 依次给
+$$|P|+|Q|\le\frac45qJ,\quad |v_{-2}|+|v_3|\le\frac12q^2,
+\quad |J_0|\le q^4/32,\quad |J/q-H_\epsilon|\le q^2/7.$$
+其中 $J\ge0$，闭轴按连续延拓。@lem-arc-j-radial-1012 的独立 H 包络给两个支号上 $H_\epsilon\le2381/1000$，所以
+$$0\le J\le\kappa t L_\kappa,\qquad
+L_\kappa:=\frac{2381}{1000}+\frac{\kappa^2T^2}{7}.$$
+合法三角不等式保留全部相位，得到
+$$|h^\#|/\beta\le q^2/2+(\tfrac45tq+s)J+s q^4/32
+\le\left(\frac{\kappa^2}{2}+\frac45\kappa^2TL_\kappa\right)t^2
++\left(\kappa L_\kappa+\frac{\kappa^4T^3}{32}\right)ts.\tag{S6}$$
+这次没有先把 $s$ 或一因子 $t$ 帽成常数而丢掉 t²/ts 结构。
+
+### 完整别名尾的原尺度拆分
+
+令 $F_*=1+t+rs,J_*=rt+s$。@lem-arc-bessel-tail-1012 给
+$$|h-h^\#|/\beta\le(F_*+J_*)\delta_1+(6F_*+4J_*)\delta_0,$$
+$$\delta_0\le q^6/2000,\qquad\delta_1\le q^6/400.$$
+因此恰有
+$$|h-h^\#|/\beta\le\frac{q^6}{2000}(11F_*+9J_*)
+=\frac{\kappa^6t^6}{2000}\{11+(11+9r)t+(11r+9)s\}.$$ 
+这里的 h 尾本身无需 $F_*\ge J_*$，也无需 s≤t；这区别于同时给 f/h 一张共同粗帽表的用途。用 $r<5/8$ 和 $t\le T$，有
+$$|h-h^\#|/\beta\le D_\kappa t^2+E_\kappa ts,$$
+$$D_\kappa=\frac{\kappa^6T^4}{2000}\left[11+\left(11+\frac{45}{8}\right)T\right],\quad
+E_\kappa=\frac{\kappa^6T^5}{2000}\left(\frac{55}{8}+9\right).\tag{S7}$$
+所有保留低模的无限径向尾已由所用四条标量证明支付；(S7) 是另一个完整整数别名尾，二者均保留。没有将已帽成 $\beta t/1000$ 的尾不合法地除以 t。
+
+设
+$$U_\kappa=\kappa^2/2+(4/5)\kappa^2TL_\kappa+D_\kappa,
+\qquad V_\kappa=\kappa L_\kappa+\kappa^4T^3/32+E_\kappa.$$
+两者正，全部角/支号共同满足
+$$|h_\epsilon|\le\beta(U_\kappa t^2+V_\kappa ts).\tag{S8}$$
+
+## 4. 一次积分支付与精确分数
+
+由 @thm-arc-complete-means-1012、(S3)、(S5)、(S8)，在 $t>0$ 时
+$$|K|/C_0<\left(a_\kappa+\frac{23}{200}U_\kappa\right)t^2
++\left(b_\kappa+\frac{23}{200}V_\kappa\right)ts,$$
+其中 $(a_1,b_1)=(.144,.570)$，$(a_{6/5},b_{6/5})=(.206,.685)$。严格性来自 (S5) 与 $U_\kappa t^2>0$，不依赖原均值界是否严格。
+
+四个准确系数是
+$$\begin{array}{c|cc}
+& t^2&ts\\\hline
+U&2253686973949991/7000000000000000&5944493595851429/7000000000000000\\
+C&792486581392543439/1708984375000000000&1748555363334129241/1708984375000000000.
+\end{array}\tag{S9}$$
+它们分别严格小于 $.322,.850,.464,1.024$，所以得到声明中的两个严格上界。这些都是直接代入 (S7) 的四则分数，没有参数格、采样、Bernstein表或新的多项式正性清单。
+
+
+### 轴与端点
+$\beta=0$ 的原 $h$、低模及误差均为零，归一表达按连续值；$\beta=\alpha$ 已包含。
+$t=0$ 时由 @def-psgs-exact-tensor-1011h，$X,Y$ 仅有节点幂二、四，其五根平均为零，故 $K=0$。
+本定理不依赖实际斜率 $K/C$、Lorentz 比较或旧实际自旋界。
+:::
+

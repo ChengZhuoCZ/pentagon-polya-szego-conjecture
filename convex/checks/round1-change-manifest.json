@@ -1,0 +1,52 @@
+{
+  "added": [
+    "README.txt",
+    "SOURCE_BINDINGS_1012.json",
+    "archive/original-actual-spin/ps-pressure-central-actual-slope-analytic-1011.qmd.txt",
+    "archive/original-actual-spin/ps-pressure-unit-actual-spin-analytic-1011.qmd.txt",
+    "archive/source-supplements/Bessel低模两相位配对约化.qmd.txt",
+    "archive/source-supplements/Bessel全源低模连续机制_v2.qmd.txt",
+    "archive/source-supplements/CU完整均值九常数短解析候选_v3.qmd.txt",
+    "archive/source-supplements/J5共同径向误差完整候选.qmd.txt",
+    "archive/source-supplements/PQ共同径向比值完整候选.qmd.txt",
+    "archive/source-supplements/V低模配对_完整径向解析证明.qmd.txt",
+    "archive/source-supplements/六标量条件终端支付.qmd.txt",
+    "archive/source-supplements/实际自旋一阶角矩短比较候选_v3.qmd.txt",
+    "archive/source-supplements/高模两界_完整径向解析证明.qmd.txt",
+    "checks/active-source-sha256.json",
+    "checks/change-manifest.json",
+    "checks/mean-replay.json",
+    "checks/mechanical-inspection.json",
+    "checks/spin-replay.json",
+    "checks/supporting-identities.json",
+    "checks/withdrawn-stale-statuses.json",
+    "tools/check-nine-constants.py",
+    "tools/check-supporting-identities.py",
+    "workspace/analytic-replacements-1012/actual-spin.qmd",
+    "workspace/analytic-replacements-1012/bessel-core.qmd",
+    "workspace/analytic-replacements-1012/complete-means.qmd",
+    "workspace/analytic-replacements-1012/geometric-constants.qmd",
+    "workspace/analytic-replacements-1012/high-modes.qmd",
+    "workspace/analytic-replacements-1012/j-radial.qmd",
+    "workspace/analytic-replacements-1012/pq-radial.qmd",
+    "workspace/analytic-replacements-1012/v-radial.qmd",
+    "替换范围与检查说明.txt"
+  ],
+  "removed_from_active_locations": [
+    "workspace/ps-pressure-central-actual-slope-analytic-1011.qmd",
+    "workspace/ps-pressure-unit-actual-spin-analytic-1011.qmd"
+  ],
+  "modified": [
+    "_quarto.yml",
+    "index.qmd",
+    "workspace/main-proof.qmd",
+    "workspace/ps-pressure-central-short-analytic-closure-1011.qmd",
+    "workspace/ps-pressure-central-sinc-means-1011.qmd",
+    "workspace/ps-pressure-spectral-bridge-audit-1011.qmd",
+    "workspace/ps-pressure-unit-short-analytic-closure-1011.qmd",
+    "workspace/ps-pressure-unit-sinc-means-1011.qmd",
+    "workspace/true-pressure-terminal-migration-1011/global-gluing.qmd"
+  ],
+  "goal_bytes_unchanged": true,
+  "verification_config_bytes_unchanged": true
+}

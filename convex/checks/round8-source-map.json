@@ -1,0 +1,113 @@
+{
+  "baseline": "凸五边形-基础谱Fourier与Sobolev解析替换-QMD项目-20261012.zip",
+  "archived_originals": [
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__area-spectral-budget.qmd.txt",
+      "sha256": "38f67422aa690edd0be2ac1df0126b8258c805d96da81f4843ee3f6abc07ec94"
+    },
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/corner-barrier.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__corner-barrier.qmd.txt",
+      "sha256": "f6fcc70cdecae7af9519c4b2965d715f70b1778b57917e1febcad2b55390e8f8"
+    },
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/dirichlet-spectral-foundations.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__dirichlet-spectral-foundations.qmd.txt",
+      "sha256": "efe4ef8cdb7936b82f1749a42d30c0d52bbdd2d9e62a154284a7fd18afca1e60"
+    },
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/gaussian-energy.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__gaussian-energy.qmd.txt",
+      "sha256": "f75558e2bc37e6eb27e48df06d6d72a2247a73867aa7c1c8f6ea65c8258c88e4"
+    },
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/gaussian-ground-state.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__gaussian-ground-state.qmd.txt",
+      "sha256": "44b39ee4493020e82e97186ff473e081582be00ad2ad6c4e0476d6095a310a63"
+    },
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/interval-variational.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__interval-variational.qmd.txt",
+      "sha256": "a834bf6b309b3612814d409d40d18eda93af780992efa7470ee05309caee84d5"
+    },
+    {
+      "source_in_round7": "workspace/analytic-replacements-1012/sobolev-convex-foundations.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__analytic-replacements-1012__sobolev-convex-foundations.qmd.txt",
+      "sha256": "3433f408fefab919226874d774b6bac14e07d0b9a64fc3f9c931e0c2d155cfdc"
+    },
+    {
+      "source_in_round7": "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__ps-convex-geometric-tensor-switch-1011g__pressure-foundations.qmd.txt",
+      "sha256": "6e7dddf622ce19a169915a8bec89ce0938b3facb54c07724040e0123b2dd46f6"
+    },
+    {
+      "source_in_round7": "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__ps-convex-geometric-tensor-switch-1011g__pressure-weights.qmd.txt",
+      "sha256": "83e62f5a96411f1644e7caf6b5261b67e7e6d915af1bda58eeee8021a5d8d25d"
+    },
+    {
+      "source_in_round7": "workspace/true-pressure-review-1011/analysis-supplements.qmd",
+      "archive_member": "archive/before-eighth-replacement/workspace__true-pressure-review-1011__analysis-supplements.qmd.txt",
+      "sha256": "af189d369bf4b9cb0e1f6360f42b9e559e64bdcb2beded40671ec9dd27eae455"
+    }
+  ],
+  "new_derivations": [
+    "lem-arc-coercive-quadratic-1012",
+    "lem-arc-euclidean-fubini-1012",
+    "lem-arc-hilbert-sequences-1012",
+    "lem-arc-integral-limits-1012",
+    "lem-arc-l2-sobolev-completeness-1012",
+    "lem-arc-local-elliptic-barrier-1012",
+    "lem-arc-test-convolution-1012"
+  ],
+  "changed_old_nodes": [
+    "lem-arc-convex-zero-extension-1012",
+    "lem-arc-corner-barrier-1012",
+    "lem-arc-dirichlet-compactness-1012",
+    "lem-arc-dirichlet-spectrum-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-gaussian-energy-1012",
+    "lem-arc-gaussian-marginal-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-interval-variational-1012",
+    "lem-arc-levelset-spectral-budget-1012",
+    "lem-arc-positive-compact-spectrum-1012",
+    "lem-arc-pressure-gap-1012",
+    "lem-psgs-actual-pressure-weights-1011h",
+    "lem-psgs-pressure-angular-order-1011h",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-psgs-pressure-image-1011h",
+    "prp-tpr-support-hadamard-tpr1011"
+  ],
+  "substantive_old_math_files": [
+    "workspace/analytic-replacements-1012/gaussian-ground-state.qmd",
+    "workspace/analytic-replacements-1012/gaussian-energy.qmd",
+    "workspace/analytic-replacements-1012/dirichlet-spectral-foundations.qmd",
+    "workspace/analytic-replacements-1012/sobolev-convex-foundations.qmd",
+    "workspace/analytic-replacements-1012/interval-variational.qmd",
+    "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+    "workspace/analytic-replacements-1012/corner-barrier.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+    "workspace/true-pressure-review-1011/analysis-supplements.qmd"
+  ],
+  "primary_reference_cross_checks": [
+    {
+      "title": "Leon Simon, Lectures on PDE, Lecture 13: maximum principles and exponential annulus barriers",
+      "url": "https://math.stanford.edu/~lms/lecs-on-pde.pdf",
+      "use": "Method cross-check for the local barrier; actual coefficient assumptions and applications are proved in the project."
+    },
+    {
+      "title": "Richard Melrose, Functional Analysis, Chapter 3: Hilbert spaces",
+      "url": "https://math.mit.edu/~rbm/18-102-S18/Chapter3.pdf",
+      "use": "Method cross-check for projection, orthogonal series and weak convergence."
+    },
+    {
+      "title": "Terence Tao, An Introduction to Measure Theory, author preliminary version",
+      "url": "https://terrytao.wordpress.com/wp-content/uploads/2012/12/gsm-126-tao5-measure-book.pdf",
+      "use": "Method cross-check for simple-function integrals, convergence and product integration; underlying Lebesgue measure construction remains assumed."
+    }
+  ],
+  "reference_scope": "Classical method attribution/cross-check; the expanded lemmas are project-internal proofs, not new numerical evidence."
+}

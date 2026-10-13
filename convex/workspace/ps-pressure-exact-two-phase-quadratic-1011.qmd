@@ -1,0 +1,323 @@
+---
+title: "保留两项真实相位：从二维三角比较到一元二次判据"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - lem-pscc-scalar-factors-1011f
+        - prp-pscc-phase-identity-1011f
+---
+
+::: {#lem-ppeqp-exact-angular-elimination-1011 .lemma name="两个耦合相位的准确单角消元" date="2026-10-11" export="lem-ppeqp-exact-angular-elimination-1011"}
+设 $C,A,B,q,w$ 为实数，且 $q,w\ge0$。定义
+$$
+\mathcal R(x,y)=C+A\cos x+B\cos y
++q[1+\cos(x+y)]+w[1+\cos(x-y)],
+\qquad D=C+q+w .
+$$
+则
+$$
+\min_{x,y\in\mathbb R}\mathcal R(x,y)
+=\min_{-1\le u\le1}
+\left\{D+Au-
+\sqrt{[B+(q+w)u]^2+(q-w)^2(1-u^2)}\right\}.
+\tag{1}
+$$
+而且有准确的比较身份
+$$
+\begin{aligned}
+\mathcal R(x,y)
+={}&C+A\cos x+B\cos y
++\frac{q+w}{2}(\cos x+\cos y)^2\\
+&+\frac q2(\sin x-\sin y)^2
++\frac w2(\sin x+\sin y)^2.
+\end{aligned}
+\tag{2}
+$$
+当 $q,w>0$ 时，(2) 中最后两项之和为零，当且仅当
+$\sin x=\sin y=0$。
+:::
+
+::: {.proof of="lem-ppeqp-exact-angular-elimination-1011" status="verified"}
+记 $u=\cos x$。展开两项和角函数，得到
+$$
+\mathcal R(x,y)=D+Au+
+[B+(q+w)u]\cos y+(w-q)\sin x\sin y .
+$$
+对任意实数 $b,c$，在整个圆上
+$\min_y(b\cos y+c\sin y)=-\sqrt{b^2+c^2}$：
+下界由 Cauchy--Schwarz 给出，$(\cos y,\sin y)$ 取
+$-(b,c)/\sqrt{b^2+c^2}$ 时达到；$b=c=0$ 时任意 $y$ 达到。
+这给固定 $x$ 的极小值，而且只依赖 $\cos x$，
+因为 $\sin^2x=1-u^2$。根号内是
+$[B+(q+w)u]^2+(q-w)^2(1-u^2)\ge0$，
+故右侧被极小化的函数在非空紧区间 $[-1,1]$ 上连续，达到最小值。
+取其极小点 $u_*$，再取 $\cos x=u_*$，并按上述固定 $x$ 的构造选择 $y$，
+左侧也达到同一值。余弦映满 $[-1,1]$，因此得到带有实际最小值的 (1)。
+直接展开平方有
+$$
+1+\cos(x+y)-\frac{(\cos x+\cos y)^2}{2}
+=\frac{(\sin x-\sin y)^2}{2},
+$$
+$$
+1+\cos(x-y)-\frac{(\cos x+\cos y)^2}{2}
+=\frac{(\sin x+\sin y)^2}{2}.
+$$
+分别乘以 $q,w$ 再相加，得到 (2)。
+当两系数都为正时，两个平方同时为零等价于
+$\sin x-\sin y=\sin x+\sin y=0$，即所述取等条件。
+:::
+
+::: {#prp-ppeqp-quadratic-certificate-1011 .proposition name="完整两相位严格余量的二次多项式判据" date="2026-10-11" export="prp-ppeqp-quadratic-certificate-1011"}
+在 @lem-ppeqp-exact-angular-elimination-1011 中，给定实数 $\varepsilon$，
+置 $D_\varepsilon=C+q+w-\varepsilon$，以及
+$$
+\begin{aligned}
+f_2&=A^2-4qw,\\
+f_1&=D_\varepsilon A-B(q+w),\\
+f_0&=D_\varepsilon^2-B^2-(q-w)^2.
+\end{aligned}
+\tag{3}
+$$
+那么
+$$
+\mathcal R(x,y)\ge\varepsilon\quad\hbox{对所有 }x,y
+$$
+等价于
+$$
+D_\varepsilon\ge|A|,
+\qquad f_2u^2+2f_1u+f_0\ge0
+\quad(-1\le u\le1).
+\tag{4}
+$$
+最后一个区间条件可以准确写成：
+
+- 若 $f_2\le0$，或 $f_2>0$ 且 $|f_1|\ge f_2$，
+  则只需且必须有 $f_0+f_2\ge2|f_1|$。
+- 若 $f_2>0$ 且 $|f_1|<f_2$，
+  则只需且必须有 $f_0f_2\ge f_1^2$。
+
+两个端点还有因子分解
+$$
+\begin{aligned}
+f_0+2f_1+f_2
+&=(C-\varepsilon+A-B)
+  [C-\varepsilon+A+B+2(q+w)],\\
+f_0-2f_1+f_2
+&=(C-\varepsilon-A+B)
+  [C-\varepsilon-A-B+2(q+w)].
+\end{aligned}
+\tag{5}
+$$
+:::
+
+::: {.proof of="prp-ppeqp-quadratic-certificate-1011" status="verified"}
+由 @lem-ppeqp-exact-angular-elimination-1011，所求比较等价于
+$$
+D_\varepsilon+Au\ge
+\sqrt{[B+(q+w)u]^2+(q-w)^2(1-u^2)}
+\quad(-1\le u\le1).
+$$
+右侧非负，所以必要条件是
+$\min_{[-1,1]}(D_\varepsilon+Au)=D_\varepsilon-|A|\ge0$。
+在此条件下两侧均非负，平方比较完全等价，不产生额外解。
+两侧平方的差恰为 (3) 给出的二次多项式；
+二次系数使用 $(q+w)^2-(q-w)^2=4qw$。
+
+凹二次式的最小值出现在端点；凸二次式的无约束最小点为
+$u=-f_1/f_2$。该点在区间内部当且仅当 $|f_1|<f_2$。
+不在内部时，端点中较小值为 $f_0+f_2-2|f_1|$；
+在内部时，最小值为 $f_0-f_1^2/f_2$。
+这证明两个准确分支，且包含端点顶点重合的情形。
+在 $u=\pm1$ 的平方差中分别使用平方差公式，得到 (5)。
+:::
+
+::: {#prp-ppeqp-central-instance-1011 .proposition name="中央振幅残差保留真实五点相位后的准确改进" date="2026-10-11" export="prp-ppeqp-central-instance-1011"}
+采用 @def-pscc-scalar-coordinates-1011f、
+@def-pscc-scalar-target-1011f 和
+@prp-pscc-phase-identity-1011f 的 $C,A,B,H,Q_F,W_F$，置
+$$
+q_*=at^2\sigma Q_F,\qquad
+w_*=at^2\sigma^3 W_F,\qquad q_*+w_*=2H.
+\tag{6}
+$$
+令 $c=te^{i\theta}$、$d=t\sigma e^{i\phi}$，并置
+$$
+x=2\theta-\phi,\qquad y=\theta+2\phi,\qquad
+u=\cos x,\quad v=\cos y.
+$$
+定义保留两项完整四次相位的余量
+$$
+\begin{aligned}
+\widetilde R(t,\sigma,\theta,\phi)
+={}&C+A\cos x+B\cos y\\
+&+q_*[1+\cos(x+y)]+w_*[1+\cos(x-y)].
+\end{aligned}
+\tag{7}
+$$
+它与有限残差 $R_*$ 的差准确为
+$$
+\widetilde R-R_*(t,\sigma,u,v)
+=\frac{q_*}{2}(\sin x-\sin y)^2
++\frac{w_*}{2}(\sin x+\sin y)^2\ge0.
+\tag{8}
+$$
+这里 $q_*,w_*\ge0$；若 $t,\sigma>0$，则两者都为正。
+对所有原相位 $\theta,\phi$ 要求 $\widetilde R\ge\varepsilon$，
+准确等价于 @prp-ppeqp-quadratic-certificate-1011 的判据，
+其中 $q,w$ 取 $q_*,w_*$。
+:::
+
+::: {.proof of="prp-ppeqp-central-instance-1011" status="verified"}
+以下推导沿用 @def-pscc-scalar-coordinates-1011f 所给对象、记号与适用条件。
+先核对 (6) 中的符号。由 @lem-pscc-scalar-factors-1011f，
+$1\le m<6/5$、$a>0$、$h_0>0$、$\delta>0$、$p>0$。
+@def-pscc-scalar-series-1011f 中的 $q_{\min}>0$ 来自
+$.03366039-.00262940(27/50)^2>0$。
+类似地，
+$$
+P_{\min}\ge .15811440-.05064677(27/50)^2>0,\qquad
+M_{\min}\ge .67856036-.10453552(27/50)^2>0.
+$$
+于是 @def-pscc-scalar-target-1011f 的 $F_C,Q_F,W_F$ 都为正，
+得到所需符号和 $q_*+w_*=2H$。
+
+为说明 (7) 所指的“共同平方之前”，保留原四次相位项
+$$
+Q=\Re(c^3d),\qquad W=\Re(\bar c d^3).
+$$
+则
+$$
+Q+t^3s=t^4\sigma[1+\cos(x+y)],\qquad
+W+ts^3=t^4\sigma^3[1+\cos(x-y)],
+\quad s=t\sigma .
+$$
+将 $(a/t^2)\{Q_F(Q+t^3s)+W_F(W+ts^3)\}$ 保留在残差中，
+其余常数、一次相位项和三个几何乘子均维持原定义，
+得到 (7)。此表达式是多项式振幅乘三角函数，因而无除法地延拓到 $t=0$。
+由 @lem-ppeqp-exact-angular-elimination-1011 的 (2) 和 (6)，
+以及 @prp-pscc-phase-identity-1011f 的相位身份，立即得到 (8)。
+
+最后，给定任意实数 $x,y$，取
+$$
+\theta=(2x+y)/5,\qquad\phi=(-x+2y)/5
+$$
+就得到这两个相位。因此原两相位到 $(x,y)$ 在相位环面上满射，
+全相位极小化可以准确应用 @prp-ppeqp-quadratic-certificate-1011，
+无需将两角误当成有额外约束的变量。
+:::
+
+::: {#prp-ppeqp-exact-corner-classification-1011 .proposition name="真实相位极小值的准确角点分类与原坐标端点判据" date="2026-10-11" export="prp-ppeqp-exact-corner-classification-1011"}
+采用 @lem-ppeqp-exact-angular-elimination-1011，置
+$S=q+w$、$K=4qw$。四个真实角点值为
+$$
+\begin{aligned}
+E_{++}&=C+A+B+2S,&E_{+-}&=C+A-B,\\
+E_{-+}&=C-A+B,&E_{--}&=C-A-B+2S.
+\end{aligned}
+\tag{9}
+$$
+则有以下准确结论。
+
+第一，若 $AB\le0$，则
+$$
+\min_{x,y}\mathcal R=C-|A|-|B|.
+\tag{10}
+$$
+第二，若 $\min(A^2,B^2)\le K$，则
+$$
+\min_{x,y}\mathcal R=\min\{E_{++},E_{+-},E_{-+},E_{--}\}.
+\tag{11}
+$$
+
+第三，对 $A\ge B\ge0$，令 $E_{\rm c}$ 为四个角点的最小值。
+若 $B\le S$，则 $E_{\rm c}=C-A+B$，且
+$$
+\min_{x,y}\mathcal R=E_{\rm c}
+\quad\Longleftrightarrow\quad
+K+S(A-B)-AB\ge0.
+\tag{12}
+$$
+若 $B\ge S$，则 $E_{\rm c}=C-A-B+2S$，且
+$$
+\min_{x,y}\mathcal R=E_{\rm c}
+\quad\Longleftrightarrow\quad
+AB-S(A+B)+K\ge0.
+\tag{13}
+$$
+在 $B=S$ 时两条件相同。对于同号的任意 $A,B$，
+可以同时把 $x,y$ 加上 $\pi$ 并交换 $x,y$，将角点分类化为此情形。
+
+最后，在 @prp-ppeqp-quadratic-certificate-1011 原来保留 $A$ 为外角系数的
+坐标中，任意 $\varepsilon$ 都有准确身份
+$$
+\begin{aligned}
+f_1-f_2
+&=A(C-\varepsilon-A+B)+K+S(A-B)-AB\\
+&=A(C-\varepsilon-A-B+2S)+AB-S(A+B)+K.
+\end{aligned}
+\tag{14}
+$$
+例如若 $A\ge0$，第一行的角点余量和最后三个项均非负，
+就有 $f_1\ge f_2$；当 $f_2>0$ 时，
+原坐标二次式的顶点 $-f_1/f_2\le-1$。
+第二行也给出同样的充分条件。
+:::
+
+::: {.proof of="prp-ppeqp-exact-corner-classification-1011" status="verified"}
+以下推导沿用 @lem-ppeqp-exact-angular-elimination-1011 所给对象、记号与适用条件。
+由于 $q,w\ge0$，两个耦合项均非负，
+而 $A\cos x+B\cos y\ge-|A|-|B|$。
+若 $AB\le0$，可选择 $\cos x,\cos y\in\{-1,1\}$ 使线性项达到这个下界，
+同时两余弦反号；某个线性系数为零时自由选择该余弦即可。
+此时 $\cos(x+y)=\cos(x-y)=-1$，两耦合项同时为零，证明 (10)。
+
+记 $\varepsilon_{\rm c}$ 为四角点值的最小值。
+这四个角点不小于 $\varepsilon_{\rm c}$ 本身就保证
+$$
+C+S-\varepsilon_{\rm c}+A\ge|B+S|,\qquad
+C+S-\varepsilon_{\rm c}-A\ge|B-S|.
+\tag{15}
+$$
+特别地 $D_{\varepsilon_{\rm c}}\ge|A|$，平方前的正号条件自动成立，
+且二次判据的两个端点非负。
+若 $A^2\le K$，该二次式凹，整个区间非负。
+由 @prp-ppeqp-quadratic-certificate-1011 得
+$\mathcal R\ge\varepsilon_{\rm c}$，而角点已达到它，故 (11) 成立。
+若只知 $B^2\le K$，交换 $x,y$ 后使用相同论证。
+
+现在设 $A\ge B\ge0$。直接比较 (9)，最小角点只有
+$E_{-+}$ 与 $E_{--}$ 两种可能。
+二者之差 $E_{--}-E_{-+}=2(S-B)$，给出 (12)、(13) 中的 $E_{\rm c}$。
+对 $\varepsilon=E_{\rm c}$，平方判据记为 $Q(u)$。
+由 (15)，$Q(1)\ge0$，而相应的最小角点在 $u=-1$，所以 $Q(-1)=0$。
+
+对任意二次多项式，若 $Q(-1)=0$、$Q(1)\ge0$，
+则它在 $[-1,1]$ 全非负，当且仅当 $Q'(-1)\ge0$。
+必要性来自右侧导数；若导数为负，则靠近 $-1$ 的内部立即有负值。
+充分性分两种：凸或线性时，导数从左端起不减，函数保持非负；
+凹时，函数在两个非负端点之间不低于它们的连线。
+
+由 (3)，$Q'(-1)=2(f_1-f_2)$。
+当 $B\le S$ 时，代入 $D_{E_{\rm c}}=S+A-B$，得到
+$$
+Q'(-1)=2\{K+S(A-B)-AB\}.
+$$
+当 $B\ge S$ 时，代入 $D_{E_{\rm c}}=A+B-S$，得到
+$$
+Q'(-1)=2\{AB-S(A+B)+K\}.
+$$
+这证明两个当且仅当。两条件在 $B=S$ 时都等于 $K-S^2$。
+同时把两角加 $\pi$ 会翻转 $A,B$ 的符号而不改变耦合项；
+交换两角也不改变两耦合余弦，因此所述规范化合法。
+
+最后把
+$f_1-f_2=A(C+S-\varepsilon)-BS-A^2+K$
+分别按两个角点余量重组，即得 (14)。
+这些身份直接使用原来的外角 $A$，不要求先交换坐标，
+也不把另一种消元顺序的内部顶点当成原顺序必有内部极小值。
+:::

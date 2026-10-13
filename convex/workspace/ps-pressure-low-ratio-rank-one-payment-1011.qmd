@@ -1,0 +1,196 @@
+---
+title: "低振幅比：用真实熵信用支付共同相位的秩一预算"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: analytic-replacements-1012/phase-short-payments.qmd
+      use:
+        - lem-arc-phase-short-payments-1012
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - prp-pscc-phase-identity-1011f
+        - def-pscc-scalar-target-1011f
+    - from: ps-pressure-adaptive-entropy-square-1011.qmd
+      use:
+        - prp-ppae-central-same-moment-credit-1011
+    - from: ps-pressure-entropy-credit-one-fifth-strip-1011.qmd
+      use:
+        - cor-ppecf-one-tenth-strong-credit-1011
+        - prp-ppecf-two-amplitude-entropy-credit-1011
+        - lem-ppecf-fivepoint-moment-envelopes-1011
+    - from: ps-pressure-opposite-corner-entire-amplitude-1011.qmd
+      use:
+        - def-ppocf-univariate-coefficients-1011
+        - lem-ppocf-low-ratio-coefficient-budgets-1011
+    - from: ps-pressure-rank-one-gram-payment-1011.qmd
+      use:
+        - lem-pprg-decreasing-global-penalty-1011
+        - prp-pprg-central-linear-corner-interface-1011
+---
+
+::: {#lem-ppol-linear-second-phase-cost-1011 .lemma name="第二相位成本的全区间线性上界" date="2026-10-11" export="lem-ppol-linear-second-phase-cost-1011"}
+取 @lem-pprg-decreasing-global-penalty-1011 的准确
+$J_0,k,a_+,Q_0$，令 $T=27/50$、$X=t/T$。其表达为
+$$
+\begin{aligned}
+J_0={}&-.3092+6.1592r-(.44424+1.50576r)X-(.96+.24r)X^2,\\
+k={}&.7(4.5+3r)-.1(4.5+3r)X-(1.77+.78r)X^2,\\
+a_+={}&.59(1+rt^2),\\
+Q_0={}&21(.705-.6t)(.14095-.0536t^2)+(448/375)r .
+\end{aligned}
+\tag{1}
+$$
+在整个 $0\le t\le T$ 上，定义
+$$
+c_*(t)=\frac{2a_+J_0^3}{27kQ_0},
+\qquad \bar c(t)=.15-.2t .
+$$
+则
+$$
+0<c_*(t)<\bar c(t).
+\tag{2}
+$$
+:::
+
+::: {.proof of="lem-ppol-linear-second-phase-cost-1011"}
+@lem-pprg-decreasing-global-penalty-1011 给 $J_0,k,a_+,Q_0>0$。
+@lem-arc-phase-short-payments-1012 对同一个有限表达给
+$$27kQ_0(.15-.2t)-2a_+J_0^3>1/4>0.$$
+除以正数 $27kQ_0$，即得 $0<c_*<\bar c$，包括 $t=0,T$。
+这里使用完整八次多项式的两段 Taylor 界及统一余项，不再列九项正基系数。
+:::
+
+::: {#lem-ppol-two-interval-discriminants-1011 .lemma name="熵阈值两侧的完整一元判别式" date="2026-10-11" export="lem-ppol-two-interval-discriminants-1011"}
+使用 @def-ppocf-univariate-coefficients-1011 的 $p_0,p_1,e$，
+并令
+$$
+f=e-\bar c,\qquad
+D_s=4(p_0+1/200)f-p_1^2,\qquad
+D_l=4p_0f-p_1^2,
+\tag{5}
+$$
+其中 $\bar c$ 取 @lem-ppol-linear-second-phase-cost-1011。
+则
+$$
+D_s>.003\quad(0\le t\le1/10),\qquad
+D_l>9/5000\quad(1/10\le t\le27/50).
+\tag{6}
+$$
+特别地，$f>0$ 在整个 $[0,27/50]$ 上成立。
+:::
+
+::: {.proof of="lem-ppol-two-interval-discriminants-1011"}
+所用 $p_0,p_1,e$ 均取 @def-ppocf-univariate-coefficients-1011，
+而 $\bar c=.15-.2t$ 与 @lem-ppol-linear-second-phase-cost-1011 相同。
+因此当前 $D_s,D_l$ 正是 @lem-arc-phase-short-payments-1012 中的两个完整多项式。
+该引理给 $D_s>3/1000$ 于 $[0,1/10]$，
+$D_l>9/5000$ 于 $[1/10,27/50]$；后者比原 $.00012$ 更强。
+其连续 Taylor 与完成平方证明包含所有十八次项，不使用内部取样。
+
+最后，@lem-ppocf-low-ratio-coefficient-budgets-1011 给 $p_0>0$。
+第一段 $4(p_0+1/200)f=D_s+p_1^2>0$，第二段 $4p_0f=D_l+p_1^2>0$，
+故 $f>0$ 在全段成立；两段在 $t=1/10$ 接合。
+:::
+
+::: {#prp-ppol-low-ratio-rank-one-payment-1011 .proposition name="低振幅比的真实第二相位预算" date="2026-10-11" export="prp-ppol-low-ratio-rank-one-payment-1011"}
+采用 @prp-pscc-phase-identity-1011f 的 $B$ 和
+@prp-pprg-central-linear-corner-interface-1011 的
+$q=at^2\sigma Q_F$。
+设 $0<t\le27/50,\ 0<\sigma\le1/3$，且 $B>0$。定义
+$$
+\chi(t)=
+\begin{cases}
+1/200,&0<t\le1/10,\\
+0,&1/10<t\le27/50.
+\end{cases}
+\tag{11}
+$$
+则
+$$
+\boxed{
+\mathcal Q(t,\sigma)+\chi(t)>\frac{B^2}{2q}.
+}
+\tag{12}
+$$
+在真实同源熵前提成立时，$\chi$ 可由真实额外信用支付：
+小段由 @cor-ppecf-one-tenth-strong-credit-1011 支付，
+其余段只使用信用的非负性。
+:::
+
+::: {.proof of="prp-ppol-low-ratio-rank-one-payment-1011"}
+所用标量域及同源因子采用 @def-pscc-scalar-coordinates-1011f 和
+@def-pscc-scalar-target-1011f；特别地 $s=t\sigma$，$a,F_C>0$。
+以下推导沿用 @prp-pprg-central-linear-corner-interface-1011、@prp-pscc-phase-identity-1011f 所给对象、记号与适用条件。
+首先引用 @lem-ppocf-low-ratio-coefficient-budgets-1011 和
+@def-ppocf-univariate-coefficients-1011。
+在整个低振幅比区域，
+高次项的负部由 $p_3\ge-t^2,p_4\ge-3t^2,p_5\ge-4t^2$
+及 $p_6,p_7\ge0$ 支付。
+$0\le\sigma\le1/3$ 给
+$\sigma+3\sigma^2+4\sigma^3\le1/3+3/9+4/27=22/27$，因此
+$$
+\mathcal Q\ge p_0+p_1\sigma+e\sigma^2.
+$$
+由 @lem-ppol-two-interval-discriminants-1011，若 $t\le1/10$，
+$$
+\mathcal Q+\chi-\bar c\sigma^2
+\ge f\left(\sigma+\frac{p_1}{2f}\right)^2+\frac{D_s}{4f}>0.
+$$
+当 $t>1/10$，同式把 $D_s$ 换成 $D_l$ 仍成立。
+因此
+$$
+\mathcal Q+\chi>\bar c\sigma^2.
+\tag{13}
+$$
+
+现在保留真实第二相位的符号。
+@lem-pprg-decreasing-global-penalty-1011 给
+$$
+B=at\sigma^2J_B,\qquad
+J_B\le J_0-k\sigma,\qquad Q_F>Q_0,\qquad a\le a_+ .
+$$
+在所考虑的 $B>0$ 区域，$J_B>0$，故
+$0<\sigma<J_0/k$。
+置 $u=k\sigma/J_0\in(0,1)$，使用准确配方
+$$
+\frac4{27}-u(1-u)^2
+=(u-1/3)^2(4/3-u)\ge0,
+$$
+得到
+$$
+\sigma J_B^2\le
+\sigma(J_0-k\sigma)^2
+\le\frac{4J_0^3}{27k}.
+\tag{14}
+$$
+由 @def-pscc-scalar-coordinates-1011f 的 $a>0$，
+$q>0$，因此所有除法均合法。
+把 (14) 和真实 $q$ 的表达代入，
+$$
+\frac{B^2}{2q}
+=\frac{a\sigma^3J_B^2}{2Q_F}
+\le\frac{2a_+J_0^3}{27kQ_0}\sigma^2
+=c_*\sigma^2<\bar c\sigma^2.
+$$
+最后一步用 @lem-ppol-linear-second-phase-cost-1011；
+与 (13) 合并即得 (12)。
+
+真实同源熵前提准确采用 @prp-ppae-central-same-moment-credit-1011 的同一五点数据：
+$|c|=t,|d|=s=t\sigma$，$j_i=m+2\Re(cn_i)+2r\Re(dn_i^2)>41m/100$，
+$\omega_i=1+6\Re(cn_i)/5$，以及该命题定义的 $\Gamma,\mathcal C_{\rm ent}$。
+由 @def-pscc-scalar-coordinates-1011f，$1\le m<6/5$，所以
+$\delta=2-6m/5>14/25>0$。
+五根正交性给 $V_2=\delta^2t^2/2+2r^2s^2>0$，从而该命题的正矩分支适用。
+用 @def-pscc-scalar-target-1011f 的 $a,F_C>0$，
+归一化的真实额外信用就是
+$\Xi=(5aF_C\Gamma/t^2)\mathcal C_{\rm ent}\ge0$。
+当 $0<t\le1/10$ 时，$t\le1/3$、$0\le\sigma\le1$，
+同一数据满足 @lem-ppecf-fivepoint-moment-envelopes-1011 的定义与条带前提，
+并满足 @prp-ppecf-two-amplitude-entropy-credit-1011 的真实熵条件。
+该命题的 $\Xi$ 使用同一归一化，因此
+@cor-ppecf-one-tenth-strong-credit-1011 给 $\Xi>1/200=\chi$。
+其余区间 $\chi=0$，由上述 $\mathcal C_{\rm ent}\ge0$ 支付。
+本命题不把 $B\le0$ 时的线性上界平方；该符号情形由相应外区规约单独处理。
+零振幅边界也不使用 (12) 中的除法。
+:::

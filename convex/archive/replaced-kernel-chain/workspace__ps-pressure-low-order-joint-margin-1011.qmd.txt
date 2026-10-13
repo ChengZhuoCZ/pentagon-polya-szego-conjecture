@@ -1,0 +1,385 @@
+---
+title: "共同相位原函数比较：二、三阶的统一严格余量"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+---
+
+::: {#lem-pplojm-elementary-constants-1011 .lemma name="共同相位低阶估计所需的初等常数界" date="2026-10-11" export="lem-pplojm-elementary-constants-1011"}
+令 $\alpha=\pi/5$、$a=\alpha\cot\alpha$、
+$r=(\sqrt5-1)/2$。则
+$$
+\frac{197}{500}<\alpha^2<\frac25,\qquad
+\frac45<a<\frac{13}{15},\qquad
+\frac8{13}<r<\frac{13}{21}.
+\tag{1}
+$$
+并且
+$$
+\cos2\alpha=\frac r2,\qquad
+\frac{\sin2\alpha}{\alpha}=\frac{2+r}{2a}>\frac32.
+\tag{2}
+$$
+:::
+
+::: {.proof of="lem-pplojm-elementary-constants-1011" status="verified"}
+使用初等圆周率界 $157/50<\pi<22/7$，平方并除以 $25$ 即得
+关于 $\alpha^2$ 的界。多项式 $x^2+x-1$ 在正轴严格递增；
+它在 $8/13,13/21$ 的值分别为 $-1/169,1/441$，故得 $r$ 的界。
+记 $x=\alpha^2$。由 $\sin\alpha/\alpha<1$、
+$\cos\alpha\ge1-x/2$，有 $a>4/5$。
+在 $0<\alpha^2<2/5$ 上，正弦与余弦的交错幂级数项的绝对值递减，
+故交错余项符号给
+$\cos\alpha\le1-x/2+x^2/24$ 及 $\sin\alpha/\alpha\ge1-x/6$。
+这里 $1-x/6>14/15>0$，且 $0<\alpha<\pi/2$ 保证 $\cos\alpha>0$，因此
+$$
+a\le\frac{1-x/2+x^2/24}{1-x/6}.
+$$
+这个商小于 $13/15$ 等价于
+$P(x):=2-16x/3+5x^2/8<0$。在 $[197/500,2/5]$ 上，
+$P'(x)=-16/3+5x/4\le-29/6<0$，故严格递减，在左端的值为
+$-5173/1200000$，故上界成立。
+五等分角恒等式给 $\cos2\alpha=r/2$；
+由 $a=\alpha\cos\alpha/\sin\alpha$ 可得
+$\sin2\alpha/\alpha=2\cos^2\alpha/a=(2+r)/(2a)$。
+最后用 $r>8/13$、$a<13/15$，得到该商
+$>255/169>3/2$。
+:::
+
+::: {#lem-pplojm-exact-second-third-scalar-1011 .lemma name="五根平均后二、三阶标量核的准确共同相位公式" date="2026-10-11" export="lem-pplojm-exact-second-third-scalar-1011"}
+采用 @def-psgs-exact-tensor-1011h，固定 $\kappa=6/5$。
+采用 @def-psgs-tensor-weights-1011h 的常数，记 $a=a_0=\alpha\cot\alpha$；$\alpha=\pi/5$、$r=(\sqrt5-1)/2$ 均为实数。
+把 $(c,d)$ 同时换成 $(\varepsilon c,\varepsilon d)$，
+记 $A_j,B_j$ 为完整 $A,B$ 关于 $\varepsilon$ 的 $j$ 次系数。
+置 $t=|c|$、$s=|d|$、$p=1+a$、
+$L(\beta)=p^2-1-\beta^2$、$\zeta=\operatorname{Re}(d\bar c^2)$。
+则 $A_0=1$、$B_0=A_1=B_1=0$，并且
+$$
+\begin{aligned}
+\frac{A_2}{t^2}
+&=-\frac{\kappa^2}4(\beta^2+a^2)
+ +\frac\kappa2\{p(1-r\cos2\beta)+r\beta\sin2\beta\},\\
+\frac{B_2}{t^2}
+&=\frac\kappa2\{(\kappa+1+r\cos2\beta)\beta
+ +pr\sin2\beta\},\\
+A_3&=\zeta\,\frac{\kappa^2}8
+ \{L(\beta)(r-\cos2\beta)+2p\beta\sin2\beta\},\\
+B_3&=\zeta\,\frac{\kappa^2}8
+ \{L(\beta)\sin2\beta+2p\beta(r+\cos2\beta)\}.
+\end{aligned}
+\tag{3}
+$$
+在 $t=0$ 时前两式以乘回 $t^2$ 后的形式解释。
+:::
+
+::: {.proof of="lem-pplojm-exact-second-third-scalar-1011" status="verified"}
+由 @def-psgs-tensor-weights-1011h，$a=a_0=\alpha\cot\alpha$ 及 $r$ 为实数，以下 $\beta\in[-\alpha,\alpha]$ 也为实数。
+由 @def-psgs-exact-tensor-1011h，记 $z=cn_i$、
+$q=e^{-2i\beta}$，则
+$\delta_i=\kappa[\beta\operatorname{Re}z+a\operatorname{Im}z]$。
+五根平均满足
+$\operatorname{av}n_i^j=0$（$5\nmid j$）及
+$\operatorname{av}n_i^{5j}=(-1)^j$。
+因而 $\operatorname{av}(\operatorname{Re}z)^2
+=\operatorname{av}(\operatorname{Im}z)^2=t^2/2$，
+$\operatorname{av}(\operatorname{Re}z)(\operatorname{Im}z)=0$。
+展开
+$$
+1+\varepsilon\{\kappa\operatorname{Re}z+z(1\pm rq)+d n_i^2(r\pm q)\}
+ \mathbin{+}\varepsilon^2\kappa\operatorname{Re}z
+ \{z(1\pm rq)+d n_i^2(r\pm q)\}
+$$
+后乘 $e^{-i\varepsilon\delta_i}$；
+这正是原前因子的逐项写法。
+未投影常数系数为 $1$，一次系数的平均为
+$\operatorname{av}[\kappa\Re z+z(1\pm rq)+dn_i^2(r\pm q)-i\delta_i]=0$，
+因为其中根指数只有 $1,-1,2$，平均全部为零。
+再按定义取实偶部与负虚奇部，得到 $A_0=1$、$B_0=A_1=B_1=0$。
+其平均二阶项为
+$$
+t^2\left\{
+-\frac{\kappa^2}4(\beta^2+a^2)
+-\frac{i\kappa^2}2\beta
++\frac\kappa2(p-i\beta)(1\pm rq)
+\right\}.
+$$
+纯 $c$ 三阶项的根指数只能是 $\pm1,\pm3$，平均为零。
+含 $d$ 的三阶项只能来自
+$d n_i^2(r\pm q)[-\delta_i^2/2-i\kappa(\operatorname{Re}z)\delta_i]$。
+其中可被五根平均保留的项只含 $\bar z^2$，
+其系数为
+$$
+\frac{\kappa^2}{8}d\bar c^2\{(p-i\beta)^2-1\}(r\pm q).
+$$
+对减号取实偶部，对加号取负虚奇部，即得到 (3)；
+$\operatorname{Im}(d\bar c^2)$ 的部分因所取奇偶性消失。
+:::
+
+::: {#lem-pplojm-uniform-low-order-margin-1011 .lemma name="两条原函数分支的低阶共同余量" date="2026-10-11" export="lem-pplojm-uniform-low-order-margin-1011"}
+在 @lem-pplojm-exact-second-third-scalar-1011 的设定下，
+令
+$$
+G_j(\beta)=\int_0^\beta
+\left(A_j(u)-\frac1\alpha\int_0^\alpha A_j(v)\,dv\right)du,
+\qquad j=2,3.
+$$
+若 $0\le s\le t\le27/50$，则在 $0\le\beta\le\alpha$ 上，
+两个符号分别均成立
+$$
+\boxed{B_2+B_3\ \pm2(G_2+G_3)
+\ge(2-2s)\,\beta t^2.}
+\tag{4}
+$$
+右侧在 $t>0,\beta>0$ 时严格为正。
+更准确地，令 $\widetilde B_3,\widetilde G_3$ 是 (3) 及其减均值
+原函数中 $\zeta$ 的系数（即使 $\zeta=0$ 也按该公式定义），则
+$$
+\begin{gathered}
+B_2+2G_2\ge2\beta t^2,\qquad
+B_2-2G_2\ge\frac{12}{5}\beta t^2,\\
+\frac{103}{225}\beta
+\le\widetilde B_3+2\widetilde G_3\le2\beta,\qquad
+\frac{27}{25}\beta
+\le\widetilde B_3-2\widetilde G_3\le\frac83\beta.
+\end{gathered}
+\tag{4a}
+$$
+:::
+
+::: {.proof of="lem-pplojm-uniform-low-order-margin-1011" status="verified"}
+以下所有常数界使用 @lem-pplojm-elementary-constants-1011。
+先由 @lem-pplojm-exact-second-third-scalar-1011 求导：
+$$
+\frac{A_2'}{\beta t^2}
+=\kappa\left\{-\frac\kappa2
+ \mathbin{+}r\left(p+\frac12\right)\frac{\sin2\beta}{\beta}
+ \mathbin{+}r\cos2\beta\right\}.
+$$
+在角窗上 $\cos2\beta$ 与 $\sin2\beta/\beta$ 均递减且为正。
+因此该式的下界为
+$\kappa\{1-\kappa/2+3(1+r)/(4a)\}>0$，
+上界不超过
+$$
+M_2=\kappa\{-\kappa/2+2r(p+1)\}
+<\frac{1858}{525}.
+$$
+若一个偶函数 $F$ 满足 $0\le F'(\beta)/\beta\le M$，
+其减均值原函数 $G_F$ 满足
+$$
+0\le-G_F(\beta)
+\le M\,\frac{\beta(\alpha^2-\beta^2)}6.
+\tag{5}
+$$
+确实令 $H=-G_F$，则 $-H''=F'=\beta(F'/\beta)$，且 $H$ 两端为零，
+用区间的非负 Dirichlet Green 核积分即可；
+对右端项 $\beta$ 的解正是 $\beta(\alpha^2-\beta^2)/6$。
+由此 $G_2\le0$，且
+$$
+\frac{B_2}{\beta t^2}
+\ge\frac\kappa2\left\{\kappa+2+\frac{1+r}{2a}\right\}
+>\frac{20949}{8450}.
+$$
+于是
+$$
+\frac{B_2+2G_2}{\beta t^2}
+>\frac{20949}{8450}-\frac{3716}{7875}>2,\qquad
+\frac{B_2-2G_2}{\beta t^2}>\frac{12}{5}.
+\tag{6}
+$$
+第一处最后比较在通分后为
+$4049\cdot7875-3716\cdot8450=485675>0$。
+
+再写 $A_3=\zeta\,\widetilde A_3$、
+$B_3=\zeta\,\widetilde B_3$，
+并以 $\widetilde G_3$ 表示 $\widetilde A_3$ 的减均值原函数。
+根据 (3)，
+$$
+\frac{\widetilde A_3'}{\beta}
+=\frac{\kappa^2}4
+\left\{-r+(1+2p)\cos2\beta
+ \mathbin{+}(L(\beta)+p)\frac{\sin2\beta}{\beta}\right\}.
+$$
+由 $p>9/5$、$L(\beta)>46/25$、
+$\sin2\beta/\beta>3/2$ 和 $r<1$，该式严格为正。
+上界则为
+$$
+\frac{\kappa^2}4(2p^2+4p-1-r)
+<\frac9{25}\left(\frac{1568}{225}+\frac{112}{15}-\frac85\right)
+=\frac{25992}{5625}<\frac{14}{3}.
+$$
+因此 (5) 给
+$0\le-2\widetilde G_3\le(28/45)\beta$。
+另一方面，由 (3)、$L(\beta)>46/25$、
+$\sin2\beta/\beta>3/2$、
+$r+\cos2\beta\ge3r/2$，得
+$$
+\frac{\widetilde B_3}{\beta}
+>\frac9{50}\left\{\frac{46}{25}\frac32
+ +3\frac95\frac35\right\}=\frac{27}{25}.
+$$
+相反使用 $L(\beta)\le p^2-1$、
+$\sin2\beta/\beta\le2$、$\cos2\beta\le1$，得
+$$
+\frac{\widetilde B_3}{\beta}
+\le\frac9{25}\{p^2-1+p(r+1)\}
+<\frac{3717}{1875}<2.
+$$
+所以
+$$
+0<\widetilde B_3+2\widetilde G_3<2\beta,\qquad
+0<\widetilde B_3-2\widetilde G_3<\frac83\beta.
+\tag{7}
+$$
+因 $|\zeta|\le st^2$，把 (6)、(7) 合并，分别得到下界
+$(2-2s)\beta t^2$ 与 $(12/5-8s/3)\beta t^2$。
+后者不小于前者，因为 $s\le27/50<3/5$。
+保留下界 $\widetilde B_3/\beta>27/25$ 和
+$-2\widetilde G_3/\beta\le28/45$，还得到 (4a) 中
+$27/25-28/45=103/225$；减号分支用 $\widetilde G_3\le0$ 即可。
+端点 $\beta=0$ 或 $t=0$ 由连续性直接成立。
+:::
+
+::: {#lem-pplojm-exact-endpoint-dominance-1011 .lemma name="共同二三阶核由同一端点值控制" date="2026-10-11" export="lem-pplojm-exact-endpoint-dominance-1011"}
+采用 @lem-pplojm-exact-second-third-scalar-1011 的记号，取 $0\le\beta\le\alpha$，置
+$$
+M_2=\frac\kappa2\left\{\kappa+2+\frac{1+r}{2a}\right\},\qquad
+M_3=\frac{\kappa^2}{8}
+\left\{(p^2-1-\alpha^2)\frac{\sin2\alpha}{\alpha}+3pr\right\}.
+$$
+若 $0\le s\le t\le27/50$，则两个符号同时满足
+$$
+\boxed{
+B_2+B_3\ \pm2(G_2+G_3)
+\ge\beta(t^2M_2+\zeta M_3)
+>\frac95\beta t^2
+}
+\tag{9}
+$$
+其中最后的严格号适用于 $t>0,\beta>0$；在零端点换成非严格号。
+并且
+$$
+M_2>\frac{20949}{8450},\qquad
+\frac{27}{25}\le M_3<\frac54.
+\tag{10}
+$$
+:::
+
+::: {.proof of="lem-pplojm-exact-endpoint-dominance-1011" status="verified"}
+这里角区间明确为 $0\le\beta\le\alpha$。
+采用 @lem-pplojm-exact-second-third-scalar-1011，定义
+$\widetilde A_3$ 为该公式中 $A_3$ 的 $\zeta$ 系数，即
+$\widetilde A_3=(\kappa^2/8)[L(r-\cos2\beta)+2p\beta\sin2\beta]$，
+即使 $\zeta=0$ 仍按此式定义。直接对
+$A_2,\widetilde A_3$ 积分并减去角均值，得到
+$$
+\frac{B_2+2G_2}{\beta t^2}-M_2
+=\frac{\kappa^2}{6}(\alpha^2-\beta^2)
++\frac{\kappa r}{4}
+\left(\frac{\sin2\beta}{\beta}-\frac{\sin2\alpha}{\alpha}\right),
+\tag{11}
+$$
+以及
+$$
+\begin{aligned}
+\frac{\widetilde B_3+2\widetilde G_3}{\beta}-M_3
+=\frac{\kappa^2}{8}\bigg\{
+&\left(p-\frac12\right)
+\left(\frac{\sin2\beta}{\beta}-\frac{\sin2\alpha}{\alpha}\right)\\
+&+\cos2\beta-\cos2\alpha
++\frac{2r}{3}(\alpha^2-\beta^2)\bigg\}.
+\end{aligned}
+\tag{12}
+$$
+为直接核对 (12)，$8\widetilde A_3/\kappa^2$ 的一个从零积分式是
+$$
+r\{(p^2-1)\beta-\beta^3/3\}
++\left(\frac{-2p^2+2p+1}{4}+\frac{\beta^2}{2}\right)\sin2\beta
++\left(\frac12-p\right)\beta\cos2\beta.
+$$
+把它减去 $\beta/\alpha$ 倍的端点值，所得是 $8\widetilde G_3/\kappa^2$；再乘 $2$ 并加上
+$8\widetilde B_3/\kappa^2$，即得 (12)。
+
+若 $t>0$，置 $u=\zeta/t^2\in[-s,s]$。记
+$A_*=\alpha^2-\beta^2$、
+$S_*=\sin(2\beta)/\beta-\sin(2\alpha)/\alpha$、
+$C_*=\cos2\beta-\cos2\alpha$。
+对 $0<z\le2\alpha<\pi$，
+$(\sin z/z)'=(z\cos z-\sin z)/z^2<0$，因为
+$\sin z-z\cos z=\int_0^z u\sin u\,du>0$。
+故 $\sin(2\beta)/\beta$ 在该角区间递减，连续端点取 $2$。
+因此三者非负，且
+$$
+0\le C_*=2\int_\beta^\alpha\sin2v\,dv\le2A_*.
+$$
+当 $u\ge0$ 时，(11)、(12) 的右端相加显然非负。
+当 $u<0$ 时，右端相加不小于
+$$
+\kappa^2\left(\frac16-\frac{s(r+3)}{12}\right)A_*
++\left(\frac{\kappa r}{4}
+-\frac{s\kappa^2(p-1/2)}8\right)S_*.
+$$
+由 @lem-pplojm-elementary-constants-1011，
+$s(r+3)<(27/50)(29/8)=783/400<2$；
+第二个系数大于等于
+$9/50-729/5000=171/5000>0$。
+故加号分支不小于 $\beta(t^2M_2+\zeta M_3)$。
+
+还需说明减号分支至少同样大。由 (3) 求导，
+令 $S=\sin2\beta/\beta$、$C=\cos2\beta$，则
+$$
+\begin{aligned}
+D_2&=\frac{A_2'}{\beta t^2}
+=-\frac{\kappa^2}{2}+\kappa r C+\kappa r(p+1/2)S,\\
+D_3&=\frac{\widetilde A_3'}{\beta}
+=\frac{\kappa^2}{4}\{-r+(1+2p)C+(L+p)S\}>0.
+\end{aligned}
+$$
+最后的正号来自 $L>46/25$、$p>9/5$、$S>3/2$、$r<1$。
+使用 $p<2$、$L+p<5$、$r>3/5$ 以及 $0\le C\le1$，得
+$$
+D_2-sD_3
+\ge-\frac{18}{25}-\frac{63}{250}
++\frac{171}{250}\frac32
+=\frac{27}{500}>0.
+$$
+具体地，$C$ 的系数不小于 $-63/250$，
+$S$ 的系数不小于 $171/250$，常数项不小于 $-18/25$。
+因此 $A_2+A_3$ 是非减函数。非减函数在 $[0,\beta]$ 的平均不超过其在 $[\beta,\alpha]$ 的平均，从而不超过全区间平均。
+乘回 $\beta$ 就给减均值原函数 $G_2+G_3\le0$（两端点同样成立）。
+所以减号分支不小于加号分支。
+
+由 @lem-pplojm-elementary-constants-1011 的
+$a<13/15$、$r>8/13$ 直接代入，得到 $M_2$ 的界。
+由于 $M_3=\widetilde B_3(\alpha)/\alpha$，
+@lem-pplojm-uniform-low-order-margin-1011 的 (4a) 在端点
+$\widetilde G_3(\alpha)=0$ 给 $M_3\ge27/25$。
+上界可直接用
+$$
+p^2-1-\alpha^2<\frac{9407}{4500},\qquad
+\frac{\sin2\alpha}{\alpha}<\frac{275}{168},\qquad
+3pr<\frac{52}{15},
+$$
+这些替换逐项来自 @lem-pplojm-elementary-constants-1011：
+$p=1+a<28/15$、$\alpha^2>197/500$，故
+$p^2-1-\alpha^2<(28/15)^2-1-197/500=9407/4500$；
+$\sin2\alpha/\alpha=(2+r)/(2a)<(2+13/21)/(8/5)=275/168$；
+最后 $3pr<3(28/15)(13/21)=52/15$。
+得到
+$$
+M_3<
+\frac9{50}\left(\frac{9407}{4500}\frac{275}{168}
++\frac{52}{15}\right)
+=\frac{1874781}{1512000}<\frac54.
+$$
+最后 $|\zeta|\le st^2$，故
+$$
+M_2+\frac{\zeta}{t^2}M_3
+>\frac{20949}{8450}-\frac{27}{50}\frac54
+=\frac95+\frac{141}{33800}>\frac95.
+$$
+这完成 (9)。零端点直接按连续性处理。
+:::

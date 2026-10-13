@@ -1,0 +1,169 @@
+---
+title: "中央同源精细均值：八角矩、完整余项与共同相位"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: analytic-replacements-1012/moment-packets.qmd
+      use:
+        - thm-arc-moment-packets-1012
+    - from: analytic-replacements-1012/complete-means.qmd
+      use:
+        - thm-arc-complete-means-1012
+---
+
+::: {#lem-ppsm-ten-packets-1011 .lemma name="十组共同字符系数与完整尾" date="2026-10-11" export="lem-ppsm-ten-packets-1011"}
+采用 @def-psgs-exact-tensor-1011h 的 $\kappa=6/5$ 完整源，设 $c=te^{i\theta},d=se^{i\phi}$，
+$0\le s\le t\le27/50$，零振幅处相位任取，$\zeta=t^2$。
+完整均值为
+$$
+\begin{aligned}
+\bar A={}&1+t^2\mathsf A_e(\zeta)+t^5\mathsf A_o(\zeta)\cos5\theta\\
+&+st^2\mathsf G(\zeta)\cos(\phi-2\theta)
++st^3\mathsf Q(\zeta)\cos(3\theta+\phi)+R_A,
+\end{aligned}
+\tag{6}
+$$
+$$
+\begin{aligned}
+\bar Z={}&-t^2\mathsf P(\zeta)e^{-2i\theta}
++t^3\mathsf J(\zeta)e^{3i\theta}+\jmath_-t^7e^{-7i\theta}\\
+&+ts\mathsf M(\zeta)e^{i(\theta+\phi)}
++st^4\mathsf F(\zeta)e^{i(-4\theta+\phi)}
++\jmath_+st^6e^{i(6\theta+\phi)}+R_Z.
+\end{aligned}
+\tag{7}
+$$
+系数按 $\zeta$ 升幂排列，准确向量逐分量属于 $10^{-8}(v+(0,1)^n)$：
+
+|组|整数向量 $v$|
+|---|---|
+|$\mathsf A_e$|$(36194590,-7902548,452310)$|
+|$\mathsf A_o$|$(-168330,11338)$|
+|$\mathsf G$|$(8725812,-769038,24621)$|
+|$\mathsf Q$|$(3366039,-262940)$|
+|$\mathsf P$|$(15811440,-5064677,332635)$|
+|$\mathsf J$|$(8164882,-701395,21670)$|
+|$\jmath_-$|$(163)$|
+|$\mathsf M$|$(67856036,-10453552,545346)$|
+|$\mathsf F$|$(-168330,8288)$|
+|$\jmath_+$|$(3049)$|
+
+置 $\gamma=9/10,C_p=51543/917504,C_m=22815/458752$，则
+$$
+|R_A|,|R_Z|\le\tau=\gamma^7(C_pt^8+C_mst^7).
+\tag{8}
+$$
+:::
+
+::: {.proof of="lem-ppsm-ten-packets-1011"}
+采用 @def-psgs-exact-tensor-1011h 的同一完整源和 @def-psgs-tensor-weights-1011h 的角常数。在 @thm-arc-moment-packets-1012 中取 $\kappa=6/5$，其八角矩生成公式给本声明逐个字符及全部二十三个系数开区间。
+该定理在整个 $t\le27/50,s\le5/8$ 矩形成立，故覆盖本声明的域；
+其原含权积分 Taylor 余项给 $|R_A|,|R_Z|\le4\tau/5\le\tau$。
+零振幅轴也由同一定理覆盖。此处保留原系数包及共同相位，供下游精细均值直接使用。
+:::
+::: {#cor-ppsm-coarse-full-means-1011 .corollary name="完整角均值的无旧表粗界" date="2026-10-11" export="cor-ppsm-coarse-full-means-1011"}
+采用 @def-psgs-exact-tensor-1011h 的 $\kappa=6/5$ 完整源。在 $0\le s\le t\le27/50$ 上，
+$$
+\bar A\ge1+.26t^2,\qquad|\bar Z|\le.206t^2+.685ts.
+\tag{10}
+$$
+$t>0$ 时两式均严格；$t=0$ 时 $\bar A=1,\bar Z=0$。
+:::
+
+::: {.proof of="cor-ppsm-coarse-full-means-1011"}
+完整核及均值与 @thm-arc-complete-means-1012 相同，取本支源参数即可。该定理同时给出严格性、零轴值与正性。
+:::
+
+::: {#prp-ppsm-shared-phase-sharp-means-1011 .proposition name="同源精细均值与共同相位平方改善" date="2026-10-11" export="prp-ppsm-shared-phase-sharp-means-1011"}
+采用 @def-pscc-scalar-coordinates-1011f、
+@def-pscc-scalar-series-1011f 的准确系数，以及
+@lem-ppsm-ten-packets-1011 的同一 $\kappa=6/5$ 源。
+令 $s=t\sigma,U=\Re(c^2\bar d),Q=\Re(c^3d)$。
+在 $0\le t\le27/50,0\le\sigma\le1$ 上，
+$$
+\bar A\ge1+t^2A_{c,0}+GU+q_{\min}(Q+t^3s),
+\tag{11}
+$$
+$$
+|\bar Z|^2\le t^4(z_p+\sigma z_m)^2
+-2P_{\min}M_{\min}(Q+t^3s).
+\tag{12}
+$$
+:::
+
+::: {.proof of="prp-ppsm-shared-phase-sharp-means-1011"}
+使用 @lem-ppsm-ten-packets-1011 的十组系数，
+按 @def-pscc-scalar-coordinates-1011f、
+@def-pscc-scalar-series-1011f 识别目标包络。$0\le t^2<.3$ 及所列开区间给
+$$
+\begin{aligned}
+\mathsf A_o&<-.00168329+.00011339(.3)=-.001649273<0,\\
+\mathsf F&<-.00168329+.00008289(.3)=-.001658423<0,\\
+\mathsf J&>.08164882-.00701395(.3)=.079544635>0,\\
+\mathsf P&\ge P_{\min}\ge .15811440-.05064677(.3)=.142920369>0,\\
+\mathsf M&\ge M_{\min}\ge .67856036-.10453552(.3)=.647199704>0,\\
+\mathsf Q&\ge q_{\min}\ge .03366039-.00262940(.3)=.03287157>0.
+\end{aligned}
+$$
+$Q+t^3s=t^3s[1+\cos(3\theta+\phi)]\ge0$；并且有
+$$
+|\mathsf G(t^2)-G|<10^{-8}(1+t^2+t^4)<2\cdot10^{-8},
+\quad q_{\min}\le\mathsf Q(t^2)\le q_{\max}=.03366040-.00262939t^2,
+$$
+后两端均正。因 $Q+t^3s\ge0$，
+$$
+\mathsf Q(t^2)Q\ge q_{\min}(Q+t^3s)-q_{\max}t^3s.
+$$
+$|U|\le st^2$ 支付第一差值；纯五、七次先合并为负括号，故
+$t^5\mathsf A_o(t^2)\cos5\theta\ge-.00168330t^5+.00011338t^7$。
+纯偶次下界为 $.36194590t^2-.07902548t^4+.00452310t^6$。
+加入 $R_A\ge-\tau$ 后，不利混合部分准确为
+$-st^2(.00000002)-st^3q_{\max}$；
+代入 $s=t\sigma$ 正是定义中的 $e_A$ 和 $A_{c,0}$，得到 (11)。
+
+自旋取主项
+$a_1=-t^2Pe^{-2i\theta},b_1=tsMe^{i(\theta+\phi)}$，
+其中 $P=\mathsf P(t^2)\ge P_{\min}>0,M=\mathsf M(t^2)\ge M_{\min}>0$。
+其准确平方为
+$$
+|a_1+b_1|^2=(t^2P+tsM)^2-2PM(Q+t^3s).
+$$
+其余字符及全尾的模上界 $E$ 可取纯项
+$t^3(.08164883-.00701394t^2+.00021835t^4)$、
+混合项 $st^4(.00168330-.00005238t^2)$ 及 $\tau$ 之和。
+第一个括号大于 $.08164883-.00701394(.3)>0$，
+第二个大于 $.00168330-.00005238(.3)>0$；因此 $E\ge0$。
+前者的七次系数含两个字符，
+后者先合并同一零字符再加另一字符，故
+$-.00008288+.00003050=-.00005238$。
+由 $P,M$ 的上界，
+$t^2P+tsM+E\le t^2z_p+tsz_m$。
+又
+$$
+(|a_1+b_1|+E)^2
+\le(|a_1|+|b_1|+E)^2-
+\{(|a_1|+|b_1|)^2-|a_1+b_1|^2\},
+$$
+因为 $|a_1+b_1|\le|a_1|+|b_1|$ 且 $E\ge0$。
+右端总包络也为非负：按 @def-pscc-scalar-series-1011f，
+$$
+z_p\ge .15811441-.05064676(.3)-.00701394(.16)>.14,
+$$
+$$
+z_m\ge .67856037-.10453551(.3)-.00005238(.046)>.64.
+$$
+所以 $t^2P+tsM+E\le t^2z_p+tsz_m$ 两边可取平方；
+这里 $t^3<.16,t^5<.046$。
+代入主项平方，再用 $Q+t^3s\ge0$ 与 $P,M$ 的正下界，即得 (12)。
+零振幅时相位项均为零，结论连续成立。
+:::
+
+

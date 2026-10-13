@@ -1,0 +1,123 @@
+{
+  "interface.qmd": {
+    "old_count": 111,
+    "new_count": 113,
+    "removed": [
+      "I",
+      "\\psi",
+      "\\psi",
+      "g",
+      "g\\inH^1(I)",
+      "H^2",
+      "H^1",
+      "\\psi=0",
+      "\\psi_H,\\psi_T"
+    ],
+    "added": [
+      "L^2",
+      "L^2",
+      "E",
+      "Q_E",
+      "V",
+      "V",
+      "V",
+      "g'\\inH^1(I)",
+      "g\\inH^2",
+      "\\psi\\inH^1",
+      "z"
+    ]
+  },
+  "robin.qmd": {
+    "old_count": 271,
+    "new_count": 271,
+    "removed": [
+      "z>0",
+      "u_a",
+      "v=z^je^{-cz^2/2}>0",
+      "n=1,2",
+      "-2K",
+      "z\\in(0,h)",
+      "f(1+x)\\lem(1-x/h),\\qquad0<x<h,"
+    ],
+    "added": [
+      "u_0",
+      "z",
+      "z=1",
+      "v=z^je^{-cz^2/2}",
+      "-2K<0",
+      "(0,h)",
+      "f(1+x)\\lem(1-x/h),\\qquad0<x<h."
+    ]
+  },
+  "appendix.qmd": {
+    "old_count": 213,
+    "new_count": 200,
+    "removed": [
+      "(\\mathbbR^2\\setminusP_j)",
+      "H_0^1(\\Omega)",
+      "\\Omega",
+      "\\Omega",
+      "\\Omega",
+      "q",
+      "|\\Omega|=A>0",
+      "H_0^1",
+      "U",
+      "q=v_0",
+      "q\\in[v_j,v_{j+1}]",
+      "0",
+      "1",
+      "[q,v_2],\\qquad[q,v_3],",
+      "\\sigma_1",
+      "\\sigma_2",
+      "T_1\\capT_2\\ne\\varnothing",
+      "v",
+      "\\gamma",
+      "P_*",
+      "\\Lambda"
+    ],
+    "added": [
+      "n",
+      "\\mathbbR^2\\setminusP_j",
+      "\\varphi",
+      "q=v_0\\in[v_j,v_{j+1}]",
+      "[q,v_2],\\qquad[q,v_3].",
+      "\\sigma_1,\\sigma_2",
+      "T_1\\capT_2",
+      "F(P)>\\Lambda"
+    ]
+  },
+  "coupled.qmd": {
+    "old_count": 139,
+    "new_count": 140,
+    "removed": [
+      "Q_E(z)",
+      "u_s",
+      "T"
+    ],
+    "added": [
+      "Q_E(z)>0",
+      "z=0",
+      "|u_s'|^2",
+      "g_m"
+    ]
+  },
+  "main-proof.qmd": {
+    "old_count": 35,
+    "new_count": 36,
+    "removed": [
+      "P_t",
+      "Q"
+    ],
+    "added": [
+      "P",
+      "P",
+      "L^2"
+    ]
+  },
+  "assembly.qmd": {
+    "old_count": 6,
+    "new_count": 6,
+    "removed": [],
+    "added": []
+  }
+}

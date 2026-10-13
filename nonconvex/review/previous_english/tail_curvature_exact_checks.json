@@ -1,0 +1,107 @@
+{
+  "all_passed": true,
+  "count": 25,
+  "checks": [
+    {
+      "name": "transformed energy",
+      "pass": true
+    },
+    {
+      "name": "transformed common denominator",
+      "pass": true
+    },
+    {
+      "name": "transformed original tail response",
+      "pass": true
+    },
+    {
+      "name": "transformed affine threshold",
+      "pass": true
+    },
+    {
+      "name": "upper c endpoint",
+      "pass": true
+    },
+    {
+      "name": "first rational comparison",
+      "pass": true
+    },
+    {
+      "name": "second rational comparison",
+      "pass": true
+    },
+    {
+      "name": "third rational comparison",
+      "pass": true
+    },
+    {
+      "name": "W tangent numerator derivative",
+      "pass": true
+    },
+    {
+      "name": "W curvature",
+      "pass": true
+    },
+    {
+      "name": "negative curvature numerical threshold",
+      "pass": true
+    },
+    {
+      "name": "tangent quadratic remainder",
+      "pass": true
+    },
+    {
+      "name": "convex-function tangent anchor",
+      "pass": true
+    },
+    {
+      "name": "sqrt5 lower bound",
+      "pass": true
+    },
+    {
+      "name": "quadratic-over-denominator curvature",
+      "pass": true
+    },
+    {
+      "name": "uniform curvature threshold",
+      "pass": true
+    },
+    {
+      "name": "exact chord remainder",
+      "pass": true
+    },
+    {
+      "name": "chord coefficient bound",
+      "pass": true
+    },
+    {
+      "name": "left endpoint response",
+      "pass": true
+    },
+    {
+      "name": "right endpoint response",
+      "pass": true
+    },
+    {
+      "name": "threshold endpoints",
+      "pass": true
+    },
+    {
+      "name": "left endpoint gap",
+      "pass": true
+    },
+    {
+      "name": "right endpoint gap",
+      "pass": true
+    },
+    {
+      "name": "interval chord length bound",
+      "pass": true
+    },
+    {
+      "name": "uniform gap arithmetic",
+      "pass": true
+    }
+  ],
+  "verification_type": "Supplementary exact rational algebra; not qmd-prover certification."
+}

@@ -1,0 +1,53 @@
+---
+title: "不用 Fourier 变换的高斯能量极限"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: sobolev-convex-foundations.qmd
+      use:
+        - lem-arc-convex-zero-extension-1012
+---
+
+::: {#lem-arc-gaussian-energy-1012 .lemma name="高斯卷积型的单调能量极限" date="2026-10-12" export="lem-arc-gaussian-energy-1012"}
+令 $G_h(x)=(4\pi h)^{-d/2}e^{-|x|^2/(4h)}$，$H_hF=G_h*F$。
+这些算子为 $L^2(\mathbb R^d)$ 上的非负自伴压缩，$H_sH_t=H_{s+t}$。
+对 $F\in L^2(\mathbb R^d)$，令
+$$a_h(F)=\frac{\|F\|_2^2-\langle F,H_hF\rangle}{h}.$$
+则 $h\downarrow0$ 时 $a_h(F)$ 单调增加，且
+$$\sup_{h>0}a_h(F)=
+\begin{cases}
+\|\nabla F\|_2^2,&F\in H^1(\mathbb R^d),\\
++\infty,&F\notin H^1(\mathbb R^d).
+\end{cases}$$
+:::
+
+::: {.proof of="lem-arc-gaussian-energy-1012"}
+一维高斯积分平方后转极坐标给 $\int_{\mathbb R}e^{-x^2}dx=\sqrt\pi$；
+逐坐标积分、配方给 $\int G_h=1$ 和 $G_s*G_t=G_{s+t}$。
+核的对称性给自伴性，Jensen 与 Fubini 给 $\|H_hF\|_2\le\|F\|_2$，
+且
+$$\langle F,H_hF\rangle=\|H_{h/2}F\|_2^2\ge0.$$
+$L^2$ 平移强连续可由连续紧支函数的密度及其一致连续性得到。
+据此
+将卷积积分分成一个小球及其补集，利用高斯尾质量趋零，得到 $H_hF\to F$ 于 $L^2$。
+若 $F\in H^1$，同样对每个弱导数成立。
+
+对 $s>0$，高斯及其所有空间导数在 $L^1$ 中；卷积后的函数有平方可积的任意阶导数，
+且 $\partial_sH_sF=\Delta H_sF$ 于 $L^2$，因为可在 $L^1$ 中对核求导。
+分部积分可先对全空间光滑紧支逼近成立，再取 $H^2$ 极限；
+该密度按 @lem-arc-convex-zero-extension-1012 的全空间光滑化证明，对至多二阶导数使用相同截断与卷积构造。
+于是
+$$\frac d{ds}\|H_{s/2}F\|_2^2=-\|\nabla H_{s/2}F\|_2^2.$$
+先在 $\delta\le s\le h$ 积分，再令 $\delta\downarrow0$，得到
+$$a_h(F)=\frac1h\int_0^h E(s/2)\,ds,
+\qquad E(t)=\|\nabla H_tF\|_2^2.\tag{G1}$$
+半群恒等式和压缩性质给 $E(t+r)\le E(t)$（$t,r>0$）。
+因此 (G1) 是递减函数在起始区间的平均，随 $h$ 增大而不增。
+
+若 $F\in H^1$，梯度的强连续性给 $E(t)\to\|\nabla F\|_2^2$，
+故 (G1) 有所述极限。反之，若 $\sup_h a_h(F)=M<\infty$，
+则 $E(h/2)\le a_h(F)\le M$。
+取 $h_j\downarrow0$，其平滑梯度有弱收敛子列；同时 $H_{h_j/2}F\to F$ 强收敛。
+对每个紧支测试函数分部积分后取极限，弱梯度极限恰是 $F$ 的分布梯度。
+于是 $F\in H^1$，并归入前一种情形。这同时证明非 $H^1$ 时极限为无穷大。
+:::

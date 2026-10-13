@@ -1,0 +1,48 @@
+{
+  "scope": "PDF build, text-boundary checks, and visual review; not a mathematical verifier.",
+  "file": "manuscript/Nonconvex-Pentagon-Analytic-Proof-English-R2-20261012.pdf",
+  "pages": 79,
+  "bytes": 469376,
+  "sha256": "65ce8627cf44b5a0f03e41155901a7b79241f90da708dbad3d660af4a591d46d",
+  "latex_warnings": [],
+  "overfull_boxes": [],
+  "underfull_boxes": [],
+  "missing_glyph_warnings": [],
+  "out_of_page_text_spans": [],
+  "english_manuscript": true,
+  "bibliography_embedded_in_tex": true,
+  "all_page_contact_sheets_reviewed": true,
+  "close_visual_review_pages": [
+    1,
+    3,
+    49,
+    51,
+    52,
+    53,
+    54,
+    55,
+    60,
+    61,
+    62,
+    63,
+    64,
+    79
+  ],
+  "independent_terminal_visual_review_pages": [
+    49,
+    51,
+    52,
+    53,
+    54,
+    55
+  ],
+  "visual_findings": [],
+  "new_proof_locations": {
+    "T.3": "pages 49-54",
+    "T.4": "pages 54-55",
+    "crossing Sturm": "pages 60-65"
+  },
+  "protected_goal_sha256": "14d7b31de04ca7979e4362c08bd276324fd8dc0364b6ff7ab07ec2a2d6ba184f",
+  "protected_goal_depends_on_conditional_convex_bridge": false,
+  "official_qmd_prover_run": false
+}

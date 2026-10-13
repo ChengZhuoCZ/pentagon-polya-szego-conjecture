@@ -1,0 +1,183 @@
+---
+title: "共同相位的两个 Gram 矩阵：准确区间判据与两项振幅目标"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-pressure-amplitude-phase-order-1011.qmd
+      use:
+        - prp-ppao-entire-amplitude-order-1011
+    - from: ps-pressure-exact-two-phase-quadratic-1011.qmd
+      use:
+        - lem-ppeqp-exact-angular-elimination-1011
+        - prp-ppeqp-central-instance-1011
+---
+
+::: {#lem-pptg-two-sphere-exactness-1011 .lemma name="两个单位圆约束的准确二次对偶" date="2026-10-11" export="lem-pptg-two-sphere-exactness-1011"}
+设 $Q$ 为实对称 $4\times4$ 矩阵，并令
+$$
+E_1=\operatorname{diag}(1,0,1,0),\qquad
+E_2=\operatorname{diag}(0,1,0,1).
+$$
+则
+$$
+\min_{\substack{v^{\mathsf T}E_1v=1\\v^{\mathsf T}E_2v=1}}
+v^{\mathsf T}Qv
+=\max_{\lambda_1,\lambda_2\in\mathbb R}
+\{\lambda_1+\lambda_2:
+Q-\lambda_1E_1-\lambda_2E_2\succeq0\}.
+\tag{1}
+$$
+两侧极值均达到。
+:::
+
+::: {.proof of="lem-pptg-two-sphere-exactness-1011" status="verified"}
+先考虑凸集
+$$
+\mathcal X=\{X\succeq0:\operatorname{tr}(E_1X)
+=\operatorname{tr}(E_2X)=1\}.
+$$
+它非空、闭，且 $\operatorname{tr}X=2$，所以紧。
+其每个极点的秩均为 $1$。事实上，若极点
+$X=UU^{\mathsf T}$ 的秩为 $r\ge2$，可取 $U$ 满列秩。
+实对称 $r\times r$ 矩阵空间的维数至少为 $3$，
+故存在非零对称矩阵 $H$ 同时满足
+$$
+\operatorname{tr}(U^{\mathsf T}E_iUH)=0,\qquad i=1,2.
+$$
+取充分小的 $\tau>0$，则 $I\pm\tau H\succ0$。
+两个不同矩阵 $U(I\pm\tau H)U^{\mathsf T}$ 均属于 $\mathcal X$，
+且平均为 $X$，与极点性质矛盾。
+
+线性函数 $\operatorname{tr}(QX)$ 在非空紧凸集上存在极点最优解
+（取最优面中的极点）。该解为 $vv^{\mathsf T}$，所以半正定问题
+的最优值准确等于左侧，并且左侧达到。
+
+最后使用有限维半正定规划的 Slater 强对偶定理：
+原始问题有严格可行点且最优值有限时，没有对偶间隙，且对偶最优解达到。
+此处严格可行点是 $X=I_4/2\succ0$，两个迹约束均等于 $1$；
+最优值有限已由紧性得到。其 Lagrangian 为
+$$
+\lambda_1+\lambda_2+
+\operatorname{tr}[(Q-\lambda_1E_1-\lambda_2E_2)X],
+\qquad X\succeq0.
+$$
+在半正定锥上的下确界有限，当且仅当括号中矩阵半正定；
+这正是 (1) 右侧。
+所用外部结果见 Boyd--Vandenberghe
+[凸对偶讲义](https://see.stanford.edu/materials/lsocoee364a/05Duality.pdf)
+的 Slater 条件、对偶达到性及广义锥不等式部分（5–11、5–29）。
+这里仅调用解析强对偶定理，没有调用数值半正定求解器。
+:::
+
+::: {#prp-pptg-exact-gram-criterion-1011 .proposition name="全相位比较的准确双 Gram 证书" date="2026-10-11" export="prp-pptg-exact-gram-criterion-1011"}
+采用 @lem-ppeqp-exact-angular-elimination-1011：
+$$
+\mathcal R(x,y)=C+A\cos x+B\cos y+
+q[1+\cos(x+y)]+w[1+\cos(x-y)],\qquad q,w\ge0.
+$$
+给定实数 $\varepsilon$，记
+$$
+c=C-\varepsilon,\qquad d=A-B,\qquad e=A+B,\qquad S=q+w.
+$$
+则全相位不等式 $\mathcal R\ge\varepsilon$ 等价于存在实数 $z$ 使
+$$
+M_-(z)=
+\begin{pmatrix}c+z&-d\\-d&c-z\end{pmatrix}\succeq0,
+\qquad
+M_+(z)=
+\begin{pmatrix}c+z+4q&e\\e&c-z+4w\end{pmatrix}\succeq0.
+\tag{2}
+$$
+若找到了这样的 $z$，置 $h=(x+y)/2,\ k=(x-y)/2$，则有显式见证
+$$
+\mathcal R(x,y)-\varepsilon
+=\frac12
+\begin{pmatrix}\sin h&\sin k\end{pmatrix}
+M_-(z)
+\begin{pmatrix}\sin h\\\sin k\end{pmatrix}
++\frac12
+\begin{pmatrix}\cos h&\cos k\end{pmatrix}
+M_+(z)
+\begin{pmatrix}\cos h\\\cos k\end{pmatrix}.
+\tag{3}
+$$
+:::
+
+::: {.proof of="prp-pptg-exact-gram-criterion-1011" status="verified"}
+以下推导沿用 @lem-ppeqp-exact-angular-elimination-1011 所给对象、记号与适用条件。
+和差公式给
+$$
+\mathcal R-\varepsilon
+=c+e\cos h\cos k-d\sin h\sin k
++2q\cos^2h+2w\cos^2k.
+\tag{4}
+$$
+展开 (3)，$z$ 项等于
+$z(\sin^2h+\cos^2h-\sin^2k-\cos^2k)/2=0$；
+其余各项正好是 (4)。所以 (2) 蕴含全相位比较。
+
+为证必要性，将
+$$
+v=(\cos h,\cos k,\sin h,\sin k)^{\mathsf T},\qquad
+Q=\begin{pmatrix}
+2q&e/2&0&0\\ e/2&2w&0&0\\
+0&0&0&-d/2\\0&0&-d/2&0
+\end{pmatrix}.
+$$
+这两个单位圆的每个实向量都能由某对 $h,k$ 表示；
+反过来 $x=h+k,\ y=h-k$，故没有相位覆盖损失。
+若 (4) 对全部相位非负，则
+@lem-pptg-two-sphere-exactness-1011 给一对达到最优值的
+$\lambda_1,\lambda_2$，满足
+$$
+Q-\lambda_1E_1-\lambda_2E_2\succeq0,\qquad
+p:=\lambda_1+\lambda_2\ge-c.
+$$
+同时将两个 $\lambda_i$ 减去 $(p+c)/2\ge0$，得 $\lambda'_i$。
+新的和恰为 $-c$；矩阵增加了 $(p+c)I_4/2$，仍半正定。
+置 $z=\lambda'_2-\lambda'_1$。
+将 $2(Q-\lambda'_1E_1-\lambda'_2E_2)$ 按余弦和正弦两组排列，
+其两个对角块恰为 $M_+(z),M_-(z)$。这证明必要性。
+:::
+
+::: {#cor-pptg-unbiased-central-certificate-1011 .corollary name="中央全相位比较的无偏分配充分条件" date="2026-10-11" export="cor-pptg-unbiased-central-certificate-1011"}
+采用 @prp-ppeqp-central-instance-1011 的同一组
+$C,A,B,q_*,w_*$，下文写 $q=q_*,w=w_*$。
+在 $0\le t\le27/50,\ 0\le\sigma\le1$ 中，
+给定 $\varepsilon$，定义
+$$
+\mathcal P=C-A+B-\varepsilon,\qquad
+\mathcal G=(C-\varepsilon+4q)(C-\varepsilon+4w)-(A+B)^2.
+\tag{8}
+$$
+若某个振幅区域上
+$$
+\boxed{\mathcal P\ge0,\qquad\mathcal G\ge0,}
+\tag{9}
+$$
+则该区域的准确两相位残差满足 $\widetilde R\ge\varepsilon$。
+而且令 $d=A-B,\ S=q+w$，有准确分解
+$$
+\mathcal G
+=\mathcal P(\mathcal P+2d+4S)
++4\{4qw+Sd-AB\}.
+\tag{10}
+$$
+:::
+
+::: {.proof of="cor-pptg-unbiased-central-certificate-1011" status="verified"}
+先固定 @prp-ppeqp-central-instance-1011 的同一组残差系数，
+不在比较中改变 $C,A,B,q,w$ 的来源。
+由 @prp-ppao-entire-amplitude-order-1011，有 $d=A-B\ge0$。
+若 $\mathcal P\ge0$，则 $c=C-\varepsilon=\mathcal P+d\ge|d|$。
+因此 @prp-pptg-exact-gram-criterion-1011 的 $M_-(0)$ 半正定。
+$M_+(0)$ 的两个对角元 $c+4q,c+4w$ 非负；
+其行列式恰为 $\mathcal G$，所以 (9) 也使它半正定。
+由该命题的显式见证，得到全相位比较。
+最后展开
+$$
+\mathcal G=c^2+4Sc+16qw-(A+B)^2
+$$
+并代入 $c=\mathcal P+d$、
+$(A+B)^2-d^2=4AB$，得 (10)。
+:::

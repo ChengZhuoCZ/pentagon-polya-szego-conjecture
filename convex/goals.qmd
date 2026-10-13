@@ -1,0 +1,19 @@
+---
+title: "凸五边形面积归一化第一 Dirichlet 特征值"
+lang: zh-CN
+---
+
+::: {#thm-main-convex-pentagon-dirichlet .theorem .goal name="Global Dirichlet minimum among equal-area convex pentagons" date="2026-09-20" export="thm-main-convex-pentagon-dirichlet"}
+For every $A>0$ and every bounded open convex pentagon $P\subset\mathbb R^2$
+of area $A$, let $R_A$ be a regular pentagon of area $A$. Then
+$$
+\lambda_1(P)\geq\lambda_1(R_A),
+$$
+where
+$$
+\lambda_1(\Omega)=
+\inf_{0\ne u\in H^1_0(\Omega)}
+\frac{\int_\Omega|\nabla u|^2}{\int_\Omega u^2}
+$$
+is the first Dirichlet eigenvalue of $-\Delta$.
+:::

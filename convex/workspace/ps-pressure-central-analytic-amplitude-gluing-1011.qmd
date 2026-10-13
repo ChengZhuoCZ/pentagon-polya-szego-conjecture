@@ -1,0 +1,305 @@
+---
+title: "中央二维振幅预算：同源熵信用与秩一相位分配的完整接合"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - lem-pscc-multiplier-nonnegative-1011f
+        - lem-pscc-scalar-factors-1011f
+        - prp-pscc-phase-identity-1011f
+    - from: ps-pressure-adaptive-entropy-square-1011.qmd
+      use:
+        - prp-ppae-central-same-moment-credit-1011
+    - from: ps-pressure-amplitude-phase-order-1011.qmd
+      use:
+        - prp-ppao-entire-amplitude-order-1011
+    - from: ps-pressure-entropy-credit-one-fifth-strip-1011.qmd
+      use:
+        - lem-ppecf-fivepoint-moment-envelopes-1011
+        - prp-ppecf-two-amplitude-entropy-credit-1011
+        - cor-ppecf-one-tenth-strong-credit-1011
+    - from: ps-pressure-gram-outer-amplitude-payment-1011.qmd
+      use:
+        - prp-ppgo-outer-regions-paid-by-corner-1011
+        - lem-ppgo-second-phase-sign-and-slope-1011
+    - from: ps-pressure-exact-two-phase-quadratic-1011.qmd
+      use:
+        - prp-ppeqp-central-instance-1011
+    - from: ps-pressure-low-ratio-rank-one-payment-1011.qmd
+      use:
+        - prp-ppol-low-ratio-rank-one-payment-1011
+    - from: ps-pressure-opposite-corner-entire-amplitude-1011.qmd
+      use:
+        - prp-ppocf-entire-opposite-corner-positive-1011
+    - from: ps-pressure-opposite-corner-refined-mean-1011.qmd
+      use:
+        - prp-ppocr-corner-lower-reduction-1011
+        - def-ppocr-retained-quadratic-corner-1011
+    - from: ps-pressure-rank-one-gram-payment-1011.qmd
+      use:
+        - prp-pprg-central-linear-corner-interface-1011
+        - prp-pprg-high-ratio-full-phase-payment-1011
+    - from: ps-pressure-two-gram-phase-budget-1011.qmd
+      use:
+        - prp-pptg-exact-gram-criterion-1011
+---
+
+::: {#prp-ppca-entire-amplitude-phase-budget-1011 .proposition name="中央整振幅矩形的含同源信用全相位预算" date="2026-10-11" export="prp-ppca-entire-amplitude-phase-budget-1011"}
+取 @def-pscc-scalar-coordinates-1011f、
+@def-pscc-scalar-target-1011f 与
+@prp-pscc-phase-identity-1011f 中同一组 $A,B,C,a,Q_F,W_F$。
+令
+$$
+\varepsilon=\frac1{2500},\qquad
+q_*=at^2\sigma Q_F,\qquad w_*=at^2\sigma^3W_F,
+$$
+$$
+\chi(t)=
+\begin{cases}
+1/200,&0<t\le1/10,\\
+0,&t=0\ \text{或}\ 1/10<t\le27/50.
+\end{cases}
+\tag{1}
+$$
+则整个闭矩形 $0\le t\le27/50,\ 0\le\sigma\le1$ 上，对全部实相位 $x,y$，
+$$
+\boxed{
+C+\chi+A\cos x+B\cos y
++q_*[1+\cos(x+y)]+w_*[1+\cos(x-y)]
+\ge\frac1{2500}.
+}
+\tag{2}
+$$
+这里 $\chi$ 先作为明确的振幅函数；将它加到真实谱预算的合法性
+由后面的同源命题另行证明。
+:::
+
+::: {.proof of="prp-ppca-entire-amplitude-phase-budget-1011"}
+以下推导沿用 @def-pscc-scalar-coordinates-1011f 所给对象、记号与适用条件。
+记 $P=C-A+B-\varepsilon$、$d=A-B$。
+@prp-ppocf-entire-opposite-corner-positive-1011 给整个矩形上的
+$P>0$ 和 $\mathcal Q>0$。
+为比较这两者，采用 @def-ppocr-retained-quadratic-corner-1011 的
+$z_{\rm c}=rt^2(1-\sigma^2)\ge0$，其中 $r>0$、$0\le\sigma\le1$。
+@prp-ppocr-corner-lower-reduction-1011 因而给
+$P>\mathcal Q+(549/65000)z_{\rm c}^3\ge\mathcal Q$。
+@prp-ppao-entire-amplitude-order-1011 给 $d\ge0$。
+所有这些量仍取
+@def-pscc-scalar-target-1011f 和
+@prp-pscc-phase-identity-1011f 的同一组参数。
+同时直接采用 @prp-ppeqp-central-instance-1011：它的完整相位残差正是
+$C+A\cos x+B\cos y+q_*[1+\cos(x+y)]+w_*[1+\cos(x-y)]$，
+且 $q_*,w_*\ge0$；$t\sigma>0$ 时二者严格为正。
+其标量系数由 @def-pscc-scalar-series-1011f、@def-pscc-scalar-target-1011f 固定，
+$a>0$ 来自 @lem-pscc-scalar-factors-1011f。
+给定任意 $x,y$，取 $\theta=(2x+y)/5$、$\phi=(-x+2y)/5$，
+即有 $x=2\theta-\phi$、$y=\theta+2\phi$，故该残差覆盖本题全部相位。
+
+先处理 $t\sigma=0$。准确源式给 $A=B=q_*=w_*=0$，
+故左侧为 $C+\chi>\varepsilon$。
+以下设 $t\sigma>0$。
+
+若 $B\le0$，
+@prp-ppgo-outer-regions-paid-by-corner-1011
+由 $P>0$ 给
+$$
+(C-\varepsilon+4q_*)(C-\varepsilon+4w_*)-(A+B)^2\ge0.
+$$
+令 $c=C-\varepsilon=P+d$，则 $c>|d|$。
+在 @prp-pptg-exact-gram-criterion-1011 中取分配参数 $z=0$。
+第一个矩阵的对角元为 $c>0$、行列式为 $c^2-d^2>0$；
+第二个矩阵的对角元为 $c+4q_*,c+4w_*>0$，行列式为刚得的非负量。
+所以两个矩阵均半正定，准确相位表示给不含 $\chi$ 的 (2)。
+再用 $\chi\ge0$ 即可。
+
+若 $B>0$ 且 $0<\sigma\le1/3$，
+@prp-ppol-low-ratio-rank-one-payment-1011 给
+$$
+\mathcal Q+\chi>\frac{B^2}{2q_*}.
+$$
+而 @prp-ppocr-corner-lower-reduction-1011 给
+$P+\chi>\mathcal Q+\chi>0$。
+因此 @prp-pprg-central-linear-corner-interface-1011 的充分条件成立：
+明确取其非负常数信用 $\xi=\chi(t)\ge0$ 及 $p_*=\mathcal Q+\chi$；
+则接口的条件 (5) 正是
+$C+\xi-A+B-\varepsilon=P+\chi>p_*>0$。
+此外
+$2q_*(p_*+2w_*)-B^2>0$，其中 $q_*>0$、$w_*\ge0$ 已核实。
+为准确核对所引接口的条件 (6)，使用
+@lem-ppgo-second-phase-sign-and-slope-1011 的 $B=at\sigma^2J_B$，有
+$$
+2q_*(p_*+2w_*)-B^2
+=at^2\sigma\left[2Q_Fp_*+a\sigma^3\{4t^2Q_FW_F-J_B^2\}\right].
+$$
+$at^2\sigma>0$，所以方括号严格为正，所引命题给 (2)。
+
+若 $B>0$ 且 $1/3\le\sigma\le1$，
+直接使用 @prp-pprg-high-ratio-full-phase-payment-1011。
+该命题的 $\chi$ 与此处 (1) 在全部 $t$ 上一致，
+其残差按上述 $x,y$ 满射就是 (2) 中不含 $\chi$ 的完整表达式，故结论直接给 (2)。
+两个振幅比区间在 $\sigma=1/3$ 接合；
+$B$ 的两种符号以及全部零振幅边界已经分别处理。
+这证明闭矩形上没有遗漏的 (2)。
+:::
+
+::: {#prp-ppca-same-source-strict-budget-1011 .proposition name="中央解析相位预算对真实均值与完整熵的条件接合" date="2026-10-11" export="prp-ppca-same-source-strict-budget-1011"}
+采用 @def-pscc-scalar-coordinates-1011f、
+@def-pscc-scalar-series-1011f 和
+@def-pscc-scalar-target-1011f 的数据，设 $t>0$。
+令 $s=t\sigma$，取复数
+$c_0=te^{i\theta}$、$d_0=se^{i\phi}$，
+以及 $n_j=e^{(2j+1)\pi i/5}$。
+定义
+$$
+x_j=\Re(c_0n_j),\quad z_j=\Re(d_0n_j^2),\quad
+j_j=m+2x_j+2rz_j,\quad \omega_j=1+\frac65x_j,
+$$
+$$
+U=\Re(c_0^2\overline d_0),\quad V=\Re(c_0d_0^2),\quad
+Q=\Re(c_0^3d_0),\quad W=\Re(\overline c_0d_0^3).
+$$
+设 $j_j>41m/100$ 对五点都成立，
+$$
+L=\sqrt m-\operatorname{av}\sqrt{j_j\omega_j},
+$$
+且同一源的实数 $D$ 满足
+$$
+D\ge t^2d^\circ+G U+
+(q_{\min}+P_{\min}M_{\min})(Q+t^3s).
+\tag{3}
+$$
+这里 $G$ 是定义中的均值系数，不是相位行列式。
+最后令
+$u=\cos(2\theta-\phi)$、$v=\cos(\theta+2\phi)$，
+并假设同一数据的 $g_2,g_3,g_A\ge0$。
+则
+$$
+\boxed{7D-5L\ge\frac{t^2}{2500aF_C}>0.}
+\tag{4}
+$$
+进一步，对 $0\le\zeta<5/12$，
+$$
+(1-\zeta)D-\zeta L
+\ge\frac{(1-\zeta)t^2}{17500aF_C}>0.
+\tag{5}
+$$
+:::
+
+::: {.proof of="prp-ppca-same-source-strict-budget-1011"}
+以下推导沿用 @def-pscc-scalar-coordinates-1011f 所给对象、记号与适用条件。
+@lem-pscc-scalar-factors-1011f 给 $a,F_C>0$ 及 $H_j>mh_0>0$；
+$F_C$ 的具体正因子使用 @def-pscc-scalar-target-1011f。
+以同一五点数据应用
+@prp-ppae-central-same-moment-credit-1011。
+其前提逐项由当前定义满足：$0<t\le27/50$、$s=t\sigma\in[0,t]$，
+$|c_0|=t$、$|d_0|=s$、$m=1+r(t^2-s^2)$；节点与严格不等式 $j_j>41m/100$ 均相同。
+此外 $|x_j|\le t$，所以
+$\omega_j\ge1-6t/5\ge44/125>0$。
+它的真实矩取自
+$$
+\Delta_j=j_j-m\omega_j=\delta x_j+2rz_j,\qquad
+S_j=(j_j+m\omega_j)/2-m=px_j+rz_j,
+$$
+即 $V_2=\operatorname{av}\Delta_j^2$、
+$V_3=\operatorname{av}\Delta_j^2S_j$、$F_4=\operatorname{av}\Delta_j^2S_j^2$。
+它从完整 Hellinger 身份给出
+$$
+L\le\Gamma(\mathcal B_b-\mathcal C_{\rm ent}),\qquad
+\Gamma=\frac{21}{50(m+2)}.
+\tag{6}
+$$
+此处不从一个已有粗上界擅自减去正数。
+由 $n_j^5=-1$ 和五点平均直接展开，有
+$$
+\begin{aligned}
+V_2&=\delta^2t^2/2+2r^2s^2>0,\\
+V_3&=\alpha U-\beta V,\\
+F_4&=t^2F_{\rm hi}^{\circ}
+ -\delta rp(Q+t^3s)-2r^3(W+ts^3).
+\end{aligned}
+\tag{7}
+$$
+第一式的严格正性使用 $t>0,\delta>0$，
+故 (6) 的非退化分母合法。
+这些身份也可逐项由
+$\operatorname{av}n_j^k=0$（$5\nmid k$）和
+$\operatorname{av}n_j^{5\ell}=(-1)^\ell$ 得到。
+
+将 (7) 代入 (6) 的完整三矩式，
+并同时使用假设 (3)，按
+@def-pscc-scalar-series-1011f 与
+@def-pscc-scalar-target-1011f 的准确系数收集，得到
+$$
+\begin{aligned}
+F_C(7D-5L)\ge{}&
+7t^2d^\circ F_C-5t^2E^\circ+A_FU-B_FV\\
+&+Q_F(Q+t^3s)+W_F(W+ts^3)
+ +5F_C\Gamma\mathcal C_{\rm ent}.
+\end{aligned}
+\tag{8}
+$$
+三次系数的符号仍完整保留；
+特别是 $\mathcal C_{\rm ent}$ 来自 (6) 的同一个 $\mathcal B_b$。
+
+令
+$$
+\Xi=\frac{5aF_C\Gamma}{t^2}\mathcal C_{\rm ent}.
+$$
+若 $0<t\le1/10$，
+上述同一节点与 $\Delta_j,S_j$ 又满足
+@lem-ppecf-fivepoint-moment-envelopes-1011 的 $0<t\le1/3$、$0\le\sigma\le1$ 条带前提。
+当前已核实 @prp-ppae-central-same-moment-credit-1011 的全部真实熵前提及 $V_2>0$，
+故 @prp-ppecf-two-amplitude-entropy-credit-1011 适用于这同一组数据。
+该命题定义的 $\Xi$ 与此处完全相同；更明确地，代入
+$F_C=m^3h_0(m+2)$、$\Gamma=21/[50(m+2)]$ 及
+$\mathcal C_{\rm ent}=\mathcal W^2/[(9/4)m^3h_0U_2]$，两边都等于
+$$
+\Xi=\frac{14a}{15}\frac{\mathcal W^2}{t^2U_2}.
+$$
+其中 $U_2>0$ 已由同源命题保证，所以所有约分合法。
+于是 @cor-ppecf-one-tenth-strong-credit-1011 给 $\Xi>1/200$。
+若 $t>1/10$，同源差平方直接给 $\Xi\ge0$。
+所以整个当前范围都有
+$\Xi\ge\chi(t)$，其中 $\chi$ 取
+@prp-ppca-entire-amplitude-phase-budget-1011 的 (1)。
+
+最后设置共同相位
+$x=2\theta-\phi,\ y=\theta+2\phi$。
+准确有
+$$
+\begin{gathered}
+U=t^3\sigma\cos x,\qquad V=t^3\sigma^2\cos y,\\
+Q+t^3s=t^4\sigma[1+\cos(x+y)],\\
+W+ts^3=t^4\sigma^3[1+\cos(x-y)].
+\end{gathered}
+$$
+将 (8) 乘以 $a/t^2$，并按
+@prp-pscc-phase-identity-1011f 的同一几何乘子收集，有
+$$
+\begin{aligned}
+\frac{aF_C(7D-5L)}{t^2}\ge{}&
+C+A\cos x+B\cos y\\
+&+q_*[1+\cos(x+y)]+w_*[1+\cos(x-y)]\\
+&+\Xi+\mu_2g_2+\mu_3g_3+\mu_Ag_A.
+\end{aligned}
+\tag{9}
+$$
+这里直接保留两个原四次相位项，没有先换成旧的较小平方残差。
+@lem-pscc-multiplier-nonnegative-1011f 给 $\mu_2,\mu_3,\mu_A\ge0$；
+结合假设 $g_2,g_3,g_A\ge0$、$\Xi\ge\chi$ 及
+@prp-ppca-entire-amplitude-phase-budget-1011，(9) 至少为 $1/2500$。
+除以 $aF_C/t^2>0$，得 (4)。
+
+五点的 $\operatorname{av}j=m,\operatorname{av}\omega=1$，
+故 Cauchy--Schwarz 给 $L\ge0$。于是
+$$
+(1-\zeta)D-\zeta L
+=\frac{1-\zeta}{7}(7D-5L)+\frac{5-12\zeta}{7}L.
+$$
+当 $0\le\zeta<5/12$ 时两系数非负，第一项由 (4) 严格为正，
+即得 (5)。
+:::

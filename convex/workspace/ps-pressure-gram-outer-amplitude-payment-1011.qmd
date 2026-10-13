@@ -1,0 +1,374 @@
+---
+title: "Gram 联合预算：高振幅两片区域由相反角点统一支付"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+        - prp-pscc-phase-identity-1011f
+    - from: ps-pressure-amplitude-phase-order-1011.qmd
+      use:
+        - prp-ppao-entire-amplitude-order-1011
+    - from: ps-pressure-exact-two-phase-quadratic-1011.qmd
+      use:
+        - prp-ppeqp-central-instance-1011
+    - from: ps-pressure-negative-phase-concavity-1011.qmd
+      use:
+        - prp-ppnpc-negative-branch-concavity-1011
+    - from: ps-pressure-two-gram-phase-budget-1011.qmd
+      use:
+        - cor-pptg-unbiased-central-certificate-1011
+---
+
+::: {#lem-ppgo-sign-coupling-payment-1011 .lemma name="相位系数次序和较小系数的耦合支付" date="2026-10-11" export="lem-ppgo-sign-coupling-payment-1011"}
+取实数 $A,B,C,\varepsilon$ 和 $q,w\ge0$。
+置
+$$
+\delta_A=A-B\ge0,\quad S=q+w,\quad
+\mathcal P=C-\varepsilon-\delta_A,\quad
+\mathcal G=(C-\varepsilon+4q)(C-\varepsilon+4w)-(A+B)^2.
+$$
+定义
+$$
+F=4qw+S\delta_A-AB.
+$$
+若满足下列条件之一，则 $F\ge0$：
+
+1. $AB\le0$；
+2. $A\le0$ 且 $A^2\le4qw$；
+3. $B\ge0$ 且 $B^2\le4qw$。
+
+在这些条件下，若 $\mathcal P\ge0$，则
+$$
+\boxed{
+\mathcal G\ge\mathcal P(\mathcal P+2\delta_A+4S)\ge0.
+}
+\tag{1}
+$$
+:::
+
+::: {.proof of="lem-ppgo-sign-coupling-payment-1011" status="verified"}
+若 $AB\le0$，则 $F$ 的三项均非负。
+若 $A\le0$ 且 $A^2\le4qw$，则
+$|A|\le2\sqrt{qw}\le S$，所以
+$$
+F=4qw-A^2+(S+A)\delta_A\ge0.
+$$
+若 $B\ge0$ 且 $B^2\le4qw$，同样有 $B\le S$，所以
+$$
+F=4qw-B^2+(S-B)\delta_A\ge0.
+$$
+最后直接展开得到准确身份
+$$
+\mathcal G=
+\mathcal P(\mathcal P+2\delta_A+4S)+4F.
+$$
+$\mathcal P,\delta_A,S$ 非负时即得 (1)。
+:::
+
+::: {#lem-ppgo-second-phase-sign-and-slope-1011 .lemma name="第二相位系数的真实振幅单调性及高比率负号" date="2026-10-11" export="lem-ppgo-second-phase-sign-and-slope-1011"}
+采用 @prp-pscc-phase-identity-1011f 的真实系数 $B$，置
+$$
+T=\frac{27}{50},\quad X=t/T,\quad h=.705-.6t,\quad
+e=\frac{14}{15}(1+h),\quad
+b_2=2+2r,\quad b_3=\frac92+3r.
+$$
+在整个 $0\le t\le T,\ 0\le\sigma\le1$ 上，定义
+$$
+J_B=-er^2(3m-.6m^2)+b_2\mu_2+b_3\mu_3,
+\qquad B=at\sigma^2J_B.
+$$
+其中 $m=1+rt^2(1-\sigma^2)$ 保持真实依赖。
+则
+$$
+\partial_\sigma J_B<-\frac98.
+\tag{2}
+$$
+此外，当 $\sigma\ge4/5$ 时，
+$$
+J_B<-\frac3{50},\qquad
+B\le-\frac3{50}at\sigma^2\le0.
+\tag{3}
+$$
+:::
+
+::: {.proof of="lem-ppgo-second-phase-sign-and-slope-1011" status="verified"}
+由 @def-pscc-scalar-coordinates-1011f 和
+@def-pscc-scalar-target-1011f，
+$e_C=em$、$\beta=r^2(3-.6m)$，
+故 $B_F=er^2(3m-.6m^2)$；结合
+@prp-pscc-phase-identity-1011f 即得所列 $J_B$。
+$r$ 是 $r^2+r-1=0$ 的正根，代入两个有理端点可得
+$$
+.618<r<.61804<5/8,\qquad
+1\le m<6/5,\qquad e<8/5,\qquad t^2<3/10.
+\tag{4}
+$$
+后面三个范围由原坐标和 $h\le.705$ 直接得到。
+
+写
+$$
+u_2=.6X^2,\quad
+u_{30}=.78-.26X-.48X^2,\quad
+u_{31}=.08-.16X+.18X^2.
+$$
+原乘子为
+$\mu_2=(1-\sigma)u_2$、
+$\mu_3=(1-\sigma)u_{30}+\sigma u_{31}$。
+因此真实导数为
+$$
+\partial_\sigma J_B
+=2er^3t^2\sigma(3-1.2m)+V(X),
+\quad
+V(X)=-.7b_3+.1b_3X+(1.77+.78r)X^2.
+\tag{5}
+$$
+因为 $r^3=2r-1<1/4$、$3-1.2m\le1.8$，
+第一项严格小于
+$2(8/5)(1/4)(3/10)(1.8)=.432$。
+$V$ 关于 $X$ 凸，
+$$
+V(0)=-3.15-2.1r,\qquad V(1)=-.93-1.02r,
+$$
+且后者更大，所以
+$$
+\partial_\sigma J_B
+<.432-.93-1.02(.618)
+=-1.12836<-\frac98.
+$$
+这证明 (2)。
+
+为取得整片负号，固定 $t$ 并暂时仅用
+$$
+3m-.6m^2\ge 12/5\qquad(1\le m<6/5).
+$$
+这是因为左侧的 $m$ 导数 $3-1.2m>0$。
+因此
+$$
+J_B\le -2.4er^2+b_2(1-\sigma)u_2
++b_3\{(1-\sigma)u_{30}+\sigma u_{31}\}.
+\tag{6}
+$$
+右侧关于 $\sigma$ 的导数正是 $V(X)<0$。
+在 $\sigma\ge4/5$ 时可取 $\sigma=4/5$，再用 $r^2=1-r$，得到
+$$
+\begin{aligned}
+J_B\le f(X):={}&-2.8292+4.4792r
+-(.08424+1.26576r)X\\
+&+(.456+.384r)X^2.
+\end{aligned}
+$$
+$f$ 凸，故最大值在 $X=0,1$。
+这两个端点的 $r$ 系数均为正，于是
+$$
+f(0)<-.060875232,\qquad f(1)<-.2340781824,
+$$
+其中仅代入了 $r<.61804$。
+两数都小于 $-3/50$，得到 (3)。
+零因子 $t\sigma=0$ 时 $B=0$，声明中的非严格号保留该边界。
+:::
+
+::: {#lem-ppgo-upper-amplitude-coupling-1011 .lemma name="高第一振幅区的第二系数由真实两耦合支付" date="2026-10-11" export="lem-ppgo-upper-amplitude-coupling-1011"}
+采用 @prp-ppeqp-central-instance-1011 的
+$$
+q=at^2\sigma Q_F,\qquad w=at^2\sigma^3W_F
+$$
+和 @lem-ppgo-second-phase-sign-and-slope-1011 的 $J_B$。
+在完整连续区域
+$$
+\frac{13}{25}\le t\le\frac{27}{50},\qquad0\le\sigma\le1
+$$
+上，若 $B>0$，则
+$$
+\boxed{B^2<4qw.}
+\tag{7}
+$$
+:::
+
+::: {.proof of="lem-ppgo-upper-amplitude-coupling-1011" status="verified"}
+本段坐标及常数采用 @def-pscc-scalar-coordinates-1011f，特别地 $h=h_0$、$Y=\sigma$、$B_0=3/2$。
+多项式 $x^2+x-1$ 在正轴递增，在 $.618$、$.61804$ 分别等于
+$-19/250000$、$8401/625000000$，故 $.618<r<.61804<5/8$。
+于是 $e=(14/15)(1+h)\ge(14/15)(1.381)>32/25$，
+$r^2=1-r>3/8$，且 $z_0=rt^2<(5/8)(27/50)^2=729/4000<1/5$。
+以下推导沿用 @prp-ppeqp-central-instance-1011 所给对象、记号与适用条件。
+先保留 $Q_F$ 中真实 $m$ 的贡献。
+由 @def-pscc-scalar-series-1011f 的三个显式多项式，
+丢去正四次项并取 $t=T$ 即有
+$$
+q_{\min}>.0328,\quad P_{\min}>.143,\quad M_{\min}>.648.
+$$
+故
+$$
+\mathcal K(t):=q_{\min}+P_{\min}M_{\min}
+>.0328+.143\cdot.648=.125464.
+$$
+@def-pscc-scalar-target-1011f 的准确式为
+$$
+Q_F=7h(m^4+2m^3)\mathcal K(t)+\frac{14}{15}r(2-.72m^2).
+\tag{8}
+$$
+固定 $t,r$ 后，其 $m$ 二阶导数满足
+$$
+\partial_m^2Q_F
+=7h\mathcal K(t)(12m^2+12m)-\frac{14}{15}(1.44)r
+>7(.381)(.125464)\cdot24-.84>0.
+$$
+因此其一阶导数的最小值位于 $m=1$，并且
+$$
+\partial_mQ_F
+>7(.381)(.125464)\cdot10-.84
+=2.50612488>\frac52.
+$$
+在 $m=1$，同样直接估计得
+$$
+\begin{aligned}
+Q_F|_{m=1}
+&>7(.381)\cdot3(.125464)
++\frac{14}{15}(.618)(1.28)\\
+&=1.742141464>\frac{87}{50}.
+\end{aligned}
+$$
+所以在整个原振幅矩形上，
+$$
+Q_F>\frac{87}{50}+\frac52(m-1),\qquad
+W_F=\frac{28}{15}r^3>\frac{826}{1875}>\frac{11}{25}.
+\tag{9}
+$$
+最后一式用 $r^3=2r-1>.236$。
+
+其次，对 $J_B(t,0)$ 保留同一个面积增量。
+令 $z_0=rt^2$。在 $\sigma=0$ 有 $m=1+z_0$，
+故准确展开
+$$
+3m-.6m^2=2.4+1.8z_0-.6z_0^2
+$$
+给
+$$
+J_B(t,0)=f_0(X)-er^2z_0(1.8-.6z_0),
+\tag{10}
+$$
+其中
+$$
+f_0(X)=-.3092+6.1592r
+-(.44424+1.50576r)X-(.96+.24r)X^2.
+$$
+在本引理区域，$X\ge26/27$，
+$e>32/25$、$r^2>3/8$、$z_0>1/6$、$z_0<1/5$。
+其中 $z_0>1/6$ 由
+$.618(13/25)^2=.1671072>1/6$ 得到。
+因此
+$$
+er^2z_0(1.8-.6z_0)>
+\frac{32}{25}\frac38\frac16\frac{42}{25}
+=\frac{84}{625}.
+$$
+$f_0$ 关于 $X$ 严格递减；
+它的 $r$ 系数 $6.1592-1.50576X-.24X^2$ 在 $[0,1]$ 为正。
+所以把 $X=26/27$、$r=.61804$ 代入，得到
+$$
+J_B(t,0)<
+\frac{38399366561}{37968750000}
+<n:=\frac{253}{250}.
+\tag{11}
+$$
+后一正差是 $25008439/37968750000$。
+由 @lem-ppgo-second-phase-sign-and-slope-1011，
+$$
+J_B(t,\sigma)<n-\frac98\sigma.
+\tag{12}
+$$
+
+如果 $B>0$，则 $t\sigma>0$、$J_B>0$，
+故 $0<\sigma<8n/9<1$。
+由 (9) 与 $z_0>1/6$，
+$$
+4t^2Q_FW_F>
+4\left(\frac{13}{25}\right)^2\frac{11}{25}
+\left\{\frac{87}{50}+\frac5{12}(1-\sigma^2)\right\}.
+\tag{13}
+$$
+定义右端减去 $(n-9\sigma/8)^2$ 为 $H(\sigma)$。
+这是关于 $\sigma$ 的严格凹二次式。
+在区间 $[0,8n/9]$ 的一端，
+$$
+H(0)=\frac{10417}{4687500}>0;
+$$
+在另一端，所减平方为零，而 (13) 右端严格为正，
+所以 $H(8n/9)>0$。
+凹性给整个区间上的 $H>0$。
+于是 (12)--(13) 给
+$J_B^2<4t^2Q_FW_F$。
+最后乘以 $a^2t^2\sigma^4>0$，即得
+$$
+B^2=a^2t^2\sigma^4J_B^2
+<4a^2t^4\sigma^4Q_FW_F=4qw.
+$$
+:::
+
+::: {#prp-ppgo-outer-regions-paid-by-corner-1011 .proposition name="两片外振幅区域的 Gram 条件由同一角点支付" date="2026-10-11" export="prp-ppgo-outer-regions-paid-by-corner-1011"}
+采用 @prp-ppeqp-central-instance-1011 的真实中央系数。
+取 $\varepsilon=1/2500$，并定义
+$$
+\mathcal P=C-A+B-\varepsilon,\qquad
+\mathcal G=(C-\varepsilon+4q)(C-\varepsilon+4w)-(A+B)^2.
+$$
+若同一组参数满足 $\mathcal P\ge0$，且
+$$
+\sigma\ge\frac45
+\quad\text{或}\quad
+t\ge\frac{13}{25},
+\tag{14}
+$$
+则 $\mathcal G\ge0$，准确全相位残差不小于 $\varepsilon$。
+在其余振幅区域内，若仍有 $B\le0$，
+同一结论也由 $\mathcal P\ge0$ 单独推出。
+
+因此在已有系数次序和负分支强凹性下，
+独立于 $\mathcal P\ge0$ 的 $\mathcal G$ 义务
+只可能剩在
+$$
+0<t<\frac{13}{25},\quad
+0<\sigma<\frac45,\quad
+A\ge B>0.
+\tag{15}
+$$
+:::
+
+::: {.proof of="prp-ppgo-outer-regions-paid-by-corner-1011" status="verified"}
+本中央实例的振幅域由 @def-pscc-scalar-coordinates-1011f 给出，
+即 $0\le t\le27/50$、$0\le\sigma\le1$。
+均值多项式采用 @def-pscc-scalar-series-1011f，
+中央系数和乘子采用 @def-pscc-scalar-target-1011f，
+$C,A,B$ 使用 @prp-pscc-phase-identity-1011f 的公式。
+这里所称整个振幅矩形始终就是上述闭域；
+特别地 $\sigma\ge4/5$ 仍同时满足 $t\le27/50,\sigma\le1$，
+而 $t\ge13/25$ 仍同时满足 $t\le27/50,0\le\sigma\le1$。
+由 @prp-ppeqp-central-instance-1011 使用同一组
+$C,A,B,q,w$；其耦合非负。
+@prp-ppao-entire-amplitude-order-1011 给
+$\delta_A=A-B\ge0$。
+
+先考虑任意 $B\le0$。
+若 $A\ge0$，则 $AB\le0$；
+若 $A<0$，则
+@prp-ppnpc-negative-branch-concavity-1011 给 $A^2<4qw$。
+这两种情况均由
+@lem-ppgo-sign-coupling-payment-1011 得到
+$\mathcal P\ge0\Longrightarrow\mathcal G\ge0$。
+@lem-ppgo-second-phase-sign-and-slope-1011
+说明 $\sigma\ge4/5$ 完全落在此类。
+
+对于 $t\ge13/25$，仅剩 $B>0$；
+@lem-ppgo-upper-amplitude-coupling-1011 给 $B^2<4qw$，
+再用 @lem-ppgo-sign-coupling-payment-1011 即可。
+得到 $\mathcal P,\mathcal G\ge0$ 后，
+@cor-pptg-unbiased-central-certificate-1011 的
+显式 $z=0$ 双 Gram 证书给出真实全相位比较。
+两条零振幅边界上 $A=B=q=w=0$，
+因此 $\mathcal P\ge0$ 也直接足够，不留额外义务。
+排除上述情况，剩余只能满足 (15)。
+:::

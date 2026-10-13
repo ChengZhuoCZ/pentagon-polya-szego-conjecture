@@ -1,0 +1,183 @@
+---
+title: "中央源短解析闭合：实际斜率、同源均值与熵"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+        - def-pscc-scalar-series-1011f
+        - def-pscc-scalar-target-1011f
+    - from: ps-convex-geometric-tensor-switch-1011g/tensor-frontier.qmd
+      use:
+        - def-psgs-exact-tensor-1011h
+        - def-psgs-tensor-weights-1011h
+    - from: analytic-replacements-1012/actual-spin.qmd
+      use:
+        - thm-arc-actual-spin-1012
+    - from: ps-pressure-central-analytic-amplitude-gluing-1011.qmd
+      use:
+        - prp-ppca-same-source-strict-budget-1011
+    - from: ps-pressure-central-complete-kernel-gluing-1011.qmd
+      use:
+        - cor-ppcc-central-complete-weight-comparison-1011
+        - thm-ppcc-central-complete-two-kernel-1011
+    - from: ps-pressure-central-sinc-means-1011.qmd
+      use:
+        - cor-ppsm-coarse-full-means-1011
+        - prp-ppsm-shared-phase-sharp-means-1011
+    - from: true-pressure-terminal-migration-1011/geometry-interface.qmd
+      use:
+        - lem-tpm-positive-weight-constraints-tpm1011
+---
+
+::: {#prp-ppcs-central-lorentz-closure-1011 .proposition name="中央源实际斜率及 Lorentz 均值的无循环闭合" date="2026-10-11" export="prp-ppcs-central-lorentz-closure-1011"}
+采用 @def-psgs-exact-tensor-1011h 的 $\kappa=6/5$ 源，及
+@def-psgs-tensor-weights-1011h 的同源权重。设
+$0\le s=|d|\le t=|c|\le27/50$，并令
+$$
+h_6=.49t^2+1.07ts,\qquad d_0=1+.26t^2,\qquad \ell=h_6/d_0.
+$$
+则
+$$
+C\ge C_0\bar A\ge C_0d_0>0,\qquad
+|K|/C\le\ell<17/40,
+\tag{1}
+$$
+以及
+$$
+\mathcal S:=\sqrt{C^2-|K|^2}
+\ge C_0\sqrt{\bar A^2-|\bar Z|^2}
+\ge C_0(\bar A-\tfrac12|\bar Z|^2).
+\tag{2}
+$$
+第一式的斜率比较在 $t>0$ 时严格。
+:::
+
+::: {.proof of="prp-ppcs-central-lorentz-closure-1011"}
+以下推导沿用 @def-psgs-exact-tensor-1011h、@def-psgs-tensor-weights-1011h 所给对象、记号与适用条件。
+先核对 @thm-ppcc-central-complete-two-kernel-1011 的整个适用范围：
+这里是同一 $\kappa=6/5$ 完整核、同一 $t=|c|$、$s=|d|$，且题设给
+$0\le s\le t\le27/50$。
+此外 $h_6\ge0$、$d_0=1+(13/50)t^2>0$，并准确有
+$$
+0\le\ell=\frac{(49/100)t^2+(107/100)ts}{1+(13/50)t^2},
+$$
+即取该定理容许斜率上界本身。当前 $W,V$ 也是同一定义的可容许权。
+因此该定理范围内的完整权比较可用于下述两次选择 $\lambda$。
+先在 @cor-ppcc-central-complete-weight-comparison-1011 中取 $\lambda=0$；
+此步完全不使用实际 $K/C$。它给 $C\ge C_0\bar A$。
+@cor-ppsm-coarse-full-means-1011 给 $\bar A\ge d_0$，
+当前 $s\le t$ 与 $\kappa=6/5$ 正是新自旋定理 C 支的适用条件，
+而 @thm-arc-actual-spin-1012 独立给 $|K|/C_0<h_6$
+（$t>0$）。于是 (1) 成立，且
+$$
+\ell\le\frac{(39/25)(27/50)^2}{1+(13/50)(27/50)^2}
+=\frac{56862}{134477}<\frac{17}{40}<1.
+$$
+同一粗均值界给
+$$
+|\bar Z|\le.891t^2,\qquad
+\bar A^2-|\bar Z|^2\ge
+1+t^2\{.52-(.891^2-.26^2)t^2\}\ge1,
+\tag{3}
+$$
+其中花括号在 $t^2\le.3$ 上大于 $.30$。
+
+现在才令 $\lambda_*=K/C$。由 (1)，它在完整核比较的合法圆盘内。
+故
+$$
+C(1-|\lambda_*|^2)
+\ge C_0\{\bar A-\Re(\bar\lambda_*\bar Z)\}
+\ge C_0\sqrt{\bar A^2-|\bar Z|^2}\sqrt{1-|\lambda_*|^2}.
+$$
+最后一步是实数 $a>|z|$ 的初等不等式
+$a-\Re(\bar\lambda z)\ge\sqrt{a^2-|z|^2}\sqrt{1-|\lambda|^2}$；
+先以 $\Re(\bar\lambda z)\le|\lambda||z|$ 比较，再平方，
+余量为 $(a|\lambda|-|z|)^2\ge0$。
+除以正的 $\sqrt{1-|\lambda_*|^2}$ 即得 (2) 的第一步。
+由 (3)，$\bar A+\sqrt{\bar A^2-|\bar Z|^2}\ge2$，
+从准确差商
+$$
+\sqrt{\bar A^2-|\bar Z|^2}
+=\bar A-\frac{|\bar Z|^2}{\bar A+\sqrt{\bar A^2-|\bar Z|^2}}
+$$
+得到第二步。$t=0$ 时 $s=0$，核直接给 $C=C_0,K=\bar Z=0,\bar A=1$。
+:::
+
+::: {#thm-ppcs-central-short-pressure-budget-1011 .theorem name="中央完整同源压力预算的短解析接合" date="2026-10-11" export="thm-ppcs-central-short-pressure-budget-1011"}
+采用 @def-psgs-exact-tensor-1011h、@def-psgs-tensor-weights-1011h，
+固定 $\kappa=6/5$，设 $0<t\le27/50,\ 0\le s\le t$。
+令 $m=1+r(t^2-s^2)$，$n_j=e^{(2j+1)\pi i/5}$，并假设同一数据满足
+$$
+j_j=m+2\Re(cn_j)+2r\Re(dn_j^2)>\frac{41}{100}m
+\quad(j=0,\ldots,4).
+\tag{4}
+$$
+定义
+$$
+\omega_j=1+\frac65\Re(cn_j),\qquad
+L=\sqrt m-\operatorname{av}\sqrt{j_j\omega_j},\qquad
+D=\frac{\sqrt{C^2-|K|^2}}{C_0}-\sqrt m.
+$$
+取 @def-pscc-scalar-coordinates-1011f 与
+@def-pscc-scalar-target-1011f 的
+$a=59m/100,F_C=m^3h_0(m+2),h_0=141/200-3t/5$，
+则 $C>|K|$，并且
+$$
+\boxed{7D-5L\ge\frac{t^2}{2500aF_C}>0.}
+\tag{5}
+$$
+因此对任何 $0\le\zeta<5/12$，
+$$
+(1-\zeta)D-\zeta L
+\ge\frac{(1-\zeta)t^2}{17500aF_C}>0.
+\tag{6}
+$$
+若 $t=s=0$，相应 $D=L=0$。
+:::
+
+::: {.proof of="thm-ppcs-central-short-pressure-budget-1011"}
+以下推导沿用 @def-pscc-scalar-coordinates-1011f、@def-psgs-exact-tensor-1011h、@def-psgs-tensor-weights-1011h 所给对象、记号与适用条件。
+令 $\sigma=s/t$，写 $c=te^{i\theta},d=se^{i\phi}$（$s=0$ 时 $\phi$ 任取），
+并设 $u=\cos(2\theta-\phi),v=\cos(\theta+2\phi)$。
+所有均值系数使用
+@def-pscc-scalar-series-1011f，同一数据的相位不作独立替换。
+由 @prp-ppcs-central-lorentz-closure-1011、
+@prp-ppsm-shared-phase-sharp-means-1011，
+$$
+D\ge1+t^2A_{c,0}+GU+q_{\min}(Q+t^3s)
+-\tfrac12t^4(z_p+\sigma z_m)^2
++P_{\min}M_{\min}(Q+t^3s)-\sqrt m,
+$$
+其中 $U=\Re(c^2\bar d),Q=\Re(c^3d)$。
+凹性给 $\sqrt m\le1+\tfrac r2(t^2-s^2)$。
+按 @def-pscc-scalar-target-1011f 的 $d^\circ$ 收集，恰为
+$$
+D\ge t^2d^\circ+GU+
+(q_{\min}+P_{\min}M_{\min})(Q+t^3s).
+\tag{7}
+$$
+完整均值尾依然在 $A_{c,0},z_p,z_m$ 内。
+
+还须从 (4) 得到同一个实际数据的三项几何信用。
+令 $x_j=\Re(cn_j),z_j=\Re(dn_j^2)$，并取
+$f_j=j_j-41m/100=a+2x_j+2rz_j>0$。
+应用 @lem-tpm-positive-weight-constraints-tpm1011，
+其正权方差式在 $\ell=2,3$ 时分别除以 $t^2>0$，
+就是 @def-pscc-scalar-target-1011f 中的 $g_2,g_3\ge0$。
+其相邻节点比较给 $U>tB(a,t)$，而
+$B(a,t)=U_{\rm geo}^{\circ}$，故
+$g_A=a(U/t-U_{\rm geo}^{\circ})>0$。
+这没有额外假定两个相位独立可达，也没有改变真实五点权。
+
+$\omega_j\ge1-(6/5)(27/50)>0$。
+现在 (4)、(7) 及三项几何信用完整满足
+@prp-ppca-same-source-strict-budget-1011 的前提，得到 (5)、(6)。
+该命题的熵信用来自这里定义的同一组 $j_j,\omega_j$，
+未附加外来的正数或丢掉完整尾。
+$t=s=0$ 时 $c=d=0$，各 $j_j=\omega_j=1$，所以 $L=0$。
+直接在 @def-psgs-exact-tensor-1011h 中代入，指数位移及全部非恒定前因子消失，
+五根平均给 $A=1$、$B=X=Y=0$，故
+$C=10\int W=C_0$、$K=0$，从当前 $D$ 的定义准确得到 $D=0$。
+:::

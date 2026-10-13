@@ -1,0 +1,89 @@
+{
+  "baseline": "凸五边形-基态对数凹性与谱下界解析替换-QMD项目-20261012.zip",
+  "archived_originals": [
+    {
+      "source_in_round6": "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__analytic-replacements-1012__area-spectral-budget.qmd.txt",
+      "sha256": "cc49cba65618babb40a733a2d590fdd313c3fbfd34a8eaff6cdb522af5d32532"
+    },
+    {
+      "source_in_round6": "workspace/analytic-replacements-1012/corner-barrier.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__analytic-replacements-1012__corner-barrier.qmd.txt",
+      "sha256": "494eb6c6c598992416ef7ed25443fc5c7e1510c050acd4a1b4c00154e8a57521"
+    },
+    {
+      "source_in_round6": "workspace/analytic-replacements-1012/gaussian-ground-state.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__analytic-replacements-1012__gaussian-ground-state.qmd.txt",
+      "sha256": "620a7dca07811c6a37a84347373c21885b8bdfef82121369082910b74a9b1b51"
+    },
+    {
+      "source_in_round6": "workspace/fourier-pressure-geometry-reconstruction-1011.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__fourier-pressure-geometry-reconstruction-1011.qmd.txt",
+      "sha256": "50852399793ca17256c75c69c93a30f578cecb7880828b025d76a8c994abd1aa"
+    },
+    {
+      "source_in_round6": "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__pressure-mixed-area-reconstruction-1011.qmd.txt",
+      "sha256": "aa609ddd51ce05d9fecedb1e8ef18ebcb0b2daaf66c28a22dbe1cf2985951679"
+    },
+    {
+      "source_in_round6": "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__ps-convex-geometric-tensor-switch-1011g__pressure-foundations.qmd.txt",
+      "sha256": "d01692d4edfc5e729f0bb5fa553648411661978af7e2eeb7113c30b4e83f66df"
+    },
+    {
+      "source_in_round6": "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__ps-convex-geometric-tensor-switch-1011g__pressure-weights.qmd.txt",
+      "sha256": "72d3fa1bd72c7682e3cbc7277fbfd29c7c5d79f097d18125df45e9eead1441a7"
+    },
+    {
+      "source_in_round6": "workspace/true-pressure-review-1011/analysis-supplements.qmd",
+      "archive_member": "archive/before-seventh-replacement/workspace__true-pressure-review-1011__analysis-supplements.qmd.txt",
+      "sha256": "b02f01741586452fc467e37e336213a60b60de7b525fbd97b2c2cd9e78bc2f5f"
+    }
+  ],
+  "new_derivations": [
+    "lem-arc-convex-zero-extension-1012",
+    "lem-arc-dirichlet-compactness-1012",
+    "lem-arc-dirichlet-spectrum-1012",
+    "lem-arc-gaussian-energy-1012",
+    "lem-arc-interval-variational-1012",
+    "lem-arc-positive-compact-spectrum-1012"
+  ],
+  "changed_old_nodes": [
+    "def-pressure-rebuild-1011-functional",
+    "lem-arc-corner-barrier-1012",
+    "lem-arc-gaussian-dirichlet-limit-1012",
+    "lem-arc-ground-state-log-concavity-1012",
+    "lem-arc-levelset-spectral-budget-1012",
+    "lem-arc-pressure-gap-1012",
+    "lem-psgs-actual-pressure-weights-1011h",
+    "lem-psgs-strict-log-gradient-1011h",
+    "prp-pressure-rebuild-1011-area-fan-formulas",
+    "prp-pressure-rebuild-1011-attainment",
+    "prp-tpr-support-hadamard-tpr1011"
+  ],
+  "substantive_old_math_files": [
+    "workspace/analytic-replacements-1012/gaussian-ground-state.qmd",
+    "workspace/analytic-replacements-1012/area-spectral-budget.qmd",
+    "workspace/analytic-replacements-1012/corner-barrier.qmd",
+    "workspace/pressure-mixed-area-reconstruction-1011.qmd",
+    "workspace/true-pressure-review-1011/analysis-supplements.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-foundations.qmd",
+    "workspace/ps-convex-geometric-tensor-switch-1011g/pressure-weights.qmd",
+    "workspace/fourier-pressure-geometry-reconstruction-1011.qmd"
+  ],
+  "primary_reference_cross_checks": [
+    {
+      "title": "Richard Melrose, Functional Analysis, Chapter 3, §18: spectral theorem for compact self-adjoint operators",
+      "url": "https://math.mit.edu/~rbm/18-102-S18/Chapter3.pdf",
+      "use": "Classical method cross-check; the positive-operator proof is expanded in the project."
+    },
+    {
+      "title": "Leon Simon, Lectures on PDE, Lecture 4: harmonic mean values and Weyl lemma",
+      "url": "https://math.stanford.edu/~lms/lecs-on-pde.pdf",
+      "use": "Cross-check of local harmonic regularity; the convolution/mean-value proof is included."
+    }
+  ],
+  "reference_scope": "Method attribution/cross-check, not newly assumed unproved target theorems."
+}

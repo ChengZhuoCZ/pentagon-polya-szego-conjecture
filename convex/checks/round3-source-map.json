@@ -1,0 +1,50 @@
+{
+  "baseline": "凸五边形-双核与精细均值解析替换-QMD项目-20261012.zip",
+  "archived_originals": [
+    {
+      "source_in_round2": "workspace/ps-pressure-adaptive-entropy-square-1011.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__ps-pressure-adaptive-entropy-square-1011.qmd.txt",
+      "sha256": "236e2f9c940308bdca52b947c58489b70049315c53b751d382155a9e8719246f"
+    },
+    {
+      "source_in_round2": "workspace/ps-pressure-entropy-credit-one-fifth-strip-1011.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__ps-pressure-entropy-credit-one-fifth-strip-1011.qmd.txt",
+      "sha256": "a603148aa168f84fa5ce1207ed0693b50e7f64366286fdd29fba214ebfcfc048"
+    },
+    {
+      "source_in_round2": "workspace/ps-pressure-spectral-bridge-audit-1011.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__ps-pressure-spectral-bridge-audit-1011.qmd.txt",
+      "sha256": "df4f4f24f2611b31e557afd8cc8bfe88cf76e9f1791d4c0296239263e3841b1c"
+    },
+    {
+      "source_in_round2": "workspace/true-pressure-review-1011/sharp-entropy.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__true-pressure-review-1011__sharp-entropy.qmd.txt",
+      "sha256": "0a4b883ae3a9a6213fdfb01d9e945fa08a1adcabbdb54aba3725ffdb9a276902"
+    },
+    {
+      "source_in_round2": "workspace/true-pressure-terminal-migration-1011/entropy-and-moments.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__true-pressure-terminal-migration-1011__entropy-and-moments.qmd.txt",
+      "sha256": "d65c7c52724e1db9a56835f86c744c2291b05a0040322679736f4a7558ddcae6"
+    },
+    {
+      "source_in_round2": "workspace/true-pressure-terminal-migration-1011/geometry-interface.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__true-pressure-terminal-migration-1011__geometry-interface.qmd.txt",
+      "sha256": "5ad052cba458b4f6ebd3d0f3bff5d352b3eaae98270711b043647fa873d58699"
+    },
+    {
+      "source_in_round2": "workspace/true-pressure-terminal-migration-1011/global-gluing.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__true-pressure-terminal-migration-1011__global-gluing.qmd.txt",
+      "sha256": "6cdfb4b1eddeffa5ef3a9a8290fb579194d78cde8bebc42a2454a4a701479741"
+    },
+    {
+      "source_in_round2": "workspace/true-pressure-terminal-migration-1011/uniform-source.qmd",
+      "archive_member": "archive/before-third-replacement/workspace__true-pressure-terminal-migration-1011__uniform-source.qmd.txt",
+      "sha256": "fbe386dde9c972bed9f27730fb3f39997602dede548600c837d7861aaf56ce01"
+    }
+  ],
+  "new_derivations": [
+    "workspace/analytic-replacements-1012/entropy-identities.qmd",
+    "workspace/analytic-replacements-1012/spectral-normalization.qmd"
+  ],
+  "scope": "Third-round local derivations from the existing project; no new external supplement."
+}

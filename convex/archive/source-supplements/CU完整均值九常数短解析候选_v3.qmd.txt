@@ -1,0 +1,331 @@
+---
+title: "C/U 完整均值的九常数短解析候选"
+date: "2026-10-11"
+lang: zh-CN
+---
+
+## 状态、范围与主张
+
+**候选冻结 v3，尚待独立审查。** 本稿从原完整均值定义出发，不调用原二十三系数表、七阶均值展开、504槽、参数盒或黑箱正性程序。保留原始完整源权、全部复方向和无限阶尾；去权只在完整角均值层面由端点望远镜证明，绝不替换原点态四核。
+
+设 $\alpha=\pi/5$、$a=\alpha\cot\alpha$、$r=(\sqrt5-1)/2$、$n_j=e^{(2j+1)i\alpha}$。令 $c=te^{i\theta}$、$s=|d|$，并置 $T=27/50$。本稿欲独立证明：
+
+$$\begin{array}{ll}
+\mathrm U:\quad\kappa=1,\quad0\le t\le T,\quad0\le s\le5/8,
+& a_m\ge1+.26t^2,\quad |z_m|\le.144t^2+.570ts,\\
+\mathrm C:\quad\kappa=6/5,\quad0\le s\le t\le T,
+& a_m\ge1+.26t^2,\quad |z_m|\le.206t^2+.685ts\le.891t^2.
+\end{array}\tag{1}$$
+
+这里的范围比原真实几何支更大；因此不使用节点不等式或严格凸性来证明 (1)。原几何归约、真实压力权可容许性、六标量核正性、Lorentz 接合及主定理仍是本稿外的独立输入。本稿不声称已经删去工程中的原模块，也未改写 working 项目。
+
+## 1. 完整定义与去权互易的直接证明
+
+记 $u_j=cn_j$、$x_j=\Re u_j$、$y_j=\Im u_j$、
+
+$$\delta_j(b)=\kappa(bx_j+ay_j),\quad \omega_j=1+\kappa x_j,
+\quad p_b=e^{-2ib},$$
+$$P_j^\pm(b)=1+u_j(1\pm rp_b)+dn_j^2(r\pm p_b),
+\qquad \langle H\rangle=\frac1{10\alpha}\sum_{j=0}^4\int_{-\alpha}^{\alpha}H_j(b)\,db.$$
+
+原先取偶部再积分的均值准确是
+
+$$a_m=\Re\langle\omega P^-e^{-i\delta}\rangle,
+\qquad z_m=\langle n^2p_b^{-1}\omega P^-e^{i\delta}\rangle.\tag{2}$$
+
+令 $\eta=e^{2i\alpha}$，则 $r=\eta+\eta^{-1}$、$n_{j+1}=\eta n_j$、$\eta^5=1$。逐项得
+
+$$P_j^-(\alpha)=1-cn_j\eta^{-2}+dn_j^2\eta=P_{j+1}^-(-\alpha).$$
+$$\delta_j(\alpha)=\frac{\kappa\alpha}{\sin\alpha}\Im(cn_je^{i\alpha})
+=\delta_{j+1}(-\alpha),\qquad
+n_j^2p_\alpha^{-1}=n_{j+1}^2p_{-\alpha}^{-1}.$$
+
+上述端点关系包括 $j=4$ 到 $j=0$ 的闭合。又
+
+$$\partial_b(P^-e^{-i\delta})=i(P^+-\omega P^-)e^{-i\delta},$$
+$$\partial_b(n^2p_b^{-1}P^-e^{i\delta})
+=in^2p_b^{-1}(P^++\omega P^-)e^{i\delta}.$$
+
+五边积分的导数端点和为零，所以在完整复数层面
+
+$$\langle\omega P^-e^{-i\delta}\rangle=\langle P^+e^{-i\delta}\rangle,
+\quad \langle n^2p_b^{-1}\omega P^-e^{i\delta}\rangle
+=-\langle n^2p_b^{-1}P^+e^{i\delta}\rangle.\tag{3}$$
+
+定义四个完整函数
+
+$$F=\langle e^{-i\delta}\rangle,\quad
+\mathcal T=\langle n^2e^{2ib}e^{i\delta}\rangle,$$
+$$B=\langle n^2(r+e^{-2ib})e^{-i\delta}\rangle,\quad
+E=-\langle n^4(1+re^{2ib})e^{i\delta}\rangle.$$
+
+由 $n^{-4}=-n$、$n^{-2}=-n^3$ 直接展开 (3)，得到
+
+$$\boxed{a_m=\Re F+\Re(c\overline E+dB),\qquad
+z_m=-\mathcal T+c\overline B+dE.}\tag{4}$$
+
+这一步没有舍弃权 $\omega$：它在 (2)--(3) 中被精确积分转移了。
+
+## 2. 低模展开与全部复相位
+
+置 $q=\kappa t$、$z=a+ib$、$R_b=|z|$、$\delta_b=\arctan(b/a)$，且 $I g=\alpha^{-1}\int_0^\alpha g(b)\,db$。本稿中的 $q$ 是径向振幅，与 (2) 的 $p_b$ 无关。统一有
+
+$$0\le q\le Q:=81/125,\qquad R_b\le L:=107/100,\qquad
+q^2R_b^2/4<121/1000.$$
+
+对于 $n\ge0$ 定义完整整级数
+
+$$J_n(v)=\sum_{\ell\ge0}\frac{(-1)^\ell(v/2)^{n+2\ell}}{\ell!(n+\ell)!},
+\quad J_{-n}=(-1)^nJ_n,\quad
+\Psi_k(b)=e^{ik\delta_b}J_k(qR_b).$$
+
+两个指数相乘并收集整数 Fourier 次数给
+
+$$e^{iq(a\sin\vartheta+b\cos\vartheta)}
+=\sum_{k\in\mathbb Z}\Psi_k(b)e^{ik\vartheta}.$$
+
+该系列及以下角积分在紧域绝对一致收敛；可以逐项积分、有限节点平均。五根筛选为 $\operatorname{av}n^{5\ell}=(-1)^\ell$，其余次数平均为零。
+
+定义实标量
+
+$$T_k=I\Re(e^{2ib}\Psi_k),\quad
+B_k=I\Re[(r+e^{2ib})\Psi_k],\quad
+E_k=I\Re[(1+re^{2ib})\Psi_k].$$
+
+由于 $\Psi_k(-b)=\overline{\Psi_k(b)}$，准确的全部模式为
+
+$$\begin{aligned}
+\mathcal T&=\sum_{\ell\in\mathbb Z}(-1)^\ell e^{i(5\ell-2)\theta}T_{5\ell-2},\\
+B&=\sum_{\ell\in\mathbb Z}(-1)^\ell e^{i(5\ell-2)\theta}B_{2-5\ell},\\
+E&=-\sum_{\ell\in\mathbb Z}(-1)^\ell e^{i(5\ell-4)\theta}E_{5\ell-4}.
+\end{aligned}\tag{5}$$
+
+第二式的指标反号来自 $e^{-i\delta}$，同时在角积分中换 $b\mapsto-b$；不能只反相位而遗漏移位因子。
+
+从 (5) 抽出实际最低模式，得
+
+$$E=e^{i\theta}E_1+R_E,\qquad
+B=e^{-2i\theta}B_2-e^{3i\theta}B_{-3}+R_B,$$
+$$Z_0:=-\mathcal T+c\overline B
+=-e^{-2i\theta}P+e^{3i\theta}J+R_Z,$$
+$$P=T_{-2}+tB_{-3},\qquad J=T_3+tB_2.\tag{6}$$
+
+这里没有固定 $\theta$ 或 $d$ 的相位；最终只在 (4)、(6) 取合法模上界。
+
+## 3. 九个可手核常数
+
+令 $X=\alpha^2$，$M=(2+r)/(4a)$。下面的五步递推仅是六个显式矩的短写法：
+
+$$C_0=M,\quad S_0=(M-r/2)/2,$$
+$$C_1=XM-S_0,\quad S_1=-Xr/4+3C_1/2,$$
+$$C_2=X^2M-2S_1,\quad S_2=-X^2r/4+5C_2/2.\tag{7}$$
+
+它们准确等于 $C_j=I(b^{2j}\cos2b)$、$S_j=I(b^{2j+1}\sin2b)$；只须分部积分并用 $\cos2\alpha=r/2$、$\sin2\alpha/(2\alpha)=M$。定义：
+
+$$f_0=(a^2+X/3)/4,$$
+$$e_0=[a+r(aC_0-S_0)]/2,$$
+$$e_1=[a(a^2+X/3)+r(a^3C_0+aC_1-a^2S_0-S_1)]/16,$$
+$$p_0=(a^2C_0-C_1+2aS_0)/8,$$
+$$b_0=[r(a^2-X/3)+a^2C_0-C_1-2aS_0]/8,$$
+$$d_0=[r(a^3-aX)+a^3C_0-3aC_1+3a^2S_0-S_1]/48,$$
+$$b_1=[r(a^4-X^2/5)+a^4C_0-C_2-2a^3S_0-2aS_1]/96,$$
+$$v_0=(a^3C_0-3aC_1-3a^2S_0+S_1)/48,$$
+$$v_1=(a^5C_0-2a^3C_1-3aC_2-3a^4S_0-2a^2S_1+S_2)/768.\tag{8}$$
+
+由这些公开式逐项有理区间运算得到：
+
+|常数|严格下界|严格上界|
+|---|---:|---:|
+|$f_0$|.21987115|.21987116|
+|$e_0$|.56546697|.56546698|
+|$e_1$|.06049508|.06049510|
+|$p_0$|.10980167|.10980168|
+|$b_0$|.06059592|.06059593|
+|$d_0$|.01947939|.01947940|
+|$b_1$|.00370870|.00370872|
+|$v_0$|−.00324613|−.00324612|
+|$v_1$|−.00027185|−.00027183|
+
+常数隔离可取
+
+$$.8648062659772<a<.8648062659773,\quad
+.6180339887498<r<.6180339887499,\quad
+.3947841760435<X<.3947841760436.\tag{9}$$
+
+为使 (9) 也可独立复核：用 Machin 恒等式 $\pi=16\arctan(1/5)-4\arctan(1/239)$，两个交错级数分别取32项与10项加下一项界；对 $\alpha$ 的正弦、余弦各取12项交错式加下一项界。另将 $\sqrt5$ 夹在 $2.236067977499789$ 与 $2.236067977499790$ 之间，平方即验。用 $a=\alpha\cos\alpha/\sin\alpha$ 算 (9)，再代 (7)--(8)。这是一处固定几何常数的隔离，不是把参数域分盒。
+
+后文只需表中宽有理界。特别对 $\kappa=1,6/5$，
+
+$$j_0:=b_0+\kappa v_0> .0567,
+\quad j_0<\begin{cases}.05735&\kappa=1,\\.056701&\kappa=6/5,\end{cases}$$
+$$.0033<j_1:=b_1+\kappa v_1<.0038.\tag{10}$$
+
+## 4. 主增益与负三模的有号控制
+
+令
+
+$$F_n(u)=\sum_{\ell\ge0}\frac{(-u)^\ell n!}{\ell!(n+\ell)!}.$$
+
+在 $0\le u\le121/1000$ 上交错项递减，因此
+
+$$1-u/(n+1)\le F_n(u)\le1,\qquad F_n(u)>0.$$
+$$\Psi_n=\frac{q^nz^n}{2^nn!}F_n(q^2R_b^2/4),\quad
+\Psi_{-n}=(-1)^n\frac{q^n\bar z^n}{2^nn!}F_n(q^2R_b^2/4).\tag{11}$$
+
+### 4.1 准确的 $E_1$ 上、下界
+
+设 $h(b)=\Re[(1+re^{2ib})z]=a(1+r\cos2b)-rb\sin2b$。因为 $\cos2b>0$ 且 $a-r\alpha>.47$，故全区间 $h>0$。由 (8)、(11)，
+
+$$\boxed{qe_0-q^3e_1\le E_1\le qe_0.}\tag{12}$$
+
+这里 $e_0=Ih/2$、$e_1=I(hR_b^2)/16$；正号允许将整个无限径向因子用交错界比较。
+
+### 4.2 $B_{-3}$ 的符号与大小
+
+有 $0\le\delta_b\le\alpha$。函数 $3\delta_b-2b$ 的导数为 $3a/R_b^2-2>1/4$，两端值分别为0、$\alpha$，故 $0\le3\delta_b-2b\le\alpha$。于是
+
+$$\frac{\Re[(r+e^{2ib})\bar z^3]}{R_b^3}
+=r\cos3\delta_b+\cos(3\delta_b-2b)
+\ge r\cos3\alpha+\cos\alpha=r>0.$$
+
+最后一个等式由 $\cos\alpha=(1+r)/2$、$\cos3\alpha=-r/2$ 与 $r^2=1-r$ 得到。因此 (11) 给
+
+$$\boxed{-q^3d_0\le B_{-3}\le0.}\tag{13}$$
+
+### 4.3 $P$ 的正性不是假设
+
+由 $|b-\delta_b|\le\alpha$，有 $\cos2(b-\delta_b)\ge\cos2\alpha=r/2>3/10$。所以 $T_{-2}$ 的初阶被积实部正，由 (11)
+
+$$T_{-2}\le q^2p_0,$$
+$$T_{-2}\ge q^2\frac{(3/10)(74/100)}8
+\left(1-\frac{Q^2L^2}{12}\right),$$
+
+其中 $a^2>74/100$。另外直接按模估计
+
+$$|B_{-3}|\le q^3(1+r)L^3/48.$$
+
+结合 $t\le T$、$q\le Q$、$r<619/1000$，得到
+
+$$\begin{aligned}
+P/q^2&\ge\frac{(3/10)(74/100)}8(1-Q^2L^2/12)
+-\frac{TQ(1+619/1000)L^3}{48}\\
+&>.01217>1/100.
+\end{aligned}$$
+
+再用 (13)，得到完整有号结论
+
+$$\boxed{0\le P\le q^2p_0.}\tag{14}$$
+
+$q=0$ 时 $P=0$，不需除以 $q^2$；上面的商只用于 $q>0$。
+
+## 5. $J$ 的首个径向修正为负，全部剩余尾不能翻号
+
+按 (11) 的完整径向层展开，
+
+$$B_2=q^2[b_0-q^2b_1+\mathcal R_B],$$
+$$J=tq^2[j_0-q^2j_1+\mathcal R_J].\tag{15}$$
+
+这里 $\mathcal R_B,\mathcal R_J$ 是从径向层 $\ell=2$ 起的**全部无限和**。对于 $J$，这是把 $T_3=q^3\sum_{\ell\ge0}(-q^2)^\ell v_\ell$ 与 $tB_2$ 配对，再用 $q=\kappa t$；并非分别对两项先取绝对值。
+
+具体地，各层的准确系数为
+
+$$b_\ell=\frac{I\{R_b^{2\ell}\Re[(r+e^{2ib})z^2]\}}
+{4^{\ell+1}\ell!(\ell+2)!},\qquad
+v_\ell=\frac{I\{R_b^{2\ell}\Re(e^{2ib}z^3)\}}
+{8\,4^\ell\ell!(\ell+3)!}.$$
+
+在第二层取模，其后相邻正主项比至多 $Q^2L^2/60$。因此两个余项共同满足
+
+$$|\mathcal R_B|,|\mathcal R_J|\le q^4
+\frac{(1+619/1000)L^6/3072+(6/5)L^7/30720}
+{1-Q^2L^2/60}
+<\frac{q^4}{1000}.\tag{16}$$
+
+中间常数小于 $.000861$。此处一条正阶乘几何尾覆盖全部径向阶，不需要计算后续系数的符号。
+
+由 (10)、$Q^2<.42$，$-.0033q^2+.001q^4\le0$；同理 $b_1>.0033$。下界也直接有
+
+$$.0567-.0038(.42)-.001(.42)^2>.05.$$
+
+所以 (15)--(16) 同时给
+
+$$\boxed{0\le B_2\le q^2b_0,\qquad0\le J\le tq^2j_0.}\tag{17}$$
+
+正性与上界均已支付全部径向尾，而不是只检查初阶项。
+
+## 6. 全部其余别名尾
+
+由 (11)，$|\Psi_{\pm n}|\le(qL/2)^n/n!$。若 $y=qL/2$，则
+
+$$2\sum_{n\ge N}\frac{y^n}{n!}\le\frac{2y^N/N!}{1-y/(N+1)}.\tag{18}$$
+
+$E$ 除主 $k=1$ 模后，其余模均满足 $|k|\ge4$；$B$ 与 $\mathcal T$ 除 (6) 的两个主模后，其余均满足 $|k|\ge7$。即使不利用更稀疏的五折筛选，(18) 仍给
+
+$$\boxed{|R_E|\le\frac3{250}q^4,\qquad
+|R_B|\le\frac{q^7}{100000},\qquad
+|R_Z|\le\frac{q^7}{100000}.}\tag{19}$$
+
+三个常数分别由下列纯有理比较保证，置 $y_*=QL/2$：
+
+$$\frac{2(1+.619)(L/2)^4}{24(1-y_*/5)}<.011877<3/250,$$
+$$\frac{2(1+.619)(L/2)^7}{5040(1-y_*/8)}<.0000085<1/100000,$$
+$$\frac{2[1+T(1+.619)](L/2)^7}{5040(1-y_*/8)}
+<.000009754<1/100000.$$
+
+最后一式正是 $R_Z=-R_{\mathcal T}+c\overline{R_B}$ 的预算。尾阶不含 $s$，而 $dE$ 的全别名尾由第一式乘 $s$ 支付。
+
+## 7. 两支完整均值的闭合
+
+五根正交给 $\operatorname{av}x_j^2=\operatorname{av}y_j^2=t^2/2$、$\operatorname{av}x_jy_j=0$。对完整实相位使用 $\cos v\ge1-v^2/2$，得
+
+$$\Re F\ge1-f_0q^2.\tag{20}$$
+
+由 (6)、(12)--(14)、(17)--(19)，
+
+$$|E|\le qe_0+\frac3{250}q^4,$$
+$$\Re(c\overline E)\ge t(qe_0-q^3e_1-\tfrac3{250}q^4),$$
+$$|B|\le q^2b_0+q^3d_0+q^7/100000,$$
+$$|Z_0|\le q^2p_0+tq^2j_0+q^7/100000.\tag{21}$$
+
+这些式子是全相位上界；对 $d$ 仅用 $\Re(dB)\ge-s|B|$，不限制它的方向。
+
+由 (4)、(20)--(21)，对 $t>0$ 有
+
+$$\frac{a_m-1}{t^2}\ge
+\kappa e_0-\kappa^2f_0-\kappa^3e_1t^2
+-\frac3{250}\kappa^4t^3
+-s\left(\kappa^2b_0+\kappa^3d_0t+\frac{\kappa^7t^5}{100000}\right).\tag{22}$$
+
+右侧对 $t,s$ 的负项具有非负系数。代 $t\le T$，U 用 $s\le5/8$，C 用 $s\le T$，及 (8) 表内有理端点，两个下界分别为
+
+$$\mathrm U:\quad>.2816188>.26,\qquad
+\mathrm C:\quad>.2706094>.26.\tag{23}$$
+
+自旋的两个系数分别由
+
+$$|E|/t\le\kappa e_0+\frac3{250}\kappa^4T^3,$$
+$$|Z_0|/t^2\le\kappa^2(p_0+Tj_0)+\frac{\kappa^7T^5}{100000}$$
+
+控制；代入宽有理上界得到
+
+$$\begin{array}{c|cc}
+&|E|/t&|Z_0|/t^2\\\hline
+\mathrm U&<.567357<.570&<.140772<.144\\
+\mathrm C&<.682479<.685&<.202207<.206.
+\end{array}\tag{24}$$
+
+由 $z_m=Z_0+dE$，(23)--(24) 正是 (1)。特别 U 的矩形右上角给 $|z_m|<.235<1$，C 给 $|z_m|\le.891T^2<.260<1$，所以 $a_m>|z_m|$。
+
+当 $t=0$ 时相位与 $q$ 都为零，(2) 直接五根平均得 $a_m=1,z_m=0$，包括 U 矩形上可能 $d\ne0$ 的点。所有角积分来自闭区间光滑函数，$b=0,\pm\alpha$ 均被包含；本稿没有除以角变量，也没有隐藏角端点极限。
+
+## 8. 精确短核与检查边界
+
+同目录 `certify_mean_short.py` 只使用 Python 标准库 `Fraction`、整数阶乘与二项式系数：先证明 (9)，再按显式矩公式核 (8)--(10)，最后核 (16)、(19)、(22)--(24) 的有理常数。它不读取或执行原项目程序，不做浮点参数探索，不调用 Bessel 库，也没有引用旧均值的已算系数。浮点只可用于展示，所有断言用有理数。
+
+正文已经给出承重连续符号推导和全部无限尾；该核只检查固定常数，不替代这些证明。另附两次输出与 SHA256 供独立重做比对。仍须独审原定义到 (4)、(5) 的相位与端点、(14) 的符号、(15)--(16) 的阶数、以及九常数来源后，才可将此候选作为原粗均值的替代依据。
+
+
+版本说明：v2 仅将 (15)--(16) 的径向余项重名改为 $\mathcal R_B,\mathcal R_J$，以区别半径 $R_b=|a+ib|$；所有公式数值与 v1 相同。v1 原样保留。
+
+
+版本说明：v3 另修正 (22) 中一个误入的 form-feed 字节为 LaTeX 的反斜杠 f；无数学改动。v1、v2 原样保留。

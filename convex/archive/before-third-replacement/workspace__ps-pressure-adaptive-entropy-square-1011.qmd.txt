@@ -1,0 +1,205 @@
+---
+title: "完整熵预算中的自适应尺度：回收一个准确非负平方"
+lang: zh-CN
+qmd-prover:
+  imports:
+    - from: ps-convex-certificate-reconstruction-1011f/scalar-reconstruction.qmd
+      use:
+        - def-pscc-scalar-coordinates-1011f
+---
+
+::: {#lem-ppae-optimal-reciprocal-majorant-1011 .lemma name="倒数二次上界的准确最优尺度与平方信用" date="2026-10-11" export="lem-ppae-optimal-reciprocal-majorant-1011"}
+设有限组实数 $d_i,H_i$ 满足 $H_i>h>0$，
+平均 $\operatorname{av}$ 使用任意固定的正概率权。
+定义
+$$
+V=\operatorname{av}d_i^2,\qquad
+U_1=\operatorname{av}d_i^2(H_i-h),\qquad
+U_2=\operatorname{av}d_i^2H_i(H_i-h).
+$$
+若 $V>0$，则 $U_1,U_2>0$，且
+$$
+0<\operatorname{av}\frac{d_i^2}{H_i}
+\le\frac1h\left(V-\frac{U_1^2}{U_2}\right).
+\tag{1}
+$$
+对任意 $b>0$，记
+$$
+\mathcal B_b=\frac1h\left(V-\frac{2U_1}{b}+\frac{U_2}{b^2}\right).
+$$
+这个上界在所有 $b>0$ 中的唯一最小点为
+$b_*=U_2/U_1$，并有准确差
+$$
+\boxed{
+\mathcal B_b-\mathcal B_{b_*}
+=\frac{(U_2-bU_1)^2}{h b^2U_2}\ge0.
+}
+\tag{2}
+$$
+若 $V=0$，则所有 $d_i=0$，原倒数和为零；
+此时不定义 $b_*$，也不使用含 $U_2^{-1}$ 的式子。
+:::
+
+::: {.proof of="lem-ppae-optimal-reciprocal-majorant-1011" status="verified"}
+对 $H>h$、$b>0$，准确恒等式为
+$$
+\frac1h\left[1-\frac{2(H-h)}b+\frac{H(H-h)}{b^2}\right]
+-\frac1H
+=\frac{(H-h)(H-b)^2}{h b^2H}\ge0.
+\tag{3}
+$$
+乘以 $d_i^2$ 后求平均，即得
+$\operatorname{av}(d_i^2/H_i)\le\mathcal B_b$。
+若 $V>0$，至少一个 $d_i\ne0$，正权与 $H_i>h>0$
+保证 $U_1,U_2>0$。
+令 $z=1/b>0$，则
+$$
+\mathcal B_b=\frac1h(V-2U_1z+U_2z^2)
+=\frac1h\left(V-\frac{U_1^2}{U_2}\right)
++\frac{U_2}{h}\left(z-\frac{U_1}{U_2}\right)^2.
+$$
+唯一极小点 $z_*=U_1/U_2$ 位于正半轴，
+给出 (1)、(2)。式 (1) 右端的严格正性直接来自左端。
+若 $V=0$，各权严格正使全部 $d_i=0$，给出退化结论。
+:::
+
+::: {#prp-ppae-central-same-moment-credit-1011 .proposition name="中央真实熵的三矩自适应修正" date="2026-10-11" export="prp-ppae-central-same-moment-credit-1011"}
+采用 @def-pscc-scalar-coordinates-1011f 的中央范围：
+$0<t\le27/50,0\le s\le t,r=(\sqrt5-1)/2$，
+$m=1+r(t^2-s^2)$、$h_0=141/200-3t/5$。
+设 $|c|=t,|d|=s,n_i=e^{(2i+1)\pi\mathrm i/5}$，对同一组数据定义
+$$
+x_i=\Re(cn_i),\quad z_i=\Re(dn_i^2),\quad
+j_i=m+2x_i+2rz_i>41m/100,\quad \omega_i=1+6x_i/5,
+$$
+$$
+\Delta_i=j_i-m\omega_i,\quad
+S_i=(j_i+m\omega_i)/2-m,\quad
+V_2=\operatorname{av}\Delta_i^2,\quad
+V_3=\operatorname{av}\Delta_i^2S_i,\quad
+F_4=\operatorname{av}\Delta_i^2S_i^2,\quad
+L=\sqrt m-\operatorname{av}\sqrt{j_i\omega_i}.
+$$
+这里 $\operatorname{av}$ 是五点等权平均。再令
+$$
+H_i=m+S_i,\qquad h=mh_0,\qquad b=\frac{3m}{2},
+\qquad \Gamma=\frac{21}{50(m+2)}.
+$$
+若 $V_2>0$，置
+$$
+\begin{aligned}
+U_1&=m(1-h_0)V_2+V_3,\\
+U_2&=m^2(1-h_0)V_2+m(2-h_0)V_3+F_4,\\
+\mathcal W&=F_4+m(1/2-h_0)V_3-\frac{m^2}{2}(1-h_0)V_2,\\
+\mathcal C_{\rm ent}
+&=\frac{\mathcal W^2}{(9/4)m^3h_0U_2}.
+\end{aligned}
+\tag{4}
+$$
+则 $U_1,U_2>0$、$\mathcal C_{\rm ent}\ge0$，完整熵亏损满足
+$$
+\boxed{
+L\le\Gamma\mathcal B_b-\Gamma\mathcal C_{\rm ent},
+\qquad
+\mathcal B_b=\frac1{mh_0}
+\left(V_2-\frac{2U_1}{b}+\frac{U_2}{b^2}\right).
+}
+\tag{5}
+$$
+这里 $\Gamma\mathcal B_b$ 是固定尺度 $b=3m/2$ 时的原三矩上界。
+因此新的上界只需原来已有的三个真实矩，没有新增高阶矩。
+若 $V_2=0$，则 $L=0$，单独处理此情形。
+:::
+
+::: {.proof of="prp-ppae-central-same-moment-credit-1011" status="verified"}
+五根平均给 $\operatorname{av}j_i=m$、$\operatorname{av}\omega_i=1$。
+$\omega_i\ge1-6t/5>0$，故 Cauchy--Schwarz 给 $L\ge0$。
+又
+$$
+H_i=\frac{j_i+m\omega_i}{2}
+>\frac m2\left(\frac{41}{100}+1-\frac65t\right)
+=mh_0>0.
+$$
+由于
+$V_2=\operatorname{av}\Delta^2$、
+$V_3=\operatorname{av}\Delta^2S$、
+$F_4=\operatorname{av}\Delta^2S^2$，
+直接展开
+$$
+U_1=\operatorname{av}\Delta_i^2(H_i-h),\qquad
+U_2=\operatorname{av}\Delta_i^2H_i(H_i-h)
+$$
+就得到 (4) 中前两行。
+由 @lem-ppae-optimal-reciprocal-majorant-1011，它们为正，且
+$$
+\operatorname{av}\frac{\Delta_i^2}{H_i}
+\le\mathcal B_b-\frac{(U_2-bU_1)^2}{h b^2U_2}
+=\mathcal B_b-\mathcal C_{\rm ent}.
+\tag{6}
+$$
+最后的等号来自 $U_2-bU_1=\mathcal W$ 和
+$h b^2=(9/4)m^3h_0$。
+
+为确认乘数和同源前提，不直接从旧冻结上界减去一个平方。
+由上述两个平均等式，先有
+$L=(2\sqrt m)^{-1}\operatorname{av}(\sqrt{j_i}-\sqrt{m\omega_i})^2$。
+再使用 $\Delta_i=j_i-m\omega_i$ 有理化，得到准确 Hellinger 身份：
+$$
+L=\frac1{2\sqrt m}\operatorname{av}
+\frac{\Delta_i^2}{(\sqrt{j_i}+\sqrt{m\omega_i})^2}.
+$$
+下面直接由同源条件重验所需的分母界。
+因为 $(9/4)^2>5$，有 $0<r=(\sqrt5-1)/2<5/8$。
+明确取 $\sigma=s/t$；$t>0$ 及 $0\le s\le t$ 给 $0\le\sigma\le1$，
+并且 $s=t\sigma$、$m=1+r(t^2-s^2)=1+rt^2(1-\sigma^2)$，所以该坐标定义适用。
+由 @def-pscc-scalar-coordinates-1011f 的 $0\le\sigma\le1$ 和 $t\le27/50$，
+$$
+1\le m=1+rt^2(1-\sigma^2)
+\le1+\frac58\left(\frac{27}{50}\right)^2
+=\frac{4729}{4000}<\frac65.
+$$
+置 $R_i=j_i/(m\omega_i)$。由
+@def-pscc-scalar-coordinates-1011f 的 $t\le27/50$、
+$s=t\sigma\le t$、$1\le m<6/5$ 和 $r<5/8$，
+以及 $j_i>.41m$、$\omega_i=1+6x_i/5$，有
+$$
+R_i>\frac{.41}{1+(6/5)(27/50)}=\frac{205}{824}>\frac6{25}.
+$$
+另一方面
+$$
+4m\omega_i-j_i
+=3m+(24m/5-2)x_i-2rz_i
+\ge3-(14/5)t-2rs>0.
+$$
+这里先用 $|x_i|\le t,|z_i|\le s$，
+再用 $3-(24/5)t>0$ 与 $m\ge1$。因此 $R_i<4$。
+函数 $f(R)=2\sqrt R/(1+R)$ 满足
+$f'(R)=(1-R)/(\sqrt R(1+R)^2)$，
+因此在 $(0,1)$ 递增、在 $(1,\infty)$ 递减。
+两个端点值为 $f(6/25)=10\sqrt6/31$ 和 $f(4)=4/5$；
+后者更大，因为平方比较的分子为 $16\cdot961-25\cdot600=376>0$。
+所以在 $[6/25,4]$ 上至少为 $10\sqrt6/31>11/14$。
+最后的平方比较为 $600\cdot196-121\cdot961=1319>0$。
+由此 $2\sqrt{j_i m\omega_i}/(j_i+m\omega_i)>11/14$，故
+$$
+L\le\frac7{50\sqrt m}\operatorname{av}\frac{\Delta_i^2}{H_i}.
+$$
+又 $1\le m<6/5$，所以
+$9m-(m+2)^2=(m-1)(4-m)\ge0$，
+给 $1/\sqrt m\le3/(m+2)$。
+式 (6) 的右端非负，因此可以对完整的优化后上界使用这个乘数放宽：
+$$
+L\le\frac7{50\sqrt m}(\mathcal B_b-\mathcal C_{\rm ent})
+\le\Gamma(\mathcal B_b-\mathcal C_{\rm ent}).
+$$
+这证明 (5)，避免只放宽正项却错误处理负修正项。
+最后展开 $\mathcal B_b$，得到
+$$
+\mathcal B_b=
+\frac{1+(1-h_0)(1-2B_0)/B_0^2}{mh_0}V_2
++\frac{2-h_0-2B_0}{B_0^2m^2h_0}V_3
++\frac{F_4}{B_0^2m^3h_0},\qquad B_0=3/2.
+$$
+这给出固定尺度的三矩上界。
+如果 $V_2=0$，则每个 $\Delta_i=0$，Hellinger 身份立即给 $L=0$。
+:::

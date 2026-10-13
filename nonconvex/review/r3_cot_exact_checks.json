@@ -1,0 +1,97 @@
+{
+  "scope": "Supplementary formal identities and exact rational comparisons; no parameter sampling.",
+  "official_qmd_prover_run": false,
+  "proof_relies_on_execution": false,
+  "check_count": 22,
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "complete formal differential residual identity",
+      "passed": true
+    },
+    {
+      "name": "cancellation at t=0",
+      "passed": true
+    },
+    {
+      "name": "logarithmic-derivative coefficient giving exactly H",
+      "passed": true
+    },
+    {
+      "name": "quadratic factor Q=(1-t)(1-t/4)",
+      "passed": true
+    },
+    {
+      "name": "c0 derivative identity",
+      "passed": true
+    },
+    {
+      "name": "c2 derivative identity",
+      "passed": true
+    },
+    {
+      "name": "c1+2c2 identity",
+      "passed": true
+    },
+    {
+      "name": "derivative of c1+2c2",
+      "passed": true
+    },
+    {
+      "name": "R(1) identity",
+      "passed": true
+    },
+    {
+      "name": "permitted weakening of pi lower bound",
+      "passed": true
+    },
+    {
+      "name": "permitted weakening of pi upper bound",
+      "passed": true
+    },
+    {
+      "name": "lower endpoint for exponent a",
+      "passed": true
+    },
+    {
+      "name": "upper endpoint for exponent a",
+      "passed": true
+    },
+    {
+      "name": "positive lower bound for the powered base",
+      "passed": true
+    },
+    {
+      "name": "c0 is decreasing on the entire pi interval",
+      "passed": true
+    },
+    {
+      "name": "c2 is decreasing on the entire pi interval",
+      "passed": true
+    },
+    {
+      "name": "c1+2c2 is increasing on the entire pi interval",
+      "passed": true
+    },
+    {
+      "name": "strict lower endpoint comparison for c0",
+      "passed": true
+    },
+    {
+      "name": "strict lower endpoint comparison for c2",
+      "passed": true
+    },
+    {
+      "name": "strict upper comparison for c1+2c2",
+      "passed": true
+    },
+    {
+      "name": "strict upper endpoint comparison for R(1)",
+      "passed": true
+    },
+    {
+      "name": "negative cubic coefficient throughout the pi interval",
+      "passed": true
+    }
+  ]
+}
