@@ -1,4 +1,6 @@
-# 凸与非凸五边形 QMD 研究项目
+# 五边形 Pólya–Szegő 猜想：凸与非凸情形
+
+*The Pólya–Szegő Conjecture for Pentagons*
 
 本仓库由 GitHub 账户 **ChengZhuoCZ** 归档，包含两个独立的 QMD 源项目。首次整理日期：2026-10-13（北京时间）。
 
